@@ -1,0 +1,171 @@
+\textbf{Q1:} Consider a single nonrelativistic particle on a line with momentum $p$. If its momentum space wavefunction is $\phi(p) = \braket{p|\Psi}$, and we define $g(p) = p\phi(p)$, prove that the variance $\sigma_p^2 = \braket{g|g}$ if the momentum expectation is zero.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+\textbf{A1}: The definition of variance is 
+
+$\sigma_p^2 = \int_{-\infty}^{\infty}(p - \mathbb{E}[p])^2f(p)dp$
+
+where $f(p)$ is the probability density.
+
+From the Born interpretation of quantum mechanics, we have 
+
+$f(p) = |\phi(p)|^2$
+
+and as $\mathbb{E}[p] = 0$ from the question, the variance becomes
+
+$\sigma_p^2 = \int_{-\infty}^{\infty}p ^2|\phi(p)|^2dp$ 
+
+From the question, $g(p) = p\phi(p)$ with complex conjugate $g^*(p) = \phi^*(p)p$ . We can hence write 
+
+$|g(p)|^2 = p^2\phi^*(p)\phi(p) = p^2 |\phi(p)|^2$ 
+
+where the variance becomes
+
+$\sigma^2_p = \int_{-\infty}^{\infty}|g(p)|^2dp$ 
+
+From Dirac notation, we recall the premise
+
+$\braket{g|g} = \int_{-\infty}^{\infty}g^*(p)g(p)dp$
+
+and as $g^*(p)g(p) = |g(p)|^2$ , we obtain the momentum variance
+
+$\sigma_p^2 = \braket{g|g}$ 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+\textbf{Q2:} Consider a time-independent self-adjoint Hamiltonian $\hat{H}_\lambda$ that smoothly depends on a real parameter $\lambda$, with non-degenerate eigenvalue $E_\lambda$ and eigenvector $\ket{\Psi_\lambda}$, such that Schrodinger holds, \textit{i.e.}
+
+$\hat{H}_\lambda \ket{\Psi_\lambda} = E_\lambda \ket{\Psi_\lambda}$
+
+Prove that 
+
+$\frac{\partial E_\lambda}{\partial \lambda} = E_\lambda \braket{\frac{\partial\Psi_\lambda}{\partial\lambda}|\Psi_\lambda} + \braket{\Psi_\lambda | \frac{\partial\hat{H}_\lambda}{\partial \lambda}|\Psi_\lambda} + E_\lambda\braket{\Psi_\lambda|\frac{\partial\Psi_\lambda}{\partial\lambda}}$ 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+\textbf{A2:} If we take the inner product of each side of the Schrodinger equation, we obtain
+
+$\bra{\Psi_\lambda}\hat{H}_\lambda\ket{\Psi_\lambda} = E_\lambda\braket{\Psi_\lambda|\Psi_\lambda}$
+
+As states are assumed normalized, we recall that $\braket{\Psi_\lambda|\Psi_\lambda} = 1$, and hence
+
+$E_\lambda = \bra{\Psi_\lambda}\hat{H}_\lambda\ket{\Psi_\lambda}$
+
+If we take the partial derivative with respect to $\lambda$ we obtain
+
+$\frac{\partial E_\lambda}{\partial \lambda} = \frac{\partial}{\partial \lambda}\bra{\Psi_\lambda}\hat{H}_\lambda\ket{\Psi_\lambda}$
+
+Next, via application of the chain rule, we can write
+
+$\frac{\partial E_\lambda}{\partial \lambda} =  \braket{\frac{\partial\Psi_\lambda}{\partial\lambda}|\hat{H}_\lambda|\Psi_\lambda} + \braket{\Psi_\lambda | \frac{\partial\hat{H}_\lambda}{\partial \lambda}|\Psi_\lambda} + \braket{\Psi_\lambda|\hat{H}_\lambda|\frac{\partial\Psi_\lambda}{\partial\lambda}}$ 
+
+Finally, by substituting in the RHS of the Schrodinger equation and factoring out $E_\lambda$, we obtain
+
+$\frac{\partial E_\lambda}{\partial \lambda} = E_\lambda \braket{\frac{\partial\Psi_\lambda}{\partial\lambda}|\Psi_\lambda} + \braket{\Psi_\lambda | \frac{\partial\hat{H}_\lambda}{\partial \lambda}|\Psi_\lambda} + E_\lambda\braket{\Psi_\lambda|\frac{\partial\Psi_\lambda}{\partial\lambda}}$ 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+\textbf{Q3:} Consider a nonrelativistic particle on a line. For a normalized state $\ket{\Psi}$ its position space wavefunction is $\Psi(x) = \braket{x|\Psi}$. If the expectation of the position operator $\hat{X}$ is 
+
+$\braket{\hat{X}}_{\Psi} = \int\int\braket{x|\Psi}^{\dagger}x'\delta(x-x')\braket{x'|\Psi}dxdx'$
+
+where $\delta(x-x')$ denotes the Dirac delta function, show that 
+
+$\braket{\hat{X}}_{\Psi} = \int x |\Psi(x)|^2dx$
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+\textbf{A3:} From the definition of the Dirac delta, we recall 
+
+$\int f(x')\delta(x - x')dx' = f(x)$
+
+therefore the expectation of the position operator becomes
+
+$\braket{\hat{X}}_{\Psi} = \int\braket{x|\Psi}^{\dagger}x\braket{x|\Psi}dx$
+
+Now, if the wavefunction is defined as $\Psi(x) = \braket{x|\Psi}$, then the complex conjugate of the wavefunction is
+
+$\Psi^*(x) = \braket{x|\Psi}^{\dagger}$
+
+By substituting in the LHS of each definition of the wavefunction into the expectation we get
+
+$\braket{\hat{X}}_{\Psi} = \int x\Psi^*(x)\Psi(x)dx$
+
+and because $\Psi^*(x)\Psi(x) = |\Psi(x)|^2$ we obtain the answer
+
+$\braket{\hat{X}}_{\Psi} = \int x |\Psi(x)|^2dx$
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+\textbf{Q4: } Consider a two-level atom with ground $\ket{g}$ and excited $\ket{e}$ states coupled to a single quantized field mode with Fock states $\{ \ket{n} \}_{n=0}^{\infty}$. For a single excitation we have $\ket{e, 0} = \ket{e} \otimes \ket{0}$, representing the atom in the excited state with zero photons, and $\ket{g, 1} = \ket{g} \otimes \ket{1}$ represents the state of the system if the atom is in the ground state and there exists 1 photon.
+
+Assuming Rabi oscillations, the state vector evolves as 
+
+$\ket{\Psi(t)} = \cos(\Omega t/2)\ket{e, 0} - i\sin(\Omega t/2)\ket{g, 1}$ 
+
+where $\Omega$ is the Rabi frequency.
+
+Show that the probability of finding the atom in the excited state is
+
+$P_e(t) = \cos^2(\Omega t/2)$
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+\textbf{A4:} By defining a wavefunction $\phi(t) = \braket{e,0|\Psi(t)}$ and recalling $\rho(t) = |\phi(t)|^2$ from the Born interpretation, we can write the probability density for the excited state as 
+
+$P_{e}(t) = |\braket{e,0|\Psi(t)}|^2$
+
+Next, if we take the inner product of the state vector definition with the excited state we get
+
+$\braket{e, 0|\Psi(t)} = \cos(\Omega t/2)\braket{e,0|e, 0} - i\sin(\Omega t/2)\braket{e,0|g, 1}$ 
+
+and because $\braket{e,0|e, 0} = 1$ and $\braket{e,0|g, 1} = 0$, this inner product simplifies to
+
+$\braket{e, 0|\Psi(t)} = \cos(\Omega t/2)$ 
+
+From the definition of $P_e(t)$, we obtain the answer
+
+$P_e(t) = \cos^2(\Omega t/2)$
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+\textbf{Q5:} For a time-independent Hamiltonian $\hat{H}_\lambda$ with non-degenerate eigenvalue $E_\lambda$ and eigenstate $\ket{\Psi_\lambda}$ which smoothly depend upon parameter $\lambda$, the Hellman-Feynman theorem is
+
+$\frac{\partial E_\lambda}{\partial \lambda} = \braket{\Psi_\lambda(t)|\frac{\partial \hat{H}_\lambda}{\partial \lambda}|\Psi_\lambda(t)}$
+
+Prove the following equation holds
+
+$\frac{\partial E_\lambda}{\partial \lambda} = i\hbar\frac{\partial}{\partial t}\braket{\Psi_\lambda(t)|\frac{\partial \Psi_\lambda(t)}{\partial\lambda}}$
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+\textbf{A5:} We can write the time-dependent Schrodinger equation as 
+
+$\hat{H}_\lambda\ket{\Psi_\lambda(t)} = i\hbar \ket{\frac{\partial \Psi_\lambda(t)}{\partial t}}$
+
+by differentiating with respect to $\lambda$ and expanding with the chain rule, we get
+
+$\frac{\partial\hat{H}_\lambda}{\partial \lambda}\ket{\Psi_\lambda(t)} + \hat{H}_\lambda\ket{\frac{\partial \Psi_\lambda(t)}{\partial \lambda}} = i\hbar\ket{\frac{\partial^2 \Psi_\lambda(t)}{\partial \lambda \partial t}}$
+
+which we can rearrange to give 
+
+$\frac{\partial\hat{H}_\lambda}{\partial \lambda}\ket{\Psi_\lambda(t)}  = i\hbar\ket{\frac{\partial^2 \Psi_\lambda(t)}{\partial \lambda \partial t}} - \hat{H}_\lambda\ket{\frac{\partial \Psi_\lambda(t)}{\partial \lambda}}$
+
+If we take the inner product with $\bra{\Psi_\lambda}$ of both sides
+
+and substitute in for the RHS of the adjunct time-dependent Schrodinger equation $\bra{\Psi_\lambda(t)}\hat{H}_\lambda = -i\hbar{\frac{\partial}{\partial t}}\bra{\Psi_\lambda(t)}$, we get
+
+$\bra{\Psi_\lambda(t)}\frac{\partial\hat{H}_\lambda}{\partial \lambda}\ket{\Psi_\lambda(t)} = i\hbar\braket{\Psi_\lambda(t)|\frac{\partial^2 \Psi_\lambda(t)}{\partial \lambda \partial t}} + (i\hbar \frac{\partial}{\partial t}\bra{\Psi_\lambda(t)})\ket{\frac{\partial \Psi_\lambda(t)}{\partial \lambda}}$
+
+which we can factor to give
+
+$\bra{\Psi_\lambda(t)}\frac{\partial\hat{H}_\lambda}{\partial \lambda}\ket{\Psi_\lambda(t)} = i\hbar(\braket{\Psi_\lambda(t)|\frac{\partial^2 \Psi_\lambda(t)}{\partial \lambda \partial t}} + (\frac{\partial}{\partial t}\bra{\Psi_\lambda(t)})\ket{\frac{\partial \Psi_\lambda(t)}{\partial \lambda}})$
+
+If we recognize the RHS is the expanded form of the chain rule, we can simplify to
+
+$\bra{\Psi_\lambda(t)}\frac{\partial\hat{H}_\lambda}{\partial \lambda}\ket{\Psi_\lambda(t)} = i\hbar\frac{\partial}{\partial t}\braket{\Psi_\lambda(t)|\frac{\partial \Psi_\lambda(t)}{\partial \lambda}})$
+
+and by recalling the Hellman-Feynman theorem we obtain
+
+$\frac{\partial E_\lambda}{\partial \lambda} = i\hbar\frac{\partial}{\partial t}\braket{\Psi_\lambda(t)|\frac{\partial \Psi_\lambda(t)}{\partial\lambda}}$
