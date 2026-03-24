@@ -17,6 +17,55 @@ import shutil
 from pathlib import Path
 
 
+_CLAUDE_EMPTY_ERROR_HINT = (
+    "Claude CLI exited without any error details. "
+    "This usually indicates a local Claude CLI rate limit, authentication problem, "
+    "or another CLI-side failure before a structured response was emitted."
+)
+
+
+def _format_cli_error(prefix: str, returncode: int, *parts: str | None) -> str:
+    details = []
+    seen = set()
+    for part in parts:
+        text = (part or "").strip()
+        if not text or text in seen:
+            continue
+        seen.add(text)
+        details.append(text)
+
+    if details:
+        return f"{prefix} exited with code {returncode}:\n" + "\n\n".join(details)
+    return f"{prefix} exited with code {returncode}."
+
+
+def _format_claude_error(returncode: int, *parts: str | None) -> str:
+    message = _format_cli_error("Claude CLI", returncode, *parts)
+    if message.endswith(f"code {returncode}."):
+        return f"{message}\n{_CLAUDE_EMPTY_ERROR_HINT}"
+    return message
+
+
+def _extract_error_text(event: dict) -> str:
+    candidates = [
+        event.get("error"),
+        event.get("message"),
+        event.get("detail"),
+    ]
+    error_obj = event.get("error")
+    if isinstance(error_obj, dict):
+        candidates.extend([
+            error_obj.get("message"),
+            error_obj.get("detail"),
+            error_obj.get("error"),
+        ])
+
+    for candidate in candidates:
+        if isinstance(candidate, str) and candidate.strip():
+            return candidate.strip()
+    return ""
+
+
 def _find_claude() -> str:
     """Locate the claude binary: PATH first, then VSCode extension fallback."""
     on_path = shutil.which("claude")
@@ -128,10 +177,11 @@ class ClaudeSession:
         result = subprocess.run(cmd, capture_output=True, text=True, cwd=self.cwd)
 
         if result.returncode != 0:
-            raise RuntimeError(
-                f"Claude CLI exited with code {result.returncode}:\n"
-                f"{result.stderr or result.stdout}"
-            )
+            raise RuntimeError(_format_claude_error(
+                result.returncode,
+                result.stderr,
+                result.stdout,
+            ))
 
         response = json.loads(result.stdout)
         # Persist session ID so the next call continues this conversation.
@@ -141,6 +191,79 @@ class ClaudeSession:
     def text(self, message: str) -> str:
         """Send a message and return just the text response."""
         return self.prompt(message).get("result", "")
+
+    def _build_stream_cmd(self, message: str) -> list[str]:
+        """Build command with stream-json output format (requires --verbose)."""
+        cmd = [CLAUDE_BIN, "-p", message, "--output-format", "stream-json", "--verbose"]
+
+        if self.session_id:
+            cmd.extend(["--resume", self.session_id])
+        if self.model:
+            cmd.extend(["--model", self.model])
+        if self.tools is not None:
+            for tool in self.tools:
+                cmd.extend(["--allowedTools", tool])
+        if self.system_prompt:
+            cmd.extend(["--append-system-prompt", self.system_prompt])
+        if self.max_turns is not None:
+            cmd.extend(["--max-turns", str(self.max_turns)])
+
+        return cmd
+
+    def prompt_stream(self, message: str):
+        """
+        Send a message and yield text chunks as they arrive.
+
+        After iteration completes, self.session_id is updated.
+        """
+        cmd = self._build_stream_cmd(message)
+        proc = subprocess.Popen(
+            cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+            text=True, cwd=self.cwd,
+        )
+        raw_stdout_lines: list[str] = []
+        error_events: list[str] = []
+
+        for line in proc.stdout:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                event = json.loads(line)
+            except json.JSONDecodeError:
+                raw_stdout_lines.append(line)
+                continue
+
+            etype = event.get("type", "")
+
+            if etype == "assistant":
+                message_obj = event.get("message", {})
+                for block in message_obj.get("content", []):
+                    if block.get("type") == "text":
+                        yield block["text"]
+                sid = event.get("session_id")
+                if sid:
+                    self.session_id = sid
+            elif etype == "content_block_delta":
+                delta = event.get("delta", {})
+                if delta.get("type") == "text_delta":
+                    yield delta.get("text", "")
+            elif etype == "result":
+                self.session_id = event.get("session_id", self.session_id)
+            elif etype == "error":
+                error_text = _extract_error_text(event)
+                if error_text:
+                    error_events.append(error_text)
+
+        proc.wait()
+        if proc.returncode != 0:
+            stderr = proc.stderr.read()
+            raise RuntimeError(_format_claude_error(
+                proc.returncode,
+                stderr,
+                "\n".join(error_events),
+                "\n".join(raw_stdout_lines),
+            ))
 
     @classmethod
     def resume(cls, session_id: str, **kwargs) -> "ClaudeSession":
