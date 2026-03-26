@@ -22,6 +22,7 @@ sys.path.insert(0, str(_SRC / "qa"))
 
 from claude_cli import ClaudeSession
 from gpt_cli import GPTSession
+from lean_prompts import build_lean_prompt_dataset
 from qa_prompt_generation import default_few_shot_prompt_generation
 from qa_postprocessing import postprocess_raw_dataset
 
@@ -132,6 +133,62 @@ def _status(prompt_index, approved_pairs, mode, extra=""):
     if extra:
         parts.append(extra)
     return " | ".join(parts)
+
+
+def _approved_entries_to_batches(approved_pairs):
+    """Convert persisted and in-memory approved entries into cleaned QA batches."""
+    batches = []
+    for entry in approved_pairs or []:
+        if not isinstance(entry, dict):
+            continue
+        if "batch" in entry:
+            batch = entry.get("batch")
+            if isinstance(batch, list) and batch:
+                batches.append(batch)
+            continue
+
+        if "input" in entry and "output" in entry:
+            parsed_batches = postprocess_raw_dataset([entry])
+            if parsed_batches:
+                batches.extend(parsed_batches)
+    return batches
+
+
+def _load_saved_progress():
+    """Load saved QA batches and represent them as approved entries."""
+    qa_path = _SRC / "app_data" / "qa_data.json"
+    try:
+        data = json.loads(qa_path.read_text(encoding="utf-8"))
+    except (FileNotFoundError, json.JSONDecodeError, OSError):
+        return []
+
+    if not isinstance(data, list):
+        return []
+    return [{"batch": batch} for batch in data if isinstance(batch, list) and batch]
+
+
+def _autosave_datasets(approved_pairs):
+    """Persist the cleaned QA dataset and derived Lean prompts to app_data."""
+    if not approved_pairs:
+        return None, None
+
+    cleaned = _approved_entries_to_batches(approved_pairs)
+    lean_prompt_data = build_lean_prompt_dataset(cleaned)
+    app_data_dir = _SRC / "app_data"
+    app_data_dir.mkdir(parents=True, exist_ok=True)
+
+    qa_path = app_data_dir / "qa_data.json"
+    lean_prompt_path = app_data_dir / "lean_prompt_data.json"
+
+    qa_path.write_text(
+        json.dumps(cleaned, indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
+    lean_prompt_path.write_text(
+        json.dumps(lean_prompt_data, indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
+    return qa_path, lean_prompt_path
 
 
 def _build_refinement_prompt(input_text, current_output, user_instruction):
@@ -279,11 +336,11 @@ def send_default_prompt(provider, session_id, model, system_prompt, prompt_index
         done = (
             f"All **{TOTAL_PROMPTS}** prompts processed.  \n"
             f"**{len(approved_pairs)}** pairs approved.  \n"
-            "Click **Download Dataset** to save."
+            "Approved outputs have been autosaved."
         )
         yield ("*Pipeline complete.*", done, "",
                session_id, prompt_index, approved_pairs, "", False,
-               *_controls(False, False), _status(prompt_index, approved_pairs, "Default Pipeline", "DONE"))
+               *_controls(False, False), _status(prompt_index, approved_pairs, "Default Pipeline", "DONE | AUTOSAVED"))
         return
 
     message = DEFAULT_PROMPTS[prompt_index]
@@ -320,16 +377,17 @@ def on_approve(output_panel, provider, session_id, model, system_prompt,
                prompt_index, approved_pairs, current_input, mode):
     """Save the current pair and auto-advance (default mode)."""
     approved_pairs = approved_pairs + [{"input": current_input or "", "output": output_panel or ""}]
+    _autosave_datasets(approved_pairs)
 
     if mode == "Default Pipeline":
         prompt_index += 1
         yield from send_default_prompt(
-            provider, session_id, model, system_prompt, prompt_index, approved_pairs, False,
+            provider, None, model, system_prompt, prompt_index, approved_pairs, False,
         )
     else:
         yield ("*Paste your next reasoning input below.*", "*Waiting…*", "",
-               session_id, prompt_index, approved_pairs, "", False,
-               *_controls(False, False), _status(prompt_index, approved_pairs, mode))
+               None, prompt_index, approved_pairs, "", False,
+               *_controls(False, False), _status(prompt_index, approved_pairs, mode, "AUTOSAVED"))
 
 
 def on_reject(input_panel, provider, session_id, model, system_prompt,
@@ -433,32 +491,25 @@ def user_chat_submit(message, input_panel, output_panel, provider, session_id, m
                *_controls(edit_mode, True), st)
 
 
-# ---------------------------------------------------------------------------
-# Download / reset
-# ---------------------------------------------------------------------------
-
-def download_dataset(approved_pairs):
-    if not approved_pairs:
-        return gr.update()
-    cleaned = postprocess_raw_dataset(approved_pairs)
-    app_data_dir = _SRC / "app_data"
-    app_data_dir.mkdir(parents=True, exist_ok=True)
-    canonical_path = app_data_dir / "qa_data.json"
-    canonical_path.write_text(
-        json.dumps(cleaned, indent=2, ensure_ascii=False),
-        encoding="utf-8",
-    )
-    return gr.update(value=f"Saved postprocessed dataset to `{canonical_path}`")
-
-
 def clear_session():
+    saved_approved = _load_saved_progress()
+    saved_count = len(saved_approved)
     return (
         "*Waiting to start…*",
         "*Waiting…*",
         "",
-        None, 0, [], "", False,
-        *_controls(False, False), "",
+        None, saved_count, saved_approved, "", False,
+        *_controls(False, False), _status(saved_count, saved_approved, "Default Pipeline", "LOADED FROM DISK") if saved_count else "",
     )
+
+
+_INITIAL_APPROVED = _load_saved_progress()
+_INITIAL_PROMPT_INDEX = len(_INITIAL_APPROVED)
+_INITIAL_STATUS = (
+    _status(_INITIAL_PROMPT_INDEX, _INITIAL_APPROVED, "Default Pipeline", "LOADED FROM DISK")
+    if _INITIAL_PROMPT_INDEX
+    else ""
+)
 
 
 def update_model_dropdown(provider):
@@ -483,8 +534,8 @@ with gr.Blocks(title="QA Dataset Builder") as demo:
 
     # --- State ---
     session_state = gr.State(None)
-    prompt_index_state = gr.State(0)
-    approved_state = gr.State([])
+    prompt_index_state = gr.State(_INITIAL_PROMPT_INDEX)
+    approved_state = gr.State(_INITIAL_APPROVED)
     current_input_state = gr.State("")
     edit_mode_state = gr.State(False)
     pending_msg_state = gr.State("")
@@ -553,7 +604,7 @@ with gr.Blocks(title="QA Dataset Builder") as demo:
         reject_btn = gr.Button("Reject", variant="stop", visible=False, min_width=140)
         back_btn = gr.Button("Back to Review", visible=False, min_width=160)
 
-    status_md = gr.Markdown("", elem_classes=["status-bar"])
+    status_md = gr.Markdown(_INITIAL_STATUS, elem_classes=["status-bar"])
 
     # --- Chat input (custom / edit) ---
     msg = gr.Textbox(
@@ -566,7 +617,6 @@ with gr.Blocks(title="QA Dataset Builder") as demo:
     # --- Action buttons ---
     with gr.Row():
         start_btn = gr.Button("Start Default Pipeline", variant="primary")
-        download_btn = gr.Button("Save Dataset")
         clear_btn = gr.Button("New Session")
 
     # --- Shared output list ---
@@ -635,7 +685,6 @@ with gr.Blocks(title="QA Dataset Builder") as demo:
         outputs=panel_outputs,
     )
 
-    download_btn.click(download_dataset, inputs=[approved_state], outputs=[status_md])
     clear_btn.click(clear_session, outputs=panel_outputs)
 
 
