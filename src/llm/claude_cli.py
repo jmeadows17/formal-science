@@ -156,7 +156,7 @@ class ClaudeSession:
 
         return cmd
 
-    def prompt(self, message: str) -> dict:
+    def prompt(self, message: str, timeout: float | None = None) -> dict:
         """
         Send a message in this session, returns the parsed JSON response.
 
@@ -173,10 +173,37 @@ class ClaudeSession:
             RuntimeError: If the CLI exits with a non-zero code after
                           exhausting its internal retries.
         """
+        import sys, time as _time
+
         cmd = self._build_cmd(message)
-        result = subprocess.run(cmd, capture_output=True, text=True, cwd=self.cwd)
+        prompt_len = len(message)
+        print(
+            f"[claude_cli] prompt (non-stream) chars={prompt_len}  "
+            f"session={self.session_id or 'new'}",
+            file=sys.stderr,
+            flush=True,
+        )
+
+        start = _time.monotonic()
+        try:
+            result = subprocess.run(
+                cmd, capture_output=True, text=True, cwd=self.cwd,
+                timeout=timeout,
+            )
+        except subprocess.TimeoutExpired:
+            timeout_text = "with no timeout value provided" if timeout is None else f"after {timeout:.0f}s"
+            raise RuntimeError(
+                f"Claude CLI timed out {timeout_text}. Prompt was {prompt_len} chars."
+            )
+
+        elapsed = _time.monotonic() - start
 
         if result.returncode != 0:
+            print(
+                f"[claude_cli] failed  rc={result.returncode}  elapsed={elapsed:.1f}s",
+                file=sys.stderr,
+                flush=True,
+            )
             raise RuntimeError(_format_claude_error(
                 result.returncode,
                 result.stderr,
@@ -184,6 +211,13 @@ class ClaudeSession:
             ))
 
         response = json.loads(result.stdout)
+        result_text = response.get("result", "")
+        print(
+            f"[claude_cli] done (non-stream)  elapsed={elapsed:.1f}s  "
+            f"output_chars={len(result_text)}",
+            file=sys.stderr,
+            flush=True,
+        )
         # Persist session ID so the next call continues this conversation.
         self.session_id = response.get("session_id", self.session_id)
         return response
@@ -210,13 +244,23 @@ class ClaudeSession:
 
         return cmd
 
-    def prompt_stream(self, message: str):
+    def prompt_stream(self, message: str, timeout: float | None = None):
         """
         Send a message and yield text chunks as they arrive.
 
         After iteration completes, self.session_id is updated.
         """
+        import sys, time as _time
+
         cmd = self._build_stream_cmd(message)
+        prompt_len = len(message)
+        print(
+            f"[claude_cli] prompt_stream chars={prompt_len}  "
+            f"session={self.session_id or 'new'}",
+            file=sys.stderr,
+            flush=True,
+        )
+
         proc = subprocess.Popen(
             cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
             text=True, cwd=self.cwd,
@@ -224,38 +268,83 @@ class ClaudeSession:
         raw_stdout_lines: list[str] = []
         error_events: list[str] = []
 
+        start = _time.monotonic()
+        last_yield = start
+        event_count = 0
+        yielded_chars = 0
+
         for line in proc.stdout:
             line = line.strip()
             if not line:
                 continue
+
+            elapsed = _time.monotonic() - start
+            idle = _time.monotonic() - last_yield
+            if idle > 30.0:
+                print(
+                    f"[claude_cli] no text yielded for {idle:.1f}s  "
+                    f"elapsed={elapsed:.1f}s  events={event_count}  "
+                    f"yielded_chars={yielded_chars}",
+                    file=sys.stderr,
+                    flush=True,
+                )
+
             try:
                 event = json.loads(line)
             except json.JSONDecodeError:
                 raw_stdout_lines.append(line)
                 continue
 
+            event_count += 1
             etype = event.get("type", "")
+
+            if event_count <= 5 or event_count % 50 == 0:
+                print(
+                    f"[claude_cli] event #{event_count} type={etype}  "
+                    f"elapsed={elapsed:.1f}s",
+                    file=sys.stderr,
+                    flush=True,
+                )
 
             if etype == "assistant":
                 message_obj = event.get("message", {})
                 for block in message_obj.get("content", []):
                     if block.get("type") == "text":
-                        yield block["text"]
+                        text = block["text"]
+                        yielded_chars += len(text)
+                        last_yield = _time.monotonic()
+                        yield text
                 sid = event.get("session_id")
                 if sid:
                     self.session_id = sid
             elif etype == "content_block_delta":
                 delta = event.get("delta", {})
                 if delta.get("type") == "text_delta":
-                    yield delta.get("text", "")
+                    text = delta.get("text", "")
+                    yielded_chars += len(text)
+                    last_yield = _time.monotonic()
+                    yield text
             elif etype == "result":
                 self.session_id = event.get("session_id", self.session_id)
             elif etype == "error":
                 error_text = _extract_error_text(event)
                 if error_text:
                     error_events.append(error_text)
+                    print(
+                        f"[claude_cli] error event: {error_text}",
+                        file=sys.stderr,
+                        flush=True,
+                    )
 
         proc.wait()
+        elapsed = _time.monotonic() - start
+        print(
+            f"[claude_cli] stream done  rc={proc.returncode}  elapsed={elapsed:.1f}s  "
+            f"events={event_count}  yielded_chars={yielded_chars}",
+            file=sys.stderr,
+            flush=True,
+        )
+
         if proc.returncode != 0:
             stderr = proc.stderr.read()
             raise RuntimeError(_format_claude_error(

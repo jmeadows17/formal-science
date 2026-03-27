@@ -74,7 +74,7 @@ def build_lean_prompt(batch: Batch) -> str:
     deliverables = textwrap.dedent(
         f"""\
         # Deliverables
-        - One Lean file containing **{c_range}** exactly in this order.
+        - One Lean file saved to ```formal-science/FSLean/proof.lean``` containing **{c_range}** exactly in this order.
         """
     )
 

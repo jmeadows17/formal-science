@@ -159,14 +159,26 @@ class GPTSession:
         )
         self.session_id = {"transcript": list(self.transcript)}
 
-    def prompt(self, message: str) -> dict:
+    def prompt(self, message: str, timeout: float | None = None) -> dict:
         with tempfile.NamedTemporaryFile(suffix=".txt", delete=False) as tmp:
             output_path = tmp.name
 
         try:
             prompt = self._conversation_prompt(message)
             cmd = self._build_cmd(prompt, output_path)
-            result = subprocess.run(cmd, capture_output=True, text=True, cwd=self.cwd)
+
+            import sys
+            prompt_len = len(prompt)
+            print(
+                f"[gpt_cli] prompt (non-stream) chars={prompt_len}  output_path={output_path}",
+                file=sys.stderr,
+                flush=True,
+            )
+
+            result = subprocess.run(
+                cmd, capture_output=True, text=True, cwd=self.cwd,
+                timeout=timeout,
+            )
 
             if result.returncode != 0:
                 raise RuntimeError(_format_codex_error(
@@ -177,21 +189,42 @@ class GPTSession:
                 ))
 
             text = self._read_output(output_path).strip()
+            print(
+                f"[gpt_cli] done (non-stream)  output_chars={len(text)}",
+                file=sys.stderr,
+                flush=True,
+            )
             self._update_transcript(message, text)
             return {"result": text, "session_id": self.session_id, "usage": None}
+        except subprocess.TimeoutExpired:
+            timeout_text = "with no timeout value provided" if timeout is None else f"after {timeout:.0f}s"
+            raise RuntimeError(
+                f"Codex CLI timed out {timeout_text}. Prompt was {prompt_len} chars."
+            )
         finally:
             Path(output_path).unlink(missing_ok=True)
 
     def text(self, message: str) -> str:
         return self.prompt(message).get("result", "")
 
-    def prompt_stream(self, message: str):
+    def prompt_stream(self, message: str, timeout: float | None = None):
         with tempfile.NamedTemporaryFile(suffix=".txt", delete=False) as tmp:
             output_path = tmp.name
 
         try:
             prompt = self._conversation_prompt(message)
             cmd = self._build_cmd(prompt, output_path)
+
+            import sys
+            prompt_len = len(prompt)
+            cmd_len = sum(len(a) for a in cmd)
+            print(
+                f"[gpt_cli] prompt chars={prompt_len}  cmd args={len(cmd)}  "
+                f"cmd total chars={cmd_len}  output_path={output_path}",
+                file=sys.stderr,
+                flush=True,
+            )
+
             proc = subprocess.Popen(
                 cmd,
                 stdout=subprocess.PIPE,
@@ -201,7 +234,19 @@ class GPTSession:
             )
 
             seen = ""
+            start = time.monotonic()
+            last_progress = start
+            polls = 0
             while proc.poll() is None:
+                elapsed = time.monotonic() - start
+                if timeout is not None and elapsed > timeout:
+                    proc.kill()
+                    proc.wait()
+                    raise RuntimeError(
+                        f"Codex CLI timed out after {timeout:.0f}s with no output. "
+                        f"Prompt was {prompt_len} chars. Output file had {len(seen)} chars."
+                    )
+
                 current = self._read_output(output_path)
                 if current.startswith(seen):
                     delta = current[len(seen):]
@@ -209,9 +254,22 @@ class GPTSession:
                     delta = current
                 if delta:
                     seen = current
+                    last_progress = time.monotonic()
                     yield delta
+                else:
+                    polls += 1
+                    if polls % 50 == 0:
+                        idle = time.monotonic() - last_progress
+                        print(
+                            f"[gpt_cli] waiting... elapsed={elapsed:.1f}s  "
+                            f"idle={idle:.1f}s  output_size={len(seen)}  "
+                            f"proc_alive={proc.poll() is None}",
+                            file=sys.stderr,
+                            flush=True,
+                        )
                 time.sleep(0.1)
 
+            elapsed = time.monotonic() - start
             final_text = self._read_output(output_path)
             if final_text.startswith(seen):
                 final_delta = final_text[len(seen):]
@@ -219,6 +277,13 @@ class GPTSession:
                 final_delta = final_text
             if final_delta:
                 yield final_delta
+
+            print(
+                f"[gpt_cli] done  rc={proc.returncode}  elapsed={elapsed:.1f}s  "
+                f"output_chars={len(final_text)}",
+                file=sys.stderr,
+                flush=True,
+            )
 
             if proc.returncode != 0:
                 stdout, stderr = proc.communicate()
