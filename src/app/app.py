@@ -10,6 +10,7 @@ Run: python src/app/app.py
 
 import sys
 import json
+import re
 import tempfile
 import traceback
 from pathlib import Path
@@ -21,7 +22,7 @@ sys.path.insert(0, str(_SRC / "llm"))
 sys.path.insert(0, str(_SRC / "qa"))
 
 from claude_cli import ClaudeSession
-from gpt_cli import GPTSession
+from gpt_cli import GPTSession, VALID_REASONING_EFFORTS
 from lean_prompts import build_lean_prompt_dataset
 from qa_prompt_generation import default_few_shot_prompt_generation
 from qa_postprocessing import postprocess_raw_dataset
@@ -47,6 +48,8 @@ _EVAL_PREAMBLE = (
     "  5 — Excellent: QA pairs fully and accurately capture the input reasoning.\n\n"
     "Rate each QA pair individually, then give an **Overall** score. Be concise.\n\n---\n\n"
 )
+
+_REASONING_EFFORT_ORDER = ("minimal", "low", "medium", "high", "xhigh")
 
 CSS = """
 .gradio-container {
@@ -195,6 +198,8 @@ def _build_refinement_prompt(input_text, current_output, user_instruction):
     return (
         "Revise the GENERATED QA PAIRS so they align better with the INPUT REASONING.\n\n"
         "Keep the task domain and content grounded in the input reasoning.\n"
+        "Make every generated question fully self-contained; do not rely on previous questions, "
+        "previous results, or unstated context.\n"
         "Do not switch to coding, UI, CSS, or repository-editing tasks.\n"
         "Return only the revised QA pairs.\n\n"
         "INPUT REASONING:\n"
@@ -203,6 +208,22 @@ def _build_refinement_prompt(input_text, current_output, user_instruction):
         + (current_output or "")
         + "\n\nREVISION REQUEST:\n"
         + user_instruction.strip()
+    )
+
+
+def _build_retry_prompt(input_text, rejected_output):
+    return (
+        "The previous QA output was rejected. Generate a new version that better follows the "
+        "input reasoning.\n\n"
+        "Keep the task domain and content grounded in the input reasoning.\n"
+        "Make every generated question fully self-contained; do not rely on previous questions, "
+        "previous results, or unstated context.\n"
+        "Do not switch to coding, UI, CSS, or repository-editing tasks.\n"
+        "Return only the regenerated QA pairs.\n\n"
+        "INPUT REASONING:\n"
+        + (input_text or "")
+        + "\n\nPREVIOUS REJECTED OUTPUT:\n"
+        + (rejected_output or "")
     )
 
 
@@ -215,8 +236,25 @@ def _normalize_model(provider, model):
     return model or None
 
 
-def _load_gpt_models():
+def _load_gpt_model_metadata():
     cache_path = Path.home() / ".codex" / "models_cache.json"
+    try:
+        data = json.loads(cache_path.read_text(encoding="utf-8"))
+    except (FileNotFoundError, json.JSONDecodeError, OSError):
+        return {}
+
+    metadata = {}
+    for model in data.get("models", []):
+        if not isinstance(model, dict):
+            continue
+        slug = model.get("slug")
+        if model.get("visibility") != "list" or not slug:
+            continue
+        metadata[slug] = model
+    return metadata
+
+
+def _load_gpt_models():
     fallback_models = [
         "gpt-5.4",
         "gpt-5.4-mini",
@@ -224,38 +262,88 @@ def _load_gpt_models():
         "gpt-5.2-codex",
         "gpt-5.2",
     ]
+    return list(_GPT_MODEL_METADATA) or fallback_models
 
+
+def _load_codex_reasoning_effort():
+    config_path = Path.home() / ".codex" / "config.toml"
     try:
-        data = json.loads(cache_path.read_text(encoding="utf-8"))
-    except (FileNotFoundError, json.JSONDecodeError, OSError):
-        return fallback_models
+        text = config_path.read_text(encoding="utf-8")
+    except OSError:
+        return None
 
-    models = [
-        model.get("slug")
-        for model in data.get("models", [])
-        if isinstance(model, dict) and model.get("visibility") == "list" and model.get("slug")
-    ]
-    return models or fallback_models
+    match = re.search(r'^\s*model_reasoning_effort\s*=\s*"([^"]+)"', text, re.MULTILINE)
+    effort = match.group(1) if match else None
+    return effort if effort in VALID_REASONING_EFFORTS else None
+
+
+def _supported_reasoning_efforts(model):
+    metadata = _GPT_MODEL_METADATA.get(_unwrap_model(model), {})
+    supported = []
+    for level in metadata.get("supported_reasoning_levels", []):
+        effort = level.get("effort") if isinstance(level, dict) else None
+        if effort in _REASONING_EFFORT_ORDER and effort not in supported:
+            supported.append(effort)
+    return supported or ["low", "medium", "high", "xhigh"]
+
+
+def _preferred_reasoning_effort(model, current_effort=None):
+    supported = _supported_reasoning_efforts(model)
+    current = _unwrap_model(current_effort)
+    if current in supported:
+        return current
+
+    if _CODEX_DEFAULT_REASONING_EFFORT in supported:
+        return _CODEX_DEFAULT_REASONING_EFFORT
+
+    default_effort = _GPT_MODEL_METADATA.get(_unwrap_model(model), {}).get("default_reasoning_level")
+    if default_effort in supported:
+        return default_effort
+
+    return supported[0] if supported else None
+
+
+def _normalize_reasoning_effort(provider, model, reasoning_effort):
+    if provider != "GPT":
+        return None
+    effort = _preferred_reasoning_effort(model, reasoning_effort)
+    return effort if effort in _supported_reasoning_efforts(model) else None
+
+
+def update_reasoning_effort_dropdown(provider, model, current_effort=None):
+    if provider != "GPT":
+        return gr.update(visible=False)
+
+    choices = _supported_reasoning_efforts(model)
+    return gr.update(
+        choices=choices,
+        value=_preferred_reasoning_effort(model, current_effort),
+        visible=True,
+    )
+
+
+def on_model_change(provider, model, current_effort):
+    return update_reasoning_effort_dropdown(provider, model, current_effort)
 
 
 def _get_session_cls(provider):
     return GPTSession if provider == "GPT" else ClaudeSession
 
 
-def _make_session(provider, session_id, model, system_prompt):
+def _make_session(provider, session_id, model, reasoning_effort=None, **kwargs):
     model = _normalize_model(provider, model)
-    system_prompt = system_prompt[0] if isinstance(system_prompt, list) else system_prompt
     session_cls = _get_session_cls(provider)
+    session_kwargs = {"model": model, **kwargs}
+    if provider == "GPT":
+        session_kwargs["reasoning_effort"] = _normalize_reasoning_effort(provider, model, reasoning_effort)
     if session_id:
-        return session_cls.resume(
-            session_id, model=model, system_prompt=system_prompt or None,
-        )
-    return session_cls(model=model, system_prompt=system_prompt or None)
+        return session_cls.resume(session_id, **session_kwargs)
+    return session_cls(**session_kwargs)
 
 
-def _stream(provider, message, session_id, model, system_prompt):
+def _stream(provider, message, session_id, model, reasoning_effort):
     """Yield (text_so_far, session_id) as the selected provider streams its reply."""
-    session = _make_session(provider, session_id, model, system_prompt)
+    session = _make_session(provider, session_id, model, reasoning_effort)
     full = ""
     try:
         for chunk in session.prompt_stream(message):
@@ -266,7 +354,7 @@ def _stream(provider, message, session_id, model, system_prompt):
         yield f"**Error:** {e}", session_id
 
 
-def _eval_stream(provider, input_text, output_text, model):
+def _eval_stream(provider, input_text, output_text, model, reasoning_effort):
     """Yield evaluation text chunks using a separate one-shot session."""
     # Build prompt via concatenation (no .format()) to avoid issues with
     # LaTeX curly braces in input/output text.
@@ -275,8 +363,7 @@ def _eval_stream(provider, input_text, output_text, model):
         + "INPUT REASONING:\n" + input_text
         + "\n\n---\n\nGENERATED QA PAIRS:\n" + output_text
     )
-    session_cls = _get_session_cls(provider)
-    session = session_cls(model=_normalize_model(provider, model), max_turns=1)
+    session = _make_session(provider, None, model, reasoning_effort, max_turns=1)
     full = ""
     try:
         for chunk in session.prompt_stream(eval_prompt):
@@ -317,6 +404,9 @@ def _controls(editing=False, visible=True):
 EVAL_WAITING = "*Alignment evaluation will appear here after generation completes…*"
 EVAL_RUNNING = "*Evaluating alignment…*"
 
+_GPT_MODEL_METADATA = _load_gpt_model_metadata()
+_CODEX_DEFAULT_REASONING_EFFORT = _load_codex_reasoning_effort()
+
 PROVIDER_MODELS = {
     "Claude": ["sonnet", "opus", "haiku"],
     "GPT": _load_gpt_models(),
@@ -330,7 +420,56 @@ PROVIDER_MODELS = {
 #   edit_mode_state, approve_btn, edit_btn, reject_btn, back_btn, cancel_edit_btn, status_md
 # ---------------------------------------------------------------------------
 
-def send_default_prompt(provider, session_id, model, system_prompt, prompt_index, approved_pairs, edit_mode):
+def _message_box_update(mode):
+    if mode == "Custom":
+        return gr.update(
+            value="",
+            placeholder="Paste reasoning here. To revise an existing output, click Edit first.",
+        )
+    return gr.update(
+        value="",
+        placeholder="Default mode: use Start Default Pipeline  ·  Edit mode: describe changes…",
+    )
+
+
+def _reset_ui_state(mode):
+    saved_approved = _load_saved_progress()
+    saved_count = len(saved_approved)
+    input_text = (
+        "*Paste your reasoning input below.*"
+        if mode == "Custom"
+        else "*Waiting to start…*"
+    )
+    status = _status(
+        saved_count,
+        saved_approved,
+        mode,
+        "LOADED FROM DISK" if saved_count else "",
+    )
+    return (
+        input_text,
+        "*Waiting…*",
+        "",
+        None, saved_count, saved_approved, "", False,
+        *_controls(False, False), status,
+    )
+
+
+def start_default_pipeline(provider, model, reasoning_effort, prompt_index, approved_pairs, edit_mode):
+    yield from send_default_prompt(
+        provider, None, model, reasoning_effort, prompt_index, approved_pairs, edit_mode,
+    )
+
+
+def on_mode_change(mode):
+    return (
+        *_reset_ui_state(mode),
+        gr.update(visible=(mode == "Default Pipeline")),
+        _message_box_update(mode),
+    )
+
+
+def send_default_prompt(provider, session_id, model, reasoning_effort, prompt_index, approved_pairs, edit_mode):
     """Send the next default-pipeline prompt, stream QA, then stream evaluation."""
     if prompt_index >= TOTAL_PROMPTS:
         done = (
@@ -355,7 +494,7 @@ def send_default_prompt(provider, session_id, model, system_prompt, prompt_index
 
     qa_text = ""
     last_sid = session_id
-    for text, sid in _stream(provider, message, session_id, model, system_prompt):
+    for text, sid in _stream(provider, message, session_id, model, reasoning_effort):
         qa_text = text
         last_sid = sid
         yield (input_display, text, EVAL_WAITING,
@@ -367,13 +506,13 @@ def send_default_prompt(provider, session_id, model, system_prompt, prompt_index
            last_sid, prompt_index, approved_pairs, message, edit_mode,
            *_controls(edit_mode, True), st)
 
-    for eval_text in _eval_stream(provider, message, qa_text, model):
+    for eval_text in _eval_stream(provider, message, qa_text, model, reasoning_effort):
         yield (input_display, qa_text, eval_text,
                last_sid, prompt_index, approved_pairs, message, edit_mode,
                *_controls(edit_mode, True), st)
 
 
-def on_approve(output_panel, provider, session_id, model, system_prompt,
+def on_approve(output_panel, provider, session_id, model, reasoning_effort,
                prompt_index, approved_pairs, current_input, mode):
     """Save the current pair and auto-advance (default mode)."""
     approved_pairs = approved_pairs + [{"input": current_input or "", "output": output_panel or ""}]
@@ -382,7 +521,7 @@ def on_approve(output_panel, provider, session_id, model, system_prompt,
     if mode == "Default Pipeline":
         prompt_index += 1
         yield from send_default_prompt(
-            provider, None, model, system_prompt, prompt_index, approved_pairs, False,
+            provider, None, model, reasoning_effort, prompt_index, approved_pairs, False,
         )
     else:
         yield ("*Paste your next reasoning input below.*", "*Waiting…*", "",
@@ -390,19 +529,19 @@ def on_approve(output_panel, provider, session_id, model, system_prompt,
                *_controls(False, False), _status(prompt_index, approved_pairs, mode, "AUTOSAVED"))
 
 
-def on_reject(input_panel, provider, session_id, model, system_prompt,
-              prompt_index, approved_pairs, current_input, mode, edit_mode):
+def on_reject(input_panel, provider, session_id, model, reasoning_effort,
+              prompt_index, approved_pairs, current_input, mode, edit_mode, output_panel):
     """Reject, retry, then re-evaluate."""
-    retry = "The previous output was rejected. Please try again with a different approach."
+    retry = _build_retry_prompt(current_input, output_panel)
     st = _status(prompt_index, approved_pairs, mode)
 
     yield (input_panel, "*Regenerating…*", EVAL_WAITING,
-           session_id, prompt_index, approved_pairs, current_input, False,
+           None, prompt_index, approved_pairs, current_input, False,
            *_controls(False, False), st)
 
     qa_text = ""
-    last_sid = session_id
-    for text, sid in _stream(provider, retry, session_id, model, system_prompt):
+    last_sid = None
+    for text, sid in _stream(provider, retry, None, model, reasoning_effort):
         qa_text = text
         last_sid = sid
         yield (input_panel, text, EVAL_WAITING,
@@ -414,7 +553,7 @@ def on_reject(input_panel, provider, session_id, model, system_prompt,
            last_sid, prompt_index, approved_pairs, current_input, edit_mode,
            *_controls(edit_mode, True), st)
 
-    for eval_text in _eval_stream(provider, current_input, qa_text, model):
+    for eval_text in _eval_stream(provider, current_input, qa_text, model, reasoning_effort):
         yield (input_panel, qa_text, eval_text,
                last_sid, prompt_index, approved_pairs, current_input, edit_mode,
                *_controls(edit_mode, True), st)
@@ -447,7 +586,7 @@ def capture_msg(message):
     return "", message
 
 
-def user_chat_submit(message, input_panel, output_panel, provider, session_id, model, system_prompt,
+def user_chat_submit(message, input_panel, output_panel, provider, session_id, model, reasoning_effort,
                      prompt_index, approved_pairs, current_input, mode, edit_mode):
     """Handle typed messages: new custom input or edit refinement, then evaluate."""
     if not message or not message.strip():
@@ -456,24 +595,26 @@ def user_chat_submit(message, input_panel, output_panel, provider, session_id, m
                *_controls(edit_mode, False), _status(prompt_index, approved_pairs, mode))
         return
 
-    is_new_custom = (mode == "Custom" and not current_input)
+    is_new_custom = (mode == "Custom" and not edit_mode)
     st = _status(prompt_index, approved_pairs, mode)
 
     if is_new_custom:
         current_input = message
         input_display = f"### Custom Input\n\n---\n\n{message}"
         llm_message = message
+        stream_session_id = None
     else:
         input_display = input_panel
         llm_message = _build_refinement_prompt(current_input, output_panel, message)
+        stream_session_id = session_id
 
     yield (input_display, "*Generating…*" if is_new_custom else "*Refining…*", EVAL_WAITING,
-           session_id, prompt_index, approved_pairs, current_input, edit_mode,
+           stream_session_id, prompt_index, approved_pairs, current_input, edit_mode,
            *_controls(edit_mode, False), st)
 
     qa_text = ""
-    last_sid = session_id
-    for text, sid in _stream(provider, llm_message, session_id, model, system_prompt):
+    last_sid = stream_session_id
+    for text, sid in _stream(provider, llm_message, stream_session_id, model, reasoning_effort):
         qa_text = text
         last_sid = sid
         yield (input_display, text, EVAL_WAITING,
@@ -485,21 +626,16 @@ def user_chat_submit(message, input_panel, output_panel, provider, session_id, m
            last_sid, prompt_index, approved_pairs, current_input, edit_mode,
            *_controls(edit_mode, True), st)
 
-    for eval_text in _eval_stream(provider, current_input, qa_text, model):
+    for eval_text in _eval_stream(provider, current_input, qa_text, model, reasoning_effort):
         yield (input_display, qa_text, eval_text,
                last_sid, prompt_index, approved_pairs, current_input, edit_mode,
                *_controls(edit_mode, True), st)
 
 
 def clear_session():
-    saved_approved = _load_saved_progress()
-    saved_count = len(saved_approved)
     return (
-        "*Waiting to start…*",
-        "*Waiting…*",
-        "",
-        None, saved_count, saved_approved, "", False,
-        *_controls(False, False), _status(saved_count, saved_approved, "Default Pipeline", "LOADED FROM DISK") if saved_count else "",
+        *_reset_ui_state("Default Pipeline"),
+        _message_box_update("Default Pipeline"),
     )
 
 
@@ -511,21 +647,23 @@ _INITIAL_STATUS = (
     else ""
 )
 
-
-def update_model_dropdown(provider):
-    choices = PROVIDER_MODELS[provider]
-    return gr.update(choices=choices, value=choices[0])
-
-
-def on_provider_change(provider):
-    return (update_model_dropdown(provider), *clear_session())
+def on_provider_change(provider, mode, current_effort):
+    model_choices = PROVIDER_MODELS[provider]
+    model = model_choices[0]
+    return (
+        gr.update(choices=model_choices, value=model),
+        update_reasoning_effort_dropdown(provider, model, current_effort),
+        *_reset_ui_state(mode),
+        gr.update(visible=(mode == "Default Pipeline")),
+        _message_box_update(mode),
+    )
 
 
 # ---------------------------------------------------------------------------
 # UI
 # ---------------------------------------------------------------------------
 
-with gr.Blocks(title="QA Dataset Builder") as demo:
+def render_qa_builder_ui():
     gr.Markdown(
         "# QA Dataset Builder\n"
         "Generate and curate QA pairs from reasoning data using Claude or GPT.  \n"
@@ -542,6 +680,7 @@ with gr.Blocks(title="QA Dataset Builder") as demo:
 
     # --- Settings ---
     with gr.Row(elem_classes=["settings-row"]):
+        default_gpt_model = PROVIDER_MODELS["GPT"][0]
         provider_dropdown = gr.Dropdown(
             choices=list(PROVIDER_MODELS.keys()),
             value="Claude",
@@ -561,11 +700,14 @@ with gr.Blocks(title="QA Dataset Builder") as demo:
             label="Model",
             scale=1,
         )
-    system_prompt_box = gr.Textbox(
-        label="System prompt",
-        placeholder="e.g. You are a physics QA expert…",
-        info="Claude: appended to built-in prompt and CLAUDE.md. GPT: prepended by the local wrapper.",
-    )
+        reasoning_effort_dropdown = gr.Dropdown(
+            choices=_supported_reasoning_efforts(default_gpt_model),
+            value=_preferred_reasoning_effort(default_gpt_model),
+            label="Reasoning Effort",
+            info="GPT only",
+            visible=False,
+            scale=1,
+        )
 
     # --- Side-by-side comparison ---
     with gr.Row(equal_height=True):
@@ -609,7 +751,7 @@ with gr.Blocks(title="QA Dataset Builder") as demo:
     # --- Chat input (custom / edit) ---
     msg = gr.Textbox(
         label="Message",
-        placeholder="Custom mode: paste reasoning here  ·  Edit mode: describe changes…",
+        placeholder="Default mode: use Start Default Pipeline  ·  Edit mode: describe changes…",
         autofocus=True,
     )
     cancel_edit_btn = gr.Button("Back to Review", variant="secondary", visible=False)
@@ -627,23 +769,34 @@ with gr.Blocks(title="QA Dataset Builder") as demo:
     ]
 
     # --- Events ---
-
     provider_dropdown.change(
         on_provider_change,
-        inputs=[provider_dropdown],
-        outputs=[model_dropdown, *panel_outputs],
+        inputs=[provider_dropdown, mode_radio, reasoning_effort_dropdown],
+        outputs=[model_dropdown, reasoning_effort_dropdown, *panel_outputs, start_btn, msg],
+    )
+
+    model_dropdown.change(
+        on_model_change,
+        inputs=[provider_dropdown, model_dropdown, reasoning_effort_dropdown],
+        outputs=[reasoning_effort_dropdown],
+    )
+
+    mode_radio.change(
+        on_mode_change,
+        inputs=[mode_radio],
+        outputs=[*panel_outputs, start_btn, msg],
     )
 
     start_btn.click(
-        send_default_prompt,
-        inputs=[provider_dropdown, session_state, model_dropdown, system_prompt_box,
+        start_default_pipeline,
+        inputs=[provider_dropdown, model_dropdown, reasoning_effort_dropdown,
                 prompt_index_state, approved_state, edit_mode_state],
         outputs=panel_outputs,
     )
 
     approve_btn.click(
         on_approve,
-        inputs=[output_panel, provider_dropdown, session_state, model_dropdown, system_prompt_box,
+        inputs=[output_panel, provider_dropdown, session_state, model_dropdown, reasoning_effort_dropdown,
                 prompt_index_state, approved_state, current_input_state, mode_radio],
         outputs=panel_outputs,
     )
@@ -668,8 +821,8 @@ with gr.Blocks(title="QA Dataset Builder") as demo:
 
     reject_btn.click(
         on_reject,
-        inputs=[input_panel, provider_dropdown, session_state, model_dropdown, system_prompt_box,
-                prompt_index_state, approved_state, current_input_state, mode_radio, edit_mode_state],
+        inputs=[input_panel, provider_dropdown, session_state, model_dropdown, reasoning_effort_dropdown,
+                prompt_index_state, approved_state, current_input_state, mode_radio, edit_mode_state, output_panel],
         outputs=panel_outputs,
     )
 
@@ -679,14 +832,48 @@ with gr.Blocks(title="QA Dataset Builder") as demo:
         outputs=[msg, pending_msg_state],
     ).then(
         user_chat_submit,
-        inputs=[pending_msg_state, input_panel, output_panel, provider_dropdown, session_state, model_dropdown,
-                system_prompt_box, prompt_index_state, approved_state,
+        inputs=[pending_msg_state, input_panel, output_panel, provider_dropdown, session_state, model_dropdown, reasoning_effort_dropdown,
+                prompt_index_state, approved_state,
                 current_input_state, mode_radio, edit_mode_state],
         outputs=panel_outputs,
     )
 
-    clear_btn.click(clear_session, outputs=panel_outputs)
+    clear_btn.click(clear_session, outputs=[*panel_outputs, msg])
+
+
+def create_qa_demo():
+    with gr.Blocks(title="QA Dataset Builder", css=CSS, theme=gr.themes.Soft()) as demo:
+        render_qa_builder_ui()
+    return demo
+
+
+def _switch_workspace_view(target: str):
+    return (
+        gr.update(visible=(target == "qa")),
+        gr.update(visible=(target == "lean")),
+    )
+
+
+def create_workbench_demo(initial_view: str = "qa"):
+    import lean_app as lean_module
+
+    combined_css = "\n".join([CSS, lean_module.CSS])
+    with gr.Blocks(title="Formal Science Workbench", css=combined_css, theme=gr.themes.Soft()) as demo:
+        with gr.Row(elem_classes=["review-row"]):
+            qa_nav_btn = gr.Button("QA Dataset Builder", variant="primary", min_width=180)
+            lean_nav_btn = gr.Button("Lean Code Generator", variant="secondary", min_width=180)
+
+        with gr.Column(visible=(initial_view == "qa")) as qa_view:
+            render_qa_builder_ui()
+
+        with gr.Column(visible=(initial_view == "lean")) as lean_view:
+            lean_module.render_lean_builder_ui()
+
+        qa_nav_btn.click(lambda: _switch_workspace_view("qa"), outputs=[qa_view, lean_view])
+        lean_nav_btn.click(lambda: _switch_workspace_view("lean"), outputs=[qa_view, lean_view])
+
+    return demo
 
 
 if __name__ == "__main__":
-    demo.launch(css=CSS, theme=gr.themes.Soft())
+    create_workbench_demo(initial_view="qa").launch()

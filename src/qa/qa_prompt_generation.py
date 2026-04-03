@@ -51,14 +51,26 @@ def default_few_shot_prompt_generation(BATCH_SIZE: int = 5) -> List[str]:
     context_prompts = []
     last_idx = len(few_shot_data) + BATCH_SIZE
     for batch in batched_data:
-        batch_prompt = f"Now, the following **equation-only** derivations (D6-D{last_idx}) represent the underlying equational reasoning of a Physics derivation. You must convert each derivation into a **physically-correct** and **contextually-enriched** Question (Q6-Q{last_idx}) and Answer (A6-A{last_idx}) pair closely based on the previous few-shot examples:\n\n" 
+        batch_prompt = (
+            f"Now, the following **equation-only** derivations (D6-D{last_idx}) represent "
+            "the underlying equational reasoning of a Physics derivation. You must convert "
+            f"each derivation into a **physically-correct** and **contextually-enriched** "
+            f"Question (Q6-Q{last_idx}) and Answer (A6-A{last_idx}) pair closely based on "
+            "the previous few-shot examples. Each question must be fully self-contained and "
+            "must not depend on previous questions, previous results, or external context not "
+            "stated in that question:\n\n"
+        )
         var_prompt = init_prompt + batch_prompt
         for i in range(BATCH_SIZE):
             example = batch[i]
             derivation = example["derivation"].replace("and ","\n\n")
 
             var_prompt += f"D{i + len(few_shot_data) + 1}: {derivation}\n\n"
-        var_prompt += "Ensure that you write only one equality per equation, and ensure correct physical meaning, and **standard notation** throughout."
+        var_prompt += (
+            "Ensure that you write only one equality per equation, ensure correct physical "
+            "meaning, use **standard notation** throughout, and make every question "
+            "**self-contained**."
+        )
         context_prompts.append(var_prompt)
 
     return context_prompts
