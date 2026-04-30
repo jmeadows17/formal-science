@@ -18,6 +18,11 @@ from pathlib import Path
 from typing import List, Dict
 
 LETTERS = set(string.ascii_letters)
+CHAT_META_RE = re.compile(
+    r"If you want, I can|Let me know if you want|Would you like me to",
+    re.IGNORECASE,
+)
+JUNK_LINE_RE = re.compile(r"^[\s{}*_`]+$")
 
 
 # ---------------------------------------------------------------------------
@@ -36,13 +41,13 @@ def split_qas_markdown(text: str) -> List[Dict[str, str]]:
     """
     pattern = re.compile(
         r"""
-        \*{0,2}\s*Q(?P<num>\d+)\s*[:.)\-]?\s*\*{0,2}\s*   # Qn header
-        (?P<q>.*?)                                          # question body
-        \b\*{0,2}\s*A(?P=num)\s*[:.)\-]?\s*\*{0,2}\s*      # An with same n
-        (?P<a>.*?)                                          # answer body
-        (?=\s*\*{0,2}\s*Q\d+\s*[:.)\-]?\s*\*{0,2}|$)       # next Q or end
+        (?:^|\n)\s*\*{0,2}\s*Q(?P<num>\d+)\s*[:.)\-]?\s*\*{0,2}\s*  # Qn header
+        (?P<q>.*?)                                                     # question body
+        (?:^|\n)\s*\*{0,2}\s*A(?P=num)\s*[:.)\-]?\s*\*{0,2}\s*        # An with same n
+        (?P<a>.*?)                                                     # answer body
+        (?=(?:^|\n)\s*\*{0,2}\s*Q\d+\s*[:.)\-]?\s*\*{0,2}|\Z)         # next Q or end
         """,
-        re.DOTALL | re.VERBOSE | re.IGNORECASE,
+        re.DOTALL | re.VERBOSE | re.IGNORECASE | re.MULTILINE,
     )
 
     pairs = []
@@ -62,6 +67,8 @@ def _clean_block(text: str) -> str:
     """Remove markdown dividers and normalise whitespace."""
     text = text.strip()
     text = re.sub(r"^\s*[-*_]{3,}\s*$", "", text, flags=re.MULTILINE)
+    text = re.sub(r"^\*{1,2}\s*", "", text)
+    text = re.sub(r"\s*\*{1,2}$", "", text)
     text = re.sub(r"\n{3,}", "\n\n", text)
     return text.strip()
 
@@ -75,8 +82,18 @@ def _clean_qa_text(text: str) -> str:
     """
     text = text.replace("\\textbf", "")
 
-    # Remove leaked leading Q-labels like "Q6" or "Q6:"
-    text = re.sub(r"^Q\d+\s*[:.)\-]?\s*", "", text, flags=re.IGNORECASE)
+    # Remove wrapper-only lines leaked from object-like or markdown output.
+    lines = text.splitlines()
+    while lines and JUNK_LINE_RE.fullmatch(lines[0] or ""):
+        lines = lines[1:]
+    while lines and JUNK_LINE_RE.fullmatch(lines[-1] or ""):
+        lines = lines[:-1]
+    text = "\n".join(lines).strip()
+
+    # Remove leaked leading QA labels like "Q6", "Q6:", "A6", "A6:".
+    text = re.sub(r"^[QA]\d+\s*[:.)\-]?\s*", "", text, flags=re.IGNORECASE)
+    text = re.sub(r"^(?:[{}*_`]+\s*)+", "", text)
+    text = re.sub(r"(?:\s*[{}*_`]+)+$", "", text)
 
     tokens = text.split(" ")
     # Trim leading tokens that contain no letters
@@ -95,6 +112,34 @@ def _normalise_pair_key(pair: Dict[str, str]) -> tuple[str, str]:
         re.sub(r"\s+", " ", pair["question"]).strip(),
         re.sub(r"\s+", " ", pair["answer"]).strip(),
     )
+
+
+def _has_balanced_latex_delimiters(text: str) -> bool:
+    """Check basic balance for common LaTeX math delimiters."""
+    unescaped_text = re.sub(r"\\\$", "", text)
+    display_dollars = unescaped_text.count("$$")
+    inline_dollars = unescaped_text.count("$") - (2 * display_dollars)
+    return (
+        text.count(r"\[") == text.count(r"\]")
+        and text.count(r"\(") == text.count(r"\)")
+        and display_dollars % 2 == 0
+        and inline_dollars % 2 == 0
+    )
+
+
+def _is_valid_pair(pair: Dict[str, str]) -> bool:
+    """Reject obviously truncated or assistant-meta QA pairs."""
+    question = pair["question"].strip()
+    answer = pair["answer"].strip()
+    if not question or not answer:
+        return False
+    if CHAT_META_RE.search(question) or CHAT_META_RE.search(answer):
+        return False
+    if not _has_balanced_latex_delimiters(question):
+        return False
+    if not _has_balanced_latex_delimiters(answer):
+        return False
+    return True
 
 
 def _unique_pairs(parsed: List[Dict[str, str]]) -> List[Dict[str, str]]:
@@ -161,8 +206,9 @@ def postprocess_raw_dataset(
         for p in unique_parsed:
             q = _clean_qa_text(p["question"])
             a = _clean_qa_text(p["answer"])
-            if q and a:
-                batch.append({"question": q, "answer": a})
+            cleaned_pair = {"question": q, "answer": a}
+            if _is_valid_pair(cleaned_pair):
+                batch.append(cleaned_pair)
 
         if batch:
             dataset.append(batch)

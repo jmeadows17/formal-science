@@ -87,6 +87,7 @@ def _find_claude() -> str:
 
 
 CLAUDE_BIN = _find_claude()
+CLAUDE_REASONING_EFFORTS = ("low", "medium", "high", "max")
 
 
 class ClaudeSession:
@@ -103,6 +104,7 @@ class ClaudeSession:
         self,
         cwd: str | None = None,
         model: str | None = None,
+        reasoning_effort: str | None = None,
         tools: list[str] | None = None,
         system_prompt: str | None = None,
         max_turns: int | None = None,
@@ -113,6 +115,9 @@ class ClaudeSession:
             cwd:            Working directory (like VSCode's workspace folder).
             model:          Model to use: "sonnet", "opus", "haiku", or a full
                             model ID. None uses the default (same as VSCode).
+            reasoning_effort:
+                            Claude reasoning effort: "low", "medium",
+                            "high", or "max". None uses the CLI default.
             tools:          Tools to auto-approve, e.g. ["Read", "Edit", "Bash"].
                             Supports patterns like "Bash(git diff *)".
                             None = default tool permissions from settings.
@@ -124,6 +129,8 @@ class ClaudeSession:
         """
         self.cwd = str(cwd) if cwd else None
         self.model = model[0] if isinstance(model, list) else model
+        effort = reasoning_effort[0] if isinstance(reasoning_effort, list) else reasoning_effort
+        self.reasoning_effort = effort if effort in CLAUDE_REASONING_EFFORTS else None
         self.tools = tools
         self.system_prompt = system_prompt[0] if isinstance(system_prompt, list) else system_prompt
         self.max_turns = max_turns
@@ -140,6 +147,8 @@ class ClaudeSession:
 
         if self.model:
             cmd.extend(["--model", self.model])
+        if self.reasoning_effort:
+            cmd.extend(["--effort", self.reasoning_effort])
 
         if self.tools is not None:
             for tool in self.tools:
@@ -158,22 +167,25 @@ class ClaudeSession:
 
     def prompt(self, message: str, timeout: float | None = None) -> dict:
         """
-        Send a message in this session, returns the parsed JSON response.
+        Send a message in this session, returns a normalized dict response.
 
-        Mirrors typing a message in VSCode's Claude panel:
-          - First call creates a new session
-          - Subsequent calls continue the same session (multi-turn)
-          - Context compaction happens automatically when the window fills
-          - Rate limits trigger automatic retries with backoff (like VSCode)
+        Handles both Claude CLI JSON output shapes:
+        1. A single dict with keys like `result` and `session_id`
+        2. A list of event objects, where the final useful payload is a
+            `{"type": "result", ...}` event
 
         Returns:
-            dict with keys: result, session_id, usage, etc.
+            dict with at least:
+            - result
+            - session_id
+            - raw_response
 
         Raises:
             RuntimeError: If the CLI exits with a non-zero code after
-                          exhausting its internal retries.
+                        exhausting its internal retries.
         """
-        import sys, time as _time
+        import sys
+        import time as _time
 
         cmd = self._build_cmd(message)
         prompt_len = len(message)
@@ -187,7 +199,11 @@ class ClaudeSession:
         start = _time.monotonic()
         try:
             result = subprocess.run(
-                cmd, capture_output=True, text=True, cwd=self.cwd,
+                cmd,
+                capture_output=True,
+                stdin=subprocess.DEVNULL,
+                text=True,
+                cwd=self.cwd,
                 timeout=timeout,
             )
         except subprocess.TimeoutExpired:
@@ -210,17 +226,84 @@ class ClaudeSession:
                 result.stdout,
             ))
 
-        response = json.loads(result.stdout)
-        result_text = response.get("result", "")
+        try:
+            parsed = json.loads(result.stdout)
+        except json.JSONDecodeError as exc:
+            raise RuntimeError(
+                f"Claude CLI returned non-JSON output:\n{result.stdout}"
+            ) from exc
+
+        normalized: dict
+
+        if isinstance(parsed, dict):
+            # Old/simple shape
+            result_text = parsed.get("result", "")
+            self.session_id = parsed.get("session_id", self.session_id)
+            normalized = dict(parsed)
+            normalized.setdefault("result", result_text)
+            normalized.setdefault("session_id", self.session_id)
+            normalized["raw_response"] = parsed
+
+        elif isinstance(parsed, list):
+            # Event-list shape used by your installed Claude CLI
+            final_result_event = None
+            result_text_parts: list[str] = []
+
+            for item in parsed:
+                if not isinstance(item, dict):
+                    continue
+
+                # Track latest session_id anywhere it appears
+                sid = item.get("session_id")
+                if sid:
+                    self.session_id = sid
+
+                item_type = item.get("type")
+
+                if item_type == "assistant":
+                    message_obj = item.get("message", {})
+                    if isinstance(message_obj, dict):
+                        for block in message_obj.get("content", []):
+                            if not isinstance(block, dict):
+                                continue
+                            if block.get("type") == "text":
+                                text = block.get("text", "")
+                                if text:
+                                    result_text_parts.append(text)
+
+                if item_type == "result":
+                    final_result_event = item
+
+            if final_result_event is not None:
+                result_text = final_result_event.get("result", "")
+                self.session_id = final_result_event.get("session_id", self.session_id)
+                normalized = dict(final_result_event)
+                normalized.setdefault("result", result_text)
+                normalized.setdefault("session_id", self.session_id)
+                normalized["raw_response"] = parsed
+            else:
+                result_text = "\n".join(part for part in result_text_parts if part).strip()
+                normalized = {
+                    "type": "result",
+                    "subtype": "synthetic",
+                    "result": result_text,
+                    "session_id": self.session_id,
+                    "raw_response": parsed,
+                }
+
+        else:
+            raise RuntimeError(
+                f"Unexpected Claude CLI JSON type: {type(parsed).__name__}"
+            )
+
         print(
             f"[claude_cli] done (non-stream)  elapsed={elapsed:.1f}s  "
-            f"output_chars={len(result_text)}",
+            f"output_chars={len(normalized.get('result', ''))}",
             file=sys.stderr,
             flush=True,
         )
-        # Persist session ID so the next call continues this conversation.
-        self.session_id = response.get("session_id", self.session_id)
-        return response
+
+        return normalized
 
     def text(self, message: str) -> str:
         """Send a message and return just the text response."""
@@ -234,6 +317,8 @@ class ClaudeSession:
             cmd.extend(["--resume", self.session_id])
         if self.model:
             cmd.extend(["--model", self.model])
+        if self.reasoning_effort:
+            cmd.extend(["--effort", self.reasoning_effort])
         if self.tools is not None:
             for tool in self.tools:
                 cmd.extend(["--allowedTools", tool])
@@ -263,7 +348,7 @@ class ClaudeSession:
 
         proc = subprocess.Popen(
             cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-            text=True, cwd=self.cwd,
+            stdin=subprocess.DEVNULL, text=True, cwd=self.cwd,
         )
         raw_stdout_lines: list[str] = []
         error_events: list[str] = []
@@ -324,6 +409,13 @@ class ClaudeSession:
                     yielded_chars += len(text)
                     last_yield = _time.monotonic()
                     yield text
+            elif etype == "tool_use":
+                tool_name = event.get("name", "unknown_tool")
+                last_yield = _time.monotonic()
+                yield f"\n\n*[Claude is using the `{tool_name}` tool...]*\n\n"
+            elif etype == "tool_result":
+                last_yield = _time.monotonic()
+                yield f"\n*[Tool execution complete]*\n\n"
             elif etype == "result":
                 self.session_id = event.get("session_id", self.session_id)
             elif etype == "error":
@@ -335,6 +427,8 @@ class ClaudeSession:
                         file=sys.stderr,
                         flush=True,
                     )
+                    last_yield = _time.monotonic()
+                    yield f"\n\n*[Claude Error: {error_text}]*\n\n"
 
         proc.wait()
         elapsed = _time.monotonic() - start

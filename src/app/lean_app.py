@@ -8,6 +8,7 @@ Run: python src/app/lean_app.py
 """
 
 import sys
+import difflib
 import json
 import queue
 import re
@@ -22,8 +23,9 @@ _SRC = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(_SRC / "llm"))
 sys.path.insert(0, str(_SRC / "app"))
 
-from claude_cli import ClaudeSession
+from claude_cli import ClaudeSession, CLAUDE_REASONING_EFFORTS
 from compile_lean import compile_lean
+from flatten_structured_proofs import flatten_structured_proofs
 from gpt_cli import GPTSession, VALID_REASONING_EFFORTS
 from lean_prompts import build_lean_prompt_dataset_from_file
 
@@ -32,6 +34,7 @@ DEFAULT_PROMPT_DATA_PATH = _SRC / "app_data" / "lean_prompt_data.json"
 DEFAULT_QA_DATA_PATH = _SRC / "app_data" / "qa_data.json"
 DEFAULT_OUTPUT_PATH = _SRC / "app_data" / "lean_output_data.json"
 DEFAULT_STRUCTURED_OUTPUT_PATH = _SRC / "app_data" / "structured_proofs.json"
+DEFAULT_FORMAL_QA_OUTPUT_PATH = _SRC / "app_data" / "formal_qa_data.json"
 REPO_ROOT = _SRC.parent
 DEFAULT_PROOF_PATH = REPO_ROOT / "FSLean" / "proof.lean"
 DEFAULT_DATASET_SETUP_MESSAGE = (
@@ -183,6 +186,7 @@ def _load_codex_reasoning_effort():
 REASONING_EFFORT_ORDER = ("minimal", "low", "medium", "high", "xhigh")
 _GPT_MODEL_METADATA = _load_gpt_model_metadata()
 _CODEX_DEFAULT_REASONING_EFFORT = _load_codex_reasoning_effort()
+_DEFAULT_CLAUDE_REASONING_EFFORT = "medium"
 
 
 def _load_saved_outputs() -> list[dict]:
@@ -227,6 +231,22 @@ def _autosave_structured_proofs(entries: list[dict]):
         )
     except OSError as exc:
         raise RuntimeError(f"Failed to write {DEFAULT_STRUCTURED_OUTPUT_PATH}: {exc}") from exc
+
+
+def _autosave_formal_qa_data(structured_entries: list[dict]):
+    try:
+        flattened = flatten_structured_proofs(structured_entries)
+    except (RuntimeError, ValueError, TypeError) as exc:
+        raise RuntimeError(f"Failed to flatten structured proofs into formal QA data: {exc}") from exc
+
+    try:
+        DEFAULT_FORMAL_QA_OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+        DEFAULT_FORMAL_QA_OUTPUT_PATH.write_text(
+            json.dumps(flattened, indent=2, ensure_ascii=False),
+            encoding="utf-8",
+        )
+    except OSError as exc:
+        raise RuntimeError(f"Failed to write {DEFAULT_FORMAL_QA_OUTPUT_PATH}: {exc}") from exc
 
 
 def _build_structured_proof_entry(prompt_index: int, current_prompt: str, proof_code: str) -> dict:
@@ -292,23 +312,31 @@ CSS = """
 
 CODE_ONLY_SUFFIX = """
 
-# Output format
-Return only the final Lean source code for the requested file.
-Do not include any explanation, commentary, bullet points, prose, or Markdown code fences.
-Your entire response must be valid Lean file contents only.
+# Task
+Write the complete Lean 4 source code directly to `FSLean/proof.lean`.
+Do not write to any other file.
+Do not output the code as part of your response.
+After writing `FSLean/proof.lean`, stop immediately.
+Do not read the file back.
+Do not provide any explanation beyond a brief confirmation that the file was written.
 """.strip()
 
 COMPILE_FIX_SUFFIX = """
-The Lean file you just returned did not compile.
+The Lean file did not compile.
 
-Revise the full file to fix the compiler output below.
-Return only the complete corrected Lean source code.
-Do not include explanations, bullet points, or Markdown code fences.
+Fix `FSLean/proof.lean` in place to resolve the compiler errors below.
+Do not write to any other file.
+After updating `FSLean/proof.lean`, stop immediately.
+Do not read the file back.
+Do not provide any explanation beyond a brief confirmation that the file was updated.
 """.strip()
 
 ALIGNMENT_PROMPT = (
     "Using a 5-point Likert scale, determine how well each Lean code proof Ci successfully "
-    "proves the target results from Qi and Ai, and aligns with the Requirements."
+    "proves the target results from Qi and Ai, and aligns with the Requirements. "
+    "If a patch difference is provided, begin with a brief **Patch Difference** note summarizing "
+    "what changed and whether the change is substantive; explicitly say if there was no meaningful "
+    "change."
 )
 ALIGNMENT_WAITING = "*Alignment evaluation will appear here after successful compilation…*"
 ALIGNMENT_RUNNING = "*Evaluating alignment…*"
@@ -335,7 +363,10 @@ def _normalize_model(provider, model):
     return _unwrap(model) or None
 
 
-def _supported_reasoning_efforts(model):
+def _supported_reasoning_efforts(provider, model):
+    if provider == "Claude":
+        return list(CLAUDE_REASONING_EFFORTS)
+
     metadata = _GPT_MODEL_METADATA.get(_unwrap(model), {})
     supported = []
     for level in metadata.get("supported_reasoning_levels", []):
@@ -345,11 +376,16 @@ def _supported_reasoning_efforts(model):
     return supported or ["low", "medium", "high", "xhigh"]
 
 
-def _preferred_reasoning_effort(model, current_effort=None):
-    supported = _supported_reasoning_efforts(model)
+def _preferred_reasoning_effort(provider, model, current_effort=None):
+    supported = _supported_reasoning_efforts(provider, model)
     current = _unwrap(current_effort)
     if current in supported:
         return current
+
+    if provider == "Claude":
+        if _DEFAULT_CLAUDE_REASONING_EFFORT in supported:
+            return _DEFAULT_CLAUDE_REASONING_EFFORT
+        return supported[0] if supported else None
 
     if _CODEX_DEFAULT_REASONING_EFFORT in supported:
         return _CODEX_DEFAULT_REASONING_EFFORT
@@ -362,20 +398,18 @@ def _preferred_reasoning_effort(model, current_effort=None):
 
 
 def _normalize_reasoning_effort(provider, model, reasoning_effort):
-    if provider != "GPT":
-        return None
-    effort = _preferred_reasoning_effort(model, reasoning_effort)
-    return effort if effort in _supported_reasoning_efforts(model) else None
+    effort = _preferred_reasoning_effort(provider, model, reasoning_effort)
+    return effort if effort in _supported_reasoning_efforts(provider, model) else None
 
 
 def update_reasoning_effort_dropdown(provider, model, current_effort=None):
-    if provider != "GPT":
+    choices = _supported_reasoning_efforts(provider, model)
+    if not choices:
         return gr.update(visible=False)
 
-    choices = _supported_reasoning_efforts(model)
     return gr.update(
         choices=choices,
-        value=_preferred_reasoning_effort(model, current_effort),
+        value=_preferred_reasoning_effort(provider, model, current_effort),
         visible=True,
     )
 
@@ -389,11 +423,26 @@ def _get_session_cls(provider):
 
 
 def _make_session(provider, session_id, model, reasoning_effort=None):
+    """
+    Creates and returns an LLM session configured with agentic capabilities.
+    """
     model = _normalize_model(provider, model)
     session_cls = _get_session_cls(provider)
-    session_kwargs = {"model": model}
-    if provider == "GPT":
-        session_kwargs["reasoning_effort"] = _normalize_reasoning_effort(provider, model, reasoning_effort)
+    session_kwargs = {"model": model, "cwd": str(REPO_ROOT)}
+    normalized_effort = _normalize_reasoning_effort(provider, model, reasoning_effort)
+    if normalized_effort:
+        session_kwargs["reasoning_effort"] = normalized_effort
+
+    if provider == "Claude":
+        # Give Claude multiple turns so it can run tools, read outputs, and finalize.
+        session_kwargs["max_turns"] = 10
+        # Grant explicit permission to use file system tools to prevent the CLI
+        # from hanging while waiting for a terminal [Y/n] confirmation.
+        session_kwargs["tools"] = ["Bash", "Edit", "Read", "Write", "Replace"]
+    elif provider == "GPT":
+        # GPT/Codex uses native sandbox configurations set in gpt_cli.
+        session_kwargs["tools"] = [str(DEFAULT_PROOF_PATH.parent)]
+
     if session_id:
         return session_cls.resume(session_id, **session_kwargs)
     return session_cls(**session_kwargs)
@@ -411,6 +460,20 @@ def _stream(provider, message, session_id, model, reasoning_effort):
         yield f"**Error:** {e}", session_id
 
 
+def _response_result_text(response) -> str:
+    if isinstance(response, dict):
+        result = response.get("result", "")
+        return result if isinstance(result, str) else ""
+    return ""
+
+
+def _run_nonstream_turn(provider, message, session_id, model, reasoning_effort):
+    session = _make_session(provider, session_id, model, reasoning_effort)
+    response = session.prompt(message)
+    next_session_id = getattr(session, "session_id", None) or session_id
+    return _response_result_text(response), next_session_id
+
+
 def _heartbeat_message(elapsed: float) -> str:
     seconds = int(elapsed)
     return f"*Generating... still working ({seconds}s elapsed).*"
@@ -422,6 +485,43 @@ def _review_controls(approve=False, regenerate=False, skip=False):
         gr.update(visible=regenerate),
         gr.update(visible=skip),
     )
+
+
+def _normalize_review_feedback(feedback: str | None, waiting_text: str, running_text: str) -> str:
+    normalized = (feedback or "").strip()
+    if not normalized or normalized in {waiting_text, running_text}:
+        return ""
+    return normalized
+
+
+def _build_brief_patch_diff(
+    previous_text: str | None,
+    current_text: str,
+    *,
+    from_label: str,
+    to_label: str,
+    context_lines: int = 1,
+    max_lines: int = 40,
+) -> str:
+    if previous_text is None:
+        return ""
+
+    previous_lines = (previous_text or "").splitlines()
+    current_lines = (current_text or "").splitlines()
+    if previous_lines == current_lines:
+        return "No textual differences detected."
+
+    diff_lines = list(difflib.unified_diff(
+        previous_lines,
+        current_lines,
+        fromfile=from_label,
+        tofile=to_label,
+        lineterm="",
+        n=context_lines,
+    ))
+    if len(diff_lines) > max_lines:
+        diff_lines = diff_lines[:max_lines] + ["... diff truncated ..."]
+    return "\n".join(diff_lines)
 
 
 def _build_model_message(prompt_text: str) -> str:
@@ -487,30 +587,58 @@ def _build_compile_fix_message(code: str, compiler_output: str, iteration: int) 
     )
 
 
-def _build_alignment_message(prompt_text: str, proof_code: str) -> str:
-    return (
-        "Initial prompt:\n"
-        f"{(prompt_text or '').strip()}\n\n"
-        "Current proof.lean code:\n"
-        "```lean\n"
-        f"{proof_code.rstrip()}\n"
-        "```\n\n"
-        f"{ALIGNMENT_PROMPT}"
+def _build_alignment_message(
+    prompt_text: str,
+    proof_code: str,
+    previous_proof_code: str | None = None,
+) -> str:
+    sections = [
+        "Initial prompt:\n" + (prompt_text or "").strip(),
+        "Current proof.lean code:\n```lean\n" + f"{proof_code.rstrip()}\n```",
+    ]
+
+    patch_diff = _build_brief_patch_diff(
+        previous_proof_code,
+        proof_code,
+        from_label="previous_proof.lean",
+        to_label="current_proof.lean",
     )
+    if patch_diff:
+        sections.append("Patch difference from previous evaluated proof:\n```diff\n" + f"{patch_diff}\n```")
+
+    sections.append(ALIGNMENT_PROMPT)
+    return "\n\n".join(sections)
 
 
-def _build_refinement_message(user_instruction: str, proof_code: str) -> str:
-    return (
-        "Revise the current `proof.lean` so it better satisfies the initial prompt and addresses "
-        "the alignment issues discussed in this conversation.\n"
-        "Return only the complete updated Lean source code.\n\n"
-        "User request:\n"
-        f"{user_instruction.strip()}\n\n"
-        "Current proof.lean code:\n"
-        "```lean\n"
-        f"{proof_code.rstrip()}\n"
-        "```"
+def _build_refinement_message(
+    user_instruction: str,
+    prompt_text: str,
+    proof_code: str,
+    alignment_feedback: str | None,
+) -> str:
+    sections = [
+        "Revise `FSLean/proof.lean` so it better satisfies the initial prompt and addresses "
+        "the latest alignment feedback.\n"
+        "Update the file directly. Do not write to any other file.\n"
+        "After updating `FSLean/proof.lean`, stop immediately.\n"
+        "Do not read the file back.\n"
+        "Do not provide any explanation beyond a brief confirmation that the file was updated.",
+        "Initial prompt:\n" + (prompt_text or "").strip(),
+    ]
+
+    normalized_feedback = _normalize_review_feedback(
+        alignment_feedback,
+        ALIGNMENT_WAITING,
+        ALIGNMENT_RUNNING,
     )
+    if normalized_feedback:
+        sections.append("Latest alignment feedback:\n" + normalized_feedback)
+
+    sections.extend([
+        "User request:\n" + user_instruction.strip(),
+        "Current proof.lean code:\n```lean\n" + f"{proof_code.rstrip()}\n```",
+    ])
+    return "\n\n".join(sections)
 
 
 def capture_msg(message):
@@ -526,6 +654,7 @@ def capture_msg(message):
 
 def _compile_and_align(prompt_display, provider, session_id, model, reasoning_effort,
                        prompt_index, saved_outputs, mode, current_prompt,
+                       previous_evaluated_code: str | None = None,
                        max_compile_fix_attempts: int = 25):
     try:
         current_code = _read_proof_source()
@@ -616,29 +745,35 @@ def _compile_and_align(prompt_display, provider, session_id, model, reasoning_ef
                 gr.update(),
             )
 
-            alignment_text = ""
-            alignment_message = _build_alignment_message(current_prompt, aligned_code)
-            alignment_session_id = None
-            for text, sid in _stream(provider, alignment_message, None, model, reasoning_effort):
-                alignment_text = text
-                alignment_session_id = sid
+            alignment_message = _build_alignment_message(
+                current_prompt,
+                aligned_code,
+                previous_evaluated_code,
+            )
+            try:
+                alignment_text, current_session_id = _run_nonstream_turn(
+                    provider, alignment_message, current_session_id, model, reasoning_effort
+                )
+            except Exception as exc:
+                traceback.print_exc()
                 yield (
                     prompt_display,
                     aligned_code,
                     compile_text,
-                    text,
-                    sid, prompt_index, saved_outputs, current_prompt,
-                    *_review_controls(False, False, False),
-                    _status(prompt_index, len(saved_outputs), mode, f"COMPILED IN {iteration} ITERATION(S) | ALIGNMENT"),
+                    f"**Error:** {exc}",
+                    current_session_id, prompt_index, saved_outputs, current_prompt,
+                    *_review_controls(False, True, True),
+                    _status(prompt_index, len(saved_outputs), mode, "ALIGNMENT FAILED"),
                     gr.update(),
                 )
+                return
 
             yield (
                 prompt_display,
                 aligned_code,
                 compile_text,
                 alignment_text or ALIGNMENT_WAITING,
-                alignment_session_id, prompt_index, saved_outputs, current_prompt,
+                current_session_id, prompt_index, saved_outputs, current_prompt,
                 *_review_controls(True, True, True),
                 _status(prompt_index, len(saved_outputs), mode, f"COMPILED IN {iteration} ITERATION(S) | ALIGNMENT READY"),
                 gr.update(),
@@ -672,8 +807,9 @@ def _compile_and_align(prompt_display, provider, session_id, model, reasoning_ef
         fix_message = _build_compile_fix_message(current_code, compile_text, iteration)
 
         try:
-            session = _make_session(provider, current_session_id, model, reasoning_effort)
-            response = session.prompt(fix_message)
+            _fix_result_text, current_session_id = _run_nonstream_turn(
+                provider, fix_message, current_session_id, model, reasoning_effort
+            )
         except Exception as exc:
             traceback.print_exc()
             yield (
@@ -688,37 +824,31 @@ def _compile_and_align(prompt_display, provider, session_id, model, reasoning_ef
             )
             return
 
-        revised_code = response.get("result", "") or ""
-        current_session_id = (
-            response.get("session_id")
-            or getattr(session, "session_id", None)
-            or current_session_id
-        )
-
-        if not revised_code.strip():
-            yield (
-                prompt_display,
-                current_code,
-                f"{compile_text}\n\nLLM revision returned an empty response.",
-                ALIGNMENT_WAITING,
-                current_session_id, prompt_index, saved_outputs, current_prompt,
-                *_review_controls(False, True, True),
-                _status(prompt_index, len(saved_outputs), mode, "EMPTY LLM FIX RESPONSE"),
-                gr.update(),
-            )
-            return
-
+        # In agent mode the LLM updated proof.lean directly; read it back.
         try:
-            current_code = _write_proof_source(revised_code)
+            current_code = _read_proof_source()
         except RuntimeError as exc:
             yield (
                 prompt_display,
                 current_code,
-                f"{compile_text}\n\nFailed to save the revised code to `FSLean/proof.lean`:\n{exc}",
+                f"{compile_text}\n\nFailed to read `FSLean/proof.lean` after LLM fix:\n{exc}",
                 ALIGNMENT_WAITING,
                 current_session_id, prompt_index, saved_outputs, current_prompt,
                 *_review_controls(False, True, True),
-                _status(prompt_index, len(saved_outputs), mode, "FAILED TO SAVE PROOF"),
+                _status(prompt_index, len(saved_outputs), mode, "FAILED TO READ PROOF"),
+                gr.update(),
+            )
+            return
+
+        if not current_code.strip():
+            yield (
+                prompt_display,
+                current_code,
+                f"{compile_text}\n\nAgent did not update `FSLean/proof.lean`.",
+                ALIGNMENT_WAITING,
+                current_session_id, prompt_index, saved_outputs, current_prompt,
+                *_review_controls(False, True, True),
+                _status(prompt_index, len(saved_outputs), mode, "AGENT DID NOT WRITE PROOF"),
                 gr.update(),
             )
             return
@@ -726,7 +856,7 @@ def _compile_and_align(prompt_display, provider, session_id, model, reasoning_ef
         yield (
             prompt_display,
             current_code,
-            f"{compile_text}\n\nLLM revision received. Recompiling...",
+            f"{compile_text}\n\nLLM revision applied. Recompiling...",
             ALIGNMENT_WAITING,
             current_session_id, prompt_index, saved_outputs, current_prompt,
             *_review_controls(False, False, False),
@@ -751,7 +881,7 @@ def _compile_and_align(prompt_display, provider, session_id, model, reasoning_ef
 
 def send_prompt(provider, session_id, model, reasoning_effort,
                 prompt_index, saved_outputs, mode, custom_prompt_text):
-    """Send the current prompt (default or custom) and stream the Lean output."""
+    """Send the current prompt (default or custom), stop after proof.lean is written, then compile."""
     if mode == "Default Pipeline":
         _refresh_prompt_data()
         if TOTAL_PROMPTS == 0:
@@ -809,66 +939,58 @@ def send_prompt(provider, session_id, model, reasoning_effort,
         return
 
     message = _build_model_message(prompt_text)
+    st = _status(prompt_index, len(saved_outputs), mode, "WRITING PROOF")
 
-    st = _status(prompt_index, len(saved_outputs), mode)
+    yield (
+        prompt_display, "*Writing `FSLean/proof.lean`...*", "*No compilation run yet.*", ALIGNMENT_WAITING,
+        session_id, prompt_index, saved_outputs, prompt_text,
+        *_review_controls(False, False, False), st, gr.update()
+    )
 
-    yield (prompt_display, "*Generating...*", "*No compilation run yet.*", ALIGNMENT_WAITING,
-           session_id, prompt_index, saved_outputs, prompt_text,
-           *_review_controls(False, False, False), st, gr.update())
+    try:
+        agent_result, last_sid = _run_nonstream_turn(
+            provider, message, session_id, model, reasoning_effort
+        )
+    except Exception as exc:
+        traceback.print_exc()
+        yield (
+            prompt_display,
+            "*Waiting...*",
+            f"Initial write request failed:\n{exc}",
+            ALIGNMENT_WAITING,
+            session_id, prompt_index, saved_outputs, prompt_text,
+            *_review_controls(False, True, True),
+            _status(prompt_index, len(saved_outputs), mode, "INITIAL WRITE FAILED"),
+            gr.update(),
+        )
+        return
 
-    lean_text = ""
-    last_sid = session_id
-    updates: queue.Queue[tuple[str, str | None]] = queue.Queue()
+    try:
+        persisted_lean_text = _read_proof_source()
+    except RuntimeError as exc:
+        yield (
+            prompt_display,
+            agent_result or "*Waiting...*",
+            str(exc),
+            ALIGNMENT_WAITING,
+            last_sid, prompt_index, saved_outputs, prompt_text,
+            *_review_controls(False, True, True),
+            _status(prompt_index, len(saved_outputs), mode, "FAILED TO READ PROOF"),
+            gr.update(),
+        )
+        return
 
-    def worker():
-        try:
-            for text, sid in _stream(provider, message, session_id, model, reasoning_effort):
-                updates.put(("chunk", (text, sid)))
-        finally:
-            updates.put(("done", None))
-
-    threading.Thread(target=worker, daemon=True).start()
-
-    started_at = time.monotonic()
-    last_heartbeat = started_at
-    heartbeat_interval = 2.0
-
-    while True:
-        try:
-            event, payload = updates.get(timeout=0.2)
-        except queue.Empty:
-            now = time.monotonic()
-            if now - last_heartbeat >= heartbeat_interval:
-                status_text = lean_text or _heartbeat_message(now - started_at)
-                yield (prompt_display, status_text, "*No compilation run yet.*", ALIGNMENT_WAITING,
-                       last_sid, prompt_index, saved_outputs, prompt_text,
-                       *_review_controls(False, False, False), st, gr.update())
-                last_heartbeat = now
-            continue
-
-        if event == "chunk":
-            text, sid = payload
-            lean_text = text
-            last_sid = sid
-            yield (prompt_display, text, "*No compilation run yet.*", ALIGNMENT_WAITING,
-                   sid, prompt_index, saved_outputs, prompt_text,
-                   *_review_controls(False, False, False), st, gr.update())
-        elif event == "done":
-            break
-
-    compile_message = "*No compilation run yet.*"
-    persisted_lean_text = lean_text
-    if lean_text and not lean_text.startswith("**Error:**"):
-        try:
-            persisted_lean_text = _write_proof_source(lean_text)
-            compile_message = "Saved current Lean output to `FSLean/proof.lean`.\n\nNo compilation run yet."
-        except RuntimeError as exc:
-            compile_message = str(exc)
-
-    if not lean_text or lean_text.startswith("**Error:**"):
-        yield (prompt_display, persisted_lean_text, compile_message, ALIGNMENT_WAITING,
-               last_sid, prompt_index, saved_outputs, prompt_text,
-               *_review_controls(False, True, True), st, gr.update())
+    if not persisted_lean_text.strip():
+        yield (
+            prompt_display,
+            agent_result or "*Waiting...*",
+            "Agent did not write to `FSLean/proof.lean`.",
+            ALIGNMENT_WAITING,
+            last_sid, prompt_index, saved_outputs, prompt_text,
+            *_review_controls(False, True, True),
+            _status(prompt_index, len(saved_outputs), mode, "AGENT DID NOT WRITE PROOF"),
+            gr.update(),
+        )
         return
 
     yield from _compile_and_align(
@@ -919,7 +1041,9 @@ def on_approve(output_panel, provider, session_id, model, reasoning_effort,
                 proof_code,
             )
             structured_proofs = _load_structured_proofs()
-            _autosave_structured_proofs(structured_proofs + [structured_entry])
+            next_structured_proofs = structured_proofs + [structured_entry]
+            _autosave_structured_proofs(next_structured_proofs)
+            _autosave_formal_qa_data(next_structured_proofs)
 
         _autosave_outputs(next_saved_outputs)
     except RuntimeError as exc:
@@ -1006,30 +1130,29 @@ def user_refine_submit(message, prompt_panel, output_panel, compile_panel, align
         )
         return
 
-    refinement_message = _build_refinement_message(message, proof_code)
+    refinement_message = _build_refinement_message(
+        message,
+        current_prompt,
+        proof_code,
+        alignment_panel,
+    )
     st = _status(prompt_index, len(saved_outputs), mode, "REFINING")
 
     yield (
-        prompt_panel, proof_code, "Using current session to refine `proof.lean`...", alignment_panel,
+        prompt_panel, proof_code, "Updating `proof.lean` in the current Claude session...", alignment_panel,
         session_id, prompt_index, saved_outputs, current_prompt,
         *_review_controls(False, False, False), st, gr.update(),
     )
 
-    refined_text = ""
-    last_sid = session_id
-    for text, sid in _stream(provider, refinement_message, session_id, model, reasoning_effort):
-        refined_text = text
-        last_sid = sid
-        yield (
-            prompt_panel, text, "Using current session to refine `proof.lean`...", alignment_panel,
-            sid, prompt_index, saved_outputs, current_prompt,
-            *_review_controls(False, False, False), st, gr.update(),
+    try:
+        refine_result, last_sid = _run_nonstream_turn(
+            provider, refinement_message, session_id, model, reasoning_effort
         )
-
-    if not refined_text or refined_text.startswith("**Error:**"):
+    except Exception as exc:
+        traceback.print_exc()
         yield (
-            prompt_panel, refined_text or output_panel, "Refinement did not return Lean code.", alignment_panel,
-            last_sid, prompt_index, saved_outputs, current_prompt,
+            prompt_panel, output_panel, f"Refinement failed:\n{exc}", alignment_panel,
+            session_id, prompt_index, saved_outputs, current_prompt,
             *_review_controls(False, True, True),
             _status(prompt_index, len(saved_outputs), mode, "REFINEMENT FAILED"),
             gr.update(),
@@ -1037,13 +1160,23 @@ def user_refine_submit(message, prompt_panel, output_panel, compile_panel, align
         return
 
     try:
-        persisted_lean_text = _write_proof_source(refined_text)
+        persisted_lean_text = _read_proof_source()
     except RuntimeError as exc:
         yield (
             prompt_panel, output_panel, str(exc), alignment_panel,
             last_sid, prompt_index, saved_outputs, current_prompt,
             *_review_controls(False, True, True),
-            _status(prompt_index, len(saved_outputs), mode, "FAILED TO SAVE PROOF"),
+            _status(prompt_index, len(saved_outputs), mode, "FAILED TO READ PROOF"),
+            gr.update(),
+        )
+        return
+
+    if not persisted_lean_text.strip():
+        yield (
+            prompt_panel, refine_result or output_panel, "Agent did not update `FSLean/proof.lean`.", alignment_panel,
+            last_sid, prompt_index, saved_outputs, current_prompt,
+            *_review_controls(False, True, True),
+            _status(prompt_index, len(saved_outputs), mode, "AGENT DID NOT WRITE PROOF"),
             gr.update(),
         )
         return
@@ -1051,12 +1184,14 @@ def user_refine_submit(message, prompt_panel, output_panel, compile_panel, align
     yield from _compile_and_align(
         prompt_panel, provider, last_sid, model, reasoning_effort,
         prompt_index, saved_outputs, mode, current_prompt,
+        previous_evaluated_code=proof_code,
     )
 
 
 def clear_session():
     _refresh_prompt_data()
     saved = _load_saved_outputs()
+    start_index = len(_load_structured_proofs())
     status_extra = []
     if saved:
         status_extra.append("LOADED FROM DISK")
@@ -1064,9 +1199,9 @@ def clear_session():
         status_extra.append("DEFAULT DATA UNAVAILABLE")
     return (
         "*Waiting to start...*", "*Waiting...*", "*No compilation run yet.*", ALIGNMENT_WAITING,
-        None, 0, saved, "",
+        None, start_index, saved, "",
         *_review_controls(False, False, False),
-        _status(0, len(saved), "Default Pipeline", " | ".join(status_extra)),
+        _status(start_index, len(saved), "Default Pipeline", " | ".join(status_extra)),
         gr.update(value=""),
         gr.update(value=""),
     )
@@ -1086,8 +1221,9 @@ def on_provider_change(provider, current_effort):
 # ---------------------------------------------------------------------------
 
 _INITIAL_SAVED = _load_saved_outputs()
+_INITIAL_PROMPT_INDEX = len(_load_structured_proofs())
 _INITIAL_STATUS = (
-    _status(0, len(_INITIAL_SAVED), "Default Pipeline",
+    _status(_INITIAL_PROMPT_INDEX, len(_INITIAL_SAVED), "Default Pipeline",
             " | ".join(
                 part
                 for part in [
@@ -1108,17 +1244,18 @@ def render_lean_builder_ui():
 
     # --- State ---
     session_state = gr.State(None)
-    prompt_index_state = gr.State(0)
+    prompt_index_state = gr.State(_INITIAL_PROMPT_INDEX)
     outputs_state = gr.State(_INITIAL_SAVED)
     current_prompt_state = gr.State("")
     pending_msg_state = gr.State("")
 
     # --- Settings ---
     with gr.Row(elem_classes=["settings-row"]):
-        default_gpt_model = PROVIDER_MODELS["GPT"][0]
+        default_provider = "Claude"
+        default_model = PROVIDER_MODELS[default_provider][0]
         provider_dropdown = gr.Dropdown(
             choices=list(PROVIDER_MODELS.keys()),
-            value="Claude",
+            value=default_provider,
             label="Provider",
             scale=1,
         )
@@ -1130,17 +1267,17 @@ def render_lean_builder_ui():
             scale=2,
         )
         model_dropdown = gr.Dropdown(
-            choices=PROVIDER_MODELS["Claude"],
-            value="sonnet",
+            choices=PROVIDER_MODELS[default_provider],
+            value=default_model,
             label="Model",
             scale=1,
         )
         reasoning_effort_dropdown = gr.Dropdown(
-            choices=_supported_reasoning_efforts(default_gpt_model),
-            value=_preferred_reasoning_effort(default_gpt_model),
+            choices=_supported_reasoning_efforts(default_provider, default_model),
+            value=_preferred_reasoning_effort(default_provider, default_model),
             label="Reasoning Effort",
-            info="GPT only",
-            visible=False,
+            info="Claude: low/medium/high/max. GPT choices depend on the selected model.",
+            visible=True,
             scale=1,
         )
 
