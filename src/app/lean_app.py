@@ -25,7 +25,6 @@ sys.path.insert(0, str(_SRC / "app"))
 
 from claude_cli import ClaudeSession, CLAUDE_REASONING_EFFORTS
 from compile_lean import compile_lean
-from flatten_structured_proofs import flatten_structured_proofs
 from gpt_cli import GPTSession, VALID_REASONING_EFFORTS
 from lean_prompts import build_lean_prompt_dataset_from_file
 
@@ -34,7 +33,6 @@ DEFAULT_PROMPT_DATA_PATH = _SRC / "app_data" / "lean_prompt_data.json"
 DEFAULT_QA_DATA_PATH = _SRC / "app_data" / "qa_data.json"
 DEFAULT_OUTPUT_PATH = _SRC / "app_data" / "lean_output_data.json"
 DEFAULT_STRUCTURED_OUTPUT_PATH = _SRC / "app_data" / "structured_proofs.json"
-DEFAULT_FORMAL_QA_OUTPUT_PATH = _SRC / "app_data" / "formal_qa_data.json"
 REPO_ROOT = _SRC.parent
 DEFAULT_PROOF_PATH = REPO_ROOT / "FSLean" / "proof.lean"
 DEFAULT_DATASET_SETUP_MESSAGE = (
@@ -231,22 +229,6 @@ def _autosave_structured_proofs(entries: list[dict]):
         )
     except OSError as exc:
         raise RuntimeError(f"Failed to write {DEFAULT_STRUCTURED_OUTPUT_PATH}: {exc}") from exc
-
-
-def _autosave_formal_qa_data(structured_entries: list[dict]):
-    try:
-        flattened = flatten_structured_proofs(structured_entries)
-    except (RuntimeError, ValueError, TypeError) as exc:
-        raise RuntimeError(f"Failed to flatten structured proofs into formal QA data: {exc}") from exc
-
-    try:
-        DEFAULT_FORMAL_QA_OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-        DEFAULT_FORMAL_QA_OUTPUT_PATH.write_text(
-            json.dumps(flattened, indent=2, ensure_ascii=False),
-            encoding="utf-8",
-        )
-    except OSError as exc:
-        raise RuntimeError(f"Failed to write {DEFAULT_FORMAL_QA_OUTPUT_PATH}: {exc}") from exc
 
 
 def _build_structured_proof_entry(prompt_index: int, current_prompt: str, proof_code: str) -> dict:
@@ -1043,7 +1025,6 @@ def on_approve(output_panel, provider, session_id, model, reasoning_effort,
             structured_proofs = _load_structured_proofs()
             next_structured_proofs = structured_proofs + [structured_entry]
             _autosave_structured_proofs(next_structured_proofs)
-            _autosave_formal_qa_data(next_structured_proofs)
 
         _autosave_outputs(next_saved_outputs)
     except RuntimeError as exc:
@@ -1251,8 +1232,8 @@ def render_lean_builder_ui():
 
     # --- Settings ---
     with gr.Row(elem_classes=["settings-row"]):
-        default_provider = "Claude"
-        default_model = PROVIDER_MODELS[default_provider][0]
+        default_provider = "GPT"
+        default_model = "gpt-5.4" if "gpt-5.4" in PROVIDER_MODELS[default_provider] else PROVIDER_MODELS[default_provider][0]
         provider_dropdown = gr.Dropdown(
             choices=list(PROVIDER_MODELS.keys()),
             value=default_provider,
@@ -1274,7 +1255,7 @@ def render_lean_builder_ui():
         )
         reasoning_effort_dropdown = gr.Dropdown(
             choices=_supported_reasoning_efforts(default_provider, default_model),
-            value=_preferred_reasoning_effort(default_provider, default_model),
+            value=_preferred_reasoning_effort(default_provider, default_model, "high"),
             label="Reasoning Effort",
             info="Claude: low/medium/high/max. GPT choices depend on the selected model.",
             visible=True,
@@ -1420,17 +1401,20 @@ def _switch_workspace_view(target: str):
     return (
         gr.update(visible=(target == "qa")),
         gr.update(visible=(target == "lean")),
+        gr.update(visible=(target == "postprocessing")),
     )
 
 
 def create_workbench_demo(initial_view: str = "lean"):
     import app as app_module
+    import postprocessing_app as post_module
 
-    combined_css = "\n".join([app_module.CSS, CSS])
+    combined_css = "\n".join([app_module.CSS, CSS, post_module.CSS])
     with gr.Blocks(title="Formal Science Workbench", css=combined_css, theme=gr.themes.Soft()) as demo:
         with gr.Row(elem_classes=["review-row"]):
             qa_nav_btn = gr.Button("QA Dataset Builder", variant="secondary", min_width=180)
             lean_nav_btn = gr.Button("Lean Code Generator", variant="primary", min_width=180)
+            post_nav_btn = gr.Button("Postprocessing", variant="secondary", min_width=180)
 
         with gr.Column(visible=(initial_view == "qa")) as qa_view:
             app_module.render_qa_builder_ui()
@@ -1438,8 +1422,15 @@ def create_workbench_demo(initial_view: str = "lean"):
         with gr.Column(visible=(initial_view == "lean")) as lean_view:
             render_lean_builder_ui()
 
-        qa_nav_btn.click(lambda: _switch_workspace_view("qa"), outputs=[qa_view, lean_view])
-        lean_nav_btn.click(lambda: _switch_workspace_view("lean"), outputs=[qa_view, lean_view])
+        with gr.Column(visible=(initial_view == "postprocessing")) as post_view:
+            post_module.render_postprocessing_ui()
+
+        qa_nav_btn.click(lambda: _switch_workspace_view("qa"), outputs=[qa_view, lean_view, post_view])
+        lean_nav_btn.click(lambda: _switch_workspace_view("lean"), outputs=[qa_view, lean_view, post_view])
+        post_nav_btn.click(
+            lambda: _switch_workspace_view("postprocessing"),
+            outputs=[qa_view, lean_view, post_view],
+        )
 
     return demo
 
