@@ -1,6 +1,6 @@
 # formal-science
 
-`formal-science` is an experimental pipeline for turning informal derivations into:
+`formal-science` is an experimental pipeline for turning informal physics and math derivations into:
 
 1. reviewed natural-language question/answer pairs,
 2. Lean 4 autoformalisation prompts,
@@ -10,6 +10,16 @@
 The repository includes both the code for running that pipeline and a checked-in snapshot of generated datasets under [`src/app_data`](./src/app_data).
 
 This implementation is intended as an improved version of the pipeline analyzed in the *FormalScience* paper at ACL 2026. In the comparison notes retained in [`legacy/formalphysics_comparison.md`](./legacy/formalphysics_comparison.md), the dataset referred to as `FormalPhysics_v2.json` corresponds to this repo's [`src/app_data/formal_qa_data.json`](./src/app_data/formal_qa_data.json).
+
+## To-Do
+
+- remove irrelevant code
+- revamp custom dataset input
+
+## External Links
+
+- FormalScience paper (ACL 2026 / arXiv): [arXiv:2604.23002](https://arxiv.org/abs/2604.23002)
+- Updated FormalPhysics dataset: [`jmeadows17/FormalPhysics`](https://huggingface.co/datasets/jmeadows17/FormalPhysics)
 
 ## What The Repo Does
 
@@ -55,7 +65,7 @@ From the comparison note:
 
 In the naming used by this repository:
 
-- earlier dataset version: `FormalPhysics`
+- earlier dataset version: `FormalPhysics`, corresponding to the original dataset file at [`data/FormalPhysics.json`](https://github.com/jmeadows17/formal-science/blob/main/data/FormalPhysics.json)
 - improved dataset version (`FormalPhysics_v2` in the comparison note): [`src/app_data/formal_qa_data.json`](./src/app_data/formal_qa_data.json)
 
 ## Repository Layout
