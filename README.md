@@ -1,6 +1,6 @@
 # formal-science
 
-`formal-science` is an experimental pipeline for turning informal physics and math derivations into:
+`formal-science` is an experimental pipeline for turning informal derivations into:
 
 1. reviewed natural-language question/answer pairs,
 2. Lean 4 autoformalisation prompts,
