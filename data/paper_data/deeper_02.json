@@ -1,0 +1,165 @@
+{
+  "paper_title": "Limits on the evolutionary rates of biological traits (García-Pintos, 2024, Scientific Reports)",
+  "deeper_reasoning_1": "\\section*{Claim}\nThe general Price rate limit is not only an upper bound but a sharp projection theorem. At any fixed differentiability time, define\n\\[\nR_A:=\\frac{d\\langle A\\rangle}{dt}-\\langle \\dot A\\rangle .\n\\]\nIf \\(\\sigma_A\\sigma_r>0\\), then\n\\[\nR_A=\\sigma_A\\sigma_r\\rho_{A,r},\\qquad -1\\leq \\rho_{A,r}\\leq 1,\n\\]\nwhere \\(\\rho_{A,r}\\) is the weighted correlation between the centered trait and centered growth rate. Since \\(\\sigma_r^2=I_F\\),\n\\[\n|R_A|\\leq \\sigma_A\\sqrt{I_F}.\n\\]\nFor fixed \\(\\sigma_A=s>0\\), the largest possible value of \\(|R_A|\\) over all trait coordinates with that standard deviation is exactly \\(s\\sigma_r=s\\sqrt{I_F}\\). Equality holds exactly when the centered trait is proportional to the centered growth-rate vector on the support of \\(p\\). If \\(\\sigma_A\\sigma_r=0\\), then \\(R_A=0\\).\n\n\\section*{Premises}\n\\begin{align*}\n(P1)\\quad &\\mathcal J\\text{ is finite},\\quad p_j>0,\\quad \\sum_{j\\in\\mathcal J}p_j=1.\\\\\n(P2)\\quad &\\langle X\\rangle:=\\sum_{j\\in\\mathcal J}p_jx_j,\\quad\n\\sigma_X^2:=\\sum_{j\\in\\mathcal J}p_j(x_j-\\langle X\\rangle)^2.\\\\\n(P3)\\quad &R_A=\\operatorname{cov}(A,r)=\\sum_{j\\in\\mathcal J}p_j(a_j-\\langle A\\rangle)(r_j-\\langle r\\rangle).\\\\\n(P4)\\quad &I_F=\\sigma_r^2.\\\\\n(P5)\\quad &\\left|\\sum_{j\\in\\mathcal J}p_ju_jv_j\\right|^2\n\\leq \\left(\\sum_{j\\in\\mathcal J}p_ju_j^2\\right)\\left(\\sum_{j\\in\\mathcal J}p_jv_j^2\\right),\n\\end{align*}\nwith equality in \\((P5)\\) exactly when the vectors \\((u_j)\\) and \\((v_j)\\) are linearly dependent on the support of \\(p\\).\n\n\\section*{Derivation}\nAssume first that \\(\\sigma_A\\sigma_r>0\\). Define\n\\begin{align*}\n\\rho_{A,r}\n&:=\\frac{\\sum_{j\\in\\mathcal J}p_j(a_j-\\langle A\\rangle)(r_j-\\langle r\\rangle)}{\\sigma_A\\sigma_r}.\n\\end{align*}\nThen\n\\begin{align*}\nR_A\n&=\\sum_{j\\in\\mathcal J}p_j(a_j-\\langle A\\rangle)(r_j-\\langle r\\rangle) &&\\text{by }(P3)\\\\\n&=\\sigma_A\\sigma_r\\rho_{A,r}. &&\\text{by the definition of }\\rho_{A,r}\n\\end{align*}\nMoreover,\n\\begin{align*}\n|\\rho_{A,r}|^2\n&=\\frac{\\left|\\sum_{j\\in\\mathcal J}p_j(a_j-\\langle A\\rangle)(r_j-\\langle r\\rangle)\\right|^2}{\\sigma_A^2\\sigma_r^2}\\\\\n&\\leq \\frac{\\left(\\sum_{j\\in\\mathcal J}p_j(a_j-\\langle A\\rangle)^2\\right)\n\\left(\\sum_{j\\in\\mathcal J}p_j(r_j-\\langle r\\rangle)^2\\right)}{\\sigma_A^2\\sigma_r^2} &&\\text{by }(P5)\\\\\n&=1. &&\\text{by }(P2)\n\\end{align*}\nThus \\(-1\\leq \\rho_{A,r}\\leq 1\\), and\n\\begin{align*}\n|R_A|\n&\\leq \\sigma_A\\sigma_r &&\\text{because }|\\rho_{A,r}|\\leq 1\\\\\n&=\\sigma_A\\sqrt{I_F}. &&\\text{by }(P4)\n\\end{align*}\nFor sharpness, fix \\(s>0\\) and set\n\\[\na_j:=c+s\\frac{r_j-\\langle r\\rangle}{\\sigma_r}\n\\]\nwith arbitrary constant \\(c\\). Then \\(\\langle A\\rangle=c\\), \\(\\sigma_A=s\\), and\n\\begin{align*}\nR_A\n&=\\sum_{j\\in\\mathcal J}p_j\\left(s\\frac{r_j-\\langle r\\rangle}{\\sigma_r}\\right)(r_j-\\langle r\\rangle)\\\\\n&=s\\sigma_r.\n\\end{align*}\nChanging the sign of the centered term gives \\(R_A=-s\\sigma_r\\), so the supremum of \\(|R_A|\\) is exactly \\(s\\sigma_r\\). Equality in the bound is exactly the equality case of weighted Cauchy--Schwarz, namely\n\\[\na_j-\\langle A\\rangle=\\lambda(r_j-\\langle r\\rangle)\n\\]\nfor some real \\(\\lambda\\) on the support of \\(p\\). If \\(\\sigma_A=0\\) or \\(\\sigma_r=0\\), the covariance in \\((P3)\\) is zero by the same Cauchy--Schwarz inequality.\n\n\\section*{Final Result}\n\\[\n\\boxed{\\displaystyle R_A=\\sigma_A\\sigma_r\\rho_{A,r},\\qquad |R_A|\\leq \\sigma_A\\sqrt{I_F},\\qquad\n\\sup_{\\sigma_A=s}|R_A|=s\\sqrt{I_F}}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_2": "\\section*{Claim}\nFor mutation-free replicator dynamics, centered fitness is the unique steepest direction for changing trait averages. Suppose\n\\[\n\\dot p_j=p_j(f_j-\\langle f\\rangle),\\qquad \\sigma_f>0.\n\\]\nFor every trait \\(A\\), the population-frequency contribution to the trait-average rate is\n\\[\nR_A:=\\frac{d\\langle A\\rangle}{dt}-\\langle \\dot A\\rangle=\\operatorname{cov}(A,f).\n\\]\nAmong all traits with fixed standard deviation \\(\\sigma_A=s\\), the maximum possible value of \\(|R_A|\\) is exactly \\(s\\sigma_f\\), attained exactly when the centered trait is proportional to centered fitness. In particular, taking \\(A=f\\) gives\n\\[\n\\frac{d\\langle f\\rangle}{dt}-\\langle \\dot f\\rangle=\\sigma_f^2,\n\\]\nso Fisher's variance identity is the unnormalised steepest-direction case.\n\n\\section*{Premises}\n\\begin{align*}\n(P1)\\quad &\\mathcal J\\text{ is finite},\\quad p_j>0,\n\\quad \\sum_{j\\in\\mathcal J}p_j=1.\\\\\n(P2)\\quad &\\dot p_j=p_j(f_j-\\langle f\\rangle).\\\\\n(P3)\\quad &R_A=\\frac{d\\langle A\\rangle}{dt}-\\langle \\dot A\\rangle=\\operatorname{cov}(A,f).\\\\\n(P4)\\quad &\\operatorname{cov}(A,f)=\\sum_{j\\in\\mathcal J}p_j(a_j-\\langle A\\rangle)(f_j-\\langle f\\rangle).\\\\\n(P5)\\quad &\\sigma_X^2=\\sum_{j\\in\\mathcal J}p_j(x_j-\\langle X\\rangle)^2.\\\\\n(P6)\\quad &\\left|\\sum_{j\\in\\mathcal J}p_ju_jv_j\\right|^2\n\\leq \\left(\\sum_{j\\in\\mathcal J}p_ju_j^2\\right)\\left(\\sum_{j\\in\\mathcal J}p_jv_j^2\\right),\n\\end{align*}\nwith equality exactly when \\((u_j)\\) and \\((v_j)\\) are linearly dependent on the support of \\(p\\).\n\n\\section*{Derivation}\nFor any trait \\(A\\),\n\\begin{align*}\n|R_A|^2\n&=|\\operatorname{cov}(A,f)|^2 &&\\text{by }(P3)\\\\\n&=\\left|\\sum_{j\\in\\mathcal J}p_j(a_j-\\langle A\\rangle)(f_j-\\langle f\\rangle)\\right|^2 &&\\text{by }(P4)\\\\\n&\\leq \\left(\\sum_{j\\in\\mathcal J}p_j(a_j-\\langle A\\rangle)^2\\right)\n\\left(\\sum_{j\\in\\mathcal J}p_j(f_j-\\langle f\\rangle)^2\\right) &&\\text{by }(P6)\\\\\n&=\\sigma_A^2\\sigma_f^2. &&\\text{by }(P5)\n\\end{align*}\nHence \\(|R_A|\\leq \\sigma_A\\sigma_f\\). If \\(\\sigma_A=s\\), then \\(|R_A|\\leq s\\sigma_f\\). To show this is sharp, choose\n\\[\na_j:=c+s\\frac{f_j-\\langle f\\rangle}{\\sigma_f}\n\\]\nwith arbitrary constant \\(c\\). Then \\(\\langle A\\rangle=c\\), \\(\\sigma_A=s\\), and\n\\begin{align*}\nR_A\n&=\\sum_{j\\in\\mathcal J}p_j\\left(s\\frac{f_j-\\langle f\\rangle}{\\sigma_f}\\right)(f_j-\\langle f\\rangle)\\\\\n&=s\\sigma_f.\n\\end{align*}\nChanging the sign of the centered term gives \\(R_A=-s\\sigma_f\\), so\n\\[\n\\sup_{\\sigma_A=s}|R_A|=s\\sigma_f.\n\\]\nThe equality condition in \\((P6)\\) gives the exact attaining traits:\n\\[\na_j-\\langle A\\rangle=\\lambda(f_j-\\langle f\\rangle)\n\\]\nfor some real \\(\\lambda\\) on the support of \\(p\\). Finally, set \\(A=f\\). Then \\(a_j=f_j\\), so\n\\begin{align*}\n\\frac{d\\langle f\\rangle}{dt}-\\langle \\dot f\\rangle\n&=\\operatorname{cov}(f,f) &&\\text{by }(P3)\\\\\n&=\\sigma_f^2. &&\\text{by }(P5)\n\\end{align*}\n\n\\section*{Final Result}\n\\[\n\\boxed{\\displaystyle \\sup_{\\sigma_A=s}\\left|\\frac{d\\langle A\\rangle}{dt}-\\langle \\dot A\\rangle\\right|=s\\sigma_f,\n\\qquad\n\\frac{d\\langle f\\rangle}{dt}-\\langle \\dot f\\rangle=\\sigma_f^2}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_3": "\\section*{Claim}\nThe deterministic replicator-mutator rate limit contains a sharper conditional-variance structure. Let\n\\[\n\\dot p_j=\\sum_{k\\in\\mathcal J}p_kQ_{kj}f_k-p_j\\langle f\\rangle,\n\\qquad\n\\mu_j:=\\sum_{k\\in\\mathcal J}p_kQ_{kj},\n\\qquad\nb_k:=\\sum_{j\\in\\mathcal J}Q_{kj}a_j.\n\\]\nDefine the corrected residual\n\\[\nR_A:=\\frac{d\\langle A\\rangle}{dt}-\\langle \\dot A\\rangle-\n\\langle f\\rangle(\\langle A\\rangle_\\mu-\\langle A\\rangle).\n\\]\nThen\n\\[\nR_A=\\operatorname{cov}_p(f,b),\n\\qquad |R_A|\\leq \\sigma_f\\sigma_b\\leq \\sigma_f\\sigma_{A,\\mu},\n\\]\nwhere\n\\[\n\\sigma_b^2:=\\sum_{k\\in\\mathcal J}p_k(b_k-\\langle A\\rangle_\\mu)^2.\n\\]\nMoreover,\n\\[\n\\sigma_{A,\\mu}^2=\\sigma_b^2+\\eta_A,\n\\qquad\n\\eta_A:=\\sum_{k\\in\\mathcal J}p_k\\sum_{j\\in\\mathcal J}Q_{kj}(a_j-b_k)^2\\geq 0.\n\\]\nThus the paper's \\(\\sigma_{A,\\mu}\\sigma_f\\) bound is conservative exactly by the within-parent mutation variance \\(\\eta_A\\); the selection-sensitive part depends only on the variance across parent types of the post-mutation conditional trait mean \\(b_k\\).\n\n\\section*{Premises}\n\\begin{align*}\n(P1)\\quad &\\mathcal J\\text{ is finite},\\quad p_k>0,\n\\quad \\sum_{k\\in\\mathcal J}p_k=1.\\\\\n(P2)\\quad &Q_{kj}\\geq0,\n\\quad \\sum_{j\\in\\mathcal J}Q_{kj}=1\\text{ for every }k.\\\\\n(P3)\\quad &\\mu_j:=\\sum_{k\\in\\mathcal J}p_kQ_{kj},\n\\quad b_k:=\\sum_{j\\in\\mathcal J}Q_{kj}a_j.\\\\\n(P4)\\quad &\\langle A\\rangle_\\mu:=\\sum_{j\\in\\mathcal J}\\mu_ja_j,\n\\quad \\langle f\\rangle:=\\sum_{k\\in\\mathcal J}p_kf_k.\\\\\n(P5)\\quad &\\sigma_{A,\\mu}^2:=\\sum_{j\\in\\mathcal J}\\mu_j(a_j-\\langle A\\rangle_\\mu)^2,\n\\quad \\sigma_f^2:=\\sum_{k\\in\\mathcal J}p_k(f_k-\\langle f\\rangle)^2.\\\\\n(P6)\\quad &R_A=\\sum_{k\\in\\mathcal J}p_k(f_k-\\langle f\\rangle)(b_k-\\langle A\\rangle_\\mu).\\\\\n(P7)\\quad &\\left|\\sum_{k\\in\\mathcal J}p_ku_kv_k\\right|^2\n\\leq \\left(\\sum_{k\\in\\mathcal J}p_ku_k^2\\right)\\left(\\sum_{k\\in\\mathcal J}p_kv_k^2\\right).\n\\end{align*}\n\n\\section*{Derivation}\nFirst,\n\\begin{align*}\n\\sum_{k\\in\\mathcal J}p_kb_k\n&=\\sum_{k\\in\\mathcal J}p_k\\sum_{j\\in\\mathcal J}Q_{kj}a_j &&\\text{by }(P3)\\\\\n&=\\sum_{j\\in\\mathcal J}\\left(\\sum_{k\\in\\mathcal J}p_kQ_{kj}\\right)a_j &&\\text{finite sums}\\\\\n&=\\sum_{j\\in\\mathcal J}\\mu_ja_j &&\\text{by }(P3)\\\\\n&=\\langle A\\rangle_\\mu. &&\\text{by }(P4)\n\\end{align*}\nTherefore \\((P6)\\) can be written as\n\\begin{align*}\nR_A\n&=\\sum_{k\\in\\mathcal J}p_k(f_k-\\langle f\\rangle)(b_k-\\langle A\\rangle_\\mu)\\\\\n&=\\sum_{k\\in\\mathcal J}p_kf_kb_k-\n\\left(\\sum_{k\\in\\mathcal J}p_kf_k\\right)\n\\left(\\sum_{k\\in\\mathcal J}p_kb_k\\right)\\\\\n&=\\operatorname{cov}_p(f,b).\n\\end{align*}\nApplying weighted Cauchy--Schwarz,\n\\begin{align*}\n|R_A|^2\n&\\leq \\left(\\sum_{k\\in\\mathcal J}p_k(f_k-\\langle f\\rangle)^2\\right)\n\\left(\\sum_{k\\in\\mathcal J}p_k(b_k-\\langle A\\rangle_\\mu)^2\\right) &&\\text{by }(P7)\\\\\n&=\\sigma_f^2\\sigma_b^2, &&\\text{by definitions}\n\\end{align*}\nso \\(|R_A|\\leq\\sigma_f\\sigma_b\\). It remains to compare \\(\\sigma_b\\) with \\(\\sigma_{A,\\mu}\\). Since \\(a_j-\\langle A\\rangle_\\mu=(a_j-b_k)+(b_k-\\langle A\\rangle_\\mu)\\),\n\\begin{align*}\n\\sigma_{A,\\mu}^2\n&=\\sum_{j\\in\\mathcal J}\\mu_j(a_j-\\langle A\\rangle_\\mu)^2 &&\\text{by }(P5)\\\\\n&=\\sum_{k,j\\in\\mathcal J}p_kQ_{kj}(a_j-\\langle A\\rangle_\\mu)^2 &&\\text{by }(P3)\\\\\n&=\\sum_{k,j\\in\\mathcal J}p_kQ_{kj}\\left((a_j-b_k)+(b_k-\\langle A\\rangle_\\mu)\\right)^2\\\\\n&=\\sum_{k,j\\in\\mathcal J}p_kQ_{kj}(a_j-b_k)^2\n+\\sum_{k,j\\in\\mathcal J}p_kQ_{kj}(b_k-\\langle A\\rangle_\\mu)^2\\\\\n&\\quad +2\\sum_{k\\in\\mathcal J}p_k(b_k-\\langle A\\rangle_\\mu)\n\\sum_{j\\in\\mathcal J}Q_{kj}(a_j-b_k).\n\\end{align*}\nFor each \\(k\\),\n\\begin{align*}\n\\sum_{j\\in\\mathcal J}Q_{kj}(a_j-b_k)\n&=\\sum_{j\\in\\mathcal J}Q_{kj}a_j-b_k\\sum_{j\\in\\mathcal J}Q_{kj}\\\\\n&=b_k-b_k=0. &&\\text{by }(P2)\\text{ and }(P3)\n\\end{align*}\nAlso,\n\\begin{align*}\n\\sum_{k,j\\in\\mathcal J}p_kQ_{kj}(b_k-\\langle A\\rangle_\\mu)^2\n&=\\sum_{k\\in\\mathcal J}p_k(b_k-\\langle A\\rangle_\\mu)^2\\sum_{j\\in\\mathcal J}Q_{kj}\\\\\n&=\\sigma_b^2. &&\\text{by }(P2)\n\\end{align*}\nThus\n\\[\n\\sigma_{A,\\mu}^2=\\sigma_b^2+\\eta_A,\n\\]\nwhere \\(\\eta_A\\geq0\\) by definition as a sum of nonnegative terms. Hence \\(\\sigma_b\\leq\\sigma_{A,\\mu}\\), and\n\\[\n|R_A|\\leq \\sigma_f\\sigma_b\\leq \\sigma_f\\sigma_{A,\\mu}.\n\\]\n\n\\section*{Final Result}\n\\[\n\\boxed{\\displaystyle R_A=\\operatorname{cov}_p(f,b),\\qquad\n|R_A|\\leq\\sigma_f\\sigma_b,\\qquad\n\\sigma_{A,\\mu}^2=\\sigma_b^2+\\eta_A\\geq\\sigma_b^2}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_4": "\\section*{Claim}\nThe stochastic total-rate inequality yields a force-budget inversion theorem and a precise version of the paper's regime demarcation. Define\n\\begin{align*}\nT_A&:=\\overline{\\left|\\int_0^\\tau(d\\langle A\\rangle-\\langle dA\\rangle)\\right|},\\\\\nS_A&:=\\int_0^\\tau\\sigma_{A,\\mu}\\sigma_f\\,dt,\\\\\nM_A&:=\\int_0^\\tau\\langle f\\rangle|\\langle A\\rangle_\\mu-\\langle A\\rangle|\\,dt,\\\\\nD_A&:=\\left(\\|\\gamma\\|_\\infty^2\\int_0^\\tau\\overline{\\sigma_A^2}\\,dt\\right)^{1/2}.\n\\end{align*}\nThen every stochastic replicator-mutator trajectory satisfying the paper's assumptions obeys\n\\[\nT_A\\leq S_A+M_A+D_A.\n\\]\nConsequently, any observed or certified value of \\(T_A\\) imposes the necessary lower bounds\n\\begin{align*}\nS_A&\\geq \\max\\{T_A-M_A-D_A,0\\},\\\\\nM_A&\\geq \\max\\{T_A-S_A-D_A,0\\},\\\\\nD_A&\\geq \\max\\{T_A-S_A-M_A,0\\}.\n\\end{align*}\nIf \\(V_A:=\\int_0^\\tau\\overline{\\sigma_A^2}\\,dt>0\\), the last inequality is equivalently\n\\[\n\\|\\gamma\\|_\\infty\\geq \\frac{\\max\\{T_A-S_A-M_A,0\\}}{\\sqrt{V_A}}.\n\\]\nThus the paper's three sources are not merely additive upper-bound terms: they form an exclusion certificate. A claimed trait-change magnitude exceeding the sum of any two terms forces the remaining source to be at least the residual gap. Normalised budget shares\n\\[\n\\theta_{\\mathrm{sel}}:=\\frac{S_A}{S_A+M_A+D_A},\\quad\n\\theta_{\\mathrm{mut}}:=\\frac{M_A}{S_A+M_A+D_A},\\quad\n\\theta_{\\mathrm{drift}}:=\\frac{D_A}{S_A+M_A+D_A}\n\\]\ntherefore provide a quantitative version of the paper's selection-, mutation-, and drift-dominated regimes whenever \\(S_A+M_A+D_A>0\\).\n\n\\section*{Premises}\n\\begin{align*}\n(P1)\\quad &T_A,S_A,M_A,D_A\\geq0.\\\\\n(P2)\\quad &T_A\\leq S_A+M_A+D_A.\\\\\n(P3)\\quad &D_A=\\|\\gamma\\|_\\infty\\sqrt{V_A},\\quad V_A:=\\int_0^\\tau\\overline{\\sigma_A^2}\\,dt.\\\\\n(P4)\\quad &\\text{For nonnegative }x,y,z,\\quad x\\leq y+z\\Longrightarrow x-z\\leq y.\\\\\n(P5)\\quad &\\text{For nonnegative }y,\\quad y\\geq q\\Longleftrightarrow y\\geq\\max\\{q,0\\}\\text{ whenever }q\\leq y.\\\\\n(P6)\\quad &\\text{For a sequence indexed by }m,\\quad S_A\\gg\\{M_A,D_A\\}\\text{ means }M_A/S_A\\to0\\text{ and }D_A/S_A\\to0.\n\\end{align*}\n\n\\section*{Derivation}\nStarting from the stochastic total bound,\n\\begin{align*}\nT_A&\\leq S_A+M_A+D_A &&\\text{by }(P2).\n\\end{align*}\nSubtracting the two non-selected budgets gives\n\\begin{align*}\nT_A-M_A-D_A&\\leq S_A,\\\\\nT_A-S_A-D_A&\\leq M_A,\\\\\nT_A-S_A-M_A&\\leq D_A. &&\\text{by algebra and }(P4)\n\\end{align*}\nSince each budget is nonnegative by \\((P1)\\), these imply\n\\begin{align*}\nS_A&\\geq\\max\\{T_A-M_A-D_A,0\\},\\\\\nM_A&\\geq\\max\\{T_A-S_A-D_A,0\\},\\\\\nD_A&\\geq\\max\\{T_A-S_A-M_A,0\\}. &&\\text{by }(P5)\n\\end{align*}\nIf \\(V_A>0\\), then using \\((P3)\\),\n\\begin{align*}\n\\|\\gamma\\|_\\infty\\sqrt{V_A}\n&=D_A\\\\\n&\\geq\\max\\{T_A-S_A-M_A,0\\},\n\\end{align*}\nso division by \\(\\sqrt{V_A}\\) yields\n\\begin{align*}\n\\|\\gamma\\|_\\infty\n&\\geq \\frac{\\max\\{T_A-S_A-M_A,0\\}}{\\sqrt{V_A}}.\n\\end{align*}\nFinally assume \\(S_A+M_A+D_A>0\\). The definitions of the shares give\n\\begin{align*}\n\\theta_{\\mathrm{sel}}+\\theta_{\\mathrm{mut}}+\\theta_{\\mathrm{drift}}&=1,\\\\\n\\theta_{\\mathrm{sel}}&=\\frac{1}{1+M_A/S_A+D_A/S_A}\\quad\\text{when }S_A>0.\n\\end{align*}\nHence, along any sequence with \\(S_A\\gg\\{M_A,D_A\\}\\),\n\\begin{align*}\n\\theta_{\\mathrm{sel}}&\\to1,\n\\end{align*}\nwhile the same argument with the labels permuted gives \\(\\theta_{\\mathrm{mut}}\\to1\\) for mutation-dominated sequences and \\(\\theta_{\\mathrm{drift}}\\to1\\) for drift-dominated sequences.\n\n\\section*{Final Result}\n\\[\n\\boxed{\\displaystyle\nT_A\\leq S_A+M_A+D_A,\n\\quad\nS_A\\geq\\max\\{T_A-M_A-D_A,0\\},\n\\quad\nM_A\\geq\\max\\{T_A-S_A-D_A,0\\},\n\\quad\nD_A\\geq\\max\\{T_A-S_A-M_A,0\\}}\n\\]\n\\[\n\\boxed{\\displaystyle\nV_A>0\\Longrightarrow\n\\|\\gamma\\|_\\infty\\geq\\frac{\\max\\{T_A-S_A-M_A,0\\}}{\\sqrt{V_A}}}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_metadata": {
+    "output_file": "deeper.json",
+    "revision_id": "deeper_alignment_v3",
+    "revision_intent": "Improve alignment by keeping all deeper proofs inside the paper's four stated rate-limit goals while strengthening scientific value through sharpness, variational optimality, variance decomposition, and stochastic force-budget inversion.",
+    "input_files": [
+      "deeper_reasoning_pseudo_algorithm.md",
+      "core_02.json",
+      "goals_02.json"
+    ],
+    "rubric_interpretation": {
+      "top_level_schema": "Exactly paper_title, contiguous deeper_reasoning_k string fields, and one deeper_metadata object.",
+      "latex_constraint": "Each reasoning entry must compile under article with amsmath and amssymb only.",
+      "deeper_value_constraint": "Entries should be proof-like extensions of the core reasoning, not paraphrases of the source paper or metadata audits."
+    },
+    "goal_trace": {
+      "deeper_reasoning_1": "G0_general_price_covariance_rate_limit",
+      "deeper_reasoning_2": "G1_replicator_natural_selection_rate_limit",
+      "deeper_reasoning_3": "G2_replicator_mutator_rate_limit",
+      "deeper_reasoning_4": "G3_stochastic_genetic_drift_rate_limit_and_regime_decomposition"
+    },
+    "entry_metadata": {
+      "deeper_reasoning_1": {
+        "title": "Sharp Price covariance bound, equality cases, and Fisher-information rate budget",
+        "target_goal_component": "G0_general_price_covariance_rate_limit",
+        "declared_source_set": [
+          "core_reasoning_1",
+          "core_reasoning_2",
+          "G0_general_price_covariance_rate_limit"
+        ],
+        "major_advancement_modes": [
+          "sharpness/equality characterization",
+          "fixed-variance variational optimum",
+          "information-budget reformulation"
+        ],
+        "goal_alignment": "Preserves the finite-population Price identity and covariance rate-limit target while adding the exact extremal structure of the Cauchy-Schwarz step.",
+        "scientific_payoff": "Identifies which trait coordinates can actually attain the maximum rate and interprets Fisher information as the available population-frequency speed budget.",
+        "nontrivial_advance_over_sources": "Converts the generic inequality into an attainable supremum theorem over fixed-variance traits.",
+        "formal_sharpness": "Sharp; equality holds iff centered trait and centered growth-rate coordinates are proportional on the support.",
+        "low_value_rejection_audit": "Avoids merely restating the Price equation by proving attainability and degeneracy cases.",
+        "selection_score": 0.98,
+        "controlled_external_lemmas": [
+          "weighted Cauchy-Schwarz inequality and equality condition"
+        ],
+        "known_residual_risks_and_mitigation": "Requires positive support for division and equality statements; the proof explicitly handles zero-variance degeneracies."
+      },
+      "deeper_reasoning_2": {
+        "title": "Variational steepest-direction theorem for natural selection",
+        "target_goal_component": "G1_replicator_natural_selection_rate_limit",
+        "declared_source_set": [
+          "core_reasoning_3",
+          "core_reasoning_4",
+          "G1_replicator_natural_selection_rate_limit"
+        ],
+        "major_advancement_modes": [
+          "variational optimality",
+          "equality characterization",
+          "unification with Fisher variance identity"
+        ],
+        "goal_alignment": "Uses exactly the mutation-free replicator residual specified in G1 and adds a maximisation theorem over possible trait coordinates.",
+        "scientific_payoff": "Shows that fitness is not just a special substitution but the extremal direction of fastest mean-trait change.",
+        "nontrivial_advance_over_sources": "Derives a supremum over all fixed-variance traits and identifies the equality class.",
+        "formal_sharpness": "Sharp for every fixed trait standard deviation when sigma_f is nonzero.",
+        "low_value_rejection_audit": "Does not duplicate the natural-selection bound; it explains why the fitness special case is the extremal case.",
+        "selection_score": 0.97,
+        "controlled_external_lemmas": [
+          "weighted Cauchy-Schwarz inequality and equality condition"
+        ],
+        "known_residual_risks_and_mitigation": "Assumes nonzero fitness variance for the normalised maximiser; the zero-variance case collapses to zero residual."
+      },
+      "deeper_reasoning_3": {
+        "title": "Conditional-variance sharpening of the replicator-mutator bound",
+        "target_goal_component": "G2_replicator_mutator_rate_limit",
+        "declared_source_set": [
+          "core_reasoning_5",
+          "core_reasoning_6",
+          "core_reasoning_7",
+          "G2_replicator_mutator_rate_limit"
+        ],
+        "major_advancement_modes": [
+          "variance decomposition",
+          "sharper intermediate bound",
+          "mechanistic interpretation of mutation averaging"
+        ],
+        "goal_alignment": "Retains the G2 corrected residual and mutation-driven distribution, but proves a tighter intermediate sigma_b bound before recovering the paper's sigma_A,mu bound.",
+        "scientific_payoff": "Separates variation in conditional post-mutation means, which can couple to fitness, from within-parent mutation variance, which only loosens the published bound.",
+        "nontrivial_advance_over_sources": "Adds a law-of-total-variance decomposition hidden inside the Jensen step of the core proof.",
+        "formal_sharpness": "Sharper than the paper-level bound whenever within-parent mutation variance is positive.",
+        "low_value_rejection_audit": "Avoids merely reproducing the replicator-mutator inequality by exposing the exact variance lost in the final relaxation.",
+        "selection_score": 0.98,
+        "controlled_external_lemmas": [
+          "finite law of total variance",
+          "weighted Cauchy-Schwarz inequality"
+        ],
+        "known_residual_risks_and_mitigation": "Introduces b_k as an auxiliary conditional mean, but all quantities are algebraically determined by p, Q, and a from G2."
+      },
+      "deeper_reasoning_4": {
+        "title": "Stochastic force-budget inversion and quantitative dominance shares",
+        "target_goal_component": "G3_stochastic_genetic_drift_rate_limit_and_regime_decomposition",
+        "declared_source_set": [
+          "core_reasoning_8",
+          "core_reasoning_9",
+          "G3_stochastic_genetic_drift_rate_limit_and_regime_decomposition"
+        ],
+        "major_advancement_modes": [
+          "inverse certificate",
+          "dominance-regime quantification",
+          "paper-faithful integrated budget algebra"
+        ],
+        "goal_alignment": "Uses the exact G3 total integrated bound and regime-decomposition terms rather than adding a new stochastic model or a new drift term.",
+        "scientific_payoff": "Turns the three additive upper-bound terms into necessary lower-bound certificates for selection, mutation, and drift contributions.",
+        "nontrivial_advance_over_sources": "Derives residual-gap lower bounds and normalised dominance shares from the paper's total inequality.",
+        "formal_sharpness": "Sharp as an algebraic consequence of the additive bound; no extra stochastic assumption is introduced beyond G3.",
+        "low_value_rejection_audit": "Replaces the previous more external effective-noise refinement with a proof that stays closer to the paper's stated stochastic regime objective.",
+        "selection_score": 0.99,
+        "controlled_external_lemmas": [
+          "elementary algebra for nonnegative budgets",
+          "asymptotic ratio manipulation"
+        ],
+        "known_residual_risks_and_mitigation": "The inverse lower bounds are necessary certificates rather than sufficient causal identification; metadata states this as force-budget inversion, not empirical attribution."
+      }
+    },
+    "rejected_low_value_candidates": [
+      {
+        "candidate": "Restate the four paper inequalities as deeper reasoning entries.",
+        "reason_rejected": "Would satisfy topical alignment but fail the deeper-value requirement because it duplicates core_reasoning."
+      },
+      {
+        "candidate": "Introduce a new effective stochastic drift budget as the primary G3 entry.",
+        "reason_rejected": "Mathematically useful but less directly aligned with the paper's stated G3 regime-decomposition endpoint."
+      },
+      {
+        "candidate": "Use biological interpretation examples from the discussion section.",
+        "reason_rejected": "The goals extraction excludes application gestures; deeper entries should remain formal derivations."
+      }
+    ],
+    "global_alignment_audit": {
+      "schema_status": "pass",
+      "contiguous_reasoning_keys": [
+        "deeper_reasoning_1",
+        "deeper_reasoning_2",
+        "deeper_reasoning_3",
+        "deeper_reasoning_4"
+      ],
+      "reasoning_value_types": "all strings",
+      "metadata_scope": "all non-proof information is under deeper_metadata",
+      "goal_coverage": "one deeper derivation is mapped to each of G0, G1, G2, and G3",
+      "core_reasoning_dependency": "each entry extends specified core proofs without contradicting their assumptions",
+      "paper_alignment": "focuses on rate-limit identities, corrected mutation residuals, stochastic integrated bounds, and dominance regimes; excludes empirical or speculative applications"
+    },
+    "known_residual_risks_and_mitigation": {
+      "risk_1": "Some entries are stronger consequences of the paper's algebra rather than statements explicitly printed in the paper.",
+      "mitigation_1": "Each strengthening is declared as a deeper consequence and mapped to the exact source goal/core derivation.",
+      "risk_2": "High-value refinements can drift into external theorem territory.",
+      "mitigation_2": "The G3 entry was revised to use only the published additive budget terms and elementary nonnegative-budget algebra.",
+      "risk_3": "LaTeX portability can fail if unsupported packages or custom macros are introduced.",
+      "mitigation_3": "All entries were compiled using only article, amsmath, and amssymb."
+    }
+  }
+}

@@ -314,8 +314,9 @@ Do not provide any explanation beyond a brief confirmation that the file was upd
 """.strip()
 
 ALIGNMENT_PROMPT = (
-    "Using a 5-point Likert scale, determine how well each Lean code proof Ci successfully "
-    "proves the target results from Qi and Ai, and aligns with the Requirements. "
+    "Using a 5-point Likert scale to 1dp, determine how well each Lean code proof Ci successfully "
+    "proves the target results from Qi and Ai, and aligns with the Requirements. Use any score in 0.1 "
+    "increments from 1.0 to 5.0 when needed; do not default to whole-number scores. "
     "If a patch difference is provided, begin with a brief **Patch Difference** note summarizing "
     "what changed and whether the change is substantive; explicitly say if there was no meaningful "
     "change."

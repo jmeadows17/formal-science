@@ -1,0 +1,196 @@
+{
+  "paper_title": "A mathematical framework for comparison of intermittent versus continuous adaptive chemotherapy dosing in cancer (McGehee, 2024, npj Systems Biology and Applications)",
+  "deeper_reasoning_1": "\\paragraph{Claim.}\nLet \\(z=(x,y)\\), \\(V(z)=x+y\\), and let\n\\[\nf_0(z)=\\begin{pmatrix}r_xx(1-x-\\alpha y)\\\\ r_yy(1-y-\\beta x)\\end{pmatrix},\\qquad\nf_1(z)=\\begin{pmatrix}r_xx(1-x-\\alpha y)-r_dx\\\\ r_yy(1-y-\\beta x)\\end{pmatrix}\n\\]\nbe the drug-off and drug-on vector fields. On a compact arc \\(\\Gamma\\subseteq\\{z:V(z)=A,\\ 0<x<A\\}\\), assume\n\\[\ng_0(z):=\\nabla V\\cdot f_0(z)\\geq m>0,\n\\qquad\ng_1(z):=\\nabla V\\cdot f_1(z)\\leq -m<0.\n\\]\nLet \\(P_\\delta\\) be the intermittent return map from \\(V=A\\) to the next return to \\(V=A\\), obtained by flowing first with \\(f_1\\) down to \\(V=A-\\delta\\) and then with \\(f_0\\) back to \\(V=A\\). If \\(\\Theta_\\delta(z)\\) is the cycle time, then, uniformly for \\(z\\in\\Gamma\\),\n\\[\n\\frac{P_\\delta(z)-z}{\\Theta_\\delta(z)}\n=h(z)+O(\\delta),\n\\qquad\nh(z)=\\frac{g_0(z)f_1(z)-g_1(z)f_0(z)}{g_0(z)-g_1(z)}.\n\\]\nMoreover \\(\\nabla V\\cdot h(z)=0\\), and \\(h\\) is exactly the continuous adaptive vector field on \\(V=A\\) with dose\n\\[\nR_c(z)=\\frac{g_0(z)}{x}=r_x(1-x-\\alpha y)+\\frac{r_yy(1-y-\\beta x)}{x}.\n\\]\nConsequently, on every finite interval \\([0,T]\\) on which the continuous constrained solution \\(z_0(t)\\) remains in \\(\\Gamma\\), there exist \\(C_T<\\infty\\) and \\(\\delta_T>0\\) such that\n\\[\nE_\\delta(T):=\\sup_{0\\leq t\\leq T}\\max\\{|x_\\delta(t)-x_0(t)|,|y_\\delta(t)-y_0(t)|\\}\\leq C_T\\delta\n\\]\nfor all \\(0<\\delta\\leq\\delta_T\\).\n\n\\paragraph{Premises.}\n\\begin{align*}\n\\text{(P1)}\\quad &V(z)=x+y,\\qquad \\nabla V=(1,1),\\\\\n\\text{(P2)}\\quad &f_0,f_1\\text{ are }C^2\\text{ on a compact strip around }\\Gamma,\\\\\n\\text{(P3)}\\quad &g_0=\\nabla V\\cdot f_0\\geq m>0,\\qquad g_1=\\nabla V\\cdot f_1\\leq -m<0,\\\\\n\\text{(P4)}\\quad &\\phi_i^t(z)=z+t f_i(z)+O(t^2)\\text{ and }V(\\phi_i^t(z))=V(z)+t g_i(z)+O(t^2)\\\\\n&\\hspace{1.0cm}\\text{uniformly for }i\\in\\{0,1\\},\\\\\n\\text{(P5)}\\quad &z_0(t)\\text{ solves }\\dot z=h(z),\\ V(z)=A,\\text{ and remains in }\\Gamma\\text{ on }[0,T],\\\\\n\\text{(P6)}\\quad &\\text{a consistent one-step method with local error }O(\\Theta^2)\\text{ and }\\Theta=O(\\delta)\\\\\n&\\hspace{1.0cm}\\text{has finite-time global error }O(\\delta)\\text{ for Lipschitz }h.\n\\end{align*}\n\n\\paragraph{Derivation.}\nStarting at \\(z\\in\\Gamma\\), let \\(\\tau_1\\) be the drug-on time needed to move from \\(V=A\\) to \\(V=A-\\delta\\). By (P4),\n\\[\nA-\\delta=A+\\tau_1g_1(z)+O(\\tau_1^2),\n\\]\nso, using \\(g_1\\leq -m\\),\n\\[\n\\tau_1=\\frac{\\delta}{-g_1(z)}+O(\\delta^2).\n\\]\nThe state after the drug-on part is\n\\[\nz_1=z+\\tau_1f_1(z)+O(\\tau_1^2)\n=z+\\frac{\\delta}{-g_1(z)}f_1(z)+O(\\delta^2).\n\\]\nLet \\(\\tau_0\\) be the drug-off time needed to return from \\(V=A-\\delta\\) to \\(V=A\\). Uniform smoothness and \\(g_0\\geq m\\) give\n\\[\n\\tau_0=\\frac{\\delta}{g_0(z)}+O(\\delta^2).\n\\]\nThus\n\\begin{align*}\nP_\\delta(z)-z\n&=\\tau_1f_1(z)+\\tau_0f_0(z)+O(\\delta^2)\\\\\n&=\\delta\\left(-\\frac{f_1(z)}{g_1(z)}+\\frac{f_0(z)}{g_0(z)}\\right)+O(\\delta^2),\\\\\n\\Theta_\\delta(z)\n&=\\tau_1+\\tau_0\n=\\delta\\left(-\\frac{1}{g_1(z)}+\\frac{1}{g_0(z)}\\right)+O(\\delta^2).\n\\end{align*}\nDividing the two expansions yields\n\\begin{align*}\n\\frac{P_\\delta(z)-z}{\\Theta_\\delta(z)}\n&=\\frac{f_0(z)/g_0(z)-f_1(z)/g_1(z)}{1/g_0(z)-1/g_1(z)}+O(\\delta)\\\\\n&=\\frac{g_0(z)f_1(z)-g_1(z)f_0(z)}{g_0(z)-g_1(z)}+O(\\delta)\\\\\n&=h(z)+O(\\delta).\n\\end{align*}\nFurthermore,\n\\begin{align*}\n\\nabla V\\cdot h\n&=\\frac{g_0(\\nabla V\\cdot f_1)-g_1(\\nabla V\\cdot f_0)}{g_0-g_1}\\\\\n&=\\frac{g_0g_1-g_1g_0}{g_0-g_1}=0,\n\\end{align*}\nso \\(h\\) is tangent to \\(V=A\\). Since \\(f_1=f_0-r_dx(1,0)^T\\),\n\\[\ng_1=g_0-r_dx,\n\\qquad\ng_0-g_1=r_dx.\n\\]\nThe drug-on fraction in the averaged vector field is therefore\n\\[\n\\lambda(z)=\\frac{g_0(z)}{g_0(z)-g_1(z)}=\\frac{g_0(z)}{r_dx},\n\\]\nand the average drug-removal rate is\n\\[\n\\lambda(z)r_d=\\frac{g_0(z)}{x}=R_c(z).\n\\]\nSubstituting the definition of \\(g_0\\) gives\n\\[\nR_c(z)=r_x(1-x-\\alpha y)+\\frac{r_yy(1-y-\\beta x)}{x}.\n\\]\nThe return map is therefore a one-step discretisation of \\(\\dot z=h(z)\\), with step size \\(\\Theta_\\delta=O(\\delta)\\) and local consistency error \\(O(\\Theta_\\delta^2)\\). By (P6), return points differ from \\(z_0(t)\\) by at most \\(C_T'\\delta\\) on \\([0,T]\\). Between two consecutive return points, the intermittent trajectory remains inside the control band \\(A-\\delta\\leq V\\leq A\\) for time \\(O(\\delta)\\), so its within-cycle displacement from the corresponding return point is also \\(O(\\delta)\\). Hence\n\\[\nE_\\delta(T)\\leq C_T\\delta.\n\\]\n\n\\paragraph{Final Result.}\n\\[\n\\boxed{E_\\delta(T)\\leq C_T\\delta\\quad\\text{and}\\quad R_c(z)=r_x(1-x-\\alpha y)+\\frac{r_yy(1-y-\\beta x)}{x}}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_2": "\\paragraph{Claim.}\nThe finite-time trajectory estimate transfers to the time-to-loss and time-to-extinction endpoints with the inequality directions required for continuous adaptive partial dominance. Let \\(\\theta\\) be the relevant resistant-abundance threshold. For an upward loss-of-control crossing, suppose\n\\[\ny_0(T_0^{\\mathrm{loss}})=\\theta,\n\\qquad\n\\dot y_0(t)\\geq v>0\n\\]\nnear \\(T_0^{\\mathrm{loss}}\\), and suppose the intermittent trajectory satisfies\n\\[\n|y_\\delta(t)-y_0(t)|\\leq C\\delta,\n\\qquad\n y_\\delta(t)\\geq y_0(t)\n\\]\nup to the crossing. Then\n\\[\nT_0^{\\mathrm{loss}}-\\frac{2C}{v}\\delta\\leq T_\\delta^{\\mathrm{loss}}\\leq T_0^{\\mathrm{loss}},\n\\qquad\nT_\\delta^{\\mathrm{loss}}=T_0^{\\mathrm{loss}}+O(\\delta).\n\\]\nFor a downward resistant-extinction crossing, suppose\n\\[\ny_0(T_0^{\\mathrm{ext}})=\\theta,\n\\qquad\n\\dot y_0(t)\\leq -v<0\n\\]\nnear \\(T_0^{\\mathrm{ext}}\\), with the same closeness and one-sided ordering. Then\n\\[\nT_0^{\\mathrm{ext}}\\leq T_\\delta^{\\mathrm{ext}}\\leq T_0^{\\mathrm{ext}}+\\frac{2C}{v}\\delta,\n\\qquad\nT_\\delta^{\\mathrm{ext}}=T_0^{\\mathrm{ext}}+O(\\delta).\n\\]\nThus continuous adaptive therapy reaches resistant extinction no later than intermittent therapy and reaches loss of control no earlier than intermittent therapy, while both intermittent endpoints converge to the continuous endpoints as \\(\\delta\\downarrow0\\).\n\n\\paragraph{Premises.}\n\\begin{align*}\n\\text{(P1)}\\quad &|y_\\delta(t)-y_0(t)|\\leq C\\delta\\text{ near the relevant hitting time},\\\\\n\\text{(P2)}\\quad &y_\\delta(t)\\geq y_0(t)\\text{ before the relevant hitting time},\\\\\n\\text{(P3)}\\quad &T_\\delta^{\\mathrm{loss}}=\\inf\\{t:y_\\delta(t)=\\theta\\text{ on an upward crossing}\\},\\\\\n\\text{(P4)}\\quad &T_\\delta^{\\mathrm{ext}}=\\inf\\{t:y_\\delta(t)=\\theta\\text{ on a downward crossing}\\},\\\\\n\\text{(P5)}\\quad &\\dot y_0(t)\\geq v>0\\text{ near an upward loss crossing},\\\\\n\\text{(P6)}\\quad &\\dot y_0(t)\\leq -v<0\\text{ near a downward extinction crossing}.\n\\end{align*}\n\n\\paragraph{Derivation for loss of control.}\nAt \\(t=T_0^{\\mathrm{loss}}\\),\n\\[\ny_\\delta(T_0^{\\mathrm{loss}})\\geq y_0(T_0^{\\mathrm{loss}})=\\theta,\n\\]\nso the intermittent upward hitting time cannot be later than \\(T_0^{\\mathrm{loss}}\\):\n\\[\nT_\\delta^{\\mathrm{loss}}\\leq T_0^{\\mathrm{loss}}.\n\\]\nLet\n\\[\nt_-=T_0^{\\mathrm{loss}}-\\frac{2C}{v}\\delta.\n\\]\nUsing \\(\\dot y_0\\geq v\\) between \\(t_-\\) and \\(T_0^{\\mathrm{loss}}\\),\n\\begin{align*}\ny_0(t_-)\n&=y_0(T_0^{\\mathrm{loss}})-\\int_{t_-}^{T_0^{\\mathrm{loss}}}\\dot y_0(s)\\,ds\\\\\n&\\leq \\theta-v\\left(\\frac{2C}{v}\\delta\\right)\\\\\n&=\\theta-2C\\delta.\n\\end{align*}\nBy (P1),\n\\[\ny_\\delta(t_-)\n\\leq y_0(t_-)+C\\delta\n\\leq \\theta-C\\delta<\\theta.\n\\]\nThus the intermittent trajectory has not yet hit \\(\\theta\\) at \\(t_-\\), so\n\\[\nT_\\delta^{\\mathrm{loss}}\\geq t_-=T_0^{\\mathrm{loss}}-\\frac{2C}{v}\\delta.\n\\]\nCombining the two inequalities gives\n\\[\nT_0^{\\mathrm{loss}}-\\frac{2C}{v}\\delta\\leq T_\\delta^{\\mathrm{loss}}\\leq T_0^{\\mathrm{loss}}.\n\\]\n\n\\paragraph{Derivation for resistant extinction.}\nAt \\(t=T_0^{\\mathrm{ext}}\\),\n\\[\ny_\\delta(T_0^{\\mathrm{ext}})\n\\geq y_0(T_0^{\\mathrm{ext}})=\\theta,\n\\]\nso the intermittent downward hitting time cannot be earlier than \\(T_0^{\\mathrm{ext}}\\):\n\\[\nT_\\delta^{\\mathrm{ext}}\\geq T_0^{\\mathrm{ext}}.\n\\]\nLet\n\\[\nt_+=T_0^{\\mathrm{ext}}+\\frac{2C}{v}\\delta.\n\\]\nUsing \\(\\dot y_0\\leq -v\\) between \\(T_0^{\\mathrm{ext}}\\) and \\(t_+\\),\n\\begin{align*}\ny_0(t_+)\n&=y_0(T_0^{\\mathrm{ext}})+\\int_{T_0^{\\mathrm{ext}}}^{t_+}\\dot y_0(s)\\,ds\\\\\n&\\leq \\theta-v\\left(\\frac{2C}{v}\\delta\\right)\\\\\n&=\\theta-2C\\delta.\n\\end{align*}\nBy (P1),\n\\[\ny_\\delta(t_+)\n\\leq y_0(t_+)+C\\delta\n\\leq \\theta-C\\delta<\\theta.\n\\]\nTherefore the intermittent trajectory must have crossed downward by \\(t_+\\), so\n\\[\nT_\\delta^{\\mathrm{ext}}\\leq t_+=T_0^{\\mathrm{ext}}+\\frac{2C}{v}\\delta.\n\\]\nCombining the bounds gives\n\\[\nT_0^{\\mathrm{ext}}\\leq T_\\delta^{\\mathrm{ext}}\\leq T_0^{\\mathrm{ext}}+\\frac{2C}{v}\\delta.\n\\]\n\n\\paragraph{Final Result.}\n\\[\n\\boxed{T_\\delta^{\\mathrm{loss}}\\leq T_0^{\\mathrm{loss}},\\qquad T_0^{\\mathrm{ext}}\\leq T_\\delta^{\\mathrm{ext}},\\qquad T_\\delta=T_0+O(\\delta)}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_3": "\\paragraph{Claim.}\nLet \\(\\tau\\) be a strictly convex toxicity-rate function on \\([0,r_d]\\) with \\(\\tau(0)=0\\). Suppose the limiting drug-on fraction of the intermittent cycle is \\(\\lambda(t)\\in[0,1]\\), so that the continuous adaptive dose is\n\\[\nR_c(t)=\\lambda(t)r_d.\n\\]\nFor the intermittent schedule using dose \\(r_d\\) during the drug-on part and dose \\(0\\) during the drug-off part,\n\\[\nD_\\delta(T)=D_0(T)+\\int_0^T J(t)\\,dt+O(\\delta),\n\\]\nwhere\n\\[\nJ(t)=\\lambda(t)\\tau(r_d)+(1-\\lambda(t))\\tau(0)-\\tau(\\lambda(t)r_d)\\geq 0.\n\\]\nMoreover \\(J(t)>0\\) exactly when \\(0<\\lambda(t)<1\\). Therefore\n\\[\n\\liminf_{\\delta\\downarrow0}\\bigl(D_\\delta(T)-D_0(T)\\bigr)\\geq0,\n\\]\nand, if \\(\\{t\\in[0,T]:0<\\lambda(t)<1\\}\\) has positive measure, then there are \\(\\eta>0\\) and \\(\\delta_T>0\\) such that\n\\[\nD_\\delta(T)\\geq D_0(T)+\\eta\n\\]\nfor every \\(0<\\delta\\leq\\delta_T\\).\n\n\\paragraph{Premises.}\n\\begin{align*}\n\\text{(P1)}\\quad &D_0(T)=\\int_0^T\\tau(R_c(t))\\,dt,\n\\qquad R_c(t)=\\lambda(t)r_d,\n\\qquad 0\\leq\\lambda(t)\\leq1,\\\\\n\\text{(P2)}\\quad &\\tau(0)=0\\text{ and }\\tau\\text{ is strictly convex on }[0,r_d],\\\\\n\\text{(P3)}\\quad &\\text{cycle }k\\text{ has length }\\Theta_k=O(\\delta)\\text{ and drug-on fraction }p_k=\\lambda(t_k)+O(\\delta),\\\\\n\\text{(P4)}\\quad &\\sum_k\\Theta_k=T+O(\\delta),\\qquad \\sum_k\\Theta_k^2=O(\\delta),\\\\\n\\text{(P5)}\\quad &\\lambda\\text{ is piecewise Lipschitz, so the cycle sums converge to the corresponding integrals.}\n\\end{align*}\n\n\\paragraph{Derivation.}\nOn cycle \\(k\\), intermittent toxicity is\n\\[\nD_{\\delta,k}=\\Theta_k\\bigl(p_k\\tau(r_d)+(1-p_k)\\tau(0)\\bigr).\n\\]\nUsing \\(p_k=\\lambda(t_k)+O(\\delta)\\) and \\(\\Theta_k=O(\\delta)\\),\n\\[\nD_{\\delta,k}\n=\\Theta_k\\bigl(\\lambda(t_k)\\tau(r_d)+(1-\\lambda(t_k))\\tau(0)\\bigr)+O(\\Theta_k\\delta).\n\\]\nSumming and using (P4),\n\\begin{align*}\nD_\\delta(T)\n&=\\sum_k\\Theta_k\\bigl(\\lambda(t_k)\\tau(r_d)+(1-\\lambda(t_k))\\tau(0)\\bigr)+O(\\delta)\\\\\n&=\\int_0^T\\bigl(\\lambda(t)\\tau(r_d)+(1-\\lambda(t))\\tau(0)\\bigr)\\,dt+O(\\delta).\n\\end{align*}\nThe continuous toxicity is\n\\[\nD_0(T)=\\int_0^T\\tau(\\lambda(t)r_d)\\,dt.\n\\]\nSubtracting gives\n\\[\nD_\\delta(T)-D_0(T)=\\int_0^T J(t)\\,dt+O(\\delta),\n\\]\nwith \\(J(t)\\) as stated. By strict convexity, for \\(0<\\lambda(t)<1\\),\n\\[\n\\tau(\\lambda(t)r_d+(1-\\lambda(t))0)<\\lambda(t)\\tau(r_d)+(1-\\lambda(t))\\tau(0),\n\\]\nwhich is exactly \\(J(t)>0\\). If \\(\\lambda(t)=0\\), then\n\\[\nJ(t)=\\tau(0)-\\tau(0)=0.\n\\]\nIf \\(\\lambda(t)=1\\), then\n\\[\nJ(t)=\\tau(r_d)-\\tau(r_d)=0.\n\\]\nHence \\(J(t)\\geq0\\) for all \\(t\\), with strict positivity exactly on the set where \\(0<\\lambda(t)<1\\). This proves\n\\[\n\\liminf_{\\delta\\downarrow0}\\bigl(D_\\delta(T)-D_0(T)\\bigr)\n\\geq\\int_0^T J(t)\\,dt\\geq0.\n\\]\nIf the set \\(\\{t:0<\\lambda(t)<1\\}\\) has positive measure, then \\(J\\) is positive on a set of positive measure, so\n\\[\n\\int_0^T J(t)\\,dt=:2\\eta>0.\n\\]\nSince the remainder is \\(O(\\delta)\\), choose \\(\\delta_T\\) small enough that its absolute value is at most \\(\\eta\\). Then\n\\[\nD_\\delta(T)-D_0(T)\\geq\\eta>0.\n\\]\n\n\\paragraph{Final Result.}\n\\[\n\\boxed{D_\\delta(T)=D_0(T)+\\int_0^T J(t)\\,dt+O(\\delta),\\qquad J(t)\\geq0,\\qquad J(t)>0\\iff0<\\lambda(t)<1}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_4": "\\paragraph{Claim.}\nLet \\(S_\\delta\\) be the set of initial tumour compositions for which intermittent adaptive therapy reaches resistant extinction before loss of tumour-volume control, and let \\(S_0\\) be the corresponding continuous-adaptive success set. Suppose that, for every initial condition under comparison,\n\\[\nT_0^{\\mathrm{ext}}\\leq T_\\delta^{\\mathrm{ext}},\n\\qquad\nT_\\delta^{\\mathrm{loss}}\\leq T_0^{\\mathrm{loss}}.\n\\]\nThen\n\\[\nS_\\delta\\subseteq S_0.\n\\]\nIf there exists an initial condition \\(u\\) such that\n\\[\nT_0^{\\mathrm{ext}}(u)<T_0^{\\mathrm{loss}}(u)\n\\quad\\text{but}\\quad\nT_\\delta^{\\mathrm{ext}}(u)\\geq T_\\delta^{\\mathrm{loss}}(u),\n\\]\nthen the inclusion is strict:\n\\[\nS_\\delta\\subsetneq S_0.\n\\]\nThus endpoint dominance implies the robustness-to-initial-composition component of continuous adaptive partial dominance.\n\n\\paragraph{Premises.}\n\\begin{align*}\n\\text{(P1)}\\quad &S_\\delta:=\\{u:T_\\delta^{\\mathrm{ext}}(u)<T_\\delta^{\\mathrm{loss}}(u)\\},\\\\\n\\text{(P2)}\\quad &S_0:=\\{u:T_0^{\\mathrm{ext}}(u)<T_0^{\\mathrm{loss}}(u)\\},\\\\\n\\text{(P3)}\\quad &T_0^{\\mathrm{ext}}(u)\\leq T_\\delta^{\\mathrm{ext}}(u)\\text{ for every }u\\text{ under comparison},\\\\\n\\text{(P4)}\\quad &T_\\delta^{\\mathrm{loss}}(u)\\leq T_0^{\\mathrm{loss}}(u)\\text{ for every }u\\text{ under comparison}.\n\\end{align*}\n\n\\paragraph{Derivation.}\nTake any \\(u\\in S_\\delta\\). By (P1),\n\\[\nT_\\delta^{\\mathrm{ext}}(u)<T_\\delta^{\\mathrm{loss}}(u).\n\\]\nUsing (P3) and (P4),\n\\[\nT_0^{\\mathrm{ext}}(u)\n\\leq T_\\delta^{\\mathrm{ext}}(u)\n<T_\\delta^{\\mathrm{loss}}(u)\n\\leq T_0^{\\mathrm{loss}}(u).\n\\]\nTherefore\n\\[\nT_0^{\\mathrm{ext}}(u)<T_0^{\\mathrm{loss}}(u),\n\\]\nso \\(u\\in S_0\\) by (P2). Since every \\(u\\in S_\\delta\\) lies in \\(S_0\\),\n\\[\nS_\\delta\\subseteq S_0.\n\\]\nNow suppose there exists \\(u\\) such that\n\\[\nT_0^{\\mathrm{ext}}(u)<T_0^{\\mathrm{loss}}(u)\n\\quad\\text{and}\\quad\nT_\\delta^{\\mathrm{ext}}(u)\\geq T_\\delta^{\\mathrm{loss}}(u).\n\\]\nThe first inequality gives \\(u\\in S_0\\). The second inequality contradicts the defining strict success condition for \\(S_\\delta\\), so \\(u\\notin S_\\delta\\). Hence \\(S_0\\) contains at least one point not contained in \\(S_\\delta\\), while \\(S_\\delta\\subseteq S_0\\); therefore\n\\[\nS_\\delta\\subsetneq S_0.\n\\]\n\n\\paragraph{Final Result.}\n\\[\n\\boxed{S_\\delta\\subseteq S_0,\\qquad S_\\delta\\subsetneq S_0\\text{ whenever continuous succeeds for some initial condition where intermittent fails}}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_5": "\\paragraph{Claim.}\nFor continuous fixed-dose therapy, set\n\\[\nq:=1-\\frac{r_d^{\\mathrm{fix}}}{r_x},\n\\qquad\n\\dot{x}=r_xx(q-x-\\alpha y),\n\\qquad\n\\dot{y}=r_yy(1-y-\\beta x).\n\\]\nAssume\n\\[\n\\alpha<1,\n\\qquad\n\\beta>1,\n\\qquad\nA>\\frac{1}{\\beta}.\n\\]\nIf one can choose\n\\[\n\\max\\left\\{\\alpha,\\frac{1}{\\beta}\\right\\}<q\\leq A,\n\\]\nthen the fixed dose\n\\[\nr_d^{\\mathrm{fix}}=r_x(1-q)\n\\]\nis antiproliferative, has final resistant-extinction volume \\(q\\leq A\\), and makes \\((q,0)\\) the global positive attractor. Hence, if \\(C_A\\) is the continuous-adaptive resistant-extinction set and \\(F_A(q)\\) is the fixed-dose resistant-extinction set under the final-volume constraint, then\n\\[\nC_A\\subseteq F_A(q).\n\\]\nIf instead \\(\\alpha\\beta>1\\) and \\(1/\\beta<q<\\alpha\\), then the positive coexistence equilibrium\n\\[\n(x_i,y_i)=\\left(\\frac{\\alpha-q}{\\alpha\\beta-1},\\frac{\\beta q-1}{\\alpha\\beta-1}\\right)\n\\]\nis a saddle; in that case \\(F_A(q)\\) is the side of the saddle's stable manifold converging to \\((q,0)\\), and fixed-dose non-inferiority is certified by the explicit set check \\(C_A\\subseteq F_A(q)\\). In either case, strict fixed-dose robustness follows whenever \\(F_A(q)\\setminus C_A\\neq\\varnothing\\).\n\n\\paragraph{Premises.}\n\\begin{align*}\n\\text{(P1)}\\quad &q=1-r_d^{\\mathrm{fix}}/r_x,\n\\qquad r_x>0,\n\\qquad r_y>0,\n\\qquad 0<q<1,\\\\\n\\text{(P2)}\\quad &\\dot{x}=r_xx(q-x-\\alpha y),\n\\qquad \\dot{y}=r_yy(1-y-\\beta x),\\\\\n\\text{(P3)}\\quad &\\alpha<1,\n\\qquad \\beta>1,\n\\qquad q>1/\\beta,\\\\\n\\text{(P4)}\\quad &F_A(q):=\\{u:z_q(t;u)\\to(q,0)\\text{ and }q\\leq A\\},\\\\\n\\text{(P5)}\\quad &C_A:=\\{u:\\text{continuous adaptive therapy on }V=A\\text{ leads to resistant extinction}\\},\\\\\n\\text{(P6)}\\quad &\\text{if the stable sensitive-only equilibrium is the only nonzero attractor in a competitive}\\\\\n&\\hspace{1.0cm}\\text{Lotka--Volterra system, it attracts every positive feasible initial condition},\\\\\n\\text{(P7)}\\quad &\\text{when }\\alpha\\beta>1\\text{ and }1/\\beta<q<\\alpha,\\text{ the interior coexistence point is a saddle.}\n\\end{align*}\n\n\\paragraph{Derivation.}\nFirst,\n\\[\nr_d^{\\mathrm{fix}}=r_x(1-q).\n\\]\nSince \\(0<q<1\\),\n\\[\n0<r_d^{\\mathrm{fix}}<r_x,\n\\]\nso the dose is antiproliferative rather than cytotoxic in the single-sensitive-population sense. At \\((q,0)\\),\n\\[\n\\dot{x}=r_xq(q-q)=0,\n\\qquad\n\\dot{y}=0.\n\\]\nThe Jacobian at \\((q,0)\\) is triangular:\n\\[\nJ(q,0)=\\begin{pmatrix}\n-r_xq & -\\alpha r_xq\\\\\n0 & r_y(1-\\beta q)\n\\end{pmatrix}.\n\\]\nIts eigenvalues are\n\\[\n\\lambda_1=-r_xq<0,\n\\qquad\n\\lambda_2=r_y(1-\\beta q)<0,\n\\]\nbecause \\(q>1/\\beta\\). Hence \\((q,0)\\) is locally asymptotically stable and resistant cells cannot invade near the final fixed-dose state. Its final tumour volume is\n\\[\nV(q,0)=q\\leq A.\n\\]\nNow assume \\(q>\\alpha\\). A positive coexistence equilibrium must satisfy\n\\[\nx+\\alpha y=q,\n\\qquad\n\\beta x+y=1.\n\\]\nOn the positive part of the \\(y\\)-nullcline, \\(0<x<1/\\beta\\) and \\(y=1-\\beta x\\). Hence\n\\[\nx+\n\\alpha y=\n\\alpha+(1-\\alpha\\beta)x.\n\\]\nIf \\(\\alpha\\beta\\geq1\\), then this expression is at most \\(\\alpha\\), and \\(q>\\alpha\\) prevents equality with \\(q\\). If \\(\\alpha\\beta<1\\), then the expression is at most \\(1/\\beta\\), and \\(q>1/\\beta\\) prevents equality with \\(q\\). Thus no positive coexistence equilibrium exists. By (P6), \\((q,0)\\) attracts every positive feasible initial condition. Therefore\n\\[\nF_A(q)=\\{u:u\\text{ is positive and feasible}\\},\n\\]\nand, since \\(C_A\\) is a subset of the same feasible state space,\n\\[\nC_A\\subseteq F_A(q).\n\\]\nIf \\(\\alpha\\beta>1\\) and \\(1/\\beta<q<\\alpha\\), solving the two nullcline equations gives\n\\[\n(x_i,y_i)=\\left(\\frac{\\alpha-q}{\\alpha\\beta-1},\\frac{\\beta q-1}{\\alpha\\beta-1}\\right),\n\\]\nwhich is positive. By (P7), this point is a saddle. Its stable manifold separates initial conditions converging to \\((q,0)\\) from initial conditions converging elsewhere; therefore \\(F_A(q)\\) is exactly the side of that stable manifold converging to \\((q,0)\\), with the final-volume constraint \\(q\\leq A\\). In this saddle-basin case, non-inferiority relative to continuous adaptive therapy is certified by checking\n\\[\nC_A\\subseteq F_A(q).\n\\]\nFinally, if \\(F_A(q)\\setminus C_A\\neq\\varnothing\\), then there is at least one initial composition for which fixed-dose therapy succeeds under the final-volume constraint but continuous adaptive therapy does not. Thus fixed-dose therapy is strictly more robust to initial-composition uncertainty under that endpoint ordering.\n\n\\paragraph{Final Result.}\n\\[\n\\boxed{0<r_d^{\\mathrm{fix}}<r_x,\\\\ V(q,0)=q\\leq A,\\\\ C_A\\subseteq F_A(q),\\quad\\text{with strict robustness if }F_A(q)\\setminus C_A\\neq\\varnothing}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_metadata": {
+    "output_file": "deeper.json",
+    "revision_id": "alignment_high_value_v3",
+    "revision_intent": "Close the remaining alignment gap by adding an explicit robustness/set-inclusion proof for the adaptive-therapy partial-dominance goal, sharpening the fixed-dose theorem into a dose-existence/global-attractor case plus a saddle-basin certificate, and preserving strict rubric compliance.",
+    "input_files": [
+      "deeper_reasoning_pseudo_algorithm.md",
+      "core_01.json",
+      "goals_01.json",
+      "previous deeper.json"
+    ],
+    "rubric_interpretation": {
+      "top_level_shape": "Exactly paper_title, contiguous deeper_reasoning_1 through deeper_reasoning_5 string fields, and one deeper_metadata object.",
+      "latex_constraint": "Each reasoning entry is a standalone LaTeX fragment that compiles with article, amsmath, and amssymb only.",
+      "value_standard": "Each proof must synthesize several core derivations into a goal-level result and avoid merely restating isolated algebraic facts.",
+      "metadata_constraint": "All audit and trace information is confined to deeper_metadata; proof content is not duplicated there except as short labels and paraphrases."
+    },
+    "goal_trace": {
+      "G1_delta_limit_equivalence": [
+        "deeper_reasoning_1"
+      ],
+      "G2_continuous_adaptive_partial_dominance": [
+        "deeper_reasoning_2",
+        "deeper_reasoning_3",
+        "deeper_reasoning_4"
+      ],
+      "G3_fixed_dose_noninferiority_for_resistant_extinction": [
+        "deeper_reasoning_5"
+      ]
+    },
+    "entry_metadata": {
+      "deeper_reasoning_1": {
+        "title": "Return-map averaging proves finite-time O(delta) convergence to continuous adaptive therapy",
+        "target_goal_component": "G1_delta_limit_equivalence",
+        "declared_source_set": [
+          "core_reasoning_1",
+          "core_reasoning_2",
+          "G1_delta_limit_equivalence",
+          "methodological_claim"
+        ],
+        "major_advancement_modes": [
+          "switching-map asymptotics",
+          "continuous-dose identification",
+          "finite-time global error bound"
+        ],
+        "goal_alignment": "Directly proves the finite-time E_delta(T) <= C_T delta predicate and identifies the limiting averaged dose with the continuous adaptive dose on V=A.",
+        "scientific_payoff": "Converts the paper's bang-bang-to-continuous comparison into a compact proof of convergence of return maps and interpolated trajectories.",
+        "nontrivial_advance_over_sources": "Uses the core dose and duty-cycle identities to derive a return-map generator and then an accumulated finite-time trajectory estimate.",
+        "formal_sharpness": "Uniform O(delta) result on compact transversality arcs with explicit sign and smoothness assumptions.",
+        "low_value_rejection_audit": "Rejects proofs that only recompute R_c without proving convergence of intermittent trajectories.",
+        "selection_score": 5.0,
+        "controlled_external_lemmas": [
+          "uniform Taylor expansion of smooth flows",
+          "finite-time global error theorem for consistent one-step methods"
+        ],
+        "known_residual_risks_and_mitigation": "The proof is local to compact control-line arcs satisfying the paper's drug-on/drug-off sign conditions, matching the finite-time comparison scope rather than overclaiming global convergence."
+      },
+      "deeper_reasoning_2": {
+        "title": "Trajectory closeness plus one-sided ordering transfers to loss and extinction hitting times",
+        "target_goal_component": "G2_continuous_adaptive_partial_dominance",
+        "declared_source_set": [
+          "core_reasoning_11",
+          "G1_delta_limit_equivalence",
+          "G2_continuous_adaptive_partial_dominance"
+        ],
+        "major_advancement_modes": [
+          "hitting-time perturbation",
+          "transversal threshold analysis",
+          "endpoint dominance"
+        ],
+        "goal_alignment": "Proves the required directions T_delta^loss <= T_0^loss and T_0^ext <= T_delta^ext together with O(delta) endpoint convergence.",
+        "scientific_payoff": "Shows why the abstract E_delta(T) trajectory bound implies clinically interpretable time-to-progression and time-to-extinction comparisons.",
+        "nontrivial_advance_over_sources": "Extends the core hitting-time argument to both upward loss and downward extinction with explicit constants and inequality directions.",
+        "formal_sharpness": "Gives two-sided O(delta) windows around each continuous hitting time under transversal crossings.",
+        "low_value_rejection_audit": "Rejects a purely verbal endpoint comparison without quantitative transfer from trajectory convergence.",
+        "selection_score": 4.9,
+        "controlled_external_lemmas": [
+          "elementary transverse hitting-time stability"
+        ],
+        "known_residual_risks_and_mitigation": "The one-sided ordering y_delta >= y_0 is declared rather than hidden; this makes the theorem an auditable endpoint-transfer certificate rather than an unsupported global monotonicity claim."
+      },
+      "deeper_reasoning_3": {
+        "title": "Cycle-integrated Jensen gap proves nonlinear-toxicity advantage of continuous dosing",
+        "target_goal_component": "G2_continuous_adaptive_partial_dominance",
+        "declared_source_set": [
+          "core_reasoning_2",
+          "core_reasoning_10",
+          "G2_continuous_adaptive_partial_dominance"
+        ],
+        "major_advancement_modes": [
+          "cycle-to-integral limit",
+          "strict convexity/Jensen gap",
+          "finite-time toxicity comparison"
+        ],
+        "goal_alignment": "Proves D_0 <= liminf D_delta and strict D_delta > D_0 for sufficiently small delta whenever the limiting dose genuinely mixes on and off intervals over positive measure.",
+        "scientific_payoff": "Connects the local Jensen inequality for one cycle to the paper's cumulative toxicity endpoint over a treatment horizon.",
+        "nontrivial_advance_over_sources": "Lifts the core convexity proof from one duty cycle to the integrated intermittent-control limit.",
+        "formal_sharpness": "Identifies the exact strictness condition: positive-measure time spent with 0 < lambda(t) < 1.",
+        "low_value_rejection_audit": "Rejects merely restating Jensen's inequality without the cycle-sum-to-integral convergence needed for the paper's D_delta endpoint.",
+        "selection_score": 4.9,
+        "controlled_external_lemmas": [
+          "Riemann-sum convergence for piecewise Lipschitz duty cycle",
+          "strict Jensen inequality"
+        ],
+        "known_residual_risks_and_mitigation": "Strictness is limited to horizons with nontrivial mixed dosing, avoiding the false claim that a zero-dose or full-dose limiting schedule gives a strict Jensen gap."
+      },
+      "deeper_reasoning_4": {
+        "title": "Endpoint dominance implies robust initial-condition set inclusion",
+        "target_goal_component": "G2_continuous_adaptive_partial_dominance",
+        "declared_source_set": [
+          "core_reasoning_11",
+          "deeper_reasoning_2",
+          "G2_continuous_adaptive_partial_dominance"
+        ],
+        "major_advancement_modes": [
+          "set-valued endpoint proof",
+          "partial-order certification",
+          "strict-containment criterion"
+        ],
+        "goal_alignment": "Directly proves the S_delta subseteq S_0 component of G2 and supplies the strict-containment condition used for robustness to tumour-composition uncertainty.",
+        "scientific_payoff": "Turns time-to-event dominance into the paper's robustness claim about successful initial-condition sets.",
+        "nontrivial_advance_over_sources": "Adds a set-level derivation that was missing from the previous version and is not present in the isolated core algebra.",
+        "formal_sharpness": "Uses only endpoint inequalities and the strict success predicate T_ext < T_loss, making the set inclusion logically transparent.",
+        "low_value_rejection_audit": "Rejects vague robustness language that does not prove set inclusion from endpoint inequalities.",
+        "selection_score": 5.0,
+        "controlled_external_lemmas": [],
+        "known_residual_risks_and_mitigation": "The proof is conditional on the endpoint inequalities already established in the relevant regime; this exactly matches the partial-dominance structure of the goal."
+      },
+      "deeper_reasoning_5": {
+        "title": "Fixed-dose non-inferiority from dose feasibility, boundary stability, and basin inclusion",
+        "target_goal_component": "G3_fixed_dose_noninferiority_for_resistant_extinction",
+        "declared_source_set": [
+          "core_reasoning_6",
+          "core_reasoning_7",
+          "core_reasoning_8",
+          "core_reasoning_12",
+          "G3_fixed_dose_noninferiority_for_resistant_extinction"
+        ],
+        "major_advancement_modes": [
+          "antiproliferative dose construction",
+          "global-attractor certificate",
+          "saddle-basin certificate",
+          "set inclusion"
+        ],
+        "goal_alignment": "Shows existence of admissible antiproliferative fixed doses when A > 1/beta, proves resistant extinction in the global-attractor case, and states the exact basin-inclusion certificate needed for the saddle case.",
+        "scientific_payoff": "Explains why a fixed dose can be formally non-inferior or strictly more robust than continuous adaptive therapy under a final-volume rather than strict-throughout-volume endpoint.",
+        "nontrivial_advance_over_sources": "Combines single-species dose classification, invasion stability, minimum final volume, and saddle-basin geometry into one G3-level proof.",
+        "formal_sharpness": "Separates the global case max{alpha,1/beta}<q<=A from the saddle-basin case 1/beta<q<alpha, preventing overclaiming.",
+        "low_value_rejection_audit": "Rejects a weaker local-stability-only argument that would not prove C_A subseteq F_A or final-volume feasibility.",
+        "selection_score": 4.9,
+        "controlled_external_lemmas": [
+          "competitive Lotka--Volterra global-attractor classification",
+          "stable-manifold separation by an interior saddle"
+        ],
+        "known_residual_risks_and_mitigation": "Where the global-attractor condition is unavailable, the proof explicitly downgrades to a basin-inclusion certificate rather than asserting universal fixed-dose dominance."
+      }
+    },
+    "rejected_low_value_candidates": [
+      {
+        "candidate": "A proof only re-deriving the continuous dose R_c(x)",
+        "rejection_reason": "Already covered by core_reasoning_1 and insufficiently deep relative to G1."
+      },
+      {
+        "candidate": "A proof only restating the local stability of (q,0)",
+        "rejection_reason": "Would not establish final-volume feasibility or C_A subseteq F_A for G3."
+      },
+      {
+        "candidate": "A toxicity proof for a single cycle only",
+        "rejection_reason": "Would fail to align with the cumulative endpoint D_delta over a finite treatment horizon."
+      },
+      {
+        "candidate": "A qualitative robustness paragraph without inequalities",
+        "rejection_reason": "The rubric asks for mathematically chainable derivations, and G2 specifically requires a set-inclusion endpoint."
+      }
+    ],
+    "global_alignment_audit": {
+      "top_level_key_check": "The only top-level keys are paper_title, deeper_reasoning_1 through deeper_reasoning_5, and deeper_metadata.",
+      "contiguity_check": "The reasoning keys are contiguous from 1 to 5 with no skipped indices.",
+      "string_type_check": "Each deeper_reasoning_k value is a JSON string, not an object or array.",
+      "latex_compile_check": "All reasoning entries were compiled with article, amsmath, and amssymb only.",
+      "goal_coverage_check": "G1 is covered by one trajectory-limit proof; G2 is covered by endpoint, toxicity, and initial-condition set proofs; G3 is covered by one fixed-dose basin/non-inferiority proof.",
+      "core_reasoning_use_check": "Every proof explicitly draws on multiple relevant core_reasoning components and elevates them to a goal-level claim."
+    },
+    "known_residual_risks_and_mitigation": [
+      "The switching convergence theorem is local to compact transversality arcs; this is appropriate because the goal itself is finite-time and assumes the continuous trajectory remains in the control region.",
+      "Endpoint dominance depends on a declared one-sided ordering between intermittent and continuous resistant abundance; the proof makes this assumption explicit rather than smuggling it into the conclusion.",
+      "Fixed-dose non-inferiority is strongest in the global-attractor subcase and becomes a basin-inclusion certificate in the saddle subcase; this avoids claiming a universal result beyond the mathematical premises."
+    ]
+  }
+}

@@ -1,0 +1,224 @@
+{
+  "paper_goal": {
+    "canonical_goal": [
+      {
+        "goal_id": "G1_complete_topological_characterisation_of_kinetics_independent_RPA",
+        "outcome_variable": "o_1=(Γ,S,r,K,L,{γ_p}_{p∈(k,ℓ)},𝒢)∈𝒪_P, where Γ=(V,E) is a finite chemical reaction network, S is its stoichiometric matrix, r={r_A} is an admissible family of reaction-rate functions, K×L is the admissible parameter domain for reaction parameters k and conserved-quantity values ℓ, γ_p is the labeled buffering structure associated with parameter p, and 𝒢 is the induced set of elementary and generic robust-perfect-adaptation properties.",
+        "goal_form": "target_proposition",
+        "target_object": "A complete topological characterization of kinetics-independent robust perfect adaptation in finite deterministic chemical reaction systems: for every finite reaction network Γ=(V,E) with reactions e_A:∑_i s_{iA}v_i→∑_i t_{iA}v_i, stoichiometric matrix S with entries S_{iA}=t_{iA}−s_{iA}, deterministic dynamics d x/dt=S r(x;k), and conserved-quantity constraints d^{(ᾱ)}·x̄=ℓ_{ᾱ} for a basis {d^{(ᾱ)}} of coker S={d∈ℝ^{|V|}:d^T S=0}, the kinetics-independent elementary robust-perfect-adaptation property for a parameter p∈{k_A:e_A∈E}∪{ℓ_{ᾱ}:d^{(ᾱ)}∈coker S} is exactly represented by the labeled buffering structure γ_p=(V_p,E_p∪E^+_p). Here V_p={v_i∈V:∂x̄_i/∂p≠0}, E_p={e_A∈E:∂r̄_A/∂p≠0}, E^+_p={e_C∈E\\E_p: some reactant of e_C lies in V_p}, γ_p is output-complete because every reaction with at least one reactant in V_p lies in E_p∪E^+_p, and γ_p has influence index λ(γ_p)=−|V_p|+|E_p∪E^+_p|−dim({c∈ker S:supp(c)⊆E_p∪E^+_p})+dim(P^0_{γ_p}(coker S))=0. The represented RPA conclusion is that every species in V\\V_p and every reaction in E\\E_p has a steady-state value independent of p for every admissible kinetics preserving positivity of x̄, differentiability of r_A, asymptotic stability of the Jacobian restricted to fixed conserved quantities, and the rule that (∂r_A/∂x_i)|_{x=x̄} is nonzero exactly for reactants; generic RPA properties for a parameter subset 𝒫 are obtained by unioning the affected sets V_p and E_p over p∈𝒫 and taking the corresponding complements.",
+        "feasibility_constraints": [
+          "Γ=(V,E) is finite; each reaction e_A∈E has the form e_A:∑_i s_{iA}v_i→∑_i t_{iA}v_i with s_{iA},t_{iA}∈ℤ_{≥0}; S_{iA}=t_{iA}−s_{iA}; if a chemical step is reversible, its reverse direction is represented as a separate reaction with reactants and products interchanged.",
+          "The concentration vector x(t)∈ℝ_{>0}^{|V|} satisfies d x/dt=S r(x;k), where r_A(x;k_A) is differentiable and depends on concentrations only through reactants of e_A; the extracted goal does not assume the mass-action special case r_A(x;k_A)=k_A∏_i x_i^{s_{iA}}.",
+          "A steady state (x̄,r̄) exists for each admissible (k,ℓ)∈K×L and satisfies S r̄=0 and d^{(ᾱ)}·x̄=ℓ_{ᾱ} for a basis {d^{(ᾱ)}} of coker S={d∈ℝ^{|V|}:d^T S=0}; ker S={c∈ℝ^{|E|}:S c=0}.",
+          "The steady state is asymptotically stable after conserved quantities are fixed: on the affine set {x:d^{(ᾱ)}·x=ℓ_{ᾱ} for all ᾱ}, the Jacobian matrix of d x/dt=S r(x;k) at x̄ is nonsingular and every eigenvalue has strictly negative real part.",
+          "All steady-state concentrations are positive, x̄_i(k,ℓ)>0 for every v_i∈V, and the kinetic support condition holds at x̄: (∂r_A/∂x_i)|_{x=x̄}≠0 if v_i is a reactant of e_A and (∂r_A/∂x_i)|_{x=x̄}=0 if v_i is not a reactant of e_A.",
+          "For a parameter p∈{k_A:e_A∈E}∪{ℓ_{ᾱ}:d^{(ᾱ)}∈coker S}, robust perfect adaptation of species v_i means ∂x̄_i/∂p=0 for every constant-in-time perturbation p↦p+δp that preserves positivity, differentiability, the reactant-support condition, and asymptotic stability; robust perfect adaptation of reaction e_A means ∂r̄_A/∂p=0 under the same perturbations.",
+          "A generic robust-perfect-adaptation property (𝒱,𝓔,𝒫) is feasible exactly when 𝒱⊆V, 𝓔⊆E, 𝒫⊆{k_A:e_A∈E}∪{ℓ_{ᾱ}:d^{(ᾱ)}∈coker S}, and for every p∈𝒫 every v_i∈𝒱 satisfies ∂x̄_i/∂p=0 and every e_A∈𝓔 satisfies ∂r̄_A/∂p=0 for all admissible kinetics preserving the assumptions."
+        ],
+        "success_set": {
+          "kind": "predicate",
+          "definition": "Σ_P^{(1)}={o_1: for every parameter p∈{k_A:e_A∈E}∪{ℓ_{ᾱ}:d^{(ᾱ)}∈coker S}, the affected sets V_p={v_i∈V:∂x̄_i/∂p≠0} and E_p={e_A∈E:∂r̄_A/∂p≠0} determine the supplemental set E^+_p={e_C∈E\\E_p: some reactant of e_C lies in V_p}; the labeled subnetwork γ_p=(V_p,E_p∪E^+_p) is output-complete and satisfies λ(γ_p)=−|V_p|+|E_p∪E^+_p|−dim({c∈ker S:supp(c)⊆E_p∪E^+_p})+dim(P^0_{γ_p}(coker S))=0; every v_i∈V\\V_p and every e_A∈E\\E_p exhibits robust perfect adaptation with respect to p; if 𝒫 is any subset of admissible parameters, V_𝒫=⋃_{p∈𝒫}V_p and E_𝒫=⋃_{p∈𝒫}E_p give the generic RPA property (V\\V_𝒫,E\\E_𝒫,𝒫); and every generic kinetics-independent RPA property can be represented by such a union of elementary labeled buffering structures}.",
+          "threshold": {
+            "applies": false,
+            "value": null,
+            "comparator": "eq",
+            "metric_symbol": null,
+            "metric_definition": null,
+            "source_span": null
+          }
+        },
+        "preference_ordering": {
+          "kind": "none",
+          "definition": null,
+          "objective_symbols": [],
+          "lex_order": null,
+          "embedding_to_total_utility": null
+        },
+        "robustness_scope": {
+          "applies": true,
+          "ambient_space": "The environment family consists of finite deterministic chemical reaction systems Γ=(V,E) with stoichiometric matrix S, concentration dynamics d x/dt=S r(x;k), admissible domains (k,ℓ)∈K×L, positive asymptotically stable steady states (x̄,r̄), differentiable reaction-rate functions r_A(x;k_A) whose nonzero concentration derivatives at x̄ occur exactly for reactants of e_A, and constant-in-time perturbations p↦p+δp of either a reaction parameter k_A or a conserved-quantity value ℓ_{ᾱ} that preserve positivity, differentiability, support, and asymptotic stability.",
+          "type_tag": "environment_family",
+          "metric_or_divergence": null,
+          "radius_or_budget": null,
+          "indexing_set": "I_1 = { (Γ,S,r,K,L,p) : Γ=(V,E) is finite; S_{iA}=t_{iA}−s_{iA} for reactions e_A:∑_i s_{iA}v_i→∑_i t_{iA}v_i with s_{iA},t_{iA}∈ℤ_{≥0}; r={r_A} is differentiable; (∂r_A/∂x_i)|_{x=x̄}≠0 exactly when v_i is a reactant of e_A; x̄_i>0 for all i; the Jacobian of S r(x;k) restricted to fixed conserved quantities has only eigenvalues with strictly negative real part; (k,ℓ)∈K×L; p∈{k_A:e_A∈E}∪{ℓ_{ᾱ}:d^{(ᾱ)}∈coker S}; and p↦p+δp is constant in time and leaves these conditions true }.",
+          "claimed_subfamily": {
+            "definition": "For every finite Γ=(V,E), S, differentiable kinetics r, admissible domains K×L, positive asymptotically stable steady state (x̄,r̄), and parameter p∈{k_A:e_A∈E}∪{ℓ_{ᾱ}:d^{(ᾱ)}∈coker S}, and for every replacement r↦r′ by differentiable rate functions with the same reaction graph and the same reactant-support pattern at a positive asymptotically stable steady state, the zero-derivative RPA coordinates forced by a labeled buffering structure are unchanged: if γ_p=(V_p,E_p∪E^+_p) is output-complete and λ(γ_p)=0, then every v_i∈V\\V_p satisfies ∂x̄_i/∂p=0 and every e_A∈E\\E_p satisfies ∂r̄_A/∂p=0 both for r and for r′.",
+            "source_span": {
+              "section": "Abstract; Introduction I.B; Section II.B; Section IV.A",
+              "paragraph_or_line": "Abstract sentences on kinetic independence; I.B main-results paragraph; Definition 1; Corollary 1 and Proposition 1",
+              "verbatim": "This correspondence allows us to map and enumerate all such RPA properties by analyzing network topology alone, independent of kinetic details."
+            }
+          },
+          "hinted_superfamily": {
+            "definition": "A hinted but not fully proved superfamily consists of dynamical systems not restricted to finite deterministic chemical reaction networks for which there exists a topological invariant χ of the system architecture such that χ=0 is equivalent to robust adaptation under admissible constant-in-time parameter perturbations. Because the extraction does not define a concrete non-chemical-reaction outcome space, dynamics, perturbation class, or invariant χ, this superfamily is recorded only as a non-operational hypothesis.",
+            "source_span": {
+              "section": "Abstract; Introduction I.B; Section VII",
+              "paragraph_or_line": "RAT-principle framing paragraph and discussion section",
+              "verbatim": "The RAT principle itself is not a concrete theorem, but rather a template of theorems."
+            }
+          },
+          "refinement_relation": "set_inclusion",
+          "criterion": "The claimed environment-family robustness criterion is satisfied exactly when fixing Γ=(V,E), S, and the reactant-support pattern is sufficient to force the same zero-sensitivity conclusions ∂x̄_i/∂p=0 for all v_i∈V\\V_p and ∂r̄_A/∂p=0 for all e_A∈E\\E_p across every differentiable kinetics r_A whose nonzero derivatives (∂r_A/∂x_i)|_{x=x̄} occur exactly for reactants, provided the perturbation p↦p+δp preserves x̄_i>0 and asymptotic stability of the Jacobian restricted to fixed conserved quantities. The broader RAT-style superfamily is excluded from Σ_P^{(1)} unless a concrete non-chemical reaction dynamics, perturbation set, and topological invariant χ are supplied.",
+          "channel_populated_by": [
+            "stated",
+            "operational",
+            "implicit"
+          ]
+        }
+      },
+      {
+        "goal_id": "G2_integral_feedback_mechanisms_for_every_buffering_structure_RPA_property",
+        "outcome_variable": "o_2=(Γ,S,r,K,L,γ,𝓘_γ,𝓩_γ)∈𝒪_P, where Γ=(V,E) is a finite deterministic chemical reaction network, γ=(V_γ,E_γ∪Ê_γ) is an output-complete zero-influence-index buffering structure associated with an elementary or generic robust-perfect-adaptation property, 𝓘_γ is the finite set of integrator equations constructed for γ, and 𝓩_γ is the algebraic zero-deviation constraint obtained from 𝓘_γ at steady state.",
+        "goal_form": "constrained_satisfiability",
+        "target_object": "For every robust-perfect-adaptation property represented by an output-complete zero-influence-index buffering structure γ=(V_γ,E_γ∪E^+_γ), construct an embedded integral-feedback representation that realizes the same steady-state independence from parameters internal to γ. Order the species and reactions so that x=(x_1,x_2)^T and r=(r_1,r_2)^T, where subscript 1 denotes species and reactions in γ and subscript 2 denotes species and reactions outside γ, and partition S as [[S_{11},S_{12}],[S_{21},S_{22}]]. For any real matrix A, write A^+ for its Moore-Penrose inverse, defined as the unique matrix X satisfying A X A=A, X A X=X, (A X)^T=A X, and (X A)^T=X A. Define S′=S_{22}−S_{21}S_{11}^+S_{12}, Q=[−S_{21}S_{11}^+  I], C(γ)=ker S_{11}/(ker S)_{supp γ}, U=span{S_{21}c:c∈C(γ)}, P as the orthogonal projection onto U^⊥, P_1 as the projection onto supp(E_γ)∩(ker S_{11})^⊥, and P_2 as the projection onto supp(E_γ)∩(ker S_{21})^⊥. For each emergent conserved quantity d^{(ā)}=(d_1^{(ā)},0) satisfying d^{(ā)}S=(0,c_2^{(ā)}), the required finite integrator set is d(d^{(ā)}·x)/dt=c_2^{(ā)}·r_2(x_2), P Q dx/dt=P S′r_2(x_2), P_1S_{11}^+dx_1/dt=P_1(r_1+S_{11}^+S_{12}r_2), and P_2S_{21}^+dx_2/dt=P_2(r_1+S_{21}^+S_{22}r_2). At any positive asymptotically stable steady state, the left-hand sides vanish and the right-hand sides impose algebraic set-point constraints on external concentrations x_2 and regulated reaction rates that contain no reaction parameter k_A with e_A∈E_γ∪E^+_γ and no conserved-quantity perturbation supported only inside γ.",
+        "feasibility_constraints": [
+          "Γ=(V,E) is finite; each reaction e_A∈E has the form e_A:∑_i s_{iA}v_i→∑_i t_{iA}v_i with s_{iA},t_{iA}∈ℤ_{≥0}; S_{iA}=t_{iA}−s_{iA}; x(t)∈ℝ_{>0}^{|V|} satisfies d x/dt=S r(x;k); r_A(x;k_A) is differentiable and has nonzero concentration derivative at x̄ exactly for reactants of e_A; a positive steady state (x̄,r̄) exists and satisfies S r̄=0 and d^{(ᾱ)}·x̄=ℓ_{ᾱ} for a basis {d^{(ᾱ)}} of coker S={d∈ℝ^{|V|}:d^T S=0}.",
+          "The steady state is asymptotically stable after conserved quantities are fixed: on the affine set {x:d^{(ᾱ)}·x=ℓ_{ᾱ} for all ᾱ}, the Jacobian matrix of d x/dt=S r(x;k) at x̄ is nonsingular and every eigenvalue has strictly negative real part.",
+          "γ=(V_γ,E_γ∪E^+_γ) is output-complete: every reaction with at least one reactant in V_γ belongs to E_γ∪E^+_γ; hence each external reaction rate in r_2 depends only on external concentrations x_2.",
+          "γ has zero influence index λ(γ)=−|V_γ|+|E_γ∪E^+_γ|−dim((ker S)_{supp γ})+dim(P^0_γ(coker S))=0, where ker S={c∈ℝ^{|E|}:S c=0}, (ker S)_{supp γ}={c∈ker S:supp(c)⊆E_γ∪E^+_γ}, coker S={d∈ℝ^{|V|}:d^T S=0}, and P^0_γ maps a species covector to its coordinates on V_γ.",
+          "The block partition S=[[S_{11},S_{12}],[S_{21},S_{22}]] is formed by ordering internal species/reactions in γ first and external species/reactions outside γ second; x=(x_1,x_2)^T and r=(r_1,r_2)^T follow the same ordering.",
+          "The vector spaces used in the integrator construction are finite dimensional and explicitly defined by C(γ)=ker S_{11}/(ker S)_{supp γ}, U=span{S_{21}c:c∈C(γ)}, D(γ)=coker S_{11}/D_{11}(γ), and D_{11}(γ)={d_1∈coker S_{11}: there exists d_2 such that (d_1,d_2)∈coker S}; for any matrix A, ker A={z:A z=0} and coker A={z:z^T A=0}.",
+          "The constructed integrator equations are evaluated only for trajectories and constant-in-time perturbations that preserve the positive asymptotically stable steady state, differentiability of the rate functions, and the reactant-support condition; the claim is not made for unstable systems or for kinetic functions whose nonzero concentration-derivative pattern differs from the reaction graph."
+        ],
+        "success_set": {
+          "kind": "predicate",
+          "definition": "Σ_P^{(2)}={o_2: for every output-complete γ=(V_γ,E_γ∪E^+_γ) with λ(γ)=0, and with A^+ defined for any matrix A as the unique Moore-Penrose inverse X satisfying A X A=A, X A X=X, (A X)^T=A X, and (X A)^T=X A, the finite set 𝓘_γ consists exactly of d(d^{(ā)}·x)/dt=c_2^{(ā)}·r_2(x_2), P Q dx/dt=P S′r_2(x_2), P_1S_{11}^+dx_1/dt=P_1(r_1+S_{11}^+S_{12}r_2), and P_2S_{21}^+dx_2/dt=P_2(r_1+S_{21}^+S_{22}r_2), where S′=S_{22}−S_{21}S_{11}^+S_{12}, Q=[−S_{21}S_{11}^+  I], P projects onto U^⊥ for U=span{S_{21}c:c∈ker S_{11}/(ker S)_{supp γ}}, P_1 projects onto supp(E_γ)∩(ker S_{11})^⊥, and P_2 projects onto supp(E_γ)∩(ker S_{21})^⊥; setting all left-hand sides to zero at a steady state yields algebraic constraints on x_2 and the regulated rates in E_γ that contain no reaction parameter k_A with e_A∈E_γ∪E^+_γ and no conserved-quantity perturbation supported only inside γ; therefore the external concentrations and regulated rates are independent of those internal parameters}.",
+          "threshold": {
+            "applies": false,
+            "value": null,
+            "comparator": "eq",
+            "metric_symbol": null,
+            "metric_definition": null,
+            "source_span": null
+          }
+        },
+        "preference_ordering": {
+          "kind": "none",
+          "definition": null,
+          "objective_symbols": [],
+          "lex_order": null,
+          "embedding_to_total_utility": null
+        },
+        "robustness_scope": {
+          "applies": true,
+          "ambient_space": "The environment family consists of finite deterministic chemical reaction systems Γ=(V,E) with S_{iA}=t_{iA}−s_{iA}, dynamics d x/dt=S r(x;k), positive asymptotically stable steady states satisfying S r̄=0 and conserved-quantity equations d^{(ᾱ)}·x̄=ℓ_{ᾱ}, differentiable reaction-rate functions with nonzero concentration derivatives exactly on reactants, an output-complete zero-influence-index buffering structure γ=(V_γ,E_γ∪E^+_γ), and a block partition of S,x,r into internal variables (S_{11},S_{12},S_{21},S_{22},x_1,r_1) on γ and external variables (x_2,r_2) outside γ.",
+          "type_tag": "environment_family",
+          "metric_or_divergence": null,
+          "radius_or_budget": null,
+          "indexing_set": "I_2 = { (Γ,S,r,K,L,γ) : Γ=(V,E) is finite; S_{iA}=t_{iA}−s_{iA}; d x/dt=S r(x;k); r_A is differentiable and has nonzero concentration derivative exactly for reactants of e_A at a positive steady state x̄; the steady state satisfies S r̄=0 and d^{(ᾱ)}·x̄=ℓ_{ᾱ} for a basis of coker S; the Jacobian restricted to fixed conserved quantities has eigenvalues with strictly negative real part; γ=(V_γ,E_γ∪E^+_γ) is output-complete; λ(γ)=−|V_γ|+|E_γ∪E^+_γ|−dim((ker S)_{supp γ})+dim(P^0_γ(coker S))=0; and S is partitioned as [[S_{11},S_{12}],[S_{21},S_{22}]] according to internal variables in γ and external variables outside γ }.",
+          "claimed_subfamily": {
+            "definition": "For every finite deterministic chemical reaction system Γ=(V,E) with stoichiometric matrix S, dynamics d x/dt=S r(x;k), differentiable reaction-rate functions whose nonzero concentration derivatives occur exactly for reactants, a positive asymptotically stable steady state satisfying S r̄=0 and d^{(ᾱ)}·x̄=ℓ_{ᾱ}, and an output-complete γ=(V_γ,E_γ∪E^+_γ) with λ(γ)=0, the integrator equations constructed from S_{11},S_{12},S_{21},S_{22}, the Moore-Penrose inverse A^+ of each required matrix A, the emergent-cycle quotient C(γ)=ker S_{11}/(ker S)_{supp γ}, and the emergent-conserved-quantity quotient D(γ)=coker S_{11}/D_{11}(γ) have steady-state right-hand sides depending only on external rates r_2(x_2), structural matrices, and conserved quantities not supported solely inside γ; therefore the resulting steady-state values of x_2 and the regulated rates are independent of reaction parameters k_A for e_A∈E_γ∪E^+_γ and of conserved-quantity perturbations supported only inside γ for every admissible kinetics preserving positivity, support, and asymptotic stability.",
+            "source_span": {
+              "section": "Introduction I.B; Section V.C; Section V.D",
+              "paragraph_or_line": "Main-results paragraph; construction of integrators; internal-model-principle subsection",
+              "verbatim": "To sum, the combination of Eqs. (59), (61), (64), and (65) constitute the set of integrator equations associated with a buffering structure γ."
+            }
+          },
+          "hinted_superfamily": {
+            "definition": "A possible but unproved superfamily consists of non-chemical-reaction dynamical systems in which robust adaptation to constant disturbances is realized by internal variables z satisfying differential equations dz/dt=h(y) where h(y)=0 is the algebraic set-point condition for regulated outputs y. This extraction does not treat that superfamily as a proved goal because no general non-chemical-reaction construction of z, h, or the associated topology is supplied.",
+            "source_span": {
+              "section": "Section VII; Conclusions VIII",
+              "paragraph_or_line": "RAT-principle and future-outlook discussion",
+              "verbatim": "It would also be interesting to discuss the possibility of RPA in stochastic systems."
+            }
+          },
+          "refinement_relation": "set_inclusion",
+          "criterion": "The claimed scope is satisfied exactly when substituting dx_1/dt=0 and dx_2/dt=0 into d(d^{(ā)}·x)/dt=c_2^{(ā)}·r_2(x_2), P Q dx/dt=P S′r_2(x_2), P_1 S_{11}^+ dx_1/dt=P_1(r_1+S_{11}^+S_{12}r_2), and P_2 S_{21}^+ dx_2/dt=P_2(r_1+S_{21}^+S_{22}r_2) yields algebraic constraints on x_2 and the regulated reaction rates that contain no reaction parameter k_A with e_A∈E_γ∪E^+_γ and no conserved-quantity perturbation supported only inside γ; here S′=S_{22}−S_{21}S_{11}^+S_{12}, Q=[−S_{21}S_{11}^+  I], P projects onto U^⊥ for U=span{S_{21}c:c∈ker S_{11}/(ker S)_{supp γ}}, and P_1,P_2 project onto supp(E_γ)∩(ker S_{11})^⊥ and supp(E_γ)∩(ker S_{21})^⊥.",
+          "channel_populated_by": [
+            "stated",
+            "operational",
+            "implicit"
+          ]
+        }
+      }
+    ],
+    "inter_goal_relation": "joint_conjunction",
+    "methodological_claim": {
+      "applies": true,
+      "target_object": "The paper claims a computational linear-algebraic enumeration method for identifying all labeled buffering structures of a finite deterministic chemical reaction network. The input is Γ=(V,E), the stoichiometric matrix S, bases {c^{(α)}} of ker S={c∈ℝ^{|E|}:S c=0} and {d^{(ᾱ)}} of coker S={d∈ℝ^{|V|}:d^T S=0}, and the binary reactant-support pattern σ_{iA}=1 exactly when v_i is a reactant of e_A. Construct the structural response matrix A using S, the two bases, and generic nonzero entries at exactly the positions where σ_{iA}=1; compute A^{-1}; define the species-sensitivity matrix X_{iA}=(A^{-1})_{iA}; define the reaction-sensitivity matrix R_{BA}=∑_α c_B^{(α)}(A^{-1})_{αA}; set V_A={v_i∈V:X_{iA}≠0} and E_A={e_B∈E:R_{BA}≠0}; set E^+_A={e_C∈E\\E_A: some reactant of e_C lies in V_A}; and output γ_A=(V_A,E_A∪E^+_A) for each reaction-parameter label A, with the analogous construction for conserved-quantity labels. This is a methodological claim about how the characterization is enumerated, not an additional end-state goal over biological networks.",
+      "evidence_channels": {
+        "source_span": {
+          "section": "Introduction I.B; Appendix A.4; Conclusions VIII",
+          "paragraph_or_line": "Main-results paragraph mentioning the package; algorithm subsection on enumerating labeled buffering structures; conclusion summary",
+          "verbatim": "We have devised an efficient algorithm to accomplish this enumeration and implemented it as an open-source computational package named RPAFinder."
+        },
+        "formalisation": "Given finite Γ=(V,E), S, bases {c^{(α)}} of ker S and {d^{(ᾱ)}} of coker S, and σ_{iA}=1 iff v_i is a reactant of e_A, define a structurally constrained matrix A whose free entries are algebraically generic nonzero numbers exactly where σ permits concentration-rate coupling and whose fixed entries encode the steady-state equations S r̄=0 and d^{(ᾱ)}·x̄=ℓ_{ᾱ}; compute A^{-1}; define X_{iA}=(A^{-1})_{iA} and R_{BA}=∑_α c_B^{(α)}(A^{-1})_{αA}; define V_A={v_i:X_{iA}≠0}, E_A={e_B:R_{BA}≠0}, and E^+_A={e_C∈E\\E_A: some reactant of e_C lies in V_A}; output γ_A=(V_A,E_A∪E^+_A) for every reaction-parameter label A; for every conserved-quantity label ᾱ, use the corresponding column of A^{-1} to define V_{ᾱ}={v_i:X_{iᾱ}≠0}, E_{ᾱ}={e_B:R_{Bᾱ}≠0}, E^+_{ᾱ}={e_C∈E\\E_{ᾱ}: some reactant of e_C lies in V_{ᾱ}}, and output γ_{ᾱ}=(V_{ᾱ},E_{ᾱ}∪E^+_{ᾱ})."
+      }
+    },
+    "evidence_channels": {
+      "stated_goal": {
+        "source_span": {
+          "section": "Abstract; Introduction I.B; Conclusion VIII",
+          "paragraph_or_line": "Abstract goal sentences; I.B main-results paragraph; conclusion summary",
+          "verbatim": "This study introduces a framework for characterizing RPA mechanisms in deterministic chemical reaction networks, utilizing topological invariants to systematically identify all structural configurations that enable robustness."
+        },
+        "formalisation": "The stated paper goal is the conjunction of two formal propositions. First, for every finite deterministic chemical reaction system Γ=(V,E) with d x/dt=S r(x;k), conserved-quantity constraints d^{(ᾱ)}·x̄=ℓ_{ᾱ}, positive asymptotic stability, and the reactant-support condition (∂r_A/∂x_i)|_{x=x̄}≠0 exactly for reactants v_i of e_A, every kinetics-independent elementary robust-perfect-adaptation property under p↦p+δp is equivalent to a labeled output-complete zero-influence-index subnetwork γ_p=(V_p,E_p∪E^+_p), and every generic robust-perfect-adaptation property is obtained by unioning elementary affected sets over a parameter subset. Second, for every such γ_p, there is a finite set of integrator equations whose steady-state zero conditions determine the regulated external concentrations and rates without internal parameters of γ_p."
+      },
+      "operational_goal": {
+        "source_span": {
+          "section": "Sections II.B, IV.A, V.C, V.D; Appendix A.4",
+          "paragraph_or_line": "Definition of kinetics-independent RPA; Theorem 2; Corollary 1; Proposition 1; Eqs. (59), (61), (64), and (65); enumeration algorithm",
+          "verbatim": "For a given deterministic reaction system, there is a one-to-one correspondence between its elementary RPA properties and labeled buffering structures."
+        },
+        "formalisation": "Operationally, fix Γ=(V,E), S, differentiable kinetics r, admissible domains K×L, a positive asymptotically stable steady state satisfying S r̄=0 and d^{(ᾱ)}·x̄=ℓ_{ᾱ}, and p∈{k_A:e_A∈E}∪{ℓ_{ᾱ}:d^{(ᾱ)}∈coker S}. Compute V_p={v_i:∂x̄_i/∂p≠0} and E_p={e_A:∂r̄_A/∂p≠0}; define E^+_p={e_C∈E\\E_p: some reactant of e_C lies in V_p}; prove γ_p=(V_p,E_p∪E^+_p) is output-complete and has λ(γ_p)=0; infer robust perfect adaptation of V\\V_p and E\\E_p; extend from one parameter p to a subset 𝒫 by V_𝒫=⋃_{p∈𝒫}V_p and E_𝒫=⋃_{p∈𝒫}E_p; then partition S as [[S_{11},S_{12}],[S_{21},S_{22}]] by γ_p and construct d(d^{(ā)}·x)/dt=c_2^{(ā)}·r_2(x_2), P Q dx/dt=P S′r_2(x_2), P_1S_{11}^+dx_1/dt=P_1(r_1+S_{11}^+S_{12}r_2), and P_2S_{21}^+dx_2/dt=P_2(r_1+S_{21}^+S_{22}r_2)."
+      },
+      "implicit_goal": {
+        "inference_basis": [
+          "Harvested stated spans: abstract characterization sentence, abstract correspondence/enumeration sentence, abstract integral-feedback sentence, I.B objective sentence, I.B Corollary-1 sentence, I.B RPAFinder sentence, I.B integral-feedback sentence, conclusion characterization sentence, conclusion package sentence, and conclusion integrator sentence; 9 of these 10 support the joint formal goal, while the broad RAT sentence is excluded as motivational or hypothetical rather than an operational theorem.",
+          "Harvested method artefacts: deterministic reaction-system definition, RPA definition, kinetics-independent RPA definition, influence-index/output-completeness definition, Theorem 2, Corollary 1, Proposition 1, integrator equations (59)/(61)/(64)/(65), and the enumeration algorithm; all 9 support either G1 or G2.",
+          "Harvested evaluation/demonstration artefacts: the simple example, Sniffer comparison, metabolic-network examples, cancer-network example, and RPA matrices/figures; 4 of 5 directly demonstrate the structural characterization or integrator construction, while the Sniffer comparison primarily functions as a boundary case excluding kinetics-dependent mass-action-only RPA from the goal.",
+          "Harvested claims/theorems: Theorem 2, Corollary 1, Proposition 1, Proposition 2 equivalence of reformulated dynamics, and the Section V steady-state argument; all 5 conclude predicates in the closure of G1 or G2."
+        ],
+        "fit_score": 0.914,
+        "fit_components": {
+          "TextAlign": 0.9,
+          "MethodAlign": 1.0,
+          "EvalAlign": 0.8,
+          "ClaimAlign": 1.0,
+          "Complexity": 0.12
+        },
+        "formalisation": "The implicit best-fitting goal is the following joint conjunction: exactly characterize all kinetics-independent zero-sensitivity steady-state coordinates under constant perturbations p↦p+δp in finite deterministic chemical reaction systems by equivalence with labeled output-complete zero-influence-index buffering structures, and construct the finite integrator equations that realize the corresponding zero-deviation set-point constraints for every such buffering structure."
+      },
+      "excluded_aims": [
+        {
+          "verbatim": "paving the way for the rational design of synthetic controllers",
+          "source_span": {
+            "section": "Abstract; Introduction I.B",
+            "paragraph_or_line": "Application framing around synthetic controllers",
+            "verbatim": "paving the way for the rational design of synthetic controllers"
+          },
+          "reason": "application_gesture"
+        },
+        {
+          "verbatim": "therapeutic interventions",
+          "source_span": {
+            "section": "Introduction I.A-I.B; Conclusions VIII",
+            "paragraph_or_line": "Biological and medical motivation paragraphs",
+            "verbatim": "therapeutic interventions"
+          },
+          "reason": "application_gesture"
+        },
+        {
+          "verbatim": "Robust Adaptation is Topological (RAT) principle",
+          "source_span": {
+            "section": "Abstract; Introduction I.B; Section VII",
+            "paragraph_or_line": "RAT-principle framing and discussion",
+            "verbatim": "The RAT principle itself is not a concrete theorem, but rather a template of theorems."
+          },
+          "reason": "motivational"
+        },
+        {
+          "verbatim": "yield-optimizing perturbations in metabolic pathways",
+          "source_span": {
+            "section": "Introduction I.B; Section VI.C",
+            "paragraph_or_line": "Application paragraph and metabolic-network example",
+            "verbatim": "finding yield-optimizing perturbations in metabolic pathways"
+          },
+          "reason": "application_gesture"
+        }
+      ]
+    },
+    "consistency_relation": "framing_divergence",
+    "consistency_relation_derivation": "The operational artefacts align with the two canonical goals: the reaction-system definitions, kinetics-independent RPA definition, Theorem 2, Corollary 1, Proposition 1, and the integrator equations (59), (61), (64), and (65) establish the complete topological characterization and the embedded integral-feedback construction. The stated framing also contains application goals about synthetic-controller design, therapeutic interventions, metabolic yield optimization, and the RAT principle for dynamical systems beyond finite deterministic chemical reaction networks. Because those broader statements are not fully operationalized as proved goals with their own outcome space, feasibility predicate, success condition, and perturbation family, the extraction uses framing_divergence rather than aligned."
+  }
+}

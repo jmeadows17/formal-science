@@ -1,0 +1,220 @@
+{
+  "paper_goal": {
+    "canonical_goal": [
+      {
+        "goal_id": "G1_spatial_two_drug_resistance_dynamics",
+        "outcome_variable": "o_1=(M,L,D,G,x,y,{(α_i,β_i)}_{i=1}^M,{n_i}_{i=1}^M,{f_i}_{i=1}^M,̅α,̅β,̅g,Cov_x(α,g),Cov_x(β,g)) ∈ O_P^{(1)}",
+        "goal_form": "target_proposition",
+        "target_object": "A feasible spatial two-drug resistance model in which M bacterial mutant density fields n_i(z,t) on a one-dimensional habitat [0,L] obey independent growth-diffusion equations, each mutant has two susceptibility traits (α_i,β_i), the drug concentration fields x(z) and y(z) determine mutant growth by g_i(z)=G(α_i x(z),β_i y(z)), local frequencies are f_i(z,t)=n_i(z,t)/Σ_{j=1}^M n_j(z,t), and the mean susceptibility fields ̅α(z,t)=Σ_{j=1}^M α_j f_j(z,t) and ̅β(z,t)=Σ_{j=1}^M β_j f_j(z,t) satisfy the spatial Price-type identities ∂_t̅α=Σ_{j=1}^M α_j f_j(g_j-̅g)+D∂_{zz}̅α and ∂_t̅β=Σ_{j=1}^M β_j f_j(g_j-̅g)+D∂_{zz}̅β, where ̅g(z,t)=Σ_{j=1}^M f_j(z,t)g_j(z).",
+        "feasibility_constraints": [
+          "M is an integer with M≥1; L>0; the habitat coordinate is z∈[0,L]; time is t≥0; x:[0,L]→R_{≥0} and y:[0,L]→R_{≥0} are static drug concentration fields; G:R_{≥0}^2→R maps effective concentrations of drug 1 and drug 2 to a per-capita growth rate; each mutant i∈{1,...,M} has susceptibility coordinates α_i≥0 and β_i≥0 and induced growth field g_i(z)=G(α_i x(z),β_i y(z)).",
+          "For every mutant i∈{1,...,M}, n_i(z,t) is nonnegative and satisfies ∂_t n_i(z,t)=g_i(z)n_i(z,t)+D∂_{zz}n_i(z,t) for z∈(0,L) and t>0, with common diffusion coefficient D>0, boundary equations n_i(0,t)=0 and n_i(L,t)=0, and initial condition n_i(z,0)=n_{0,i}(z) for a nonnegative function n_{0,i} with n_{0,i}(0)=n_{0,i}(L)=0.",
+          "Standing variation is imposed: at t=0 the mutant set is fixed, at least one n_{0,i} is not identically zero, and the equations contain no term converting n_i into n_j for i≠j, no carrying-capacity term depending on Σ_j n_j, no direct competition term, no facilitation term, and no frequency-dependent alteration of g_i(z).",
+          "At every (z,t) with N(z,t)=Σ_{j=1}^M n_j(z,t)>0, f_i(z,t)=n_i(z,t)/N(z,t), ̅g(z,t)=Σ_{j=1}^M f_j(z,t)g_j(z), Cov_x(α,g)(z,t)=Σ_{j=1}^M α_j f_j(z,t)(g_j(z)-̅g(z,t)), and Cov_x(β,g)(z,t)=Σ_{j=1}^M β_j f_j(z,t)(g_j(z)-̅g(z,t)).",
+          "The admitted spatial drug profiles are constant profiles x(z)=x_0 and y(z)=y_0 for constants x_0,y_0≥0, and static heterogeneous profiles x(z),y(z) on [0,L] whose induced functions g_i(z)=G(α_i x(z),β_i y(z)) are defined for all i and z; the heterogeneous cases include finitely piecewise-constant, affine-linear, nonlinear, and periodic profiles."
+        ],
+        "success_set": {
+          "kind": "predicate",
+          "definition": "Σ_P^{(1)}={o_1∈O_P^{(1)} : all feasibility constraints for o_1 hold, g_i(z)=G(α_i x(z),β_i y(z)) for every i and z, n_i satisfies ∂_t n_i=g_i n_i+D∂_{zz}n_i with n_i(0,t)=n_i(L,t)=0, f_i=n_i/Σ_{j=1}^M n_j wherever Σ_{j=1}^M n_j>0, ̅g=Σ_{j=1}^M f_jg_j, ̅α=Σ_{j=1}^M α_jf_j, ̅β=Σ_{j=1}^M β_jf_j, ∂_t̅α=Σ_{j=1}^M α_j f_j(g_j-̅g)+D∂_{zz}̅α, and ∂_t̅β=Σ_{j=1}^M β_j f_j(g_j-̅g)+D∂_{zz}̅β}.",
+          "threshold": {
+            "applies": false,
+            "value": null,
+            "comparator": null,
+            "metric_symbol": null,
+            "metric_definition": null,
+            "source_span": null
+          }
+        },
+        "preference_ordering": {
+          "kind": "none",
+          "definition": null,
+          "objective_symbols": [],
+          "lex_order": null,
+          "embedding_to_total_utility": null
+        },
+        "robustness_scope": {
+          "applies": true,
+          "ambient_space": "Δ_P^{(1)}={E=(M,L,D,G,x,y,{(α_i,β_i)}_{i=1}^M,{n_{0,i}}_{i=1}^M): M∈N, M≥1, L>0, D>0, x,y:[0,L]→R_{≥0}, G:R_{≥0}^2→R, α_i≥0, β_i≥0, n_{0,i}:[0,L]→R_{≥0}, n_{0,i}(0)=n_{0,i}(L)=0, and at least one n_{0,i} is not identically zero}.",
+          "type_tag": "environment_family",
+          "metric_or_divergence": null,
+          "radius_or_budget": null,
+          "indexing_set": "I_P^{(1)}={constant profiles x(z)=x_0,y(z)=y_0; finitely piecewise-constant profiles x,y on [0,L]; affine-linear profiles x,y on [0,L]; nonlinear profiles x,y on [0,L]; periodic profiles x(z)=k_1+A_1 sin(2πz/T_1), y(z)=k_2+A_2 sin(2πz/T_2) with T_1,T_2>0 and x(z),y(z)≥0 for all z∈[0,L]}.",
+          "claimed_subfamily": {
+            "definition": "The claimed subfamily consists of E∈Δ_P^{(1)} with static x,y profiles from I_P^{(1)}, two drug susceptibility coordinates (α_i,β_i) per mutant, independent density equations ∂_t n_i=g_i n_i+D∂_{zz}n_i, boundary equations n_i(0,t)=n_i(L,t)=0, growth fields g_i(z)=G(α_i x(z),β_i y(z)), and the two mean-trait identities ∂_t̅α=Σ_i α_i f_i(g_i-̅g)+D∂_{zz}̅α and ∂_t̅β=Σ_i β_i f_i(g_i-̅g)+D∂_{zz}̅β.",
+            "source_span": {
+              "section": "Abstract; Materials and methods",
+              "paragraph_or_line": "Abstract contribution sentences; equations (6)-(9)",
+              "verbatim": "we propose a reaction-diffusion system; governed by a Price equation with diffusion"
+            }
+          },
+          "hinted_superfamily": {
+            "definition": "The hinted but not established superfamily consists of models with more than two stressor fields; susceptibility vectors of dimension greater than two; an additional resistance-cost coordinate; space-dependent diffusion D_i(z); directed habitat-preference drift; temporal drug fields x(z,t),y(z,t); stochastic fluctuation terms; active mutation terms converting one mutant density into another; direct competition or facilitation terms in growth kinetics; nonlinear growth regulation not reducible to independent exponential growth; or transfer to gut microbiota, soil bacteria, cancer cell populations, epidemiological-scale resistance, toxicology, freshwater aquatic systems, or environmental biotechnology.",
+            "source_span": {
+              "section": "Discussion, Limitations and caveats; Extensions and outlook",
+              "paragraph_or_line": "Limitations and extensions paragraphs",
+              "verbatim": "More than 2 stressors could be implemented; The model could include space-dependent diffusion"
+            }
+          },
+          "refinement_relation": "set_inclusion",
+          "criterion": "For every E∈Δ_P^{(1)} in the claimed subfamily, the robustness criterion is satisfied exactly when substituting that E into g_i(z)=G(α_i x(z),β_i y(z)), ∂_t n_i=g_i n_i+D∂_{zz}n_i, f_i=n_i/Σ_j n_j, ̅g=Σ_i f_i g_i, ̅α=Σ_i α_i f_i, and ̅β=Σ_i β_i f_i yields well-defined functions on z∈[0,L], t≥0 and the identities ∂_t̅α=Σ_i α_i f_i(g_i-̅g)+D∂_{zz}̅α and ∂_t̅β=Σ_i β_i f_i(g_i-̅g)+D∂_{zz}̅β hold for that substituted system.",
+          "channel_populated_by": [
+            "stated",
+            "operational"
+          ]
+        }
+      },
+      {
+        "goal_id": "G2_lambda1_dominant_set_prediction",
+        "outcome_variable": "o_2=(E,{λ_1(i)}_{i=1}^M,R_λ,W_λ,W_∞,A_λ) ∈ O_P^{(2)}",
+        "goal_form": "target_proposition",
+        "target_object": "A correct λ_1-induced prediction of the long-time selected mutant set in a one-dimensional independent growth-diffusion system: for each mutant i, λ_1(i) is the largest real λ for which there exists a nonzero twice-differentiable function u_i on (0,L) satisfying D_i u_i''(z)+g_i(z)u_i(z)=λu_i(z) and u_i(0)=u_i(L)=0; R_λ orders mutants by nonincreasing λ_1(i); W_λ={i∈{1,...,M}: λ_1(i)=max_{1≤j≤M}λ_1(j)}; W_∞={i∈{1,...,M}: limsup_{t→∞}∫_0^L f_i(z,t)dz>0}; and A_λ is correct exactly when W_λ=W_∞.",
+        "feasibility_constraints": [
+          "E=(M,L,{D_i}_{i=1}^M,G,x,y,{(α_i,β_i)}_{i=1}^M,{n_{0,i}}_{i=1}^M) has M∈N, M≥1, L>0, D_i>0 for every i, x,y:[0,L]→R_{≥0}, G:R_{≥0}^2→R, α_i≥0, β_i≥0, and g_i(z)=G(α_i x(z),β_i y(z)) for all i and z∈[0,L].",
+          "Each mutant density satisfies ∂_t n_i(z,t)=g_i(z)n_i(z,t)+D_i∂_{zz}n_i(z,t) on z∈(0,L), t>0, with n_i(0,t)=n_i(L,t)=0 and nonnegative initial condition n_i(z,0)=n_{0,i}(z); every mutant included in the ranking has ∫_0^L n_{0,i}(z)dz>0 so that absent mutants are not falsely predicted to appear.",
+          "For each i, λ_1(i) is defined by the boundary-value equation D_i u_i''+g_i u_i=λu_i with u_i(0)=u_i(L)=0; if g_i is constant with value r_i, the exact expression is λ_1(i)=r_i-π^2D_i/L^2; if g_i is spatially varying and bounded, λ_1(i) is the largest eigenvalue of this linear operator on [0,L] with the boundary equations u_i(0)=u_i(L)=0.",
+          "The first-order analytic surrogate ̃λ_1(i)=-π^2D_i/L^2+(2/L)∫_0^L g_i(z)sin^2(πz/L)dz is feasible only as the ε_i→0 approximation for ε_i=g_{max,i}L^2/D_i with g_{max,i}=sup_{z∈[0,L]}|g_i(z)|<∞, or as an empirically checked ranking surrogate in explicitly simulated finite mutant panels.",
+          "The prediction target is the selected mutant set rather than a full closed-form solution n_i(z,t): competitive exclusion corresponds to |W_∞|=1, coexistence corresponds to |W_∞|>1, and extinction of every mutant is outside the ranking target unless λ_1(i)<0 for every i and W_∞ is empty by the same positive-mass definition."
+        ],
+        "success_set": {
+          "kind": "predicate",
+          "definition": "Σ_P^{(2)}={o_2∈O_P^{(2)} : all feasibility constraints for E hold, λ_1(i)=max{λ∈R: ∃u_i≠0 with D_i u_i''+g_i u_i=λu_i and u_i(0)=u_i(L)=0} for every i, W_λ={i:λ_1(i)=max_j λ_1(j)}, W_∞={i:limsup_{t→∞}∫_0^L f_i(z,t)dz>0}, and A_λ='correct' iff W_λ=W_∞}.",
+          "threshold": {
+            "applies": false,
+            "value": null,
+            "comparator": null,
+            "metric_symbol": null,
+            "metric_definition": null,
+            "source_span": null
+          }
+        },
+        "preference_ordering": {
+          "kind": "qualitative_partial",
+          "definition": "For feasible outcomes o_a,o_b∈O_P^{(2)}, o_a ⪰_P o_b iff CorrectEnv(o_b)⊆CorrectEnv(o_a), where CorrectEnv(o)={E∈Δ_P^{(2)}: W_λ^o(E)=W_∞(E)}, W_λ^o(E)={i:λ_{1,o}(i,E)=max_j λ_{1,o}(j,E)}, and W_∞(E)={i:limsup_{t→∞}∫_0^L f_i^E(z,t)dz>0}. If CorrectEnv(o_a)=CorrectEnv(o_b), then neither outcome is strictly preferred under this preorder.",
+          "objective_symbols": [
+            "λ_1(i)",
+            "R_λ",
+            "W_λ",
+            "W_∞",
+            "A_λ",
+            "CorrectEnv(o)"
+          ],
+          "lex_order": null,
+          "embedding_to_total_utility": null
+        },
+        "robustness_scope": {
+          "applies": true,
+          "ambient_space": "Δ_P^{(2)}={E=(M,L,{D_i}_{i=1}^M,G,x,y,{(α_i,β_i)}_{i=1}^M,{n_{0,i}}_{i=1}^M): M∈N, M≥1, L>0, D_i>0 for every i, x,y:[0,L]→R_{≥0}, G:R_{≥0}^2→R, α_i≥0, β_i≥0, g_i(z)=G(α_i x(z),β_i y(z)), ∂_t n_i=g_i n_i+D_i∂_{zz}n_i, n_i(0,t)=n_i(L,t)=0, and ∫_0^L n_{0,i}(z)dz>0 for every ranked mutant i}.",
+          "type_tag": "environment_family",
+          "metric_or_divergence": null,
+          "radius_or_budget": null,
+          "indexing_set": "I_P^{(2)}={constant growth fields g_i(z)=r_i; bounded spatially varying growth fields induced by constant, finitely piecewise-constant, affine-linear, nonlinear, or periodic drug profiles x,y; equal-diffusion cases D_i=D for all i; unequal-diffusion cases with mutant-specific constants D_i; finite mutant panels with susceptibility coordinates (α_i,β_i)}.",
+          "claimed_subfamily": {
+            "definition": "The claimed subfamily consists of E∈Δ_P^{(2)} with independent exponential-growth subpopulations on [0,L], static drug fields x,y, boundary equations n_i(0,t)=n_i(L,t)=0, growth fields g_i(z)=G(α_i x(z),β_i y(z)), and selection outcome predicted by comparing λ_1(i), the largest eigenvalue of D_i u_i''+g_i u_i=λu_i with u_i(0)=u_i(L)=0. Constant-growth cases use λ_1(i)=r_i-π^2D_i/L^2. Spatially varying cases use the exact λ_1(i) when numerically computed and use ̃λ_1(i)=-π^2D_i/L^2+(2/L)∫_0^L g_i(z)sin^2(πz/L)dz as the explicitly defined first-order approximation when ε_i=g_{max,i}L^2/D_i approaches 0 or when simulation checks the same ranking.",
+            "source_span": {
+              "section": "Results, An average fitness measure to predict selection outcome; Box 2",
+              "paragraph_or_line": "Equations (10)-(15) and Box 2 opening",
+              "verbatim": "we propose the use of the principal eigenvalue"
+            }
+          },
+          "hinted_superfamily": {
+            "definition": "The hinted but not established superfamily consists of environments with temporal drug fields x(z,t),y(z,t), stochastic subpopulation dynamics, active mutation terms between mutant types, direct competition or facilitation in growth kinetics, nonlinear density regulation, space-dependent diffusion D_i(z), directed flow, habitat-preference bias, nonzero-flux or periodic boundary equations replacing u_i(0)=u_i(L)=0, more than two stressor fields, and non-antibiotic ecological or physiological stressor systems.",
+            "source_span": {
+              "section": "Discussion, Limitations and caveats; Extensions and outlook",
+              "paragraph_or_line": "Limitations and extensions paragraphs",
+              "verbatim": "active mutation processes; competition or facilitation between variants; space-dependent diffusion"
+            }
+          },
+          "refinement_relation": "set_inclusion",
+          "criterion": "For every E∈Δ_P^{(2)} in the claimed subfamily, compute λ_1(i)=max{λ∈R: ∃u_i≠0 satisfying D_i u_i''+g_i u_i=λu_i and u_i(0)=u_i(L)=0}; set W_λ={i:λ_1(i)=max_j λ_1(j)}; solve or simulate ∂_t n_i=g_i n_i+D_i∂_{zz}n_i with n_i(0,t)=n_i(L,t)=0 and f_i=n_i/Σ_j n_j; set W_∞={i:limsup_{t→∞}∫_0^L f_i(z,t)dz>0}; the criterion is satisfied exactly when W_λ=W_∞. If ̃λ_1 is used instead of λ_1, the criterion is satisfied only when the ̃λ_1 ranking gives the same W_λ as exact λ_1 or the same W_∞ in the reported finite simulation.",
+          "channel_populated_by": [
+            "stated",
+            "operational",
+            "implicit"
+          ]
+        }
+      }
+    ],
+    "inter_goal_relation": "instrumental",
+    "methodological_claim": {
+      "applies": false,
+      "target_object": null,
+      "evidence_channels": null
+    },
+    "evidence_channels": {
+      "stated_goal": {
+        "source_span": {
+          "section": "Abstract; Introduction",
+          "paragraph_or_line": "Abstract contribution sentences; final Introduction aim paragraph",
+          "verbatim": "describes the multi-drug evolution; predict the precise outcomes; build an integrative framework"
+        },
+        "formalisation": "The stated goal is an instrumental conjunction: first obtain o_1, a feasible system with finite mutant densities n_i on [0,L], drug-rescaled growth g_i(z)=G(α_i x(z),β_i y(z)), equations ∂_t n_i=g_i n_i+D∂_{zz}n_i, frequencies f_i=n_i/Σ_j n_j, and mean-trait identities ∂_t̅α=Σ_i α_i f_i(g_i-̅g)+D∂_{zz}̅α and ∂_t̅β=Σ_i β_i f_i(g_i-̅g)+D∂_{zz}̅β; then obtain o_2, a λ_1-based prediction in which λ_1(i)=max{λ∈R: ∃u_i≠0 with D_i u_i''+g_i u_i=λu_i and u_i(0)=u_i(L)=0}, W_λ={i:λ_1(i)=max_j λ_1(j)}, W_∞={i:limsup_{t→∞}∫_0^L f_i(z,t)dz>0}, and success requires W_λ=W_∞."
+      },
+      "operational_goal": {
+        "source_span": {
+          "section": "Materials and methods; Results",
+          "paragraph_or_line": "Equations (6), (8), (9), spatial mean-trait equations, equations (10)-(15), Figures 1-6",
+          "verbatim": "∂n_i(z,t)/∂t = g_i n_i + D ∂²n_i/∂z²; λ1 values match"
+        },
+        "formalisation": "The operational goal is realised by specifying ∂_t n_i=g_i n_i+D∂_{zz}n_i with n_i(0,t)=n_i(L,t)=0, setting g_i(z)=G(α_i x(z),β_i y(z)), deriving f_i=n_i/Σ_j n_j, ̅g=Σ_i f_i g_i, ̅α=Σ_i α_i f_i, ̅β=Σ_i β_i f_i, ∂_t̅α=Σ_i α_i f_i(g_i-̅g)+D∂_{zz}̅α, and ∂_t̅β=Σ_i β_i f_i(g_i-̅g)+D∂_{zz}̅β, defining λ_1(i) by D_i u_i''+g_i u_i=λu_i with u_i(0)=u_i(L)=0, using λ_1(i) or ̃λ_1(i)=-π²D_i/L²+(2/L)∫_0^L g_i(z)sin²(πz/L)dz to order mutants, and checking whether W_λ={i:λ_1(i)=max_j λ_1(j)} matches W_∞={i:limsup_{t→∞}∫_0^L f_i(z,t)dz>0}."
+      },
+      "implicit_goal": {
+        "inference_basis": [
+          "Harvested stated spans cluster into model construction plus selection prediction: the abstract names a reaction-diffusion system, a Price equation with diffusion, homogeneous and heterogeneous spatial drug profiles, and a principal-eigenvalue fitness metric; the Introduction states the aim as an integrative framework showing how drug gradients shape evolutionary outcomes.",
+          "Harvested operational artefacts for G1 are equations for n_i, f_i, drug-rescaled growth g_i(z)=G(α_i x(z),β_i y(z)), and the two spatial mean-trait equations for ̅α and ̅β.",
+          "Harvested operational artefacts for G2 are the eigenvalue boundary-value problem, the first-order expression for λ_1, the constant-growth special case λ_1=r-π²D/L², the piecewise/linear/nonlinear/periodic examples, the atlas simulations, and the validation figure comparing λ_1 rankings to simulated selection dynamics.",
+          "Application and optimisation statements are harvested but excluded from the canonical goal because they motivate future use rather than define an achieved optimisation objective; this supports consistency_relation=framing_divergence rather than aligned.",
+          "The robustness scopes are populated because stated and operational channels both vary the environment across homogeneous and heterogeneous drug profiles, while the hinted superfamily is restricted to limitations and future extensions that are not asserted as achieved results."
+        ],
+        "fit_score": 0.909,
+        "fit_components": {
+          "TextAlign": 0.86,
+          "MethodAlign": 1.0,
+          "EvalAlign": 0.89,
+          "ClaimAlign": 0.91,
+          "Complexity": 0.25
+        },
+        "formalisation": "The highest-fit implicit hypothesis is the instrumental pair (o_1,o_2): o_1 is the feasible spatial two-drug resistance system with ∂_t n_i=g_i n_i+D∂_{zz}n_i, g_i(z)=G(α_i x(z),β_i y(z)), f_i=n_i/Σ_j n_j, ̅α=Σ_i α_i f_i, ̅β=Σ_i β_i f_i, ̅g=Σ_i f_i g_i, ∂_t̅α=Σ_i α_i f_i(g_i-̅g)+D∂_{zz}̅α, and ∂_t̅β=Σ_i β_i f_i(g_i-̅g)+D∂_{zz}̅β; o_2 is the λ_1-based selected-set prediction with λ_1(i)=max{λ∈R: ∃u_i≠0 satisfying D_i u_i''+g_i u_i=λu_i and u_i(0)=u_i(L)=0}, W_λ={i:λ_1(i)=max_j λ_1(j)}, W_∞={i:limsup_{t→∞}∫_0^L f_i(z,t)dz>0}, and success criterion W_λ=W_∞."
+      },
+      "excluded_aims": [
+        {
+          "verbatim": "Multi-drug combinations to treat bacterial populations are at the forefront of approaches for infection control and prevention of antibiotic resistance.",
+          "source_span": {
+            "section": "Abstract",
+            "paragraph_or_line": "Opening sentence",
+            "verbatim": "Multi-drug combinations to treat bacterial populations are at the forefront of approaches"
+          },
+          "reason": "motivational"
+        },
+        {
+          "verbatim": "Such mathematical understanding opens new avenues for multi-drug therapeutic optimization.",
+          "source_span": {
+            "section": "Abstract",
+            "paragraph_or_line": "Final sentence",
+            "verbatim": "opens new avenues for multi-drug therapeutic optimization"
+          },
+          "reason": "application_gesture"
+        },
+        {
+          "verbatim": "Applications can be envisaged in other systems such as gut microbiota, soil bacteria and their spatio-temporal distribution under abiotic gradients, cancer cell populations and drug resistance selection dynamics along physiological gradients, antibiotic resistance evolution at the epidemiological scale, toxicology data, freshwater aquatic systems and environmental biotechnology.",
+          "source_span": {
+            "section": "Discussion, Extensions and outlook",
+            "paragraph_or_line": "Opening sentence",
+            "verbatim": "Applications can be envisaged in other systems"
+          },
+          "reason": "application_gesture"
+        },
+        {
+          "verbatim": "Analytical results on optimization remain challenging even for simple piecewise growth variation as recognized in earlier work.",
+          "source_span": {
+            "section": "Discussion, Open avenues for multi-drug optimization over space",
+            "paragraph_or_line": "Optimisation paragraph",
+            "verbatim": "Analytical results on optimization remain challenging"
+          },
+          "reason": "out_of_scope_other"
+        }
+      ]
+    },
+    "consistency_relation": "framing_divergence",
+    "consistency_relation_derivation": "The stated, operational, and implicit channels agree on the formal achieved goals: a one-dimensional reaction-diffusion model with drug-rescaled growth, spatial mean-trait equations, and a λ_1-induced prediction of the long-time selected mutant set. The relation is framing_divergence rather than aligned because the stated and discussion channels also mention infection control, therapeutic optimisation, and transfer to other biological systems, whereas the operational artefacts define model equations, eigenvalue ranking, asymptotic/numerical λ_1 evaluation, and qualitative selection predictions rather than a solved optimal-control objective or a validated transfer theorem for other systems."
+  }
+}
