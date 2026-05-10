@@ -1,0 +1,290 @@
+{
+  "paper_goal": {
+    "canonical_goal": [
+      {
+        "goal_id": "G1_average_MIE_lower_bound_and_extensive_phase",
+        "outcome_variable": "o_1=(Λ,A,B,C,|Ψ^Λ⟩,\\mathcal U,\\mathcal M_B,Z_{\\mathrm{SAW}},F_{\\mathrm{SAW}},κ,L_x,L_y,Π_1)∈\\mathcal O_P^{(1)}, where Π_1 is a proof certificate whose terminal judgement is an inequality for the average post-measurement entanglement entropy between A and C",
+        "goal_form": "target_proposition",
+        "target_object": "A proved proposition with endpoint: for a finite planar two-dimensional lattice Λ partitioned into measured region B and unmeasured regions A,C, local measurement of B produces conditional states |ϕ^{AC}_{s_B}⟩ whose average entropy E(A:C)=∑_{s_B}p_{s_B}S(ρ^A_{s_B}) is bounded below by 2F_{\\mathrm{SAW}}-2log(eF_{\\mathrm{SAW}}) whenever F_{\\mathrm{SAW}}≥2; and, for explicitly specified random constant-depth two-dimensional circuit or holographic tensor-network ensembles with system-size-independent local dimension and depth, the ensemble average obeys \\mathbb E_{U∼\\mathcal U}∑_{s_B}p_{s_B}S(ρ^A_{s_B})≥κL_x for some κ>0 and all L_x above a finite constant.",
+        "feasibility_constraints": [
+          "Λ=(V,E) is a finite planar graph embedded as a two-dimensional lattice with linear dimensions L_x,L_y; A,B,C⊆V are disjoint; measurements are performed only on B; a dual-lattice path W separates A from C iff every path in Λ from A to C crosses W.",
+          "The pre-measurement state is |Ψ^{ABC}⟩. For each local-basis outcome s_B on B, p_{s_B}=⟨s_B|ρ^B|s_B⟩ with ρ^B=Tr_{AC}[|Ψ^{ABC}⟩⟨Ψ^{ABC}|], and |ϕ^{AC}_{s_B}⟩=p_{s_B}^{-1/2}(⟨s_B|⊗I_{AC})|Ψ^{ABC}⟩.",
+          "The entropy to be bounded is E(A:C)=∑_{s_B}p_{s_B}S(ρ^A_{s_B}), where ρ^A_{s_B}=Tr_C[|ϕ^{AC}_{s_B}⟩⟨ϕ^{AC}_{s_B}|] and S(σ)=-Tr[σlogσ].",
+          "The general bound assumes strict locality: for every tripartition X∪Y∪Z=Λ such that no edge connects X to Z after removing Y, Tr_Y[ρ^{XYZ}]=ρ^X⊗ρ^Z. The tensor-network representation is isometric: the directed graph has no directed cycles and every local tensor is an isometry from its incoming virtual legs to all outgoing virtual legs together with its physical leg.",
+          "The general measurement condition is a local complex-projective 2-design POVM: at each measured site i with Hilbert-space dimension d_i, the POVM \\mathcal M_i={F_{r_i}} satisfies ∑_{r_i}Tr(F_{r_i})(F_{r_i}/Tr(F_{r_i}))^{⊗2}=(I_i+\\mathsf F_i)/(d_i+1), where \\mathsf F_i swaps the two replicas of the site Hilbert space; the joint measurement is \\mathcal M_B=⊗_{i∈B}\\mathcal M_i.",
+          "For a separating dual self-avoiding walk W, let W^- be the set of sites directly adjacent to W on the A side and W^+ the set directly adjacent to W on the C side; define S_W^{(2)}=-logTr[(σ_r^{AW^-})^2], where σ_r^{AW^-} is the reduced state on AW^- after measuring the free A-side sites and conditioning on the outcome r. Strict locality implies S_W^{(2)} is independent of r and equals the Rényi-2 entropy of the complementary reduced state on W^+F_CC.",
+          "The self-avoiding-walk partition function is Z_{\\mathrm{SAW}}=∑_{W∈\\mathrm{SAW}(Λ^*,A,C)}exp[-H(W)] with H(W)=S_W^{(2)}/2; \\mathrm{SAW}(Λ^*,A,C) is the set of self-avoiding walks on the dual graph Λ^* that separate A from C; F_{\\mathrm{SAW}}=-logZ_{\\mathrm{SAW}}.",
+          "For constant-depth circuit instantiations, |Ψ^Λ⟩=U|0⟩^{⊗N}, N=|V|, U is sampled from the ensemble named in the claimed subfamily, the circuit depth d_C is bounded by a constant independent of N, and the qudit dimension q is bounded by a constant independent of N.",
+          "Whenever a gate or on-site unitary is called Haar-random, its distribution is the unique probability measure on the corresponding finite-dimensional unitary group that is invariant under left and right multiplication by fixed unitaries."
+        ],
+        "success_set": {
+          "kind": "predicate",
+          "definition": "Σ_P^{(1)}={o_1: Π_1 proves all of the following self-contained statements. (a) General bound: if |Ψ^Λ⟩ satisfies strict locality and the local 2-design POVM condition, and if F_{\\mathrm{SAW}}=-log∑_{W∈\\mathrm{SAW}(Λ^*,A,C)}exp[-S_W^{(2)}/2]≥2, then ∑_{s_B}p_{s_B}S(ρ^A_{s_B})≥2F_{\\mathrm{SAW}}-2log(eF_{\\mathrm{SAW}}). (b) Holographic instantiation: if each edge e of Λ carries the same bipartite bond state |ω_e⟩ with S_e^{(2)}=-logTr[(Tr_2|ω_e⟩⟨ω_e|)^2], each bulk site is acted on by an independent Haar-random unitary, meaning a unitary drawn from the left- and right-invariant probability measure on the relevant finite-dimensional unitary group, and then measured, L_y is bounded above by a polynomial in L_x, and S_e^{(2)}>2logμ_{Λ^*} with μ_{Λ^*}=lim_{n→∞}c_n^{1/n} and c_n the number of length-n self-avoiding walks from a fixed dual vertex, then \\mathbb E_U∑_{s_B}p_{s_B}S(ρ^A_{s_B})≥κL_x for all sufficiently large L_x and for every κ strictly smaller than S_e^{(2)}-2logμ_{Λ^*}. (c) Depth-2 4-local plaquette instantiation: for Haar-random, meaning invariant under left and right multiplication by fixed unitaries, four-qudit plaquette gates on the square-lattice architecture, with q∈\\mathbb Z and q≥88, measuring B yields \\mathbb E_U∑_{s_B}p_{s_B}S(ρ^A_{s_B})≥κL_x for some κ>0 and all sufficiently large L_x. (d) Depth-4 brickwork instantiation: for Haar-random, meaning invariant under left and right multiplication by fixed unitaries, two-qudit brickwork gates, with q∈\\mathbb Z and q≥134, measuring B yields \\mathbb E_U∑_{s_B}p_{s_B}S(ρ^A_{s_B})≥κL_x for some κ>0 and all sufficiently large L_x.}",
+          "threshold": {
+            "applies": false,
+            "value": null,
+            "comparator": null,
+            "metric_symbol": null,
+            "metric_definition": null,
+            "source_span": null
+          }
+        },
+        "preference_ordering": {
+          "kind": "none",
+          "definition": null,
+          "objective_symbols": [],
+          "lex_order": null,
+          "embedding_to_total_utility": null
+        },
+        "robustness_scope": {
+          "applies": true,
+          "ambient_space": "Tuples (Λ,L_x,L_y,A,B,C,\\mathcal U,q,d_C,\\mathcal M_B) satisfying the feasibility constraints for post-measurement entropy, where \\mathcal U is one of the claimed random circuit or holographic tensor-network ensembles, q is a positive integer independent of N=L_xL_y, and d_C is a positive integer independent of N.",
+          "type_tag": "environment_family",
+          "metric_or_divergence": null,
+          "radius_or_budget": null,
+          "indexing_set": "{(Λ,S_e^{(2)},L_x,L_y): L_y≤L_x^a for some fixed a>0 and S_e^{(2)}>2logμ_{Λ^*}} ∪ {(q,L_x,L_y): q∈\\mathbb Z, q≥88, depth-2 Haar-random 4-local plaquette gates} ∪ {(q,L_x,L_y): q∈\\mathbb Z, q≥134, depth-4 Haar-random 2-local brickwork gates}",
+          "claimed_subfamily": {
+            "definition": "The claimed subfamily is exactly the union of three families. Family H: place a bipartite state |ω_e⟩ on every edge e, apply independent Haar-random (left- and right-unitarily invariant) unitaries to bulk sites, and measure bulk sites; for W∈\\mathrm{SAW}(Λ^*,A,C), H(W)=S_e^{(2)}|W|/2 and the sufficient condition for linear MIE is S_e^{(2)}>2logμ_{Λ^*}. Family P: two layers of Haar-random (left- and right-unitarily invariant) four-qudit gates acting on square-lattice plaquettes; sites are blocked into 8×4 cells, each cell contains eight four-qudit quartets for the final-layer measurement decomposition, the finite enumeration over τ∈{±1}^8\\{(+1,…,+1)} gives a decreasing one-cell factor g_P(q), and q≥88 is the sufficient integer range defined by the condition g_P(q)≤1/μ_{hex}, μ_{hex}=√(2+√2). Family B: four layers of Haar-random (left- and right-unitarily invariant) two-qudit brickwork gates compiled into two plaquette-like layers; each 8×4 cell contains sixteen two-qudit pairs, the finite enumeration over τ∈{±1}^{16}\\{(+1,…,+1)} gives a decreasing one-cell factor g_B(q), and q≥134 is the sufficient integer range defined by the condition g_B(q)≤1/μ_{hex}, μ_{hex}=√(2+√2). The enumeration factors g_P(q) and g_B(q) are operationally fixed by summing, for every non-all-positive τ, the product of the local Schatten-2 norm bounds for the untraced one-, two-, or three-qudit reduced states in that cell; for P these bounds are c_1(q)^2=q(q+1)/(q^4+1) and c_2(q)^2=2q^2/(q^4+1), and for B they are c'_1(q)^2=q(q^4+6q^2+1)/(q^2+1)^3 and c'_2(q)=2q/(q^2+1), with additional brickwork split-pair factors bounded by √3/q.",
+            "source_span": {
+              "section": "Abstract; Section II; Section VI.A-C; Appendix E",
+              "paragraph_or_line": "Main result, Corollary 9, Propositions 10 and 11, and Appendix E finite-enumeration bounds",
+              "verbatim": "There exist ensembles of unitaries U obtained from natural 2D circuit architectures on q-dimensional qudits of variable depth dC, for which there are values (q,dC)=O(1), such that the average measurement-induced entanglement ... satisfies ... ≥κLx."
+            }
+          },
+          "hinted_superfamily": {
+            "definition": "The hinted superfamily is the set of the same local architectures at larger depths: depth-d_C four-local plaquette circuits with d_C≥2 and depth-d_C brickwork circuits with d_C≥4. This set contains the proved depth-2 plaquette and depth-4 brickwork subfamilies by set inclusion in d_C, but no monotonicity theorem in d_C is included in Σ_P^{(1)}.",
+            "source_span": {
+              "section": "Section VI.B-C",
+              "paragraph_or_line": "Text before Propositions 10 and 11",
+              "verbatim": "Intuitively, MIE should only increase as a function of dC in the shallow-depth regime... though this argument is not yet rigorous."
+            }
+          },
+          "refinement_relation": "set_inclusion",
+          "criterion": "For every instance in the union of (H) holographic circuits with edge Rényi-2 entropy S_e^{(2)}>2logμ_{Λ^*} and L_y≤L_x^a for a fixed a>0, (P) depth-2 Haar-random four-local plaquette circuits with q∈\\mathbb Z and q≥88, and (B) depth-4 Haar-random two-local brickwork circuits with q∈\\mathbb Z and q≥134, the proof must give Z_{\\mathrm{SAW}}≤L_y exp[-mL_x] for some m>0 after substituting the corresponding local self-avoiding-walk weights into Z_{\\mathrm{SAW}}=∑_{W∈\\mathrm{SAW}(Λ^*,A,C)}exp[-H(W)]; then F_{\\mathrm{SAW}}=-logZ_{\\mathrm{SAW}}=Ω(L_x), so Theorem-8-style substitution yields ∑_{s_B}p_{s_B}S(ρ^A_{s_B})≥κL_x for some κ>0 and all sufficiently large L_x.",
+          "channel_populated_by": [
+            "stated",
+            "operational",
+            "implicit"
+          ]
+        }
+      },
+      {
+        "goal_id": "G2_boundary_MPS_algorithm_failure",
+        "outcome_variable": "o_2=(\\mathcal U_{H},\\mathsf{SEBD},\\mathsf{bMPS},χ,N,S_e^{(2)},Π_2)∈\\mathcal O_P^{(2)}, where Π_2 is a proof certificate whose terminal judgement is high-probability failure of polynomial-bond-dimension boundary-MPS representations",
+        "goal_form": "target_proposition",
+        "target_object": "A proved proposition with endpoint: in the formal square-lattice holographic-circuit regime where the intermediate virtual state has linear half-chain entropy, a column-wise matrix-product-state sampler for random shallow circuits and a column-wise matrix-product-state contraction method for the corresponding random tensor networks cannot keep polynomial bond dimension with bounded error, so the algorithms abort with probability 1-exp[-Ω(√N)].",
+        "feasibility_constraints": [
+          "The lattice is square with √N rows and √N columns, so L_x=√N. The holographic circuit places a bond state |ω_e⟩ on every nearest-neighbour edge, applies independent Haar-random on-site unitaries, with Haar-random meaning distributed according to the left- and right-unitarily invariant probability measure on the on-site unitary group, and measures bulk sites.",
+          "The bond entropy threshold is S_e^{(2)}>2.8 bits, where S_e^{(2)}=-log_2 Tr[(Tr_2|ω_e⟩⟨ω_e|)^2]. The number 2.8 is an upper sufficient threshold obtained from S_e^{(2)}>2log_2 μ_{sq}, with μ_{sq} the connective constant of the square lattice and log_2 μ_{sq}<1.4.",
+          "The column-wise sampling algorithm \\mathsf{SEBD} stores, after measuring previous columns, a one-dimensional virtual conditional state on L_x sites as an MPS and truncates its bond dimension to poly(L_x); it aborts if no poly(L_x)-bond MPS approximation meets the bounded-error criterion.",
+          "The column-wise contraction algorithm \\mathsf{bMPS} stores the boundary tensor after contracting previous columns as an MPS on L_x legs and truncates its bond dimension to poly(L_x); it aborts if no poly(L_x)-bond MPS approximation meets the bounded-error criterion.",
+          "A half-chain entropy lower bound S_{1/2}≥αL_x with α>0 for the stored virtual or boundary state rules out faithful polynomial-bond-dimension representation: an MPS of bond dimension D has half-chain entropy at most logD exactly, and bounded-error approximations to the high-entropy states considered require D=exp[Ω(L_x)].",
+          "For tensor-network contraction, the random tensor distribution is p(T)=p_{\\mathrm{Gauss}}(T)|||Ψ[T]⟩||^2, where p_{\\mathrm{Gauss}} is the density for independent complex-Gaussian tensor entries and |Ψ[T]⟩ is the boundary state obtained by contracting the bulk tensors."
+        ],
+        "success_set": {
+          "kind": "predicate",
+          "definition": "Σ_P^{(2)}={o_2: Π_2 proves that for square √N×√N random holographic circuits with S_e^{(2)}>2.8 bits, \\Pr[\\mathsf{SEBD} aborts]≥1-exp[-c√N] for some c>0 and all sufficiently large N; and Π_2 proves that for random tensor networks drawn from p(T)=p_{\\mathrm{Gauss}}(T)|||Ψ[T]⟩||^2 with maximally entangled bond dimension χ≥7, \\Pr[\\mathsf{bMPS} aborts]≥1-exp[-c'√N] for some c'>0 and all sufficiently large N. The integer χ≥7 is fixed operationally by S_e^{(2)}=log_2χ for a maximally entangled bond state and log_2 7>2.8.}",
+          "threshold": {
+            "applies": false,
+            "value": null,
+            "comparator": null,
+            "metric_symbol": null,
+            "metric_definition": null,
+            "source_span": null
+          }
+        },
+        "preference_ordering": {
+          "kind": "none",
+          "definition": null,
+          "objective_symbols": [],
+          "lex_order": null,
+          "embedding_to_total_utility": null
+        },
+        "robustness_scope": {
+          "applies": true,
+          "ambient_space": "Pairs (random shallow two-dimensional circuit or random two-dimensional tensor-network ensemble, column-wise MPS boundary algorithm) in which the algorithm represents a one-dimensional virtual or boundary state of length L_x by an MPS whose bond dimension is constrained to be polynomial in L_x.",
+          "type_tag": "environment_family",
+          "metric_or_divergence": null,
+          "radius_or_budget": null,
+          "indexing_set": "{N∈\\mathbb N: square √N×√N holographic circuits with S_e^{(2)}>2.8 bits} ∪ {N∈\\mathbb N: square √N×√N random tensor networks with p(T)=p_{\\mathrm{Gauss}}(T)|||Ψ[T]⟩||^2 and maximally entangled bond dimension χ≥7}",
+          "claimed_subfamily": {
+            "definition": "The claimed subfamily is restricted to square-lattice holographic circuits whose bond state has S_e^{(2)}>2.8 bits and to the corresponding square-lattice random tensor-network contraction problem with maximally entangled bond dimension χ≥7. For both tasks, the stored state is tested across a half-chain cut; a self-avoiding-walk free-energy bound gives half-chain entropy Ω(L_x) with probability 1-exp[-Ω(L_x)], and since L_x=√N this becomes an abort probability of 1-exp[-Ω(√N)].",
+            "source_span": {
+              "section": "Section VI.D",
+              "paragraph_or_line": "Corollary 12 and surrounding derivation",
+              "verbatim": "Using the SEBD algorithm to sample from a random holographic circuit on a square √N × √N lattice where the bond state |ωe⟩ has Rényi-2 entanglement entropy Se^(2)>2.8 bits, the probability of the algorithm aborting is 1−e^{−Ω(√N)}. The same holds for using bMPS to contract random tensor networks with bond dimension χ≥7."
+            }
+          },
+          "hinted_superfamily": {
+            "definition": "The hinted superfamily is the set of architectures for which the intermediate virtual or boundary state produced during a boundary-contraction sampling or tensor-network-contraction sweep has a self-avoiding-walk partition function satisfying Z_{\\mathrm{SAW}}≤exp[-αL_x] for some α>0. This set contains the square-lattice holographic and random-tensor-network instances in Σ_P^{(2)}, but no theorem endpoint is required here for every member of the larger set.",
+            "source_span": {
+              "section": "Section VI.D",
+              "paragraph_or_line": "Paragraph after Corollary 12",
+              "verbatim": "More generally, if we look at different circuit architectures, then in regimes where the relevant self-avoiding walk model is ordered... an analogous result will apply."
+            }
+          },
+          "refinement_relation": "set_inclusion",
+          "criterion": "For every square √N×√N holographic-circuit SEBD instance with bond-state Rényi-2 entropy S_e^{(2)}>2.8 bits, and for every corresponding square √N×√N random tensor-network bMPS contraction instance with maximally entangled bond dimension χ≥7 and tensor distribution p(T)=p_{\\mathrm{Gauss}}(T)|||Ψ[T]⟩||^2, the proof must show: (i) the stored virtual or boundary state has half-chain entropy at least αL_x with probability at least 1-exp[-βL_x] for constants α,β>0; (ii) every MPS of bond dimension D has half-chain entropy at most logD; and (iii) any polynomial-D boundary algorithm must abort with probability at least 1-exp[-Ω(√N)].",
+          "channel_populated_by": [
+            "stated",
+            "operational",
+            "implicit"
+          ]
+        }
+      },
+      {
+        "goal_id": "G3_sublogarithmic_classical_depth_lower_bound",
+        "outcome_variable": "o_3=(\\mathcal U_{Cl},P_U,C_N,Q_U,δ,m,N,Π_3)∈\\mathcal O_P^{(3)}, where Π_3 is a proof certificate whose terminal judgement lower-bounds the depth of any classical probabilistic sampler approximating the quantum output distribution",
+        "goal_form": "target_proposition",
+        "target_object": "A proved proposition with endpoint: for a specified random constant-depth two-dimensional holographic Clifford circuit family, no classical probabilistic circuit of depth o(logN), even with all-to-all connectivity and with the random gates as input, can sample from the quantum output distribution to constant average total-variation accuracy.",
+        "feasibility_constraints": [
+          "The quantum ensemble is the square-lattice holographic Clifford circuit with local qudit dimension q=2^m for an integer m≥6; each site applies an independently sampled four-qudit Clifford unitary U_i; the physical circuit depth is bounded independently of N. A four-qudit Clifford unitary is a unitary that maps every tensor-product generalized Pauli operator on the four q-dimensional qudits to another such Pauli operator under conjugation, up to an overall phase.",
+          "For each U, P_U is the exact Born distribution over measurement strings produced by measuring the output quantum state in the specified local basis.",
+          "A candidate simulator C_N is a probabilistic classical circuit with unrestricted all-to-all connectivity; it receives the classical descriptions {U_i} as input and outputs a distribution Q_U over the same strings as P_U.",
+          "The approximation condition is \\mathbb E_{U∼\\mathcal U_{Cl}}TV(Q_U,P_U)≤δ, where TV(Q_U,P_U)=\\frac12∑_s|Q_U(s)-P_U(s)| and δ>0 is a constant independent of N.",
+          "The desired lower bound is depth(C_N)≥c logN for some c>0 independent of N; equivalently, no simulator family with depth(C_N)=o(logN) satisfies the approximation condition."
+        ],
+        "success_set": {
+          "kind": "predicate",
+          "definition": "Σ_P^{(3)}={o_3: Π_3 proves that there exists a constant δ>0 such that, for every integer m≥6 and every family of probabilistic classical circuits C_N with all-to-all connectivity, if C_N takes {U_i} as input for the q=2^m holographic Clifford ensemble and satisfies \\mathbb E_UTV(Q_U,P_U)≤δ, then depth(C_N)=Ω(logN). The numerical threshold m≥6 is operationally fixed by the proof condition (m/2)log2≥log(3μ_{sq}), where μ_{sq} is the square-lattice connective constant; m=6 is included because (6/2)log2≥log(3μ_{sq}), so q=2^m≥64.}",
+          "threshold": {
+            "applies": false,
+            "value": null,
+            "comparator": null,
+            "metric_symbol": null,
+            "metric_definition": null,
+            "source_span": null
+          }
+        },
+        "preference_ordering": {
+          "kind": "none",
+          "definition": null,
+          "objective_symbols": [],
+          "lex_order": null,
+          "embedding_to_total_utility": null
+        },
+        "robustness_scope": {
+          "applies": true,
+          "ambient_space": "Pairs (U,C_N) where U is drawn from the claimed random constant-depth holographic Clifford circuit ensemble and C_N is a probabilistic classical circuit attempting to approximate U's output distribution.",
+          "type_tag": "algorithmic_transform",
+          "metric_or_divergence": "Total variation distance TV(Q_U,P_U)=\\frac12∑_s|Q_U(s)-P_U(s)|, averaged over U∼\\mathcal U_{Cl}.",
+          "radius_or_budget": "A constant δ>0 independent of N satisfying \\mathbb E_UTV(Q_U,P_U)≤δ.",
+          "indexing_set": "{(m,N,C_N): m∈\\mathbb Z, m≥6, N∈\\mathbb N, U is a square-lattice holographic Clifford circuit on q=2^m-dimensional qudits, and C_N is any probabilistic classical circuit with all-to-all connectivity}",
+          "claimed_subfamily": {
+            "definition": "The claimed subfamily is the random holographic Clifford circuit with q=2^m-dimensional qudits for every integer m≥6, independent four-qudit Clifford gates U_i at each site, and arbitrary all-to-all classical probabilistic simulators constrained only by the average total-variation radius δ. The proof uses a tripartite measurement-induced-entanglement condition: after measuring all but three randomly selected qubits, each one-qubit reduced state has purity below a constant threshold with constant probability, which forces logarithmic classical depth for constant-error sampling.",
+            "source_span": {
+              "section": "Section VI.E; Appendix F",
+              "paragraph_or_line": "Corollary 13 and Appendix F threshold derivation",
+              "verbatim": "For some constant δ>0, and for any m≥6, any classical probabilistic circuit that takes {Ui} as input and outputs a distribution that is on average δ-close in total variational distance to the output of the quantum circuit must have depth Ω(log N)."
+            }
+          },
+          "hinted_superfamily": {
+            "definition": "The hinted superfamily is the set of depth-2 four-local circuits at constant q whose post-measurement stabilizer states satisfy the analogous tripartite measurement-induced-entanglement condition used to force logarithmic classical depth. This set is not included in Σ_P^{(3)} because no completed proof certificate for those four-local instances is part of the extracted endpoint.",
+            "source_span": {
+              "section": "Section VI.E",
+              "paragraph_or_line": "Paragraph after Corollary 13",
+              "verbatim": "In principle, we can also combine the arguments that led to Proposition 10 with those that led to Corollary 13 to get a similar result for depth-2 4-local circuits for q=O(1) as well."
+            }
+          },
+          "refinement_relation": "declared_embedding",
+          "criterion": "For every claimed simulator C_N, if \\mathbb E_UTV(Q_U,P_U)≤δ for the stated constant δ, then Π_3 must derive depth(C_N)≥c logN for some c>0; hence every depth-o(logN) simulator is outside the success set.",
+          "channel_populated_by": [
+            "stated",
+            "operational",
+            "implicit"
+          ]
+        }
+      }
+    ],
+    "inter_goal_relation": "instrumental",
+    "methodological_claim": {
+      "applies": true,
+      "target_object": "A replica-free proof strategy whose endpoint is an entropy lower bound rather than a replica quasientropy estimate: measurement of B followed by outcome-conditioned local operations between A and C is formalised as a one-shot multi-user entanglement-of-assistance protocol for distilling |Φ^{AC}_{d'}⟩=(d')^{-1/2}∑_{j=1}^{d'}|j⟩_A⊗|j⟩_C; the local measurement channel is decomposed into Ising-valued choices σ_i∈{−1,+1}; configurations are grouped by domain walls W separating A from C; Schatten-norm inequalities and 2-design moment identities bound the distillation error by √{d'}Z_{\\mathrm{SAW}}f(Z_{\\mathrm{SAW}}) with f(x)=(e^x−1)/x; optimizing d' yields ∑_{s_B}p_{s_B}S(ρ^A_{s_B})≥2F_{\\mathrm{SAW}}−2log(eF_{\\mathrm{SAW}}) for F_{\\mathrm{SAW}}≥2.",
+      "evidence_channels": {
+        "source_span": {
+          "section": "Abstract; Section II; Section V",
+          "paragraph_or_line": "Methodology statements and Lemma 7/Theorem 8 derivation",
+          "verbatim": "we develop new replica-free theoretical techniques that leverage tools from multi-user quantum information theory... allowing us to map the problem onto a statistical mechanics model of self-avoiding walks"
+        },
+        "formalisation": "The methodological claim is the derivation schema |Ψ^{ABC}⟩ ↦ {p_{s_B},|ϕ^{AC}_{s_B}⟩} ↦ error bound \\barϵ(d')≤√{d'}Z_{\\mathrm{SAW}}(e^{Z_{\\mathrm{SAW}}}−1)/Z_{\\mathrm{SAW}} ↦ entropy bound E(A:C)≥2F_{\\mathrm{SAW}}−2log(eF_{\\mathrm{SAW}}), where F_{\\mathrm{SAW}}=-logZ_{\\mathrm{SAW}}; no analytic continuation in a replica index α is part of this derivation."
+      }
+    },
+    "evidence_channels": {
+      "stated_goal": {
+        "source_span": {
+          "section": "Abstract and Introduction",
+          "paragraph_or_line": "Abstract and Introduction final paragraphs",
+          "verbatim": "We analyse the entanglement structure of states generated by random constant-depth two-dimensional quantum circuits... First, we show that standard algorithms based on matrix product states ... will fail... In addition, we also prove that these random constant-depth quantum circuits cannot be simulated by any classical circuit of sublogarithmic depth."
+        },
+        "formalisation": "The stated goal is an instrumental conjunction of three end-state propositions: first, for local measurements on region B of a state prepared by a random constant-depth two-dimensional quantum circuit or random holographic tensor network, prove a lower bound on the average post-measurement entropy ∑_{s_B}p_{s_B}S(ρ^A_{s_B}) and instantiate it as an extensive inequality \\mathbb E_U∑_{s_B}p_{s_B}S(ρ^A_{s_B})≥κL_x with κ>0; second, use the resulting linear entanglement of the one-dimensional boundary state encountered by matrix-product-state boundary methods to prove that SEBD sampling and bMPS tensor-network contraction abort with probability 1−exp[−Ω(√N)] in the stated regimes; third, prove that for a constant-depth holographic Clifford circuit on q=2^m-dimensional qudits with m≥6, every probabilistic classical circuit whose output distribution is on average within a fixed total-variation distance δ of the quantum output distribution has depth Ω(logN)."
+      },
+      "operational_goal": {
+        "source_span": {
+          "section": "Sections III-VI",
+          "paragraph_or_line": "Definitions of MIE; Theorem 8; Corollaries 9, 12, 13; Propositions 10, 11",
+          "verbatim": "Theorem 8 gives us a general bound on measurement-induced entanglement... we can now apply this result to specific families of random quantum circuits."
+        },
+        "formalisation": "The operational goal is the proof pipeline: define the post-measurement ensemble by p_{s_B}=⟨s_B|ρ^B|s_B⟩ and |ϕ^{AC}_{s_B}⟩=p_{s_B}^{-1/2}(⟨s_B|⊗I_{AC})|Ψ^{ABC}⟩; define E(A:C)=∑_{s_B}p_{s_B}S(Tr_C|ϕ^{AC}_{s_B}⟩⟨ϕ^{AC}_{s_B}|); prove E(A:C)≥2F_{\\mathrm{SAW}}−2log(eF_{\\mathrm{SAW}}) when F_{\\mathrm{SAW}}=-log∑_{W}exp[-H(W)]≥2; prove F_{\\mathrm{SAW}}=Ω(L_x) for holographic, depth-2 four-local, and depth-4 brickwork random ensembles; translate Ω(L_x) virtual or boundary entanglement into failure of polynomial-bond-dimension MPS boundary algorithms; and prove the Clifford-circuit Ω(logN) classical-depth lower bound under average total-variation error."
+      },
+      "implicit_goal": {
+        "inference_basis": [
+          "The abstract and overview name three end-state claims: macroscopic long-ranged MIE, MPS/bMPS failure, and sublogarithmic classical-depth nonsimulability.",
+          "The formal centre of the paper is Theorem 8, whose output variable is E(A:C) and whose success predicate is an entropy lower bound expressed through F_{SAW}.",
+          "Corollary 9 and Propositions 10/11 instantiate G1 for holographic, four-local plaquette, and brickwork random ensembles at constant q and constant depth.",
+          "Section VI.D uses the G1 high-MIE condition to derive G2, so G2 is instrumental downstream of G1 rather than independent.",
+          "Section VI.E and Appendix F adapt the MIE machinery to tripartite stabilizer entanglement to derive G3, so G3 is a distinct downstream complexity-theoretic goal.",
+          "The replica-free entanglement-of-assistance/self-avoiding-walk construction is repeatedly framed as how the result is obtained and is therefore represented as methodological_claim rather than as another canonical end-state goal."
+        ],
+        "fit_score": 0.98,
+        "fit_components": {
+          "TextAlign": 1.0,
+          "MethodAlign": 1.0,
+          "EvalAlign": 0.95,
+          "ClaimAlign": 1.0,
+          "Complexity": 0.2
+        },
+        "formalisation": "The maximal-fit implicit structure is an instrumental chain: the primary endpoint is a reusable high-measurement-induced-entanglement entropy theorem for ∑_{s_B}p_{s_B}S(ρ^A_{s_B}); a downstream algorithmic endpoint uses the same high-entanglement condition to prove average-case failure of polynomial-bond-dimension matrix-product-state boundary algorithms; a distinct downstream complexity-theoretic endpoint uses an analogous tripartite stabilizer-entanglement condition to prove Ω(logN) depth for classical probabilistic simulation. The replica-free entanglement-of-assistance and self-avoiding-walk machinery is a derivation method rather than a separate desired end-state."
+      },
+      "excluded_aims": [
+        {
+          "verbatim": "Quantum entanglement is a vital resource that can be utilised to achieve tasks that would not be possible in a classical world, such as unconditionally secure cryptography and high-precision sensing.",
+          "source_span": {
+            "section": "Introduction",
+            "paragraph_or_line": "Opening paragraph",
+            "verbatim": "Quantum entanglement is a vital resource..."
+          },
+          "reason": "motivational"
+        },
+        {
+          "verbatim": "This hypothesised 'teleportation transition' from short- to long-ranged MIE as a function of depth is also thought to coincide with a sharp change in the classical hardness of sampling from such circuits.",
+          "source_span": {
+            "section": "Introduction",
+            "paragraph_or_line": "Prior-work motivation",
+            "verbatim": "This hypothesised 'teleportation transition'..."
+          },
+          "reason": "topical"
+        },
+        {
+          "verbatim": "Our techniques can also be applied to different geometries of the regions ABC—these simply correspond to different boundary conditions being applied to the self-avoiding walk model.",
+          "source_span": {
+            "section": "Section II",
+            "paragraph_or_line": "After informal main result",
+            "verbatim": "Our techniques can also be applied to different geometries..."
+          },
+          "reason": "application_gesture"
+        },
+        {
+          "verbatim": "The relationship we have derived between random holographic tensor networks and the statistical mechanics of self-avoiding walks can be thought of as a generalization of the Ryu-Takayanagi formula to regimes where bond dimension does not scale with system size.",
+          "source_span": {
+            "section": "Section VI.A",
+            "paragraph_or_line": "Interpretive discussion after Corollary 9",
+            "verbatim": "The relationship we have derived... can be thought of as a generalization..."
+          },
+          "reason": "application_gesture"
+        }
+      ]
+    },
+    "consistency_relation": "framing_divergence",
+    "consistency_relation_derivation": "The formal stated and operational goals align on three instrumental end-state propositions: a rigorous average-MIE lower bound plus constant-depth extensive-MIE instantiations, MPS/bMPS boundary-algorithm failure, and an Ω(logN) classical-depth lower bound. The relation is framing_divergence rather than aligned because the stated framing also contains methodological content—replica-free multi-user quantum-information techniques and a self-avoiding-walk mapping—and broad quantum-advantage motivation; those elements are encoded as methodological_claim or excluded_aims rather than as additional canonical end-state goals."
+  }
+}

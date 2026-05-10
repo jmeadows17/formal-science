@@ -1,0 +1,228 @@
+{
+  "paper_goal": {
+    "canonical_goal": [
+      {
+        "goal_id": "G1_exact_real_rapidity_odd_sector_spectrum",
+        "outcome_variable": "o_1=(K,Psi,E) in O_P, where K is a set of real rapidity pairs (k_1,k_2), Psi maps each (k_1,k_2) in K to a two-body wavefunction Psi_{k_1,k_2}(x_1,x_2), and E maps each (k_1,k_2) in K to an energy E_{k_1,k_2}",
+        "goal_form": "constrained_satisfiability",
+        "target_object": "An exact construction of the real-rapidity, two-monomer, point-inversion-odd eigenstates and eigenenergies of two identical one-dimensional bosons of mass m on a ring of circumference L with Hamiltonian H=-(hbar^2/(2m))d^2/dx_1^2-(hbar^2/(2m))d^2/dx_2^2+g delta(x_1-x_2)+g_B delta(x_1)+g_B delta(x_2), for m>0, L>0, hbar>0, g>0, and g_B>0, restricted to wavefunctions satisfying bosonic exchange symmetry Psi(x_2,x_1)=Psi(x_1,x_2), coordinate periodicity Psi(x_1+L,x_2)=Psi(x_1,x_2) and Psi(x_1,x_2+L)=Psi(x_1,x_2), point-inversion oddness Psi(-x_1,-x_2)=-Psi(x_1,x_2), and real rapidity ordering 0<k_1<k_2.",
+        "feasibility_constraints": [
+          "The parameters in the Hamiltonian H=-(hbar^2/(2m))d^2/dx_1^2-(hbar^2/(2m))d^2/dx_2^2+g delta(x_1-x_2)+g_B delta(x_1)+g_B delta(x_2) satisfy m>0, L>0, hbar>0, g>0, and g_B>0; define the reduced mass mu=m/2, the particle-particle scattering length a=-hbar^2/(mu g), and the particle-barrier scattering length a_B=-hbar^2/(m g_B).",
+          "The coordinate space is [-L/2,L/2]^2 with opposite edges identified, so admissible wavefunctions obey Psi(x_1+L,x_2)=Psi(x_1,x_2) and Psi(x_1,x_2+L)=Psi(x_1,x_2); inside each connected open component of the complement of x_1=x_2, x_1=0, and x_2=0, Psi is twice differentiable.",
+          "Away from x_1=x_2, x_1=0, and x_2=0, every admissible eigenfunction satisfies (-(hbar^2/(2m))d^2/dx_1^2-(hbar^2/(2m))d^2/dx_2^2)Psi_{k_1,k_2}=E_{k_1,k_2}Psi_{k_1,k_2}.",
+          "Across the contact hyperplane x_1=x_2, Psi is continuous and, with a=-hbar^2/(mu g) and mu=m/2, the relative-coordinate derivative obeys lim_{r->0+} d_r Psi(X+r/2,X-r/2)-lim_{r->0-} d_r Psi(X+r/2,X-r/2)=-(1/a)Psi(X,X).",
+          "Across the barrier hyperplane x_j=0 for each j in {1,2}, Psi is continuous and, with a_B=-hbar^2/(m g_B), obeys lim_{x_j->0+} d_{x_j}Psi-lim_{x_j->0-} d_{x_j}Psi=-(1/a_B)Psi evaluated at x_j=0 while the other coordinate is fixed.",
+          "Every admissible eigenfunction is bosonic, Psi_{k_1,k_2}(x_2,x_1)=Psi_{k_1,k_2}(x_1,x_2), and point-inversion odd, Psi_{k_1,k_2}(-x_1,-x_2)=-Psi_{k_1,k_2}(x_1,x_2).",
+          "In every open coordinate sector, Psi_{k_1,k_2} is a finite superposition of the eight plane waves exp(i(lambda_{1,i}x_1+lambda_{2,i}x_2)) whose wavevectors are (k_1,k_2), (k_2,k_1), (-k_1,k_2), (-k_2,k_1), (k_1,-k_2), (k_2,-k_1), (-k_1,-k_2), and (-k_2,-k_1), with real rapidities ordered by 0<k_1<k_2."
+        ],
+        "success_set": {
+          "kind": "predicate",
+          "definition": "Sigma_1 = { o_1=(K,Psi,E) : for fixed m>0, L>0, hbar>0, g>0, g_B>0, mu=m/2, a=-hbar^2/(mu g), and a_B=-hbar^2/(m g_B), K={(k_1,k_2) in R^2 : 0<k_1<k_2, cos(k_1 L/2)((k_2^2 a a_B - 2) sin(k_2 L/2) + k_2(a+2a_B) cos(k_2 L/2)) + k_1 a sin(k_1 L/2)(k_2 a_B cos(k_2 L/2) - sin(k_2 L/2)) = 0, k_1^2 a sin(k_1 L/2) sin(k_2 L/2) + 2 k_1 sin(k_2 L/2) cos(k_1 L/2) - k_2^2 a sin(k_1 L/2) sin(k_2 L/2) - 2 k_2 sin(k_1 L/2) cos(k_2 L/2) = 0}; for every (k_1,k_2) in K, E_{k_1,k_2}=(hbar^2/(2m))(k_1^2+k_2^2); Define A_1={0<x_1<x_2<=L/2}, A_2={0<x_2<x_1<=L/2}, A_3={-L/2<x_1<x_2<0}, A_4={-L/2<x_2<x_1<0}, A_5={-L/2<x_1<0<x_2<=L/2}, and A_6={-L/2<x_2<0<x_1<=L/2}. For each allowed pair (k_1,k_2), define Psi_{k_1,k_2}(x_1,x_2)=Psi^(1)_{k_1,k_2}(x_1,x_2) on A_1, Psi^(1)_{k_1,k_2}(x_2,x_1) on A_2, -Psi^(1)_{k_1,k_2}(-x_2,-x_1) on A_3, -Psi^(1)_{k_1,k_2}(-x_1,-x_2) on A_4, Psi^(5)_{k_1,k_2}(x_1,x_2) on A_5, and Psi^(5)_{k_1,k_2}(x_2,x_1) on A_6. Psi^(1)_{k_1,k_2}(x_1,x_2) = -(k_1^2-k_2^2)a^2 sin(k_1L/2) cos((k_1+k_2)(x_1-x_2)/2) cos((k_1-k_2)(x_1+x_2)/2) + (k_1^2-k_2^2)a^2 sin(k_1L/2) cos((k_1-k_2)(x_1-x_2)/2) cos((k_1+k_2)(x_1+x_2)/2) + 2(k_1+k_2)a sin(k_1L/2) cos((k_1+k_2)(x_1+x_2)/2) sin((k_1-k_2)(x_1-x_2)/2) - 2(k_1-k_2)a sin(k_1L/2) cos((k_1-k_2)(x_1+x_2)/2) sin((k_1+k_2)(x_1-x_2)/2) - (k_1+k_2)a(2k_1a_B cos(k_1L/2)+(-2+k_1^2aa_B-k_1k_2aa_B) sin(k_1L/2)) cos((k_1+k_2)(x_1-x_2)/2) sin((k_1-k_2)(x_1+x_2)/2) + (-4k_1a_B cos(k_1L/2)+2(2-k_1^2aa_B+k_1k_2aa_B) sin(k_1L/2)) sin((k_1+k_2)(x_1-x_2)/2) sin((k_1-k_2)(x_1+x_2)/2) - (k_2-k_1)a(2k_1a_B cos(k_1L/2)+(-2+k_1^2aa_B+k_1k_2aa_B) sin(k_1L/2)) cos((k_1-k_2)(x_1-x_2)/2) sin((k_1+k_2)(x_1+x_2)/2) + (4k_1a_B cos(k_1L/2)+2(-2+k_1^2aa_B+k_1k_2aa_B) sin(k_1L/2)) sin((k_1-k_2)(x_1-x_2)/2) sin((k_1+k_2)(x_1+x_2)/2); Psi^(5)_{k_1,k_2}(x_1,x_2) = - k_1(k_1+k_2)aa_B(2 cos(k_1L/2)+(k_1-k_2)a sin(k_1L/2)) cos((k_1+k_2)(x_1-x_2)/2) sin((k_1-k_2)(x_1+x_2)/2) + (-4k_1(a+a_B) cos(k_1L/2)+(4+k_2^2a^2+2k_1k_2aa_B-k_1^2a(a+2a_B)) sin(k_1L/2)) sin((k_1+k_2)(x_1-x_2)/2) sin((k_1-k_2)(x_1+x_2)/2) + k_1(k_1-k_2)aa_B(2 cos(k_1L/2)+(k_1+k_2)a sin(k_1L/2)) cos((k_1-k_2)(x_1-x_2)/2) sin((k_1+k_2)(x_1+x_2)/2) + (4k_1(a+a_B) cos(k_1L/2)+(-4-k_2^2a^2+2k_1k_2aa_B+k_1^2a(a+2a_B)) sin(k_1L/2)) sin((k_1-k_2)(x_1-x_2)/2) sin((k_1+k_2)(x_1+x_2)/2); the resulting nonzero piecewise function is extended periodically by Psi(x_1+L,x_2)=Psi(x_1,x_2) and Psi(x_1,x_2+L)=Psi(x_1,x_2), satisfies bosonic exchange symmetry Psi(x_2,x_1)=Psi(x_1,x_2), point-inversion oddness Psi(-x_1,-x_2)=-Psi(x_1,x_2), the free Schrödinger equation away from x_1=x_2, x_1=0, and x_2=0, continuity at those three delta-support hyperplanes, the relative-coordinate jump condition lim_{r->0+} d_r Psi(X+r/2,X-r/2)-lim_{r->0-} d_r Psi(X+r/2,X-r/2)=-(1/a)Psi(X,X), and the barrier jump conditions lim_{x_j->0+} d_{x_j}Psi-lim_{x_j->0-} d_{x_j}Psi=-(1/a_B)Psi at x_j=0 for j in {1,2} }",
+          "threshold": {
+            "applies": false,
+            "value": null,
+            "comparator": null,
+            "metric_symbol": null,
+            "metric_definition": null,
+            "source_span": null
+          }
+        },
+        "preference_ordering": {
+          "kind": "none",
+          "definition": null,
+          "objective_symbols": [],
+          "lex_order": null,
+          "embedding_to_total_utility": null
+        },
+        "robustness_scope": {
+          "applies": true,
+          "ambient_space": "Theta={H(g,g_B,L,m): H=-(hbar^2/(2m))d^2/dx_1^2-(hbar^2/(2m))d^2/dx_2^2+g delta(x_1-x_2)+g_B delta(x_1)+g_B delta(x_2), m>0, L>0, g>0, g_B>0}, with coordinates periodic modulo L and with the bosonic point-inversion-odd real-rapidity sector selected by Psi(x_2,x_1)=Psi(x_1,x_2), Psi(-x_1,-x_2)=-Psi(x_1,x_2), and 0<k_1<k_2.",
+          "type_tag": "environment_family",
+          "metric_or_divergence": null,
+          "radius_or_budget": null,
+          "indexing_set": "{(g,g_B,L,m) in R^4 : g>0, g_B>0, L>0, m>0}",
+          "claimed_subfamily": {
+            "definition": "For every (g,g_B,L,m) in R^4 with g>0, g_B>0, L>0, and m>0, and for fixed hbar>0, the exact real-rapidity odd-sector construction applies to H=-(hbar^2/(2m))d^2/dx_1^2-(hbar^2/(2m))d^2/dx_2^2+g delta(x_1-x_2)+g_B delta(x_1)+g_B delta(x_2) on the ring with coordinate periodicity modulo L, bosonic exchange symmetry Psi(x_2,x_1)=Psi(x_1,x_2), point-inversion oddness Psi(-x_1,-x_2)=-Psi(x_1,x_2), and real rapidity ordering 0<k_1<k_2.",
+            "source_span": {
+              "section": "Statement of the problem; Summary and future research",
+              "paragraph_or_line": "Section 2 after Hamiltonian; Section 6 first paragraph",
+              "verbatim": "We assume both constants be positive: g > 0, gB > 0. ... In this paper, we present an exact solution for two one-dimensional δ-interacting bosons subject to periodic boundary conditions in the presence of a δ-function barrier, within the sector of the system’s Hilbert space that is odd under point inversion about the barrier. Both the particle-particle interaction and the particle-barrier interaction are repulsive."
+            }
+          },
+          "hinted_superfamily": {
+            "definition": "A larger family would include at least one of the following changes: attractive particle-particle coupling g<0, attractive barrier coupling g_B<0, complex rapidity solutions instead of real rapidity pairs 0<k_1<k_2, or the point-inversion-even sector satisfying Psi(-x_1,-x_2)=+Psi(x_1,x_2); these regimes are not part of the completed exact real-rapidity odd-sector construction for repulsive g and g_B.",
+            "source_span": {
+              "section": "Summary and future research",
+              "paragraph_or_line": "Future-research paragraphs",
+              "verbatim": "This article focuses exclusively on the case of repulsive interactions and a repulsive barrier. ... States with complex rapidities (strings) under periodic boundary conditions remain a subject for future investigation. Real rapidity states for attractive interactions and/or an attractive barrier are also of interest..."
+            }
+          },
+          "refinement_relation": "set_inclusion",
+          "criterion": "For every tuple (g,g_B,L,m) with g>0, g_B>0, L>0, m>0 and fixed hbar>0, define mu=m/2, a=-hbar^2/(mu g), and a_B=-hbar^2/(m g_B). The claimed construction applies exactly to those real rapidity pairs satisfying 0<k_1<k_2, cos(k_1 L/2)((k_2^2 a a_B - 2) sin(k_2 L/2) + k_2(a+2a_B) cos(k_2 L/2)) + k_1 a sin(k_1 L/2)(k_2 a_B cos(k_2 L/2) - sin(k_2 L/2)) = 0, and k_1^2 a sin(k_1 L/2) sin(k_2 L/2) + 2 k_1 sin(k_2 L/2) cos(k_1 L/2) - k_2^2 a sin(k_1 L/2) sin(k_2 L/2) - 2 k_2 sin(k_1 L/2) cos(k_2 L/2) = 0; the associated energy is E_{k_1,k_2}=(hbar^2/(2m))(k_1^2+k_2^2), and the associated wavefunction is the nonzero piecewise trigonometric function obtained by the following six-sector reconstruction: Define A_1={0<x_1<x_2<=L/2}, A_2={0<x_2<x_1<=L/2}, A_3={-L/2<x_1<x_2<0}, A_4={-L/2<x_2<x_1<0}, A_5={-L/2<x_1<0<x_2<=L/2}, and A_6={-L/2<x_2<0<x_1<=L/2}. For each allowed pair (k_1,k_2), define Psi_{k_1,k_2}(x_1,x_2)=Psi^(1)_{k_1,k_2}(x_1,x_2) on A_1, Psi^(1)_{k_1,k_2}(x_2,x_1) on A_2, -Psi^(1)_{k_1,k_2}(-x_2,-x_1) on A_3, -Psi^(1)_{k_1,k_2}(-x_1,-x_2) on A_4, Psi^(5)_{k_1,k_2}(x_1,x_2) on A_5, and Psi^(5)_{k_1,k_2}(x_2,x_1) on A_6. Psi^(1)_{k_1,k_2}(x_1,x_2) = -(k_1^2-k_2^2)a^2 sin(k_1L/2) cos((k_1+k_2)(x_1-x_2)/2) cos((k_1-k_2)(x_1+x_2)/2) + (k_1^2-k_2^2)a^2 sin(k_1L/2) cos((k_1-k_2)(x_1-x_2)/2) cos((k_1+k_2)(x_1+x_2)/2) + 2(k_1+k_2)a sin(k_1L/2) cos((k_1+k_2)(x_1+x_2)/2) sin((k_1-k_2)(x_1-x_2)/2) - 2(k_1-k_2)a sin(k_1L/2) cos((k_1-k_2)(x_1+x_2)/2) sin((k_1+k_2)(x_1-x_2)/2) - (k_1+k_2)a(2k_1a_B cos(k_1L/2)+(-2+k_1^2aa_B-k_1k_2aa_B) sin(k_1L/2)) cos((k_1+k_2)(x_1-x_2)/2) sin((k_1-k_2)(x_1+x_2)/2) + (-4k_1a_B cos(k_1L/2)+2(2-k_1^2aa_B+k_1k_2aa_B) sin(k_1L/2)) sin((k_1+k_2)(x_1-x_2)/2) sin((k_1-k_2)(x_1+x_2)/2) - (k_2-k_1)a(2k_1a_B cos(k_1L/2)+(-2+k_1^2aa_B+k_1k_2aa_B) sin(k_1L/2)) cos((k_1-k_2)(x_1-x_2)/2) sin((k_1+k_2)(x_1+x_2)/2) + (4k_1a_B cos(k_1L/2)+2(-2+k_1^2aa_B+k_1k_2aa_B) sin(k_1L/2)) sin((k_1-k_2)(x_1-x_2)/2) sin((k_1+k_2)(x_1+x_2)/2); Psi^(5)_{k_1,k_2}(x_1,x_2) = - k_1(k_1+k_2)aa_B(2 cos(k_1L/2)+(k_1-k_2)a sin(k_1L/2)) cos((k_1+k_2)(x_1-x_2)/2) sin((k_1-k_2)(x_1+x_2)/2) + (-4k_1(a+a_B) cos(k_1L/2)+(4+k_2^2a^2+2k_1k_2aa_B-k_1^2a(a+2a_B)) sin(k_1L/2)) sin((k_1+k_2)(x_1-x_2)/2) sin((k_1-k_2)(x_1+x_2)/2) + k_1(k_1-k_2)aa_B(2 cos(k_1L/2)+(k_1+k_2)a sin(k_1L/2)) cos((k_1-k_2)(x_1-x_2)/2) sin((k_1+k_2)(x_1+x_2)/2) + (4k_1(a+a_B) cos(k_1L/2)+(-4-k_2^2a^2+2k_1k_2aa_B+k_1^2a(a+2a_B)) sin(k_1L/2)) sin((k_1-k_2)(x_1-x_2)/2) sin((k_1+k_2)(x_1+x_2)/2). Exactness means that the constructed wavefunction satisfies periodicity Psi(x_1+L,x_2)=Psi(x_1,x_2) and Psi(x_1,x_2+L)=Psi(x_1,x_2), bosonic exchange symmetry Psi(x_2,x_1)=Psi(x_1,x_2), point-inversion oddness Psi(-x_1,-x_2)=-Psi(x_1,x_2), the free Schrödinger equation away from x_1=x_2, x_1=0, and x_2=0, continuity across x_1=x_2, x_1=0, and x_2=0, the contact jump condition lim_{r->0+} d_r Psi(X+r/2,X-r/2)-lim_{r->0-} d_r Psi(X+r/2,X-r/2)=-(1/a)Psi(X,X), and the barrier jump conditions lim_{x_j->0+} d_{x_j}Psi-lim_{x_j->0-} d_{x_j}Psi=-(1/a_B)Psi at x_j=0 for j in {1,2}.",
+          "channel_populated_by": [
+            "stated",
+            "operational"
+          ]
+        }
+      },
+      {
+        "goal_id": "G2_large_repulsion_asymptotic_proposition",
+        "outcome_variable": "o_2=(E_asymp, DeltaE_1, DeltaE_2, R) in O_P, where E_asymp is a closed asymptotic energy expression through order xi^{-2} plus an O(xi^{-3}) remainder for fixed xi_B>0, DeltaE_1 is the coefficient multiplying xi^{-1}, DeltaE_2 is the coefficient multiplying xi^{-2}, and R is the sign-based proposition that the derivative-delta bilinear form reproduces the first-order correction but cannot be interpreted as an ordinary Hermitian perturbing potential beyond first order",
+        "goal_form": "target_proposition",
+        "target_object": "An instrumental large-xi diagnostic proposition derived from the exact odd-sector solution for the point-inversion-odd two-boson ring Hamiltonian H=-(hbar^2/(2m))d^2/dx_1^2-(hbar^2/(2m))d^2/dx_2^2+g delta(x_1-x_2)+g_B delta(x_1)+g_B delta(x_2), with xi=g/(hbar^2/(mL))->+infinity and fixed xi_B=g_B/(hbar^2/(mL))>0: the energy equals (hbar^2/(mL^2))(epsilon(eta_1,eta_2)+epsilon(eta_2,eta_1)+O(xi^{-3})) with epsilon explicitly specified through powers xi^0, xi^{-1}, and xi^{-2}; the xi^{-1} coefficient equals the first-order correction produced by the bilinear form V=tilde_g left_d_{x_1-x_2} delta(x_1-x_2) right_d_{x_1-x_2}, tilde_g=-hbar^4/(mu^2 g), mu=m/2; and the positive xi^{-2} coefficient for eta_1>0, eta_2>0, eta_1!=eta_2, xi_B>0 rules out interpreting V as an ordinary non-degenerate Hermitian perturbing potential beyond first order.",
+        "feasibility_constraints": [
+          "The base Hamiltonian is H=-(hbar^2/(2m))d^2/dx_1^2-(hbar^2/(2m))d^2/dx_2^2+g delta(x_1-x_2)+g_B delta(x_1)+g_B delta(x_2) on a ring of circumference L, with m>0, L>0, hbar>0, g>0, g_B>0, coordinate periodicity, bosonic exchange symmetry, and point-inversion oddness Psi(-x_1,-x_2)=-Psi(x_1,x_2).",
+          "Dimensionless couplings are xi=g/(hbar^2/(mL)) and xi_B=g_B/(hbar^2/(mL)); the expansion regime is xi->+infinity with xi_B fixed and positive.",
+          "The quantities eta_1 and eta_2 are distinct positive dimensionless one-body rapidities eta_i=L sqrt(2m epsilon_i/hbar^2), where epsilon_i is an eigenvalue with eigenfunction phi_i of -hbar^2 phi_i''(x)/(2m)+g_B delta(x)phi_i(x)=epsilon_i phi_i(x) under one-body periodicity phi_i(x+L)=phi_i(x).",
+          "The bilinear object V=tilde_g left_d_{x_1-x_2} delta(x_1-x_2) right_d_{x_1-x_2}, with tilde_g=-hbar^4/(mu^2 g) and mu=m/2, is evaluated only through the equality of its first-order energy correction with the xi^{-1} coefficient of the exact expansion."
+        ],
+        "success_set": {
+          "kind": "predicate",
+          "definition": "Sigma_2 = { o_2=(E_asymp,DeltaE_1,DeltaE_2,R) : for m>0, L>0, hbar>0, g>0, g_B>0, xi=g/(hbar^2/(mL)), xi_B=g_B/(hbar^2/(mL))>0, and distinct positive eta_1, eta_2 with eta_i=L sqrt(2m epsilon_i/hbar^2) where epsilon_i has an eigenfunction phi_i satisfying -hbar^2 phi_i''(x)/(2m)+g_B delta(x)phi_i(x)=epsilon_i phi_i(x) and phi_i(x+L)=phi_i(x), E_asymp=(hbar^2/(mL^2))(epsilon(eta_1,eta_2)+epsilon(eta_2,eta_1)+R_3(xi)) with epsilon(eta_I,eta_II)=0.5 eta_I^2 - [2 eta_I^2(eta_I^2+xi_B^2)/(eta_I^2+xi_B(2+xi_B))] xi^{-1} + [2 eta_I^2(eta_I^2+xi_B^2)(eta_I^4(eta_II^2+3xi_B)+xi_B^2(2+xi_B)(3xi_B^2+eta_II^2(2+xi_B))+2eta_I^2 xi_B(eta_II^2(2+xi_B)+xi_B(5+3xi_B)))/(xi_B(eta_I^2+xi_B(2+xi_B))^3)] xi^{-2}; the remainder has the operational meaning that there exist finite constants C>0 and xi_0>0 such that |R_3(xi)| <= C xi^{-3} for all xi>=xi_0; DeltaE_1=(hbar^2/(mL^2)) times the sum of the xi^{-1} coefficients in epsilon(eta_1,eta_2) and epsilon(eta_2,eta_1); DeltaE_2=(hbar^2/(mL^2)) times the sum of the xi^{-2} coefficients in epsilon(eta_1,eta_2) and epsilon(eta_2,eta_1), and DeltaE_2>0 for eta_1>0, eta_2>0, eta_1!=eta_2, and xi_B>0; DeltaE_1 equals the first-order energy correction obtained from the bilinear form V=tilde_g left_d_{x_1-x_2} delta(x_1-x_2) right_d_{x_1-x_2} with tilde_g=-hbar^4/(mu^2 g) and mu=m/2; R is the proposition that V is not an ordinary Hermitian perturbing potential beyond first order, because an ordinary non-degenerate Hermitian perturbation W with unperturbed energies E_n^(0)>E_0^(0) has second-order ground-state correction sum_{n>0} |<n|W|0>|^2/(E_0^(0)-E_n^(0)) <= 0, whereas DeltaE_2>0 in E_asymp }",
+          "threshold": {
+            "applies": false,
+            "value": null,
+            "comparator": null,
+            "metric_symbol": null,
+            "metric_definition": null,
+            "source_span": null
+          }
+        },
+        "preference_ordering": {
+          "kind": "none",
+          "definition": null,
+          "objective_symbols": [],
+          "lex_order": null,
+          "embedding_to_total_utility": null
+        },
+        "robustness_scope": {
+          "applies": true,
+          "ambient_space": "Xi={(xi,xi_B,eta_1,eta_2): xi>0, xi_B>0, eta_1>0, eta_2>0, eta_1!=eta_2, eta_i=L sqrt(2m epsilon_i/hbar^2), and epsilon_i has an eigenfunction phi_i satisfying -hbar^2 phi_i''(x)/(2m)+g_B delta(x)phi_i(x)=epsilon_i phi_i(x), phi_i(x+L)=phi_i(x)}.",
+          "type_tag": "parameter_interval",
+          "metric_or_divergence": "absolute distance in the reciprocal-coupling coordinate t=1/xi, with fixed xi_B>0 and fixed eta_1,eta_2",
+          "radius_or_budget": "0<t<=t_0 for some t_0=1/xi_0 with xi_0>0; equivalently xi>=xi_0, where xi_0 is the finite threshold in the bound |R_3(xi)|<=C xi^{-3}",
+          "indexing_set": "{(xi,xi_B,eta_1,eta_2): xi>=xi_0, xi_B>0, eta_1>0, eta_2>0, eta_1!=eta_2}",
+          "claimed_subfamily": {
+            "definition": "For each fixed xi_B>0 and each distinct positive pair eta_1,eta_2 defined by eta_i=L sqrt(2m epsilon_i/hbar^2) with -hbar^2 phi_i''(x)/(2m)+g_B delta(x)phi_i(x)=epsilon_i phi_i(x) and phi_i(x+L)=phi_i(x), the expansion is claimed on the parameter interval xi>=xi_0 for some finite xi_0>0, with E_asymp=(hbar^2/(mL^2))(epsilon(eta_1,eta_2)+epsilon(eta_2,eta_1)+R_3(xi)) and |R_3(xi)|<=C xi^{-3} for a finite C>0.",
+            "source_span": {
+              "section": "Testing the 1/g expansions",
+              "paragraph_or_line": "Section 5, equation (18) and the paragraph immediately following it",
+              "verbatim": "The Asymmetric Bethe Ansatz 1/g expansion is E(k1,k2)=...+O(1/xi^3) ... In (18), the 1/g term is identical to the one that can be obtained applying the first order perturbation theory to (17). However notice that for repulsive particle-particle and particle-barrier interactions, the 1/g^2 correction to energy ... is positive..."
+            }
+          },
+          "hinted_superfamily": {
+            "definition": "A larger family would include either finite xi values not controlled by a remainder bounded by C xi^{-3}, terms of order xi^{-3} and smaller not explicitly displayed, or attractive-coupling regimes with g<0 or g_B<0; these are not part of the stated large-positive-xi expansion through order xi^{-2}.",
+            "source_span": {
+              "section": "Testing the 1/g expansions; Summary and future research",
+              "paragraph_or_line": "Section 5 expansion paragraph and Section 6 future-research paragraphs",
+              "verbatim": "The Asymmetric Bethe Ansatz 1/g expansion is ... +O(1/xi^3). ... This article focuses exclusively on the case of repulsive interactions and a repulsive barrier. ... Real rapidity states for attractive interactions and/or an attractive barrier are also of interest..."
+            }
+          },
+          "refinement_relation": "set_inclusion",
+          "criterion": "For fixed xi_B>0 and distinct positive eta_1,eta_2 satisfying eta_i=L sqrt(2m epsilon_i/hbar^2) with -hbar^2 phi_i''(x)/(2m)+g_B delta(x)phi_i(x)=epsilon_i phi_i(x) and phi_i(x+L)=phi_i(x), set t=1/xi. The claimed parameter interval is 0<t<=t_0 for some finite t_0>0. On this interval, E_asymp=(hbar^2/(mL^2))(epsilon(eta_1,eta_2)+epsilon(eta_2,eta_1)+R_3(1/t)), epsilon(eta_I,eta_II)=0.5 eta_I^2 - [2 eta_I^2(eta_I^2+xi_B^2)/(eta_I^2+xi_B(2+xi_B))] t + [2 eta_I^2(eta_I^2+xi_B^2)(eta_I^4(eta_II^2+3xi_B)+xi_B^2(2+xi_B)(3xi_B^2+eta_II^2(2+xi_B))+2eta_I^2 xi_B(eta_II^2(2+xi_B)+xi_B(5+3xi_B)))/(xi_B(eta_I^2+xi_B(2+xi_B))^3)] t^2, and |R_3(1/t)|<=C t^3 for some finite C>0.",
+          "channel_populated_by": [
+            "operational"
+          ]
+        }
+      }
+    ],
+    "inter_goal_relation": "instrumental",
+    "methodological_claim": {
+      "applies": true,
+      "target_object": "The paper claims that the physical odd-sector solution is obtained by adding an auxiliary nonlocal delta interaction to form H_aux=-(hbar^2/(2m))d^2/dx_1^2-(hbar^2/(2m))d^2/dx_2^2+g delta(x_1-x_2)+g delta(x_1+x_2)+g_B delta(x_1)+g_B delta(x_2), constructing finite plane-wave eigenfunctions of H_aux from the eight reflected wavevectors (k_1,k_2), (k_2,k_1), (-k_1,k_2), (-k_2,k_1), (k_1,-k_2), (k_2,-k_1), (-k_1,-k_2), and (-k_2,-k_1), and retaining functions with Psi(-x_2,-x_1)=-Psi(x_1,x_2); because that retained symmetry implies Psi(x_1,x_2)=0 on x_1+x_2=0, the added term g delta(x_1+x_2) contributes zero and each retained auxiliary eigenfunction is also an eigenfunction of the physical Hamiltonian H=H_aux-g delta(x_1+x_2) with the same energy.",
+      "evidence_channels": {
+        "source_span": {
+          "section": "Method of solving: Asymmetric Bethe Ansatz",
+          "paragraph_or_line": "Section 3, paragraphs introducing the auxiliary Hamiltonian and recipe",
+          "verbatim": "Consider an auxiliary Hamiltonian ... H_C~2 = ... + gδ(x1 + x2) ... Notice that we added an unphysical, nonlocal interaction gδ(x1 + x2). ... One will need to find all the eigenstates of (6) that possess the property (4). What will result is a set of eigenstates that the Hamiltonian (5) shares with (6)."
+        },
+        "formalisation": "Let H=-(hbar^2/(2m))d^2/dx_1^2-(hbar^2/(2m))d^2/dx_2^2+g delta(x_1-x_2)+g_B delta(x_1)+g_B delta(x_2) and H_aux=H+g delta(x_1+x_2). If Psi is a periodic bosonic eigenfunction of H_aux and Psi(-x_2,-x_1)=-Psi(x_1,x_2), then at x_1+x_2=0 one has Psi(x_1,x_2)=Psi(x_1,-x_1)=-Psi(x_1,-x_1), hence Psi(x_1,-x_1)=0 and g delta(x_1+x_2)Psi=0 as a distributional multiplication term. Therefore H Psi=H_aux Psi=E Psi. The constructive ansatz for such Psi is a finite superposition of exp(i(lambda_1 x_1+lambda_2 x_2)) over the eight wavevectors (k_1,k_2), (k_2,k_1), (-k_1,k_2), (-k_2,k_1), (k_1,-k_2), (k_2,-k_1), (-k_1,-k_2), and (-k_2,-k_1), constrained by periodicity, exchange symmetry, point-inversion oddness, continuity, and the delta jump conditions."
+      }
+    },
+    "evidence_channels": {
+      "stated_goal": {
+        "source_span": {
+          "section": "Abstract and Statement of the problem",
+          "paragraph_or_line": "Abstract first paragraph; Section 2 opening paragraph",
+          "verbatim": "In this article, we apply the recently proposed Asymmetric Bethe Ansatz method to the problem of two one-dimensional, short-range-interacting bosons on a ring in the presence of a δ-function barrier. ... Our goal is to find the eigenstates and eigenenergies of two mass m δ-interacting bosons ... on a ring of a circumference L ... subject to the field of a δ-barrier. We are focussing on the part of the Hilbert space spanned by the states that are odd with respect to the point inversion about the barrier."
+        },
+        "formalisation": "The stated completed end-state is an exact construction of eigenpairs (Psi_{k_1,k_2},E_{k_1,k_2}) for H=-(hbar^2/(2m))d^2/dx_1^2-(hbar^2/(2m))d^2/dx_2^2+g delta(x_1-x_2)+g_B delta(x_1)+g_B delta(x_2), with m>0, L>0, hbar>0, g>0, g_B>0, periodicity Psi(x_1+L,x_2)=Psi(x_1,x_2) and Psi(x_1,x_2+L)=Psi(x_1,x_2), bosonic exchange symmetry Psi(x_2,x_1)=Psi(x_1,x_2), point-inversion oddness Psi(-x_1,-x_2)=-Psi(x_1,x_2), and real rapidity ordering 0<k_1<k_2. For fixed m>0, L>0, hbar>0, g>0, g_B>0, define mu=m/2, a=-hbar^2/(mu g), and a_B=-hbar^2/(m g_B). The real rapidities satisfy 0<k_1<k_2 and the two equations cos(k_1 L/2)((k_2^2 a a_B - 2) sin(k_2 L/2) + k_2(a+2a_B) cos(k_2 L/2)) + k_1 a sin(k_1 L/2)(k_2 a_B cos(k_2 L/2) - sin(k_2 L/2)) = 0, and k_1^2 a sin(k_1 L/2) sin(k_2 L/2) + 2 k_1 sin(k_2 L/2) cos(k_1 L/2) - k_2^2 a sin(k_1 L/2) sin(k_2 L/2) - 2 k_2 sin(k_1 L/2) cos(k_2 L/2) = 0. The associated energy is E_{k_1,k_2}=(hbar^2/(2m))(k_1^2+k_2^2). The stated application is the following large-repulsion benchmark proposition: Set xi=g/(hbar^2/(mL)) and xi_B=g_B/(hbar^2/(mL))>0. Let eta_i=L sqrt(2m epsilon_i/hbar^2), where epsilon_i has a one-body periodic eigenfunction phi_i satisfying -hbar^2 phi_i''(x)/(2m)+g_B delta(x)phi_i(x)=epsilon_i phi_i(x) and phi_i(x+L)=phi_i(x). For distinct positive eta_1,eta_2, E_asymp=(hbar^2/(mL^2))(epsilon(eta_1,eta_2)+epsilon(eta_2,eta_1)+R_3(xi)), with |R_3(xi)|<=C xi^{-3} for some C>0 and all sufficiently large xi, and epsilon(eta_I,eta_II)=0.5 eta_I^2 - [2 eta_I^2(eta_I^2+xi_B^2)/(eta_I^2+xi_B(2+xi_B))] xi^{-1} + [2 eta_I^2(eta_I^2+xi_B^2)(eta_I^4(eta_II^2+3xi_B)+xi_B^2(2+xi_B)(3xi_B^2+eta_II^2(2+xi_B))+2eta_I^2 xi_B(eta_II^2(2+xi_B)+xi_B(5+3xi_B)))/(xi_B(eta_I^2+xi_B(2+xi_B))^3)] xi^{-2}. The xi^{-1} coefficient is identified with the first-order correction from V=tilde_g left_d_{x_1-x_2} delta(x_1-x_2) right_d_{x_1-x_2}, tilde_g=-hbar^4/(mu^2 g), mu=m/2; the xi^{-2} coefficient is positive for eta_1>0, eta_2>0, eta_1!=eta_2, xi_B>0, so V is not formalised as an ordinary Hermitian perturbing potential beyond first order."
+      },
+      "operational_goal": {
+        "source_span": {
+          "section": "Finding the eigenstates and eigenenergies; Testing the 1/g expansions; Summary and future research",
+          "paragraph_or_line": "Sections 4-6 result paragraphs",
+          "verbatim": "The Bethe Ansatz Equations for rapidities read ... where 0 < k1 < k2. For given set of rapidities, the energy of the state is E_{k1,k2}=ℏ^2/(2m)(k1^2+k2^2). ... The Asymmetric Bethe Ansatz 1/g expansion is E(k1,k2)=... ... In this paper, we present an exact solution ... The set of implicit equations determining the (discrete) spectrum of Bethe rapidities (k1,k2) ... is given in Eqs. (14)-(15). The energy spectrum, given by Eq. (16), can be directly derived from the rapidity spectrum. The wavefunction for each allowed rapidity pair is provided by Eqs. (8), (12), and (13)."
+        },
+        "formalisation": "The operational end-state is the pair of results: (1) exact real-rapidity odd-sector eigenpairs for H=-(hbar^2/(2m))d^2/dx_1^2-(hbar^2/(2m))d^2/dx_2^2+g delta(x_1-x_2)+g_B delta(x_1)+g_B delta(x_2) on a ring of circumference L with g>0, g_B>0, bosonic symmetry, periodicity, and Psi(-x_1,-x_2)=-Psi(x_1,x_2); define mu=m/2, a=-hbar^2/(mu g), and a_B=-hbar^2/(m g_B); this result is operationally represented by rapidity pairs 0<k_1<k_2 satisfying cos(k_1 L/2)((k_2^2 a a_B - 2) sin(k_2 L/2) + k_2(a+2a_B) cos(k_2 L/2)) + k_1 a sin(k_1 L/2)(k_2 a_B cos(k_2 L/2) - sin(k_2 L/2)) = 0 and k_1^2 a sin(k_1 L/2) sin(k_2 L/2) + 2 k_1 sin(k_2 L/2) cos(k_1 L/2) - k_2^2 a sin(k_1 L/2) sin(k_2 L/2) - 2 k_2 sin(k_1 L/2) cos(k_2 L/2) = 0, energy E_{k_1,k_2}=(hbar^2/(2m))(k_1^2+k_2^2), and the explicit six-sector wavefunction construction Define A_1={0<x_1<x_2<=L/2}, A_2={0<x_2<x_1<=L/2}, A_3={-L/2<x_1<x_2<0}, A_4={-L/2<x_2<x_1<0}, A_5={-L/2<x_1<0<x_2<=L/2}, and A_6={-L/2<x_2<0<x_1<=L/2}. For each allowed pair (k_1,k_2), define Psi_{k_1,k_2}(x_1,x_2)=Psi^(1)_{k_1,k_2}(x_1,x_2) on A_1, Psi^(1)_{k_1,k_2}(x_2,x_1) on A_2, -Psi^(1)_{k_1,k_2}(-x_2,-x_1) on A_3, -Psi^(1)_{k_1,k_2}(-x_1,-x_2) on A_4, Psi^(5)_{k_1,k_2}(x_1,x_2) on A_5, and Psi^(5)_{k_1,k_2}(x_2,x_1) on A_6. Psi^(1)_{k_1,k_2}(x_1,x_2) = -(k_1^2-k_2^2)a^2 sin(k_1L/2) cos((k_1+k_2)(x_1-x_2)/2) cos((k_1-k_2)(x_1+x_2)/2) + (k_1^2-k_2^2)a^2 sin(k_1L/2) cos((k_1-k_2)(x_1-x_2)/2) cos((k_1+k_2)(x_1+x_2)/2) + 2(k_1+k_2)a sin(k_1L/2) cos((k_1+k_2)(x_1+x_2)/2) sin((k_1-k_2)(x_1-x_2)/2) - 2(k_1-k_2)a sin(k_1L/2) cos((k_1-k_2)(x_1+x_2)/2) sin((k_1+k_2)(x_1-x_2)/2) - (k_1+k_2)a(2k_1a_B cos(k_1L/2)+(-2+k_1^2aa_B-k_1k_2aa_B) sin(k_1L/2)) cos((k_1+k_2)(x_1-x_2)/2) sin((k_1-k_2)(x_1+x_2)/2) + (-4k_1a_B cos(k_1L/2)+2(2-k_1^2aa_B+k_1k_2aa_B) sin(k_1L/2)) sin((k_1+k_2)(x_1-x_2)/2) sin((k_1-k_2)(x_1+x_2)/2) - (k_2-k_1)a(2k_1a_B cos(k_1L/2)+(-2+k_1^2aa_B+k_1k_2aa_B) sin(k_1L/2)) cos((k_1-k_2)(x_1-x_2)/2) sin((k_1+k_2)(x_1+x_2)/2) + (4k_1a_B cos(k_1L/2)+2(-2+k_1^2aa_B+k_1k_2aa_B) sin(k_1L/2)) sin((k_1-k_2)(x_1-x_2)/2) sin((k_1+k_2)(x_1+x_2)/2); Psi^(5)_{k_1,k_2}(x_1,x_2) = - k_1(k_1+k_2)aa_B(2 cos(k_1L/2)+(k_1-k_2)a sin(k_1L/2)) cos((k_1+k_2)(x_1-x_2)/2) sin((k_1-k_2)(x_1+x_2)/2) + (-4k_1(a+a_B) cos(k_1L/2)+(4+k_2^2a^2+2k_1k_2aa_B-k_1^2a(a+2a_B)) sin(k_1L/2)) sin((k_1+k_2)(x_1-x_2)/2) sin((k_1-k_2)(x_1+x_2)/2) + k_1(k_1-k_2)aa_B(2 cos(k_1L/2)+(k_1+k_2)a sin(k_1L/2)) cos((k_1-k_2)(x_1-x_2)/2) sin((k_1+k_2)(x_1+x_2)/2) + (4k_1(a+a_B) cos(k_1L/2)+(-4-k_2^2a^2+2k_1k_2aa_B+k_1^2a(a+2a_B)) sin(k_1L/2)) sin((k_1-k_2)(x_1-x_2)/2) sin((k_1+k_2)(x_1+x_2)/2); (2) the large-xi benchmark E=(hbar^2/(mL^2))(epsilon(eta_1,eta_2)+epsilon(eta_2,eta_1)+R_3(xi)) with xi=g/(hbar^2/(mL)), xi_B=g_B/(hbar^2/(mL))>0, |R_3(xi)|<=C xi^{-3} for xi>=xi_0, and epsilon(eta_I,eta_II)=0.5 eta_I^2 - [2 eta_I^2(eta_I^2+xi_B^2)/(eta_I^2+xi_B(2+xi_B))] xi^{-1} + [2 eta_I^2(eta_I^2+xi_B^2)(eta_I^4(eta_II^2+3xi_B)+xi_B^2(2+xi_B)(3xi_B^2+eta_II^2(2+xi_B))+2eta_I^2 xi_B(eta_II^2(2+xi_B)+xi_B(5+3xi_B)))/(xi_B(eta_I^2+xi_B(2+xi_B))^3)] xi^{-2}, from which the xi^{-1} coefficient agrees with the derivative-delta bilinear-form first-order correction and the xi^{-2} coefficient is positive."
+      },
+      "implicit_goal": {
+        "inference_basis": [
+          "The title, abstract, Section 2, Section 4, and Section 6 prioritise exact eigenstates, exact eigenenergies, rapidity equations, and explicit wavefunctions for the point-inversion-odd sector with repulsive particle-particle and particle-barrier couplings.",
+          "Section 3 supplies a method claim: introduce an auxiliary Hamiltonian with an added g delta(x_1+x_2) term and retain states odd under x_1=-x_2 so the auxiliary and physical Hamiltonians share those states.",
+          "Section 4 supplies the operational artefacts for the primary goal: two implicit rapidity equations, the energy formula, and explicit six-sector wavefunction formulae.",
+          "Section 5 supplies a distinct but derived target proposition: a large-xi expansion through order xi^{-2}, equality of the xi^{-1} term with the derivative-delta first-order correction, and positivity of the xi^{-2} term as evidence that the derivative-delta object is not an ordinary perturbing potential beyond first order.",
+          "Section 6 assigns the point-inversion-even sector, quantum-chaos study, complex rapidities, attractive couplings, and the delta-well/non-interacting-spectrum observation to broader or future work rather than to the completed operational goals."
+        ],
+        "fit_score": 0.944,
+        "fit_components": {
+          "TextAlign": 0.9,
+          "MethodAlign": 1.0,
+          "EvalAlign": 1.0,
+          "ClaimAlign": 0.9,
+          "Complexity": 0.33
+        },
+        "formalisation": "The implicit goal hypothesis with maximal predictive fit is an instrumental pair. G1: construct exact real-rapidity eigenpairs for H=-(hbar^2/(2m))d^2/dx_1^2-(hbar^2/(2m))d^2/dx_2^2+g delta(x_1-x_2)+g_B delta(x_1)+g_B delta(x_2), under m>0, L>0, hbar>0, g>0, g_B>0, periodicity Psi(x_1+L,x_2)=Psi(x_1,x_2) and Psi(x_1,x_2+L)=Psi(x_1,x_2), bosonic exchange symmetry Psi(x_2,x_1)=Psi(x_1,x_2), and point-inversion oddness Psi(-x_1,-x_2)=-Psi(x_1,x_2). For fixed m>0, L>0, hbar>0, g>0, g_B>0, define mu=m/2, a=-hbar^2/(mu g), and a_B=-hbar^2/(m g_B). The real rapidities satisfy 0<k_1<k_2 and the two equations cos(k_1 L/2)((k_2^2 a a_B - 2) sin(k_2 L/2) + k_2(a+2a_B) cos(k_2 L/2)) + k_1 a sin(k_1 L/2)(k_2 a_B cos(k_2 L/2) - sin(k_2 L/2)) = 0, and k_1^2 a sin(k_1 L/2) sin(k_2 L/2) + 2 k_1 sin(k_2 L/2) cos(k_1 L/2) - k_2^2 a sin(k_1 L/2) sin(k_2 L/2) - 2 k_2 sin(k_1 L/2) cos(k_2 L/2) = 0. The associated energy is E_{k_1,k_2}=(hbar^2/(2m))(k_1^2+k_2^2). Define A_1={0<x_1<x_2<=L/2}, A_2={0<x_2<x_1<=L/2}, A_3={-L/2<x_1<x_2<0}, A_4={-L/2<x_2<x_1<0}, A_5={-L/2<x_1<0<x_2<=L/2}, and A_6={-L/2<x_2<0<x_1<=L/2}. For each allowed pair (k_1,k_2), define Psi_{k_1,k_2}(x_1,x_2)=Psi^(1)_{k_1,k_2}(x_1,x_2) on A_1, Psi^(1)_{k_1,k_2}(x_2,x_1) on A_2, -Psi^(1)_{k_1,k_2}(-x_2,-x_1) on A_3, -Psi^(1)_{k_1,k_2}(-x_1,-x_2) on A_4, Psi^(5)_{k_1,k_2}(x_1,x_2) on A_5, and Psi^(5)_{k_1,k_2}(x_2,x_1) on A_6. Psi^(1)_{k_1,k_2}(x_1,x_2) = -(k_1^2-k_2^2)a^2 sin(k_1L/2) cos((k_1+k_2)(x_1-x_2)/2) cos((k_1-k_2)(x_1+x_2)/2) + (k_1^2-k_2^2)a^2 sin(k_1L/2) cos((k_1-k_2)(x_1-x_2)/2) cos((k_1+k_2)(x_1+x_2)/2) + 2(k_1+k_2)a sin(k_1L/2) cos((k_1+k_2)(x_1+x_2)/2) sin((k_1-k_2)(x_1-x_2)/2) - 2(k_1-k_2)a sin(k_1L/2) cos((k_1-k_2)(x_1+x_2)/2) sin((k_1+k_2)(x_1-x_2)/2) - (k_1+k_2)a(2k_1a_B cos(k_1L/2)+(-2+k_1^2aa_B-k_1k_2aa_B) sin(k_1L/2)) cos((k_1+k_2)(x_1-x_2)/2) sin((k_1-k_2)(x_1+x_2)/2) + (-4k_1a_B cos(k_1L/2)+2(2-k_1^2aa_B+k_1k_2aa_B) sin(k_1L/2)) sin((k_1+k_2)(x_1-x_2)/2) sin((k_1-k_2)(x_1+x_2)/2) - (k_2-k_1)a(2k_1a_B cos(k_1L/2)+(-2+k_1^2aa_B+k_1k_2aa_B) sin(k_1L/2)) cos((k_1-k_2)(x_1-x_2)/2) sin((k_1+k_2)(x_1+x_2)/2) + (4k_1a_B cos(k_1L/2)+2(-2+k_1^2aa_B+k_1k_2aa_B) sin(k_1L/2)) sin((k_1-k_2)(x_1-x_2)/2) sin((k_1+k_2)(x_1+x_2)/2); Psi^(5)_{k_1,k_2}(x_1,x_2) = - k_1(k_1+k_2)aa_B(2 cos(k_1L/2)+(k_1-k_2)a sin(k_1L/2)) cos((k_1+k_2)(x_1-x_2)/2) sin((k_1-k_2)(x_1+x_2)/2) + (-4k_1(a+a_B) cos(k_1L/2)+(4+k_2^2a^2+2k_1k_2aa_B-k_1^2a(a+2a_B)) sin(k_1L/2)) sin((k_1+k_2)(x_1-x_2)/2) sin((k_1-k_2)(x_1+x_2)/2) + k_1(k_1-k_2)aa_B(2 cos(k_1L/2)+(k_1+k_2)a sin(k_1L/2)) cos((k_1-k_2)(x_1-x_2)/2) sin((k_1+k_2)(x_1+x_2)/2) + (4k_1(a+a_B) cos(k_1L/2)+(-4-k_2^2a^2+2k_1k_2aa_B+k_1^2a(a+2a_B)) sin(k_1L/2)) sin((k_1-k_2)(x_1-x_2)/2) sin((k_1+k_2)(x_1+x_2)/2) G2: use the exact construction to state the large-xi benchmark expansion and perturbative sign proposition. Set xi=g/(hbar^2/(mL)) and xi_B=g_B/(hbar^2/(mL))>0. Let eta_i=L sqrt(2m epsilon_i/hbar^2), where epsilon_i has a one-body periodic eigenfunction phi_i satisfying -hbar^2 phi_i''(x)/(2m)+g_B delta(x)phi_i(x)=epsilon_i phi_i(x) and phi_i(x+L)=phi_i(x). For distinct positive eta_1,eta_2, E_asymp=(hbar^2/(mL^2))(epsilon(eta_1,eta_2)+epsilon(eta_2,eta_1)+R_3(xi)), with |R_3(xi)|<=C xi^{-3} for some C>0 and all sufficiently large xi, and epsilon(eta_I,eta_II)=0.5 eta_I^2 - [2 eta_I^2(eta_I^2+xi_B^2)/(eta_I^2+xi_B(2+xi_B))] xi^{-1} + [2 eta_I^2(eta_I^2+xi_B^2)(eta_I^4(eta_II^2+3xi_B)+xi_B^2(2+xi_B)(3xi_B^2+eta_II^2(2+xi_B))+2eta_I^2 xi_B(eta_II^2(2+xi_B)+xi_B(5+3xi_B)))/(xi_B(eta_I^2+xi_B(2+xi_B))^3)] xi^{-2}. The xi^{-1} coefficient is identified with the first-order correction from V=tilde_g left_d_{x_1-x_2} delta(x_1-x_2) right_d_{x_1-x_2}, tilde_g=-hbar^4/(mu^2 g), mu=m/2; the xi^{-2} coefficient is positive for eta_1>0, eta_2>0, eta_1!=eta_2, xi_B>0, so V is not formalised as an ordinary Hermitian perturbing potential beyond first order."
+      },
+      "excluded_aims": [
+        {
+          "verbatim": "Only half of the Hilbert space—namely, the two-body states that are odd under point inversion about the position of the barrier—is accessible to this method. The other half is presumably non-integrable.",
+          "source_span": {
+            "section": "Abstract",
+            "paragraph_or_line": "Opening paragraph",
+            "verbatim": "Only half of the Hilbert space—namely, the two-body states that are odd under point inversion about the position of the barrier—is accessible to this method. The other half is presumably non-integrable."
+          },
+          "reason": "motivational"
+        },
+        {
+          "verbatim": "Consequently, we regard the current article as the first stage of a broader study of quantum chaos in systems that are not chaotic classically.",
+          "source_span": {
+            "section": "Summary and future research",
+            "paragraph_or_line": "Paragraph on level-spacing statistics and quantum chaos",
+            "verbatim": "Consequently, we regard the current article as the first stage of a broader study of quantum chaos in systems that are not chaotic classically."
+          },
+          "reason": "application_gesture"
+        },
+        {
+          "verbatim": "States with complex rapidities (strings) under periodic boundary conditions remain a subject for future investigation.",
+          "source_span": {
+            "section": "Summary and future research",
+            "paragraph_or_line": "Final future-research paragraph",
+            "verbatim": "States with complex rapidities (strings) under periodic boundary conditions remain a subject for future investigation."
+          },
+          "reason": "out_of_scope_other"
+        },
+        {
+          "verbatim": "Real rapidity states for attractive interactions and/or an attractive barrier are also of interest, despite being obtainable via analytic continuation from the repulsive case.",
+          "source_span": {
+            "section": "Summary and future research",
+            "paragraph_or_line": "Final future-research paragraph",
+            "verbatim": "Real rapidity states for attractive interactions and/or an attractive barrier are also of interest, despite being obtainable via analytic continuation from the repulsive case."
+          },
+          "reason": "out_of_scope_other"
+        },
+        {
+          "verbatim": "When the barrier strength is a_B=-a/2 (i.e., g_B=-g), the Bethe Ansatz equations reveal that the energy spectrum matches that of a non-interacting, barrier-free system. However, the ground state and likely other eigenstates retain discontinuities induced by delta interactions; the explanation is left for future research.",
+          "source_span": {
+            "section": "Summary and future research",
+            "paragraph_or_line": "Final paragraph",
+            "verbatim": "When the barrier strength is aB = -a/2 (i.e., gB = -g ), the Bethe Ansatz equations reveal that the energy spectrum matches that of a non-interacting, barrier-free system. However, the ground state (and likely other eigenstates) can be shown to retain the characteristic discontinuities induced by δ-interactions. We currently lack an explanation for this phenomenon, which awaits further exploration in future research."
+          },
+          "reason": "application_gesture"
+        }
+      ]
+    },
+    "consistency_relation": "framing_divergence",
+    "consistency_relation_derivation": "The stated, operational, and implicit channels agree on the central achieved end-state: exact real-rapidity eigenstates and eigenenergies for the repulsive, point-inversion-odd two-boson ring Hamiltonian with a delta barrier. The second canonical block is marked instrumental because the abstract presents benchmarking the 1/g expansion as an application of the exact solution, and Section 5 derives an asymptotic diagnostic from that solution rather than defining a separate physical system to solve. The relation is not simply aligned because the abstract and conclusion also contain material framing about method accessibility, non-integrability of the complementary sector, future quantum-chaos studies, attractive-coupling regimes, complex rapidities, and an unexplained delta-well observation; those spans are represented as a methodological claim or excluded future/application material rather than completed canonical outcomes."
+  }
+}

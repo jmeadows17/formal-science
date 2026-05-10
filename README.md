@@ -27,10 +27,9 @@ The workflow is organized as a staged human-in-the-loop pipeline:
 
 1. `src/app/app.py` generates QA batches from source derivations using a local Claude or Codex/GPT CLI session.
 2. `src/qa/qa_postprocessing.py` cleans model output into structured QA pairs.
-3. `src/app/lean_prompts.py` converts each QA batch into a Lean 4 + Mathlib autoformalisation prompt.
-4. `src/app/lean_app.py` generates batch-level Lean proofs and checks them with the local Lean project in [`FSLean`](./FSLean).
-5. `src/app/postprocessing_app.py` validates and splits each batch-level Lean file into per-question formal answers.
-6. `src/app/flatten_structured_proofs.py` writes the final flattened dataset in [`src/app_data/formal_qa_data.json`](./src/app_data/formal_qa_data.json).
+3. `src/app/lean_prompts.py` converts batched QA data into one Lean 4 + Mathlib prompt per QA pair.
+4. `src/app/lean_app.py` generates one Lean proof per QA pair and checks it with the local Lean project in [`FSLean`](./FSLean).
+   On approval, it incrementally rebuilds the original batch structure into [`src/app_data/structured_proofs.json`](./src/app_data/structured_proofs.json), where each QA item is extended with `formal_proof` and `critic_output` fields, and into [`src/app_data/approved_formal_batches.json`](./src/app_data/approved_formal_batches.json).
 
 The current checked-in data snapshot includes intermediate artifacts for the full pipeline, so the repo is usable both as code and as a dataset snapshot.
 
@@ -83,9 +82,10 @@ In the naming used by this repository:
 The main generated JSON artifacts are:
 
 - [`src/app_data/qa_data.json`](./src/app_data/qa_data.json): cleaned QA batches.
-- [`src/app_data/lean_prompt_data.json`](./src/app_data/lean_prompt_data.json): one Lean prompt per QA batch.
+- [`src/app_data/lean_prompt_data.json`](./src/app_data/lean_prompt_data.json): one Lean prompt per QA pair, flattened from `qa_data.json`.
 - [`src/app_data/lean_output_data.json`](./src/app_data/lean_output_data.json): raw batch-level Lean generation outputs.
 - [`src/app_data/structured_proofs.json`](./src/app_data/structured_proofs.json): reviewed batch records containing QA plus approved Lean source.
+- [`src/app_data/approved_formal_batches.json`](./src/app_data/approved_formal_batches.json): approved batch-preserving `(question, answer, formal_answer)` records aligned to `qa_data.json`.
 - [`src/app_data/postprocessed_batches.json`](./src/app_data/postprocessed_batches.json): audit trail for proof-boundary extraction and validation.
 - [`src/app_data/formal_qa_data.json`](./src/app_data/formal_qa_data.json): flattened final dataset with `question`, `answer`, and `formal_answer`; this is the dataset referred to as `FormalPhysics_v2` in [`legacy/formalphysics_comparison.md`](./legacy/formalphysics_comparison.md).
 
@@ -141,22 +141,12 @@ This launches a Gradio app for generating and reviewing QA pairs from the source
 python src/app/lean_app.py
 ```
 
-This launches the Lean generation app. It feeds prompts from `lean_prompt_data.json`, compiles candidate Lean code via `lake env lean`, and saves reviewed outputs to `src/app_data/lean_output_data.json` and `src/app_data/structured_proofs.json`.
-
-### 3. Validate and split proofs into per-QA formal answers
-
-```bash
-python src/app/postprocessing_app.py
-```
-
-This app aligns each QA item with the correct theorem block in the batch-level Lean source, validates the extracted fragments, and writes the final flattened data to `src/app_data/formal_qa_data.json`.
+This launches the Lean generation app. It feeds one QA-pair prompt at a time from `lean_prompt_data.json`, runs rubric-based critic passes around compilation, and saves approved single-pair outputs to `src/app_data/lean_output_data.json` while rebuilding batch-level artifacts in `src/app_data/structured_proofs.json` (each QA item extended with `formal_proof` and `critic_output`) and `src/app_data/approved_formal_batches.json`.
 
 ## Useful Scripts
 
 - `python src/qa/qa_postprocessing.py <input.json> [output.json]`
   Cleans raw model QA output into batched QA pairs.
-- `python src/app/flatten_structured_proofs.py`
-  Rebuilds `formal_qa_data.json` from `structured_proofs.json`.
 - `python src/app/claude_generate_compile_loop.py --index 0 --prompt-file src/app_data/lean_prompt_data.json`
   Runs a standalone Claude generate/compile/fix loop against `FSLean/proof.lean`.
 

@@ -1,0 +1,325 @@
+{
+  "paper_title": "Corner contribution to the entanglement in two-dimensional systems: A tensor network perspective (Feldman, 2026, arXiv)",
+  "deeper_reasoning_1": "\\textbf{Claim.} Let \\(\\mathcal{I}\\subset(0,\\pi)\\) be the finite angular domain used for fitting, and let\n\\[\nh(\\theta):=(\\pi-\\theta)\\cot\\theta,\\qquad g(\\theta):=1+h(\\theta).\n\\]\nFor any square-integrable count profile \\(m(\\theta)\\) on \\(\\mathcal{I}\\), fitting \\(m\\) to \\(\\alpha+\\beta h(\\theta)\\) is equivalent to fitting \\(m\\) to \\(a+b g(\\theta)\\). The angular coefficient is unchanged, while the intercept is shifted. Consequently, a fitted term \\(\\beta h(\\theta)\\) has the same nonconstant angular content as \\(\\beta g(\\theta)=\\beta(1+(\\pi-\\theta)\\cot\\theta)\\).\n\n\\textbf{Premises.}\n\\begin{align*}\n\\text{(P1)}\\quad &h(\\theta):=(\\pi-\\theta)\\cot\\theta.\\\\\n\\text{(P2)}\\quad &g(\\theta):=1+h(\\theta).\\\\\n\\text{(P3)}\\quad &R_h(\\alpha,\\beta):=\\int_{\\mathcal{I}}\\bigl(m(\\theta)-\\alpha-\\beta h(\\theta)\\bigr)^2\\,d\\theta.\\\\\n\\text{(P4)}\\quad &R_g(a,b):=\\int_{\\mathcal{I}}\\bigl(m(\\theta)-a-bg(\\theta)\\bigr)^2\\,d\\theta.\\\\\n\\text{(P5)}\\quad &\\mathcal{I}\\subset(0,\\pi)\\text{ is finite, so the displayed residuals are well-defined whenever }m\\in L^2(\\mathcal{I}).\n\\end{align*}\n\n\\textbf{Derivation.}\nFrom (P1) and (P2),\n\\begin{align*}\n\\alpha+\\beta h(\\theta)\n&=\\alpha+\\beta\\bigl(g(\\theta)-1\\bigr)\\\\\n&=(\\alpha-\\beta)+\\beta g(\\theta).\n\\end{align*}\nThus the parameter transformation\n\\begin{align*}\nT:\\mathbb{R}^2&\\to\\mathbb{R}^2,\\\\\nT(\\alpha,\\beta)&:=(\\alpha-\\beta,\\beta)\n\\end{align*}\nis a bijection, with inverse\n\\begin{align*}\nT^{-1}(a,b)&=(a+b,b).\n\\end{align*}\nFor every \\((\\alpha,\\beta)\\), setting \\((a,b)=T(\\alpha,\\beta)\\) gives\n\\begin{align*}\nm(\\theta)-\\alpha-\\beta h(\\theta)\n&=m(\\theta)-a-bg(\\theta),\n\\end{align*}\nand therefore\n\\begin{align*}\nR_h(\\alpha,\\beta)=R_g(T(\\alpha,\\beta)).\n\\end{align*}\nSince \\(T\\) is a bijection, the minimizers correspond exactly:\n\\begin{align*}\n(\\alpha_*,\\beta_*)\\in\\operatorname*{arg\\,min}_{\\alpha,\\beta} R_h(\\alpha,\\beta)\n\\quad\\Longleftrightarrow\\quad\n(\\alpha_* -\\beta_*,\\beta_*)\\in\\operatorname*{arg\\,min}_{a,b}R_g(a,b).\n\\end{align*}\nHence the fitted angular coefficient is the same in both parameterizations. Moreover,\n\\begin{align*}\n\\alpha+\\beta h(\\theta)\n&=(\\alpha-\\beta)+\\beta\\bigl(1+(\\pi-\\theta)\\cot\\theta\\bigr),\n\\end{align*}\nso changing from \\(h\\) to the continuum factor \\(g\\) only moves a \\(\\theta\\)-independent constant into the intercept.\n\n\\textbf{Final Result.}\n\\[\n\\boxed{\\alpha+\\beta(\\pi-\\theta)\\cot\\theta=(\\alpha-\\beta)+\\beta\\bigl(1+(\\pi-\\theta)\\cot\\theta\\bigr)}\n\\]\nThus intercept absorption is mathematically exact, and the fitted angular content is the coefficient of \\(1+(\\pi-\\theta)\\cot\\theta\\).\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_2": "\\textbf{Claim.} Let \\(\\Omega:=[0,2\\pi)\\times[0,a)^2\\) be the orientation-and-origin space with normalized uniform measure \\(\\mu\\). Suppose the pointwise crossed-leg count obeys\n\\[\n\\log N_A(\\theta,r,a,\\omega)\\leq n_{\\mathrm{legs}}(\\theta,r,a,\\omega)\\log\\chi\n\\]\nfor every \\(\\omega\\in\\Omega\\), and suppose the averaged count has the fitted form\n\\[\n\\overline{n}_{\\mathrm{legs}}(\\theta,r,a)=\\alpha_{\\mathrm{legs}}(r,a)+\\beta_{\\mathrm{legs}}(r,a)(\\pi-\\theta)\\cot\\theta.\n\\]\nThen the smooth-subtracted averaged logarithmic Schmidt-rank bound is proportional to\n\\[\ng(\\theta):=1+(\\pi-\\theta)\\cot\\theta.\n\\]\nIf \\(\\beta_{\\mathrm{legs}}(r,a)\\) is independent of \\(r\\) in the continuum-refinement comparison, then the angular coefficient of this averaged logarithmic bound is also independent of \\(r\\).\n\n\\textbf{Premises.}\n\\begin{align*}\n\\text{(P1)}\\quad &\\mu(\\Omega)=1.\\\\\n\\text{(P2)}\\quad &\\log N_A(\\theta,r,a,\\omega)\\leq n_{\\mathrm{legs}}(\\theta,r,a,\\omega)\\log\\chi.\\\\\n\\text{(P3)}\\quad &\\overline{n}_{\\mathrm{legs}}(\\theta,r,a):=\\int_{\\Omega}n_{\\mathrm{legs}}(\\theta,r,a,\\omega)\\,d\\mu(\\omega).\\\\\n\\text{(P4)}\\quad &\\overline{n}_{\\mathrm{legs}}(\\theta,r,a)=\\alpha_{\\mathrm{legs}}(r,a)+\\beta_{\\mathrm{legs}}(r,a)h(\\theta).\\\\\n\\text{(P5)}\\quad &h(\\theta):=(\\pi-\\theta)\\cot\\theta,\n\\qquad g(\\theta):=1+h(\\theta).\\\\\n\\text{(P6)}\\quad &\\lim_{\\varphi\\to\\pi}h(\\varphi)=-1.\\\\\n\\text{(P7)}\\quad &\\log\\chi\\text{ is independent of }\\theta\\text{ and }r.\n\\end{align*}\n\n\\textbf{Derivation.}\nIntegrating the pointwise bound over \\(\\Omega\\) gives\n\\begin{align*}\n\\int_{\\Omega}\\log N_A(\\theta,r,a,\\omega)\\,d\\mu(\\omega)\n&\\leq \\int_{\\Omega}n_{\\mathrm{legs}}(\\theta,r,a,\\omega)\\log\\chi\\,d\\mu(\\omega)\n&&\\text{by (P2)}\\\\\n&=\\overline{n}_{\\mathrm{legs}}(\\theta,r,a)\\log\\chi\n&&\\text{by (P3), (P7)}.\n\\end{align*}\nThis is the valid averaged logarithmic statement: it bounds the averaged logarithmic Schmidt-rank estimate, not the pointwise value at every single orientation and origin by the averaged count.\n\nDefine the smooth reference value by the one-sided limit\n\\begin{align*}\n\\overline{n}_{\\mathrm{legs}}^{\\mathrm{sm}}(r,a)\n&:=\\lim_{\\varphi\\to\\pi}\\overline{n}_{\\mathrm{legs}}(\\varphi,r,a).\n\\end{align*}\nUsing (P4)--(P6),\n\\begin{align*}\n\\overline{n}_{\\mathrm{legs}}^{\\mathrm{sm}}(r,a)\n&=\\alpha_{\\mathrm{legs}}(r,a)-\\beta_{\\mathrm{legs}}(r,a).\n\\end{align*}\nDefine the smooth-subtracted averaged bound contribution by\n\\begin{align*}\nB_{\\mathrm{legs}}(\\theta,r,a)\n&:=\\bigl(\\overline{n}_{\\mathrm{legs}}(\\theta,r,a)-\\overline{n}_{\\mathrm{legs}}^{\\mathrm{sm}}(r,a)\\bigr)\\log\\chi.\n\\end{align*}\nThen\n\\begin{align*}\nB_{\\mathrm{legs}}(\\theta,r,a)\n&=\\beta_{\\mathrm{legs}}(r,a)\\bigl(h(\\theta)+1\\bigr)\\log\\chi\\\\\n&=\\beta_{\\mathrm{legs}}(r,a)\\log\\chi\\,g(\\theta)\n&&\\text{by (P5)}.\n\\end{align*}\nThus the smooth-subtracted angular coefficient is\n\\begin{align*}\nK_{\\mathrm{legs}}^{\\mathrm{signed}}(r,a)=\\beta_{\\mathrm{legs}}(r,a)\\log\\chi.\n\\end{align*}\nTaking the radius derivative where the fitted coefficient is differentiable,\n\\begin{align*}\n\\frac{\\partial K_{\\mathrm{legs}}^{\\mathrm{signed}}}{\\partial r}\n&=\\frac{\\partial\\beta_{\\mathrm{legs}}}{\\partial r}\\log\\chi\n+\\beta_{\\mathrm{legs}}\\frac{\\partial}{\\partial r}\\log\\chi\\\\\n&=\\frac{\\partial\\beta_{\\mathrm{legs}}}{\\partial r}\\log\\chi.\n\\end{align*}\nTherefore, if \\(\\partial\\beta_{\\mathrm{legs}}/\\partial r=0\\), then \\(\\partial K_{\\mathrm{legs}}^{\\mathrm{signed}}/\\partial r=0\\). The continuum convention\n\\begin{align*}\nb_A(\\theta)=-C g(\\theta)\n\\end{align*}\nis matched by setting \\(C=-\\beta_{\\mathrm{legs}}\\log\\chi\\) when this signed constant is positive; otherwise the same angular basis is still the fitted object, with the opposite sign convention.\n\n\\textbf{Final Result.}\n\\[\n\\boxed{B_{\\mathrm{legs}}(\\theta,r,a)=\\beta_{\\mathrm{legs}}(r,a)\\log\\chi\\,\\bigl(1+(\\pi-\\theta)\\cot\\theta\\bigr)}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_3": "\\textbf{Claim.} The near-apex skipped-bond probability\n\\[\np_{\\mathrm{skip}}(\\theta)=\\frac14\\bigl(1-(\\pi-\\theta)\\cot\\theta\\bigr)\n\\]\ngenerates exactly the smooth-subtracted continuum angular factor. More precisely, if a local contribution to the averaged crossed-leg count has the form\n\\[\nq_{\\mathrm{skip}}(\\theta,r,a)=c(r,a)+m(r,a)p_{\\mathrm{skip}}(\\theta),\n\\]\nthen its smooth-subtracted part is\n\\[\nq_{\\mathrm{skip}}(\\theta,r,a)-q_{\\mathrm{skip}}^{\\mathrm{sm}}(r,a)\n=-\\frac{m(r,a)}{4}\\bigl(1+(\\pi-\\theta)\\cot\\theta\\bigr),\n\\]\nwhere \\(q_{\\mathrm{skip}}^{\\mathrm{sm}}(r,a):=\\lim_{\\varphi\\to\\pi}q_{\\mathrm{skip}}(\\varphi,r,a)\\). It has the same sharp-corner divergence and smooth-corner quadratic vanishing as the gapped continuum factor.\n\n\\textbf{Premises.}\n\\begin{align*}\n\\text{(P1)}\\quad &p_{\\mathrm{skip}}(\\theta)=\\frac14\\bigl(1-h(\\theta)\\bigr),\n\\qquad h(\\theta):=(\\pi-\\theta)\\cot\\theta.\\\\\n\\text{(P2)}\\quad &g(\\theta):=1+h(\\theta).\\\\\n\\text{(P3)}\\quad &\\lim_{\\theta\\to\\pi}h(\\theta)=-1.\\\\\n\\text{(P4)}\\quad &q_{\\mathrm{skip}}(\\theta,r,a)=c(r,a)+m(r,a)p_{\\mathrm{skip}}(\\theta).\\\\\n\\text{(P5)}\\quad &g(\\theta)=\\frac{\\pi}{\\theta}+O(\\theta)\\quad(\\theta\\to0).\\\\\n\\text{(P6)}\\quad &g(\\theta)=\\frac13(\\pi-\\theta)^2+O\\bigl((\\pi-\\theta)^4\\bigr)\\quad(\\theta\\to\\pi).\\\\\n\\text{(P7)}\\quad &m(r,a)\\text{ is independent of }\\theta.\n\\end{align*}\n\n\\textbf{Derivation.}\nFirst evaluate the smooth-angle probability by limit:\n\\begin{align*}\np_{\\mathrm{skip}}^{\\mathrm{sm}}\n&:=\\lim_{\\varphi\\to\\pi}p_{\\mathrm{skip}}(\\varphi)\\\\\n&=\\frac14\\left(1-\\lim_{\\varphi\\to\\pi}h(\\varphi)\\right)\\\\\n&=\\frac14(1-(-1))\n&&\\text{by (P3)}\\\\\n&=\\frac12.\n\\end{align*}\nTherefore\n\\begin{align*}\np_{\\mathrm{skip}}(\\theta)-p_{\\mathrm{skip}}^{\\mathrm{sm}}\n&=\\frac14\\bigl(1-h(\\theta)\\bigr)-\\frac12\\\\\n&=-\\frac14\\bigl(1+h(\\theta)\\bigr)\\\\\n&=-\\frac14g(\\theta).\n&&\\text{by (P2)}\n\\end{align*}\nUsing (P4), the smooth reference local count is\n\\begin{align*}\nq_{\\mathrm{skip}}^{\\mathrm{sm}}(r,a)\n&=c(r,a)+m(r,a)p_{\\mathrm{skip}}^{\\mathrm{sm}}.\n\\end{align*}\nHence\n\\begin{align*}\nq_{\\mathrm{skip}}(\\theta,r,a)-q_{\\mathrm{skip}}^{\\mathrm{sm}}(r,a)\n&=m(r,a)\\bigl(p_{\\mathrm{skip}}(\\theta)-p_{\\mathrm{skip}}^{\\mathrm{sm}}\\bigr)\\\\\n&=-\\frac{m(r,a)}{4}g(\\theta)\\\\\n&=-\\frac{m(r,a)}{4}\\bigl(1+(\\pi-\\theta)\\cot\\theta\\bigr).\n\\end{align*}\nThe endpoint behaviour follows immediately from (P5)--(P7):\n\\begin{align*}\nq_{\\mathrm{skip}}(\\theta,r,a)-q_{\\mathrm{skip}}^{\\mathrm{sm}}(r,a)\n&=-\\frac{m(r,a)\\pi}{4\\theta}+O(\\theta)\n&&\\text{as }\\theta\\to0,\\\\\nq_{\\mathrm{skip}}(\\theta,r,a)-q_{\\mathrm{skip}}^{\\mathrm{sm}}(r,a)\n&=-\\frac{m(r,a)}{12}(\\pi-\\theta)^2+O\\bigl((\\pi-\\theta)^4\\bigr)\n&&\\text{as }\\theta\\to\\pi.\n\\end{align*}\n\n\\textbf{Final Result.}\n\\[\n\\boxed{q_{\\mathrm{skip}}(\\theta,r,a)-q_{\\mathrm{skip}}^{\\mathrm{sm}}(r,a)\n=-\\frac{m(r,a)}{4}\\bigl(1+(\\pi-\\theta)\\cot\\theta\\bigr)}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_4": "\\textbf{Claim.} The near-smooth lattice-corner probability decomposes into a continuum-shaped part plus an analytic even remainder without relying on endpoint shorthand. Define\n\\[\np_{\\mathrm{skip}}^{\\mathrm{sm}}:=\\lim_{\\varphi\\to\\pi}p_{\\mathrm{skip}}(\\varphi),\n\\qquad\np_{\\mathrm{corner}}^{\\mathrm{sm}}:=\\lim_{\\varphi\\to\\pi}p_{\\mathrm{corner}}(\\varphi).\n\\]\nWith\n\\[\np_{\\mathrm{corner}}(\\theta):=\\log\\bigl(\\cos(\\pi-\\theta)\\bigr)-2p_{\\mathrm{skip}}(\\theta),\n\\qquad\np_{\\mathrm{skip}}(\\theta):=\\frac14\\bigl(1-(\\pi-\\theta)\\cot\\theta\\bigr),\n\\]\none has, as a near-smooth identity,\n\\[\np_{\\mathrm{corner}}(\\theta)-p_{\\mathrm{corner}}^{\\mathrm{sm}}\n=\\frac12\\bigl(1+(\\pi-\\theta)\\cot\\theta\\bigr)+\\log\\bigl(\\cos(\\pi-\\theta)\\bigr).\n\\]\nConsequently,\n\\[\np_{\\mathrm{corner}}(\\theta)-p_{\\mathrm{corner}}^{\\mathrm{sm}}\n=-\\frac13(\\pi-\\theta)^2-\\frac{13}{180}(\\pi-\\theta)^4+O\\bigl((\\pi-\\theta)^6\\bigr)\n\\quad(\\theta\\to\\pi).\n\\]\n\n\\textbf{Premises.}\n\\begin{align*}\n\\text{(P1)}\\quad &\\delta:=\\pi-\\theta.\\\\\n\\text{(P2)}\\quad &p_{\\mathrm{skip}}(\\theta):=\\frac14\\bigl(1-(\\pi-\\theta)\\cot\\theta\\bigr).\\\\\n\\text{(P3)}\\quad &p_{\\mathrm{corner}}(\\theta):=\\log(\\cos\\delta)-2p_{\\mathrm{skip}}(\\theta).\\\\\n\\text{(P4)}\\quad &g(\\theta):=1+(\\pi-\\theta)\\cot\\theta.\\\\\n\\text{(P5)}\\quad &p_{\\mathrm{skip}}(\\theta)-p_{\\mathrm{skip}}^{\\mathrm{sm}}=-\\frac14 g(\\theta),\n\\qquad p_{\\mathrm{skip}}^{\\mathrm{sm}}:=\\lim_{\\varphi\\to\\pi}p_{\\mathrm{skip}}(\\varphi)=\\frac12.\\\\\n\\text{(P6)}\\quad &\\log(\\cos\\delta)=-\\frac{\\delta^2}{2}-\\frac{\\delta^4}{12}+O(\\delta^6).\\\\\n\\text{(P7)}\\quad &g(\\pi-\\delta)=\\frac{\\delta^2}{3}+\\frac{\\delta^4}{45}+O(\\delta^6).\n\\end{align*}\n\n\\textbf{Derivation.}\nFirst evaluate the smooth-angle corner value by limit, not by assigning an endpoint value inside the open angular domain:\n\\begin{align*}\np_{\\mathrm{corner}}^{\\mathrm{sm}}\n&:=\\lim_{\\varphi\\to\\pi}p_{\\mathrm{corner}}(\\varphi)\\\\\n&=\\lim_{\\delta\\to0}\\left(\\log(\\cos\\delta)-2p_{\\mathrm{skip}}(\\pi-\\delta)\\right)\\\\\n&=0-2p_{\\mathrm{skip}}^{\\mathrm{sm}}\\\\\n&=-1\n&&\\text{by (P5)}.\n\\end{align*}\nSubtracting this limiting smooth value gives\n\\begin{align*}\np_{\\mathrm{corner}}(\\theta)-p_{\\mathrm{corner}}^{\\mathrm{sm}}\n&=\\log(\\cos\\delta)-2p_{\\mathrm{skip}}(\\theta)+1\\\\\n&=\\log(\\cos\\delta)-2\\bigl(p_{\\mathrm{skip}}(\\theta)-p_{\\mathrm{skip}}^{\\mathrm{sm}}\\bigr)\n&&\\text{because }2p_{\\mathrm{skip}}^{\\mathrm{sm}}=1\\\\\n&=\\log(\\cos\\delta)+\\frac12g(\\theta)\n&&\\text{by (P5)}\\\\\n&=\\frac12\\bigl(1+(\\pi-\\theta)\\cot\\theta\\bigr)+\\log\\bigl(\\cos(\\pi-\\theta)\\bigr)\n&&\\text{by (P1), (P4)}.\n\\end{align*}\nNow use \\(\\theta=\\pi-\\delta\\). By (P6) and (P7),\n\\begin{align*}\np_{\\mathrm{corner}}(\\pi-\\delta)-p_{\\mathrm{corner}}^{\\mathrm{sm}}\n&=\\left(-\\frac{\\delta^2}{2}-\\frac{\\delta^4}{12}+O(\\delta^6)\\right)\n+\\frac12\\left(\\frac{\\delta^2}{3}+\\frac{\\delta^4}{45}+O(\\delta^6)\\right)\\\\\n&=-\\frac{\\delta^2}{3}-\\frac{13\\delta^4}{180}+O(\\delta^6).\n\\end{align*}\nReplacing \\(\\delta\\) by \\(\\pi-\\theta\\) gives the claimed expansion. The displayed decomposition also shows why the lattice-corner calculation supports the same angular basis as the crossed-leg calculation while retaining an analytic near-smooth remainder.\n\n\\textbf{Final Result.}\n\\[\n\\boxed{p_{\\mathrm{corner}}(\\theta)-p_{\\mathrm{corner}}^{\\mathrm{sm}}\n=\\frac12\\bigl(1+(\\pi-\\theta)\\cot\\theta\\bigr)+\\log\\bigl(\\cos(\\pi-\\theta)\\bigr)}\n\\]\n\\[\n\\boxed{p_{\\mathrm{corner}}(\\theta)-p_{\\mathrm{corner}}^{\\mathrm{sm}}\n=-\\frac13(\\pi-\\theta)^2-\\frac{13}{180}(\\pi-\\theta)^4+O\\bigl((\\pi-\\theta)^6\\bigr)}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_5": "\\textbf{Claim.} Suppose the orientation-and-origin averaged crossed-leg and lattice-corner counts have fitted forms\n\\[\n\\overline{n}_{x}(\\theta,r,a)=\\alpha_x(r,a)+\\beta_x(r,a)(\\pi-\\theta)\\cot\\theta,\n\\qquad x\\in\\{\\mathrm{legs},\\mathrm{corners}\\}.\n\\]\nIf the logarithmic entanglement or counting contribution is a linear combination\n\\[\nT(\\theta,r,a)=\\lambda_{\\mathrm{legs}}\\overline{n}_{\\mathrm{legs}}(\\theta,r,a)\n+\\lambda_{\\mathrm{corners}}\\overline{n}_{\\mathrm{corners}}(\\theta,r,a),\n\\]\nwhere \\(\\lambda_{\\mathrm{legs}}\\) and \\(\\lambda_{\\mathrm{corners}}\\) are independent of \\(\\theta\\) and \\(r\\), then its smooth-subtracted angular component is again proportional to\n\\[\ng(\\theta):=1+(\\pi-\\theta)\\cot\\theta.\n\\]\nThe combined angular coefficient is the sum of the two fitted coefficients weighted by the two physical prefactors.\n\n\\textbf{Premises.}\n\\begin{align*}\n\\text{(P1)}\\quad &x\\in\\{\\mathrm{legs},\\mathrm{corners}\\}.\\\\\n\\text{(P2)}\\quad &\\overline{n}_{x}(\\theta,r,a)=\\alpha_x(r,a)+\\beta_x(r,a)h(\\theta).\\\\\n\\text{(P3)}\\quad &h(\\theta):=(\\pi-\\theta)\\cot\\theta,\n\\qquad g(\\theta):=1+h(\\theta).\\\\\n\\text{(P4)}\\quad &\\lim_{\\varphi\\to\\pi}h(\\varphi)=-1.\\\\\n\\text{(P5)}\\quad &T(\\theta,r,a)=\\lambda_{\\mathrm{legs}}\\overline{n}_{\\mathrm{legs}}(\\theta,r,a)\n+\\lambda_{\\mathrm{corners}}\\overline{n}_{\\mathrm{corners}}(\\theta,r,a).\\\\\n\\text{(P6)}\\quad &\\lambda_{\\mathrm{legs}},\\lambda_{\\mathrm{corners}}\\text{ are independent of }\\theta\\text{ and }r.\n\\end{align*}\n\n\\textbf{Derivation.}\nDefine the smooth reference by\n\\begin{align*}\nT^{\\mathrm{sm}}(r,a)&:=\\lim_{\\varphi\\to\\pi}T(\\varphi,r,a).\n\\end{align*}\nThen, by (P5) and linearity of the limit,\n\\begin{align*}\nT(\\theta,r,a)-T^{\\mathrm{sm}}(r,a)\n&=\\lambda_{\\mathrm{legs}}\\left(\\overline{n}_{\\mathrm{legs}}(\\theta,r,a)-\\lim_{\\varphi\\to\\pi}\\overline{n}_{\\mathrm{legs}}(\\varphi,r,a)\\right)\\\\\n&\\quad+\\lambda_{\\mathrm{corners}}\\left(\\overline{n}_{\\mathrm{corners}}(\\theta,r,a)-\\lim_{\\varphi\\to\\pi}\\overline{n}_{\\mathrm{corners}}(\\varphi,r,a)\\right).\n\\end{align*}\nFor each \\(x\\), (P2)--(P4) give\n\\begin{align*}\n\\overline{n}_{x}(\\theta,r,a)-\\lim_{\\varphi\\to\\pi}\\overline{n}_{x}(\\varphi,r,a)\n&=\\beta_x(r,a)\\left(h(\\theta)-\\lim_{\\varphi\\to\\pi}h(\\varphi)\\right)\\\\\n&=\\beta_x(r,a)\\bigl(h(\\theta)+1\\bigr)\\\\\n&=\\beta_x(r,a)g(\\theta).\n\\end{align*}\nSubstituting this identity for \\(x=\\mathrm{legs}\\) and \\(x=\\mathrm{corners}\\) yields\n\\begin{align*}\nT(\\theta,r,a)-T^{\\mathrm{sm}}(r,a)\n&=\\bigl(\\lambda_{\\mathrm{legs}}\\beta_{\\mathrm{legs}}(r,a)\n+\\lambda_{\\mathrm{corners}}\\beta_{\\mathrm{corners}}(r,a)\\bigr)g(\\theta).\n\\end{align*}\nIf \\(\\partial\\beta_{\\mathrm{legs}}/\\partial r=0\\) and \\(\\partial\\beta_{\\mathrm{corners}}/\\partial r=0\\), then by (P6),\n\\begin{align*}\n\\frac{\\partial}{\\partial r}\n\\bigl(\\lambda_{\\mathrm{legs}}\\beta_{\\mathrm{legs}}\n+\\lambda_{\\mathrm{corners}}\\beta_{\\mathrm{corners}}\\bigr)\n=0.\n\\end{align*}\nThus the combined angular coefficient is radius-independent under the same fitted-coefficient condition. If\n\\begin{align*}\n\\lambda_{\\mathrm{legs}}\\beta_{\\mathrm{legs}}\n+\\lambda_{\\mathrm{corners}}\\beta_{\\mathrm{corners}}=0,\n\\end{align*}\nthen the two fitted angular contributions cancel; otherwise the joint contribution retains the continuum-shaped angular factor.\n\n\\textbf{Final Result.}\n\\[\n\\boxed{T(\\theta,r,a)-T^{\\mathrm{sm}}(r,a)=\n\\bigl(\\lambda_{\\mathrm{legs}}\\beta_{\\mathrm{legs}}(r,a)\n+\\lambda_{\\mathrm{corners}}\\beta_{\\mathrm{corners}}(r,a)\\bigr)\n\\bigl(1+(\\pi-\\theta)\\cot\\theta\\bigr)}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_6": "\\textbf{Claim.} A radius-independent fitted counting coefficient cannot reproduce a nonzero critical logarithmic corner law for all boundary lengths. Let\n\\[\nG_{\\mathrm{count}}(\\theta,L)=B\\bigl(1+(\\pi-\\theta)\\cot\\theta\\bigr)\n\\]\nbe the smooth-subtracted angular part of any fitted geometric counting contribution with coefficient \\(B\\) independent of the boundary length \\(L:=|\\partial A|>0\\). Let\n\\[\nG_{\\mathrm{crit}}(\\theta,L)=K\\bigl(1+(\\pi-\\theta)\\cot\\theta\\bigr)\\log L.\n\\]\nIf \\(G_{\\mathrm{count}}(\\theta,L)=G_{\\mathrm{crit}}(\\theta,L)\\) for all \\(L>0\\) at an angle with \\(1+(\\pi-\\theta)\\cot\\theta\\neq0\\), then \\(K=0\\). Hence the averaged square-lattice counting mechanism accounts for an area-independent gapped-style angular term, not a nonzero critical logarithmic length factor.\n\n\\textbf{Premises.}\n\\begin{align*}\n\\text{(P1)}\\quad &L>0.\\\\\n\\text{(P2)}\\quad &g(\\theta):=1+(\\pi-\\theta)\\cot\\theta.\\\\\n\\text{(P3)}\\quad &G_{\\mathrm{count}}(\\theta,L)=B g(\\theta),\\quad \\frac{\\partial B}{\\partial L}=0.\\\\\n\\text{(P4)}\\quad &G_{\\mathrm{crit}}(\\theta,L)=K g(\\theta)\\log L.\\\\\n\\text{(P5)}\\quad &\\frac{\\partial}{\\partial L}\\log L=L^{-1}.\\\\\n\\text{(P6)}\\quad &L^{-1}\\neq0\\text{ for }L>0.\\\\\n\\text{(P7)}\\quad &g(\\theta)\\neq0.\n\\end{align*}\n\n\\textbf{Derivation.}\nAssume equality for all \\(L>0\\):\n\\begin{align*}\nB g(\\theta)=K g(\\theta)\\log L.\n\\end{align*}\nDifferentiate both sides with respect to \\(L\\):\n\\begin{align*}\n\\frac{\\partial}{\\partial L}\\bigl(Bg(\\theta)\\bigr)\n&=\\frac{\\partial}{\\partial L}\\bigl(Kg(\\theta)\\log L\\bigr)\\\\\n0&=K g(\\theta)L^{-1}\n&&\\text{by (P3)--(P5)}.\n\\end{align*}\nBy (P6) and (P7), the product can vanish only if\n\\begin{align*}\nK=0.\n\\end{align*}\nTherefore a nonzero critical coefficient \\(K\\) cannot be represented for all lengths by an area-independent fitted counting coefficient \\(B\\).\n\n\\textbf{Final Result.}\n\\[\n\\boxed{B\\bigl(1+(\\pi-\\theta)\\cot\\theta\\bigr)\n\\not\\equiv K\\bigl(1+(\\pi-\\theta)\\cot\\theta\\bigr)\\log |\\partial A|\n\\text{ for all }|\\partial A|>0\\text{ unless }K=0\\text{ or }g(\\theta)=0}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_7": "\\textbf{Claim.} In the least-squares model with an intercept,\n\\[\nn(\\theta,r,a)\\approx \\alpha(r,a)+\\beta(r,a)h(\\theta),\n\\qquad h(\\theta):=(\\pi-\\theta)\\cot\\theta,\n\\]\na purely \\(\\theta\\)-independent area or radius term cannot bias the fitted angular coefficient. More precisely, on a finite fitting interval \\(\\mathcal{I}\\subset(0,\\pi)\\), if\n\\[\nn(\\theta,r,a)=A(r,a)+B(r,a)h(\\theta)+e(\\theta,r,a),\n\\]\nthen the fitted slope satisfies\n\\[\n\\beta_*(r,a)=B(r,a)+\\frac{\\langle \\widetilde{e},\\widetilde{h}\\rangle}{\\langle \\widetilde{h},\\widetilde{h}\\rangle},\n\\]\nwhere tildes denote centering over \\(\\mathcal{I}\\). Hence \\(A(r,a)\\) affects only the fitted intercept, and finite-size or numerical residuals affect \\(\\beta_*\\) only through their component correlated with the centered angular basis.\n\n\\textbf{Premises.}\n\\begin{align*}\n\\text{(P1)}\\quad &\\mathcal{I}\\subset(0,\\pi)\\text{ is finite and has length }|\\mathcal{I}|>0.\\\\\n\\text{(P2)}\\quad &h(\\theta):=(\\pi-\\theta)\\cot\\theta\\text{ is not constant on }\\mathcal{I}.\\\\\n\\text{(P3)}\\quad &\\langle f,q\\rangle:=\\int_{\\mathcal{I}}f(\\theta)q(\\theta)\\,d\\theta.\\\\\n\\text{(P4)}\\quad &\\overline{f}:=|\\mathcal{I}|^{-1}\\int_{\\mathcal{I}}f(\\theta)\\,d\\theta,\n\\qquad \\widetilde{f}:=f-\\overline{f}.\\\\\n\\text{(P5)}\\quad &n(\\theta,r,a)=A(r,a)+B(r,a)h(\\theta)+e(\\theta,r,a).\\\\\n\\text{(P6)}\\quad &(\\alpha_*,\\beta_*):=\\operatorname*{arg\\,min}_{\\alpha,\\beta\\in\\mathbb{R}}\n\\int_{\\mathcal{I}}\\bigl(n(\\theta,r,a)-\\alpha-\\beta h(\\theta)\\bigr)^2\\,d\\theta.\\\\\n\\text{(P7)}\\quad &\\langle \\widetilde{h},\\widetilde{h}\\rangle>0.\\\\\n\\text{(P8)}\\quad &|\\langle f,q\\rangle|\\leq \\langle f,f\\rangle^{1/2}\\langle q,q\\rangle^{1/2}.\n\\end{align*}\n\n\\textbf{Derivation.}\nFor a fixed \\(\\beta\\), the residual is minimized over \\(\\alpha\\) by matching means:\n\\begin{align*}\n0&=\\frac{\\partial}{\\partial \\alpha}\\int_{\\mathcal{I}}\\bigl(n-\\alpha-\\beta h\\bigr)^2\\,d\\theta\\\\\n&=-2\\int_{\\mathcal{I}}\\bigl(n-\\alpha-\\beta h\\bigr)\\,d\\theta,\n\\end{align*}\nso\n\\begin{align*}\n\\alpha=\\overline{n}-\\beta\\overline{h}.\n\\end{align*}\nSubstituting this value gives the centered problem\n\\begin{align*}\n\\beta_*&=\\operatorname*{arg\\,min}_{\\beta\\in\\mathbb{R}}\n\\int_{\\mathcal{I}}\\bigl(\\widetilde{n}(\\theta,r,a)-\\beta\\widetilde{h}(\\theta)\\bigr)^2\\,d\\theta.\n\\end{align*}\nThe normal equation for \\(\\beta\\) is\n\\begin{align*}\n0&=\\frac{\\partial}{\\partial \\beta}\\int_{\\mathcal{I}}\\bigl(\\widetilde{n}-\\beta\\widetilde{h}\\bigr)^2\\,d\\theta\\\\\n&=-2\\langle \\widetilde{n}-\\beta\\widetilde{h},\\widetilde{h}\\rangle,\n\\end{align*}\ntherefore\n\\begin{align*}\n\\beta_*&=\\frac{\\langle \\widetilde{n},\\widetilde{h}\\rangle}{\\langle \\widetilde{h},\\widetilde{h}\\rangle}\n&&\\text{by (P7)}.\n\\end{align*}\nCentering (P5) gives\n\\begin{align*}\n\\widetilde{n}(\\theta,r,a)&=B(r,a)\\widetilde{h}(\\theta)+\\widetilde{e}(\\theta,r,a),\n\\end{align*}\nbecause the centered version of the \\(\\theta\\)-independent term \\(A(r,a)\\) is zero. Hence\n\\begin{align*}\n\\beta_*(r,a)\n&=\\frac{\\langle B(r,a)\\widetilde{h}+\\widetilde{e},\\widetilde{h}\\rangle}{\\langle \\widetilde{h},\\widetilde{h}\\rangle}\\\\\n&=B(r,a)+\\frac{\\langle \\widetilde{e},\\widetilde{h}\\rangle}{\\langle \\widetilde{h},\\widetilde{h}\\rangle}.\n\\end{align*}\nBy Cauchy's inequality (P8),\n\\begin{align*}\n|\\beta_*(r,a)-B(r,a)|\n&\\leq \\frac{\\langle \\widetilde{e},\\widetilde{e}\\rangle^{1/2}}{\\langle \\widetilde{h},\\widetilde{h}\\rangle^{1/2}}.\n\\end{align*}\nThus area-dependent but angle-independent contributions are absorbed by \\(\\alpha_*\\), while only angular residuals correlated with \\(h\\) perturb \\(\\beta_*\\).\n\n\\textbf{Final Result.}\n\\[\n\\boxed{\\beta_*(r,a)=B(r,a)+\\frac{\\langle \\widetilde{e},\\widetilde{h}\\rangle}{\\langle \\widetilde{h},\\widetilde{h}\\rangle}}\n\\]\n\\[\n\\boxed{|\\beta_*(r,a)-B(r,a)|\\leq\n\\frac{\\langle \\widetilde{e},\\widetilde{e}\\rangle^{1/2}}{\\langle \\widetilde{h},\\widetilde{h}\\rangle^{1/2}}}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_8": "\\textbf{Claim.} Least-squares fitting commutes with the orientation-and-origin averaging used in the paper. Let \\(\\Omega\\) be the orientation-and-origin space with normalized measure \\(\\mu\\), and let\n\\[\n\\overline{n}(\\theta):=\\int_{\\Omega}n(\\theta,\\omega)\\,d\\mu(\\omega).\n\\]\nFor the fitting basis \\(h(\\theta):=(\\pi-\\theta)\\cot\\theta\\) on a finite interval \\(\\mathcal{I}\\subset(0,\\pi)\\), denote by \\(\\beta[f]\\) the fitted slope in the least-squares approximation \\(f(\\theta)\\approx \\alpha+\\beta h(\\theta)\\). Then\n\\[\n\\beta[\\overline{n}]=\\int_{\\Omega}\\beta[n_{\\omega}]\\,d\\mu(\\omega),\n\\qquad n_{\\omega}(\\theta):=n(\\theta,\\omega).\n\\]\nThus the coefficient fitted after uniform orientation-and-origin averaging is exactly the uniform average of the orientation-specific fitted coefficients; it is not a pointwise fixed-orientation claim.\n\n\\textbf{Premises.}\n\\begin{align*}\n\\text{(P1)}\\quad &\\mu(\\Omega)=1.\\\\\n\\text{(P2)}\\quad &\\mathcal{I}\\subset(0,\\pi)\\text{ is finite and }h(\\theta):=(\\pi-\\theta)\\cot\\theta\\text{ is not constant on }\\mathcal{I}.\\\\\n\\text{(P3)}\\quad &\\langle f,q\\rangle:=\\int_{\\mathcal{I}}f(\\theta)q(\\theta)\\,d\\theta.\\\\\n\\text{(P4)}\\quad &M[f]:=|\\mathcal{I}|^{-1}\\int_{\\mathcal{I}}f(\\theta)\\,d\\theta,\n\\qquad \\widetilde{f}:=f-M[f].\\\\\n\\text{(P5)}\\quad &\\beta[f]:=\\frac{\\langle \\widetilde{f},\\widetilde{h}\\rangle}{\\langle \\widetilde{h},\\widetilde{h}\\rangle}.\\\\\n\\text{(P6)}\\quad &\\overline{n}(\\theta):=\\int_{\\Omega}n(\\theta,\\omega)\\,d\\mu(\\omega),\n\\qquad n_{\\omega}(\\theta):=n(\\theta,\\omega).\\\\\n\\text{(P7)}\\quad &\\text{The required }\\theta\\text{- and }\\omega\\text{-integrals are finite and may be interchanged.}\n\\end{align*}\n\n\\textbf{Derivation.}\nFirst center the averaged count:\n\\begin{align*}\n\\widetilde{\\overline{n}}(\\theta)\n&=\\overline{n}(\\theta)-M[\\overline{n}]\\\\\n&=\\int_{\\Omega}n(\\theta,\\omega)\\,d\\mu(\\omega)\n-|\\mathcal{I}|^{-1}\\int_{\\mathcal{I}}\\int_{\\Omega}n(s,\\omega)\\,d\\mu(\\omega)\\,ds\n&&\\text{by (P4), (P6)}\\\\\n&=\\int_{\\Omega}n(\\theta,\\omega)\\,d\\mu(\\omega)\n-\\int_{\\Omega}|\\mathcal{I}|^{-1}\\int_{\\mathcal{I}}n(s,\\omega)\\,ds\\,d\\mu(\\omega)\n&&\\text{by (P7)}\\\\\n&=\\int_{\\Omega}\\bigl(n_{\\omega}(\\theta)-M[n_{\\omega}]\\bigr)\\,d\\mu(\\omega)\\\\\n&=\\int_{\\Omega}\\widetilde{n_{\\omega}}(\\theta)\\,d\\mu(\\omega).\n\\end{align*}\nUsing the normal-equation formula for the fitted slope,\n\\begin{align*}\n\\beta[\\overline{n}]\n&=\\frac{\\langle \\widetilde{\\overline{n}},\\widetilde{h}\\rangle}{\\langle \\widetilde{h},\\widetilde{h}\\rangle}\n&&\\text{by (P5)}\\\\\n&=\\frac{1}{\\langle \\widetilde{h},\\widetilde{h}\\rangle}\n\\int_{\\mathcal{I}}\\left(\\int_{\\Omega}\\widetilde{n_{\\omega}}(\\theta)\\,d\\mu(\\omega)\\right)\\widetilde{h}(\\theta)\\,d\\theta\n&&\\text{previous line}\\\\\n&=\\int_{\\Omega}\\frac{\\int_{\\mathcal{I}}\\widetilde{n_{\\omega}}(\\theta)\\widetilde{h}(\\theta)\\,d\\theta}{\\langle \\widetilde{h},\\widetilde{h}\\rangle}\\,d\\mu(\\omega)\n&&\\text{by (P7)}\\\\\n&=\\int_{\\Omega}\\beta[n_{\\omega}]\\,d\\mu(\\omega)\n&&\\text{by (P5)}.\n\\end{align*}\nTherefore the averaged coefficient used for \\(\\overline{n}_{\\mathrm{legs}}\\) and \\(\\overline{n}_{\\mathrm{corners}}\\) is a linear projection of the uniformly averaged count data. The result supports the claimed averaged construction while explicitly avoiding any assertion that a single fixed \\(\\omega\\) must display the continuum-like angular dependence.\n\n\\textbf{Final Result.}\n\\[\n\\boxed{\\beta\\!\\left[\\int_{\\Omega}n(\\cdot,\\omega)\\,d\\mu(\\omega)\\right]\n=\\int_{\\Omega}\\beta[n_{\\omega}]\\,d\\mu(\\omega)}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_metadata": {
+    "output_file": "deeper.json",
+    "revision_id": "deeper_09_final_alignment_v3",
+    "revision_intent": "Maximize alignment by replacing all remaining smooth-angle endpoint shorthand with explicit limit-defined quantities and adding a proof that least-squares fitting commutes with the required orientation-and-origin averaging.",
+    "input_files": [
+      "deeper_reasoning_pseudo_algorithm.md",
+      "core_09.json",
+      "goals_09.json"
+    ],
+    "rubric_interpretation": {
+      "top_level_schema": "Exactly paper_title, contiguous deeper_reasoning_k string fields, and deeper_metadata.",
+      "latex_constraint": "Each deeper_reasoning_k is standalone LaTeX compatible with article, amsmath, and amssymb only.",
+      "metadata_constraint": "All audit, trace, and selection information is placed inside deeper_metadata; proof content is not duplicated there."
+    },
+    "goal_trace": {
+      "G1_iPEPS_crossed_bond_corner_term": [
+        "deeper_reasoning_1",
+        "deeper_reasoning_2",
+        "deeper_reasoning_3",
+        "deeper_reasoning_5",
+        "deeper_reasoning_6",
+        "deeper_reasoning_7",
+        "deeper_reasoning_8"
+      ],
+      "G2_gauge_lattice_corner_count_term": [
+        "deeper_reasoning_1",
+        "deeper_reasoning_4",
+        "deeper_reasoning_5",
+        "deeper_reasoning_6",
+        "deeper_reasoning_7",
+        "deeper_reasoning_8"
+      ],
+      "methodological_claim": [
+        "deeper_reasoning_1",
+        "deeper_reasoning_2",
+        "deeper_reasoning_3",
+        "deeper_reasoning_4",
+        "deeper_reasoning_7",
+        "deeper_reasoning_8"
+      ],
+      "excluded_critical_log_scaling_scope": [
+        "deeper_reasoning_6"
+      ]
+    },
+    "entry_metadata": {
+      "deeper_reasoning_1": {
+        "title": "Exact intercept absorption between fitted lattice basis and continuum angular basis",
+        "target_goal_component": "Supports G1 and G2 by proving that the paper's fitted basis and the gapped-continuum basis differ only by the fitted intercept.",
+        "declared_source_set": [
+          "core_reasoning_2",
+          "core_reasoning_5",
+          "goals G1/G2 fitting objective"
+        ],
+        "major_advancement_modes": [
+          "basis-equivalence proof",
+          "intercept-shift audit",
+          "fit-parameter invariance"
+        ],
+        "goal_alignment": "High: formalizes the central comparison to alpha + beta (pi-theta) cot theta and explains why theta-independent constants can be absorbed.",
+        "scientific_payoff": "Prevents a false mismatch between the lattice fit and the continuum expression containing the extra constant 1.",
+        "nontrivial_advance_over_sources": "Turns the informal intercept-absorption statement into an exact least-squares equivalence.",
+        "formal_sharpness": "Uses a finite fitting domain to avoid endpoint-integrability overclaims near theta equals zero.",
+        "low_value_rejection_audit": "Rejected a mere restatement of the continuum corner formula; this entry proves parameterization equivalence.",
+        "selection_score": 0.98,
+        "controlled_external_lemmas": [
+          "elementary bijection of two-parameter affine models",
+          "least-squares residual invariance"
+        ],
+        "known_residual_risks_and_mitigation": "Does not assert that the empirical fit is exact; it only proves that the two bases are equivalent once a fitted h-model is accepted."
+      },
+      "deeper_reasoning_2": {
+        "title": "Averaged crossed-bond counts induce the smooth-subtracted iPEPS Schmidt-rank angular law",
+        "target_goal_component": "G1_iPEPS_crossed_bond_corner_term",
+        "declared_source_set": [
+          "core_reasoning_1",
+          "core_reasoning_2",
+          "core_reasoning_5",
+          "goals G1 constraints C1-C7"
+        ],
+        "major_advancement_modes": [
+          "count-to-bound bridge",
+          "averaging-scope clarification",
+          "radius-coefficient propagation"
+        ],
+        "goal_alignment": "High: connects the averaged n_legs fit to the angular part of the logarithmic Schmidt-rank bound.",
+        "scientific_payoff": "Clarifies exactly what the orientation-and-origin averaged count proves at the logarithmic-bound level.",
+        "nontrivial_advance_over_sources": "Combines pointwise PEPS cut bounds with averaged counts and smooth subtraction; the core entries do not make this bridge explicit.",
+        "formal_sharpness": "Uses explicit smooth-angle limits instead of treating h(pi) as an ordinary value; distinguishes averaged logarithmic bounds from pointwise averaged-count substitutions.",
+        "low_value_rejection_audit": "Rejected an exponential-average claim because E[chi^n] is not generally chi^{E[n]}; retained the valid averaged log statement.",
+        "selection_score": 0.99,
+        "controlled_external_lemmas": [
+          "integration preserves inequalities",
+          "smooth subtraction at theta equals pi",
+          "product rule for radius derivative"
+        ],
+        "known_residual_risks_and_mitigation": "The fitted coefficient's radius independence is conditional on the paper's empirical no-systematic-dependence claim.",
+        "revision_note": "Revised in v2 to remove informal h(pi) shorthand."
+      },
+      "deeper_reasoning_3": {
+        "title": "Skipped-bond local probability as the microscopic generator of the continuum angular factor",
+        "target_goal_component": "G1_iPEPS_crossed_bond_corner_term",
+        "declared_source_set": [
+          "core_reasoning_2",
+          "core_reasoning_3",
+          "goals G1 success set"
+        ],
+        "major_advancement_modes": [
+          "local-to-global coefficient mapping",
+          "endpoint asymptotic compatibility",
+          "smooth-subtracted probability bridge"
+        ],
+        "goal_alignment": "High: links the appendix p_skip calculation to the fitted crossed-leg angular component.",
+        "scientific_payoff": "Explains why the near-apex skipped-bond mechanism produces both the sharp-angle and smooth-angle signatures expected of the continuum factor.",
+        "nontrivial_advance_over_sources": "Extends the core probability identity to a generic local count contribution with an explicit amplitude m(r,a).",
+        "formal_sharpness": "Uses explicit smooth-angle limit values for p_skip and q_skip rather than evaluating h at the endpoint.",
+        "low_value_rejection_audit": "Rejected a global exact-count derivation because the uploaded sources only justify the local probability mechanism plus fitted-count evidence.",
+        "selection_score": 0.94,
+        "controlled_external_lemmas": [
+          "smooth subtraction",
+          "endpoint asymptotic substitution"
+        ],
+        "known_residual_risks_and_mitigation": "The proof is local; global fitted-count validity remains tied to the paper's numerical averaging and fitting procedure.",
+        "revision_note": "Revised in v2 to remove endpoint-evaluation shorthand and keep amplitude m(r,a) theta-independent."
+      },
+      "deeper_reasoning_4": {
+        "title": "Limit-defined lattice-corner smooth subtraction and analytic remainder",
+        "target_goal_component": "G2_gauge_lattice_corner_count_term",
+        "declared_source_set": [
+          "core_reasoning_3",
+          "core_reasoning_4",
+          "goals G2 success set"
+        ],
+        "major_advancement_modes": [
+          "corner-probability decomposition",
+          "analytic-remainder isolation",
+          "higher-order smooth expansion"
+        ],
+        "goal_alignment": "Very high: supports G2 by deriving the lattice-corner smooth-subtracted expression using explicit smooth-angle limits and by isolating the continuum-shaped part from the analytic near-smooth remainder.",
+        "scientific_payoff": "Shows precisely which part has the continuum angular form and which part is a local analytic correction near the smooth limit.",
+        "nontrivial_advance_over_sources": "Derives the closed decomposition Delta p_corner = one-half g plus log cos, not only the leading O(delta^2) result.",
+        "formal_sharpness": "Improved: endpoint notation is replaced by p_skip^sm and p_corner^sm limits, avoiding implicit evaluation at an angle outside the open fitting domain.",
+        "low_value_rejection_audit": "Rejected an overstrong statement that the corner probability is purely continuum-shaped; retained the exact decomposition.",
+        "selection_score": 0.96,
+        "controlled_external_lemmas": [
+          "Taylor expansion of log cos",
+          "smooth subtraction",
+          "substitution of p_skip identity"
+        ],
+        "known_residual_risks_and_mitigation": "The expression is near-smooth rather than a global exact angular law; the derivation states this and treats the log-cos term as an analytic remainder."
+      },
+      "deeper_reasoning_5": {
+        "title": "Closure of the continuum angular factor under combined leg and corner contributions",
+        "target_goal_component": "Joint conjunction G1 and G2",
+        "declared_source_set": [
+          "core_reasoning_5",
+          "goals inter_goal_relation",
+          "goals G1/G2"
+        ],
+        "major_advancement_modes": [
+          "joint-goal synthesis",
+          "linear-combination closure",
+          "cancellation condition"
+        ],
+        "goal_alignment": "High: proves that the two canonical goals remain aligned when both contributions are present in the same entanglement expression.",
+        "scientific_payoff": "Identifies the effective angular coefficient and the only algebraic cancellation case.",
+        "nontrivial_advance_over_sources": "Moves from separate fitted counts to the combined physical contribution targeted by the joint goal.",
+        "formal_sharpness": "Uses explicit smooth-reference limits for the combined contribution and states the cancellation condition.",
+        "low_value_rejection_audit": "Rejected a separate re-derivation of core_reasoning_5; this entry proves closure for the joint proposition.",
+        "selection_score": 0.97,
+        "controlled_external_lemmas": [
+          "linearity",
+          "smooth subtraction",
+          "constant-coefficient derivative"
+        ],
+        "known_residual_risks_and_mitigation": "If a physical prefactor had theta or radius dependence, the closure result would not apply; the goal explicitly assumes theta-independent coefficients.",
+        "revision_note": "Revised in v2 to avoid endpoint evaluation of h and to align with the smooth-subtracted goal formalization."
+      },
+      "deeper_reasoning_6": {
+        "title": "Critical logarithmic length scaling is outside the fitted counting mechanism",
+        "target_goal_component": "Scope control and excluded critical-system aim",
+        "declared_source_set": [
+          "core_reasoning_6",
+          "goals excluded_aims",
+          "goals implicit_goal"
+        ],
+        "major_advancement_modes": [
+          "scope-boundary proof",
+          "non-overclaim guard",
+          "critical-versus-gapped separation"
+        ],
+        "goal_alignment": "High: preserves the paper goal as a gapped-style area-independent angular correspondence rather than a critical logarithmic-length result.",
+        "scientific_payoff": "Prevents the generated deeper reasoning from overextending the counting argument to MERA-like or fractal critical scaling suggestions.",
+        "nontrivial_advance_over_sources": "Specializes the impossibility argument to the fitted smooth-subtracted geometric coefficient used in the joint G1/G2 synthesis.",
+        "formal_sharpness": "States the nonzero-angle-factor condition and differentiates with respect to boundary length.",
+        "low_value_rejection_audit": "Rejected a speculative route to critical scaling because it is explicitly outside the canonical goal.",
+        "selection_score": 0.93,
+        "controlled_external_lemmas": [
+          "derivative of log L",
+          "nonzero product implication"
+        ],
+        "known_residual_risks_and_mitigation": "The result does not rule out other tensor-network geometries; it only rules out this area-independent fitted counting coefficient as a universal critical log-length law."
+      },
+      "deeper_reasoning_7": {
+        "title": "Least-squares centering proves area-dependent intercepts do not bias the fitted angular coefficient",
+        "target_goal_component": "Supports G1/G2 fitted coefficient interpretation and the no-systematic-boundary-length-dependence claim",
+        "declared_source_set": [
+          "goals G1/G2 success sets",
+          "goals operational_goal",
+          "core_reasoning_5"
+        ],
+        "major_advancement_modes": [
+          "least-squares normal-equation derivation",
+          "intercept-contamination guard",
+          "finite-size residual bound"
+        ],
+        "goal_alignment": "Very high: directly formalizes why theta-independent area/radius terms belong to alpha, while beta measures only the centered angular component.",
+        "scientific_payoff": "Makes the beta-versus-r interpretation sharper by proving that changes in area-law intercepts cannot by themselves create the reported angular coefficient.",
+        "nontrivial_advance_over_sources": "Adds a projection formula and residual bound absent from the core reasoning, strengthening the empirical-fit interpretation without overclaiming exact global counts.",
+        "formal_sharpness": "Requires a finite fitting interval and nonconstant h, and keeps finite-size/numerical residuals as an explicit error term.",
+        "low_value_rejection_audit": "Rejected an unsupported claim that beta is exactly constant for all r; proved instead what least-squares fitting can and cannot identify.",
+        "selection_score": 0.99,
+        "controlled_external_lemmas": [
+          "least-squares normal equations",
+          "centering with intercept",
+          "Cauchy inequality"
+        ],
+        "known_residual_risks_and_mitigation": "Does not prove empirical residuals are small; it bounds their effect conditional on their L2 size and correlation with the angular basis."
+      },
+      "deeper_reasoning_8": {
+        "title": "Averaging commutes with fitted angular coefficient extraction",
+        "target_goal_component": "Supports G1, G2, and the methodological claim by proving that the beta extracted from the orientation-and-origin averaged count is the uniform average of orientation-specific fitted betas.",
+        "declared_source_set": [
+          "goals G1/G2 averaging requirement",
+          "goals methodological claim",
+          "deeper_reasoning_7 least-squares coefficient formula"
+        ],
+        "major_advancement_modes": [
+          "averaging-fit commutation proof",
+          "projection-linearity audit",
+          "scope-control against fixed-orientation overclaim"
+        ],
+        "goal_alignment": "Very high: directly formalizes the goals file requirement that the continuum-like angular dependence belongs to the uniformly averaged construction, not to arbitrary fixed lattice orientations or origins.",
+        "scientific_payoff": "Explains why the paper can fit after averaging and why the resulting beta is the correct target object for the claimed orientation-and-origin averaged correspondence.",
+        "nontrivial_advance_over_sources": "The core reasoning gives count, expansion, and coefficient facts; this entry adds a structural theorem connecting the averaging operation to the fitted coefficient itself.",
+        "formal_sharpness": "High: states finite-integral and interchange assumptions, derives the centered-count identity, and proves beta linearity exactly.",
+        "low_value_rejection_audit": "Avoids a vague restatement that averaging is important; proves the exact linear projection property needed for the methodology.",
+        "selection_score": 0.97,
+        "controlled_external_lemmas": [
+          "Fubini/interchange of finite integrals",
+          "least-squares normal-equation formula from deeper_reasoning_7"
+        ],
+        "known_residual_risks_and_mitigation": "The theorem does not prove the empirical radius-independence of the averaged beta; it proves that the beta being audited is the mathematically correct averaged coefficient."
+      }
+    },
+    "rejected_low_value_candidates": [
+      {
+        "candidate": "Copy the six core_reasoning entries into deeper_reasoning entries.",
+        "reason_rejected": "Would not add deeper value and would duplicate the source rather than synthesizing across core reasoning and goals."
+      },
+      {
+        "candidate": "Assert that n_legs_bar or n_corners_bar is globally exactly equal to alpha plus beta h for all continuum angles.",
+        "reason_rejected": "The goals describe fitted averaged counts and local endpoint calculations, not a closed-form exact global count theorem."
+      },
+      {
+        "candidate": "Claim that averaged counts imply pointwise bounds for every orientation and origin.",
+        "reason_rejected": "The valid operation is averaging the logarithmic bound; pointwise replacement by the averaged count would be unjustified."
+      },
+      {
+        "candidate": "Extend the result to critical log |partial A| scaling or other tensor network geometries.",
+        "reason_rejected": "The goals list these as out-of-scope future directions or excluded aims."
+      }
+    ],
+    "global_alignment_audit": {
+      "schema_status": "valid_single_json_object_with_contiguous_reasoning_fields_1_to_8",
+      "top_level_keys": [
+        "paper_title",
+        "deeper_reasoning_1",
+        "deeper_reasoning_2",
+        "deeper_reasoning_3",
+        "deeper_reasoning_4",
+        "deeper_reasoning_5",
+        "deeper_reasoning_6",
+        "deeper_reasoning_7",
+        "deeper_reasoning_8",
+        "deeper_metadata"
+      ],
+      "coverage_summary": "G1 is covered by entries 1, 2, 3, 5, 6, 7, and 8; G2 is covered by entries 1, 4, 5, 6, 7, and 8; the joint relation is covered by entry 5; least-squares coefficient isolation is covered by entry 7; orientation-and-origin averaging is strengthened by entry 8; scope exclusion is covered by entry 6.",
+      "source_alignment_summary": "The output uses the core derivations as lemmas and the goals file to select derivations that advance the averaged square-lattice counting interpretation, especially intercept absorption, averaged logarithmic bounds, local skipped/corner probabilities with limit-defined smooth subtraction, joint leg-corner synthesis, least-squares beta isolation, averaging-fit commutation, and critical-scaling scope exclusion.",
+      "latex_validation_summary": "All reasoning entries are intended to compile with article, amsmath, and amssymb only; v3 was regenerated to remove remaining endpoint-shorthand risk.",
+      "risk_posture": "Conditional empirical claims are phrased as conditional on fitted-count assumptions rather than promoted to exact global theorems."
+    },
+    "known_residual_risks_and_mitigation": [
+      {
+        "risk": "The uploaded goal formalization treats no-systematic radius dependence as an empirical fitted-count result, not a symbolic theorem.",
+        "mitigation": "Every derivation propagates radius-independence conditionally from beta_x rather than deriving it from first principles."
+      },
+      {
+        "risk": "The lattice-corner near-smooth probability contains an analytic log cos remainder, so a pure global h-law would be overstrong.",
+        "mitigation": "Entry 4 isolates the remainder exactly and limits the claim to near-smooth support plus fitted-count evidence."
+      },
+      {
+        "risk": "Averaging over orientations and origins can be misread as a pointwise statement.",
+        "mitigation": "Entry 2 explicitly states the valid averaged logarithmic bound and rejects pointwise replacement."
+      },
+      {
+        "risk": "Least-squares beta stability depends on the residual component aligned with the centered angular basis.",
+        "mitigation": "Entry 7 gives the exact projection formula and Cauchy bound rather than asserting residuals are negligible."
+      },
+      {
+        "risk": "The phrase that correspondence only emerges after averaging could be misread as an unexplained empirical operation.",
+        "mitigation": "Entry 8 proves that beta extraction is linear in the count profile, so fitting after averaging targets the exact averaged coefficient and does not require a fixed-orientation theorem."
+      }
+    ]
+  }
+}

@@ -1,0 +1,201 @@
+{
+  "paper_title": "Entanglement entropy of a color flux tube in (2+1)D Yang-Mills theory (Amorosso, 2024, JHEP)",
+  "deeper_reasoning_1": "\\section*{Claim}\nFor integer \\(q\\geq2\\), the flux-tube observable simultaneously has three paper-critical properties: it is a vacuum-subtracted excess entropy, it is computable as a gauge-invariant Polyakov-loop ratio, and its continuum finiteness is equivalent to a finite nonzero limit of that ratio. More precisely, if\n\\[\n\\widetilde S^{(q)}_{|Q\\bar Q}(a)=-\\frac{1}{q-1}\\log R_q(a)\n\\]\nand the source and vacuum Renyi entropies have the same ultraviolet term, then\n\\[\n\\lim_{a\\to0}\\widetilde S^{(q)}_{|Q\\bar Q}(a)=S^{(q)}_{f,|Q\\bar Q}-S^{(q)}_f\n\\]\nand\n\\[\n\\lim_{a\\to0}R_q(a)=\\exp\\left(-(q-1)(S^{(q)}_{f,|Q\\bar Q}-S^{(q)}_f)\\right).\n\\]\n\n\\section*{Premises}\n\\[\n\\begin{array}{ll}\n\\text{(P1)} & q\\in\\mathbb Z,\\quad q\\geq2.\\\\[1mm]\n\\text{(P2)} & R_q(a)>0,\n\\quad \\displaystyle \\widetilde S^{(q)}_{|Q\\bar Q}(a)=-\\frac{1}{q-1}\\log R_q(a).\\\\[3mm]\n\\text{(P3)} & \\displaystyle S^{(q)}_{|Q\\bar Q}(a)=S^{(q)}_{\\rm UV}(a)+S^{(q)}_{f,|Q\\bar Q}+r_{Q\\bar Q}(a).\\\\[2mm]\n\\text{(P4)} & \\displaystyle S^{(q)}(a)=S^{(q)}_{\\rm UV}(a)+S^{(q)}_{f}+r_0(a).\\\\[2mm]\n\\text{(P5)} & \\displaystyle \\lim_{a\\to0}r_{Q\\bar Q}(a)=0,\n\\qquad \\lim_{a\\to0}r_0(a)=0.\\\\[2mm]\n\\text{(P6)} & \\displaystyle \\widetilde S^{(q)}_{|Q\\bar Q}(a):=S^{(q)}_{|Q\\bar Q}(a)-S^{(q)}(a).\\\\[2mm]\n\\text{(P7)} & \\displaystyle P_{\\vec z}^{(r)}\\mapsto G_{\\vec z}^{(r)}P_{\\vec z}^{(r)}(G_{\\vec z}^{(r)})^{-1},\n\\qquad \\operatorname{Tr}(ABA^{-1})=\\operatorname{Tr}(B).\\\\[2mm]\n\\end{array}\n\\]\n\n\\section*{Derivation}\nFirst, the common ultraviolet term cancels in the excess entropy:\n\\begin{align}\n\\widetilde S^{(q)}_{|Q\\bar Q}(a)\n&=S^{(q)}_{|Q\\bar Q}(a)-S^{(q)}(a) && \\text{by (P6)}\\\\\n&=\\left(S^{(q)}_{\\rm UV}(a)+S^{(q)}_{f,|Q\\bar Q}+r_{Q\\bar Q}(a)\\right)\n-\\left(S^{(q)}_{\\rm UV}(a)+S^{(q)}_{f}+r_0(a)\\right) && \\text{by (P3),(P4)}\\\\\n&=S^{(q)}_{f,|Q\\bar Q}-S^{(q)}_f+r_{Q\\bar Q}(a)-r_0(a). && \\text{cancellation}\n\\end{align}\nTaking \\(a\\to0\\) gives\n\\begin{align}\n\\lim_{a\\to0}\\widetilde S^{(q)}_{|Q\\bar Q}(a)\n&=S^{(q)}_{f,|Q\\bar Q}-S^{(q)}_f && \\text{by (P5)}.\n\\end{align}\nSecond, the ratio has the corresponding continuum limit. From (P2),\n\\begin{align}\nR_q(a)\n&=\\exp\\left(-(q-1)\\widetilde S^{(q)}_{|Q\\bar Q}(a)\\right),\\\\\n\\lim_{a\\to0}R_q(a)\n&=\\exp\\left(-(q-1)(S^{(q)}_{f,|Q\\bar Q}-S^{(q)}_f)\\right),\n\\end{align}\nusing continuity of \\(\\exp\\). Finally, every traced Polyakov factor is invariant because\n\\begin{align}\n\\operatorname{Tr}P_{\\vec z}^{(r)}\n&\\mapsto \\operatorname{Tr}\\left(G_{\\vec z}^{(r)}P_{\\vec z}^{(r)}(G_{\\vec z}^{(r)})^{-1}\\right)\\\\\n&=\\operatorname{Tr}P_{\\vec z}^{(r)} && \\text{by (P7)}.\n\\end{align}\nProducts, expectation values, ratios, logarithms of positive ratios, and the resulting excess entropy are therefore gauge invariant.\n\n\\section*{Final Result}\n\\[\n\\boxed{\\displaystyle\n\\lim_{a\\to0}\\widetilde S^{(q)}_{|Q\\bar Q}(a)=S^{(q)}_{f,|Q\\bar Q}-S^{(q)}_f,\n\\qquad\n\\lim_{a\\to0}R_q(a)=e^{-(q-1)(S^{(q)}_{f,|Q\\bar Q}-S^{(q)}_f)}}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_2": "\\section*{Claim}\nThe paper's claimed boundary-implementation robustness is valid for the electric-center and trivial-center subfamily whenever gauge fixing the boundary maximal tree changes the source and vacuum path integrals only by source-independent positive constants. Under that condition,\n\\[\n\\widetilde S^{(q)}_{A_E|Q\\bar Q}=\\widetilde S^{(q)}_{A_0|Q\\bar Q}.\n\\]\nThis is a scoped statement about the two implemented boundary prescriptions, not a proof for uncomputed magnetic-center constructions.\n\n\\section*{Premises}\n\\[\n\\begin{array}{ll}\n\\text{(P1)} & A\\in\\{A_E,A_0\\},\\text{ where }A_E\\text{ is electric-center and }A_0\\text{ is trivial-center}.\\\\[1mm]\n\\text{(P2)} & \\displaystyle R_q(A):=\\frac{Z_A^{(q)}(Q\\bar Q)/Z_A(Q\\bar Q)^q}{Z_A^{(q)}/Z_A^q},\n\\qquad R_q(A)>0.\\\\[5mm]\n\\text{(P3)} & \\displaystyle \\widetilde S^{(q)}_{A|Q\\bar Q}:=-\\frac{1}{q-1}\\log R_q(A).\\\\[3mm]\n\\text{(P4)} & \\displaystyle Z_{A_0}^{(q)}=c_qZ_{A_E}^{(q)},\n\\qquad Z_{A_0}=c_1Z_{A_E}.\\\\[2mm]\n\\text{(P5)} & \\displaystyle Z_{A_0}^{(q)}(Q\\bar Q)=c_qZ_{A_E}^{(q)}(Q\\bar Q),\n\\qquad Z_{A_0}(Q\\bar Q)=c_1Z_{A_E}(Q\\bar Q).\\\\[2mm]\n\\text{(P6)} & c_q>0,\n\\quad c_1>0,\n\\quad c_q,c_1\\text{ do not depend on the Polyakov-loop sources}.\\\\[1mm]\n\\end{array}\n\\]\n\n\\section*{Derivation}\nSubstitute (P4) and (P5) into the trivial-center ratio:\n\\begin{align}\nR_q(A_0)\n&=\\frac{Z_{A_0}^{(q)}(Q\\bar Q)/Z_{A_0}(Q\\bar Q)^q}{Z_{A_0}^{(q)}/Z_{A_0}^q} && \\text{by (P2)}\\\\\n&=\\frac{c_qZ_{A_E}^{(q)}(Q\\bar Q)/(c_1Z_{A_E}(Q\\bar Q))^q}{c_qZ_{A_E}^{(q)}/(c_1Z_{A_E})^q} && \\text{by (P4),(P5)}\\\\\n&=\\frac{c_qc_1^{-q}Z_{A_E}^{(q)}(Q\\bar Q)/Z_{A_E}(Q\\bar Q)^q}{c_qc_1^{-q}Z_{A_E}^{(q)}/Z_{A_E}^q} && \\text{factor constants}\\\\\n&=\\frac{Z_{A_E}^{(q)}(Q\\bar Q)/Z_{A_E}(Q\\bar Q)^q}{Z_{A_E}^{(q)}/Z_{A_E}^q} && \\text{cancel the same positive factor}\\\\\n&=R_q(A_E). && \\text{by (P2)}\n\\end{align}\nThe entropies are therefore equal:\n\\begin{align}\n\\widetilde S^{(q)}_{A_0|Q\\bar Q}\n&=-\\frac{1}{q-1}\\log R_q(A_0) && \\text{by (P3)}\\\\\n&=-\\frac{1}{q-1}\\log R_q(A_E) && \\text{ratio equality}\\\\\n&=\\widetilde S^{(q)}_{A_E|Q\\bar Q}. && \\text{by (P3)}\n\\end{align}\n\n\\section*{Final Result}\n\\[\n\\boxed{\\displaystyle R_q(A_0)=R_q(A_E)\n\\quad\\Longrightarrow\\quad\n\\widetilde S^{(q)}_{A_0|Q\\bar Q}=\\widetilde S^{(q)}_{A_E|Q\\bar Q}}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_3": "\\section*{Claim}\nA superselection-sector calculation explains why boundary bookkeeping can drop out of the excess entropy when the static sources do not alter the boundary-sector probabilities. Let\n\\[\n\\rho_0=\\bigoplus_{k=1}^{m}p_k\\sigma_k,\n\\qquad\n\\rho_Q=\\bigoplus_{k=1}^{m}p_k\\tau_k,\n\\]\nwith the same sector weights \\(p_k\\). Then, for \\(q>0\\), \\(q\\neq1\\),\n\\[\nS^{(q)}(\\rho_Q)-S^{(q)}(\\rho_0)\n=\\frac{1}{1-q}\\log\n\\frac{\\sum_{k=1}^{m}p_k^q\\operatorname{Tr}(\\tau_k^q)}\n{\\sum_{k=1}^{m}p_k^q\\operatorname{Tr}(\\sigma_k^q)}.\n\\]\nThus no separate classical boundary term survives unless the source changes the sector weights or the sector-resolved quantum traces.\n\n\\section*{Premises}\n\\[\n\\begin{array}{ll}\n\\text{(P1)} & \\displaystyle \\rho_0=\\operatorname{diag}(p_1\\sigma_1,\\ldots,p_m\\sigma_m).\\\\[1mm]\n\\text{(P2)} & \\displaystyle \\rho_Q=\\operatorname{diag}(p_1\\tau_1,\\ldots,p_m\\tau_m).\\\\[1mm]\n\\text{(P3)} & p_k\\geq0,\n\\quad \\displaystyle\\sum_{k=1}^{m}p_k=1,\n\\quad \\operatorname{Tr}\\sigma_k=\\operatorname{Tr}\\tau_k=1.\\\\[2mm]\n\\text{(P4)} & \\displaystyle S^{(q)}(\\rho):=\\frac{1}{1-q}\\log\\operatorname{Tr}(\\rho^q),\n\\quad q>0,\n\\quad q\\neq1.\\\\[3mm]\n\\text{(P5)} & \\displaystyle \\left[\\operatorname{diag}(B_1,\\ldots,B_m)\\right]^q\n=\\operatorname{diag}(B_1^q,\\ldots,B_m^q)\\text{ for positive blocks}.\\\\[1mm]\n\\end{array}\n\\]\n\n\\section*{Derivation}\nUsing block diagonality,\n\\begin{align}\n\\rho_Q^q\n&=\\operatorname{diag}(p_1^q\\tau_1^q,\\ldots,p_m^q\\tau_m^q) && \\text{by (P2),(P5)},\\\\\n\\operatorname{Tr}(\\rho_Q^q)\n&=\\sum_{k=1}^{m}p_k^q\\operatorname{Tr}(\\tau_k^q) && \\text{trace of block diagonal matrix}.\n\\end{align}\nSimilarly,\n\\begin{align}\n\\operatorname{Tr}(\\rho_0^q)\n&=\\sum_{k=1}^{m}p_k^q\\operatorname{Tr}(\\sigma_k^q). && \\text{by (P1),(P5)}\n\\end{align}\nTherefore\n\\begin{align}\nS^{(q)}(\\rho_Q)-S^{(q)}(\\rho_0)\n&=\\frac{1}{1-q}\\log\\operatorname{Tr}(\\rho_Q^q)\n-\\frac{1}{1-q}\\log\\operatorname{Tr}(\\rho_0^q) && \\text{by (P4)}\\\\\n&=\\frac{1}{1-q}\\log\\frac{\\operatorname{Tr}(\\rho_Q^q)}{\\operatorname{Tr}(\\rho_0^q)} && \\text{log subtraction}\\\\\n&=\\frac{1}{1-q}\\log\n\\frac{\\sum_{k=1}^{m}p_k^q\\operatorname{Tr}(\\tau_k^q)}\n{\\sum_{k=1}^{m}p_k^q\\operatorname{Tr}(\\sigma_k^q)}. && \\text{substitution}\n\\end{align}\nIf \\(\\tau_k=\\sigma_k\\) for every \\(k\\), the numerator equals the denominator and the excess is zero. More generally, the only surviving terms are the sector-resolved changes inside the same weighted boundary sectors.\n\n\\section*{Final Result}\n\\[\n\\boxed{\\displaystyle\nS^{(q)}(\\rho_Q)-S^{(q)}(\\rho_0)\n=\\frac{1}{1-q}\\log\n\\frac{\\sum_{k=1}^{m}p_k^q\\operatorname{Tr}(\\tau_k^q)}\n{\\sum_{k=1}^{m}p_k^q\\operatorname{Tr}(\\sigma_k^q)}}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_4": "\\section*{Claim}\nThe half-slab cross-cut profile follows from the internal crossing rule once the flux tube has a transverse position distribution. If the half-slab boundary is at transverse coordinate \\(x\\), the tube is cross-cut with probability \\(p(x)\\), and a cross-cut creates two fundamental boundary crossings, then\n\\[\nS_{\\rm internal}(x)=2p(x)\\log N_c.\n\\]\nIf \\(X\\sim\\mathcal N(x_0,\\sigma^2)\\) and cross-cutting means \\(X\\geq x\\), this becomes\n\\[\nS_{\\rm internal}(x)=\\log N_c\\operatorname{erfc}\\left(\\frac{x-x_0}{\\sqrt2\\sigma}\\right),\n\\]\nwhich interpolates between \\(2\\log N_c\\) and \\(0\\) with finite width \\(\\sigma\\).\n\n\\section*{Premises}\n\\[\n\\begin{array}{ll}\n\\text{(P1)} & I_x=1\\text{ if the flux tube is cross-cut by the half-slab at }x,\n\\quad I_x=0\\text{ otherwise}.\\\\[1mm]\n\\text{(P2)} & \\displaystyle p(x):=\\Pr(I_x=1).\\\\[1mm]\n\\text{(P3)} & \\displaystyle F_x:=2I_x.\\\\[1mm]\n\\text{(P4)} & \\displaystyle S_{\\rm internal}(x):=\\langle F_x\\rangle\\log N_c.\\\\[2mm]\n\\text{(P5)} & \\displaystyle X\\sim\\mathcal N(x_0,\\sigma^2),\n\\quad \\sigma>0,\n\\quad I_x=1\\text{ exactly when }X\\geq x.\\\\[2mm]\n\\text{(P6)} & \\displaystyle \\Pr(X\\geq x)=\\frac{1}{2}\\operatorname{erfc}\\left(\\frac{x-x_0}{\\sqrt2\\sigma}\\right).\\\\[3mm]\n\\end{array}\n\\]\n\n\\section*{Derivation}\nThe expected number of crossings is\n\\begin{align}\n\\langle F_x\\rangle\n&=\\langle 2I_x\\rangle && \\text{by (P3)}\\\\\n&=2\\langle I_x\\rangle && \\text{linearity}\\\\\n&=2\\Pr(I_x=1) && \\text{indicator expectation}\\\\\n&=2p(x). && \\text{by (P2)}\n\\end{align}\nTherefore\n\\begin{align}\nS_{\\rm internal}(x)\n&=\\langle F_x\\rangle\\log N_c && \\text{by (P4)}\\\\\n&=2p(x)\\log N_c. && \\text{substitution}\n\\end{align}\nFor the Gaussian specialization,\n\\begin{align}\np(x)\n&=\\Pr(X\\geq x) && \\text{by (P5)}\\\\\n&=\\frac{1}{2}\\operatorname{erfc}\\left(\\frac{x-x_0}{\\sqrt2\\sigma}\\right) && \\text{by (P6)},\\\\\nS_{\\rm internal}(x)\n&=\\log N_c\\operatorname{erfc}\\left(\\frac{x-x_0}{\\sqrt2\\sigma}\\right). && \\text{substitution}\n\\end{align}\nSince \\(\\operatorname{erfc}(u)\\to2\\) as \\(u\\to-\\infty\\) and \\(\\operatorname{erfc}(u)\\to0\\) as \\(u\\to+\\infty\\),\n\\begin{align}\n\\lim_{x\\to-\\infty}S_{\\rm internal}(x)=2\\log N_c,\n\\qquad\n\\lim_{x\\to+\\infty}S_{\\rm internal}(x)=0.\n\\end{align}\n\n\\section*{Final Result}\n\\[\n\\boxed{\\displaystyle S_{\\rm internal}(x)=2p(x)\\log N_c,\n\\qquad\nX\\sim\\mathcal N(x_0,\\sigma^2)\\Rightarrow\nS_{\\rm internal}(x)=\\log N_c\\operatorname{erfc}\\left(\\frac{x-x_0}{\\sqrt2\\sigma}\\right)}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_5": "\\section*{Claim}\nFor the fully cross-cut \\(SU(2)\\) half-slab geometry, the internal color model provides a sharp baseline. If the continuum-extrapolated second Renyi flux-tube entropy is\n\\[\nS_0:=\\lim_{a\\to0}\\widetilde S^{(2)}_{|Q\\bar Q}(a,L,w,x,y)\n\\]\nin the complete-cross-cut regime, then under the additive interpretation\n\\[\nS_0=2\\log2+S_{\\rm vibrational}.\n\\]\nConsequently, \\(S_0>2\\log2\\) is exactly the condition for a positive resolved vibrational contribution in this model.\n\n\\section*{Premises}\n\\[\n\\begin{array}{ll}\n\\text{(P1)} & \\displaystyle \\widetilde S^{(2)}_{|Q\\bar Q}=S_{\\rm internal}+S_{\\rm vibrational}.\\\\[2mm]\n\\text{(P2)} & \\displaystyle S_{\\rm internal}=\\langle F\\rangle\\log N_c.\\\\[2mm]\n\\text{(P3)} & \\displaystyle N_c=2.\\\\[1mm]\n\\text{(P4)} & \\displaystyle \\langle F\\rangle=2\\text{ in the fully cross-cut fundamental flux-tube regime}.\\\\[1mm]\n\\text{(P5)} & \\displaystyle S_0:=\\lim_{a\\to0}\\widetilde S^{(2)}_{|Q\\bar Q}(a,L,w,x,y)\\text{ exists in that regime}.\\\\[1mm]\n\\end{array}\n\\]\n\n\\section*{Derivation}\nThe internal baseline is\n\\begin{align}\nS_{\\rm internal}\n&=\\langle F\\rangle\\log N_c && \\text{by (P2)}\\\\\n&=2\\log2 && \\text{by (P3),(P4)}.\n\\end{align}\nTaking the continuum limit of the additive interpretation gives\n\\begin{align}\nS_0\n&=2\\log2+S_{\\rm vibrational} && \\text{by (P1),(P5)}.\n\\end{align}\nSolving for the vibrational term,\n\\begin{align}\nS_{\\rm vibrational}\n&=S_0-2\\log2.\n\\end{align}\nTherefore\n\\begin{align}\nS_{\\rm vibrational}>0\n&\\Longleftrightarrow S_0-2\\log2>0\\\\\n&\\Longleftrightarrow S_0>2\\log2.\n\\end{align}\nLikewise, if \\(S_0\\) is statistically indistinguishable from \\(2\\log2\\), this model does not resolve a positive vibrational contribution; it does not prove that such a contribution is absent.\n\n\\section*{Final Result}\n\\[\n\\boxed{\\displaystyle S_0=2\\log2+S_{\\rm vibrational},\n\\qquad\nS_{\\rm vibrational}>0\\Longleftrightarrow S_0>2\\log2}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_6": "\\section*{Claim}\nThe thin-string model gives a length-difference diagnostic that removes the length-independent internal color baseline and the explicit cutoff factor. For two fully cross-cut flux tubes with the same effective shortest wavelength \\(\\epsilon\\), if\n\\[\n\\widetilde S^{(2)}(L)=2\\log N_c+\\frac{1}{4}\\log\\frac{L}{\\epsilon}+B(L),\n\\]\nthen\n\\[\n\\widetilde S^{(2)}(L_2)-\\widetilde S^{(2)}(L_1)\n=\\frac{1}{4}\\log\\frac{L_2}{L_1}+B(L_2)-B(L_1).\n\\]\nThus the sign and scale of the observed length dependence can be tested without refitting the internal baseline.\n\n\\section*{Premises}\n\\[\n\\begin{array}{ll}\n\\text{(P1)} & \\displaystyle L_1>0,\n\\quad L_2>0,\n\\quad \\epsilon>0.\\\\[1mm]\n\\text{(P2)} & \\displaystyle \\widetilde S^{(2)}(L)=2\\log N_c+\\frac{1}{4}\\log\\frac{L}{\\epsilon}+B(L).\\\\[3mm]\n\\text{(P3)} & \\displaystyle B(L)\\text{ is the residual bounded part of the thin-string entropy}.\\\\[1mm]\n\\end{array}\n\\]\n\n\\section*{Derivation}\nEvaluate the model at two lengths:\n\\begin{align}\n\\widetilde S^{(2)}(L_2)\n&=2\\log N_c+\\frac{1}{4}\\log\\frac{L_2}{\\epsilon}+B(L_2),\\\\\n\\widetilde S^{(2)}(L_1)\n&=2\\log N_c+\\frac{1}{4}\\log\\frac{L_1}{\\epsilon}+B(L_1).\n\\end{align}\nSubtracting gives\n\\begin{align}\n\\widetilde S^{(2)}(L_2)-\\widetilde S^{(2)}(L_1)\n&=\\left(2\\log N_c-2\\log N_c\\right)\n+\\frac{1}{4}\\left(\\log\\frac{L_2}{\\epsilon}-\\log\\frac{L_1}{\\epsilon}\\right)\n+B(L_2)-B(L_1)\\\\\n&=\\frac{1}{4}\\log\\left(\\frac{L_2}{\\epsilon}\\frac{\\epsilon}{L_1}\\right)+B(L_2)-B(L_1)\\\\\n&=\\frac{1}{4}\\log\\frac{L_2}{L_1}+B(L_2)-B(L_1).\n\\end{align}\nIf additionally \\(|B(L_2)-B(L_1)|\\leq\\delta\\), then\n\\begin{align}\n\\left|\\left(\\widetilde S^{(2)}(L_2)-\\widetilde S^{(2)}(L_1)\\right)-\\frac{1}{4}\\log\\frac{L_2}{L_1}\\right|\n\\leq\\delta.\n\\end{align}\n\n\\section*{Final Result}\n\\[\n\\boxed{\\displaystyle\n\\widetilde S^{(2)}(L_2)-\\widetilde S^{(2)}(L_1)\n=\\frac{1}{4}\\log\\frac{L_2}{L_1}+B(L_2)-B(L_1)}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_metadata": {
+    "output_file": "deeper.json",
+    "revision_id": "v4_high_alignment_conditional_diagnostics",
+    "revision_intent": "Improve alignment by replacing over-strong modelling claims with conditional derivations that explicitly trace to G1, G2, and G3 while retaining nontrivial synthesis over the core reasoning.",
+    "input_files": [
+      "deeper_reasoning_pseudo_algorithm.md",
+      "core_19.json",
+      "goals_19.json"
+    ],
+    "rubric_interpretation": {
+      "top_level_schema": "Exactly paper_title, contiguous deeper_reasoning_k strings, and one deeper_metadata object.",
+      "latex_policy": "Every deeper_reasoning_k is standalone LaTeX using only article, amsmath, and amssymb.",
+      "value_policy": "Entries should synthesize multiple core claims into goal-facing diagnostics, not merely restate individual core derivations."
+    },
+    "goal_trace": {
+      "G1_define_FTE2_observable": [
+        "deeper_reasoning_1",
+        "deeper_reasoning_2",
+        "deeper_reasoning_3"
+      ],
+      "G2_characterise_SU2_2p1D_half_slab_FTE2": [
+        "deeper_reasoning_1",
+        "deeper_reasoning_4",
+        "deeper_reasoning_6"
+      ],
+      "G3_interpret_FTE2_internal_plus_vibrational": [
+        "deeper_reasoning_4",
+        "deeper_reasoning_5",
+        "deeper_reasoning_6"
+      ]
+    },
+    "entry_metadata": {
+      "deeper_reasoning_1": {
+        "title": "Unified observable, gauge invariance, and continuum-ratio diagnostic",
+        "target_goal_component": "G1_define_FTE2_observable and G2 continuum finiteness",
+        "declared_source_set": [
+          "core_reasoning_1",
+          "core_reasoning_5",
+          "goals G1",
+          "goals G2"
+        ],
+        "major_advancement_modes": [
+          "cross-core synthesis",
+          "observable-to-ratio equivalence",
+          "continuum diagnostic"
+        ],
+        "goal_alignment": "Directly links vacuum subtraction, gauge-invariant Polyakov-loop ratio, and finite continuum behavior.",
+        "scientific_payoff": "Makes clear that continuum finiteness can be checked either as an entropy limit or as a finite nonzero correlator-ratio limit.",
+        "nontrivial_advance_over_sources": "Combines two core proofs into one bidirectional diagnostic for the central observable.",
+        "formal_sharpness": "Conditional theorem with explicit positivity, common-UV, and replica assumptions.",
+        "low_value_rejection_audit": "Avoids merely copying the UV-cancellation proof or the Polyakov-loop proof in isolation.",
+        "selection_score": 5.0,
+        "controlled_external_lemmas": [
+          "continuity of exponential",
+          "trace invariance under conjugation"
+        ],
+        "known_residual_risks_and_mitigation": "Uses the paper-level premise that the Polyakov-loop ratio representation holds; this is declared as an input rather than rederived from the path integral."
+      },
+      "deeper_reasoning_2": {
+        "title": "Scoped boundary-prescription invariance",
+        "target_goal_component": "G1 robustness scope",
+        "declared_source_set": [
+          "core_reasoning_5",
+          "goals G1 robustness scope"
+        ],
+        "major_advancement_modes": [
+          "scope control",
+          "ratio-cancellation proof"
+        ],
+        "goal_alignment": "Matches the goals file by proving only the electric-center/trivial-center subfamily claim.",
+        "scientific_payoff": "Shows why source-independent boundary gauge-fixing factors cannot affect the FTE2 ratio.",
+        "nontrivial_advance_over_sources": "Converts the robustness narrative into an explicit cancellation calculation.",
+        "formal_sharpness": "States all constants and positivity assumptions explicitly.",
+        "low_value_rejection_audit": "Rejects an over-broad magnetic-center independence claim.",
+        "selection_score": 5.0,
+        "controlled_external_lemmas": [
+          "cancellation of positive multiplicative constants in a ratio"
+        ],
+        "known_residual_risks_and_mitigation": "Does not assert robustness for uncomputed boundary algebras outside the claimed subfamily."
+      },
+      "deeper_reasoning_3": {
+        "title": "Superselection-sector cancellation criterion for excess Renyi entropy",
+        "target_goal_component": "G1 boundary ambiguity interpretation",
+        "declared_source_set": [
+          "core_reasoning_2",
+          "core_reasoning_3",
+          "goals G1"
+        ],
+        "major_advancement_modes": [
+          "mechanistic explanation",
+          "conditional cancellation criterion"
+        ],
+        "goal_alignment": "Explains how common boundary-sector weights prevent a standalone boundary Shannon term from polluting the excess observable.",
+        "scientific_payoff": "Separates genuine source-induced sector-resolved changes from boundary bookkeeping effects.",
+        "nontrivial_advance_over_sources": "Applies the block Renyi formula comparatively to source and vacuum states.",
+        "formal_sharpness": "Exact finite-dimensional block calculation with common weights declared.",
+        "low_value_rejection_audit": "Avoids claiming all superselection terms always cancel; cancellation requires common sector weights.",
+        "selection_score": 4.95,
+        "controlled_external_lemmas": [
+          "block power rule",
+          "trace of block diagonal matrices"
+        ],
+        "known_residual_risks_and_mitigation": "If sources alter boundary-sector probabilities, the result explicitly identifies that as the failure mode."
+      },
+      "deeper_reasoning_4": {
+        "title": "Crossing-probability derivation of the half-slab profile",
+        "target_goal_component": "G2 x-dependence and G3 internal-color interpretation",
+        "declared_source_set": [
+          "core_reasoning_6",
+          "goals G2",
+          "goals G3"
+        ],
+        "major_advancement_modes": [
+          "geometry-to-entropy mapping",
+          "finite-width profile derivation"
+        ],
+        "goal_alignment": "Covers complete, partial, and non-cross-cut regimes and the error-function qualitative model.",
+        "scientific_payoff": "Turns the qualitative finite-width flux-tube picture into a precise crossing-probability formula.",
+        "nontrivial_advance_over_sources": "Generalizes deterministic crossing entropy to stochastic half-slab cross-cutting and then specializes to Gaussian deflections.",
+        "formal_sharpness": "Distinguishes the general probability formula from the Gaussian corollary.",
+        "low_value_rejection_audit": "Avoids treating the Gaussian profile as mandatory for all data; it is only a specialization.",
+        "selection_score": 5.0,
+        "controlled_external_lemmas": [
+          "expectation of an indicator",
+          "Gaussian tail expressed by erfc"
+        ],
+        "known_residual_risks_and_mitigation": "The Gaussian assumption is labelled as a specialization, preserving compatibility with non-Gaussian flux-tube profiles."
+      },
+      "deeper_reasoning_5": {
+        "title": "SU(2) fully cross-cut baseline and vibrational positivity test",
+        "target_goal_component": "G3 internal-plus-vibrational interpretation",
+        "declared_source_set": [
+          "core_reasoning_6",
+          "goals G3"
+        ],
+        "major_advancement_modes": [
+          "baseline extraction",
+          "interpretive diagnostic"
+        ],
+        "goal_alignment": "Matches the goal condition that a fully cross-cut value above 2 log 2 supports a nonzero vibrational component.",
+        "scientific_payoff": "Gives a clear falsifiable threshold for the internal-only model in the SU(2) geometry.",
+        "nontrivial_advance_over_sources": "Converts the crossing rule into a continuum-extrapolated diagnostic rather than only a formula.",
+        "formal_sharpness": "Equivalence between positivity of the residual and exceeding the baseline is exact under the additive model.",
+        "low_value_rejection_audit": "Does not claim exact numerical agreement with the full lattice data.",
+        "selection_score": 4.95,
+        "controlled_external_lemmas": [
+          "elementary inequality equivalence"
+        ],
+        "known_residual_risks_and_mitigation": "The conclusion is conditional on the additive interpretation; statistical indistinguishability is not overinterpreted."
+      },
+      "deeper_reasoning_6": {
+        "title": "Length-difference diagnostic for the thin-string contribution",
+        "target_goal_component": "G2 length dependence and G3 vibrational interpretation",
+        "declared_source_set": [
+          "core_reasoning_8",
+          "goals G2",
+          "goals G3"
+        ],
+        "major_advancement_modes": [
+          "nuisance-cancellation diagnostic",
+          "thin-string scaling test"
+        ],
+        "goal_alignment": "Connects the reported weak length dependence to the leading logarithmic vibrational prediction.",
+        "scientific_payoff": "Removes the internal baseline and explicit cutoff from length comparisons.",
+        "nontrivial_advance_over_sources": "Uses the asymptotic thin-string formula to create a practical difference test.",
+        "formal_sharpness": "Includes the residual term and an optional error bound rather than pretending the leading log is exact.",
+        "low_value_rejection_audit": "Avoids claiming that the paper quantitatively verifies the full thin-string model.",
+        "selection_score": 4.95,
+        "controlled_external_lemmas": [
+          "logarithm quotient identity",
+          "triangle inequality for residual bound"
+        ],
+        "known_residual_risks_and_mitigation": "The residual B(L) is retained explicitly, matching the qualitative rather than exact model-comparison scope."
+      }
+    },
+    "rejected_low_value_candidates": [
+      "A separate proof that traced Polyakov loops are gauge invariant without linking it to FTE2; this was absorbed into deeper_reasoning_1.",
+      "An unqualified magnetic-center independence theorem; rejected because the goals identify magnetic-center cases as hinted but uncomputed.",
+      "A pure restatement of the thin-string Gaussian diagonalization; rejected because the length-difference diagnostic has higher goal payoff."
+    ],
+    "global_alignment_audit": {
+      "schema_status": "Top-level keys are exactly paper_title, deeper_reasoning_1 through deeper_reasoning_6, and deeper_metadata.",
+      "core_coverage": "Uses UV cancellation, Polyakov-loop ratio, block-sector Renyi entropy, internal crossing entropy, and thin-string length scaling.",
+      "goal_coverage": "Covers G1 observable construction and robustness, G2 continuum and half-slab behavior, and G3 internal-plus-vibrational interpretation.",
+      "overclaim_control": "All modelling additions are conditional and marked as diagnostics or specializations."
+    },
+    "known_residual_risks_and_mitigation": [
+      "The derivations do not reproduce the full lattice Monte Carlo analysis; they formalize the reasoning structure used to interpret it.",
+      "The Gaussian half-slab profile is only one specialization of the crossing-probability formula.",
+      "Boundary robustness is limited to the electric-center/trivial-center subfamily specified in the goals."
+    ]
+  }
+}

@@ -1,0 +1,377 @@
+{
+    "paper_goal": {
+        "canonical_goal": [
+            {
+                "goal_id": "G1_monopole_vortex_continuity",
+                "outcome_variable": "o_mv \u2208 O_P^mv, where o_mv is a proposition about the magnetic-flux profile and Wilson-loop phase produced by one fundamental BPS or KK monopole in the center-twisted compactification.",
+                "goal_form": "target_proposition",
+                "target_object": "For every N \u2208 \u2124 with N \u2265 2 and every monopole type i \u2208 {1,...,N}, a fundamental monopole M_i with magnetic charge \u03b1\u20d7_i on R^2 \u00d7 (S^1)_3, subject to the center-twisted boundary condition z\u20d7(x,x3+L3)=P_W^\u22121z\u20d7(x,x3), produces an R^2-localized flux tube whose integrated magnetic flux through the x1-x2 plane is \u03a6\u20d7(x3)=2\u03c0\u03bd\u20d7_i for x3,*<x3<L3 and \u03a6\u20d7(x3)=2\u03c0\u03bd\u20d7_{i+1} for 0\u2264x3<x3,*, with \u03bd\u20d7_1=\u03bc\u20d7_1 and \u03bd\u20d7_{j+1}=\u03bd\u20d7_j\u2212\u03b1\u20d7_j; a fundamental Wilson loop C in the x1-x2 plane has W(C)=exp(\u22122\u03c0i/N) when C surrounds this localized flux and W(C)=1 otherwise, so the monopole flux is the two-dimensional center vortex.",
+                "feasibility_constraints": [
+                    "The theory is four-dimensional N = 1 SU(N) super Yang-Mills with gauge field a, field strength f=da+i a\u2227a, one massless adjoint Weyl fermion \u03bb, \u03b8-angle \u03b8, and action S=(1/g^2)\u222btr(f\u2227\u22c6f)\u2212(i\u03b8/(8\u03c0^2))\u222btr(f\u2227f)+(2i/g^2)\u222bd^4x tr(\u03bbbar \u03c3bar^\u03bc D_\u03bc\u03bb).",
+                    "The spacetime is R^2 \u00d7 (S^1)_3 \u00d7 (S^1)_4 with x3\u223cx3+L3 and x4\u223cx4+L4, L3>0, L4>0, and N\u039bL4\u226a1 so that the compactification scale is weakly coupled.",
+                    "The compact 3-4 directions carry unit 't Hooft flux, implemented by transition functions obeying g3(L4)\u2020g4(0)\u2020g3(0)g4(L3)=exp(2\u03c0i/N)1_N; after compactifying (S^1)_4 this is the zero-form center-twisted boundary condition along (S^1)_3.",
+                    "The abelianized variables are the holonomy \u03c6\u20d7, dual photon \u03c3\u20d7, Weyl vector \u03c1\u20d7=\u03bc\u20d7_1+...+\u03bc\u20d7_{N\u22121}, center-symmetric holonomy \u03c6\u20d7_c=(2\u03c0/N)\u03c1\u20d7, and complex scalar z\u20d7=i[\u03c3\u20d7+(\u03b8/(2\u03c0)+4\u03c0i/g^2)(\u03c6\u20d7\u2212\u03c6\u20d7_c)].",
+                    "The simple roots are \u03b1\u20d7_1,...,\u03b1\u20d7_{N\u22121}, the affine root is \u03b1\u20d7_N=\u2212(\u03b1\u20d7_1+...+\u03b1\u20d7_{N\u22121}), and the defining-representation weights are \u03bd\u20d7_1=\u03bc\u20d7_1, \u03bd\u20d7_2=\u03bc\u20d7_1\u2212\u03b1\u20d7_1, ..., \u03bd\u20d7_N=\u03bc\u20d7_1\u2212\u03b1\u20d7_1\u2212...\u2212\u03b1\u20d7_{N\u22121}, with \u03bd\u20d7_{N+1}=\u03bd\u20d7_1.",
+                    "The monopole source is located at (x=0,x3=x3,*), the long-distance boundary condition is \u03c3\u20d7\u21920 and \u03c6\u20d7\u2192\u03c6\u20d7_c as |x|\u2192\u221e, and the Wilson loop C is evaluated in the x1-x2 plane."
+                ],
+                "success_set": {
+                    "kind": "predicate",
+                    "definition": "\u03a3_P^mv = { o_mv : for every i\u2208{1,...,N}, solving the center-twisted abelian monopole equations gives \u03a6\u20d7(x3)=2\u03c0\u03bd\u20d7_i on one side of x3,* and \u03a6\u20d7(x3)=2\u03c0\u03bd\u20d7_{i+1} on the other side, the flux is exponentially localized in R^2 with localization scale O(NL3), and a fundamental Wilson loop enclosing the flux is multiplied by exp(\u22122\u03c0i/N) }.",
+                    "threshold": {
+                        "applies": false,
+                        "value": null,
+                        "comparator": null,
+                        "metric_symbol": null,
+                        "metric_definition": null,
+                        "source_span": null
+                    }
+                },
+                "preference_ordering": {
+                    "kind": "none",
+                    "definition": null,
+                    "objective_symbols": [],
+                    "lex_order": null,
+                    "embedding_to_total_utility": null
+                },
+                "robustness_scope": {
+                    "applies": true,
+                    "ambient_space": "Weakly coupled center-twisted compactifications in which a large-L3 monopole description and a small-L3 vortex description are both available.",
+                    "type_tag": "environment_family",
+                    "metric_or_divergence": null,
+                    "radius_or_budget": null,
+                    "indexing_set": "{ (N,L3,L4,\u039b,\u03b8) : N\u2208\u2124, N\u22652, L3>0, L4>0, N\u039bL4\u226a1, \u03b8\u2208\u211d/2\u03c0\u2124 }",
+                    "claimed_subfamily": {
+                        "definition": "The claimed subfamily is the unit-center-twisted N = 1 SU(N) SYM family in which the large-L3 description admits BPS/KK monopoles and the small-L3 description admits two-dimensional center-vortex events, both described by the same center-twisted boundary condition z\u20d7(x,x3+L3)=P_W^\u22121z\u20d7(x,x3).",
+                        "source_span": {
+                            "section": "Section 3.1",
+                            "paragraph_or_line": "monopole-vortex continuity calculation, equations (3.2)-(3.11), Figure 1",
+                            "verbatim": "center vortex"
+                        }
+                    },
+                    "hinted_superfamily": {
+                        "definition": "The hinted superfamily is QCD with n_f adjoint Weyl quarks on the same center-twisted compactification, restricted to the paper's stated generalisation regime for results analogous to monopole-vortex continuity, vacuum continuity, and Wilson-loop switching; this is not included in the primary success predicate because the detailed derivation in the main goal is for N = 1 SYM.",
+                        "source_span": {
+                            "section": "Abstract and Section 3.4",
+                            "paragraph_or_line": "generalisation discussion",
+                            "verbatim": "QCD(adj.)"
+                        }
+                    },
+                    "refinement_relation": "declared_embedding",
+                    "criterion": "For each element of the claimed N = 1 SYM subfamily, the correspondence succeeds exactly when the same object has both the monopole-source description with charge \u03b1\u20d7_i and the center-vortex Wilson-loop phase exp(\u22122\u03c0i/N). For the hinted QCD(adj) superfamily, the extraction records only the paper's declared extension of the corresponding result, not an additional primary success predicate.",
+                    "channel_populated_by": [
+                        "stated",
+                        "operational"
+                    ]
+                }
+            },
+            {
+                "goal_id": "G2_vacuum_and_gluino_condensate_continuity",
+                "outcome_variable": "o_vac \u2208 O_P^vac, where o_vac is a proposition about the vacuum set, superpotential, and gluino condensate during the transition from the large-L3 monopole/bion description to the small-L3 center-vortex description.",
+                "goal_form": "target_proposition",
+                "target_object": "The large-L3 and small-L3 weak-coupling descriptions have the same N supersymmetric vacua and the same gluino condensate: in the large-L3 description the bion potential is minimized by z\u20d7=(2\u03c0ik/N)\u03c1\u20d7 for k=0,...,N\u22121; in the small-L3 description the center-twisted constant-mode constraint z\u20d7=P_W^\u22121z\u20d7 modulo dual-photon weight-lattice shifts gives the same N solutions; the two-dimensional superpotential written in variables Z_i=\u03b1\u20d7_i\u00b7Z\u20d7 with constraint exp(Z_1+...+Z_N)=1 has equations exp(NZ)=1 and yields \u27e8tr(\u03bb\u03bb)\u27e9_k=16\u03c0^2\u039b^3 exp(i(\u03b8+2\u03c0k)/N), independent of L3 and L4.",
+                "feasibility_constraints": [
+                    "The theory is four-dimensional N = 1 SU(N) super Yang-Mills with gauge field a, field strength f=da+i a\u2227a, one massless adjoint Weyl fermion \u03bb, \u03b8-angle \u03b8, and action S=(1/g^2)\u222btr(f\u2227\u22c6f)\u2212(i\u03b8/(8\u03c0^2))\u222btr(f\u2227f)+(2i/g^2)\u222bd^4x tr(\u03bbbar \u03c3bar^\u03bc D_\u03bc\u03bb).",
+                    "The spacetime is R^2 \u00d7 (S^1)_3 \u00d7 (S^1)_4 with L3>0, L4>0, and N\u039bL4\u226a1; L3 is varied from the region L3\u226bL4, where the three-dimensional monopole/bion effective theory is used, to L3\u2248L4, where the two-dimensional vortex-based description is used.",
+                    "The center-twisted boundary condition along (S^1)_3 is z\u20d7(x,x3+L3)=P_W^\u22121z\u20d7(x,x3), where P_W cyclically permutes the SU(N) roots and weights.",
+                    "The three-dimensional monopole superpotential is W_3d(Z\u20d7)=L4\u039b^3 exp(i\u03b8/N)\u2211_{i=1}^N exp(\u03b1\u20d7_i\u00b7Z\u20d7), and the corresponding bosonic potential is V(z\u20d7)=V0\u2211_{i=1}^N|exp(\u03b1\u20d7_i\u00b7z\u20d7)\u2212exp(\u03b1\u20d7_{i\u22121}\u00b7z\u20d7)|^2 with V0=16\u03c0^2\u039b^6L4^3/g^2.",
+                    "The vacuum coordinates are evaluated modulo the dual-photon weight-lattice periodicity z\u20d7\u223cz\u20d7+2\u03c0i \u03bc\u20d7_n for n\u2208{1,...,N\u22121}.",
+                    "The small-L3 two-dimensional superpotential uses Z_i=\u03b1\u20d7_i\u00b7Z\u20d7 and a Lagrange multiplier \u03a3 imposing exp(Z_1+...+Z_N)=1."
+                ],
+                "success_set": {
+                    "kind": "predicate",
+                    "definition": "\u03a3_P^vac = { o_vac : the large-L3 minimization condition exp(\u03b1\u20d7_i\u00b7z\u20d7)=exp(\u03b1\u20d7_j\u00b7z\u20d7) for all i,j and \u220f_{i=1}^N exp(\u03b1\u20d7_i\u00b7z\u20d7)=1 gives exactly z\u20d7=(2\u03c0ik/N)\u03c1\u20d7 for k=0,...,N\u22121; the small-L3 center-twisted constant-mode condition gives the same N solutions; and differentiating the holomorphic superpotential with respect to the holomorphic gauge coupling gives \u27e8tr(\u03bb\u03bb)\u27e9_k=16\u03c0^2\u039b^3 exp(i(\u03b8+2\u03c0k)/N) for the same k labels }.",
+                    "threshold": {
+                        "applies": false,
+                        "value": null,
+                        "comparator": null,
+                        "metric_symbol": null,
+                        "metric_definition": null,
+                        "source_span": null
+                    }
+                },
+                "preference_ordering": {
+                    "kind": "none",
+                    "definition": null,
+                    "objective_symbols": [],
+                    "lex_order": null,
+                    "embedding_to_total_utility": null
+                },
+                "robustness_scope": {
+                    "applies": true,
+                    "ambient_space": "Weakly coupled compactifications with fixed N\u039bL4\u226a1 and variable L3, including the massless supersymmetric N = 1 SYM case as the primary claimed subfamily.",
+                    "type_tag": "environment_family",
+                    "metric_or_divergence": null,
+                    "radius_or_budget": null,
+                    "indexing_set": "{ (N,L3,L4,\u039b,\u03b8,k) : N\u2208\u2124, N\u22652, L3>0, L4>0, N\u039bL4\u226a1, \u03b8\u2208\u211d/2\u03c0\u2124, k\u2208{0,...,N\u22121} }",
+                    "claimed_subfamily": {
+                        "definition": "The claimed subfamily is the massless N = 1 SU(N) SYM family with periodic fermion boundary conditions and unit center twist, for which local holomorphic observables are tracked as L3 changes.",
+                        "source_span": {
+                            "section": "Section 3.2",
+                            "paragraph_or_line": "vacuum and condensate continuity, equations (3.16)-(3.20)",
+                            "verbatim": "same N vacua"
+                        }
+                    },
+                    "hinted_superfamily": {
+                        "definition": "The hinted superfamily is adjoint QCD with n_f\u22652 adjoint Weyl fermions in the corresponding compactified setup, where the paper states that magnetic-bion dynamics gives the same vacuum coordinate \u03c3\u20d7=2\u03c0k\u03c1\u20d7/N and that those vacua persist under the same 3d-to-2d reduction; this is recorded as a generalisation scope rather than a separate primary N = 1 SYM success predicate.",
+                        "source_span": {
+                            "section": "Section 3.4",
+                            "paragraph_or_line": "generalisation to QCD(adj)",
+                            "verbatim": "QCD(adj.)"
+                        }
+                    },
+                    "refinement_relation": "declared_embedding",
+                    "criterion": "For every indexed k in the claimed N = 1 SYM subfamily, success requires equality of the large-L3 and small-L3 vacuum coordinate z\u20d7=(2\u03c0ik/N)\u03c1\u20d7 and equality of the condensate formula \u27e8tr(\u03bb\u03bb)\u27e9_k=16\u03c0^2\u039b^3 exp(i(\u03b8+2\u03c0k)/N) with no residual dependence on L3 or L4. For the hinted QCD(adj) superfamily, the criterion is only the paper's declared persistence of the analogous vacuum set under reduction.",
+                    "channel_populated_by": [
+                        "stated",
+                        "operational"
+                    ]
+                }
+            },
+            {
+                "goal_id": "G3_wilson_loop_area_to_perimeter_switch",
+                "outcome_variable": "o_W \u2208 O_P^W, where o_W is a proposition about the dominant saddle contributing to a fundamental Wilson loop W(C) in the center-twisted compactification.",
+                "goal_form": "target_proposition",
+                "target_object": "A fundamental Wilson loop W(C) in an R^2 plane has two competing semiclassical contributions in R^2 \u00d7 (S^1)_3: a non-wrapped confining-string configuration with contribution exp(\u2212T_conf Area(C)), and a wrapped chiral-domain-wall configuration with contribution exp(\u2212T_kink L3 Length(C)); the latter is allowed by the twisted boundary condition and dominates for sufficiently large loops. For a square loop of side L, the switching estimate is T_conf L^2 = T_kink L3(4L), and under the double-string estimate T_conf\u22482T_kink the switching side length is L_*\u22482L3.",
+                "feasibility_constraints": [
+                    "The theory is four-dimensional N = 1 SU(N) super Yang-Mills on R^2 \u00d7 (S^1)_3 \u00d7 (S^1)_4 with unit center twist and N\u039bL4\u226a1.",
+                    "The Wilson loop C is a closed loop in an R^2 plane at fixed x3; Area(C) is the minimal area enclosed by C in that plane and Length(C) is its perimeter.",
+                    "In the SU(2) demonstration, the dual photon \u03c3 has periodicity \u03c3\u223c\u03c3+2\u03c0, obeys the center-twisted boundary condition \u03c3(x,x3+L3)=\u2212\u03c3(x,x3), and has a bion-induced potential proportional to 1\u2212cos(2\u03c3).",
+                    "A Wilson loop is represented as a defect imposing \u222e_{C'}d\u03c3=2\u03c0 for any small loop C' linking C, so the dual photon must interpolate from \u03c3=0 to \u03c3=2\u03c0 around C.",
+                    "The interpolation decomposes into two kink/domain-wall sheets connecting adjacent chiral vacua; in the wrapped configuration, one sheet extends upward along x3 and the other extends downward along x3, and the center twist glues the two opposite orientations across x3=0\u223cL3.",
+                    "For SU(N), the analogous domain-wall jumps are \u0394\u03c3\u20d7_upper=2\u03c0\u03c1\u20d7/N and \u0394\u03c3\u20d7_lower=\u22122\u03c0\u03c1\u20d7/N+2\u03c0\u03bc\u20d7_1, so \u222e_{C'}d\u03c3\u20d7=2\u03c0\u03bc\u20d7_1 and the twisted boundary condition is satisfied because P_W\u03c1\u20d7=\u03c1\u20d7\u2212N\u03bc\u20d7_1."
+                ],
+                "success_set": {
+                    "kind": "predicate",
+                    "definition": "\u03a3_P^W = { o_W : W(C) receives both exp(\u2212T_conf Area(C)) and exp(\u2212T_kink L3 Length(C)) contributions; the area-law term dominates when T_conf Area(C)<T_kink L3 Length(C); the perimeter-law term dominates when T_conf Area(C)>T_kink L3 Length(C); and for a square loop with side L and T_conf\u22482T_kink the crossover condition gives L_*\u22482L3 }.",
+                    "threshold": {
+                        "applies": false,
+                        "value": null,
+                        "comparator": null,
+                        "metric_symbol": null,
+                        "metric_definition": null,
+                        "source_span": null
+                    }
+                },
+                "preference_ordering": {
+                    "kind": "none",
+                    "definition": null,
+                    "objective_symbols": [],
+                    "lex_order": null,
+                    "embedding_to_total_utility": null
+                },
+                "robustness_scope": {
+                    "applies": true,
+                    "ambient_space": "Fundamental Wilson loops in weakly coupled center-twisted compactifications with finite L3.",
+                    "type_tag": "environment_family",
+                    "metric_or_divergence": null,
+                    "radius_or_budget": null,
+                    "indexing_set": "{ (N,L3,L4,C,T_conf,T_kink) : N\u2208\u2124, N\u22652, L3>0, L4>0, N\u039bL4\u226a1, C is a closed loop in R^2, T_conf>0, T_kink>0 }",
+                    "claimed_subfamily": {
+                        "definition": "The claimed subfamily consists of N = 1 SU(N) SYM loop configurations for which both the non-wrapped confining-string sheet and the wrapped chiral-domain-wall sheet are admissible saddles under the center-twisted boundary condition.",
+                        "source_span": {
+                            "section": "Section 4",
+                            "paragraph_or_line": "double-string calculation, equations (4.6), (4.11)-(4.15), Figures 3-4",
+                            "verbatim": "perimeter law"
+                        }
+                    },
+                    "hinted_superfamily": {
+                        "definition": "The hinted superfamily is adjoint QCD in the corresponding center-twisted compactification, for which the paper states that the Wilson-loop switching argument for result (2) generalises; this is recorded as a declared extension rather than as an independently derived coordinate goal.",
+                        "source_span": {
+                            "section": "Abstract and Section 3.4",
+                            "paragraph_or_line": "generalisation of results (1)-(3)",
+                            "verbatim": "QCD(adj.)"
+                        }
+                    },
+                    "refinement_relation": "declared_embedding",
+                    "criterion": "For each loop C in the claimed N = 1 SYM subfamily, success requires that the dominant asymptotic behavior be determined by comparing T_conf Area(C) with T_kink L3 Length(C), and that the perimeter-law saddle be the dominant one for loops much larger than the compactification scale fixed by L3. The QCD(adj) entry is only a declared superfamily extension of this switching statement.",
+                    "channel_populated_by": [
+                        "stated",
+                        "operational"
+                    ]
+                }
+            },
+            {
+                "goal_id": "G4_mass_deformation_phase_effect",
+                "outcome_variable": "o_m \u2208 O_P^m, where o_m is a proposition about the small real adjoint-fermion mass deformation and its effect on vacua, center symmetry, and Wilson-loop behavior.",
+                "goal_form": "target_proposition",
+                "target_object": "Adding the real mass perturbation (m/(16\u03c0^2))(tr(\u03bb\u03bb)+tr(\u03bbbar\u03bbbar)) explicitly breaks supersymmetry and the discrete chiral symmetry, adds the leading monopole-induced term \u2212m\u039b^3L4\u2211_{i=1}^N[exp(\u03b1\u20d7_i\u00b7z\u20d7+i\u03b8/N)+exp(\u03b1\u20d7_i\u00b7z\u20d7*\u2212i\u03b8/N)]/N to the bosonic effective Lagrangian, splits the N formerly degenerate vacua into branch energies E_k(\u03b8)=\u22122L3L4m\u039b^3 cos((\u03b8+2\u03c0k)/N), makes the Wilson loop obey an area law because the exact chiral-symmetry generator interpretation is removed, and gives a deconfinement transition scale m_*\u223c\u039b^3L4^2 in the L3\u2192\u221e limit.",
+                "feasibility_constraints": [
+                    "The undeformed theory is N = 1 SU(N) SYM on R^2 \u00d7 (S^1)_3 \u00d7 (S^1)_4 with unit center twist, N\u039bL4\u226a1, and massless adjoint Weyl fermion \u03bb.",
+                    "The real mass m is small enough that the leading correction is obtained by absorbing the two fermionic zero modes of each monopole vertex with one mass insertion.",
+                    "The center-symmetric vacuum coordinates z\u20d7=(2\u03c0ik/N)\u03c1\u20d7 for k=0,...,N\u22121 remain local minima when m<m_*.",
+                    "The two-dimensional vacuum energy density is computed by integrating the mass-deformed effective Lagrangian over x3\u2208[0,L3].",
+                    "The deconfinement estimate m_*\u223c\u039b^3L4^2 is a parametric scale in the L3\u2192\u221e regime and is not an exact equality."
+                ],
+                "success_set": {
+                    "kind": "predicate",
+                    "definition": "\u03a3_P^m = { o_m : the mass deformation yields the stated monopole-induced term, the local minima z\u20d7=(2\u03c0ik/N)\u03c1\u20d7 have branch energies E_k(\u03b8)=\u22122L3L4m\u039b^3 cos((\u03b8+2\u03c0k)/N), the Wilson loop obeys the area law in the small-m compactified theory because discrete chiral symmetry is explicitly broken, and the large-L3 deconfinement scale is parametrically m_*\u223c\u039b^3L4^2 }.",
+                    "threshold": {
+                        "applies": false,
+                        "value": null,
+                        "comparator": null,
+                        "metric_symbol": null,
+                        "metric_definition": null,
+                        "source_span": null
+                    }
+                },
+                "preference_ordering": {
+                    "kind": "none",
+                    "definition": null,
+                    "objective_symbols": [],
+                    "lex_order": null,
+                    "embedding_to_total_utility": null
+                },
+                "robustness_scope": {
+                    "applies": true,
+                    "ambient_space": "Small-m mass deformations of the N = 1 SU(N) center-twisted compactification.",
+                    "type_tag": "environment_family",
+                    "metric_or_divergence": null,
+                    "radius_or_budget": null,
+                    "indexing_set": "{ (N,L3,L4,\u039b,m,\u03b8,k) : N\u2208\u2124, N\u22652, L3>0, L4>0, N\u039bL4\u226a1, m\u22650, \u03b8\u2208\u211d/2\u03c0\u2124, k\u2208{0,...,N\u22121}, and m is in the perturbative region m<m_* with m_*\u223c\u039b^3L4^2 for L3\u2192\u221e }",
+                    "claimed_subfamily": {
+                        "definition": "The claimed subfamily is the small-m region where monopole zero-mode absorption gives the leading mass correction and the center-symmetric branches z\u20d7=(2\u03c0ik/N)\u03c1\u20d7 remain locally stable.",
+                        "source_span": {
+                            "section": "Section 3.3",
+                            "paragraph_or_line": "mass-deformed effective theory and phase diagram, equations (3.21)-(3.23), Figure 2",
+                            "verbatim": "mass deformation"
+                        }
+                    },
+                    "hinted_superfamily": {
+                        "definition": null,
+                        "source_span": null
+                    },
+                    "refinement_relation": "set_inclusion",
+                    "criterion": "For each k and \u03b8 in the indexing set, success requires the branch energy E_k(\u03b8)=\u22122L3L4m\u039b^3 cos((\u03b8+2\u03c0k)/N), explicit lifting of the N-fold degeneracy except at branch crossings, and restoration of the Wilson-loop area law in the mass-deformed compactified theory.",
+                    "channel_populated_by": [
+                        "stated",
+                        "operational"
+                    ]
+                }
+            },
+            {
+                "goal_id": "G5_SU2_bion_saddle_disappearance_and_vacuum_energy_cancellation",
+                "outcome_variable": "o_b \u2208 O_P^b, where o_b is a proposition about SU(2) bion quasi-moduli saddles and their contribution to the supersymmetric vacuum energy during the reduction from 3d to 2d.",
+                "goal_form": "target_proposition",
+                "target_object": "In the SU(2) bion quasi-moduli problem on R^2 \u00d7 (S^1)_3 \u00d7 (S^1)_4 with unit center twist, the extended coordinate x3\u2208[0,2L3) unifies neutral and magnetic bion configurations; for large L3, magnetic-bion local minima occur near (\u03c1,x3)\u2248(0,L3\u00b1r_b) with r_b=2\u03c0L4/g^2, while finite L3 lifts the 3d degeneracy; as the dimensionless parameter 4\u03c0L4/(g^2L3) increases, the magnetic-bion local minima and unstable saddles on the x3 axis approach, annihilate around 4\u03c0L4/(g^2L3)\u22480.44, and only the unstable remnant at (\u03c1,x3)=(\u03c1_*,L3) remains. The net supersymmetric bion contribution to vacuum energy cancels because ((\u2202_3V_b)^2+(\u2202_\u03c1V_b)^2)exp(\u22122V_b)=(1/4)\u2207^2exp(\u22122V_b) away from the neutral-bion singularity, so the quasi-moduli integral is a boundary term after regularization and the magnetic-bion and neutral-bion thimble contributions cancel.",
+                "feasibility_constraints": [
+                    "This coordinate goal is restricted to the paper's microscopic SU(2) bion calculation and is not claimed at the same SU(N) level of generality as G1-G4.",
+                    "The bion calculation is performed for N = 1 SYM with gauge group SU(2), equivalently n_f=1 adjoint QCD in the notation of the bion subsection, on R^2 \u00d7 (S^1)_3 \u00d7 (S^1)_4 with unit center twist and N\u039bL4\u226a1.",
+                    "The quasi-moduli are \u03c1=sqrt(x1^2+x2^2)\u22650 and x3\u2208[0,2L3), where x3\u22480 is the neutral-bion region and x3\u2248L3 is the magnetic-bion region.",
+                    "The Coulomb potential V_b(\u03c1,x3) is the mirror-image potential with parameter 4\u03c0L4/(g^2L3), and the effective potential is V_eff(\u03c1,x3)=2V_b(\u03c1,x3)\u2212log((\u2202_3V_b)^2+(\u2202_\u03c1V_b)^2).",
+                    "The large-L3 bion scale is r_b=2\u03c0L4/g^2, fixed operationally by the asymptotic saddle size \u03c1_*\u22482\u03c0L4/g^2 when L3\u226br_b.",
+                    "The numerical critical value 4\u03c0L4/(g^2L3)\u22480.44 is defined operationally as the plotted saddle-merger point where the local minimum and unstable saddle on the x3 axis annihilate in the effective potential.",
+                    "The total-derivative cancellation is asserted after regularizing the neutral-bion singularity at \u03c1=0 and using the exponential decay of exp(\u22122V_b) at large \u03c1."
+                ],
+                "success_set": {
+                    "kind": "predicate",
+                    "definition": "\u03a3_P^b = { o_b : the SU(2) effective potential V_eff has stable magnetic-bion local minima at large L3, those minima annihilate with unstable saddles when 4\u03c0L4/(g^2L3) reaches approximately 0.44, no stable magnetic-bion local minimum remains at smaller L3, the remaining unstable saddle is interpreted as the magnetic-bion remnant of a vortex-antivortex pair, and the total bion amplitude contributing to the supersymmetric vacuum energy cancels after the neutral-bion singularity is regularized }.",
+                    "threshold": {
+                        "applies": false,
+                        "value": null,
+                        "comparator": null,
+                        "metric_symbol": null,
+                        "metric_definition": null,
+                        "source_span": null
+                    }
+                },
+                "preference_ordering": {
+                    "kind": "none",
+                    "definition": null,
+                    "objective_symbols": [],
+                    "lex_order": null,
+                    "embedding_to_total_utility": null
+                },
+                "robustness_scope": {
+                    "applies": true,
+                    "ambient_space": "SU(2) bion quasi-moduli configurations in the weakly coupled center-twisted compactification.",
+                    "type_tag": "environment_family",
+                    "metric_or_divergence": null,
+                    "radius_or_budget": null,
+                    "indexing_set": "{ (L3,L4,g,\u03c1,x3) : L3>0, L4>0, g>0, \u03c1\u22650, x3\u2208[0,2L3), r_b=2\u03c0L4/g^2, and 4\u03c0L4/(g^2L3) ranges across the numerical saddle-merger value 0.44 }",
+                    "claimed_subfamily": {
+                        "definition": "The claimed subfamily is exactly the SU(2) quasi-moduli integral with extended x3 range [0,2L3), where neutral and magnetic bion configurations are included in one integral and the saddle structure is tracked as 4\u03c0L4/(g^2L3) varies.",
+                        "source_span": {
+                            "section": "Sections 5.2-5.4",
+                            "paragraph_or_line": "bion amplitude, saddle change, and hidden topological angle, equations (5.11)-(5.22), Figures 5-7",
+                            "verbatim": "magnetic bions disappear"
+                        }
+                    },
+                    "hinted_superfamily": {
+                        "definition": null,
+                        "source_span": null
+                    },
+                    "refinement_relation": "set_inclusion",
+                    "criterion": "For each configuration in the SU(2) indexing set, success requires the saddle inventory to change from stable magnetic-bion minima plus unstable saddles at large L3 to only the unstable magnetic-bion remnant after the critical dimensionless value 4\u03c0L4/(g^2L3)\u22480.44, while the integrated bion contribution to the supersymmetric vacuum energy remains zero by total-derivative and thimble cancellation.",
+                    "channel_populated_by": [
+                        "stated",
+                        "operational"
+                    ]
+                }
+            }
+        ],
+        "inter_goal_relation": "joint_conjunction",
+        "methodological_claim": {
+            "applies": false,
+            "target_object": null,
+            "evidence_channels": null
+        },
+        "evidence_channels": {
+            "stated_goal": {
+                "source_span": {
+                    "section": "Abstract; Introduction; Summary and discussion",
+                    "paragraph_or_line": "abstract result list; introduction highlight paragraphs; summary recap",
+                    "verbatim": "highlights"
+                },
+                "formalisation": "The stated paper goal is the joint target proposition G = G1 \u2227 G2 \u2227 G3 \u2227 G4 \u2227 G5 over O_P = O_P^mv \u00d7 O_P^vac \u00d7 O_P^W \u00d7 O_P^m \u00d7 O_P^b: establish monopole-vortex continuity in the center-twisted compactification, establish equality of the vacuum structure and gluino condensate across the 3d-to-2d reduction, explain the Wilson-loop area-to-perimeter switch through wrapped double-string/domain-wall saddles, characterize the effect of a small real adjoint-fermion mass on vacuum branches and Wilson-loop behavior, and determine in the SU(2) microscopic bion calculation how magnetic-bion saddles disappear while the supersymmetric vacuum energy continues to cancel. The stated QCD(adj) generalisation of results corresponding to G1-G3 is represented as a hinted robustness/generalisation scope, not as an excluded aim and not as a sixth primary N = 1 SYM coordinate goal."
+            },
+            "operational_goal": {
+                "source_span": {
+                    "section": "Sections 3.1-5.4",
+                    "paragraph_or_line": "monopole-vortex equations, vacuum/condensate equations, mass deformation, Wilson-loop saddle comparison, and bion quasi-moduli calculation",
+                    "verbatim": "equations"
+                },
+                "formalisation": "The operational paper goal is achieved by five calculations: solve the center-twisted abelian monopole equations and Wilson-loop phase condition to identify the two-dimensional center vortex; solve both the large-L3 bion-potential vacuum equations and the small-L3 twisted constant-mode superpotential equations to obtain z\u20d7=(2\u03c0ik/N)\u03c1\u20d7 and \u27e8tr(\u03bb\u03bb)\u27e9_k=16\u03c0^2\u039b^3 exp(i(\u03b8+2\u03c0k)/N); compare Wilson-loop saddles exp(\u2212T_conf Area(C)) and exp(\u2212T_kink L3 Length(C)) to derive the area-to-perimeter switch; add the mass term (m/(16\u03c0^2))(tr(\u03bb\u03bb)+tr(\u03bbbar\u03bbbar)) to derive E_k(\u03b8)=\u22122L3L4m\u039b^3 cos((\u03b8+2\u03c0k)/N) and an area law; and analyze the SU(2) bion quasi-moduli integral to show saddle annihilation near 4\u03c0L4/(g^2L3)\u22480.44 and cancellation of the total supersymmetric bion vacuum-energy contribution."
+            },
+            "implicit_goal": {
+                "inference_basis": [
+                    "The abstract gives four explicit result highlights, while the title and Section 3.1 make the monopole-vortex identification itself a separate coordinate target; the extraction therefore uses five coordinate goals.",
+                    "The outcome variables differ: monopole/vortex flux, vacuum/condensate, Wilson-loop asymptotics, mass-deformed phase behavior, and SU(2) bion quasi-moduli/vacuum energy. The rubric therefore favours multiple coordinate goals rather than one collapsed target object.",
+                    "The paper does not optimize a scalar metric; all five goals are target propositions established by analytic semiclassical calculation, saddle comparison, or controlled numerical saddle tracking.",
+                    "EvalAlign is set to 0.95 rather than 1.0 because the paper has direct analytic and plotted evaluation artefacts for the success predicates, but it is not an empirical benchmark paper with independent metric tables or ablation-style evaluation.",
+                    "Complexity is set to 0.5625 by counting five populated robustness scopes and four additional canonical-goal blocks beyond the first as structural commitments, with no threshold fields, lexicographic order, or total-utility embedding populated."
+                ],
+                "fit_score": 0.956875,
+                "fit_components": {
+                    "TextAlign": 1.0,
+                    "MethodAlign": 1.0,
+                    "EvalAlign": 0.95,
+                    "ClaimAlign": 1.0,
+                    "Complexity": 0.5625
+                },
+                "formalisation": "The implicit best-fit goal is the joint proposition G = G1 \u2227 G2 \u2227 G3 \u2227 G4 \u2227 G5. Its feasibility predicate C_P(o)=1 holds exactly when the outcome is evaluated for N = 1 SU(N) SYM on R^2 \u00d7 (S^1)_3 \u00d7 (S^1)_4 with unit center twist, N\u22652, L3>0, L4>0, N\u039bL4\u226a1, and the relevant additional regime restrictions for the coordinate proposition are satisfied: massless supersymmetry for G1-G3, small real m for G4, and the SU(2) bion quasi-moduli integral for G5. QCD(adj) is represented only as a declared generalisation scope for G1-G3."
+            },
+            "excluded_aims": [
+                {
+                    "verbatim": "4d QCD",
+                    "source_span": {
+                        "section": "Introduction",
+                        "paragraph_or_line": "opening motivation",
+                        "verbatim": "4d QCD"
+                    },
+                    "reason": "motivational"
+                },
+                {
+                    "verbatim": "testing ground",
+                    "source_span": {
+                        "section": "Summary and discussion",
+                        "paragraph_or_line": "closing discussion",
+                        "verbatim": "testing ground"
+                    },
+                    "reason": "application_gesture"
+                }
+            ]
+        },
+        "consistency_relation": "framing_divergence",
+        "consistency_relation_derivation": "The operational goals in Sections 3-5 align with the paper's main stated results, and the stated QCD(adj) extension is now represented as a hinted robustness/generalisation scope for G1-G3. The stated framing still invokes broader motivations about four-dimensional QCD/Yang-Mills confinement and compactified theories as testing grounds for resurgence-like structures. Those broader motivations are not separate formal end-states established by the paper's calculations, so they remain excluded as motivational or application-gesture aims; this requires framing_divergence rather than aligned."
+    }
+}

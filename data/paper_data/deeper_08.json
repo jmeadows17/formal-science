@@ -1,0 +1,284 @@
+{
+  "paper_title": "Quantum Mechanics of Stochastic Systems (Kuang, 2025, arXiv)",
+  "deeper_reasoning_1": "\\subsection*{Claim}\nLet \\(P:\\mathbb{N}_0\\to[0,1]\\) satisfy \\(\\sum_{n=0}^{\\infty}P(n)=1\\), let\n\\[\n|\\psi_P\\rangle:=\\sum_{n=0}^{\\infty}e^{i\\theta_n}\\sqrt{P(n)}\\,|n\\rangle,\n\\qquad\n\\hat N|n\\rangle=n|n\\rangle,\n\\]\nwhere \\(\\{|n\\rangle:n\\in\\mathbb{N}_0\\}\\) is orthonormal.  For every event \\(A\\subseteq\\mathbb{N}_0\\), every real function \\(f\\) with \\(\\sum_n |f(n)|P(n)<\\infty\\), and every finite-entropy law, the count-basis representation gives\n\\[\n\\langle\\psi_P|\\psi_P\\rangle=1,\n\\qquad\n\\langle\\psi_P|\\Pi_A|\\psi_P\\rangle=\\sum_{n\\in A}P(n),\n\\]\n\\[\n\\langle\\psi_P|f(\\hat N)|\\psi_P\\rangle=\\sum_{n=0}^{\\infty}f(n)P(n),\n\\qquad\nS(\\psi_P)=-\\sum_{n=0}^{\\infty}P(n)\\log P(n),\n\\]\nwith \\(0\\log0:=0\\) and \\(\\Pi_A:=\\sum_{n\\in A}|n\\rangle\\langle n|\\).\n\n\\subsection*{Derivation}\nThe norm is\n\\begin{align}\n\\langle\\psi_P|\\psi_P\\rangle\n&=\\sum_{m=0}^{\\infty}\\sum_{n=0}^{\\infty}e^{-i\\theta_m}e^{i\\theta_n}\\sqrt{P(m)P(n)}\\langle m|n\\rangle\\\\\n&=\\sum_{m=0}^{\\infty}\\sum_{n=0}^{\\infty}e^{-i\\theta_m}e^{i\\theta_n}\\sqrt{P(m)P(n)}\\delta_{mn}\\\\\n&=\\sum_{n=0}^{\\infty}P(n)=1.\n\\end{align}\nFor an event \\(A\\), since \\(\\Pi_A|n\\rangle=|n\\rangle\\) when \\(n\\in A\\) and \\(\\Pi_A|n\\rangle=0\\) otherwise,\n\\begin{align}\n\\langle\\psi_P|\\Pi_A|\\psi_P\\rangle\n&=\\sum_{m,n}e^{-i\\theta_m}e^{i\\theta_n}\\sqrt{P(m)P(n)}\\langle m|\\Pi_A|n\\rangle\\\\\n&=\\sum_{n\\in A}P(n).\n\\end{align}\nLikewise \\(f(\\hat N)|n\\rangle=f(n)|n\\rangle\\), and the absolute-convergence assumption permits the diagonal sum:\n\\begin{align}\n\\langle\\psi_P|f(\\hat N)|\\psi_P\\rangle\n&=\\sum_{m,n}e^{-i\\theta_m}e^{i\\theta_n}\\sqrt{P(m)P(n)}f(n)\\delta_{mn}\\\\\n&=\\sum_{n=0}^{\\infty}f(n)P(n).\n\\end{align}\nTaking \\(f(n)=n^q\\) recovers every convergent count moment.  Taking the diagonal entropy functional gives\n\\begin{align}\nS(\\psi_P)\n&=-\\sum_{n=0}^{\\infty}|e^{i\\theta_n}\\sqrt{P(n)}|^2\\log |e^{i\\theta_n}\\sqrt{P(n)}|^2\\\\\n&=-\\sum_{n=0}^{\\infty}P(n)\\log P(n).\n\\end{align}\n\n\\subsection*{Final Result}\n\\[\n\\boxed{\\text{The count-basis state is a probability-preserving embedding of events, moments, and entropy.}}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_2": "\\subsection*{Claim}\nThe named stochastic states used in the formalism are all normalized count-basis states with exactly the intended probability laws:\n\\[\nP_{\\mathrm{Pois}}(n)=e^{-\\lambda}\\frac{\\lambda^n}{n!},\\quad\nP_B(n)=\\binom{N}{n}p^n(1-p)^{N-n},\n\\]\n\\[\nP_{NB}(n)=\\binom{n+r-1}{n}(1-p)^rp^n,\\quad\nP_H(n)=\\frac{\\binom{K}{n}\\binom{N-K}{M-n}}{\\binom{N}{M}},\n\\]\nwith finite-support laws extended by zero outside their feasible support, and the Geometric law is exactly \\(NB(1,p)\\).\n\n\\subsection*{Derivation}\nFor Poisson, with \\(\\lambda>0\\),\n\\begin{align}\n\\sum_{n=0}^{\\infty}e^{-\\lambda}\\frac{\\lambda^n}{n!}\n&=e^{-\\lambda}\\sum_{n=0}^{\\infty}\\frac{\\lambda^n}{n!}\n=e^{-\\lambda}e^{\\lambda}=1.\n\\end{align}\nFor the coherent amplitude \\(\\alpha_n=e^{-\\lambda/2}\\lambda^{n/2}/\\sqrt{n!}\\), this gives \\(|\\alpha_n|^2=P_{\\mathrm{Pois}}(n)\\).\n\nFor Binomial, with \\(0\\leq p\\leq1\\),\n\\begin{align}\n\\sum_{n=0}^{N}\\binom{N}{n}p^n(1-p)^{N-n}\n&=(p+1-p)^N=1.\n\\end{align}\nThus \\(\\sum_{n=0}^{N}\\sqrt{P_B(n)}|n\\rangle\\) is normalized and has zero mass for \\(n>N\\).\n\nFor Negative Binomial, with \\(0<p<1\\) and \\(r\\in\\mathbb{N}\\), the negative-binomial series gives\n\\begin{align}\n\\sum_{n=0}^{\\infty}\\binom{n+r-1}{n}(1-p)^rp^n\n&=(1-p)^r\\sum_{n=0}^{\\infty}\\binom{n+r-1}{n}p^n\\\\\n&=(1-p)^r(1-p)^{-r}=1.\n\\end{align}\nIf \\(r=1\\), then \\(\\binom{n}{n}=1\\), so\n\\begin{align}\nP_{NB}(n;1,p)&=(1-p)p^n,\n\\end{align}\nwhich is the zero-based Geometric law.\n\nFor Hypergeometric, define\n\\[\nn_-:=\\max\\{0,M-(N-K)\\},\\qquad n_+:=\\min\\{K,M\\}.\n\\]\nUsing the convention \\(\\binom{a}{b}=0\\) when \\(b<0\\) or \\(b>a\\), Vandermonde's identity gives\n\\begin{align}\n\\sum_{n=n_-}^{n_+}\\frac{\\binom{K}{n}\\binom{N-K}{M-n}}{\\binom{N}{M}}\n&=\\frac{1}{\\binom{N}{M}}\\sum_{n=0}^{M}\\binom{K}{n}\\binom{N-K}{M-n}\\\\\n&=\\frac{\\binom{N}{M}}{\\binom{N}{M}}=1.\n\\end{align}\nTherefore the state \\(\\sum_n\\sqrt{P_S(n)}|n\\rangle\\) is normalized for each named family, and by orthonormality\n\\begin{align}\n|\\langle n|\\psi_S\\rangle|^2&=P_S(n).\n\\end{align}\n\n\\subsection*{Final Result}\n\\[\n\\boxed{\\text{Poisson, Binomial, Negative Binomial, Geometric, and Hypergeometric laws are exact count-basis amplitude laws.}}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_3": "\\subsection*{Claim}\nLet \\(P_\\vartheta(k)>0\\) be a differentiable one-parameter probability law with support independent of \\(\\vartheta\\), and define real square-root amplitudes \\(\\alpha_k(\\vartheta):=\\sqrt{P_\\vartheta(k)}\\).  If the Fisher sum converges, then\n\\[\nF_Q(\\vartheta):=4\\sum_k\\left|\\frac{d\\alpha_k}{d\\vartheta}\\right|^2\n=\n\\sum_k P_\\vartheta(k)\\left(\\frac{d}{d\\vartheta}\\log P_\\vartheta(k)\\right)^2.\n\\]\nThus the amplitude-based quantum Fisher expression equals the classical Fisher information for the represented count law.  In particular,\n\\[\nF_Q(\\operatorname{Pois}(\\lambda))=\\frac{1}{\\lambda},\n\\qquad\nF_Q(\\operatorname{Bin}(N,p))=\\frac{N}{p(1-p)}.\n\\]\n\n\\subsection*{Derivation}\nFor every support point,\n\\begin{align}\n\\frac{d\\alpha_k}{d\\vartheta}\n&=\\frac{d}{d\\vartheta}P_\\vartheta(k)^{1/2}\\\\\n&=\\frac{1}{2}P_\\vartheta(k)^{1/2}\\frac{d}{d\\vartheta}\\log P_\\vartheta(k).\n\\end{align}\nTherefore\n\\begin{align}\n4\\sum_k\\left|\\frac{d\\alpha_k}{d\\vartheta}\\right|^2\n&=4\\sum_k\\frac{1}{4}P_\\vartheta(k)\\left(\\frac{d}{d\\vartheta}\\log P_\\vartheta(k)\\right)^2\\\\\n&=\\sum_k P_\\vartheta(k)\\left(\\frac{d}{d\\vartheta}\\log P_\\vartheta(k)\\right)^2.\n\\end{align}\nFor \\(K\\sim\\operatorname{Pois}(\\lambda)\\),\n\\begin{align}\n\\frac{d}{d\\lambda}\\log P_\\lambda(K)&=-1+\\frac{K}{\\lambda}=\\frac{K-\\lambda}{\\lambda},\\\\\nF_Q&=\\mathbb{E}\\left[\\frac{(K-\\lambda)^2}{\\lambda^2}\\right]\n=\\frac{\\lambda}{\\lambda^2}=\\frac{1}{\\lambda}.\n\\end{align}\nFor \\(K\\sim\\operatorname{Bin}(N,p)\\),\n\\begin{align}\n\\frac{d}{dp}\\log P_p(K)\n&=\\frac{K}{p}-\\frac{N-K}{1-p}\n=\\frac{K-Np}{p(1-p)},\\\\\nF_Q&=\\mathbb{E}\\left[\\frac{(K-Np)^2}{p^2(1-p)^2}\\right]\n=\\frac{Np(1-p)}{p^2(1-p)^2}\n=\\frac{N}{p(1-p)}.\n\\end{align}\n\n\\subsection*{Final Result}\n\\[\n\\boxed{F_Q(\\vartheta)=\\sum_k P_\\vartheta(k)\\bigl(\\partial_\\vartheta\\log P_\\vartheta(k)\\bigr)^2,\\quad\nF_Q(\\operatorname{Pois})=1/\\lambda,\\quad F_Q(\\operatorname{Bin})=N/[p(1-p)].}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_4": "\\subsection*{Claim}\nLet \\(P_N\\) be the Binomial law \\(\\operatorname{Bin}(N,\\lambda/N)\\), extended by zero outside \\(\\{0,\\ldots,N\\}\\), and let \\(P\\) be the Poisson law with mean \\(\\lambda>0\\).  Define\n\\[\n|\\psi_N\\rangle:=\\sum_{k=0}^{\\infty}\\sqrt{P_N(k)}|k\\rangle,\n\\qquad\n|\\psi\\rangle:=\\sum_{k=0}^{\\infty}\\sqrt{P(k)}|k\\rangle.\n\\]\nIf \\(\\|\\,|\\psi_N\\rangle-|\\psi\\rangle\\,\\|\\to0\\), then every bounded count statistic and every modular residue event also converges.  In particular,\n\\[\n\\Pr_{P_N}[K\\bmod M=r]\\to \\Pr_P[K\\bmod M=r]\n\\]\nfor every fixed \\(M\\geq2\\) and residue \\(r\\).\n\n\\subsection*{Derivation}\nSet \\(a_k:=\\sqrt{P_N(k)}\\), \\(b_k:=\\sqrt{P(k)}\\), and\n\\[\nd_N:=\\left(\\sum_{k=0}^{\\infty}(a_k-b_k)^2\\right)^{1/2}.\n\\]\nThe total-variation distance satisfies\n\\begin{align}\n\\sum_{k=0}^{\\infty}|P_N(k)-P(k)|\n&=\\sum_{k=0}^{\\infty}|a_k^2-b_k^2|\\\\\n&=\\sum_{k=0}^{\\infty}|a_k-b_k||a_k+b_k|\\\\\n&\\leq \\left(\\sum_{k=0}^{\\infty}(a_k-b_k)^2\\right)^{1/2}\n     \\left(\\sum_{k=0}^{\\infty}(a_k+b_k)^2\\right)^{1/2}\\\\\n&\\leq 2d_N,\n\\end{align}\nbecause \\(\\sum_k a_k^2=\\sum_k b_k^2=1\\).  Hence\n\\[\n\\|P_N-P\\|_{TV}:=\\frac{1}{2}\\sum_{k=0}^{\\infty}|P_N(k)-P(k)|\\leq d_N.\n\\]\nFor any bounded function \\(g\\),\n\\begin{align}\n\\left|\\sum_k g(k)P_N(k)-\\sum_k g(k)P(k)\\right|\n&\\leq \\|g\\|_{\\infty}\\sum_k|P_N(k)-P(k)|\\\\\n&\\leq 2\\|g\\|_{\\infty}d_N\\to0.\n\\end{align}\nFor a modular residue, take \\(g(k)=1\\) if \\(k\\equiv r\\pmod M\\) and \\(g(k)=0\\) otherwise.  Then \\(\\|g\\|_{\\infty}=1\\), so\n\\begin{align}\n\\left|\\Pr_{P_N}[K\\bmod M=r]-\\Pr_P[K\\bmod M=r]\\right|&\\leq2d_N\\to0.\n\\end{align}\n\n\\subsection*{Final Result}\n\\[\n\\boxed{\\text{Strong Hilbert-space convergence of square-root states implies convergence of bounded observables and modular residues.}}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_5": "\\subsection*{Claim}\nLet \\(M\\geq2\\), \\(\\theta_\\ell:=2\\pi\\ell/M\\), and \\(\\phi(\\theta):=\\sum_{n=0}^{\\infty}P(n)e^{i\\theta n}\\).  The residue law \\(Q_r:=\\Pr[K\\bmod M=r]\\) is\n\\[\nQ_r=\\frac{1}{M}\\sum_{\\ell=0}^{M-1}\\phi(\\theta_\\ell)e^{-i\\theta_\\ell r}.\n\\]\nMoreover, for Negative Binomial, Binomial, and Poisson laws, every nonzero Fourier mode has magnitude below one, so\n\\[\n\\left|Q_r-\\frac{1}{M}\\right|\\leq \\frac{M-1}{M}\\rho^m\n\\]\nwith \\(0<\\rho<1\\) and \\(m=r_0\\), \\(m=n\\), or \\(m=\\lambda\\) for \\(NB(r_0,p)\\), \\(\\operatorname{Bin}(n,p)\\), or \\(\\operatorname{Pois}(\\lambda)\\), respectively.\n\n\\subsection*{Derivation}\nThe root-of-unity filter gives\n\\[\n\\frac{1}{M}\\sum_{\\ell=0}^{M-1}e^{i\\theta_\\ell(n-r)}=\\begin{cases}1,&n\\equiv r\\pmod M,\\\\0,&n\\not\\equiv r\\pmod M.\\end{cases}\n\\]\nTherefore\n\\begin{align}\nQ_r\n&=\\sum_{n=0}^{\\infty}P(n)\\frac{1}{M}\\sum_{\\ell=0}^{M-1}e^{i\\theta_\\ell(n-r)}\\\\\n&=\\frac{1}{M}\\sum_{\\ell=0}^{M-1}\\left(\\sum_{n=0}^{\\infty}P(n)e^{i\\theta_\\ell n}\\right)e^{-i\\theta_\\ell r}\\\\\n&=\\frac{1}{M}\\sum_{\\ell=0}^{M-1}\\phi(\\theta_\\ell)e^{-i\\theta_\\ell r}.\n\\end{align}\nSince \\(\\phi(0)=1\\),\n\\begin{align}\n\\left|Q_r-\\frac{1}{M}\\right|\n&\\leq \\frac{1}{M}\\sum_{\\ell=1}^{M-1}|\\phi(\\theta_\\ell)|.\n\\end{align}\nFor \\(NB(r_0,p)\\) with \\(0<p<1\\),\n\\begin{align}\n\\phi_{NB}(\\theta)&=\\left(\\frac{1-p}{1-pe^{i\\theta}}\\right)^{r_0},\\\\\n|\\phi_{NB}(\\theta_\\ell)|&=\\left(\\frac{1-p}{|1-pe^{i\\theta_\\ell}|}\\right)^{r_0}.\n\\end{align}\nFor \\(\\ell=1,\n\\ldots,M-1\\), \\(|1-pe^{i\\theta_\\ell}|^2=(1-p)^2+2p(1-\\cos\\theta_\\ell)>(1-p)^2\\), hence\n\\[\n\\rho_{NB}:=\\max_{1\\leq\\ell\\leq M-1}\\frac{1-p}{|1-pe^{i\\theta_\\ell}|}<1.\n\\]\nFor \\(K\\sim\\operatorname{Bin}(n,p)\\),\n\\begin{align}\n\\phi_B(\\theta)&=(1-p+pe^{i\\theta})^n,\n\\end{align}\nso with \\(0<p<1\\),\n\\[\n\\rho_B:=\\max_{1\\leq\\ell\\leq M-1}|1-p+pe^{i\\theta_\\ell}|<1.\n\\]\nFor \\(K\\sim\\operatorname{Pois}(\\lambda)\\),\n\\begin{align}\n\\phi_P(\\theta)&=\\exp(\\lambda(e^{i\\theta}-1)),\\\\\n|\\phi_P(\\theta_\\ell)|&=\\exp(\\lambda(\\cos\\theta_\\ell-1))\n=\\left(e^{\\cos\\theta_\\ell-1}\\right)^\\lambda,\n\\end{align}\nand\n\\[\n\\rho_P:=\\max_{1\\leq\\ell\\leq M-1}e^{\\cos\\theta_\\ell-1}<1.\n\\]\nSubstitution into the nonzero-mode bound yields the stated exponential uniformity estimate.\n\n\\subsection*{Final Result}\n\\[\n\\boxed{Q_r=\\frac{1}{M}\\sum_{\\ell=0}^{M-1}\\phi(2\\pi\\ell/M)e^{-2\\pi i\\ell r/M},\\qquad\n|Q_r-1/M|\\leq ((M-1)/M)\\rho^m.}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_6": "\\subsection*{Claim}\nThe probability-engineering strength differs by family in the precise way required by the target goals.  The Poisson member has an explicit displaced-oscillator Hamiltonian eigenstate construction, while Binomial, Negative Binomial/Geometric, and Hypergeometric members have structure-level perturbation certificates: finite-rank support, waiting-time plus correlation weighting, and projection constraints.  Each certificate is sufficient for exact count-basis measurement probabilities.\n\n\\subsection*{Derivation}\nFor Poisson, let\n\\[\n\\hat H_{\\mathrm{QHO}}=\\hbar\\omega\\left(\\hat a^\\dagger\\hat a+\\frac{1}{2}\\right),\n\\qquad\n\\Delta V_{\\mathrm{Pois}}=\\hbar\\omega(-\\alpha\\hat a^\\dagger-\\alpha^*\\hat a+|\\alpha|^2).\n\\]\nUsing \\(\\hat D(\\alpha)\\hat a\\hat D^\\dagger(\\alpha)=\\hat a-\\alpha\\) and the corresponding adjoint identity,\n\\begin{align}\n\\hat D(\\alpha)\\hat H_{\\mathrm{QHO}}\\hat D^\\dagger(\\alpha)\n&=\\hbar\\omega\\left((\\hat a^\\dagger-\\alpha^*)(\\hat a-\\alpha)+\\frac{1}{2}\\right)\\\\\n&=\\hat H_{\\mathrm{QHO}}+\\Delta V_{\\mathrm{Pois}}\n=\\hat H_{\\mathrm{Pois}}.\n\\end{align}\nTherefore, for \\(|\\alpha\\rangle=\\hat D(\\alpha)|0\\rangle\\),\n\\begin{align}\n\\hat H_{\\mathrm{Pois}}|\\alpha\\rangle\n&=\\hat D(\\alpha)\\hat H_{\\mathrm{QHO}}|0\\rangle\n=\\frac{\\hbar\\omega}{2}|\\alpha\\rangle.\n\\end{align}\nThe coherent-state coefficient computation gives \\(|\\langle n|\\alpha\\rangle|^2=e^{-|\\alpha|^2}|\\alpha|^{2n}/n!\\), so \\(\\lambda=|\\alpha|^2\\) realizes the Poisson law.\n\nFor Binomial, define the finite-support projector\n\\[\n\\Pi_{\\leq N}:=\\sum_{k=0}^{N}|k\\rangle\\langle k|,\n\\qquad\n|\\psi_B\\rangle:=\\sum_{k=0}^{N}\\sqrt{\\binom{N}{k}p^k(1-p)^{N-k}}|k\\rangle.\n\\]\nThen \\(\\Pi_{\\leq N}|\\psi_B\\rangle=|\\psi_B\\rangle\\), \\((I-\\Pi_{\\leq N})|\\psi_B\\rangle=0\\), and\n\\begin{align}\n\\langle\\psi_B|\\,|k\\rangle\\langle k|\\,|\\psi_B\\rangle\n&=\\binom{N}{k}p^k(1-p)^{N-k}\n\\end{align}\nfor \\(0\\leq k\\leq N\\), with zero probability outside the finite-rank sector.\n\nFor Negative Binomial, write the zero-based Geometric amplitude as\n\\[\n\\alpha^{(G)}_n(p):=\\sqrt{(1-p)p^n}.\n\\]\nThen\n\\begin{align}\n\\alpha^{(NB)}_n(r,p)\n&=\\sqrt{\\binom{n+r-1}{n}(1-p)^rp^n}\\\\\n&=\\sqrt{\\binom{n+r-1}{n}}(1-p)^{(r-1)/2}\\alpha^{(G)}_n(p).\n\\end{align}\nThus \\(r=1\\) removes the correlation factor and gives the Geometric state exactly, while \\(r>1\\) weights the same waiting-time backbone by the correlation multiplicity \\(\\binom{n+r-1}{n}\\).\n\nFor Hypergeometric, define\n\\[\n\\Pi_H:=\\sum_{n=n_-}^{n_+}|n\\rangle\\langle n|,\n\\qquad\n|\\psi_H\\rangle:=\\sum_{n=n_-}^{n_+}\\sqrt{\\frac{\\binom{K}{n}\\binom{N-K}{M-n}}{\\binom{N}{M}}}|n\\rangle.\n\\]\nThen \\(\\Pi_H|\\psi_H\\rangle=|\\psi_H\\rangle\\), and the count-basis probability is exactly the sampling-without-replacement law on the feasible support.\n\n\\subsection*{Final Result}\n\\[\n\\boxed{\\text{Poisson is certified by an explicit Hamiltonian eigenstate; the other named laws are certified at the stated structure level.}}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_7": "\\subsection*{Claim}\nLet \\(\\hat H_S\\) be Hermitian with orthonormal eigenmodes \\(\\{|\\phi_j\\rangle\\}\\) and eigenvalues \\(E_j\\).  If\n\\[\n|\\psi(0)\\rangle=\\sum_j c_j|\\phi_j\\rangle,\n\\qquad\n|\\psi(t)\\rangle=\\sum_j e^{-iE_jt}c_j|\\phi_j\\rangle,\n\\]\nthen \\(|\\psi(t)\\rangle\\) solves \\(i\\frac{d}{dt}|\\psi(t)\\rangle=\\hat H_S|\\psi(t)\\rangle\\), preserves norm, and induces the count law\n\\[\nP_t(n)=\\left|\\sum_j e^{-iE_jt}c_j\\langle n|\\phi_j\\rangle\\right|^2.\n\\]\nIf the engineered stochastic state \\(|\\psi_S\\rangle\\) is a single eigenmode, then all count probabilities are stationary.  In particular, the Poisson coherent state engineered by \\(\\hat H_{\\mathrm{Pois}}\\) has a time-independent Poisson count law.\n\n\\subsection*{Derivation}\nDifferentiate the spectral expansion:\n\\begin{align}\n\\frac{d}{dt}|\\psi(t)\\rangle\n&=\\sum_j (-iE_j)e^{-iE_jt}c_j|\\phi_j\\rangle.\n\\end{align}\nMultiplying by \\(i\\) gives\n\\begin{align}\ni\\frac{d}{dt}|\\psi(t)\\rangle\n&=\\sum_j E_je^{-iE_jt}c_j|\\phi_j\\rangle\\\\\n&=\\sum_j e^{-iE_jt}c_j\\hat H_S|\\phi_j\\rangle\\\\\n&=\\hat H_S\\sum_j e^{-iE_jt}c_j|\\phi_j\\rangle\n=\\hat H_S|\\psi(t)\\rangle.\n\\end{align}\nThe initial condition follows by setting \\(t=0\\).  Norm preservation follows from orthonormality:\n\\begin{align}\n\\langle\\psi(t)|\\psi(t)\\rangle\n&=\\sum_{j,k}e^{iE_jt}e^{-iE_kt}c_j^*c_k\\langle\\phi_j|\\phi_k\\rangle\\\\\n&=\\sum_j |c_j|^2\n=\\langle\\psi(0)|\\psi(0)\\rangle.\n\\end{align}\nProjecting onto the count basis gives\n\\begin{align}\n\\langle n|\\psi(t)\\rangle\n&=\\sum_j e^{-iE_jt}c_j\\langle n|\\phi_j\\rangle,\\\\\nP_t(n)&=|\\langle n|\\psi(t)\\rangle|^2.\n\\end{align}\nIf \\(|\\psi(0)\\rangle=|\\phi_s\\rangle\\), then \\(|\\psi(t)\\rangle=e^{-iE_st}|\\phi_s\\rangle\\), so\n\\begin{align}\nP_t(n)&=|e^{-iE_st}\\langle n|\\phi_s\\rangle|^2=|\\langle n|\\phi_s\\rangle|^2.\n\\end{align}\nFor the Poisson construction, \\(|\\alpha\\rangle\\) is an eigenstate of \\(\\hat H_{\\mathrm{Pois}}\\), hence its count probabilities remain\n\\begin{align}\nP_t(n)&=|\\langle n|\\alpha\\rangle|^2=e^{-|\\alpha|^2}\\frac{|\\alpha|^{2n}}{n!}\n\\end{align}\nfor all \\(t\\).\n\n\\subsection*{Final Result}\n\\[\n\\boxed{\\text{Spectral dynamics preserve norm, give explicit time-dependent count laws, and make engineered eigenstate laws stationary.}}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_metadata": {
+    "output_file": "deeper.json",
+    "revision_id": "deeper_08_alignment_pass_3",
+    "revision_intent": "Maximize alignment with the deeper reasoning rubric, core_reasoning_1--13, and goals G1--G3 by selecting only derivations that add abstraction, transfer, or formal certification beyond the core proofs.",
+    "input_files": [
+      "deeper_reasoning_pseudo_algorithm.md",
+      "core_08.json",
+      "goals_08.json"
+    ],
+    "rubric_interpretation": {
+      "schema_constraints": "Single UTF-8 JSON object; paper_title; contiguous deeper_reasoning_k string fields; exactly one deeper_metadata object; no extra top-level keys.",
+      "latex_constraints": "Every deeper_reasoning_k compiles with article, amsmath, and amssymb only; no custom macros or nonstandard packages.",
+      "value_constraints": "Prefer derivations that synthesize several core proofs, expose transfer principles, or certify a goal-level object rather than re-proving isolated formulas."
+    },
+    "goal_trace": {
+      "G1_count_basis_hilbert_space_formalism": [
+        "deeper_reasoning_1",
+        "deeper_reasoning_2",
+        "deeper_reasoning_3",
+        "deeper_reasoning_4",
+        "deeper_reasoning_6",
+        "deeper_reasoning_7"
+      ],
+      "G2_modular_projection_uniformity_TURNG": [
+        "deeper_reasoning_4",
+        "deeper_reasoning_5"
+      ],
+      "G3_named_family_quantum_probability_engineering": [
+        "deeper_reasoning_2",
+        "deeper_reasoning_6",
+        "deeper_reasoning_7"
+      ]
+    },
+    "entry_metadata": {
+      "deeper_reasoning_1": {
+        "title": "Universal count-basis probability calculus",
+        "target_goal_component": "G1_count_basis_hilbert_space_formalism",
+        "declared_source_set": [
+          "core_reasoning_1",
+          "core_reasoning_7",
+          "goals_08:G1"
+        ],
+        "major_advancement_modes": [
+          "abstraction",
+          "unification",
+          "event-level strengthening"
+        ],
+        "goal_alignment": "Converts normalization, measurement probabilities, moments, and entropy into one probability-preserving embedding theorem.",
+        "scientific_payoff": "Shows that the Hilbert-space formalism is operationally equivalent to classical count probability calculus for diagonal observables.",
+        "nontrivial_advance_over_sources": "Adds arbitrary event projectors and general diagonal observables rather than only powers of the count operator.",
+        "formal_sharpness": "Includes absolute-convergence and zero-entropy conventions.",
+        "low_value_rejection_audit": "Avoids separate repetitive checks for each distribution.",
+        "selection_score": 0.98,
+        "controlled_external_lemmas": [
+          "orthonormal-basis delta reduction",
+          "diagonal action of functions of the count operator"
+        ],
+        "known_residual_risks_and_mitigation": "Domain issues are bounded by explicit summability conditions."
+      },
+      "deeper_reasoning_2": {
+        "title": "Named-family normalization and support certificate",
+        "target_goal_component": "G1_count_basis_hilbert_space_formalism and G3_named_family_quantum_probability_engineering",
+        "declared_source_set": [
+          "core_reasoning_2",
+          "core_reasoning_4",
+          "core_reasoning_5",
+          "core_reasoning_12",
+          "goals_08:G1",
+          "goals_08:G3"
+        ],
+        "major_advancement_modes": [
+          "family unification",
+          "support exactness",
+          "relation certification"
+        ],
+        "goal_alignment": "Directly certifies all named families and the Geometric-as-NB relation required by the goal file.",
+        "scientific_payoff": "Makes the representation coverage explicit across finite and infinite support families.",
+        "nontrivial_advance_over_sources": "Uses one consolidated proof with binomial, negative-binomial, exponential, and Vandermonde identities.",
+        "formal_sharpness": "States finite-support zero extension and feasible Hypergeometric support.",
+        "low_value_rejection_audit": "Replaces multiple isolated family checks with one coverage certificate.",
+        "selection_score": 0.97,
+        "controlled_external_lemmas": [
+          "binomial theorem",
+          "negative-binomial series",
+          "Vandermonde identity",
+          "exponential series"
+        ],
+        "known_residual_risks_and_mitigation": "Endpoint cases for Negative Binomial are kept to the interior parameter regime where the infinite series statement is clean."
+      },
+      "deeper_reasoning_3": {
+        "title": "Square-root amplitude Fisher identity",
+        "target_goal_component": "G1_count_basis_hilbert_space_formalism",
+        "declared_source_set": [
+          "core_reasoning_8",
+          "core_reasoning_9",
+          "goals_08:G1"
+        ],
+        "major_advancement_modes": [
+          "information-geometry synthesis",
+          "generalization",
+          "named-law recovery"
+        ],
+        "goal_alignment": "Shows that amplitude sums reproduce classical information quantities for the represented count laws.",
+        "scientific_payoff": "Explains why the paper's Binomial and Poisson Fisher calculations are instances of a single identity.",
+        "nontrivial_advance_over_sources": "Derives the general identity before recovering both named results.",
+        "formal_sharpness": "Requires differentiability, positive fixed support, and convergence of the Fisher sum.",
+        "low_value_rejection_audit": "Avoids merely copying the two separate QFI calculations.",
+        "selection_score": 0.96,
+        "controlled_external_lemmas": [
+          "logarithmic derivative of square-root amplitudes",
+          "Poisson and Binomial variance identities"
+        ],
+        "known_residual_risks_and_mitigation": "Boundary parameter regimes are excluded by explicit assumptions."
+      },
+      "deeper_reasoning_4": {
+        "title": "Operational transfer from strong square-root convergence",
+        "target_goal_component": "G1_count_basis_hilbert_space_formalism and G2_modular_projection_uniformity_TURNG",
+        "declared_source_set": [
+          "core_reasoning_6",
+          "core_reasoning_10",
+          "goals_08:G1",
+          "goals_08:G2"
+        ],
+        "major_advancement_modes": [
+          "transfer theorem",
+          "observable convergence",
+          "modular-convergence bridge"
+        ],
+        "goal_alignment": "Strengthens the Binomial-to-Poisson Hilbert limit into convergence of observable and modular probabilities.",
+        "scientific_payoff": "Connects norm convergence of stochastic states to directly measurable count statistics.",
+        "nontrivial_advance_over_sources": "Adds total-variation control from amplitude distance and applies it to bounded functions and residue events.",
+        "formal_sharpness": "Provides explicit inequalities linking Hilbert norm, total variation, and bounded-expectation error.",
+        "low_value_rejection_audit": "Avoids a lower-value pointwise limit proof already present in the core file.",
+        "selection_score": 0.95,
+        "controlled_external_lemmas": [
+          "Cauchy-Schwarz inequality",
+          "total-variation event bound"
+        ],
+        "known_residual_risks_and_mitigation": "Unbounded observables are not covered; the entry explicitly restricts transfer to bounded statistics."
+      },
+      "deeper_reasoning_5": {
+        "title": "Exact modular Fourier certificate with exponential uniformity constants",
+        "target_goal_component": "G2_modular_projection_uniformity_TURNG",
+        "declared_source_set": [
+          "core_reasoning_10",
+          "core_reasoning_11",
+          "goals_08:G2"
+        ],
+        "major_advancement_modes": [
+          "exact transform identity",
+          "family-specific rate control",
+          "TURNG certificate"
+        ],
+        "goal_alignment": "Proves the residue DFT identity and constructs the rho constants required for uniform convergence.",
+        "scientific_payoff": "Turns the modular projection claim into a checkable finite-Fourier-mode certificate.",
+        "nontrivial_advance_over_sources": "Combines exact projection and exponential-rate bounds in one theorem with explicit rho definitions.",
+        "formal_sharpness": "Separates the zero-frequency uniform term from nonzero-mode decay and proves strict subunit magnitude.",
+        "low_value_rejection_audit": "Avoids an informal big-O-only statement.",
+        "selection_score": 0.98,
+        "controlled_external_lemmas": [
+          "root-of-unity filter",
+          "standard characteristic functions for the three count laws"
+        ],
+        "known_residual_risks_and_mitigation": "Requires interior Binomial and NB parameters so that nonzero Fourier magnitudes are strictly below one."
+      },
+      "deeper_reasoning_6": {
+        "title": "Probability-engineering hierarchy: exact Poisson, structure-level non-Poisson certificates",
+        "target_goal_component": "G3_named_family_quantum_probability_engineering",
+        "declared_source_set": [
+          "core_reasoning_2",
+          "core_reasoning_3",
+          "core_reasoning_4",
+          "core_reasoning_5",
+          "core_reasoning_12",
+          "goals_08:G3"
+        ],
+        "major_advancement_modes": [
+          "engineering-strength clarification",
+          "support-constraint formalization",
+          "relation-aware certificate"
+        ],
+        "goal_alignment": "Matches the goal file's distinction between the explicit Poisson Hamiltonian and structure-level Binomial/NB/Hypergeometric perturbations.",
+        "scientific_payoff": "Prevents overclaiming while still proving exact measurement probabilities for all named engineering outputs.",
+        "nontrivial_advance_over_sources": "Separates eigenstate engineering from probability-structure certification and explains the NB correlation factor over the Geometric backbone.",
+        "formal_sharpness": "Uses projectors for finite and feasible support constraints and the displaced-oscillator identity for Poisson.",
+        "low_value_rejection_audit": "Rejects a generic arbitrary-Hamiltonian construction because it would not align with the paper's stated perturbation structures.",
+        "selection_score": 0.97,
+        "controlled_external_lemmas": [
+          "displacement-operator conjugation",
+          "finite-support projectors",
+          "basis-projector measurement rule"
+        ],
+        "known_residual_risks_and_mitigation": "Non-Poisson perturbations remain at structure level by design, exactly matching the goal's success criterion."
+      },
+      "deeper_reasoning_7": {
+        "title": "Spectral dynamics and stationarity of engineered eigenstate laws",
+        "target_goal_component": "G1_count_basis_hilbert_space_formalism and G3_named_family_quantum_probability_engineering",
+        "declared_source_set": [
+          "core_reasoning_3",
+          "core_reasoning_13",
+          "goals_08:G1",
+          "goals_08:G3"
+        ],
+        "major_advancement_modes": [
+          "dynamical interpretation",
+          "stationarity certificate",
+          "engineering connection"
+        ],
+        "goal_alignment": "Incorporates the dynamical core proof and connects it to the Poisson engineered eigenstate.",
+        "scientific_payoff": "Clarifies when a stochastic law is merely represented at one time and when it is stationary under the engineered Hamiltonian.",
+        "nontrivial_advance_over_sources": "Adds the explicit induced count-law formula and stationary-eigenstate consequence.",
+        "formal_sharpness": "Verifies Schrödinger evolution, norm preservation, count-basis probabilities, and eigenstate stationarity.",
+        "low_value_rejection_audit": "Avoids leaving dynamics as an unconnected appendix-like calculation.",
+        "selection_score": 0.95,
+        "controlled_external_lemmas": [
+          "spectral theorem in an orthonormal eigenbasis",
+          "global phase invariance of measurement probabilities"
+        ],
+        "known_residual_risks_and_mitigation": "Continuous-spectrum issues are outside the finite/countable eigenmode statement used by the core file."
+      }
+    },
+    "rejected_low_value_candidates": [
+      {
+        "candidate": "Separate normalization proof for each distribution",
+        "reason_rejected": "Subsumed by deeper_reasoning_1 and deeper_reasoning_2; separate entries would be redundant with core_reasoning."
+      },
+      {
+        "candidate": "Standalone Geometric proof only",
+        "reason_rejected": "Folded into the Negative-Binomial relation and engineering hierarchy where it has higher explanatory value."
+      },
+      {
+        "candidate": "Pointwise Binomial-to-Poisson limit only",
+        "reason_rejected": "Replaced by an operational transfer theorem from Hilbert norm convergence to total variation, observables, and modular residues."
+      },
+      {
+        "candidate": "Generic Schrödinger solution without probability interpretation",
+        "reason_rejected": "Strengthened into a count-probability dynamics and stationarity certificate for engineered eigenstates."
+      }
+    ],
+    "global_alignment_audit": {
+      "schema_status": "Top-level object contains only paper_title, contiguous deeper_reasoning_1 through deeper_reasoning_7, and deeper_metadata.",
+      "latex_status": "Validated locally by compiling each reasoning entry with article, amsmath, and amssymb.",
+      "core_reasoning_coverage": {
+        "core_reasoning_1": "deeper_reasoning_1",
+        "core_reasoning_2": "deeper_reasoning_2 and deeper_reasoning_6",
+        "core_reasoning_3": "deeper_reasoning_6 and deeper_reasoning_7",
+        "core_reasoning_4": "deeper_reasoning_2 and deeper_reasoning_6",
+        "core_reasoning_5": "deeper_reasoning_2 and deeper_reasoning_6",
+        "core_reasoning_6": "deeper_reasoning_4",
+        "core_reasoning_7": "deeper_reasoning_1",
+        "core_reasoning_8": "deeper_reasoning_3",
+        "core_reasoning_9": "deeper_reasoning_3",
+        "core_reasoning_10": "deeper_reasoning_4 and deeper_reasoning_5",
+        "core_reasoning_11": "deeper_reasoning_5",
+        "core_reasoning_12": "deeper_reasoning_2 and deeper_reasoning_6",
+        "core_reasoning_13": "deeper_reasoning_7"
+      },
+      "high_value_reasoning_audit": "The final set emphasizes abstraction, cross-proof unification, operational transfer, exact Fourier certificates, and explicit separation of exact Hamiltonian engineering from structure-level non-Poisson certificates."
+    },
+    "known_residual_risks_and_mitigation": [
+      {
+        "risk": "The non-Poisson perturbation discussion remains structure-level rather than a full spectral construction.",
+        "mitigation": "deeper_reasoning_6 states exactly that hierarchy, matching the goals rather than overclaiming explicit Hamiltonians for all families."
+      },
+      {
+        "risk": "Infinite-dimensional diagonal operators can require domain care.",
+        "mitigation": "deeper_reasoning_1 restricts diagonal expectations to absolute-convergence cases."
+      },
+      {
+        "risk": "Fisher identities fail at parameter-boundary support changes.",
+        "mitigation": "deeper_reasoning_3 explicitly assumes positive support independent of the parameter and treats Poisson/Binomial interior cases."
+      }
+    ]
+  }
+}

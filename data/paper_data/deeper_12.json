@@ -1,0 +1,168 @@
+{
+  "paper_title": "Unifying Monopole and Center Vortex as the Semiclassical Confinement Mechanism (Hayashi, 2024, Physical Review Letters)",
+  "deeper_reasoning_1": "\\textbf{Claim.}\nThe equality between the reduced shift-twisted monopole gas and the constrained two-dimensional vortex gas is not merely equality after two independent sums have been evaluated.  It is a term-by-term equality of the $N$ branch weights, and within the displayed reduced formulae it forces the fugacity relation\n\\[\n\\zeta_v=NL_3\\zeta_m .\n\\]\n\n\\textbf{Premises.}\n\\[\n\\begin{array}{ll}\n\\text{(P1)} & N\\in\\mathbb{Z}_{\\ge2},\\quad V>0,\\quad L_3>0,\n\\quad \\zeta_m>0,\n\\quad \\zeta_v>0,\n\\quad \\theta\\in\\mathbb{R}.\\\\[1mm]\n\\text{(P2)} & \\mathbb{Z}_N=\\{0,1,\\ldots,N-1\\}.\\\\[1mm]\n\\text{(P3)} & \\displaystyle B^{(v)}_k(\\theta):=\n\\exp\\left(2V\\zeta_v\\cos\\frac{\\theta+2\\pi k}{N}\\right),\n\\qquad k\\in\\mathbb{Z}_N.\\\\[3mm]\n\\text{(P4)} & \\displaystyle B^{(m)}_k(\\theta):=\n\\exp\\left(2NVL_3\\zeta_m\\cos\\frac{\\theta+2\\pi k}{N}\\right),\n\\qquad k\\in\\mathbb{Z}_N.\\\\[3mm]\n\\text{(P5)} & \\displaystyle Z_{2D}^{\\mathrm{vtx}}(\\theta)=\\sum_{k\\in\\mathbb{Z}_N}B^{(v)}_k(\\theta),\n\\qquad\nZ_{3D}^{\\mathrm{tw},0}(\\theta)=\\sum_{k\\in\\mathbb{Z}_N}B^{(m)}_k(\\theta).\\\\[3mm]\n\\text{(P6)} & \\displaystyle \\cos\\left(a+2\\pi r\\right)=\\cos a\n\\quad\\text{for all }a\\in\\mathbb{R},\\ r\\in\\mathbb{Z}.\\\\[2mm]\n\\text{(P7)} & \\displaystyle e^x=e^y\\text{ for real }x,y\\text{ implies }x=y.\n\\end{array}\n\\]\n\n\\textbf{Derivation.}\nFirst check the required $2\\pi$ covariance.  For every $k\\in\\mathbb{Z}_N$,\n\\begin{align}\nB^{(v)}_k(\\theta+2\\pi)\n&=\\exp\\left(2V\\zeta_v\\cos\\frac{\\theta+2\\pi+2\\pi k}{N}\\right)\\\\\n&=\\exp\\left(2V\\zeta_v\\cos\\frac{\\theta+2\\pi(k+1)}{N}\\right)\\\\\n&=B^{(v)}_{k+1}(\\theta),\n\\end{align}\nwith the label $k+1$ understood modulo $N$.  The same computation gives\n\\begin{align}\nB^{(m)}_k(\\theta+2\\pi)=B^{(m)}_{k+1}(\\theta).\n\\end{align}\nThus both descriptions have the same branch permutation under $\\theta\\mapsto\\theta+2\\pi$; a comparison of the two theories must therefore compare equal branch labels, up to one global cyclic relabelling.\n\nAssume that the two reduced branch weights agree for all $\\theta$ and all branch labels after such a relabelling.  Since a cyclic relabelling can be absorbed by replacing $k$ with $k+k_0$, it is enough to impose\n\\begin{align}\nB^{(v)}_k(\\theta)&=B^{(m)}_k(\\theta)\n\\qquad\\text{for all }\\theta\\in\\mathbb{R},\\ k\\in\\mathbb{Z}_N .\n\\end{align}\nUsing (P3), (P4), and (P7), this is equivalent to\n\\begin{align}\n2V\\zeta_v\\cos\\frac{\\theta+2\\pi k}{N}\n&=2NVL_3\\zeta_m\\cos\\frac{\\theta+2\\pi k}{N}\n\\qquad\\text{for all }\\theta,k .\n\\end{align}\nSet $\\theta=-2\\pi k$.  Then the cosine equals $1$, so\n\\begin{align}\n2V\\zeta_v&=2NVL_3\\zeta_m,\\\\\n\\zeta_v&=NL_3\\zeta_m,\n\\end{align}\nbecause $V>0$.  This proves necessity within the displayed branch-weight formulae.\n\nConversely, if $\\zeta_v=NL_3\\zeta_m$, then for every $k$ and $\\theta$,\n\\begin{align}\nB^{(v)}_k(\\theta)\n&=\\exp\\left(2V(NL_3\\zeta_m)\\cos\\frac{\\theta+2\\pi k}{N}\\right)\\\\\n&=\\exp\\left(2NVL_3\\zeta_m\\cos\\frac{\\theta+2\\pi k}{N}\\right)\\\\\n&=B^{(m)}_k(\\theta).\n\\end{align}\nSumming over $k\\in\\mathbb{Z}_N$ gives\n\\begin{align}\nZ_{2D}^{\\mathrm{vtx}}(\\theta)\n&=\\sum_{k\\in\\mathbb{Z}_N}B^{(v)}_k(\\theta)\\\\\n&=\\sum_{k\\in\\mathbb{Z}_N}B^{(m)}_k(\\theta)\\\\\n&=Z_{3D}^{\\mathrm{tw},0}(\\theta).\n\\end{align}\n\n\\textbf{Final Result.}\n\\[\n\\boxed{Z_{2D}^{\\mathrm{vtx}}(\\theta)=Z_{3D}^{\\mathrm{tw},0}(\\theta)\n\\text{ term by term in }k\n\\quad\\Longleftrightarrow\\quad\n\\zeta_v=NL_3\\zeta_m}\n\\]\nwithin the displayed reduced branch formulae.  The shared branch permutation\n\\[\n\\boxed{B_k(\\theta+2\\pi)=B_{k+1}(\\theta)}\n\\]\nshows that the matching also preserves the expected $N$-branch structure.\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_2": "\\textbf{Claim.}\nFor the shifted monopole image chain, the exponential center-vortex localization follows directly from the period $NL_3$ and the absence of a zero Fourier charge.  More precisely, if $r:=|x|$, then\n\\[\n\\vec\\sigma(x,x_3)=O\\left(\\exp\\left[-\\frac{2\\pi r}{NL_3}\\right]\\right)\n\\qquad (r\\to\\infty).\n\\]\nThus the transverse localization scale is $NL_3/(2\\pi)$.\n\n\\textbf{Premises.}\n\\[\n\\begin{array}{ll}\n\\text{(P1)} & N\\in\\mathbb{Z}_{\\ge2},\\quad L_3>0,\\quad P:=NL_3,\\quad r:=|x|.\\\\[1mm]\n\\text{(P2)} & \\displaystyle \\Psi:=\\frac{g^2}{4\\pi iL_4}\\vec\\sigma\n\\text{ is the shifted image-chain solution and }\\Psi\\to0\\text{ as }r\\to\\infty.\\\\[2mm]\n\\text{(P3)} & \\displaystyle \\Psi\\text{ is }P\\text{-periodic on the covering coordinate }x_3\n\\text{ after collecting one complete }N\\text{-image block}.\\\\[2mm]\n\\text{(P4)} & \\displaystyle \\sum_{l=0}^{N-1}\\vec\\nu_{n-l}=0.\\\\[2mm]\n\\text{(P5)} & \\displaystyle \\text{A }P\\text{-periodic source with Fourier coefficient }s\\in\\mathbb{Z}\n\\text{ has longitudinal momentum }p_s=\\frac{2\\pi s}{P}.\\\\[3mm]\n\\text{(P6)} & \\displaystyle \\text{For }s\\ne0\\text{, the transverse Green tail of a two-dimensional mode with }\n|p_s|\\text{ is }O(e^{-|p_s|r}).\\\\[2mm]\n\\text{(P7)} & \\displaystyle \\text{The zero Fourier coefficient is the total charge in one }P\\text{-period block}.\n\\end{array}\n\\]\n\n\\textbf{Derivation.}\nBecause the shifted construction repeats after $N$ shifts by $L_3$, the natural period of the collected image chain is\n\\begin{align}\nP&=NL_3 .\n\\end{align}\nWithin one such period, the coefficient of the zero Fourier mode is proportional to the total block charge.  By (P4) and (P7),\n\\begin{align}\n\\widehat Q_0&\\propto\\sum_{l=0}^{N-1}\\vec\\nu_{n-l}=0 .\n\\end{align}\nHence the long-distance field has no $s=0$ term.  This is the decisive point: a nonzero zero mode would have produced a two-dimensional Coulomb tail, while the shifted neutral block removes that channel.\n\nAll remaining Fourier channels have $s\\ne0$.  By (P5),\n\\begin{align}\n|p_s|&=\\frac{2\\pi |s|}{P}\n      =\\frac{2\\pi |s|}{NL_3},\n      \\qquad s\\in\\mathbb{Z}\\setminus\\{0\\}.\n\\end{align}\nTherefore the smallest possible nonzero momentum is\n\\begin{align}\np_{\\min}\n&=\\min_{s\\in\\mathbb{Z}\\setminus\\{0\\}}\\frac{2\\pi |s|}{NL_3}\\\\\n&=\\frac{2\\pi}{NL_3}.\n\\end{align}\nBy the nonzero-mode Green-tail estimate in (P6), every surviving Fourier component is bounded at large $r$ by an exponential with rate at least $p_{\\min}$.  Thus\n\\begin{align}\n\\Psi(x,x_3)\n&=O\\left(e^{-p_{\\min}r}\\right)\\\\\n&=O\\left(\\exp\\left[-\\frac{2\\pi r}{NL_3}\\right]\\right).\n\\end{align}\nSince $\\Psi=(g^2/(4\\pi iL_4))\\vec\\sigma$ differs from $\\vec\\sigma$ by a nonzero constant scalar factor, the same large-distance estimate holds for $\\vec\\sigma$:\n\\begin{align}\n\\vec\\sigma(x,x_3)\n&=O\\left(\\exp\\left[-\\frac{2\\pi |x|}{NL_3}\\right]\\right).\n\\end{align}\nThe associated transverse scale is the inverse of the first allowed nonzero momentum,\n\\begin{align}\np_{\\min}^{-1}&=\\frac{NL_3}{2\\pi}.\n\\end{align}\n\n\\textbf{Final Result.}\n\\[\n\\boxed{\n\\vec\\sigma(x,x_3)=O\\left(\\exp\\left[-\\frac{2\\pi |x|}{NL_3}\\right]\\right),\n\\qquad\n\\text{localization scale}=\\frac{NL_3}{2\\pi}}\n\\]\nThe exponential localization is therefore not an extra assumption: it is the long-distance consequence of the shifted, zero-mode-free $NL_3$-periodic image chain.\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_3": "\\textbf{Claim.}\nThe piecewise magnetic flux carried by a shifted $\\vec\\alpha_n$ monopole is exactly the center-vortex kink condition.  Crossing the monopole position changes the vortex flux by the monopole magnetic charge:\n\\[\n\\vec\\Phi(x_*+0)-\\vec\\Phi(x_*-0)=2\\pi\\vec\\alpha_n.\n\\]\n\n\\textbf{Premises.}\n\\[\n\\begin{array}{ll}\n\\text{(P1)} & N\\in\\mathbb{Z}_{\\ge2},\\quad 0<x_*<L_3.\\\\[1mm]\n\\text{(P2)} & \\displaystyle \\vec\\nu_{r+N}=\\vec\\nu_r\\quad\\text{for all integer labels }r.\\\\[2mm]\n\\text{(P3)} & \\displaystyle \\vec\\alpha_n=\\vec\\nu_n-\\vec\\nu_{n+1}.\\\\[2mm]\n\\text{(P4)} & \\displaystyle\n\\vec\\Phi(x_3)=\n\\begin{cases}\n2\\pi\\vec\\nu_n, & x_*<x_3<L_3,\\\\\n2\\pi\\vec\\nu_{n+1}, & 0\\le x_3<x_*.\n\\end{cases}\\\\[6mm]\n\\text{(P5)} & \\displaystyle \\text{The shifted boundary condition identifies }x_3=L_3\\text{ with }x_3=0\n\\text{ together with the cyclic label shift.}\n\\end{array}\n\\]\n\n\\textbf{Derivation.}\nTake the right and left limits of (P4) at the monopole position:\n\\begin{align}\n\\vec\\Phi(x_*+0)&=2\\pi\\vec\\nu_n,\\\\\n\\vec\\Phi(x_*-0)&=2\\pi\\vec\\nu_{n+1}.\n\\end{align}\nTherefore\n\\begin{align}\n\\vec\\Phi(x_*+0)-\\vec\\Phi(x_*-0)\n&=2\\pi\\vec\\nu_n-2\\pi\\vec\\nu_{n+1}\\\\\n&=2\\pi(\\vec\\nu_n-\\vec\\nu_{n+1})\\\\\n&=2\\pi\\vec\\alpha_n\n&&\\text{by (P3)}.\n\\end{align}\nThus the monopole is the point where the fundamental vortex flux label changes from $\\vec\\nu_{n+1}$ to $\\vec\\nu_n$.\n\nNow check that the fundamental interval boundary does not introduce an additional physical kink.  From (P4),\n\\begin{align}\n\\lim_{x_3\\to L_3^-}\\vec\\Phi(x_3)&=2\\pi\\vec\\nu_n,\\\\\n\\lim_{x_3\\to 0^+}\\vec\\Phi(x_3)&=2\\pi\\vec\\nu_{n+1}.\n\\end{align}\nBy (P5), the shift identification at the boundary cyclically relabels the flux sector.  Hence the apparent change between these two representatives is the imposed twist identification, not a second monopole source in the fundamental cell.  The only intrinsic jump inside $0\\le x_3<L_3$ is the jump at $x_*$ computed above.\n\nThe sign is also fixed.  Reversing the crossing direction gives\n\\begin{align}\n\\vec\\Phi(x_*-0)-\\vec\\Phi(x_*+0)\n&=-2\\pi\\vec\\alpha_n,\n\\end{align}\nwhich is the antimonopole or oppositely oriented kink.  Hence the orientation of the flux jump records the magnetic charge.\n\n\\textbf{Final Result.}\n\\[\n\\boxed{\n\\vec\\Phi(x_*+0)-\\vec\\Phi(x_*-0)=2\\pi\\vec\\alpha_n}\n\\]\ntogether with\n\\[\n\\boxed{\n\\vec\\Phi(x_3)=2\\pi\\vec\\nu_n\\text{ above the source},\\qquad\n\\vec\\Phi(x_3)=2\\pi\\vec\\nu_{n+1}\\text{ below the source}}\n\\]\nshows that the shifted monopole is exactly a kink between adjacent fundamental center-vortex flux sectors.\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_4": "\\textbf{Claim.}\nA fundamental Wilson loop detects only the signed $N$-ality of the total enclosed fundamental vortex flux.  If the surface bounded by $C$ is pierced by oriented fundamental fluxes\n\\[\n2\\pi\\epsilon_j\\vec\\nu_{a_j},\\qquad \\epsilon_j\\in\\{-1,1\\},\n\\]\nand\n\\[\nQ:=\\sum_{j=1}^{r}\\epsilon_j,\n\\]\nthen\n\\[\nW(C)=e^{-2\\pi iQ/N}.\n\\]\nIn particular, one positively oriented vortex gives $e^{-2\\pi i/N}$, one oppositely oriented vortex gives $e^{2\\pi i/N}$, and zero total oriented flux gives $1$.\n\n\\textbf{Premises.}\n\\[\n\\begin{array}{ll}\n\\text{(P1)} & N\\in\\mathbb{Z}_{\\ge2}.\\\\[1mm]\n\\text{(P2)} & \\displaystyle \\vec\\nu_m\\cdot\\vec\\nu_a=\\delta_{ma}-\\frac{1}{N}\n\\qquad\\text{for }m,a=1,\\ldots,N.\\\\[3mm]\n\\text{(P3)} & \\displaystyle W(C):=\\frac{1}{N}\\sum_{m=1}^{N}\n\\exp\\left(i\\vec\\nu_m\\cdot\\int_C\\vec a\\right).\\\\[3mm]\n\\text{(P4)} & \\displaystyle \\int_C\\vec a=2\\pi\\sum_{j=1}^{r}\\epsilon_j\\vec\\nu_{a_j},\n\\qquad \\epsilon_j\\in\\{-1,1\\}.\\\\[3mm]\n\\text{(P5)} & \\displaystyle e^{2\\pi i s}=1\\quad\\text{for every }s\\in\\mathbb{Z}.\\\\[2mm]\n\\text{(P6)} & \\displaystyle Q:=\\sum_{j=1}^{r}\\epsilon_j.\n\\end{array}\n\\]\n\n\\textbf{Derivation.}\nFor a fixed weight label $m$, define the signed count\n\\begin{align}\ns_m&:=\\sum_{\\{j:\\,a_j=m\\}}\\epsilon_j .\n\\end{align}\nThen $s_m\\in\\mathbb{Z}$.  Using (P2),\n\\begin{align}\n\\vec\\nu_m\\cdot\\sum_{j=1}^{r}\\epsilon_j\\vec\\nu_{a_j}\n&=\\sum_{j=1}^{r}\\epsilon_j\\left(\\delta_{m a_j}-\\frac{1}{N}\\right)\\\\\n&=s_m-\\frac{1}{N}\\sum_{j=1}^{r}\\epsilon_j\\\\\n&=s_m-\\frac{Q}{N}.\n\\end{align}\nSubstitute the total flux into the Wilson loop:\n\\begin{align}\nW(C)\n&=\\frac{1}{N}\\sum_{m=1}^{N}\n\\exp\\left(2\\pi i\\vec\\nu_m\\cdot\\sum_{j=1}^{r}\\epsilon_j\\vec\\nu_{a_j}\\right)\n&&\\text{by (P3) and (P4)}\\\\\n&=\\frac{1}{N}\\sum_{m=1}^{N}\n\\exp\\left(2\\pi i\\left(s_m-\\frac{Q}{N}\\right)\\right)\\\\\n&=\\frac{1}{N}\\sum_{m=1}^{N}\ne^{2\\pi i s_m}e^{-2\\pi iQ/N}\\\\\n&=\\frac{1}{N}\\sum_{m=1}^{N}\ne^{-2\\pi iQ/N}\n&&\\text{by (P5)}\\\\\n&=e^{-2\\pi iQ/N}.\n\\end{align}\nThe result is independent of the individual labels $a_j$ and depends only on the signed total number $Q$ modulo $N$.\n\nFor $Q=1$,\n\\begin{align}\nW(C)&=e^{-2\\pi i/N}.\n\\end{align}\nFor $Q=0$,\n\\begin{align}\nW(C)&=1.\n\\end{align}\nFor $Q=-1$,\n\\begin{align}\nW(C)&=e^{2\\pi i/N}.\n\\end{align}\n\n\\textbf{Final Result.}\n\\[\n\\boxed{W(C)=e^{-2\\pi iQ/N},\\qquad Q=\\sum_{j=1}^{r}\\epsilon_j}\n\\]\nso the fundamental loop detects the enclosed oriented center-vortex number modulo $N$, exactly as required for the center element of an $SU(N)$ vortex.\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_5": "\\textbf{Claim.}\nThe root-of-unity constraint in the two-dimensional vortex gas is the same $\\mathbb{Z}_N$ center-neutrality condition detected by the fundamental Wilson loop.  If a gas configuration contains $r$ vortices and $\\bar r$ antivortices, define its signed vortex number\n\\[\nQ:=r-\\bar r .\n\\]\nThen\n\\[\n\\Delta_N(Q)=N\n\\quad\\Longleftrightarrow\\quad\nQ\\in N\\mathbb{Z}\n\\quad\\Longleftrightarrow\\quad\ne^{-2\\pi iQ/N}=1,\n\\]\nand otherwise $\\Delta_N(Q)=0$.\n\n\\textbf{Premises.}\n\\[\n\\begin{array}{ll}\n\\text{(P1)} & N\\in\\mathbb{Z}_{\\ge2},\\quad Q\\in\\mathbb{Z}.\\\\[1mm]\n\\text{(P2)} & \\displaystyle \\Delta_N(Q):=\\sum_{k=1}^{N}\\exp\\left(\\frac{2\\pi ikQ}{N}\\right).\\\\[3mm]\n\\text{(P3)} & \\displaystyle \\Delta_N(Q)=\n\\begin{cases}\nN, & Q\\in N\\mathbb{Z},\\\\\n0, & Q\\notin N\\mathbb{Z}.\n\\end{cases}\\\\[5mm]\n\\text{(P4)} & \\displaystyle \\text{A configuration with signed vortex number }Q\n\\text{ gives fundamental Wilson phase }W_Q=e^{-2\\pi iQ/N}.\\\\[2mm]\n\\text{(P5)} & \\displaystyle e^{-2\\pi iQ/N}=1\\quad\\Longleftrightarrow\\quad Q\\in N\\mathbb{Z}.\n\\end{array}\n\\]\n\n\\textbf{Derivation.}\nBy (P3), the projector keeps exactly those configurations whose signed vortex number satisfies\n\\begin{align}\nQ&\\in N\\mathbb{Z}.\n\\end{align}\nBy (P5), this condition is equivalent to\n\\begin{align}\ne^{-2\\pi iQ/N}&=1.\n\\end{align}\nUsing the Wilson-loop response in (P4), the same condition is\n\\begin{align}\nW_Q&=1.\n\\end{align}\nTherefore the occupation-number constraint imposed in the vortex gas is not a separate algebraic device; it is precisely the condition that the total oriented center flux of the whole gas is invisible to a fundamental loop at infinity.\n\nEquivalently,\n\\begin{align}\n\\Delta_N(Q)\n&=\\sum_{k=1}^{N}\\exp\\left(\\frac{2\\pi ikQ}{N}\\right)\\\\\n&=\\sum_{k=1}^{N}\\left(e^{-2\\pi iQ/N}\\right)^{-k}\\\\\n&=\\sum_{k=1}^{N}W_Q^{-k}.\n\\end{align}\nIf $W_Q=1$, every term equals $1$ and $\\Delta_N(Q)=N$.  If $W_Q\\ne1$, the sum over all $N$ powers of a nontrivial $N$th root of unity vanishes, so $\\Delta_N(Q)=0$.\n\n\\textbf{Final Result.}\n\\[\n\\boxed{\n\\Delta_N(Q)\\text{ projects onto exactly the configurations with trivial total center phase }W_Q=1.}\n\\]\nThus the branch projection in the partition-function derivation and the Wilson-loop center response in the microscopic vortex test are two expressions of the same $\\mathbb{Z}_N$ selection rule.\n\\hfill$\\blacksquare$",
+  "deeper_metadata": {
+    "output_file": "deeper.json",
+    "revision_id": "deeper_12_alignment_plus",
+    "revision_intent": "Improve alignment by replacing the weakest localization entry with a direct zero-mode-free period-NL3 Fourier argument, extending Wilson-loop reasoning to oriented N-ality, and adding a joint selection-rule bridge between the vortex-gas projector and the microscopic Wilson-loop test.",
+    "input_files": [
+      "deeper_reasoning_pseudo_algorithm.md",
+      "core_12.json",
+      "goals_12.json",
+      "previous_deeper.json"
+    ],
+    "rubric_interpretation": {
+      "schema": "Use exactly paper_title, contiguous deeper_reasoning_k string fields, and one deeper_metadata object; keep all audit material inside deeper_metadata.",
+      "latex": "Each deeper_reasoning_k is a standalone LaTeX fragment using only constructs compatible with article, amsmath, and amssymb.",
+      "value_standard": "A high-value entry must add necessity, robustness, hidden equivalence, or cross-goal integration rather than merely repeating a core derivation."
+    },
+    "goal_trace": {
+      "G1_partition_function_reduction": [
+        "deeper_reasoning_1",
+        "deeper_reasoning_5"
+      ],
+      "G2_monopole_vortex_identification": [
+        "deeper_reasoning_2",
+        "deeper_reasoning_3",
+        "deeper_reasoning_4",
+        "deeper_reasoning_5"
+      ],
+      "joint_conjunction": "The entries jointly cover branch-level partition-function equality, exponential localization, piecewise vortex flux, Wilson-loop center response, and the shared Z_N selection rule linking the gas projector to the microscopic vortex test."
+    },
+    "entry_metadata": {
+      "deeper_reasoning_1": {
+        "title": "Term-by-term branch equivalence and necessity of the fugacity map",
+        "target_goal_component": "G1_partition_function_reduction",
+        "declared_source_set": [
+          "core_reasoning_1",
+          "core_reasoning_3",
+          "goals_12.json:G1_partition_function_reduction"
+        ],
+        "major_advancement_modes": [
+          "necessity proof",
+          "branch-level equality",
+          "theta-periodicity covariance"
+        ],
+        "goal_alignment": "Directly proves the after-and-only-after fugacity identification required by G1 within the displayed reduced formulae.",
+        "scientific_payoff": "Upgrades the partition-function match from resemblance of sums to exact equality of physical branches.",
+        "nontrivial_advance_over_sources": "Adds the iff structure and branch-permutation check not isolated in the core derivations.",
+        "formal_sharpness": "Restricts necessity to the reduced branch weights and derives it from a unit-cosine branch evaluation.",
+        "low_value_rejection_audit": "Avoids redoing the vortex occupation sum or the monopole saddle substitution already present in core_reasoning.",
+        "selection_score": 0.98,
+        "controlled_external_lemmas": [],
+        "known_residual_risks_and_mitigation": "The proof does not claim equality of the unreduced full path integrals; metadata and claim text restrict it to displayed reduced formulae."
+      },
+      "deeper_reasoning_2": {
+        "title": "Zero-mode-free period-NL3 Fourier proof of vortex localization",
+        "target_goal_component": "G2_monopole_vortex_identification",
+        "declared_source_set": [
+          "core_reasoning_2",
+          "core_reasoning_4",
+          "goals_12.json:G2_monopole_vortex_identification"
+        ],
+        "major_advancement_modes": [
+          "spectral-gap to localization bridge",
+          "zero-mode cancellation",
+          "direct scale extraction"
+        ],
+        "goal_alignment": "Supplies the exponential localization criterion and the transverse scale NL3/(2*pi) required by G2.",
+        "scientific_payoff": "Shows why the shifted monopole is vortex-like rather than Coulombic at large transverse distance.",
+        "nontrivial_advance_over_sources": "Connects the twist gap and the image-chain neutrality into a direct large-distance decay argument.",
+        "formal_sharpness": "States the period, zero-mode coefficient, minimum nonzero momentum, and tail estimate explicitly.",
+        "low_value_rejection_audit": "Replaces a bare quotation of the target asymptotic with a concrete Fourier-mode mechanism.",
+        "selection_score": 0.97,
+        "controlled_external_lemmas": [
+          "Standard two-dimensional nonzero Fourier Green mode decays as O(exp(-|p|r))."
+        ],
+        "known_residual_risks_and_mitigation": "The only external analytic input is explicitly declared; the rate 2*pi/(N L3) itself is derived from the period and zero-mode cancellation."
+      },
+      "deeper_reasoning_3": {
+        "title": "Flux jump as the monopole-to-vortex kink condition",
+        "target_goal_component": "G2_monopole_vortex_identification",
+        "declared_source_set": [
+          "core_reasoning_4",
+          "goals_12.json:G2_monopole_vortex_identification"
+        ],
+        "major_advancement_modes": [
+          "kink interpretation",
+          "orientation check",
+          "boundary consistency"
+        ],
+        "goal_alignment": "Turns the piecewise flux formula required by G2 into the exact charge-jump relation for a monopole kink.",
+        "scientific_payoff": "Identifies the monopole as the local transition between adjacent fundamental center-vortex flux sectors.",
+        "nontrivial_advance_over_sources": "Adds the jump calculation, sign interpretation, and boundary-twist consistency check.",
+        "formal_sharpness": "Computes the right-left flux discontinuity and distinguishes the physical kink from the twisted boundary relabelling.",
+        "low_value_rejection_audit": "Avoids duplicating the full plane-integral calculation from core_reasoning_4.",
+        "selection_score": 0.95,
+        "controlled_external_lemmas": [],
+        "known_residual_risks_and_mitigation": "The argument assumes the core piecewise flux formula; its contribution is interpretation and consistency, not rederivation of the plane integral."
+      },
+      "deeper_reasoning_4": {
+        "title": "Oriented Wilson-loop N-ality response",
+        "target_goal_component": "G2_monopole_vortex_identification",
+        "declared_source_set": [
+          "core_reasoning_5",
+          "goals_12.json:G2_monopole_vortex_identification"
+        ],
+        "major_advancement_modes": [
+          "signed N-ality generalization",
+          "label-independence proof",
+          "vortex/antivortex consistency"
+        ],
+        "goal_alignment": "Contains the required one-vortex phase and no-vortex phase as special cases while also covering antivortex orientation.",
+        "scientific_payoff": "Shows that the Wilson loop detects center charge only, not microscopic flux labels.",
+        "nontrivial_advance_over_sources": "Extends the single-flux Wilson-loop result to arbitrary oriented collections and derives dependence only on signed N-ality.",
+        "formal_sharpness": "Uses signed integer counts to remove dependence on individual labels a_j.",
+        "low_value_rejection_audit": "Avoids merely restating W=e^{-2*pi*i/N}; it proves the full oriented selection law.",
+        "selection_score": 0.96,
+        "controlled_external_lemmas": [],
+        "known_residual_risks_and_mitigation": "The entry remains inside fundamental Wilson-loop responses and does not claim higher-representation characters."
+      },
+      "deeper_reasoning_5": {
+        "title": "Projector-Wilson equivalence as the shared Z_N selection rule",
+        "target_goal_component": "Joint bridge between G1_partition_function_reduction and G2_monopole_vortex_identification",
+        "declared_source_set": [
+          "core_reasoning_1",
+          "core_reasoning_5",
+          "goals_12.json:G1_partition_function_reduction",
+          "goals_12.json:G2_monopole_vortex_identification"
+        ],
+        "major_advancement_modes": [
+          "cross-goal unification",
+          "selection-rule equivalence",
+          "center-neutrality interpretation"
+        ],
+        "goal_alignment": "Explains why the vortex-gas topological constraint and the Wilson-loop center test are the same Z_N condition.",
+        "scientific_payoff": "Links the partition-function derivation to the microscopic center-vortex identification instead of treating them as independent checks.",
+        "nontrivial_advance_over_sources": "Adds the equivalence between the root-of-unity projector and trivial total Wilson center phase.",
+        "formal_sharpness": "Proves Delta_N(Q) selects exactly W_Q=1 configurations.",
+        "low_value_rejection_audit": "Rejects a low-value summary entry in favour of a precise mathematical bridge between G1 and G2.",
+        "selection_score": 0.98,
+        "controlled_external_lemmas": [],
+        "known_residual_risks_and_mitigation": "The bridge is stated for the vortex gas signed-number sector and fundamental Wilson response, matching the scope of the goals."
+      }
+    },
+    "rejected_low_value_candidates": [
+      "A rederivation of the root-of-unity projector alone, because core_reasoning_1 already contains it.",
+      "A rederivation of alpha_n dot rho equals one modulo N, because core_reasoning_3 already proves the saddle phase alignment.",
+      "A purely verbal conclusion that monopoles are vortices, because it would not add formal content beyond the goals."
+    ],
+    "global_alignment_audit": {
+      "schema_compliance": "Top-level keys are paper_title, deeper_reasoning_1 through deeper_reasoning_5, and deeper_metadata only; all reasoning entries are strings.",
+      "rubric_alignment": "All audit information is under deeper_metadata, and entry_metadata has a one-to-one match with the five reasoning entries.",
+      "core_reasoning_alignment": "The file extends the five core derivations without replacing their premises: partition sums, twist momentum gap, monopole saddle match, flux formula, and Wilson phase.",
+      "goal_alignment": "G1 is covered by the branch necessity theorem and projector selection rule; G2 is covered by localization, kink flux, Wilson response, and the same selection-rule bridge.",
+      "high_value_reasoning": "The revision prioritizes iff statements, hidden equivalences, and cross-goal synthesis over repeated calculations.",
+      "scope_control": "All claims remain restricted to the semiclassical reduced descriptions and single/fundamental vortex sectors specified by the uploaded goals."
+    },
+    "known_residual_risks_and_mitigation": [
+      "The localization entry uses one standard nonzero-mode Green-tail lemma; it is explicitly listed as controlled external input and the derived exponent follows from the uploaded twist/image-chain structure.",
+      "The branch necessity statement is only for the displayed reduced branch weights, not for any unreduced path integral; this scope is stated in the proof and metadata.",
+      "The Wilson-loop generalization concerns fundamental Wilson loops and signed fundamental vortex fluxes; it does not extrapolate to arbitrary representations."
+    ]
+  }
+}

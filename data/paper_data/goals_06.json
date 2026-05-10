@@ -1,0 +1,165 @@
+{
+  "paper_goal": {
+    "canonical_goal": [
+      {
+        "goal_id": "G1_complete_ground_state_BEC_zero_momentum",
+        "outcome_variable": "o = (κ, V, Λ, (H_N)_{N≥1}, (ψ_N)_{N≥1}, (γ_N^{(1)})_{N≥1}, ϕ_0) ∈ O_P",
+        "goal_form": "target_proposition",
+        "target_object": "A proof-established asymptotic proposition that the normalized ground state ψ_N of the N-boson Hamiltonian H_N exhibits complete Bose-Einstein condensation into the zero-momentum one-particle mode ϕ_0, expressed as lim_{N→∞} ⟨ϕ_0, γ_N^{(1)} ϕ_0⟩ = 1 for every admissible pair (κ,V) with 0 ≤ κ < 1/20.",
+        "feasibility_constraints": [
+          "Λ := T^3 := R^3/Z^3, Λ* := 2πZ^3, and for each integer N ≥ 1 the bosonic Hilbert space is L_s^2(Λ^N), the subspace of L^2(Λ^N) consisting of functions invariant under every permutation of the N particle coordinates.",
+          "The interaction potential V is a real-valued function in L^1(R^3), has compact support, is radial (V(x) depends only on |x|), and is pointwise non-negative: V(x) ≥ 0 for every x ∈ R^3.",
+          "The scaling parameter κ is real and satisfies 0 ≤ κ < 1/20.",
+          "For each N, H_N is the self-adjoint N-particle Hamiltonian on L_s^2(Λ^N) given by H_N = ∑_{i=1}^N (-Δ_{x_i}) + ∑_{1≤i<j≤N} N^{2-2κ} V(N^{1-κ}(x_i-x_j)).",
+          "For each N, ψ_N ∈ L_s^2(Λ^N) is a normalized ground-state vector of H_N, meaning ||ψ_N||_{L^2(Λ^N)} = 1 and ⟨ψ_N,H_Nψ_N⟩ = inf spec(H_N).",
+          "The one-particle reduced density matrix is γ_N^{(1)} := tr_{2,...,N}|ψ_N⟩⟨ψ_N|, where tr_{2,...,N} denotes the partial trace over particle coordinates 2 through N.",
+          "The zero-momentum one-particle mode is ϕ_0(x) := 1 for every x ∈ Λ; it is normalized because the volume of Λ is one."
+        ],
+        "success_set": {
+          "kind": "predicate",
+          "definition": "Σ_P = { o ∈ O_P : lim_{N→∞} ⟨ϕ_0, γ_N^{(1)} ϕ_0⟩ = 1 }. Equivalently, let a_k and a_k^* be the annihilation and creation operators for the plane wave ϕ_k(x)=e^{ikx} with k∈Λ*, and define N_+ := ∑_{k∈Λ*\\{0}} a_k^*a_k. Since 1 - ⟨ϕ_0, γ_N^{(1)}ϕ_0⟩ = N^{-1}⟨ψ_N,N_+ψ_N⟩, the same success set is Σ_P = { o ∈ O_P : lim_{N→∞} N^{-1}⟨ψ_N,N_+ψ_N⟩ = 0 }.",
+          "threshold": {
+            "applies": false,
+            "value": null,
+            "comparator": null,
+            "metric_symbol": null,
+            "metric_definition": null,
+            "source_span": null
+          }
+        },
+        "preference_ordering": {
+          "kind": "none",
+          "definition": null,
+          "objective_symbols": [],
+          "lex_order": null,
+          "embedding_to_total_utility": null
+        },
+        "robustness_scope": {
+          "applies": true,
+          "ambient_space": "The environment family consists of all tuples (κ,V,H_N,ψ_N,γ_N^{(1)},ϕ_0) satisfying: 0 ≤ κ < 1/20; V∈L^1(R^3) is compactly supported, radial, and non-negative; H_N = ∑_{i=1}^N (-Δ_{x_i}) + ∑_{1≤i<j≤N} N^{2-2κ}V(N^{1-κ}(x_i-x_j)) acts on L_s^2(T^{3N}); ψ_N is a normalized ground state of H_N; γ_N^{(1)}=tr_{2,...,N}|ψ_N⟩⟨ψ_N|; and ϕ_0(x)=1 on T^3.",
+          "type_tag": "environment_family",
+          "metric_or_divergence": null,
+          "radius_or_budget": null,
+          "indexing_set": "{ (κ,V) : κ∈R, 0 ≤ κ < 1/20, V∈L^1(R^3), V has compact support, V is radial, and V(x) ≥ 0 for every x∈R^3 }",
+          "claimed_subfamily": {
+            "definition": "Δ_P^claimed = { (κ,V,H_N,ψ_N,γ_N^{(1)},ϕ_0) : 0 ≤ κ < 1/20; V∈L^1(R^3) is compactly supported, radial, and pointwise non-negative; H_N = ∑_{i=1}^N(-Δ_{x_i}) + ∑_{1≤i<j≤N}N^{2-2κ}V(N^{1-κ}(x_i-x_j)); ψ_N is a normalized ground state of H_N; γ_N^{(1)}=tr_{2,...,N}|ψ_N⟩⟨ψ_N|; and ϕ_0(x)=1 on T^3 }.",
+            "source_span": {
+              "section": "Introduction and Main Result, Theorem 1",
+              "paragraph_or_line": "Theorem statement",
+              "verbatim": "Let H_N be defined as in (1) for κ ∈ [0, 1/20)."
+            }
+          },
+          "hinted_superfamily": {
+            "definition": null,
+            "source_span": null
+          },
+          "refinement_relation": "set_inclusion",
+          "criterion": "For every (κ,V,H_N,ψ_N,γ_N^{(1)},ϕ_0) in Δ_P^claimed, lim_{N→∞}⟨ϕ_0,γ_N^{(1)}ϕ_0⟩=1; equivalently, with N_+ := ∑_{k∈2πZ^3\\{0}}a_k^*a_k, lim_{N→∞}N^{-1}⟨ψ_N,N_+ψ_N⟩=0.",
+          "channel_populated_by": [
+            "stated",
+            "operational",
+            "implicit"
+          ]
+        }
+      }
+    ],
+    "inter_goal_relation": "not_applicable",
+    "methodological_claim": {
+      "applies": true,
+      "target_object": "A self-contained proof strategy for the proposition lim_{N→∞}⟨ϕ_0,γ_N^{(1)}ϕ_0⟩=1 that does not conjugate H_N by exponentials of quartic expressions in creation and annihilation operators and does not replace the periodic kinetic energy by localized-box kinetic energy. For α∈[0,1-κ], define P_L={p∈2πZ^3: |p|≤N^α}; let Π_L project L^2(T^3×T^3) onto span{ϕ_k⊗ϕ_l: k,l∈P_L}; set Π_H=1-Π_L; let V_N multiply by N^{2-2κ}V(N^{1-κ}(x_1-x_2)); define η=N^{1-κ}Π_H(Π_H(-Δ_{x_1}-Δ_{x_2}+V_N)Π_H)^{-1}Π_HV_NΠ_L and V_ren=N^{1-κ}(V_N - V_NΠ_H(Π_H(-Δ_{x_1}-Δ_{x_2}+V_N)Π_H)^{-1}Π_HV_N). Using these objects, the proof obtains the lower bound H_N ≥ ∑_{r∈Λ*\\{0}}|r|^2c_r^*c_r + (N^κ/(2N))∑_{p,q,r∈Λ*: p,q,p+r,q-r∈P_L}⟨ϕ_{p+r}⊗ϕ_{q-r},V_renϕ_p⊗ϕ_q⟩a_{p+r}^*a_{q-r}^*a_pa_q - R_N, and then estimates the modified kinetic term, renormalized potential term, and three-body error term R_N.",
+      "evidence_channels": {
+        "source_span": {
+          "section": "Abstract; Introduction and Main Result; Proof of Theorem 1",
+          "paragraph_or_line": "Abstract method claim; paragraph before Theorem 1; lower bound (4)",
+          "verbatim": "our arguments are elementary, self-contained and do neither require box localization methods nor operator exponential expansions"
+        },
+        "formalisation": "Methodological claim M_P: the target proposition is proved by constructing P_L, Π_L, Π_H, η, and V_ren as explicit functions of N, κ, V, and the two-particle kinetic operator -Δ_{x_1}-Δ_{x_2}; deriving H_N ≥ ∑_{r∈Λ*\\{0}}|r|^2c_r^*c_r + (N^κ/(2N))∑_{p,q,r∈Λ*: p,q,p+r,q-r∈P_L}⟨ϕ_{p+r}⊗ϕ_{q-r},V_renϕ_p⊗ϕ_q⟩a_{p+r}^*a_{q-r}^*a_pa_q - R_N; proving that, in the ground state ψ_N, the first term contributes at least 4π^2⟨ψ_N,N_+ψ_N⟩+o(N), the second term contributes at least 4πaN^{1+κ}+o(N), and ⟨ψ_N,R_Nψ_N⟩=o(N); and combining these estimates with E_N=⟨ψ_N,H_Nψ_N⟩≤4πaN^{1+κ}+o(N), where 8πa=inf{∫_{R^3}(2|∇f(x)|^2+V(x)|f(x)|^2)dx : lim_{|x|→∞}f(x)=1}, to infer lim_{N→∞}N^{-1}⟨ψ_N,N_+ψ_N⟩=0."
+      }
+    },
+    "evidence_channels": {
+      "stated_goal": {
+        "source_span": {
+          "section": "Abstract; Introduction and Main Result, Theorem 1",
+          "paragraph_or_line": "Abstract first paragraph and Theorem 1 statement",
+          "verbatim": "we give a new and self-contained proof of BEC of the ground state for κ ∈ [0, 1/20)"
+        },
+        "formalisation": "Stated formal goal: for Λ=T^3, κ∈R with 0≤κ<1/20, V∈L^1(R^3) compactly supported, radial, and non-negative, H_N=∑_{i=1}^N(-Δ_{x_i})+∑_{1≤i<j≤N}N^{2-2κ}V(N^{1-κ}(x_i-x_j)) on L_s^2(Λ^N), ψ_N a normalized ground state of H_N, γ_N^{(1)}=tr_{2,...,N}|ψ_N⟩⟨ψ_N|, and ϕ_0(x)=1 on Λ, prove lim_{N→∞}⟨ϕ_0,γ_N^{(1)}ϕ_0⟩=1."
+      },
+      "operational_goal": {
+        "source_span": {
+          "section": "Proof of Theorem 1; paragraph before Lemma 2; final proof paragraph",
+          "paragraph_or_line": "Identity relating condensation to excitations and final energy comparison",
+          "verbatim": "1 − ⟨ϕ_0, γ_N^{(1)} ϕ_0⟩ = N^{-1}⟨ψ_N, N_+ψ_N⟩"
+        },
+        "formalisation": "Operational formal goal: prove the sufficient asymptotic estimate lim_{N→∞}N^{-1}⟨ψ_N,N_+ψ_N⟩=0, where N_+=∑_{k∈2πZ^3\\{0}}a_k^*a_k, because the identity 1−⟨ϕ_0,γ_N^{(1)}ϕ_0⟩=N^{-1}⟨ψ_N,N_+ψ_N⟩ converts this estimate into complete condensation. The proof establishes this estimate by showing ⟨ψ_N,H_Nψ_N⟩ ≥ 4πaN^{1+κ}+4π^2⟨ψ_N,N_+ψ_N⟩+o(N) and using ⟨ψ_N,H_Nψ_N⟩≤4πaN^{1+κ}+o(N), where 8πa=inf{∫_{R^3}(2|∇f(x)|^2+V(x)|f(x)|^2)dx : lim_{|x|→∞}f(x)=1}."
+      },
+      "implicit_goal": {
+        "inference_basis": [
+          "The theorem statement's conclusion variable is γ_N^{(1)} and its conclusion predicate is lim_{N→∞}⟨ϕ_0,γ_N^{(1)}ϕ_0⟩=1.",
+          "The proof immediately replaces the condensation predicate by the equivalent excitation-fraction predicate lim_{N→∞}N^{-1}⟨ψ_N,N_+ψ_N⟩=0.",
+          "The lower bound (4), Lemmas 2--5, and the final energy comparison all serve to prove this same condensation predicate rather than to optimize an objective functional.",
+          "The admissible environment family is not optional rhetoric: Theorem 1 quantifies over every κ with 0≤κ<1/20 and over every compactly supported radial non-negative V∈L^1(R^3).",
+          "No empirical evaluation artefacts such as metric tables, ablations, quantitative figures, or stopping criteria are harvested from the paper; for the empty evaluation-artifact set, EvalAlign is recorded as 1.0 by the vacuous-alignment convention rather than as empirical evidence."
+        ],
+        "fit_score": 0.994,
+        "fit_components": {
+          "TextAlign": 1.0,
+          "MethodAlign": 1.0,
+          "EvalAlign": 1.0,
+          "ClaimAlign": 1.0,
+          "Complexity": 0.111
+        },
+        "formalisation": "Implicit best-fit goal g_P^implicit: among candidate hypotheses, the target proposition lim_{N→∞}⟨ϕ_0,γ_N^{(1)}ϕ_0⟩=1 for the normalized ground state ψ_N of H_N over the environment family {(κ,V):0≤κ<1/20, V∈L^1(R^3), V compactly supported, radial, and non-negative} is selected because every theorem statement, proof reduction, lower-bound estimate, and final conclusion targets that proposition or the equivalent excitation-fraction statement lim_{N→∞}N^{-1}⟨ψ_N,N_+ψ_N⟩=0."
+      },
+      "excluded_aims": [
+        {
+          "verbatim": "low energy properties of the Bose gas in regimes that interpolate between the GP and thermodynamic limits",
+          "source_span": {
+            "section": "Introduction and Main Result",
+            "paragraph_or_line": "Motivating paragraph before the BEC question",
+            "verbatim": "interested in understanding low energy properties"
+          },
+          "reason": "topical"
+        },
+        {
+          "verbatim": "Proving BEC in the thermodynamic limit",
+          "source_span": {
+            "section": "Introduction and Main Result",
+            "paragraph_or_line": "Background paragraph on open problems",
+            "verbatim": "Proving BEC in the thermodynamic limit is a difficult open problem"
+          },
+          "reason": "motivational"
+        },
+        {
+          "verbatim": "derive the low energy excitation spectrum of H_N in accordance with Bogoliubov theory",
+          "source_span": {
+            "section": "Introduction and Main Result",
+            "paragraph_or_line": "Background paragraph after equation (2)",
+            "verbatim": "derive the low energy excitation spectrum"
+          },
+          "reason": "application_gesture"
+        },
+        {
+          "verbatim": "prove the result for approximate ground states φ_N satisfying ⟨φ_N,H_Nφ_N⟩ ≤ 4πaN^{1+κ}+o(N)",
+          "source_span": {
+            "section": "Remark after Theorem 1",
+            "paragraph_or_line": "Remark 1",
+            "verbatim": "we expect that our results could also be proved for approximate ground states"
+          },
+          "reason": "out_of_scope_other"
+        },
+        {
+          "verbatim": "obtain the currently best available parameter range or cover hard-core interactions",
+          "source_span": {
+            "section": "Introduction and Main Result",
+            "paragraph_or_line": "Comparison with localization-based methods",
+            "verbatim": "obtains the currently best parameter range and applies to a large class of potentials"
+          },
+          "reason": "topical"
+        }
+      ]
+    },
+    "consistency_relation": "framing_divergence",
+    "consistency_relation_derivation": "The stated, operational, and implicit channels agree on the formal mathematical end-state: complete ground-state condensation, expressed as lim_{N→∞}⟨ϕ_0,γ_N^{(1)}ϕ_0⟩=1 and operationally as lim_{N→∞}N^{-1}⟨ψ_N,N_+ψ_N⟩=0. The relation is nevertheless framing_divergence because the paper's stated framing also emphasizes proof style—self-contained, simpler, no box localization, and no quartic operator-exponential expansions—whereas the canonical success set records only the mathematical end-state. That proof-style content is therefore encoded separately in methodological_claim."
+  }
+}

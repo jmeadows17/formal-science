@@ -1,0 +1,301 @@
+{
+  "paper_goal": {
+    "canonical_goal": [
+      {
+        "goal_id": "G1_finite_N_trace_reduced_loop_closure",
+        "outcome_variable": "o_closure ∈ O_P^closure, where O_P^closure is the set of finite algebraic Wilson-loop constraint systems (G,N,model,d,S,W,E_trace,E_loop,P_pos) for finite-N compact matrix models or finite-N lattice gauge theories",
+        "goal_form": "target_proposition",
+        "target_object": "A finite-N trace-reduced Wilson-loop closure result o_closure=(G,N,model,d,S,W,E_trace,E_loop,P_pos): G is SU(N) or U(N) with finite N≥2; model is either a one-matrix integral or a hypercubic lattice gauge theory; d is the number of spacetime lattice directions when model is a lattice theory; S is either Z=∫DU exp((N/λ)(tr(U†)+tr(U))) for the one-matrix integral or S=−(N/λ)∑_p tr(U_p) for the Wilson plaquette lattice action with λ>0; W(C_1,...,C_m)=⟨∏_{i=1}^m Tr(∏_{l∈C_i}U_l)⟩ is the normalized multi-trace Wilson-loop expectation with Tr=(1/N)tr; E_trace is a finite-N trace-reduction system that rewrites generated products with too many traces into products with retained trace count; E_loop is the Schwinger-Dyson/Makeenko-Migdal equation system after applying E_trace; and P_pos is a set of positive-semidefinite matrices M with entries M_{ij}=⟨O_i†O_j⟩ or reflection-positive variants. The end-state is closure of E_loop over retained Wilson-loop expectation variables: U(N) lattice equations retain at most N traces, SU(N) lattice equations retain at most N−1 traces, SU(3) examples retain single- and double-trace variables, and SU(2) lattice and continuum equations retain only single-trace variables W(C)=⟨Tr∏_{l∈C}U_l⟩.",
+        "feasibility_constraints": [
+          "For the lattice component, link variables obey U_{x,μ}∈G and U_{x+μ,−μ}=U_{x,μ}†; a plaquette variable U_p is the ordered product of four link variables around p; the Wilson action is S=−(N/λ)∑_p tr(U_p) with λ>0; and the partition function is Z=∫DU exp(−S) over the Haar measure of the link variables.",
+          "For the one-matrix component, U∈SU(N) or U∈U(N), λ>0, Z=∫DU exp((N/λ)(tr(U†)+tr(U))), and the retained observables are normalized traces Tr(U^k) and finite products of such traces after applying finite-N trace identities.",
+          "For arbitrary GL(N) matrices M_1,...,M_{N+1}, ε^{a_1...a_{N+1}}ε^{b_1...b_{N+1}}(M_1)_{a_1b_1}...(M_{N+1})_{a_{N+1}b_{N+1}}=0, and expansion of the two ε-tensors rewrites tr(M_1)...tr(M_{N+1}) as a finite linear combination of products containing at most N traces.",
+          "For SU(N) matrices U, the relation Det(U)=Det(U†)=1, written as 1=(1/N!)ε^{a_1...a_N}ε^{b_1...b_N}(U†)_{a_1b_1}...(U†)_{a_Nb_N}, permits the SU(N) trace-reduction used here: generated products of N traces are rewritten as finite linear combinations of products containing at most N−1 traces.",
+          "For SU(2), the explicit trace-reduction identity is tr(U)tr(V)=tr(UV)+tr(UV†) for every U,V∈SU(2); after inserting suitable backtracking identities in lattice contours, every generated double-trace Wilson-loop expectation is replaced by a sum of single-trace Wilson-loop expectations.",
+          "For SU(3), the explicit trace-reduction identity is tr(U)tr(V)tr(W)=−tr(WVU)−tr(UVW)+tr(U)tr(VW)+tr(UV)tr(W)+tr(UW)tr(V)+tr(U†V)tr(U†W)−tr(U†VU†W) for every U,V,W∈SU(3); hence generated triple-trace terms are rewritten using single- and double-trace terms.",
+          "The loop equations are produced by infinitesimal changes U_{x,μ}→(I+iϵ)U_{x,μ} and U†_{x,μ}→U†_{x,μ}(I−iϵ), with ϵ†=ϵ and tr(ϵ)=0 for SU(N); setting the integral of the full variation to zero yields linear equations among Wilson-loop expectations once the finite-N trace-reduction identities have been substituted.",
+          "Each positivity block has the form M⪰0, meaning α* M α≥0 for every complex coefficient vector α of compatible length; the entries are Wilson-loop expectations obtained from M_{ij}=⟨O_i†O_j⟩ or from the corresponding reflected Wilson-line inner product."
+        ],
+        "success_set": {
+          "kind": "predicate",
+          "definition": "Σ_P^closure={o_closure: all generated loop equations E_loop are expressible using only retained Wilson-loop expectation variables and all retained positivity matrices P_pos are positive semidefinite. For the SU(2) lattice Wilson action, membership includes the closed single-trace equation (1/λ)∑_{μ≠±ν}[W(σ^l_{νμ}∘C_{lν})−W(σ^l_{μν}∘C_{lν})]+(1/2)∑_{l'ν∼lν∈C}(−1)^{(1+ν·ν')/2}(W(C^{(1)}_{x,ν}∘C^{(2)}_{y,ν'})+(1/2)W(C))=0 for every retained oriented contour C and varied link l_ν, where σ^l_{νμ} is the oriented plaquette containing l with directions ν,μ, C∘C' is contour concatenation at the shared link or point, C^{(1)} and C^{(2)} are the two contour pieces produced by cutting C at the overlapping links, and the sum over l'ν∼lν includes l_ν itself. For the SU(2) continuum case, membership includes ∂_{x_μ}(δW(C_x)/δσ_{μν}(x))=(λ/2)∮_C dy_ν δ^{(d)}(x−y)[(1/2)W(C_x)+W(C^{(1)}_{xy}∘overline{C^{(2)}_{yx}})], where δ/δσ_{μν}(x) is an area derivative at x, overline denotes reversal of the ordered Wilson product, and the integral is over the contour C.}",
+          "threshold": {
+            "applies": false,
+            "value": null,
+            "comparator": null,
+            "metric_symbol": null,
+            "metric_definition": null,
+            "source_span": null
+          }
+        },
+        "preference_ordering": {
+          "kind": "none",
+          "definition": null,
+          "objective_symbols": [],
+          "lex_order": null,
+          "embedding_to_total_utility": null
+        },
+        "robustness_scope": {
+          "applies": true,
+          "ambient_space": "Finite-N compact matrix-model and lattice-gauge Wilson-loop systems whose observables are finite products of normalized traces and whose constraints are generated by infinitesimal integration-variable variations, finite-N trace identities, and positive-semidefinite Wilson-line inner products.",
+          "type_tag": "environment_family",
+          "metric_or_divergence": null,
+          "radius_or_budget": null,
+          "indexing_set": "{(G,N,model,d): G∈{SU(N),U(N)}, N∈ℤ, N≥2, model∈{one-matrix integral Z=∫DU exp((N/λ)(tr(U†)+tr(U))), hypercubic lattice Yang-Mills with S=−(N/λ)∑_p tr(U_p)}, and d∈ℤ,d≥1 when model is a lattice theory}",
+          "claimed_subfamily": {
+            "definition": "The claimed subfamily is formal closure, not uniform numerical tightness: U(N) finite-N loop equations close on at most N-trace Wilson variables, SU(N) finite-N loop equations close on at most (N−1)-trace Wilson variables, the SU(3) one-matrix and loop-equation examples close on single- and double-trace variables, and the SU(2) lattice and continuum loop equations close on single-trace variables.",
+            "source_span": {
+              "section": "Abstract; Introduction; Main results; Sections 2.1--2.4",
+              "paragraph_or_line": "Abstract first paragraph; Introduction paragraphs beginning 'In this paper, we generalize...' and 'In this paper, we concentrate...'; Main results equations (1.1)--(1.5); finite-N trace identity and loop-equation derivations around equations (2.1)--(2.49)",
+              "verbatim": "We introduce a comprehensive framework for analyzing finite N lattice Yang-Mills theory and finite N matrix models. ... For SU(N) and SO(N), the trace variables truncate at N − 1 traces. ... Specifically for the SU(2) case, the application of the trace identity (1.1) ... transforms the loop equation (2.45) into a closed form within the single-loop space."
+            }
+          },
+          "hinted_superfamily": {
+            "definition": "A broader possible family consists of finite-N non-abelian gauge-theory loop-variable systems, finite-N matrix quantum-mechanics systems, and gauge theories with dynamical-quark or baryonic loop averages for which analogous trace-reduction, loop-equation, and positivity constraints might be constructed; this broader family is outside the achieved closure statements unless the corresponding retained variables and trace identities are explicitly supplied.",
+            "source_span": {
+              "section": "Discussion and Prospects",
+              "paragraph_or_line": "Prospects paragraphs on further applications and future ingredients",
+              "verbatim": "It would be interesting to apply the scheme of linear bootstrap considered in this paper to other matrix models, matrix quantum mechanics, as well as to higher-dimensional lattice Yang-Mills theories. ... A particularly relevant task would be to include the quarks into consideration."
+            }
+          },
+          "refinement_relation": "set_inclusion",
+          "criterion": "An indexed member (G,N,model,d) is in the claimed family exactly when every trace product generated by the loop-equation variation is rewritten by finite-N trace identities to a product containing at most N traces for U(N) or at most N−1 traces for SU(N), and after this substitution every retained equation is linear in retained Wilson-loop expectation variables and every retained positivity condition is a matrix inequality M⪰0 whose entries are retained Wilson-loop expectation variables.",
+          "channel_populated_by": [
+            "stated",
+            "operational",
+            "implicit"
+          ]
+        }
+      },
+      {
+        "goal_id": "G2_su2_plaquette_interval_bounds",
+        "outcome_variable": "o_plaq ∈ O_P^plaq, where O_P^plaq is the set of finite collections of SU(2) plaquette intervals I_{Λ,d,λ}(u_P)=[L_{Λ,d,λ}(u_P),U_{Λ,d,λ}(u_P)] obtained from truncated Wilson-loop semidefinite feasible sets",
+        "goal_form": "lexicographic_hybrid",
+        "target_object": "A collection of certified lower and upper intervals for the SU(2) lattice Yang-Mills plaquette average u_P=⟨Tr(U_P)⟩, where U_P is the ordered product of link variables around one plaquette and Tr=(1/2)tr. For each hierarchy level Λ, spacetime dimension d, and coupling λ>0, the output interval I_{Λ,d,λ}(u_P)=[L_{Λ,d,λ}(u_P),U_{Λ,d,λ}(u_P)] is obtained by minimizing and maximizing the same linear observable u_P over the same feasible set of retained single-trace Wilson-loop variables satisfying the SU(2) trace-reduced linear Makeenko-Migdal equations and Hermitian/reflection positive-semidefinite blocks. The lexicographic end-state first requires interval validity, L_{Λ,d,λ}(u_P)≤u_P≤U_{Λ,d,λ}(u_P) for every feasible exact SU(2) lattice Wilson-loop solution projected to the retained variables; subject to validity, smaller interval width U_{Λ,d,λ}(u_P)−L_{Λ,d,λ}(u_P) is preferred.",
+        "feasibility_constraints": [
+          "The gauge group is SU(2); each link variable satisfies U_{x,μ}∈SU(2) and U_{x+μ,−μ}=U_{x,μ}†; the lattice action is S=−(2/λ)∑_p tr(U_p), equivalently β=8/λ under β=2N^2/λ with N=2; and λ>0.",
+          "The retained variables are single-trace Wilson-loop expectations W(C)=⟨Tr∏_{l∈C}U_l⟩ because tr(U)tr(V)=tr(UV)+tr(UV†) eliminates generated double-trace terms for SU(2).",
+          "The retained loop equations are the SU(2) single-trace lattice Makeenko-Migdal equations (1/λ)∑_{μ≠±ν}[W(σ^l_{νμ}∘C_{lν})−W(σ^l_{μν}∘C_{lν})]+(1/2)∑_{l'ν∼lν∈C}(−1)^{(1+ν·ν')/2}(W(C^{(1)}_{x,ν}∘C^{(2)}_{y,ν'})+(1/2)W(C))=0 for retained contours C and varied links l_ν.",
+          "The finite hierarchy assigns integer level 0 to the identity Wilson line, level 1 to the single plaquette Wilson line, and recursively assigns later levels by Schwinger-Dyson variations; if the retained Wilson-line basis has level at most Λ, then Wilson loops generated as inner products have maximum length L_max=8Λ.",
+          "The feasible set contains all retained x satisfying A_{Λ,d,λ}x=b_{Λ,d,λ} and M_{r,Λ,d,λ}(x)⪰0 for each retained Hermitian-conjugation or reflection-positivity block r, where each M_r(x) is affine in x.",
+          "The displayed high-resolution numerical case Λ=3 has L_max=8Λ=24, because the hierarchy rule defines L_max as eight times the Wilson-line level cutoff."
+        ],
+        "success_set": {
+          "kind": "predicate",
+          "definition": "Σ_P^plaq={o_plaq: for every included tuple (Λ,d,λ), L_{Λ,d,λ}(u_P)=min_x u_P(x) and U_{Λ,d,λ}(u_P)=max_x u_P(x) over the identical feasible set F_{Λ,d,λ}={x: A_{Λ,d,λ}x=b_{Λ,d,λ} and M_{r,Λ,d,λ}(x)⪰0 for all retained positivity blocks r}; L_{Λ,d,λ}(u_P)≤U_{Λ,d,λ}(u_P); and the plotted plaquette band is the interval [L_{Λ,d,λ}(u_P),U_{Λ,d,λ}(u_P)]. For the Λ=3 calculations the retained loop length is L_max=24 by L_max=8Λ, and the target observable is u_P=W(□)=⟨Tr(U_P)⟩.}",
+          "threshold": {
+            "applies": false,
+            "value": null,
+            "comparator": null,
+            "metric_symbol": null,
+            "metric_definition": null,
+            "source_span": null
+          }
+        },
+        "preference_ordering": {
+          "kind": "lexicographic_utility",
+          "definition": "For two plaquette-bound outputs o and o', o⪰_P^plaq o' exactly when either every interval in o is valid and some interval in o' is invalid, or both outputs have valid intervals for the same indexed tuples and ∑_{(Λ,d,λ)}(U'_{Λ,d,λ}(u_P)−L'_{Λ,d,λ}(u_P)) ≥ ∑_{(Λ,d,λ)}(U_{Λ,d,λ}(u_P)−L_{Λ,d,λ}(u_P)); validity is ordered before tightness.",
+          "objective_symbols": [
+            "1_{Σ_P^plaq}(o_plaq)",
+            "J_width(o_plaq)=−∑_{(Λ,d,λ)}(U_{Λ,d,λ}(u_P)−L_{Λ,d,λ}(u_P))"
+          ],
+          "lex_order": [
+            "valid_interval_predicate 1_{Σ_P^plaq}(o_plaq)",
+            "maximize negative total width J_width(o_plaq)"
+          ],
+          "embedding_to_total_utility": null
+        },
+        "robustness_scope": {
+          "applies": true,
+          "ambient_space": "SU(2) hypercubic lattice Yang-Mills plaquette-bound computations whose feasible sets are finite hierarchy truncations of the single-trace loop equations with positive-semidefinite Wilson-line inner-product constraints.",
+          "type_tag": "environment_family",
+          "metric_or_divergence": null,
+          "radius_or_budget": null,
+          "indexing_set": "{(d,Λ,λ): d∈{2,3,4}, Λ∈ℤ, Λ≥0, λ>0, retained loop length L_max=8Λ}",
+          "claimed_subfamily": {
+            "definition": "The claimed numerical subfamily consists of SU(2) plaquette intervals computed from the hierarchy-truncated convex feasible set in d=2, d=3, and d=4; the most detailed displayed finite-loop case uses Λ=3 and therefore L_max=24, and the d=3 and d=4 plotted bands are compared to Monte Carlo plaquette data across the displayed coupling ranges.",
+            "source_span": {
+              "section": "Abstract; Main results; Sections 4.1--4.3; Figures 1, 8--10; Table 2",
+              "paragraph_or_line": "Abstract sentences on 2,3,4 dimensions, L=24, and 0.1%; Main results Figure 1 caption; Section 4 hierarchy and higher-dimensional bound paragraphs",
+              "verbatim": "Utilizing this framework, we examine the bootstrap approach to SU(2) Lattice Yang-Mills Theory in 2,3 and 4 dimensions. ... permitting the inclusion of Wilson loops up to length 24. ... The exact upper and lower margins for the free energy per plaquette ... achieving precision within 0.1% for the physically relevant range of couplings in both three and four dimensions."
+            }
+          },
+          "hinted_superfamily": {
+            "definition": "A broader possible numerical family consists of higher-N SU(N) or U(N) plaquette-bound computations at larger hierarchy levels; those computations require retained multi-trace variables beyond the SU(2) single-trace variables and are not part of the achieved SU(2) plaquette-interval output.",
+            "source_span": {
+              "section": "Discussion and Prospects",
+              "paragraph_or_line": "Paragraph discussing larger N and level Λ=6",
+              "verbatim": "The most advanced result achieved in our project so far is at truncation level Λ = 6, leading us to anticipate the possibility of establishing a non-trivial bound for SU(6) or U(5)."
+            }
+          },
+          "refinement_relation": "set_inclusion",
+          "criterion": "A tuple (d,Λ,λ) satisfies the plaquette-bound scope exactly when d∈{2,3,4}, λ>0, the retained variable vector x contains u_P=W(□), all retained x satisfy A_{Λ,d,λ}x=b_{Λ,d,λ} and M_{r,Λ,d,λ}(x)⪰0 for the SU(2) single-trace hierarchy with L_max=8Λ, and the interval endpoints are computed as L_{Λ,d,λ}(u_P)=min_{x∈F_{Λ,d,λ}}u_P(x) and U_{Λ,d,λ}(u_P)=max_{x∈F_{Λ,d,λ}}u_P(x).",
+          "channel_populated_by": [
+            "stated",
+            "operational",
+            "implicit"
+          ]
+        }
+      },
+      {
+        "goal_id": "G3_su2_finite_loop_string_tension_estimates",
+        "outcome_variable": "o_string ∈ O_P^string, where O_P^string is the set of SU(2) finite-rectangle Creutz-ratio estimates a^2σ_{T,L,λ} derived from retained rectangular Wilson-loop expectations W(T,L)",
+        "goal_form": "target_proposition",
+        "target_object": "A set of SU(2) finite-loop string-tension estimates computed from retained rectangular Wilson-loop expectations. For rectangle sizes T,L with T≥2 and L≥2, define W(T,L)=⟨Tr(U_{T×L})⟩, where U_{T×L} is the ordered product of SU(2) link variables around a T-by-L lattice rectangle, and define the Creutz-type estimator a^2σ_{T,L,λ}=−log(W(T,L)W(T−1,L−1)/(W(T−1,L)W(T,L−1))). The end-state is not a certified infinite-area string tension limit; it is a qualitative estimate obtained by substituting retained finite-rectangle Wilson-loop values, with the implemented small-loop extraction using T=3 and L=2 so that a^2σ_{3,2,λ}=−log(W(3,2)W(2,1)/(W(2,2)W(3,1))).",
+        "feasibility_constraints": [
+          "The gauge group is SU(2); link variables obey U_{x,μ}∈SU(2) and U_{x+μ,−μ}=U_{x,μ}†; the lattice action is S=−(2/λ)∑_p tr(U_p) with λ>0; retained variables are single-trace Wilson-loop expectations W(C)=⟨Tr∏_{l∈C}U_l⟩; the retained equations are the SU(2) trace-reduced linear Makeenko-Migdal equations; and the feasible set is F_{Λ,d,λ}={x:A_{Λ,d,λ}x=b_{Λ,d,λ} and M_{r,Λ,d,λ}(x)⪰0 for all retained Hermitian-conjugation or reflection-positivity blocks r}, where x contains the retained W(C) values and each M_r(x) is affine in x.",
+          "The rectangular Wilson-loop variables W(T,L), W(T−1,L−1), W(T−1,L), and W(T,L−1) must all be retained variables or computable from retained variables in F_{Λ,d,λ}.",
+          "The logarithm in a^2σ_{T,L,λ}=−log(W(T,L)W(T−1,L−1)/(W(T−1,L)W(T,L−1))) is defined only when W(T,L)W(T−1,L−1)/(W(T−1,L)W(T,L−1)) is positive.",
+          "For the small-loop extraction T=3,L=2, the required retained variables are W(3,2), W(2,1), W(2,2), and W(3,1), and the substituted estimator is a^2σ_{3,2,λ}=−log(W(3,2)W(2,1)/(W(2,2)W(3,1)))."
+        ],
+        "success_set": {
+          "kind": "predicate",
+          "definition": "Σ_P^string={o_string: each included a^2σ_{T,L,λ} is computed by substituting retained SU(2) rectangular Wilson-loop expectations into a^2σ_{T,L,λ}=−log(W(T,L)W(T−1,L−1)/(W(T−1,L)W(T,L−1))), the four Wilson-loop values used in each logarithm are produced from the same hierarchy-truncated feasible-set computation, and the result is interpreted as a finite-rectangle Creutz estimate rather than as a proof of the T,L→∞ limit of the physical string tension.}",
+          "threshold": {
+            "applies": false,
+            "value": null,
+            "comparator": null,
+            "metric_symbol": null,
+            "metric_definition": null,
+            "source_span": null
+          }
+        },
+        "preference_ordering": {
+          "kind": "qualitative_partial",
+          "definition": "For two string-estimate outputs using the same retained rectangular loop variables, o⪰_P^string o' when o computes every stated Creutz expression from Wilson-loop values produced by a single internally consistent SU(2) bootstrap feasible set and o' omits at least one required retained rectangle or mixes rectangle values from different feasible-set computations; no total numerical accuracy ordering is claimed because the finite-rectangle estimator is presented as qualitative.",
+          "objective_symbols": [],
+          "lex_order": null,
+          "embedding_to_total_utility": null
+        },
+        "robustness_scope": {
+          "applies": true,
+          "ambient_space": "SU(2) lattice computations in which finite rectangular Wilson-loop expectations are retained and can be inserted into Creutz-type logarithmic estimators.",
+          "type_tag": "environment_family",
+          "metric_or_divergence": null,
+          "radius_or_budget": null,
+          "indexing_set": "{(d,Λ,λ,T,L): d∈{3,4}, Λ∈ℤ, Λ≥0, λ>0, T,L∈ℤ, T≥2, L≥2, and W(T,L),W(T−1,L−1),W(T−1,L),W(T,L−1) are retained or computable from retained variables}",
+          "claimed_subfamily": {
+            "definition": "The claimed string-tension subfamily consists of qualitative SU(2) estimates obtained from retained finite rectangles in three and four dimensions; the explicit small-rectangle estimator uses T=3 and L=2, so the computed quantity is a^2σ_{3,2,λ}=−log(W(3,2)W(2,1)/(W(2,2)W(3,1))).",
+            "source_span": {
+              "section": "Abstract; Section 4.3; Figures 11--12",
+              "paragraph_or_line": "Abstract sentence on string tension; Section 4.3 paragraphs around the Creutz ratio and string tension plots",
+              "verbatim": "Additionally, our bootstrap data provides estimates of the string tension, in qualitative agreement with existing Monte Carlo computations. ... Although these results do not match the precision of Monte Carlo simulations due to the limited loop size (maximum 2 × 3), they are qualitatively sound."
+            }
+          },
+          "hinted_superfamily": {
+            "definition": "A broader possible family would estimate the physical string tension from larger rectangles or from an extrapolation in which T and L grow; that broader family is not an achieved result of the finite 3-by-2 rectangle computation.",
+            "source_span": {
+              "section": "Main results; Section 4.3",
+              "paragraph_or_line": "String-tension discussion noting limited loop size",
+              "verbatim": "Although these results do not match the precision of Monte Carlo simulations due to the limited loop size (maximum 2 × 3), they are qualitatively sound."
+            }
+          },
+          "refinement_relation": "set_inclusion",
+          "criterion": "A tuple (d,Λ,λ,T,L) satisfies the string-estimate scope exactly when the four rectangular Wilson-loop values W(T,L), W(T−1,L−1), W(T−1,L), and W(T,L−1) are retained or computable in the same SU(2) hierarchy-truncated feasible-set computation, their ratio R=W(T,L)W(T−1,L−1)/(W(T−1,L)W(T,L−1)) is positive, and the displayed estimate is computed as a^2σ_{T,L,λ}=−log(R).",
+          "channel_populated_by": [
+            "stated",
+            "operational",
+            "implicit"
+          ]
+        }
+      }
+    ],
+    "inter_goal_relation": "instrumental",
+    "methodological_claim": {
+      "applies": true,
+      "target_object": "The finite-N SU(2) bootstrap computations are convex semidefinite programs: after the identity tr(U)tr(V)=tr(UV)+tr(UV†) rewrites every generated double-trace term as single-trace terms, the retained Makeenko-Migdal equations are affine equations A(λ)x=b(λ) in the vector x of single-trace Wilson-loop expectations and the retained positivity constraints are affine matrix inequalities M_r(x)⪰0; therefore minimizing or maximizing any linear retained observable q^T x over the retained feasible set is a semidefinite optimization problem and does not require an auxiliary relaxation of quadratic large-N factorization variables.",
+      "evidence_channels": {
+        "source_span": {
+          "section": "Abstract; Introduction; Main results; Section 4.2",
+          "paragraph_or_line": "Abstract sentences on SU(2) linearity and convexity; Main results paragraph after equation (1.5); bootstrap program (4.2)",
+          "verbatim": "The SU(2) Makeenko-Migdal loop equations on the lattice are linear and closed exclusively on single-trace Wilson loops. ... The inherent linearity of the SU(2) loop equations renders the entire bootstrap procedure convex from the very beginning. ... min / max, subject to MM loop equations, HerMirrep ⪰ 0, RefMirrep ⪰ 0, ×3."
+        },
+        "formalisation": "Let x=(W(C_1),...,W(C_k)) be the retained vector of SU(2) single-trace Wilson-loop expectations. Substitution of tr(U)tr(V)=tr(UV)+tr(UV†) turns every retained loop equation into A(λ)x=b(λ). Each retained Hermitian or reflection-positivity block has the affine form M_r(x)⪰0. Hence L(q)=min_x q^T x and U(q)=max_x q^T x subject to A(λ)x=b(λ) and M_r(x)⪰0 for all r are convex semidefinite optimization problems."
+      }
+    },
+    "evidence_channels": {
+      "stated_goal": {
+        "source_span": {
+          "section": "Abstract; Introduction; Main results",
+          "paragraph_or_line": "Abstract first paragraph; Introduction paragraphs beginning 'In this paper, we generalize...' and 'In this paper, we concentrate...'; Main results opening paragraph",
+          "verbatim": "We introduce a comprehensive framework for analyzing finite N lattice Yang-Mills theory and finite N matrix models. Utilizing this framework, we examine the bootstrap approach to SU(2) Lattice Yang-Mills Theory in 2,3 and 4 dimensions. ... This paper proposes a general framework for bootstrapping finite N lattice Yang-Mills theory and finite N matrix models, highlighting the crucial role of multi-trace variable truncation."
+        },
+        "formalisation": "The stated-channel formalisation is an instrumental three-goal structure: construct finite-N trace-reduced Wilson-loop closure systems for matrix and lattice gauge models; use the SU(2) single-trace convex instance to compute certified plaquette intervals I_{Λ,d,λ}(u_P)=[L_{Λ,d,λ}(u_P),U_{Λ,d,λ}(u_P)] for d∈{2,3,4}; and compute finite-rectangle Creutz estimates a^2σ_{T,L,λ}=−log(W(T,L)W(T−1,L−1)/(W(T−1,L)W(T,L−1))) from retained rectangular Wilson-loop values."
+      },
+      "operational_goal": {
+        "source_span": {
+          "section": "Sections 2.1--2.4; Sections 3.1--3.3; Sections 4.1--4.3",
+          "paragraph_or_line": "Trace identities (1.1),(1.2),(2.1)--(2.9); loop equations (2.14)--(2.49); positivity equations (3.2)--(3.19); bootstrap program (4.2); hierarchy and benchmark paragraphs; Figures 8--12; Table 2",
+          "verbatim": "Our framework for the bootstrap program applied to the finite N matrix models and lattice Yang-Mills theories can be summarized as follows: min / max, subject to MM loop equations, HerMirrep ⪰ 0, RefMirrep ⪰ 0, ×3. ... The additional data also allows us to extract the string tension via the Creutz ratio."
+        },
+        "formalisation": "The operational-channel formalisation is F_{Λ,d,λ}={x:A_{Λ,d,λ}x=b_{Λ,d,λ} and M_{r,Λ,d,λ}(x)⪰0 for all retained Hermitian/reflection-positivity blocks r}; plaquette endpoints are L_{Λ,d,λ}(u_P)=min_{x∈F_{Λ,d,λ}}u_P(x) and U_{Λ,d,λ}(u_P)=max_{x∈F_{Λ,d,λ}}u_P(x); the hierarchy relation is L_max=8Λ; and string-tension plots use retained rectangular Wilson-loop values inside a^2σ_{T,L,λ}=−log(W(T,L)W(T−1,L−1)/(W(T−1,L)W(T,L−1)))."
+      },
+      "implicit_goal": {
+        "inference_basis": [
+          "Aim spans in the abstract and main-results section explicitly combine a finite-N framework with a SU(2) application in d=2,3,4; this supports one formal closure goal plus two SU(2) output goals rather than one merged numerical goal.",
+          "Method artefacts define trace identities, trace-reduced loop equations, positivity constraints, symmetry reduction, and the hierarchy-truncated min/max semidefinite program, matching G1 and G2 exactly.",
+          "Evaluation artefacts split into plaquette upper/lower bands and separate string-tension plots from Creutz ratios; separating G2 and G3 avoids merging certified intervals with qualitative finite-rectangle estimates.",
+          "Prospect statements on quarks, baryons, matrix quantum mechanics, and larger N are future scope or hinted superfamilies because the operational numerical outputs are the SU(2) plaquette intervals and finite-rectangle string estimates."
+        ],
+        "fit_score": 0.97625,
+        "fit_components": {
+          "TextAlign": 1.0,
+          "MethodAlign": 1.0,
+          "EvalAlign": 1.0,
+          "ClaimAlign": 0.96,
+          "Complexity": 0.315
+        },
+        "formalisation": "The implicit best-fit hypothesis is an instrumental three-part goal: first, derive finite-N trace-reduced Wilson-loop closure systems with positive-semidefinite constraints for finite-N matrix/lattice gauge models; second, use the SU(2) single-trace convex feasible set to compute certified plaquette intervals [L_{Λ,d,λ}(u_P),U_{Λ,d,λ}(u_P)]; third, use retained rectangular Wilson-loop expectations to compute finite-rectangle Creutz estimates a^2σ_{T,L,λ}=−log(W(T,L)W(T−1,L−1)/(W(T−1,L)W(T,L−1))). The fit value is 0.20·1.0+0.30·1.0+0.30·1.0+0.20·0.96−0.05·0.315=0.97625."
+      },
+      "excluded_aims": [
+        {
+          "verbatim": "The search for other universal non-perturbative approaches did not lose its relevance.",
+          "source_span": {
+            "section": "Introduction",
+            "paragraph_or_line": "Opening motivation paragraph",
+            "verbatim": "The search for other universal non-perturbative approaches did not lose its relevance."
+          },
+          "reason": "motivational"
+        },
+        {
+          "verbatim": "This methodology promises a more rigorous framework for the exploration of matrix model dynamics.",
+          "source_span": {
+            "section": "Introduction",
+            "paragraph_or_line": "Bootstrap-method motivation paragraph",
+            "verbatim": "This methodology promises a more rigorous framework for the exploration of matrix model dynamics."
+          },
+          "reason": "motivational"
+        },
+        {
+          "verbatim": "It would be interesting to generalize the approach considered here to the 2-matrix model and then, even more generally, to the matrix quantum mechanics.",
+          "source_span": {
+            "section": "Discussion and Prospects",
+            "paragraph_or_line": "Future matrix-model directions",
+            "verbatim": "It would be interesting to generalize the approach considered here to the 2-matrix model and then, even more generally, to the matrix quantum mechanics."
+          },
+          "reason": "out_of_scope_other"
+        },
+        {
+          "verbatim": "A particularly relevant task would be to include the quarks into consideration.",
+          "source_span": {
+            "section": "Discussion and Prospects",
+            "paragraph_or_line": "Future dynamical-quark direction",
+            "verbatim": "A particularly relevant task would be to include the quarks into consideration."
+          },
+          "reason": "out_of_scope_other"
+        },
+        {
+          "verbatim": "Another interesting and potentially useful object of the bootstrap studies in finite N lattice Yang-Mills theory are the baryons.",
+          "source_span": {
+            "section": "Discussion and Prospects",
+            "paragraph_or_line": "Future baryonic-loop direction",
+            "verbatim": "Another interesting and potentially useful object of the bootstrap studies in finite N lattice Yang-Mills theory are the baryons."
+          },
+          "reason": "out_of_scope_other"
+        }
+      ]
+    },
+    "consistency_relation": "aligned",
+    "consistency_relation_derivation": "The stated spans, operational equations, positivity constraints, hierarchy-truncated min/max program, plaquette-band figures, and Creutz-ratio string-tension plots all support the same instrumental structure: formal finite-N trace-reduced closure first, SU(2) plaquette interval computation second, and finite-rectangle string-tension estimation third. Motivational and future-scope spans are not used as canonical goals and are recorded under excluded_aims, so no material stated aim remains absent from the operational artefacts."
+  }
+}

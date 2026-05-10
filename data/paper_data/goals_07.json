@@ -2,24 +2,25 @@
   "paper_goal": {
     "canonical_goal": [
       {
-        "goal_id": "G1_spatial_two_drug_resistance_dynamics",
-        "outcome_variable": "o_1=(M,L,D,G,x,y,{(α_i,β_i)}_{i=1}^M,{n_i}_{i=1}^M,{f_i}_{i=1}^M,̅α,̅β,̅g,Cov_x(α,g),Cov_x(β,g)) ∈ O_P^{(1)}",
+        "goal_id": "G1_loop_symmetric_entanglement_block_structure",
+        "outcome_variable": "o = (W, B_W, M, X, Y, ∂, A, G, Π_X, Π_Y, r_X, r_Y, Im), where W is the rectangular entanglement matrix of a loop-symmetric state and B_W is a direct-sum/tensor-product block decomposition of the vector space containing W.",
         "goal_form": "target_proposition",
-        "target_object": "A feasible spatial two-drug resistance model in which M bacterial mutant density fields n_i(z,t) on a one-dimensional habitat [0,L] obey independent growth-diffusion equations, each mutant has two susceptibility traits (α_i,β_i), the drug concentration fields x(z) and y(z) determine mutant growth by g_i(z)=G(α_i x(z),β_i y(z)), local frequencies are f_i(z,t)=n_i(z,t)/Σ_{j=1}^M n_j(z,t), and the mean susceptibility fields ̅α(z,t)=Σ_{j=1}^M α_j f_j(z,t) and ̅β(z,t)=Σ_{j=1}^M β_j f_j(z,t) satisfy the spatial Price-type identities ∂_t̅α=Σ_{j=1}^M α_j f_j(g_j-̅g)+D∂_{zz}̅α and ∂_t̅β=Σ_{j=1}^M β_j f_j(g_j-̅g)+D∂_{zz}̅β, where ̅g(z,t)=Σ_{j=1}^M f_j(z,t)g_j(z).",
+        "target_object": "An exact block-structure statement for the rectangular entanglement matrix W = Σ_{{g}_X,{g}_Y} Ψ_{{g}_X,{g}_Y}|{g}_X⟩⟨{g}_Y| of a bipartite quantum many-body state |Ψ⟩ = Σ_{{g}_X,{g}_Y} Ψ_{{g}_X,{g}_Y}|{g}_X⟩|{g}_Y⟩ on a finite lattice discretising a connected compact closed d-dimensional manifold M with d an integer satisfying d ≥ 2. The lattice has oriented edges E, vertices V, finite group G, and edge Hilbert space span{|g⟩ : g ∈ G}. The bipartition is M = X ∪ Y with X and Y complementary submanifolds, common boundary ∂ = X ∩ Y, no common edges, vertex sets V_X, V_Y, V_∂, and a base-point set A ⊂ V_∂ containing exactly one base point on each connected component of ∂. The loop-symmetry constraint is Λ^α_ℓ|Ψ⟩ = d_α|Ψ⟩ for every irreducible representation α of G and every closed loop ℓ whose homotopy class [ℓ] is the unit element [pt] in π_1(M), with d_α the dimension of α. The desired end-state is the assertion that W belongs to ⊕_{ϕ∈Im} ⊕_{j=1}^{|G|^{|V_∂|-|A|}} C^{|r_X^{-1}(ϕ)||G|^{|V_X|} × |r_Y^{-1}(ϕ)||G|^{|V_Y|}}, equivalently (⊕_{ϕ∈Im} C^{|r_X^{-1}(ϕ)|×|r_Y^{-1}(ϕ)|}) ⊗ (⊕_{j=1}^{|G|^{|V_∂|-|A|}} C^{|G|^{|V_X|}×|G|^{|V_Y|}}), where Π_X and Π_Y are the restrictions Hom(π_1(M,A),G) → Hom(π_1(X,A),G) and Hom(π_1(M,A),G) → Hom(π_1(Y,A),G), r_X and r_Y are the restrictions Hom(π_1(X,A),G) → Hom(π_1(∂,A),G) and Hom(π_1(Y,A),G) → Hom(π_1(∂,A),G), and Im is the common image of r_X∘Π_X and r_Y∘Π_Y in Hom(π_1(∂,A),G).",
         "feasibility_constraints": [
-          "M is an integer with M≥1; L>0; the habitat coordinate is z∈[0,L]; time is t≥0; x:[0,L]→R_{≥0} and y:[0,L]→R_{≥0} are static drug concentration fields; G:R_{≥0}^2→R maps effective concentrations of drug 1 and drug 2 to a per-capita growth rate; each mutant i∈{1,...,M} has susceptibility coordinates α_i≥0 and β_i≥0 and induced growth field g_i(z)=G(α_i x(z),β_i y(z)).",
-          "For every mutant i∈{1,...,M}, n_i(z,t) is nonnegative and satisfies ∂_t n_i(z,t)=g_i(z)n_i(z,t)+D∂_{zz}n_i(z,t) for z∈(0,L) and t>0, with common diffusion coefficient D>0, boundary equations n_i(0,t)=0 and n_i(L,t)=0, and initial condition n_i(z,0)=n_{0,i}(z) for a nonnegative function n_{0,i} with n_{0,i}(0)=n_{0,i}(L)=0.",
-          "Standing variation is imposed: at t=0 the mutant set is fixed, at least one n_{0,i} is not identically zero, and the equations contain no term converting n_i into n_j for i≠j, no carrying-capacity term depending on Σ_j n_j, no direct competition term, no facilitation term, and no frequency-dependent alteration of g_i(z).",
-          "At every (z,t) with N(z,t)=Σ_{j=1}^M n_j(z,t)>0, f_i(z,t)=n_i(z,t)/N(z,t), ̅g(z,t)=Σ_{j=1}^M f_j(z,t)g_j(z), Cov_x(α,g)(z,t)=Σ_{j=1}^M α_j f_j(z,t)(g_j(z)-̅g(z,t)), and Cov_x(β,g)(z,t)=Σ_{j=1}^M β_j f_j(z,t)(g_j(z)-̅g(z,t)).",
-          "The admitted spatial drug profiles are constant profiles x(z)=x_0 and y(z)=y_0 for constants x_0,y_0≥0, and static heterogeneous profiles x(z),y(z) on [0,L] whose induced functions g_i(z)=G(α_i x(z),β_i y(z)) are defined for all i and z; the heterogeneous cases include finitely piecewise-constant, affine-linear, nonlinear, and periodic profiles."
+          "M is a connected compact closed d-dimensional manifold with d ∈ Z and d ≥ 2; a finite lattice discretisation of M has vertex set V, oriented edge set E, and plaquette set P; each edge e ∈ E carries a local Hilbert space span{|g⟩ : g ∈ G} for a finite group G.",
+          "For every closed oriented loop ℓ contained in the edge set, the Wilson-loop operator Λ^α_ℓ = Σ_{{g}_ℓ} Tr[D^α(g_1^{s_1})···D^α(g_|ℓ|^{s_|ℓ|})]|{g}_ℓ⟩⟨{g}_ℓ| is defined for each irreducible unitary representation α of G, where D^α is the representation matrix, s_i = 1 when the i-th edge orientation agrees with ℓ and s_i = -1 when it is opposite.",
+          "The state |Ψ⟩ is loop-symmetric: Λ^α_ℓ|Ψ⟩ = d_α|Ψ⟩ for every irreducible representation α of G and every loop ℓ with [ℓ] = [pt] in π_1(M), so every contractible Wilson loop has trivial holonomy.",
+          "The bipartition satisfies M = X ∪ Y, ∂ = X ∩ Y, X and Y have no common edges, and X, Y, and ∂ are regular enough to be represented by complementary submanifolds with shared boundary; V_X and V_Y are the interior vertex sets of X and Y, and V_∂ is the boundary vertex set.",
+          "The base-point set A ⊂ V_∂ contains exactly one vertex from each connected component of ∂; π_1(Z,A) denotes the fundamental groupoid of a space Z with object set A; Hom(π_1(Z,A),G) is the set of groupoid homomorphisms from π_1(Z,A) to the one-object groupoid determined by G.",
+          "The square of inclusions ∂ → X, ∂ → Y, X → M, and Y → M is mapped by π_1(-,A) to a pushout square of groupoids and by Hom(-,G) to a pullback square of sets, so Hom(π_1(M,A),G) = {(ϕ_X,ϕ_Y) : ϕ_X ∈ Hom(π_1(X,A),G), ϕ_Y ∈ Hom(π_1(Y,A),G), r_X(ϕ_X)=r_Y(ϕ_Y)}."
         ],
         "success_set": {
           "kind": "predicate",
-          "definition": "Σ_P^{(1)}={o_1∈O_P^{(1)} : all feasibility constraints for o_1 hold, g_i(z)=G(α_i x(z),β_i y(z)) for every i and z, n_i satisfies ∂_t n_i=g_i n_i+D∂_{zz}n_i with n_i(0,t)=n_i(L,t)=0, f_i=n_i/Σ_{j=1}^M n_j wherever Σ_{j=1}^M n_j>0, ̅g=Σ_{j=1}^M f_jg_j, ̅α=Σ_{j=1}^M α_jf_j, ̅β=Σ_{j=1}^M β_jf_j, ∂_t̅α=Σ_{j=1}^M α_j f_j(g_j-̅g)+D∂_{zz}̅α, and ∂_t̅β=Σ_{j=1}^M β_j f_j(g_j-̅g)+D∂_{zz}̅β}.",
+          "definition": "Σ_P = {o : o=(W,B_W,M,X,Y,∂,A,G,Π_X,Π_Y,r_X,r_Y,Im); M is a connected compact closed d-dimensional manifold with d∈Z and d≥2; the finite lattice has vertex set V, oriented edge set E, boundary vertex set V_∂, interior vertex sets V_X and V_Y, and edge Hilbert spaces span{|g⟩:g∈G} for a finite group G; M=X∪Y with X and Y complementary regular submanifolds, ∂=X∩Y, and no shared edges; A⊂V_∂ contains exactly one base point on each connected component of ∂; |Ψ⟩ satisfies Λ^α_ℓ|Ψ⟩=d_α|Ψ⟩ for every irreducible representation α of G and every closed loop ℓ with [ℓ]=[pt] in π_1(M); Π_X:Hom(π_1(M,A),G)→Hom(π_1(X,A),G), Π_Y:Hom(π_1(M,A),G)→Hom(π_1(Y,A),G), r_X:Hom(π_1(X,A),G)→Hom(π_1(∂,A),G), and r_Y:Hom(π_1(Y,A),G)→Hom(π_1(∂,A),G) are induced by inclusions; Im=image(r_X∘Π_X)=image(r_Y∘Π_Y)⊆Hom(π_1(∂,A),G); B_W is a decomposition of the vector space containing W such that W∈⊕_{ϕ∈Im}⊕_{j=1}^{|G|^{|V_∂|-|A|}}C^{|r_X^{-1}(ϕ)||G|^{|V_X|}×|r_Y^{-1}(ϕ)||G|^{|V_Y|}}, equivalently W∈(⊕_{ϕ∈Im}C^{|r_X^{-1}(ϕ)|×|r_Y^{-1}(ϕ)|})⊗(⊕_{j=1}^{|G|^{|V_∂|-|A|}}C^{|G|^{|V_X|}×|G|^{|V_Y|}}) }.",
           "threshold": {
             "applies": false,
             "value": null,
-            "comparator": null,
+            "comparator": "eq",
             "metric_symbol": null,
             "metric_definition": null,
             "source_span": null
@@ -34,98 +35,155 @@
         },
         "robustness_scope": {
           "applies": true,
-          "ambient_space": "Δ_P^{(1)}={E=(M,L,D,G,x,y,{(α_i,β_i)}_{i=1}^M,{n_{0,i}}_{i=1}^M): M∈N, M≥1, L>0, D>0, x,y:[0,L]→R_{≥0}, G:R_{≥0}^2→R, α_i≥0, β_i≥0, n_{0,i}:[0,L]→R_{≥0}, n_{0,i}(0)=n_{0,i}(L)=0, and at least one n_{0,i} is not identically zero}.",
+          "ambient_space": "All tuples (d,M,X,Y,∂,V,E,V_X,V_Y,V_∂,A,G,|Ψ⟩) satisfying: d ∈ Z, d ≥ 2; M is connected, compact, and closed; G is finite; the lattice has edge Hilbert spaces span{|g⟩ : g ∈ G}; M = X ∪ Y is a regular bipartition with common boundary ∂ and no shared edges; A contains one base point on each connected component of ∂; and |Ψ⟩ satisfies Λ^α_ℓ|Ψ⟩ = d_α|Ψ⟩ for every irreducible α of G and every contractible loop ℓ.",
           "type_tag": "environment_family",
           "metric_or_divergence": null,
           "radius_or_budget": null,
-          "indexing_set": "I_P^{(1)}={constant profiles x(z)=x_0,y(z)=y_0; finitely piecewise-constant profiles x,y on [0,L]; affine-linear profiles x,y on [0,L]; nonlinear profiles x,y on [0,L]; periodic profiles x(z)=k_1+A_1 sin(2πz/T_1), y(z)=k_2+A_2 sin(2πz/T_2) with T_1,T_2>0 and x(z),y(z)≥0 for all z∈[0,L]}.",
+          "indexing_set": "{(d,M,X,Y,∂,G,A) : d ∈ Z, d ≥ 2; M is connected, compact, and closed; X and Y are complementary regular submanifolds with ∂ = X ∩ Y; G is a finite group; A has one base point on each connected component of ∂}",
           "claimed_subfamily": {
-            "definition": "The claimed subfamily consists of E∈Δ_P^{(1)} with static x,y profiles from I_P^{(1)}, two drug susceptibility coordinates (α_i,β_i) per mutant, independent density equations ∂_t n_i=g_i n_i+D∂_{zz}n_i, boundary equations n_i(0,t)=n_i(L,t)=0, growth fields g_i(z)=G(α_i x(z),β_i y(z)), and the two mean-trait identities ∂_t̅α=Σ_i α_i f_i(g_i-̅g)+D∂_{zz}̅α and ∂_t̅β=Σ_i β_i f_i(g_i-̅g)+D∂_{zz}̅β.",
+            "definition": "The claim covers every finite group G, including Abelian and non-Abelian cases, every integer spatial dimension d ≥ 2, every connected compact closed manifold M in that dimension, every regular bipartition M = X ∪ Y with common boundary ∂, and every loop-symmetric state obeying Λ^α_ℓ|Ψ⟩ = d_α|Ψ⟩ for all irreducible α of G and all contractible loops ℓ.",
             "source_span": {
-              "section": "Abstract; Materials and methods",
-              "paragraph_or_line": "Abstract contribution sentences; equations (6)-(9)",
-              "verbatim": "we propose a reaction-diffusion system; governed by a Price equation with diffusion"
+              "section": "Abstract and Introduction",
+              "paragraph_or_line": "abstract; final two paragraphs before Section II",
+              "verbatim": "A general framework based on elementary algebraic topology and category theory is developed to determine the block structure of reduced density matrices for arbitrary bipartite manifolds on which the states are defined. ... Our approach applies to arbitrary space dimensions, general (sub)manifolds that can even be non-orientable, and all the finite-group-representation symmetries which are generally non-invertible."
             }
           },
           "hinted_superfamily": {
-            "definition": "The hinted but not established superfamily consists of models with more than two stressor fields; susceptibility vectors of dimension greater than two; an additional resistance-cost coordinate; space-dependent diffusion D_i(z); directed habitat-preference drift; temporal drug fields x(z,t),y(z,t); stochastic fluctuation terms; active mutation terms converting one mutant density into another; direct competition or facilitation terms in growth kinetics; nonlinear growth regulation not reducible to independent exponential growth; or transfer to gut microbiota, soil bacteria, cancer cell populations, epidemiological-scale resistance, toxicology, freshwater aquatic systems, or environmental biotechnology.",
+            "definition": "Δ_hinted = {generalized-symmetry entanglement problems in which the topological defect labels are not restricted to irreducible representations of a finite group G and the boundary-sector data are not restricted to Hom(π_1(-,A),G); elements may require higher homotopy data, higher-form gauge fields, or categorical symmetry labels not equivalent to Rep(G)}.",
             "source_span": {
-              "section": "Discussion, Limitations and caveats; Extensions and outlook",
-              "paragraph_or_line": "Limitations and extensions paragraphs",
-              "verbatim": "More than 2 stressors could be implemented; The model could include space-dependent diffusion"
+              "section": "VI. Summary and Outlook",
+              "paragraph_or_line": "second outlook paragraph",
+              "verbatim": "This includes at least two directions: one is general higher-form symmetries beyond loop symmetries, the other is general categorical symmetries beyond Rep(G) symmetries."
             }
           },
           "refinement_relation": "set_inclusion",
-          "criterion": "For every E∈Δ_P^{(1)} in the claimed subfamily, the robustness criterion is satisfied exactly when substituting that E into g_i(z)=G(α_i x(z),β_i y(z)), ∂_t n_i=g_i n_i+D∂_{zz}n_i, f_i=n_i/Σ_j n_j, ̅g=Σ_i f_i g_i, ̅α=Σ_i α_i f_i, and ̅β=Σ_i β_i f_i yields well-defined functions on z∈[0,L], t≥0 and the identities ∂_t̅α=Σ_i α_i f_i(g_i-̅g)+D∂_{zz}̅α and ∂_t̅β=Σ_i β_i f_i(g_i-̅g)+D∂_{zz}̅β hold for that substituted system.",
+          "criterion": "For every tuple (d,M,X,Y,∂,V,E,V_X,V_Y,V_∂,A,G,|Ψ⟩) with d∈Z, d≥2, M connected compact closed, G finite, M=X∪Y a regular bipartition with ∂=X∩Y and no shared edges, A⊂V_∂ containing one base point on each connected component of ∂, and |Ψ⟩ satisfying Λ^α_ℓ|Ψ⟩=d_α|Ψ⟩ for every irreducible α of G and every loop ℓ with [ℓ]=[pt] in π_1(M), construct Hom(π_1(M,A),G)=Hom(π_1(X,A),G)×_{Hom(π_1(∂,A),G)}Hom(π_1(Y,A),G); define Im=image(r_X∘Π_X)=image(r_Y∘Π_Y); compute r_X^{-1}(ϕ) and r_Y^{-1}(ϕ) for each ϕ∈Im; then W has zero entries outside the blocks indexed by ϕ∈Im and j∈{1,...,|G|^{|V_∂|-|A|}}, and may have arbitrary entries inside C^{|r_X^{-1}(ϕ)||G|^{|V_X|}×|r_Y^{-1}(ϕ)||G|^{|V_Y|}}.",
           "channel_populated_by": [
             "stated",
-            "operational"
+            "operational",
+            "implicit"
           ]
         }
       },
       {
-        "goal_id": "G2_lambda1_dominant_set_prediction",
-        "outcome_variable": "o_2=(E,{λ_1(i)}_{i=1}^M,R_λ,W_λ,W_∞,A_λ) ∈ O_P^{(2)}",
+        "goal_id": "G2_gauge_invariant_topological_gauge_theory_entanglement",
+        "outcome_variable": "o = (W_gi, B_gi, ρ_X, Γ, Ψ_{α_[ϕ]}, N), where W_gi is the gauge-invariant topological part of W, B_gi is its orbit/stabilizer/irrep block decomposition, ρ_X = W_gi W_gi† is the reduced density matrix up to normalization and geometric identity factors, Γ is the topological-entanglement-entropy correction, Ψ_{α_[ϕ]} is the small matrix in C^{x_{α_[ϕ]}×y_{α_[ϕ]}} for orbit [ϕ] and stabilizer irrep α_[ϕ], and N is the normalization Σ_{[ϕ]}|[ϕ]|Σ_{α_[ϕ]}d_{α_[ϕ]}Tr(Ψ_{α_[ϕ]}Ψ_{α_[ϕ]}†).",
         "goal_form": "target_proposition",
-        "target_object": "A correct λ_1-induced prediction of the long-time selected mutant set in a one-dimensional independent growth-diffusion system: for each mutant i, λ_1(i) is the largest real λ for which there exists a nonzero twice-differentiable function u_i on (0,L) satisfying D_i u_i''(z)+g_i(z)u_i(z)=λu_i(z) and u_i(0)=u_i(L)=0; R_λ orders mutants by nonincreasing λ_1(i); W_λ={i∈{1,...,M}: λ_1(i)=max_{1≤j≤M}λ_1(j)}; W_∞={i∈{1,...,M}: limsup_{t→∞}∫_0^L f_i(z,t)dz>0}; and A_λ is correct exactly when W_λ=W_∞.",
+        "target_object": "An exact gauge-invariant refinement of the entanglement block structure for finite-group topological gauge theories on a finite lattice over M=X∪Y. The finite group is G; M is a connected compact closed d-dimensional manifold with d∈Z and d≥2; each edge carries span{|g⟩:g∈G}; the state is both loop-symmetric, Λ^α_ℓ|Ψ⟩=d_α|Ψ⟩ for every irreducible α of G and every loop ℓ with [ℓ]=[pt] in π_1(M), and invariant under vertex gauge transformations by G. For g=(g_1,...,g_|A|)∈G^{|A|} and φ∈Hom(π_1(Z,A),G), the base-point gauge action is (g·φ)(f_{ij})=g_jφ(f_{ij})g_i^{-1} for every groupoid morphism f_{ij} from base point i to base point j. For each boundary label ϕ∈Im⊆Hom(π_1(∂,A),G), let [ϕ]={g·ϕ:g∈G^{|A|}}, let G_ϕ={g∈G^{|A|}:g·ϕ=ϕ}, and let D^X_ϕ and D^Y_ϕ be the permutation representations of G_ϕ on r_X^{-1}(ϕ) and r_Y^{-1}(ϕ). Decompose D^X_ϕ(g_ϕ)=⊕_{α_ϕ∈Rep(G_ϕ)}1_{x_{α_ϕ}}⊗D^{α_ϕ}(g_ϕ) and D^Y_ϕ(g_ϕ)=⊕_{α_ϕ∈Rep(G_ϕ)}1_{y_{α_ϕ}}⊗D^{α_ϕ}(g_ϕ), with x_{α_ϕ}=|G_ϕ|^{-1}Σ_{g_ϕ∈G_ϕ}χ^{α_ϕ}(g_ϕ)TrD^X_ϕ(g_ϕ) and y_{α_ϕ}=|G_ϕ|^{-1}Σ_{g_ϕ∈G_ϕ}χ^{α_ϕ}(g_ϕ)TrD^Y_ϕ(g_ϕ). The desired end-state is the gauge-invariant topological decomposition ⊕_{[ϕ]∈Im/G^{|A|}}1_{|[ϕ]|}⊗(⊕_{α_ϕ∈Rep(G_ϕ)}C^{x_{α_ϕ}×y_{α_ϕ}}⊗1_{d_{α_ϕ}}). For a rank-one minimally entangled block labelled by ([ϕ],α_[ϕ]), the topological entropy correction is Γ=|A|ln|G|−ln(|[ϕ]|d_{α_[ϕ]}). For a general state with small matrices Ψ_{α_[ϕ]} and singular values |ψ_{α_[ϕ],i}|^2 of Ψ_{α_[ϕ]}Ψ_{α_[ϕ]}†, N=Σ_{[ϕ]}|[ϕ]|Σ_{α_[ϕ]}d_{α_[ϕ]}Tr(Ψ_{α_[ϕ]}Ψ_{α_[ϕ]}†) and Γ=|A|ln|G|+Σ_{[ϕ]}|[ϕ]|Σ_{α_[ϕ]}d_{α_[ϕ]}Σ_i(|ψ_{α_[ϕ],i}|^2/N)ln(|ψ_{α_[ϕ],i}|^2/N).",
         "feasibility_constraints": [
-          "E=(M,L,{D_i}_{i=1}^M,G,x,y,{(α_i,β_i)}_{i=1}^M,{n_{0,i}}_{i=1}^M) has M∈N, M≥1, L>0, D_i>0 for every i, x,y:[0,L]→R_{≥0}, G:R_{≥0}^2→R, α_i≥0, β_i≥0, and g_i(z)=G(α_i x(z),β_i y(z)) for all i and z∈[0,L].",
-          "Each mutant density satisfies ∂_t n_i(z,t)=g_i(z)n_i(z,t)+D_i∂_{zz}n_i(z,t) on z∈(0,L), t>0, with n_i(0,t)=n_i(L,t)=0 and nonnegative initial condition n_i(z,0)=n_{0,i}(z); every mutant included in the ranking has ∫_0^L n_{0,i}(z)dz>0 so that absent mutants are not falsely predicted to appear.",
-          "For each i, λ_1(i) is defined by the boundary-value equation D_i u_i''+g_i u_i=λu_i with u_i(0)=u_i(L)=0; if g_i is constant with value r_i, the exact expression is λ_1(i)=r_i-π^2D_i/L^2; if g_i is spatially varying and bounded, λ_1(i) is the largest eigenvalue of this linear operator on [0,L] with the boundary equations u_i(0)=u_i(L)=0.",
-          "The first-order analytic surrogate ̃λ_1(i)=-π^2D_i/L^2+(2/L)∫_0^L g_i(z)sin^2(πz/L)dz is feasible only as the ε_i→0 approximation for ε_i=g_{max,i}L^2/D_i with g_{max,i}=sup_{z∈[0,L]}|g_i(z)|<∞, or as an empirically checked ranking surrogate in explicitly simulated finite mutant panels.",
-          "The prediction target is the selected mutant set rather than a full closed-form solution n_i(z,t): competitive exclusion corresponds to |W_∞|=1, coexistence corresponds to |W_∞|>1, and extinction of every mutant is outside the ranking target unless λ_1(i)<0 for every i and W_∞ is empty by the same positive-mass definition."
+          "M is a connected compact closed d-dimensional manifold with d∈Z and d≥2; the finite lattice discretising M has vertex set V, oriented edge set E, boundary vertex set V_∂, and edge Hilbert spaces span{|g⟩:g∈G} for a finite group G; M=X∪Y is a regular bipartition with ∂=X∩Y, no shared edges, and base-point set A⊂V_∂ containing exactly one point on each connected component of ∂; the state |Ψ⟩ satisfies Λ^α_ℓ|Ψ⟩=d_α|Ψ⟩ for every irreducible representation α of G and every loop ℓ with [ℓ]=[pt] in π_1(M).",
+          "Gauge invariance means the amplitude matrix W is invariant under vertex gauge transformations generated by functions from vertices to G; at base points this induces the explicit action (g·φ)(f_{ij}) = g_j φ(f_{ij}) g_i^{-1} on Hom(π_1(Z,A),G), where g=(g_1,...,g_|A|) ∈ G^{|A|} and f_{ij} is any morphism from base point i to base point j.",
+          "For each ϕ ∈ Im ⊆ Hom(π_1(∂,A),G), the stabilizer G_ϕ = {g ∈ G^{|A|} : g·ϕ=ϕ} is finite, so its irreducible representations α_ϕ, characters χ^{α_ϕ}, and dimensions d_{α_ϕ} are well-defined.",
+          "D^X_ϕ and D^Y_ϕ are the permutation representations induced by the action of G_ϕ on the finite sets r_X^{-1}(ϕ) and r_Y^{-1}(ϕ); the multiplicities x_{α_ϕ} and y_{α_ϕ} are non-negative integers determined by the finite character sums |G_ϕ|^{-1}Σ_{g_ϕ∈G_ϕ}χ^{α_ϕ}(g_ϕ)TrD^{X/Y}_ϕ(g_ϕ).",
+          "The reduced density matrix on X is computed as ρ_X = W_gi W_gi† after including the geometric factor 1_{|G|^{|V_∂|-|A|}}⊗1_{|G|^{|V_X|}×|G|^{|V_Y|}}, whose nonzero spectral contribution is a degeneracy factor fixed by |G|, |V_∂|, and |A|."
         ],
         "success_set": {
           "kind": "predicate",
-          "definition": "Σ_P^{(2)}={o_2∈O_P^{(2)} : all feasibility constraints for E hold, λ_1(i)=max{λ∈R: ∃u_i≠0 with D_i u_i''+g_i u_i=λu_i and u_i(0)=u_i(L)=0} for every i, W_λ={i:λ_1(i)=max_j λ_1(j)}, W_∞={i:limsup_{t→∞}∫_0^L f_i(z,t)dz>0}, and A_λ='correct' iff W_λ=W_∞}.",
+          "definition": "Σ_P = {o : M is a connected compact closed d-dimensional manifold with d∈Z and d≥2; G is finite; M=X∪Y is a regular bipartition with ∂=X∩Y; A⊂V_∂ contains one base point on each connected component of ∂; |Ψ⟩ is invariant under Λ^α_ℓ|Ψ⟩=d_α|Ψ⟩ for every irreducible α of G and every loop ℓ with [ℓ]=[pt] in π_1(M), and is invariant under vertex gauge transformations by G; W_gi has topological part ⊕_{[ϕ]∈Im/G^{|A|}}1_{|[ϕ]|}⊗(⊕_{α_ϕ∈Rep(G_ϕ)}C^{x_{α_ϕ}×y_{α_ϕ}}⊗1_{d_{α_ϕ}}); [ϕ]={g·ϕ:g∈G^{|A|}}; G_ϕ={g∈G^{|A|}:g·ϕ=ϕ}; x_{α_ϕ}=|G_ϕ|^{-1}Σ_{g_ϕ∈G_ϕ}χ^{α_ϕ}(g_ϕ)TrD^X_ϕ(g_ϕ); y_{α_ϕ}=|G_ϕ|^{-1}Σ_{g_ϕ∈G_ϕ}χ^{α_ϕ}(g_ϕ)TrD^Y_ϕ(g_ϕ); α_ϕ ranges over irreducible representations with x_{α_ϕ}>0 and y_{α_ϕ}>0; a rank-one choice in C^{x_{α_ϕ}×y_{α_ϕ}} gives ρ_X proportional to 1_{|[ϕ]|}⊗1_{d_{α_ϕ}}⊗1_{|G|^{|V_∂|-|A|}} and Γ=|A|ln|G|−ln(|[ϕ]|d_{α_ϕ}); a general choice Ψ_{α_[ϕ]}∈C^{x_{α_[ϕ]}×y_{α_[ϕ]}} has N=Σ_{[ϕ]}|[ϕ]|Σ_{α_[ϕ]}d_{α_[ϕ]}Tr(Ψ_{α_[ϕ]}Ψ_{α_[ϕ]}†) and Γ=|A|ln|G|+Σ_{[ϕ]}|[ϕ]|Σ_{α_[ϕ]}d_{α_[ϕ]}Σ_i(|ψ_{α_[ϕ],i}|^2/N)ln(|ψ_{α_[ϕ],i}|^2/N), where |ψ_{α_[ϕ],i}|^2 are the eigenvalues of Ψ_{α_[ϕ]}Ψ_{α_[ϕ]}† }.",
           "threshold": {
             "applies": false,
             "value": null,
-            "comparator": null,
+            "comparator": "eq",
             "metric_symbol": null,
             "metric_definition": null,
             "source_span": null
           }
         },
         "preference_ordering": {
-          "kind": "qualitative_partial",
-          "definition": "For feasible outcomes o_a,o_b∈O_P^{(2)}, o_a ⪰_P o_b iff CorrectEnv(o_b)⊆CorrectEnv(o_a), where CorrectEnv(o)={E∈Δ_P^{(2)}: W_λ^o(E)=W_∞(E)}, W_λ^o(E)={i:λ_{1,o}(i,E)=max_j λ_{1,o}(j,E)}, and W_∞(E)={i:limsup_{t→∞}∫_0^L f_i^E(z,t)dz>0}. If CorrectEnv(o_a)=CorrectEnv(o_b), then neither outcome is strictly preferred under this preorder.",
-          "objective_symbols": [
-            "λ_1(i)",
-            "R_λ",
-            "W_λ",
-            "W_∞",
-            "A_λ",
-            "CorrectEnv(o)"
-          ],
+          "kind": "none",
+          "definition": null,
+          "objective_symbols": [],
           "lex_order": null,
           "embedding_to_total_utility": null
         },
         "robustness_scope": {
           "applies": true,
-          "ambient_space": "Δ_P^{(2)}={E=(M,L,{D_i}_{i=1}^M,G,x,y,{(α_i,β_i)}_{i=1}^M,{n_{0,i}}_{i=1}^M): M∈N, M≥1, L>0, D_i>0 for every i, x,y:[0,L]→R_{≥0}, G:R_{≥0}^2→R, α_i≥0, β_i≥0, g_i(z)=G(α_i x(z),β_i y(z)), ∂_t n_i=g_i n_i+D_i∂_{zz}n_i, n_i(0,t)=n_i(L,t)=0, and ∫_0^L n_{0,i}(z)dz>0 for every ranked mutant i}.",
+          "ambient_space": "All tuples (d,M,X,Y,∂,V,E,V_X,V_Y,V_∂,A,G,|Ψ⟩) satisfying: d∈Z and d≥2; M is connected, compact, and closed; G is finite; the lattice has edge Hilbert spaces span{|g⟩:g∈G}; M=X∪Y is a regular bipartition with common boundary ∂ and no shared edges; A contains one base point on each connected component of ∂; |Ψ⟩ satisfies Λ^α_ℓ|Ψ⟩=d_α|Ψ⟩ for every irreducible α of G and every loop ℓ with [ℓ]=[pt] in π_1(M); and |Ψ⟩ is invariant under vertex gauge transformations by G, inducing (g·φ)(f_{ij})=g_jφ(f_{ij})g_i^{-1} on Hom(π_1(-,A),G).",
           "type_tag": "environment_family",
           "metric_or_divergence": null,
           "radius_or_budget": null,
-          "indexing_set": "I_P^{(2)}={constant growth fields g_i(z)=r_i; bounded spatially varying growth fields induced by constant, finitely piecewise-constant, affine-linear, nonlinear, or periodic drug profiles x,y; equal-diffusion cases D_i=D for all i; unequal-diffusion cases with mutant-specific constants D_i; finite mutant panels with susceptibility coordinates (α_i,β_i)}.",
+          "indexing_set": "{(d,M,X,Y,∂,G,A,|Ψ⟩) : d ∈ Z, d ≥ 2; M is connected, compact, and closed; X and Y form a regular bipartition with common boundary ∂; G is finite; A has one base point on each boundary component; |Ψ⟩ is loop-symmetric and invariant under vertex gauge transformations by G}",
           "claimed_subfamily": {
-            "definition": "The claimed subfamily consists of E∈Δ_P^{(2)} with independent exponential-growth subpopulations on [0,L], static drug fields x,y, boundary equations n_i(0,t)=n_i(L,t)=0, growth fields g_i(z)=G(α_i x(z),β_i y(z)), and selection outcome predicted by comparing λ_1(i), the largest eigenvalue of D_i u_i''+g_i u_i=λu_i with u_i(0)=u_i(L)=0. Constant-growth cases use λ_1(i)=r_i-π^2D_i/L^2. Spatially varying cases use the exact λ_1(i) when numerically computed and use ̃λ_1(i)=-π^2D_i/L^2+(2/L)∫_0^L g_i(z)sin^2(πz/L)dz as the explicitly defined first-order approximation when ε_i=g_{max,i}L^2/D_i approaches 0 or when simulation checks the same ranking.",
+            "definition": "The gauge-invariant claim covers finite-group topological gauge theories obtained by adding vertex-gauge invariance to the Rep(G) loop-symmetric setup for arbitrary integer spatial dimension d ≥ 2 and arbitrary regular bipartition M = X ∪ Y.",
             "source_span": {
-              "section": "Results, An average fitness measure to predict selection outcome; Box 2",
-              "paragraph_or_line": "Equations (10)-(15) and Box 2 opening",
-              "verbatim": "we propose the use of the principal eigenvalue"
+              "section": "Abstract; Section V",
+              "paragraph_or_line": "abstract; first paragraph of Section V",
+              "verbatim": "By further incorporating gauge invariance, we refine our framework to determine the entanglement structure for topological gauge theories in arbitrary dimensions. ... our setup becomes a topological gauge theory, which reduces to the Kitaev quantum double model in 2D."
             }
           },
           "hinted_superfamily": {
-            "definition": "The hinted but not established superfamily consists of environments with temporal drug fields x(z,t),y(z,t), stochastic subpopulation dynamics, active mutation terms between mutant types, direct competition or facilitation in growth kinetics, nonlinear density regulation, space-dependent diffusion D_i(z), directed flow, habitat-preference bias, nonzero-flux or periodic boundary equations replacing u_i(0)=u_i(L)=0, more than two stressor fields, and non-antibiotic ecological or physiological stressor systems.",
+            "definition": "Δ_hinted = {gauge-invariant generalized-symmetry entanglement problems in which the gauge constraints are higher-form or categorical constraints whose local-system data are not determined solely by Hom(π_1(-,A),G), including cases where boundary labels require higher homotopy groups or non-Rep(G) categorical data}.",
             "source_span": {
-              "section": "Discussion, Limitations and caveats; Extensions and outlook",
-              "paragraph_or_line": "Limitations and extensions paragraphs",
-              "verbatim": "active mutation processes; competition or facilitation between variants; space-dependent diffusion"
+              "section": "VI. Summary and Outlook",
+              "paragraph_or_line": "second outlook paragraph",
+              "verbatim": "We expect that, as the Seifert–van Kampen theorem concerns the fundamental group, its extension to higher homotopy groups would allow one to compute the entanglement structure for general higher-form gauge theories through the same algorithmic procedure developed here."
             }
           },
           "refinement_relation": "set_inclusion",
-          "criterion": "For every E∈Δ_P^{(2)} in the claimed subfamily, compute λ_1(i)=max{λ∈R: ∃u_i≠0 satisfying D_i u_i''+g_i u_i=λu_i and u_i(0)=u_i(L)=0}; set W_λ={i:λ_1(i)=max_j λ_1(j)}; solve or simulate ∂_t n_i=g_i n_i+D_i∂_{zz}n_i with n_i(0,t)=n_i(L,t)=0 and f_i=n_i/Σ_j n_j; set W_∞={i:limsup_{t→∞}∫_0^L f_i(z,t)dz>0}; the criterion is satisfied exactly when W_λ=W_∞. If ̃λ_1 is used instead of λ_1, the criterion is satisfied only when the ̃λ_1 ranking gives the same W_λ as exact λ_1 or the same W_∞ in the reported finite simulation.",
+          "criterion": "For every tuple (d,M,X,Y,∂,V,E,V_X,V_Y,V_∂,A,G,|Ψ⟩) with d∈Z, d≥2, M connected compact closed, G finite, M=X∪Y a regular bipartition with ∂=X∩Y and no shared edges, A⊂V_∂ containing one base point on each component of ∂, |Ψ⟩ satisfying Λ^α_ℓ|Ψ⟩=d_α|Ψ⟩ for every irreducible α and every loop ℓ with [ℓ]=[pt], and |Ψ⟩ invariant under vertex gauge transformations, compute Im⊆Hom(π_1(∂,A),G), quotient Im by the action (g·ϕ)(f_{ij})=g_jϕ(f_{ij})g_i^{-1}, compute each stabilizer G_ϕ={g∈G^{|A|}:g·ϕ=ϕ}, decompose the permutation representations D^X_ϕ and D^Y_ϕ into irreducible G_ϕ-representations, and retain exactly the invariant blocks C^{x_{α_ϕ}×y_{α_ϕ}}⊗1_{d_{α_ϕ}} with x_{α_ϕ}=|G_ϕ|^{-1}Σ_{g_ϕ∈G_ϕ}χ^{α_ϕ}(g_ϕ)TrD^X_ϕ(g_ϕ)>0 and y_{α_ϕ}=|G_ϕ|^{-1}Σ_{g_ϕ∈G_ϕ}χ^{α_ϕ}(g_ϕ)TrD^Y_ϕ(g_ϕ)>0. The entropy component succeeds when the spectrum of ρ_X=W_giW_gi† yields Γ=|A|ln|G|−ln(|[ϕ]|d_{α_ϕ}) for a rank-one block and Γ=|A|ln|G|+Σ_{[ϕ]}|[ϕ]|Σ_{α_[ϕ]}d_{α_[ϕ]}Σ_i(|ψ_{α_[ϕ],i}|^2/N)ln(|ψ_{α_[ϕ],i}|^2/N) for a general block decomposition with N=Σ_{[ϕ]}|[ϕ]|Σ_{α_[ϕ]}d_{α_[ϕ]}Tr(Ψ_{α_[ϕ]}Ψ_{α_[ϕ]}†).",
+          "channel_populated_by": [
+            "stated",
+            "operational",
+            "implicit"
+          ]
+        }
+      },
+      {
+        "goal_id": "G3_kitaev_quantum_double_li_haldane_correspondence",
+        "outcome_variable": "o = (x_{α_ϕ}, y_{α_ϕ}, S, ι, D(G)-labelled entanglement-spectrum multiplicities) for two-dimensional gauge-invariant Rep(G) loop-symmetric states, including orientable and non-orientable subsystem surfaces.",
+        "goal_form": "target_proposition",
+        "target_object": "An exact two-dimensional specialization proving that the full entanglement-spectrum block multiplicities of the finite-group Kitaev quantum double model coincide with the Hilbert-space dimensions generated by the anyon labels of the finite-group quantum double. For a boundary with n disjoint cycles, let ϕ=(c_1,...,c_n) ∈ G^n, let [c_j] be the conjugacy class of c_j, let C_{c_j}={h∈G:h c_j=c_j h}, let α_j be an irreducible representation of C_{c_j}, and let α_ϕ=(α_1,...,α_n). For an orientable subsystem X of genus γ_X with n boundary components, the target multiplicity is x_{α_ϕ}=Σ_{[g]}Σ_{β∈Rep(C_g)} S_{(g,β),(1,1)}^{2−2γ_X−n} Π_{j=1}^n S_{(g,β),(c_j,α_j)}. For a non-orientable subsystem X with k_X crosscaps and n boundary components, the target multiplicity is x_{α_ϕ}=Σ_{[g]}Σ_{β∈Rep(C_g)} ι_β^{k_X} S_{(g,β),(1,1)}^{2−k_X−n} Π_{j=1}^n S_{(g,β),(c_j,α_j)}. Here [g] ranges over conjugacy classes in G, C_g={h∈G:hg=gh}, β ranges over irreducible representations of C_g, d_β is the dimension of β, χ^β is its character, ι_β=|C_g|^{-1}Σ_{t∈C_g}χ^β(t^2), and S_{(g,β),(c,α)}=(|C_g||C_c|)^{-1}Σ_{h∈G, h^{-1}gh∈C_c} χ^β(hch^{-1})χ^α(h^{-1}gh). The end-state is exact equality between these multiplicities and the remaining internal degrees of freedom in the entanglement spectrum; this realizes the Li-Haldane proposition that the full entanglement spectrum carries the same sector-counting structure as the corresponding two-dimensional rational conformal field-theory boundary Hilbert space for the finite-group quantum double.",
+        "feasibility_constraints": [
+          "G is a finite group; M is a compact two-dimensional surface with a finite oriented-edge lattice whose edge Hilbert spaces are span{|g⟩:g∈G}; M=X∪Y with compact subsystem surfaces X and Y and common one-dimensional boundary ∂=X∩Y consisting of n disjoint cycles with n∈Z and n≥1; the state is invariant under contractible Rep(G) Wilson-loop operators Λ^α_ℓ and under vertex gauge transformations by G, so it is a finite-group flat lattice gauge state of the type that in two spatial dimensions realizes the Kitaev quantum double construction.",
+          "Boundary labels are ϕ=(c_1,...,c_n) ∈ G^n; for each c_j, the centralizer is C_{c_j}={h∈G:h c_j=c_j h}; the stabilizer of ϕ under simultaneous boundary conjugation is G_ϕ=C_{c_1}×···×C_{c_n}; irreducible representations of G_ϕ are tensor products α_ϕ=(α_1,...,α_n) with α_j∈Rep(C_{c_j}).",
+          "The matrix S is fixed internally by S_{(g,β),(c,α)}=(|C_g||C_c|)^{-1}Σ_{h∈G, h^{-1}gh∈C_c}χ^β(hch^{-1})χ^α(h^{-1}gh), where g,c∈G, β∈Rep(C_g), α∈Rep(C_c), χ^β and χ^α are the corresponding characters, and C_g and C_c are centralizers in G.",
+          "For an orientable X, γ_X is the non-negative integer such that X is a connected orientable surface with γ_X handles and n boundary circles; for a non-orientable X, k_X is the positive integer such that X is a connected non-orientable surface with k_X crosscaps and n boundary circles.",
+          "The Frobenius-Schur indicator used in the non-orientable formula is defined by ι_β=|C_g|^{-1}Σ_{t∈C_g}χ^β(t^2), with ι_β ∈ {-1,0,1}; no external classification theorem is required to evaluate the formula once G, g, β, c_j, and α_j are specified."
+        ],
+        "success_set": {
+          "kind": "predicate",
+          "definition": "Σ_P = {o : G is finite; M is a compact two-dimensional surface partitioned as M=X∪Y with ∂=X∩Y containing n≥1 disjoint boundary cycles; the state is invariant under contractible Rep(G) Wilson loops and vertex gauge transformations; for every boundary label ϕ=(c_1,...,c_n)∈G^n and every α_ϕ=(α_1,...,α_n) with α_j∈Rep(C_{c_j}), the entanglement-spectrum multiplicity for an orientable X of genus γ_X is x_{α_ϕ}=Σ_{[g]}Σ_{β∈Rep(C_g)}S_{(g,β),(1,1)}^{2−2γ_X−n}Π_{j=1}^nS_{(g,β),(c_j,α_j)}; the entanglement-spectrum multiplicity for a non-orientable X with k_X crosscaps is x_{α_ϕ}=Σ_{[g]}Σ_{β∈Rep(C_g)}ι_β^{k_X}S_{(g,β),(1,1)}^{2−k_X−n}Π_{j=1}^nS_{(g,β),(c_j,α_j)}; the multiplicity for an orientable Y of genus γ_Y is y_{α_ϕ}=Σ_{[g]}Σ_{β∈Rep(C_g)}S_{(g,β),(1,1)}^{2−2γ_Y−n}Π_{j=1}^nS_{(g,β),(c_j,α_j)}; the multiplicity for a non-orientable Y with k_Y crosscaps is y_{α_ϕ}=Σ_{[g]}Σ_{β∈Rep(C_g)}ι_β^{k_Y}S_{(g,β),(1,1)}^{2−k_Y−n}Π_{j=1}^nS_{(g,β),(c_j,α_j)}; S_{(g,β),(c,α)}=(|C_g||C_c|)^{-1}Σ_{h∈G,h^{-1}gh∈C_c}χ^β(hch^{-1})χ^α(h^{-1}gh); ι_β=|C_g|^{-1}Σ_{t∈C_g}χ^β(t^2); a block labelled by ([ϕ],α_ϕ) appears in the full entanglement spectrum exactly when x_{α_ϕ}>0 and y_{α_ϕ}>0; these same finite sums count the finite-group quantum-double boundary-label Hilbert-space sectors for the labels ([c_j],α_j) }.",
+          "threshold": {
+            "applies": false,
+            "value": null,
+            "comparator": "eq",
+            "metric_symbol": null,
+            "metric_definition": null,
+            "source_span": null
+          }
+        },
+        "preference_ordering": {
+          "kind": "none",
+          "definition": null,
+          "objective_symbols": [],
+          "lex_order": null,
+          "embedding_to_total_utility": null
+        },
+        "robustness_scope": {
+          "applies": true,
+          "ambient_space": "All tuples (G,M,X,Y,∂,n,γ_X,γ_Y,k_X,k_Y,|Ψ⟩) satisfying: G is finite; M is a compact two-dimensional surface with a finite G-edge lattice; M=X∪Y; ∂=X∩Y consists of n disjoint cycles with n∈Z and n≥1; each subsystem is either orientable with a non-negative genus parameter γ or non-orientable with a positive crosscap parameter k; and |Ψ⟩ is invariant under contractible Rep(G) Wilson-loop operators and vertex gauge transformations by G.",
+          "type_tag": "environment_family",
+          "metric_or_divergence": null,
+          "radius_or_budget": null,
+          "indexing_set": "{(G,M,X,Y,n,γ_X,γ_Y,k_X,k_Y) : G finite; M is a compact two-dimensional surface; M=X∪Y; ∂=X∩Y consists of n disjoint cycles; each subsystem is either orientable with a non-negative genus parameter γ or non-orientable with a positive crosscap parameter k; the finite-group Kitaev quantum double gauge-invariant constraints hold}",
+          "claimed_subfamily": {
+            "definition": "The claim covers the two-dimensional Kitaev quantum double model for arbitrary finite group G, arbitrary orientable subsystem surfaces with any non-negative genus γ and any positive number n of boundary cycles, and arbitrary non-orientable subsystem surfaces with any positive crosscap number k and any positive number n of boundary cycles, provided the bipartition is compatible with a finite lattice and the boundary labels ϕ=(c_1,...,c_n) are evaluated by the stated centralizer and S-matrix formulas.",
+            "source_span": {
+              "section": "Abstract; Section V.C",
+              "paragraph_or_line": "abstract; Li-Haldane correspondence subsection",
+              "verbatim": "In particular, in two dimensions, it is shown for the Kitaev quantum double model that not only the topological entanglement entropy can be reproduced, but also the Li-Haldane conjecture concerning the full entanglement spectrum holds exactly. ... We have thus verified the Li-Haldane correspondence."
+            }
+          },
+          "hinted_superfamily": {
+            "definition": "Δ_hinted = {two-dimensional topological orders whose full entanglement-spectrum sector counts are labelled by anyon data not equal to finite-group quantum-double labels ([c],α) with c∈G and α∈Rep(C_c), including theories requiring higher-categorical fusion and modular data rather than the finite sums S_{(g,β),(c,α)} and ι_β defined from a finite group G}.",
+            "source_span": {
+              "section": "VI. Summary and Outlook",
+              "paragraph_or_line": "second outlook paragraph",
+              "verbatim": "This is especially necessary for proving the Li-Haldane correspondence for general 2D topological order. Such an extension would necessarily involve higher-categorical formulations."
+            }
+          },
+          "refinement_relation": "set_inclusion",
+          "criterion": "For every tuple (G,M,X,Y,∂,n,γ_X,γ_Y,k_X,k_Y,|Ψ⟩) with G finite, M a compact two-dimensional surface, ∂=X∩Y consisting of n≥1 disjoint cycles, and |Ψ⟩ invariant under contractible Rep(G) Wilson loops and vertex gauge transformations, compute c_j∈G, C_{c_j}={h∈G:hc_j=c_jh}, α_j∈Rep(C_{c_j}), S_{(g,β),(c,α)}=(|C_g||C_c|)^{-1}Σ_{h∈G,h^{-1}gh∈C_c}χ^β(hch^{-1})χ^α(h^{-1}gh), and ι_β=|C_g|^{-1}Σ_{t∈C_g}χ^β(t^2). The full-spectrum correspondence succeeds exactly when x_{α_ϕ} and y_{α_ϕ} from the gauge-invariant entanglement block decomposition equal the explicit orientable formulas with powers 2−2γ_X−n and 2−2γ_Y−n or the explicit non-orientable formulas with powers 2−k_X−n and 2−k_Y−n, and when the block ([ϕ],α_ϕ) appears if and only if x_{α_ϕ}>0 and y_{α_ϕ}>0.",
           "channel_populated_by": [
             "stated",
             "operational",
@@ -136,85 +194,91 @@
     ],
     "inter_goal_relation": "instrumental",
     "methodological_claim": {
-      "applies": false,
-      "target_object": null,
-      "evidence_channels": null
+      "applies": true,
+      "target_object": "The derivation method converts the topological gluing data of a bipartition M=X∪Y with ∂=X∩Y into algebraic boundary-sector data by applying π_1(-,A) to obtain a pushout square of fundamental groupoids and then applying Hom(-,G) to obtain a pullback square of finite sets; after gauge invariance is imposed, the same pullback is promoted to a pullback of G^{|A|}-sets and the residual invariant blocks are computed by finite stabilizer-orbit decompositions and irreducible character sums. This is a derivational pipeline rather than an additional physical end-state: it specifies how the loop-symmetric block structure, the gauge-invariant orbit/stabilizer refinement, and the two-dimensional sector-counting formulas are obtained.",
+      "evidence_channels": {
+        "source_span": {
+          "section": "Introduction; Section III; Section V.A",
+          "paragraph_or_line": "final paragraph before Section II; derivation around equations (8)-(12), (40)-(44)",
+          "verbatim": "A key step is to make use of the Seifert-van Kampen theorem ... We first reinterpret the partition of M as a commutative diagram ... By employing the Seifert-van Kampen theorem ... the pushout (9) is turned into a pullback in the category of sets ... To incorporate gauge invariance, we promote this diagram to a pullback in the category of G-sets."
+        },
+        "formalisation": "Given inclusions ∂→X, ∂→Y, X→M, and Y→M with base points A⊂∂, compute π_1(M,A), π_1(X,A), π_1(Y,A), and π_1(∂,A). The groupoid square π_1(∂,A)→π_1(X,A), π_1(∂,A)→π_1(Y,A), π_1(X,A)→π_1(M,A), π_1(Y,A)→π_1(M,A) is used as a pushout. Applying Hom(-,G) gives Hom(π_1(M,A),G) = Hom(π_1(X,A),G) ×_{Hom(π_1(∂,A),G)} Hom(π_1(Y,A),G). With gauge invariance, equip each Hom set with the action (g·φ)(f_{ij})=g_jφ(f_{ij})g_i^{-1}; quotient by orbits, compute stabilizers G_ϕ, decompose the induced permutation representations by finite character sums, and read off the invariant entanglement blocks."
+      }
     },
     "evidence_channels": {
       "stated_goal": {
         "source_span": {
-          "section": "Abstract; Introduction",
-          "paragraph_or_line": "Abstract contribution sentences; final Introduction aim paragraph",
-          "verbatim": "describes the multi-drug evolution; predict the precise outcomes; build an integrative framework"
+          "section": "Abstract and Introduction",
+          "paragraph_or_line": "abstract; final paragraph before Section II",
+          "verbatim": "A rigorous analysis is presented for the entanglement spectrum of quantum many-body states possessing a higher-form group-representation symmetry generated by topological Wilson loops, which is generally non-invertible. A general framework based on elementary algebraic topology and category theory is developed to determine the block structure of reduced density matrices for arbitrary bipartite manifolds on which the states are defined. ... In this work, we develop a general and rigorous framework for analyzing entanglement structures of quantum many-body states that respect such generalized symmetries."
         },
-        "formalisation": "The stated goal is an instrumental conjunction: first obtain o_1, a feasible system with finite mutant densities n_i on [0,L], drug-rescaled growth g_i(z)=G(α_i x(z),β_i y(z)), equations ∂_t n_i=g_i n_i+D∂_{zz}n_i, frequencies f_i=n_i/Σ_j n_j, and mean-trait identities ∂_t̅α=Σ_i α_i f_i(g_i-̅g)+D∂_{zz}̅α and ∂_t̅β=Σ_i β_i f_i(g_i-̅g)+D∂_{zz}̅β; then obtain o_2, a λ_1-based prediction in which λ_1(i)=max{λ∈R: ∃u_i≠0 with D_i u_i''+g_i u_i=λu_i and u_i(0)=u_i(L)=0}, W_λ={i:λ_1(i)=max_j λ_1(j)}, W_∞={i:limsup_{t→∞}∫_0^L f_i(z,t)dz>0}, and success requires W_λ=W_∞."
+        "formalisation": "Stated-goal formalisation: (i) for every finite group G, every d∈Z with d≥2, every connected compact closed M, every regular bipartition M=X∪Y with ∂=X∩Y, every base-point set A⊂∂ containing one base point per boundary component, and every state satisfying Λ^α_ℓ|Ψ⟩=d_α|Ψ⟩ for all irreducible α and all loops ℓ with [ℓ]=[pt] in π_1(M), W lies in ⊕_{ϕ∈Im}⊕_{j=1}^{|G|^{|V_∂|-|A|}}C^{|r_X^{-1}(ϕ)||G|^{|V_X|}×|r_Y^{-1}(ϕ)||G|^{|V_Y|}}; (ii) for the same finite-group lattice data with additional vertex-gauge invariance, the topological part is ⊕_{[ϕ]}1_{|[ϕ]|}⊗(⊕_{α_ϕ}C^{x_{α_ϕ}×y_{α_ϕ}}⊗1_{d_{α_ϕ}}) with x_{α_ϕ}=|G_ϕ|^{-1}Σ_{g_ϕ∈G_ϕ}χ^{α_ϕ}(g_ϕ)TrD^X_ϕ(g_ϕ) and y_{α_ϕ}=|G_ϕ|^{-1}Σ_{g_ϕ∈G_ϕ}χ^{α_ϕ}(g_ϕ)TrD^Y_ϕ(g_ϕ); and (iii) in two dimensions for a finite-group flat lattice gauge state on a surface with n boundary cycles, these x and y multiplicities equal the orientable and non-orientable finite sums built from S_{(g,β),(c,α)}=(|C_g||C_c|)^{-1}Σ_{h∈G,h^{-1}gh∈C_c}χ^β(hch^{-1})χ^α(h^{-1}gh) and ι_β=|C_g|^{-1}Σ_{t∈C_g}χ^β(t^2)."
       },
       "operational_goal": {
         "source_span": {
-          "section": "Materials and methods; Results",
-          "paragraph_or_line": "Equations (6), (8), (9), spatial mean-trait equations, equations (10)-(15), Figures 1-6",
-          "verbatim": "∂n_i(z,t)/∂t = g_i n_i + D ∂²n_i/∂z²; λ1 values match"
+          "section": "II-III and V",
+          "paragraph_or_line": "equations (5), (11), (12), (43), (44), (46), (51), (53)",
+          "verbatim": "Our objective is to find the structure of W constrained by the group-representation loop symmetry (3). ... Subsequently, the matrix W is an element of the vector space decomposed into the block structure as follows: [Eq. (11)]. ... we finally conclude that the gauge invariant topological part reads [Eq. (44)]. ... We have thus verified the Li-Haldane correspondence."
         },
-        "formalisation": "The operational goal is realised by specifying ∂_t n_i=g_i n_i+D∂_{zz}n_i with n_i(0,t)=n_i(L,t)=0, setting g_i(z)=G(α_i x(z),β_i y(z)), deriving f_i=n_i/Σ_j n_j, ̅g=Σ_i f_i g_i, ̅α=Σ_i α_i f_i, ̅β=Σ_i β_i f_i, ∂_t̅α=Σ_i α_i f_i(g_i-̅g)+D∂_{zz}̅α, and ∂_t̅β=Σ_i β_i f_i(g_i-̅g)+D∂_{zz}̅β, defining λ_1(i) by D_i u_i''+g_i u_i=λu_i with u_i(0)=u_i(L)=0, using λ_1(i) or ̃λ_1(i)=-π²D_i/L²+(2/L)∫_0^L g_i(z)sin²(πz/L)dz to order mutants, and checking whether W_λ={i:λ_1(i)=max_j λ_1(j)} matches W_∞={i:limsup_{t→∞}∫_0^L f_i(z,t)dz>0}."
+        "formalisation": "Operational-goal formalisation: compute W and ρ_X blocks exactly. For loop symmetry alone, W∈⊕_{ϕ∈Im}⊕_{j=1}^{|G|^{|V_∂|-|A|}}C^{|r_X^{-1}(ϕ)||G|^{|V_X|}×|r_Y^{-1}(ϕ)||G|^{|V_Y|}} with Im=image(r_X∘Π_X)=image(r_Y∘Π_Y). With vertex-gauge invariance, quotient boundary labels by (g·ϕ)(f_{ij})=g_jϕ(f_{ij})g_i^{-1}, compute G_ϕ={g∈G^{|A|}:g·ϕ=ϕ}, compute x_{α_ϕ}=|G_ϕ|^{-1}Σχ^{α_ϕ}TrD^X_ϕ and y_{α_ϕ}=|G_ϕ|^{-1}Σχ^{α_ϕ}TrD^Y_ϕ, and obtain ⊕_{[ϕ]}1_{|[ϕ]|}⊗(⊕_{α_ϕ}C^{x_{α_ϕ}×y_{α_ϕ}}⊗1_{d_{α_ϕ}}). In d=2, evaluate x and y by the explicit S-matrix and Frobenius-Schur formulas for orientable and non-orientable subsystem surfaces."
       },
       "implicit_goal": {
         "inference_basis": [
-          "Harvested stated spans cluster into model construction plus selection prediction: the abstract names a reaction-diffusion system, a Price equation with diffusion, homogeneous and heterogeneous spatial drug profiles, and a principal-eigenvalue fitness metric; the Introduction states the aim as an integrative framework showing how drug gradients shape evolutionary outcomes.",
-          "Harvested operational artefacts for G1 are equations for n_i, f_i, drug-rescaled growth g_i(z)=G(α_i x(z),β_i y(z)), and the two spatial mean-trait equations for ̅α and ̅β.",
-          "Harvested operational artefacts for G2 are the eigenvalue boundary-value problem, the first-order expression for λ_1, the constant-growth special case λ_1=r-π²D/L², the piecewise/linear/nonlinear/periodic examples, the atlas simulations, and the validation figure comparing λ_1 rankings to simulated selection dynamics.",
-          "Application and optimisation statements are harvested but excluded from the canonical goal because they motivate future use rather than define an achieved optimisation objective; this supports consistency_relation=framing_divergence rather than aligned.",
-          "The robustness scopes are populated because stated and operational channels both vary the environment across homogeneous and heterogeneous drug profiles, while the hinted superfamily is restricted to limitations and future extensions that are not asserted as achieved results."
+          "The abstract, introduction, and summary repeatedly identify the end-state as entanglement block structure or full entanglement-spectrum structure, not as optimization, simulation, or numerical performance.",
+          "The central equations (11), (12), (44), (46), (49), (51), and (53) are closed-form structural propositions about W, ρ_X, topological entropy, and sector multiplicities.",
+          "Worked examples for torus, genus surfaces, Klein bottle, lens spaces, and higher-dimensional tori serve as instantiations of the same block-structure target rather than independent objectives.",
+          "The gauge-invariant and Li-Haldane results are downstream specializations of the general pullback/block framework, so the best multi-goal relation is instrumental rather than independent."
         ],
-        "fit_score": 0.909,
+        "fit_score": 0.90875,
         "fit_components": {
-          "TextAlign": 0.86,
+          "TextAlign": 1.0,
           "MethodAlign": 1.0,
-          "EvalAlign": 0.89,
-          "ClaimAlign": 0.91,
-          "Complexity": 0.25
+          "EvalAlign": 0.8,
+          "ClaimAlign": 1.0,
+          "Complexity": 0.625
         },
-        "formalisation": "The highest-fit implicit hypothesis is the instrumental pair (o_1,o_2): o_1 is the feasible spatial two-drug resistance system with ∂_t n_i=g_i n_i+D∂_{zz}n_i, g_i(z)=G(α_i x(z),β_i y(z)), f_i=n_i/Σ_j n_j, ̅α=Σ_i α_i f_i, ̅β=Σ_i β_i f_i, ̅g=Σ_i f_i g_i, ∂_t̅α=Σ_i α_i f_i(g_i-̅g)+D∂_{zz}̅α, and ∂_t̅β=Σ_i β_i f_i(g_i-̅g)+D∂_{zz}̅β; o_2 is the λ_1-based selected-set prediction with λ_1(i)=max{λ∈R: ∃u_i≠0 satisfying D_i u_i''+g_i u_i=λu_i and u_i(0)=u_i(L)=0}, W_λ={i:λ_1(i)=max_j λ_1(j)}, W_∞={i:limsup_{t→∞}∫_0^L f_i(z,t)dz>0}, and success criterion W_λ=W_∞."
+        "formalisation": "Implicit-goal formalisation: the best-fitting end-state is an instrumental three-stage target proposition: first, determine the direct-sum/tensor-product block structure of W for states satisfying finite-group Rep(G) Wilson-loop symmetry on contractible loops; second, impose vertex-gauge invariance to obtain the orbit/stabilizer/irrep block structure of W_gi and ρ_X together with Γ=|A|ln|G|−ln(|[ϕ]|d_{α_[ϕ]}) for rank-one blocks and the singular-value correction formula for general blocks; third, in two spatial dimensions, show that the gauge-invariant multiplicities x_{α_ϕ},y_{α_ϕ} equal the finite-group quantum-double sector-counting sums built from S_{(g,β),(c,α)} and ι_β."
       },
       "excluded_aims": [
         {
-          "verbatim": "Multi-drug combinations to treat bacterial populations are at the forefront of approaches for infection control and prevention of antibiotic resistance.",
+          "verbatim": "Entanglement has become one of the central organizing principles of modern quantum many-body physics and quantum field theory.",
           "source_span": {
-            "section": "Abstract",
-            "paragraph_or_line": "Opening sentence",
-            "verbatim": "Multi-drug combinations to treat bacterial populations are at the forefront of approaches"
+            "section": "I. Introduction",
+            "paragraph_or_line": "opening paragraph",
+            "verbatim": "Entanglement has become one of the central organizing principles of modern quantum many-body physics and quantum field theory."
           },
           "reason": "motivational"
         },
         {
-          "verbatim": "Such mathematical understanding opens new avenues for multi-drug therapeutic optimization.",
+          "verbatim": "These developments raise a fundamental question: How does a generalized symmetry constrain the structure of entanglement?",
           "source_span": {
-            "section": "Abstract",
-            "paragraph_or_line": "Final sentence",
-            "verbatim": "opens new avenues for multi-drug therapeutic optimization"
+            "section": "I. Introduction",
+            "paragraph_or_line": "motivation before Kogut-Susskind example",
+            "verbatim": "These developments raise a fundamental question: How does a generalized symmetry constrain the structure of entanglement?"
+          },
+          "reason": "topical"
+        },
+        {
+          "verbatim": "Our work paves the way towards the ambitious goal of extending the Wigner-Dyson's classical results on group symmetries to arbitrary generalized symmetries.",
+          "source_span": {
+            "section": "VI. Summary and Outlook",
+            "paragraph_or_line": "second paragraph",
+            "verbatim": "Our work paves the way towards the ambitious goal of extending the Wigner-Dyson's classical results on group symmetries to arbitrary generalized symmetries."
           },
           "reason": "application_gesture"
         },
         {
-          "verbatim": "Applications can be envisaged in other systems such as gut microbiota, soil bacteria and their spatio-temporal distribution under abiotic gradients, cancer cell populations and drug resistance selection dynamics along physiological gradients, antibiotic resistance evolution at the epidemiological scale, toxicology data, freshwater aquatic systems and environmental biotechnology.",
+          "verbatim": "Another important and complementary direction is the generalization to multipartite entanglement.",
           "source_span": {
-            "section": "Discussion, Extensions and outlook",
-            "paragraph_or_line": "Opening sentence",
-            "verbatim": "Applications can be envisaged in other systems"
-          },
-          "reason": "application_gesture"
-        },
-        {
-          "verbatim": "Analytical results on optimization remain challenging even for simple piecewise growth variation as recognized in earlier work.",
-          "source_span": {
-            "section": "Discussion, Open avenues for multi-drug optimization over space",
-            "paragraph_or_line": "Optimisation paragraph",
-            "verbatim": "Analytical results on optimization remain challenging"
+            "section": "VI. Summary and Outlook",
+            "paragraph_or_line": "third paragraph",
+            "verbatim": "Another important and complementary direction is the generalization to multipartite entanglement."
           },
           "reason": "out_of_scope_other"
         }
       ]
     },
-    "consistency_relation": "framing_divergence",
-    "consistency_relation_derivation": "The stated, operational, and implicit channels agree on the formal achieved goals: a one-dimensional reaction-diffusion model with drug-rescaled growth, spatial mean-trait equations, and a λ_1-induced prediction of the long-time selected mutant set. The relation is framing_divergence rather than aligned because the stated and discussion channels also mention infection control, therapeutic optimisation, and transfer to other biological systems, whereas the operational artefacts define model equations, eigenvalue ranking, asymptotic/numerical λ_1 evaluation, and qualitative selection predictions rather than a solved optimal-control objective or a validated transfer theorem for other systems."
+    "consistency_relation": "aligned",
+    "consistency_relation_derivation": "The stated channel asks for rigorous entanglement-spectrum and reduced-density-matrix block-structure analysis under finite-group representation loop symmetries, then under additional vertex-gauge invariance, and then for the two-dimensional finite-group quantum-double full-spectrum correspondence. The operational equations compute exactly those objects: the loop-symmetric W decomposition, the gauge-invariant orbit/stabilizer/irrep decomposition, the topological-entanglement-entropy formulas, and the two-dimensional S-matrix/Frobenius-Schur multiplicity formulas. Motivational statements about generalized symmetry, topological order, and future higher-categorical extensions are recorded as excluded aims or hinted superfamilies rather than as extra canonical goals."
   }
 }

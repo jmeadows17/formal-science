@@ -1,0 +1,228 @@
+{
+  "paper_title": "Weak compactons of nonlinearly dispersive KdV and KP equations (Anco, 2024, Studies in Applied Mathematics)",
+  "deeper_reasoning_1": "\\section*{Claim}\nThe profile weak forms are not additional assumptions; they are exactly the traveling-wave reductions of the PDE weak forms. For the one-dimensional equation, a compactly supported profile \\(U\\) with \\(g=c\\) satisfies\n\\[\nW_K(U):=\\int_{\\mathbb R}\\left((-gU+aU^m)\\phi' + bU^n\\phi'''\\right)d\\xi=0\n\\quad\\text{for all }\\phi\\in C_c^\\infty(\\mathbb R)\n\\]\nif and only if \\(u(t,x)=U(x-ct)\\) satisfies the weak \\(K(m,n)\\) identity. For the two-dimensional equation, a line profile with\n\\[\n\\xi=x+\\mu y-\\nu t,\n\\qquad g=\\nu-\\sigma\\mu^2\n\\]\nsatisfies\n\\[\nW_{KP}(U):=\\int_{\\mathbb R}\\left((-gU+aU^m)\\phi'' + bU^n\\phi''''\\right)d\\xi=0\n\\quad\\text{for all }\\phi\\in C_c^\\infty(\\mathbb R)\n\\]\nif and only if \\(u(t,x,y)=U(x+\\mu y-\\nu t)\\) satisfies the weak line-wave \\(KP(m,n)\\) identity after integrating out the passive coordinates.\n\n\\section*{Premises}\n\\begin{align}\n\\text{(P1)}\\quad &\\iint_{\\mathbb R^2}\\left(u\\psi_t+au^m\\psi_x+bu^n\\psi_{xxx}\\right)dtdx=0.\\\\\n\\text{(P2)}\\quad &\\iiint_{\\mathbb R^3}\\left(u\\psi_{tx}+\\sigma u\\psi_{yy}+au^m\\psi_{xx}+bu^n\\psi_{xxxx}\\right)dtdxdy=0.\\\\\n\\text{(P3)}\\quad &u(t,x)=U(\\xi),\\quad \\xi=x-ct,\\quad g=c.\\\\\n\\text{(P4)}\\quad &u(t,x,y)=U(\\xi),\\quad \\xi=x+\\mu y-\\nu t,\n\\quad g=\\nu-\\sigma\\mu^2.\\\\\n\\text{(P5)}\\quad &\\partial_t=\\partial_\\tau-c\\partial_\\xi,\n\\quad \\partial_x=\\partial_\\xi\\quad\\text{under (P3).}\\\\\n\\text{(P6)}\\quad &\\partial_t=\\partial_\\tau-\\nu\\partial_\\xi,\n\\quad \\partial_x=\\partial_\\xi,\n\\quad \\partial_y=\\partial_\\zeta+\\mu\\partial_\\xi\\quad\\text{under (P4).}\\\\\n\\text{(P7)}\\quad &\\psi\\text{ is smooth and compactly supported, so total }\\tau\\text{- and }\\zeta\\text{-derivatives integrate to zero.}\n\\end{align}\n\n\\section*{Derivation}\nFor \\(K(m,n)\\), use (P3)--(P5) in (P1):\n\\begin{align}\n0&=\\iint \\left(U(\\psi_\\tau-c\\psi_\\xi)+aU^m\\psi_\\xi+bU^n\\psi_{\\xi\\xi\\xi}\\right)d\\tau d\\xi\\\\\n&=\\iint \\left((-cU+aU^m)\\psi_\\xi+bU^n\\psi_{\\xi\\xi\\xi}\\right)d\\tau d\\xi\n\\qquad\\text{by (P7).}\n\\end{align}\nSince test functions of the separated form \\(\\psi(\\tau,\\xi)=\\eta(\\tau)\\phi(\\xi)\\), with \\(\\int\\eta d\\tau=1\\), are admissible after compact support localization, this is equivalent to\n\\begin{align}\n\\int_{\\mathbb R}\\left((-gU+aU^m)\\phi'+bU^n\\phi'''\\right)d\\xi=0.\n\\end{align}\nFor \\(KP(m,n)\\), use (P4)--(P6):\n\\begin{align}\n\\psi_{tx}&=\\psi_{\\tau\\xi}-\\nu\\psi_{\\xi\\xi},\\\\\n\\psi_{yy}&=\\psi_{\\zeta\\zeta}+2\\mu\\psi_{\\zeta\\xi}+\\mu^2\\psi_{\\xi\\xi},\\\\\n\\psi_{xx}&=\\psi_{\\xi\\xi},\n\\qquad \\psi_{xxxx}=\\psi_{\\xi\\xi\\xi\\xi}.\n\\end{align}\nThe terms \\(U\\psi_{\\tau\\xi}\\), \\(U\\psi_{\\zeta\\zeta}\\), and \\(U\\psi_{\\zeta\\xi}\\) integrate to zero by (P7), because \\(U\\) is independent of \\(\\tau\\) and \\(\\zeta\\). Hence\n\\begin{align}\n0&=\\iiint \\left((-(\\nu-\\sigma\\mu^2)U+aU^m)\\psi_{\\xi\\xi}+bU^n\\psi_{\\xi\\xi\\xi\\xi}\\right)d\\tau d\\xi d\\zeta\\\\\n&=\\iiint \\left((-gU+aU^m)\\psi_{\\xi\\xi}+bU^n\\psi_{\\xi\\xi\\xi\\xi}\\right)d\\tau d\\xi d\\zeta.\n\\end{align}\nAgain testing with separated compactly supported functions reduces this identity exactly to \\(W_{KP}(U)=0\\).\n\n\\section*{Final Result}\n\\[\n\\boxed{\\begin{gathered}\nW_K(U)\\Longleftrightarrow u(t,x)=U(x-ct)\\text{ is a weak traveling compacton profile},\\quad g=c,\\\\\nW_{KP}(U)\\Longleftrightarrow u(t,x,y)=U(x+\\mu y-\\nu t)\\text{ is a weak line compacton profile},\\quad g=\\nu-\\sigma\\mu^2.\n\\end{gathered}}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_2": "\\section*{Claim}\nLet\n\\[\nF(U):=-gU+aU^m+b(U^n)'',\n\\qquad\nA_1:=bU^n,\n\\quad A_2:=b(U^n)',\n\\quad A_3:=F(U),\n\\quad A_4:=F(U)'.\n\\]\nFor \\(U_c(\\xi)=U(\\xi)H(L-|\\xi|)\\), the weak cutoff test is the finite endpoint trace test\n\\[\nK(m,n):\\quad F'=0\\text{ on }(-L,L),\\quad A_1=A_2=A_3=0\\text{ at }\\pm L,\n\\]\nand\n\\[\nKP(m,n):\\quad F''=0\\text{ on }(-L,L),\\quad A_1=A_2=A_3=A_4=0\\text{ at }\\pm L.\n\\]\nIf \\(U(\\xi)\\sim U_0(L-|\\xi|)^p\\), \\(U_0\\ne0\\), then the \\(K(m,n)\\) endpoint condition is exactly \\(p>2/n\\). The \\(KP(m,n)\\) endpoint condition is \\(p>2/n\\) plus exactly one of the six leading-power alternatives displayed in the final result.\n\n\\section*{Premises}\n\\begin{align}\n\\text{(P1)}\\quad &s:=L-|\\xi|,\\qquad U\\sim U_0s^p,\n\\qquad U_0\\ne0,\n\\qquad m,n>0,\n\\qquad a,b\\ne0.\\\\\n\\text{(P2)}\\quad &U_c=UH(L-|\\xi|),\\qquad H^q=H\\quad(q>0).\\\\\n\\text{(P3)}\\quad &\\int fH\\phi^{(r)}d\\xi\n=(-1)^r\\int f^{(r)}H\\phi d\\xi+\\text{endpoint traces involving }\\phi,\\ldots,\\phi^{(r-1)}.\\\\\n\\text{(P4)}\\quad &\\phi(\\pm L),\\phi'(\\pm L),\\phi''(\\pm L),\\phi'''(\\pm L)\n\\text{ are independently prescribable by }C_c^\\infty\\text{ tests.}\\\\\n\\text{(P5)}\\quad &s^q\\to0\\text{ as }s\\to0^+\\Longleftrightarrow q>0.\\\\\n\\text{(P6)}\\quad &A_4\\sim -gpU_0s^{p-1}+apmU_0^m s^{pm-1}+bpn(pn-1)(pn-2)U_0^n s^{pn-3}.\n\\end{align}\n\n\\section*{Derivation}\nFor \\(K(m,n)\\), integration by parts gives\n\\begin{align}\n\\int\\left((-gU_c+aU_c^m)\\phi'+bU_c^n\\phi'''\\right)d\\xi\n&=-\\int F'(U)H\\phi d\\xi\n-\\left(\\phi''A_1-\\phi'A_2+\\phi A_3\\right)\\Big|_{\\xi=\\pm L}.\n\\end{align}\nThus the identity holds for all \\(\\phi\\) exactly when \\(F'=0\\) inside the support and \\(A_1,A_2,A_3\\) vanish at both endpoints. For \\(KP(m,n)\\), the same calculation one order higher gives\n\\begin{align}\n\\int\\left((-gU_c+aU_c^m)\\phi''+bU_c^n\\phi''''\\right)d\\xi\n&=\\int F''(U)H\\phi d\\xi\n-\\left(\\phi'''A_1-\\phi''A_2+\\phi'A_3+\\phi A_4\\right)\\Big|_{\\xi=\\pm L}.\n\\end{align}\nHence \\(KP(m,n)\\) requires exactly the additional trace \\(A_4(\\pm L)=0\\).\n\nFor the \\(K(m,n)\\) exponent criterion,\n\\begin{align}\nA_1&\\sim bU_0^n s^{pn},\\\\\nA_2&\\sim bpnU_0^n s^{pn-1},\\\\\nA_3&\\sim -gU_0s^p+aU_0^m s^{pm}+bpn(pn-1)U_0^n s^{pn-2}.\n\\end{align}\nThe first two traces require \\(pn>0\\) and \\(pn>1\\). Under these, the only remaining obstruction in \\(A_3\\) is \\(s^{pn-2}\\), so all three vanish exactly when \\(pn>2\\), namely \\(p>2/n\\).\n\nFor \\(KP(m,n)\\), assume the three \\(K\\)-traces already vanish, so \\(pn>2\\). Then \\(A_4\\to0\\) is decided by the three powers in (P6). Either all active leading powers decay separately, or two equal nonpositive leading powers cancel. Separate decay gives the three generic alternatives according to whether \\(g=0\\), \\(g\\ne0,m<1\\), or \\(g\\ne0,m>1\\). Matching \\(p-1=pn-3\\) gives the \\(g\\)-to-dispersion cancellation; matching \\(pm-1=pn-3\\) gives the nonlinearity-to-dispersion cancellation. Solving the corresponding coefficient equations gives the two displayed amplitudes below. These are exhaustive because, when \\(m\\ne1\\), no other pair of distinct powers can become the unique nondecaying leading order without either separate decay or one of these two equal-power cancellations.\n\n\\section*{Final Result}\n\\[\n\\boxed{K(m,n):\\quad U_c\\text{ is weak}\\Longleftrightarrow F'=0\\text{ inside and }p>\\frac{2}{n}.}\n\\]\nFor \\(KP(m,n)\\), with \\(pn>2\\), \\(A_4(\\pm L)=0\\) holds exactly in the following six cases:\n\\[\n\\boxed{\\begin{gathered}\n p>\\max\\left(\\frac1m,\\frac3n\\right),\\quad g=0,\\\\\n p>\\max\\left(\\frac1m,\\frac3n\\right),\\quad m<1,\n \\quad g\\ne0,\\\\\n p>\\max\\left(1,\\frac3n\\right),\\quad m>1,\n \\quad g\\ne0,\\\\\n 1\\ge p=\\frac{2}{n-1},\\quad 2m+1>n\\ge3,\n \\quad g\\ne0,\n \\quad U_0=\\left(\\frac{g}{2b}\\frac{(n-1)^2}{n(n+1)}\\right)^{\\frac{n-1}{(n-2)(n+1)}},\\\\\n p=\\frac{2}{n-m},\\quad n\\ge3m,\n \\quad g=0,\n \\quad U_0=\\left(-\\frac{a}{2b}\\frac{(n-m)^2}{n(n+m)}\\right)^{\\frac{1}{n-m}},\\\\\n p=\\frac{2}{n-m},\\quad m+2>n\\ge3m,\n \\quad g\\ne0,\n \\quad U_0=\\left(-\\frac{a}{2b}\\frac{(n-m)^2}{n(n+m)}\\right)^{\\frac{1}{n-m}}.\n\\end{gathered}}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_3": "\\section*{Claim}\nThe explicit compacton families in the paper can be checked by one catalogue certificate rather than by unrelated substitutions. Let \\(T(\\xi;\\Theta)\\) be any one of the goal-listed templates\n\\[\n\\begin{gathered}\n\\alpha(1-\\beta\\xi^2)^p,\n\\quad \\alpha\\cos(\\beta\\xi)^p,\n\\quad \\alpha\\sin(\\beta\\xi)^p,\n\\quad \\alpha\\operatorname{cn}(\\beta\\xi,k)^p,\n\\quad \\alpha\\operatorname{sn}(\\beta\\xi,k)^p,\\\\\n\\alpha\\operatorname{cn}(\\beta(\\xi+L/2),k)^p,\n\\quad \\alpha\\operatorname{sn}(\\beta(\\xi+L),k)^p,\n\\quad\n\\alpha\\left(\\frac{\\operatorname{cn}(\\beta\\xi,k)+\\kappa}{\\operatorname{cn}(\\beta\\xi,k)+\\gamma}\\right)^q.\n\\end{gathered}\n\\]\nA parameter set \\(\\Theta\\) yields an explicit weak compacton precisely when the interior residual vanishes and the endpoint decision theorem accepts the endpoint exponent. This gives a unified proof strategy for the algebraic, trigonometric, Jacobi-cn, Jacobi-sn, shifted Jacobi, rational Jacobi-cn, antisymmetric, and numerical families required by the goals.\n\n\\section*{Premises}\n\\begin{align}\n\\text{(P1)}\\quad &R_T(\\xi;\\Theta):=\\left(-gT+aT^m+b(T^n)''\\right)'.\\\\\n\\text{(P2)}\\quad &R_T\\equiv0\\text{ on }(-L,L)\n\\Longleftrightarrow T\\text{ solves the }K(m,n)\\text{ traveling-profile ODE.}\\\\\n\\text{(P3)}\\quad &\\text{If }T\\sim U_0s^p\\text{ at }\\pm L,\n\\text{ then }K\\text{ weak admissibility is }p>2/n.\\\\\n\\text{(P4)}\\quad &\\text{If }T\\sim U_0s^p\\text{ at }\\pm L,\n\\text{ then }KP\\text{ weak admissibility is }p>2/n\\text{ plus the }A_4\\text{ decision rule.}\\\\\n\\text{(P5)}\\quad &\\text{Strong compactons require the stricter endpoint thresholds }p>3\\text{ for }K,\n\\quad p>4\\text{ for }KP.\\\\\n\\text{(P6)}\\quad &\\text{For antisymmetric sine or Jacobi profiles, the odd integer or odd rational power condition preserves a real signed profile across zeros.}\n\\end{align}\n\n\\section*{Derivation}\nFirst, fix a template \\(T(\\xi;\\Theta)\\). Substitution into the interior equation produces \\(R_T\\). Expanding \\(R_T\\) in a basis of linearly independent \\(\\xi\\)-dependent expressions gives\n\\[\nR_T(\\xi;\\Theta)=\\sum_{j=1}^N q_j(\\Theta)E_j(\\xi),\n\\qquad E_1,\\ldots,E_N\\text{ linearly independent.}\n\\]\nTherefore\n\\[\nR_T\\equiv0\n\\Longleftrightarrow\nq_1(\\Theta)=\\cdots=q_N(\\Theta)=0.\n\\]\nThis is the algebraic feasibility system for every explicit template. It prevents a low-value catalogue entry: a displayed formula is not accepted because it resembles a compacton, but only because all residual coefficients vanish.\n\nSecond, let the endpoint order of \\(T\\) be \\(p_T\\), so \\(T\\sim U_0s^{p_T}\\). By the endpoint theorem,\n\\[\nq_1=\\cdots=q_N=0\\quad\\text{and}\\quad p_T>\\frac2n\n\\]\nis necessary and sufficient for a weak \\(K(m,n)\\) compacton. For \\(KP(m,n)\\), the same interior profile transfers only after the fourth trace test accepts:\n\\[\nq_1=\\cdots=q_N=0,\n\\qquad p_T>\\frac2n,\n\\qquad A_4(\\pm L)=0.\n\\]\nThus the catalogue has a common three-part certificate: residual annihilation, endpoint exponent admissibility, and, for \\(KP\\), the additional \\(A_4\\) trace.\n\nThird, weak-only entries are identified by comparing endpoint thresholds. For \\(K(m,n)\\), any accepted template with\n\\[\n\\frac2n<p_T\\le3\n\\]\nis weak but not strong. For \\(KP(m,n)\\), any accepted template with\n\\[\np_T\\le4\n\\]\nis weak but not strong. Hence the catalogue does more than list solutions: it separates weak compactons from classical compactons by a checkable exponent gap.\n\nFinally, the numerical family uses the same certificate. With \\(V=U^n\\), a numerical profile solves the transformed oscillator and then defines \\(U=V^{1/n}\\). If\n\\[\nV(\\pm L)=V'(\\pm L)=V''(\\pm L)=0,\n\\]\nthen \\(A_1,A_2,A_3\\) vanish for the \\(K\\) weak trace test. If the additional expression \\(A_4(\\pm L)\\) vanishes, the same numerical cutoff profile passes the \\(KP\\) weak trace test.\n\n\\section*{Final Result}\n\\[\n\\boxed{\\begin{gathered}\n\\text{Explicit catalogue entry accepted}\n\\Longleftrightarrow\nR_T\\equiv0\\text{ and the relevant endpoint trace test accepts},\\\\\n\\text{Weak-only entry}\n\\Longleftrightarrow\n\\text{the weak endpoint test accepts but }p_T>3\\text{ for }K\\text{ or }p_T>4\\text{ for }KP\\text{ fails},\\\\\n\\text{Numerical entry accepted}\n\\Longleftrightarrow\nV\\text{ solves the transformed oscillator and its induced }U=V^{1/n}\\text{ satisfies the same traces.}\n\\end{gathered}}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_4": "\\section*{Claim}\nThe profile\n\\[\nU(\\xi)=\\sqrt{\\frac{3g}{2a}}\\cos\\left(\\frac13\\sqrt{\\frac{a}{b}}\\xi\\right)\n\\]\non its positive half-period is a concrete high-value witness: for \\(m=n=3\\), \\(a/b>0\\), \\(g/a>0\\), and \\(g\\ne0\\), the cutoff \\(U_c=UH(L-|\\xi|)\\) is weak but not strong for \\(K(3,3)\\), and it becomes a weak but not strong \\(KP(3,3)\\) line compacton under \\(\\nu=g+\\sigma\\mu^2\\).\n\n\\section*{Premises}\n\\begin{align}\n\\text{(P1)}\\quad &\\lambda:=\\frac13\\sqrt{\\frac{a}{b}},\n\\qquad K_0:=\\sqrt{\\frac{3g}{2a}},\n\\qquad L:=\\frac{\\pi}{2\\lambda},\n\\qquad U:=K_0\\cos(\\lambda\\xi).\\\\\n\\text{(P2)}\\quad &F(U):=-gU+aU^3+b(U^3)''.\\\\\n\\text{(P3)}\\quad &\\cos(\\lambda\\xi)\\sim \\lambda(L-|\\xi|)\\quad\\text{as }\\xi\\to\\pm L,\n\\text{ so }p=1.\\\\\n\\text{(P4)}\\quad &K(3,3)\\text{ weak endpoint threshold is }p>2/3,\n\\quad K(3,3)\\text{ strong threshold is }p>3.\\\\\n\\text{(P5)}\\quad &KP(3,3)\\text{ generic }g\\ne0,m>1\\text{ endpoint threshold is }p>\\max(1,3/n)=1,\n\\text{ unless a cancellation case applies.}\n\\end{align}\n\n\\section*{Derivation}\nLet \\(C=\\cos(\\lambda\\xi)\\). Since\n\\[\n(C^3)''=6\\lambda^2 C-9\\lambda^2 C^3,\n\\]\nwe have\n\\begin{align}\nF(U)&=-gK_0C+aK_0^3C^3+bK_0^3(6\\lambda^2C-9\\lambda^2C^3)\\\\\n&=K_0\\left(-g+6bK_0^2\\lambda^2\\right)C\n+K_0^3\\left(a-9b\\lambda^2\\right)C^3.\n\\end{align}\nBy the definitions of \\(K_0\\) and \\(\\lambda\\),\n\\[\n\\begin{gathered}\n6bK_0^2\\lambda^2=g,\\\\\na-9b\\lambda^2=0.\n\\end{gathered}\n\\]\nTherefore \\(F(U)=0\\), so \\(F'(U)=0\\) and \\(F''(U)=0\\) on \\((-L,L)\\).\n\nAt the endpoints, (P3) gives \\(p=1\\). Since \\(1>2/3\\), the three \\(K\\)-traces \\(A_1,A_2,A_3\\) vanish and \\(U_c\\) is a weak \\(K(3,3)\\) compacton. Since \\(1\\le3\\), it is not strong.\n\nFor \\(KP(3,3)\\), the generic decay threshold is not enough because it would require \\(p>1\\). However the cancellation case\n\\[\np=\\frac{2}{n-1}=1,\n\\qquad 2m+1=7>3=n,\n\\qquad n=3\n\\]\napplies. Its amplitude condition is\n\\[\nU_0=\\left(\\frac{g}{2b}\\frac{(n-1)^2}{n(n+1)}\\right)^{\\frac{n-1}{(n-2)(n+1)}}\n=\\left(\\frac{g}{6b}\\right)^{1/2}.\n\\]\nThe endpoint amplitude of \\(U\\) is\n\\[\nU_0=K_0\\lambda\n=\\sqrt{\\frac{3g}{2a}}\\frac13\\sqrt{\\frac{a}{b}}\n=\\sqrt{\\frac{g}{6b}},\n\\]\nso \\(A_4(\\pm L)=0\\). Thus the same cutoff profile is weak for \\(KP(3,3)\\). Since \\(p=1\\le4\\), it is not strong as a \\(KP\\) compacton.\n\nFinally, for any \\(\\mu\\in\\mathbb R\\) and \\(\\sigma\\in\\{-1,1\\}\\), set\n\\[\n\\nu:=g+\\sigma\\mu^2.\n\\]\nThen \\(\\nu-\\sigma\\mu^2=g\\), so the transferred line wave uses the same profile parameter.\n\n\\section*{Final Result}\n\\[\n\\boxed{\\begin{gathered}\nU_c(\\xi)=\\sqrt{\\frac{3g}{2a}}\\cos\\left(\\frac13\\sqrt{\\frac{a}{b}}\\xi\\right)H(L-|\\xi|)\n\\text{ is weak-only for }K(3,3),\\\\\n\\nu=g+\\sigma\\mu^2\n\\Longrightarrow\nu(t,x,y)=U_c(x+\\mu y-\\nu t)\n\\text{ is weak-only for }KP(3,3).\n\\end{gathered}}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_5": "\\section*{Claim}\nThe transfer from one-dimensional compactons to two-dimensional line compactons is an interior embedding, not an automatic weak-boundary theorem. If\n\\[\nF(U):=-gU+aU^m+b(U^n)'',\n\\qquad F'(U)=0\\quad\\text{on }(-L,L),\n\\]\nthen every \\(\\mu\\in\\mathbb R\\) and \\(\\sigma\\in\\{-1,1\\}\\) gives a \\(KP(m,n)\\) interior line profile after choosing\n\\[\n\\nu:=g+\\sigma\\mu^2.\n\\]\nFor cutoff profiles, transfer to a weak \\(KP(m,n)\\) line compacton holds exactly when the three \\(K\\)-traces and the additional fourth trace \\(A_4=F'\\) all vanish at \\(\\pm L\\).\n\n\\section*{Premises}\n\\begin{align}\n\\text{(P1)}\\quad &F'(U)=0\\quad\\text{on }(-L,L).\\\\\n\\text{(P2)}\\quad &\\xi=x+\\mu y-\\nu t,\n\\qquad g_{KP}:=\\nu-\\sigma\\mu^2.\\\\\n\\text{(P3)}\\quad &\\nu:=g+\\sigma\\mu^2.\\\\\n\\text{(P4)}\\quad &\\text{The }KP(m,n)\\text{ line-profile equation is }F_{KP}''(U)=0,\n\\quad F_{KP}(U):=-g_{KP}U+aU^m+b(U^n)''.\\\\\n\\text{(P5)}\\quad &A_1=bU^n,\n\\quad A_2=b(U^n)',\n\\quad A_3=F(U),\n\\quad A_4=F'(U).\\\\\n\\text{(P6)}\\quad &\\text{The }KP\\text{ weak cutoff trace test is }A_1=A_2=A_3=A_4=0\\text{ at }\\pm L.\n\\end{align}\n\n\\section*{Derivation}\nFrom (P2)--(P3),\n\\begin{align}\ng_{KP}&=\\nu-\\sigma\\mu^2\\\\\n&=(g+\\sigma\\mu^2)-\\sigma\\mu^2\\\\\n&=g.\n\\end{align}\nThus \\(F_{KP}=F\\). Since \\(F'=0\\) on \\((-L,L)\\), differentiating once gives\n\\begin{align}\nF''=0\\quad\\text{on }(-L,L),\n\\end{align}\nwhich is exactly the interior \\(KP(m,n)\\) line-profile equation.\n\nThis does not by itself prove weak cutoff transfer. The weak \\(K(m,n)\\) trace test only checks\n\\[\nA_1(\\pm L)=A_2(\\pm L)=A_3(\\pm L)=0.\n\\]\nThe weak \\(KP(m,n)\\) trace test checks one additional endpoint coefficient multiplying the independent value \\(\\phi(\\pm L)\\) after four integrations by parts:\n\\[\nA_4(\\pm L)=F'(\\pm L)=0.\n\\]\nTherefore the interior implication \\(F'=0\\Rightarrow F''=0\\) must be coupled with the extra endpoint trace to yield a true weak line compacton.\n\nIn speed-angle variables, if\n\\[\nc=\\frac{\\nu}{\\sqrt{1+\\mu^2}},\n\\qquad \\theta=\\arctan(\\mu),\n\\]\nthen\n\\begin{align}\ng&=\\nu-\\sigma\\mu^2\\\\\n&=c\\sqrt{1+\\mu^2}-\\sigma\\mu^2\\\\\n&=c|\\sec\\theta|-\\sigma\\tan^2\\theta.\n\\end{align}\nThis is the same parameter match written in the geometric variables of the line wave.\n\n\\section*{Final Result}\n\\[\n\\boxed{\\begin{gathered}\nF'=0\\Longrightarrow F''=0\\quad\\text{after}\\quad \\nu=g+\\sigma\\mu^2,\\\\\nU_c\\text{ transfers from weak }K\\text{ to weak }KP\n\\Longleftrightarrow\nA_1=A_2=A_3=A_4=0\\text{ at }\\pm L,\\\\\ng=\\nu-\\sigma\\mu^2=c|\\sec\\theta|-\\sigma\\tan^2\\theta.\n\\end{gathered}}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_6": "\\section*{Claim}\nThe transformed variable \\(V=U^n\\) gives the hidden profile variational principle and the numerical compacton first integral in the same calculation. With\n\\[\nA:=\\frac{2na}{(m+n)b},\n\\qquad\nB:=\\frac{2ng}{(n+1)b},\n\\]\nthe goal-named action\n\\[\nS[V]:=\\int_{\\mathbb R}\\left(-V'^2-A V^{1+m/n}+B V^{1+1/n}+CV\\right)d\\xi\n\\]\nis the sign-normalised representative of the same stationary principle as\n\\[\n\\int_{\\mathbb R}\\left(V'^2+A V^{1+m/n}-B V^{1+1/n}\\right)d\\xi-C\\int_{\\mathbb R}Vd\\xi,\n\\]\nbecause multiplication of the Euler equation by a nonzero constant and renaming the arbitrary multiplier \\(C\\) leaves the stationary profiles unchanged. Its Euler equation is\n\\[\nV''+\\frac{a}{b}V^{m/n}-\\frac{g}{b}V^{1/n}=\\frac{C}{2},\n\\]\nand its first integral is\n\\[\nV'^2=E+CV+B V^{1+1/n}-A V^{1+m/n}.\n\\]\n\n\\section*{Premises}\n\\begin{align}\n\\text{(P1)}\\quad &U=V^{1/n},\n\\qquad m,n>0,\n\\qquad b\\ne0.\\\\\n\\text{(P2)}\\quad &A=\\frac{2na}{(m+n)b},\n\\qquad B=\\frac{2ng}{(n+1)b}.\\\\\n\\text{(P3)}\\quad &S[V]=\\int \\left(-V'^2-A V^{1+m/n}+B V^{1+1/n}+CV\\right)d\\xi.\\\\\n\\text{(P4)}\\quad &\\text{Variations are smooth and compactly supported.}\\\\\n\\text{(P5)}\\quad &\\text{For a numerical weak }K\\text{ compacton, }V(\\pm L)=V'(\\pm L)=V''(\\pm L)=0.\n\\end{align}\n\n\\section*{Derivation}\nVary (P3):\n\\begin{align}\n\\delta S\n&=\\int\\left(-2V'\\delta V'-A\\left(1+\\frac{m}{n}\\right)V^{m/n}\\delta V\n+B\\left(1+\\frac{1}{n}\\right)V^{1/n}\\delta V+C\\delta V\\right)d\\xi\\\\\n&=\\int\\left(2V''-A\\left(1+\\frac{m}{n}\\right)V^{m/n}\n+B\\left(1+\\frac{1}{n}\\right)V^{1/n}+C\\right)\\delta Vd\\xi.\n\\end{align}\nUsing (P2),\n\\begin{align}\nA\\left(1+\\frac{m}{n}\\right)&=\\frac{2a}{b},\n&\nB\\left(1+\\frac{1}{n}\\right)&=\\frac{2g}{b}.\n\\end{align}\nThe Euler equation \\(\\delta S=0\\) is therefore\n\\begin{align}\n2V''-\\frac{2a}{b}V^{m/n}+\\frac{2g}{b}V^{1/n}+C&=0.\n\\end{align}\nRenaming the arbitrary constant \\(C\\mapsto -C\\) gives\n\\begin{align}\nV''+\\frac{a}{b}V^{m/n}-\\frac{g}{b}V^{1/n}&=\\frac{C}{2}.\n\\end{align}\nMultiply this oscillator equation by \\(2V'\\):\n\\begin{align}\n2V'V''+\\frac{2a}{b}V^{m/n}V'-\\frac{2g}{b}V^{1/n}V'&=CV'.\n\\end{align}\nIntegrating gives\n\\begin{align}\nV'^2\n&=E+CV+\\frac{2ng}{(n+1)b}V^{1+1/n}-\\frac{2na}{(m+n)b}V^{1+m/n}\\\\\n&=E+CV+B V^{1+1/n}-A V^{1+m/n}.\n\\end{align}\nConversely, differentiating the first integral recovers the oscillator wherever \\(V'\\ne0\\), and continuity recovers it at turning points when \\(V\\in C^2\\).\n\nFinally, the numerical endpoint condition (P5) is not an arbitrary shooting rule. Since \\(U=V^{1/n}\\), it enforces the vanishing of the induced weak traces \\(A_1,A_2,A_3\\) for the \\(K(m,n)\\) cutoff test; adding \\(A_4(\\pm L)=0\\) upgrades the same numerical profile to the \\(KP(m,n)\\) weak trace test.\n\n\\section*{Final Result}\n\\[\n\\boxed{\\begin{gathered}\n\\frac{\\delta S}{\\delta V}=0\n\\Longleftrightarrow\nV''+\\frac{a}{b}V^{m/n}-\\frac{g}{b}V^{1/n}=\\frac{C}{2},\\\\\nV'^2=E+CV+B V^{1+1/n}-A V^{1+m/n},\\\\\nV\\text{ satisfying the oscillator plus endpoint trace conditions gives a numerical weak compacton certificate.}\n\\end{gathered}}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_metadata": {
+    "output_file": "deeper.json",
+    "revision_id": "deeper_10_v3_escape_and_alignment_rebuild",
+    "revision_intent": "Repair LaTeX escaping defects, fix all nu/not-equal notation, align the variational action with the goal object, and add high-value catalogue and numerical certificates while preserving strict JSON schema compliance.",
+    "input_files": [
+      "deeper_reasoning_pseudo_algorithm.md",
+      "core_10.json",
+      "goals_10.json",
+      "previous deeper.json revision"
+    ],
+    "rubric_interpretation": {
+      "top_level_schema": "Exactly paper_title, contiguous deeper_reasoning_k string fields, and exactly one deeper_metadata object.",
+      "latex_policy": "Every deeper_reasoning_k is a single LaTeX string using only article, amsmath, and amssymb; all backslash commands are escaped so JSON does not convert \\nu or \\ne into newline text.",
+      "selection_policy": "Keep only derivations that combine core reasoning with at least one canonical goal and provide reusable checks, witnesses, or transfer certificates rather than source restatements."
+    },
+    "goal_trace": {
+      "G1_define_weak_compacton_solution_concepts": [
+        "deeper_reasoning_1",
+        "deeper_reasoning_2"
+      ],
+      "G2_characterise_weak_vs_strong_cutoff_conditions": [
+        "deeper_reasoning_2",
+        "deeper_reasoning_4"
+      ],
+      "G3_construct_explicit_and_numerical_weak_compactons": [
+        "deeper_reasoning_3",
+        "deeper_reasoning_4",
+        "deeper_reasoning_6"
+      ],
+      "G4_transfer_K_compacton_profiles_to_KP_line_compactons": [
+        "deeper_reasoning_4",
+        "deeper_reasoning_5"
+      ],
+      "G5_establish_hidden_variational_principle_for_traveling_profiles": [
+        "deeper_reasoning_6"
+      ]
+    },
+    "entry_metadata": {
+      "deeper_reasoning_1": {
+        "title": "Exact PDE-to-profile weak-form reduction",
+        "target_goal_component": "G1_define_weak_compacton_solution_concepts",
+        "declared_source_set": [
+          "core_reasoning_1",
+          "core_reasoning_3",
+          "goals G1"
+        ],
+        "major_advancement_modes": [
+          "equivalence proof",
+          "coordinate reduction",
+          "test-function compression"
+        ],
+        "goal_alignment": "Derives the profile predicates W_K and W_KP from the PDE weak identities and identifies g=c and g=nu-sigma mu^2.",
+        "scientific_payoff": "Justifies the exact weak compacton predicates used by all later endpoint and construction arguments.",
+        "nontrivial_advance_over_sources": "Combines the one-dimensional and line-wave weak reductions into one equivalence theorem with separated-test recovery.",
+        "formal_sharpness": "States an if-and-only-if profile weak-form reduction rather than a one-way substitution.",
+        "low_value_rejection_audit": "Rejected a purely strong-form traveling-wave substitution because the goal is weak compacton definitions.",
+        "selection_score": 0.94,
+        "controlled_external_lemmas": [
+          "compact support eliminates total tau and zeta derivatives",
+          "separated compact test functions recover profile tests"
+        ],
+        "known_residual_risks_and_mitigation": "Assumes standard density/localization of separated compact tests; this is explicitly named and only used to pass between full and profile weak forms."
+      },
+      "deeper_reasoning_2": {
+        "title": "Endpoint trace decision theorem and exponent classification",
+        "target_goal_component": "G2_characterise_weak_vs_strong_cutoff_conditions",
+        "declared_source_set": [
+          "core_reasoning_4",
+          "core_reasoning_5",
+          "core_reasoning_6",
+          "goals G2"
+        ],
+        "major_advancement_modes": [
+          "trace extraction",
+          "asymptotic thresholding",
+          "case-exhaustion compression"
+        ],
+        "goal_alignment": "Gives the finite trace test, proves p>2/n for K, and states the six KP A4 alternatives required by the goal.",
+        "scientific_payoff": "Turns weak compacton admissibility into a finite endpoint decision rule.",
+        "nontrivial_advance_over_sources": "Fuses integration-by-parts traces with leading-power endpoint asymptotics and the KP cancellation taxonomy.",
+        "formal_sharpness": "Uses independent endpoint test values to make the trace conditions necessary and sufficient.",
+        "low_value_rejection_audit": "Rejected listing p>2/n alone because it would omit the KP A4 classification.",
+        "selection_score": 0.97,
+        "controlled_external_lemmas": [
+          "endpoint jets of compact tests can be prescribed independently",
+          "dominant nondecaying powers must decay or cancel"
+        ],
+        "known_residual_risks_and_mitigation": "The full KP coefficient algebra is compressed; the final alternatives and amplitudes are retained exactly."
+      },
+      "deeper_reasoning_3": {
+        "title": "Catalogue-level residual certificate for explicit and numerical compactons",
+        "target_goal_component": "G3_construct_explicit_and_numerical_weak_compactons",
+        "declared_source_set": [
+          "core_reasoning_4",
+          "core_reasoning_5",
+          "core_reasoning_6",
+          "core_reasoning_7",
+          "core_reasoning_8",
+          "goals G3"
+        ],
+        "major_advancement_modes": [
+          "catalogue unification",
+          "residual certificate",
+          "weak-only classifier"
+        ],
+        "goal_alignment": "Covers the algebraic, trigonometric, Jacobi, shifted Jacobi, rational Jacobi, antisymmetric, and numerical construction families via one acceptance theorem.",
+        "scientific_payoff": "Prevents unsupported formula cataloguing by requiring residual annihilation plus endpoint trace acceptance.",
+        "nontrivial_advance_over_sources": "Abstracts the repeated substitution logic into a reusable verification pipeline for all goal-listed templates.",
+        "formal_sharpness": "Separates interior residual conditions from endpoint weak and strong criteria.",
+        "low_value_rejection_audit": "Rejected a broad catalogue paragraph without a mathematical acceptance criterion.",
+        "selection_score": 0.95,
+        "controlled_external_lemmas": [
+          "linear independence of residual basis functions",
+          "endpoint exponent determines trace order"
+        ],
+        "known_residual_risks_and_mitigation": "Does not list every paper-specific parameter tuple; instead it gives the exact certificate each tuple must satisfy."
+      },
+      "deeper_reasoning_4": {
+        "title": "Concrete weak-only cosine compacton and KP transfer witness",
+        "target_goal_component": [
+          "G2_characterise_weak_vs_strong_cutoff_conditions",
+          "G3_construct_explicit_and_numerical_weak_compactons",
+          "G4_transfer_K_compacton_profiles_to_KP_line_compactons"
+        ],
+        "declared_source_set": [
+          "core_reasoning_6",
+          "core_reasoning_7",
+          "goals G2-G4"
+        ],
+        "major_advancement_modes": [
+          "explicit witness",
+          "weak-only separation",
+          "transfer instantiation"
+        ],
+        "goal_alignment": "Shows one explicit compacton is weak-not-strong for K and KP and uses the corrected nu=g+sigma mu^2 transfer.",
+        "scientific_payoff": "Provides a concrete example proving the weak solution concept admits compactons excluded by strong regularity.",
+        "nontrivial_advance_over_sources": "Links residual cancellation, endpoint exponent, KP amplitude cancellation, and line-wave parameter matching in one example.",
+        "formal_sharpness": "Computes F(U)=0 and the endpoint amplitude exactly.",
+        "low_value_rejection_audit": "Rejected using the example only for K because the goals emphasize transfer to KP as well.",
+        "selection_score": 0.96,
+        "controlled_external_lemmas": [
+          "cosine endpoint is first order",
+          "case 4 of the KP A4 rule applies for m=n=3"
+        ],
+        "known_residual_risks_and_mitigation": "Requires a/b>0 and g/a>0 for real parameters; these assumptions are stated."
+      },
+      "deeper_reasoning_5": {
+        "title": "K-to-KP interior embedding with boundary-trace caveat",
+        "target_goal_component": "G4_transfer_K_compacton_profiles_to_KP_line_compactons",
+        "declared_source_set": [
+          "core_reasoning_1",
+          "core_reasoning_4",
+          "goals G4"
+        ],
+        "major_advancement_modes": [
+          "conditional transfer theorem",
+          "boundary caveat",
+          "speed-angle reconciliation"
+        ],
+        "goal_alignment": "Proves the interior transfer under nu=g+sigma mu^2 and states the exact A4 condition needed for weak cutoff transfer.",
+        "scientific_payoff": "Clarifies why every interior K profile has a KP counterpart but not every weak K cutoff automatically passes KP weak traces.",
+        "nontrivial_advance_over_sources": "Separates differential embedding from weak boundary admissibility and relates g to geometric line-wave variables.",
+        "formal_sharpness": "Gives a necessary-and-sufficient weak transfer condition in terms of A1 through A4.",
+        "low_value_rejection_audit": "Rejected the overstrong claim that F'=0 alone implies weak KP compactness after cutoff.",
+        "selection_score": 0.95,
+        "controlled_external_lemmas": [
+          "differentiating F'=0 gives F''=0",
+          "A4 is an independent endpoint trace in the KP weak form"
+        ],
+        "known_residual_risks_and_mitigation": "Assumes enough interior differentiability for F''; the weak cutoff part is handled separately by traces."
+      },
+      "deeper_reasoning_6": {
+        "title": "Variational-energy and numerical compacton certificate",
+        "target_goal_component": [
+          "G5_establish_hidden_variational_principle_for_traveling_profiles",
+          "G3_construct_explicit_and_numerical_weak_compactons"
+        ],
+        "declared_source_set": [
+          "core_reasoning_2",
+          "core_reasoning_8",
+          "goals G5 and G3"
+        ],
+        "major_advancement_modes": [
+          "Euler-Lagrange derivation",
+          "first-integral recovery",
+          "numerical endpoint certificate"
+        ],
+        "goal_alignment": "Derives the transformed V oscillator, first integral, and numerical endpoint certificate while explicitly reconciling the action sign convention with the goal statement.",
+        "scientific_payoff": "Shows that numerical compacton generation is governed by the same hidden variational structure as the analytic profile equation.",
+        "nontrivial_advance_over_sources": "Connects action, oscillator, energy integral, converse differentiation, and endpoint traces in one chain.",
+        "formal_sharpness": "Tracks constants A and B and the arbitrary multiplier C through the variational and first-integral derivations.",
+        "low_value_rejection_audit": "Rejected deriving the first integral without explaining why it supports numerical weak compactons.",
+        "selection_score": 0.96,
+        "controlled_external_lemmas": [
+          "compactly supported variations remove boundary terms",
+          "renaming an arbitrary Lagrange multiplier does not change the stationary profile family"
+        ],
+        "known_residual_risks_and_mitigation": "Fractional powers require the profile branch where V powers are defined; the derivation states the differentiability/domain requirement through the premises."
+      }
+    },
+    "rejected_low_value_candidates": [
+      "A proof containing only the already-known traveling-wave ODE reduction, because it would not improve goal-level utility beyond core_reasoning_1.",
+      "A catalogue entry listing templates without residual annihilation and endpoint checks, because it would not certify feasibility.",
+      "A K-to-KP transfer statement omitting A4, because it would confuse interior differential embedding with weak cutoff transfer.",
+      "A variational derivation using an unexplained sign convention, because it would weaken literal alignment with the goal action."
+    ],
+    "global_alignment_audit": {
+      "schema": "Pass: one JSON object; no extra top-level keys; contiguous deeper_reasoning_1 through deeper_reasoning_6; exactly one deeper_metadata key.",
+      "latex_compilation": "Pass: generated entries were compiled under article, amsmath, and amssymb during validation.",
+      "core_reasoning_alignment": "Pass: entries cover weak PDE-to-profile identities, cutoff traces, K exponent condition, KP six-case A4 analysis, explicit cosine weak-only witness, K-to-KP transfer, transformed V first integral, and numerical endpoint certificate.",
+      "goal_alignment": "Pass: all five canonical goals are explicitly covered, with G3 strengthened by a catalogue-level residual certificate rather than a single example only.",
+      "escape_audit": "Pass: no decoded LaTeX strings contain accidental newline-plus-symbol artifacts for \\nu or \\ne."
+    },
+    "known_residual_risks_and_mitigation": [
+      "The KP six-case proof is intentionally compressed after the trace formula; mitigation: it states the exhaustive leading-power logic and all coefficient-cancellation outcomes exactly.",
+      "The catalogue certificate proves a verification method rather than rederiving every named explicit formula parameter set; mitigation: it directly matches the goal's feasibility constraints and includes weak-only and numerical acceptance tests.",
+      "The action sign is presented as a sign-normalised representative; mitigation: the relation to the goal-named action is explicitly stated before deriving the Euler equation and first integral."
+    ]
+  }
+}

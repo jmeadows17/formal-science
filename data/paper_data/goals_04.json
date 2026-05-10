@@ -1,0 +1,247 @@
+{
+  "paper_goal": {
+    "canonical_goal": [
+      {
+        "goal_id": "g1_exact_isotropic_H_solution",
+        "outcome_variable": "o_H = (H,G) ∈ O_P^H, where H is a real-valued function on {(μ,ω): 0 ≤ μ ≤ 1 and 0 ≤ ω ≤ 1}, and G is a real-valued auxiliary function on {(μ,ω): 0 < μ ≤ 1 and 0 ≤ ω ≤ 1}",
+        "goal_form": "target_proposition",
+        "target_object": "An exact analytic expression for the real-valued isotropic-scattering H function H(μ,ω) on 0≤μ≤1 and 0≤ω≤1, where H(0,ω)=1 and, for 0<μ≤1, H(μ,ω)=G(μ,ω)/(G(μ,ω)-2μ∂G(μ,ω)/∂μ), G(μ,ω)=μ^{-(1/2-s/2)}(1+μ)F(3/2+s/2,1/2+s/2;1+s;-1/μ), s=sqrt(1-ω), and F(a,b;c;z) denotes the real branch, for z<0, of the solution u(z) to z(1-z)u''(z)+[c-(a+b+1)z]u'(z)-ab u(z)=0 with u(0)=1 and u'(0)=ab/c, analytically continued from z=0 along the real interval to z. The expression is targeted to satisfy the nonlinear integral equation H(μ,ω)=1+(ω μ/2)H(μ,ω)∫_0^1 H(μ',ω)/(μ+μ') dμ' for every 0<μ≤1 and 0≤ω≤1, with H(μ,0)=1.",
+        "feasibility_constraints": [
+          "The variables μ and ω are real and satisfy 0 ≤ μ ≤ 1 and 0 ≤ ω ≤ 1; formulas containing 1/μ are evaluated on 0 < μ ≤ 1 and extended to μ=0 only through the boundary value H(0,ω)=1.",
+          "The function H is required to be real-valued, positive on 0 < μ ≤ 1 and 0 ≤ ω ≤ 1, differentiable with respect to μ on 0 < μ ≤ 1, and to make the integral ∫_0^1 H(μ',ω)/(μ+μ') dμ' finite for every 0 < μ ≤ 1 and 0 ≤ ω ≤ 1.",
+          "For 0 < μ ≤ 1 and 0 ≤ ω ≤ 1, define s = sqrt(1-ω) and G(μ,ω)=μ^{-(1/2-s/2)}(1+μ)F(3/2+s/2,1/2+s/2;1+s;-1/μ), where F(a,b;c;z) denotes the real branch, for z<0, of the solution u(z) to z(1-z)u''(z)+[c-(a+b+1)z]u'(z)-ab u(z)=0 with u(0)=1 and u'(0)=ab/c, analytically continued from z=0 along the real interval to z.",
+          "For 0 < μ ≤ 1 and 0 ≤ ω ≤ 1, G(μ,ω)-2μ ∂G(μ,ω)/∂μ is nonzero, so H(μ,ω)=G(μ,ω)/(G(μ,ω)-2μ ∂G(μ,ω)/∂μ) is well-defined."
+        ],
+        "success_set": {
+          "kind": "predicate",
+          "definition": "Σ_H = { (H,G) : for every real μ and ω with 0 < μ ≤ 1 and 0 ≤ ω ≤ 1, s=sqrt(1-ω), G(μ,ω)=μ^{-(1/2-s/2)}(1+μ)F(3/2+s/2,1/2+s/2;1+s;-1/μ), F(a,b;c;z) denotes the real branch, for z<0, of the solution u(z) to z(1-z)u''(z)+[c-(a+b+1)z]u'(z)-ab u(z)=0 with u(0)=1 and u'(0)=ab/c, analytically continued from z=0 along the real interval to z. G(μ,ω)-2μ∂G(μ,ω)/∂μ ≠ 0, H(μ,ω)=G(μ,ω)/(G(μ,ω)-2μ∂G(μ,ω)/∂μ), H(0,ω)=1, H(μ,0)=1, H(μ,ω)>0 on 0<μ≤1, and H(μ,ω)=1+(ω μ/2)H(μ,ω)∫_0^1 H(μ',ω)/(μ+μ')dμ' }.",
+          "threshold": {
+            "applies": false,
+            "value": null,
+            "comparator": null,
+            "metric_symbol": null,
+            "metric_definition": null,
+            "source_span": null
+          }
+        },
+        "preference_ordering": {
+          "kind": "none",
+          "definition": null,
+          "objective_symbols": [],
+          "lex_order": null,
+          "embedding_to_total_utility": null
+        },
+        "robustness_scope": {
+          "applies": false,
+          "ambient_space": null,
+          "type_tag": "other",
+          "metric_or_divergence": null,
+          "radius_or_budget": null,
+          "indexing_set": null,
+          "claimed_subfamily": {
+            "definition": null,
+            "source_span": null
+          },
+          "hinted_superfamily": {
+            "definition": null,
+            "source_span": null
+          },
+          "refinement_relation": "none",
+          "criterion": null,
+          "channel_populated_by": []
+        }
+      },
+      {
+        "goal_id": "g2_differential_form_of_integral_equation",
+        "outcome_variable": "o_D = (H,Z_0) ∈ O_P^D, where H is a real-valued Chandrasekhar H function and Z_0 is a real-valued function on {(μ,ω): 0 < μ ≤ 1 and 0 < ω ≤ 1}",
+        "goal_form": "target_proposition",
+        "target_object": "A first-order differential representation, in the variable μ, of the nonlinear isotropic-scattering integral equation H(μ,ω)=1+(ω μ/2)H(μ,ω)∫_0^1H(μ',ω)/(μ+μ')dμ'. The representation introduces Z_0(μ,ω)=(2/(ω μ))(1-1/H(μ,ω))=∫_0^1H(μ',ω)/(μ+μ')dμ' for 0<μ≤1 and 0<ω≤1, and asserts the two differential identities ∂Z_0(μ,ω)/∂μ+(ω/4)Z_0(μ,ω)^2=-1/(μ(1+μ)) and ∂H(μ,ω)/∂μ-(1/(2μ)-ω/(2(1+μ)))H(μ,ω)^2=-1/(2μ).",
+        "feasibility_constraints": [
+          "The variables μ and ω are real and satisfy 0 < μ ≤ 1 and 0 < ω ≤ 1, because Z_0(μ,ω)=(2/(ω μ))(1-1/H(μ,ω)) contains the factor 1/(ω μ).",
+          "H is real-valued, positive, differentiable with respect to μ on 0 < μ ≤ 1, and satisfies H(μ,ω)=1+(ω μ/2)H(μ,ω)∫_0^1 H(μ',ω)/(μ+μ')dμ'.",
+          "Z_0(μ,ω) is defined simultaneously by Z_0(μ,ω)=(2/(ω μ))(1-1/H(μ,ω)) and Z_0(μ,ω)=∫_0^1 H(μ',ω)/(μ+μ')dμ', and the integral is finite for every 0 < μ ≤ 1 and 0 < ω ≤ 1.",
+          "The derivative of ln(1+1/μ) with respect to μ is evaluated explicitly as d/dμ[ln(1+1/μ)] = -1/(μ(1+μ)) for 0 < μ ≤ 1."
+        ],
+        "success_set": {
+          "kind": "predicate",
+          "definition": "Σ_D = { (H,Z_0) : for every real μ and ω with 0 < μ ≤ 1 and 0 < ω ≤ 1, H(μ,ω)=1+(ω μ/2)H(μ,ω)∫_0^1 H(μ',ω)/(μ+μ')dμ', Z_0(μ,ω)=(2/(ω μ))(1-1/H(μ,ω))=∫_0^1H(μ',ω)/(μ+μ')dμ', ∂Z_0(μ,ω)/∂μ+(ω/4)Z_0(μ,ω)^2=d[ln(1+1/μ)]/dμ=-1/(μ(1+μ)), and ∂H(μ,ω)/∂μ-(1/(2μ)-ω/(2(1+μ)))H(μ,ω)^2=-1/(2μ) }.",
+          "threshold": {
+            "applies": false,
+            "value": null,
+            "comparator": null,
+            "metric_symbol": null,
+            "metric_definition": null,
+            "source_span": null
+          }
+        },
+        "preference_ordering": {
+          "kind": "none",
+          "definition": null,
+          "objective_symbols": [],
+          "lex_order": null,
+          "embedding_to_total_utility": null
+        },
+        "robustness_scope": {
+          "applies": false,
+          "ambient_space": null,
+          "type_tag": "other",
+          "metric_or_divergence": null,
+          "radius_or_budget": null,
+          "indexing_set": null,
+          "claimed_subfamily": {
+            "definition": null,
+            "source_span": null
+          },
+          "hinted_superfamily": {
+            "definition": null,
+            "source_span": null
+          },
+          "refinement_relation": "none",
+          "criterion": null,
+          "channel_populated_by": []
+        }
+      },
+      {
+        "goal_id": "g3_recursive_analytic_moment_formulae",
+        "outcome_variable": "o_α = (H,(α_n)_{n∈ℕ_0}) ∈ O_P^α, where H is a real-valued Chandrasekhar H function and (α_n)_{n∈ℕ_0} is a sequence of real-valued functions of ω",
+        "goal_form": "target_proposition",
+        "target_object": "A recursive analytic determination of every moment α_n(ω)=∫_0^1 μ^nH(μ,ω)dμ of the isotropic-scattering H function, for each integer n≥0 and real 0≤ω≤1: α_0(ω)=(2/ω)(1-sqrt(1-ω)) for 0<ω≤1 with α_0(0)=1, and, for every n≥1, α_n(ω)=[4+ωΣ_{m=1}^{n-1}α_m(ω)α_{n-m}(ω)]/[4(n+1)-2ωα_0(ω)], equivalently 4(n+1)α_n(ω)=4+ωΣ_{m=0}^{n}α_m(ω)α_{n-m}(ω).",
+        "feasibility_constraints": [
+          "The moment index n is an integer with n ≥ 0, and ω is real with 0 ≤ ω ≤ 1.",
+          "For every n ≥ 0 and 0 ≤ ω ≤ 1, α_n(ω)=∫_0^1 μ^nH(μ,ω)dμ, where H satisfies H(μ,ω)=1+(ω μ/2)H(μ,ω)∫_0^1 H(μ',ω)/(μ+μ')dμ'.",
+          "For each n ≥ 0 and 0 ≤ ω ≤ 1, the integral ∫_0^1 μ^nH(μ,ω)dμ is finite.",
+          "The expression α_0(ω)=(2/ω)(1-sqrt(1-ω)) is used for 0 < ω ≤ 1, and the value at ω=0 is fixed inside the extraction by α_0(0)=lim_{ω→0+}(2/ω)(1-sqrt(1-ω))=1.",
+          "For every integer n ≥ 1, the recurrence is interpreted in solved form α_n(ω)=[4+ωΣ_{m=1}^{n-1}α_m(ω)α_{n-m}(ω)]/[4(n+1)-2ωα_0(ω)], with the empty sum equal to 0 when n=1, so α_n is determined only by α_0,...,α_{n-1}."
+        ],
+        "success_set": {
+          "kind": "predicate",
+          "definition": "Σ_α = { (α_n)_{n≥0} : for every integer n ≥ 0 and every real ω with 0 ≤ ω ≤ 1, α_n(ω)=∫_0^1 μ^nH(μ,ω)dμ for a function H satisfying H(μ,ω)=1+(ω μ/2)H(μ,ω)∫_0^1H(μ',ω)/(μ+μ')dμ', α_0(ω)=(2/ω)(1-sqrt(1-ω)) for 0<ω≤1, α_0(0)=lim_{ω→0+}(2/ω)(1-sqrt(1-ω))=1, and for every integer n≥1, α_n(ω)=[4+ωΣ_{m=1}^{n-1}α_m(ω)α_{n-m}(ω)]/[4(n+1)-2ωα_0(ω)], equivalently 4(n+1)α_n(ω)=4+ωΣ_{m=0}^{n}α_m(ω)α_{n-m}(ω). This implies α_1(ω)=1/(1+sqrt(1-ω)) and α_2(ω)=(3ω-8(1-sqrt(1-ω)))/(4(4-6ω+(ω-6)sqrt(1-ω))) where denominators are nonzero on the stated domain by feasibility of the displayed moment expressions }.",
+          "threshold": {
+            "applies": false,
+            "value": null,
+            "comparator": null,
+            "metric_symbol": null,
+            "metric_definition": null,
+            "source_span": null
+          }
+        },
+        "preference_ordering": {
+          "kind": "none",
+          "definition": null,
+          "objective_symbols": [],
+          "lex_order": null,
+          "embedding_to_total_utility": null
+        },
+        "robustness_scope": {
+          "applies": false,
+          "ambient_space": null,
+          "type_tag": "other",
+          "metric_or_divergence": null,
+          "radius_or_budget": null,
+          "indexing_set": null,
+          "claimed_subfamily": {
+            "definition": null,
+            "source_span": null
+          },
+          "hinted_superfamily": {
+            "definition": null,
+            "source_span": null
+          },
+          "refinement_relation": "none",
+          "criterion": null,
+          "channel_populated_by": []
+        }
+      }
+    ],
+    "inter_goal_relation": "instrumental",
+    "methodological_claim": {
+      "applies": true,
+      "target_object": "The paper makes a methodological claim about the route to the mathematical end-state, not a separate goal outcome: for real 0<μ≤1 and 0<ω≤1, start from H(μ,ω)=1+(ω μ/2)H(μ,ω)∫_0^1H(μ',ω)/(μ+μ')dμ'; define Z_0(μ,ω)=(2/(ω μ))(1-1/H(μ,ω))=∫_0^1H(μ',ω)/(μ+μ')dμ'; derive ∂Z_0/∂μ+(ω/4)Z_0^2=-1/(μ(1+μ)); substitute Z_0(μ,ω)=4[∂G(μ,ω)/∂μ]/[ωG(μ,ω)]; solve ∂^2G(μ,ω)/∂μ^2+[ω/(4μ(1+μ))]G(μ,ω)=0; and select the solution branch for which H(μ,ω)=G(μ,ω)/(G(μ,ω)-2μ∂G(μ,ω)/∂μ) is positive on 0<μ≤1 and 0≤ω≤1.",
+      "evidence_channels": {
+        "source_span": {
+          "section": "Abstract; Sections 2–3; Conclusions",
+          "paragraph_or_line": "Abstract method sentences; derivation around equations (2), (21), (38), and (39); Conclusions opening paragraph",
+          "verbatim": "In this study, we first obtained the differential form of the integral equation because the solution would be easy. We used the classical integral technique to construct the differential form. By solving the differential equation we obtained exact solution of the H function. ... Our goal in doing so was to verify the accuracy of our calculations."
+        },
+        "formalisation": "The methodological claim is the derivational chain, for 0<μ≤1 and 0<ω≤1, H(μ,ω)=1+(ω μ/2)H(μ,ω)∫_0^1H(μ',ω)/(μ+μ')dμ' → Z_0(μ,ω)=(2/(ω μ))(1-1/H(μ,ω))=∫_0^1H(μ',ω)/(μ+μ')dμ' → ∂Z_0(μ,ω)/∂μ+(ω/4)Z_0(μ,ω)^2=-1/(μ(1+μ)) → Z_0(μ,ω)=4(∂G(μ,ω)/∂μ)/(ωG(μ,ω)) → ∂^2G(μ,ω)/∂μ^2+[ω/(4μ(1+μ))]G(μ,ω)=0 → H(μ,ω)=G(μ,ω)/(G(μ,ω)-2μ∂G(μ,ω)/∂μ), with positivity of H on 0<μ≤1 and 0≤ω≤1 used as the branch-selection condition."
+      }
+    },
+    "evidence_channels": {
+      "stated_goal": {
+        "source_span": {
+          "section": "Abstract; Introduction; Conclusions",
+          "paragraph_or_line": "Abstract opening and method sentences; Introduction final paragraph before Section 2; Conclusions opening and moment paragraph",
+          "verbatim": "In this work, we obtained the exact solution of Chandrasekhar’s H function with isotropic scattering. ... In this study, we first obtained the differential form of the integral equation because the solution would be easy. We used the classical integral technique to construct the differential form. By solving the differential equation we obtained exact solution of the H function. ... In this study, functional expressions for all moments have been derived."
+        },
+        "formalisation": "The stated paper goal combines three formal target propositions and one methodological framing. First, find a real H on 0≤μ≤1 and 0≤ω≤1 such that H(0,ω)=1, H(μ,0)=1, and, for 0<μ≤1, H(μ,ω)=G(μ,ω)/(G(μ,ω)-2μ∂G(μ,ω)/∂μ), where G(μ,ω)=μ^{-(1/2-s/2)}(1+μ)F(3/2+s/2,1/2+s/2;1+s;-1/μ), s=sqrt(1-ω), F(a,b;c;z) denotes the real branch, for z<0, of the solution u(z) to z(1-z)u''(z)+[c-(a+b+1)z]u'(z)-ab u(z)=0 with u(0)=1 and u'(0)=ab/c, analytically continued from z=0 along the real interval to z. The same H is required to satisfy H(μ,ω)=1+(ω μ/2)H(μ,ω)∫_0^1H(μ',ω)/(μ+μ')dμ'. Second, derive first-order differential identities ∂Z_0/∂μ+(ω/4)Z_0^2=-1/(μ(1+μ)) and ∂H/∂μ-(1/(2μ)-ω/(2(1+μ)))H^2=-1/(2μ), where Z_0=(2/(ω μ))(1-1/H). Third, determine moments α_n(ω)=∫_0^1μ^nH(μ,ω)dμ by α_0(ω)=(2/ω)(1-sqrt(1-ω)) with α_0(0)=1 and α_n(ω)=[4+ωΣ_{m=1}^{n-1}α_m(ω)α_{n-m}(ω)]/[4(n+1)-2ωα_0(ω)] for n≥1. Fourth, frame the route as construction of the differential form before solving it."
+      },
+      "operational_goal": {
+        "source_span": {
+          "section": "Sections 2–3 and Table I",
+          "paragraph_or_line": "Equations (1), (21), (22), (23), (26)–(29), (38)–(42), and numerical comparison table",
+          "verbatim": "Eq.(21) or Eq.(22) is the differential form of the Chandrasekhar H function ... the exact solution ... can be given as follows H(μ,ω)=G(μ,ω)/(G(μ,ω)-2μ∂G(μ,ω)/∂μ) ... functional forms of all the moments can be obtained using Eq.(29)."
+        },
+        "formalisation": "The operational goal is the instrumental chain of mathematical end-states consisting of: (i) H(μ,ω)=1+(ω μ/2)H(μ,ω)∫_0^1H(μ',ω)/(μ+μ')dμ' with 0≤μ≤1 and 0≤ω≤1; (ii) Z_0(μ,ω)=(2/(ω μ))(1-1/H(μ,ω))=∫_0^1H(μ',ω)/(μ+μ')dμ' and ∂Z_0(μ,ω)/∂μ+(ω/4)Z_0(μ,ω)^2=-1/(μ(1+μ)) for 0<μ≤1 and 0<ω≤1; (iii) ∂H(μ,ω)/∂μ-(1/(2μ)-ω/(2(1+μ)))H(μ,ω)^2=-1/(2μ); (iv) H(μ,ω)=G(μ,ω)/(G(μ,ω)-2μ∂G(μ,ω)/∂μ), with G(μ,ω)=μ^{-(1/2-s/2)}(1+μ)F(3/2+s/2,1/2+s/2;1+s;-1/μ), s=sqrt(1-ω), F(a,b;c;z) denotes the real branch, for z<0, of the solution u(z) to z(1-z)u''(z)+[c-(a+b+1)z]u'(z)-ab u(z)=0 with u(0)=1 and u'(0)=ab/c, analytically continued from z=0 along the real interval to z; and (v) α_n(ω)=∫_0^1μ^nH(μ,ω)dμ with α_0(ω)=(2/ω)(1-sqrt(1-ω)) for 0<ω≤1, α_0(0)=1, and α_n(ω)=[4+ωΣ_{m=1}^{n-1}α_m(ω)α_{n-m}(ω)]/[4(n+1)-2ωα_0(ω)] for every integer n≥1."
+      },
+      "implicit_goal": {
+        "inference_basis": [
+          "The title names the primary end-state as an exact solution of Chandrasekhar's H function for the isotropic case.",
+          "The abstract explicitly states three harvested target propositions: obtain the exact solution, first obtain a differential form, and compare the formula numerically with Chandrasekhar's tabulation; the comparison is evaluation evidence rather than a separate canonical goal.",
+          "Section 2 defines the target equation through H(μ,ω)=1+(ω μ/2)H(μ,ω)∫_0^1H(μ',ω)/(μ+μ')dμ' and operationalises the differential-form goal by deriving equations for Z_0 and H.",
+          "Section 3 operationalises the exact-solution goal by substituting Z_0=4(∂G/∂μ)/(ωG), solving ∂^2G/∂μ^2+[ω/(4μ(1+μ))]G=0, selecting the positive branch, and defining H=G/(G-2μ∂G/∂μ).",
+          "Section 3 operationalises the moment goal by defining α_n(ω)=∫_0^1μ^nH(μ,ω)dμ, giving α_0, α_1, α_2, and giving a recurrence relation that determines all higher moments.",
+          "The conclusions frame the construction of the differential equation as the route used to obtain the exact H expression and to verify calculations, so the differential-form goal is both a claimed result and an instrument for the exact-solution and moment-formula goals."
+        ],
+        "fit_score": 0.8625,
+        "fit_components": {
+          "TextAlign": 0.75,
+          "MethodAlign": 1.0,
+          "EvalAlign": 0.75,
+          "ClaimAlign": 1.0,
+          "Complexity": 0.25
+        },
+        "formalisation": "The best-fitting implicit goal is an instrumental multi-outcome structure over o=(H,Z_0,G,(α_n)_{n≥0}): H solves H(μ,ω)=1+(ω μ/2)H(μ,ω)∫_0^1H(μ',ω)/(μ+μ')dμ'; Z_0=(2/(ω μ))(1-1/H) satisfies ∂Z_0/∂μ+(ω/4)Z_0^2=-1/(μ(1+μ)); H satisfies ∂H/∂μ-(1/(2μ)-ω/(2(1+μ)))H^2=-1/(2μ); H=G/(G-2μ∂G/∂μ) with G=μ^{-(1/2-s/2)}(1+μ)F(3/2+s/2,1/2+s/2;1+s;-1/μ), s=sqrt(1-ω), F(a,b;c;z) denotes the real branch, for z<0, of the solution u(z) to z(1-z)u''(z)+[c-(a+b+1)z]u'(z)-ab u(z)=0 with u(0)=1 and u'(0)=ab/c, analytically continued from z=0 along the real interval to z. and α_0(ω)=(2/ω)(1-sqrt(1-ω)) with α_0(0)=1 while α_n(ω)=[4+ωΣ_{m=1}^{n-1}α_m(ω)α_{n-m}(ω)]/[4(n+1)-2ωα_0(ω)] for every integer n≥1."
+      },
+      "excluded_aims": [
+        {
+          "verbatim": "The H Function is an important function for radiative transfer in the atmosphere of planets ... and its solution is a necessity.",
+          "source_span": {
+            "section": "Introduction",
+            "paragraph_or_line": "First paragraph",
+            "verbatim": "The H Function is an important function for radiative transfer in the atmosphere of planets ... and its solution is a necessity."
+          },
+          "reason": "application_gesture"
+        },
+        {
+          "verbatim": "The H-function and its derivative have been tabulated to describe light reflected from the surface of celestial bodies and to understand the radiation transport in spheres.",
+          "source_span": {
+            "section": "Introduction",
+            "paragraph_or_line": "Literature-review paragraph",
+            "verbatim": "The H-function and its derivative have been tabulated to describe light reflected from the surface of celestial bodies and to understand the radiation transport in spheres."
+          },
+          "reason": "application_gesture"
+        },
+        {
+          "verbatim": "We compared the numerical results of exact solution with the numerical results obtained by Chandrasekhar in his book. We introduced them in the table to see the differences.",
+          "source_span": {
+            "section": "Abstract; Table I; Conclusions",
+            "paragraph_or_line": "Abstract final sentences and Table I",
+            "verbatim": "We compared the numerical results of exact solution with the numerical results obtained by Chandrasekhar in his book. We introduced them in the table to see the differences."
+          },
+          "reason": "out_of_scope_other"
+        },
+        {
+          "verbatim": "All operations and mathematical derivations are handled visually in a mathematical software.",
+          "source_span": {
+            "section": "Conclusions",
+            "paragraph_or_line": "Opening paragraph",
+            "verbatim": "All operations and mathematical derivations are handled visually in a mathematical software."
+          },
+          "reason": "out_of_scope_other"
+        }
+      ]
+    },
+    "consistency_relation": "framing_divergence",
+    "consistency_relation_derivation": "The canonical and operational mathematical content uses the same variables H(μ,ω), Z_0(μ,ω), G(μ,ω), and α_n(ω): the paper defines the nonlinear integral equation, derives differential identities for Z_0 and H, gives H=G/(G-2μ∂G/∂μ), and gives moment formulae plus a recurrence. The inter-goal relation is marked instrumental because the differential-form goal is presented as a new finding but is also the derivational route used to obtain the exact H expression and moment formulae. The consistency relation remains framing_divergence because the stated channel additionally includes methodological and evaluative framing about the classical integral technique, solving the differential equation because it is easier, verification by two methods, visual mathematical software, and comparison with Chandrasekhar's numerical table; those statements are recorded as methodological_claim or excluded_aims rather than as extra feasible outcomes."
+  }
+}

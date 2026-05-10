@@ -1,0 +1,271 @@
+{
+  "paper_goal": {
+    "canonical_goal": [
+      {
+        "goal_id": "G1_self_dual_center_vortex_for_nonminimal_twist",
+        "outcome_variable": "o_V ∈ O_P^V, where O_P^V is the set of quadruples (V_{N,p,q}^{asym}, Φ_V, Q_top(V), S_YM(V)) consisting of a codimension-2 gauge-field configuration V_{N,p,q}^{asym} on ℝ^2×T^2 and its Wilson-loop magnetic phase Φ_V, topological charge Q_top(V), and Yang-Mills action S_YM(V)",
+        "goal_form": "target_proposition",
+        "target_object": "For every integer N≥2 and every integer p with gcd(N,p)=1, let q∈{1,...,N−1} be the unique residue satisfying p q≡1 mod N. The target end-state is an analytically controlled self-dual codimension-2 center vortex V_{N,p,q}^{asym} on ℝ^2×T^2 in the asymmetric construction regime L3≫N L4, with 3-4 twisted transition functions g3(x,L4)g4(x,0)=exp(2π i p/N)g4(x,L3)g3(x,0), such that insertion of V_{N,p,q}^{asym} inside a fundamental Wilson loop W(C) lying in ℝ^2 multiplies W(C) by exp(2π i q/N), Q_top(V_{N,p,q}^{asym})=1/N, and S_YM(V_{N,p,q}^{asym})=8π^2/(N g^2). The same invariant statement for arbitrary positive L3,L4 is not part of the established target; it is only a conjectural enlargement.",
+        "feasibility_constraints": [
+          "N∈ℤ and N≥2; p∈ℤ and gcd(N,p)=1; q∈{1,...,N−1} is fixed by p q≡1 mod N.",
+          "The spacetime is ℝ^2×T^2 with coordinates x=(x1,x2), x3∼x3+L3, and x4∼x4+L4, where L3>0 and L4>0; the 3-4 ’t Hooft flux is n34=p.",
+          "The 3-4 twisted boundary condition is encoded by transition functions obeying g3(x,L4)g4(x,0)=exp(2π i p/N)g4(x,L3)g3(x,0).",
+          "The center-symmetric classical vacuum is represented by holonomies P3=S^(−p) and P4=C^(−1), where C and S are SU(N) clock and shift matrices with S C=exp(2π i/N) C S; this gives tr(P3^n3 P4^n4)=0 unless n3 and n4 are both divisible by N.",
+          "Perturbative fluctuations a_μ around the center-symmetric vacuum decompose into modes indexed by k3,k4∈ℤ and (ℓ3,ℓ4)≠(0,0) with mass m^2_(Nk3+ℓ3,Nk4+ℓ4)=(2π/N)^2[(Nk3+ℓ3)^2/L3^2+(Nk4+ℓ4)^2/L4^2], so no massless two-dimensional zero mode remains.",
+          "For the explicit analytic construction impose L3≫N L4 and a center-symmetric x4 holonomy ϕ⃗_c=(2π/N)ρ⃗. Define z⃗(x,x3)=i{σ⃗(x,x3)+(θ/(2π)+4π i/g^2)(ϕ⃗(x,x3)−ϕ⃗_c)} and impose z⃗(x,x3)=P_W^(−p)z⃗(x,x3+L3), where P_W is the cyclic Weyl action that sends the SU(N) root label n to n+1 modulo N.",
+          "Let α⃗_n be an affine or simple SU(N) root and let ν⃗_j denote the weights of the fundamental representation, with labels understood modulo N. The monopole-source flux decomposition used in the construction is α⃗_n=w⃗_n^(q)−P_W^p w⃗_n^(q), with w⃗_n^(q)=ν⃗_n+ν⃗_{n+p}+⋯+ν⃗_{n+(q−1)p}."
+        ],
+        "success_set": {
+          "kind": "predicate",
+          "definition": "Σ_P^V={V_{N,p,q}^{asym}: N≥2, gcd(N,p)=1, p q≡1 mod N, L3≫N L4, V_{N,p,q}^{asym} is a self-dual solution of the Yang-Mills equations on ℝ^2×T^2 with g3(x,L4)g4(x,0)=exp(2π i p/N)g4(x,L3)g3(x,0), V_{N,p,q}^{asym} gives W(C)↦exp(2π i q/N)W(C) for a fundamental Wilson loop enclosing the vortex in ℝ^2, Q_top(V_{N,p,q}^{asym})=1/N, and S_YM(V_{N,p,q}^{asym})=8π^2/(N g^2)}.",
+          "threshold": {
+            "applies": false,
+            "value": null,
+            "comparator": null,
+            "metric_symbol": null,
+            "metric_definition": null,
+            "source_span": null
+          }
+        },
+        "preference_ordering": {
+          "kind": "none",
+          "definition": null,
+          "objective_symbols": [],
+          "lex_order": null,
+          "embedding_to_total_utility": null
+        },
+        "robustness_scope": {
+          "applies": true,
+          "ambient_space": "All SU(N) Yang-Mills gauge-field configurations on ℝ^2×T^2 with N≥2, coprime 3-4 twist n34=p, transition functions satisfying g3(x,L4)g4(x,0)=exp(2π i p/N)g4(x,L3)g3(x,0), and positive torus lengths L3,L4.",
+          "type_tag": "environment_family",
+          "metric_or_divergence": null,
+          "radius_or_budget": null,
+          "indexing_set": "{(N,p,q,L3,L4): N∈ℤ, N≥2, p∈ℤ, gcd(N,p)=1, q∈{1,...,N−1}, p q≡1 mod N, L3>0, L4>0, and L3≫N L4 for the claimed analytic construction}",
+          "claimed_subfamily": {
+            "definition": "The claimed subfamily is the asymmetric-torus family indexed by N≥2, gcd(N,p)=1, q p≡1 mod N, and L3≫N L4. In this subfamily z⃗(x,x3)=P_W^(−p)z⃗(x,x3+L3), α⃗_n=w⃗_n^(q)−P_W^p w⃗_n^(q), and the resulting localized flux tube has Wilson-loop phase exp(2π i q/N), Q_top=1/N, and S_YM=8π^2/(N g^2).",
+            "source_span": {
+              "section": "Abstract; Introduction and summary; Section 2.2.2",
+              "paragraph_or_line": "Abstract contribution paragraph; introduction paragraphs on the non-minimal vortex question; equations (2.29)–(2.36)",
+              "verbatim": "we construct the self-dual center vortex for non-minimal ’t Hooft twists from the Kraan-van Baal-Lee-Lu-Yi (KvBLLY) monopoles by using the 3d Abelianized description"
+            }
+          },
+          "hinted_superfamily": {
+            "definition": "A larger family with arbitrary positive L3,L4 would require, for every N≥2 and gcd(N,p)=1, a self-dual vortex on ℝ^2×T^2 with the same transition-function twist, Wilson-loop phase exp(2π i q/N), Q_top=1/N, and S_YM=8π^2/(N g^2), without using L3≫N L4. This larger family is suggested but not established by the analytic construction.",
+            "source_span": {
+              "section": "Section 2.2.2",
+              "paragraph_or_line": "final paragraph of monopole-vortex continuity construction",
+              "verbatim": "our construction of the self-dual center vortex is limited to the case L3 ≫ NL4 ... we believe it should be possible to extend its validity for generic L3, L4"
+            }
+          },
+          "refinement_relation": "set_inclusion",
+          "criterion": "For each (N,p,q,L3,L4) in the claimed subfamily, membership requires a self-dual V_{N,p,q}^{asym} satisfying W(C)↦exp(2π i q/N)W(C), Q_top=1/N, and S_YM=8π^2/(N g^2). In the explicit construction this is certified by the root/weight identity α⃗_n=w⃗_n^(q)−P_W^p w⃗_n^(q), which makes the flux emitted below the monopole and the flux absorbed above the monopole differ by the p-fold cyclic Weyl twist and therefore form a localized tube around the x3 circle.",
+          "channel_populated_by": [
+            "stated",
+            "operational"
+          ]
+        }
+      },
+      {
+        "goal_id": "G2_center_vortex_gas_confinement_and_anomaly_response",
+        "outcome_variable": "o_S ∈ O_P^S, where O_P^S is the set of effective semiclassical descriptions (Z_eff,θ, {E_k(θ)}_{k∈ℤ_N}, {T_R(θ)}_R, Z_θ[B_4d]) containing a vortex-gas partition function, branch energy densities, Wilson-loop string tensions, and the response to a background ℤ_N-valued two-form gauge field B_4d",
+        "goal_form": "target_proposition",
+        "target_object": "The target end-state is a dilute center-vortex gas description of confinement for 4d SU(N) Yang-Mills theory on small ℝ^2×T^2 with coprime twist n34=p and NLΛ≪1. The description must produce Z_eff,θ=Σ_{k=0}^{N−1}exp[−V E_k(θ)] with E_k(θ)=−2K exp(−8π^2/(N g^2))cos((θ−2πk)/N), a Wilson-loop area law ⟨W_R(C)⟩=exp[−T_R(θ)Area(C)] for −π<θ<π with T_R(θ)=2K exp(−8π^2/(N g^2))[cos(θ/N)−cos((θ+2πq|R|)/N)], and at θ=0 T_R(0) proportional to Λ^2(NLΛ)^(5/3)sin^2(πq|R|/N). The same effective branch theory must also match the generalized anomaly by satisfying Z_{θ+2π}[B_4d]=exp[−(2π i/N)∫(1/2)B_4d∪B_4d]Z_θ[B_4d] and by giving the k-th branch the response exp[−(2π i k/N)∫(1/2)B_4d∪B_4d].",
+        "feasibility_constraints": [
+          "N∈ℤ, N≥2; p∈ℤ with gcd(N,p)=1; q∈{1,...,N−1} satisfies p q≡1 mod N; the compactification has L3=L4=L unless an expression explicitly keeps L3 and L4 separate.",
+          "The semiclassical regime is NLΛ≪1, where Λ is the strong scale and the perturbative gap is of order 2π/(NL), so particle-like fluctuations are integrated out before summing vortices.",
+          "Each vortex has topological charge +1/N and Boltzmann weight K exp[−8π^2/(N g^2)+iθ/N]; each anti-vortex has topological charge −1/N and Boltzmann weight K exp[−8π^2/(N g^2)−iθ/N].",
+          "On the compactified two-dimensional spacetime M2 of area V with no additional ’t Hooft flux through M2, the total topological charge is integral; therefore vortex and anti-vortex numbers n and nbar obey n−nbar∈Nℤ, implemented by δ_{n−nbar∈Nℤ}=Σ_{k=0}^{N−1}exp[−2π i k(n−nbar)/N].",
+          "A center vortex inside a Wilson loop W_R(C) for an irreducible representation R contributes the phase exp(2π i q|R|/N), where |R| is the N-ality of R, i.e. the number of boxes of the Young tableau modulo N.",
+          "For anomaly response, B_4d is a ℤ_N-valued two-form gauge field represented as a two-cochain, ∫(1/2)B_4d∪B_4d is evaluated modulo N in the exponent, and coupling to B_4d changes the fractional part of the topological charge by −∫(1/2)B_4d∪B_4d/N modulo integers."
+        ],
+        "success_set": {
+          "kind": "predicate",
+          "definition": "Σ_P^S={(Z_eff,θ,{E_k},{T_R},Z_θ[B_4d]): Z_eff,θ=Σ_{k=0}^{N−1}exp[−V E_k(θ)], E_k(θ)=−2K exp(−8π^2/(N g^2))cos((θ−2πk)/N), Z_eff,θ is 2π-periodic in θ while each E_k(θ) is 2πN-periodic, first-order transitions occur when θ crosses odd multiples of π, ⟨W_R(C)⟩=exp[−T_R(θ)Area(C)] for −π<θ<π, T_R(θ)=2K exp(−8π^2/(N g^2))[cos(θ/N)−cos((θ+2πq|R|)/N)], T_R(0)∝Λ^2(NLΛ)^(5/3)sin^2(πq|R|/N), Z_{θ+2π}[B_4d]=exp[−(2π i/N)∫(1/2)B_4d∪B_4d]Z_θ[B_4d], and branch k has Z_{θ,k}[B_4d]=exp[−(2π i k/N)∫(1/2)B_4d∪B_4d]Z_{θ,k}[0]}.",
+          "threshold": {
+            "applies": false,
+            "value": null,
+            "comparator": null,
+            "metric_symbol": null,
+            "metric_definition": null,
+            "source_span": null
+          }
+        },
+        "preference_ordering": {
+          "kind": "none",
+          "definition": null,
+          "objective_symbols": [],
+          "lex_order": null,
+          "embedding_to_total_utility": null
+        },
+        "robustness_scope": {
+          "applies": true,
+          "ambient_space": "Semiclassical effective theories built from dilute center vortices and anti-vortices on M2×T^2 for 4d SU(N) Yang-Mills theory with coprime 3-4 twist n34=p, small compactification parameter NLΛ, vacuum branch label k∈ℤ_N, θ∈ℝ, and Wilson-loop representation R with N-ality |R|.",
+          "type_tag": "environment_family",
+          "metric_or_divergence": null,
+          "radius_or_budget": null,
+          "indexing_set": "{(N,p,q,L,θ,R,k,B_4d): N≥2, gcd(N,p)=1, p q≡1 mod N, L>0, NLΛ≪1, θ∈ℝ, k∈ℤ_N, R an irreducible SU(N) representation, and B_4d a ℤ_N-valued two-form background}",
+          "claimed_subfamily": {
+            "definition": "The claimed family consists of all coprime twists n34=p in the dilute-vortex regime NLΛ≪1, with vortex action 8π^2/(N g^2), vortex topological charge ±1/N, vortex Wilson-loop phase exp(±2π i q|R|/N), and integral total topological charge enforced by n−nbar∈Nℤ. In this family the branch energies, string tensions, θ periodicity, and B_4d anomaly response are the formulae stated in the success predicate.",
+            "source_span": {
+              "section": "Abstract; Sections 2.3 and 2.4",
+              "paragraph_or_line": "Abstract confinement-formula sentence; equations (2.37)–(2.48) and (2.49)–(2.51)",
+              "verbatim": "The confinement vacua for NLΛ ≪ 1 can be described by the dilute gas approximation of center vortices, and we give the semiclassical formula for the θ dependence and confining string tensions."
+            }
+          },
+          "hinted_superfamily": {
+            "definition": "A stronger decompactification statement would require the same branch structure and confinement observables to remain continuously connected to strongly coupled Yang-Mills theory on ℝ^4 as L is increased without crossing a center-breaking phase transition. This continuity statement is discussed as motivation and as the target of the large-N stability analysis, not established solely by the dilute-vortex formulae.",
+            "source_span": {
+              "section": "Introduction and summary; Figure 1 caption",
+              "paragraph_or_line": "paragraph asking whether weak-coupling confinement is adiabatically connected; Figure 1 caption",
+              "verbatim": "It is then natural to ask if this weak-coupling confinement for NLΛ ≪ 1 is adiabatically connected to the strongly-coupled confinement on ℝ4 through decompactification without having phase transitions."
+            }
+          },
+          "refinement_relation": "set_inclusion",
+          "criterion": "For each indexed configuration, the effective description is successful exactly when summing a free dilute gas of vortices and anti-vortices with n−nbar∈Nℤ gives the N branches E_k(θ), insertion of a vortex inside W_R(C) shifts θ to θ+2πq|R| in the area term and yields T_R(θ)=E_0(θ+2πq|R|)−E_0(θ), and coupling B_4d gives the θ→θ+2π phase exp[−(2π i/N)∫(1/2)B_4d∪B_4d] together with the k-branch response exp[−(2π i k/N)∫(1/2)B_4d∪B_4d].",
+          "channel_populated_by": [
+            "stated",
+            "operational"
+          ]
+        }
+      },
+      {
+        "goal_id": "G3_large_N_center_stabilization_and_fibonacci_test",
+        "outcome_variable": "o_N ∈ O_P^N, where O_P^N is the set of coprime twist sequences {(N_j,p_j,q_j)}_{j≥1} with N_j→∞, gcd(N_j,p_j)=1, p_j q_j≡1 mod N_j, together with their large-N 0-form and 1-form center-stability diagnostics",
+        "goal_form": "target_proposition",
+        "target_object": "The target end-state is a large-N center-stabilization criterion and a Fibonacci-sequence test. For a sequence N→∞ with gcd(N,p_N)=1 and p_N q_N≡1 mod N, every fixed positive integer m must have the least nonnegative residue of m q_N modulo N of order N, and equivalently every fixed positive integer m must have the least nonnegative residue of m p_N modulo N of order N. This prevents fixed-N-ality Wilson loops from losing their string tension through sin^2(π q_N |R|/N)→0 and suppresses the corresponding 0-form center instabilities. The tested sequence N=F_{n+2}, p=F_n, with F_0=0, F_1=1, and F_{n+2}=F_{n+1}+F_n, satisfies gcd(N,p)=1, has q=(−1)^nF_n modulo N, and gives the large-N light-representation limit T_R→σ sin^2(πφ|R|), where φ=(1+√5)/2 is irrational, so no fixed nonzero |R| has vanishing limiting string tension.",
+        "feasibility_constraints": [
+          "N is taken through an infinite sequence of integers N≥2; p_N is an integer with gcd(N,p_N)=1; q_N∈{1,...,N−1} is fixed by p_N q_N≡1 mod N.",
+          "The 1-form diagnostic uses the semiclassical string tension T_R=σ sin^2(π q_N |R|/N), with σ∼Λ^2(NLΛ)^(5/3), for representations whose N-ality |R| remains O(1) as N→∞.",
+          "Large-N 1-form center stability for light Wilson loops requires that for every fixed |R|≥1, q_N |R|/N does not approach an integer; equivalently the least nonnegative residue of q_N |R| modulo N is not O(1).",
+          "The 0-form diagnostic uses the non-planar one-loop phase exp[(2π i q_N/N) ℓ⃗×n⃗] and action-versus-entropy comparison for the twist-eater vacuum; the same number-theoretic criterion is expressed as fixed multiples of p_N/N and q_N/N staying away from integers at O(1/N) resolution.",
+          "For the Fibonacci test, F_0=0, F_1=1, F_{n+2}=F_{n+1}+F_n, N=F_{n+2}, p=F_n, and q=(−1)^nF_n is a modular inverse of p modulo N because F_{n+2}F_n−F_{n+1}^2=(−1)^{n+1} and F_{n+1}=F_{n+2}−F_n.",
+          "The limiting ratio |q|/N for the Fibonacci sequence is 1/(1+φ)=2−φ, so T_R=σ sin^2(π|R|/(1+φ))=σ sin^2(πφ|R|); irrationality of φ makes this nonzero for every fixed positive integer |R|."
+        ],
+        "success_set": {
+          "kind": "predicate",
+          "definition": "Σ_P^N={{(N_j,p_j,q_j)}: N_j→∞, gcd(N_j,p_j)=1, p_j q_j≡1 mod N_j, for every fixed positive integer m the least nonnegative residues of m q_j and m p_j modulo N_j are O(N_j) rather than O(1), the light-representation string-tension factor sin^2(π q_j |R|/N_j) has a nonzero limit for every fixed |R|≥1, and the tested subsequence N_j=F_{j+2}, p_j=F_j, q_j=(−1)^jF_j mod F_{j+2} satisfies T_R→σ sin^2(πφ|R|) with φ=(1+√5)/2}.",
+          "threshold": {
+            "applies": false,
+            "value": null,
+            "comparator": null,
+            "metric_symbol": null,
+            "metric_definition": null,
+            "source_span": null
+          }
+        },
+        "preference_ordering": {
+          "kind": "qualitative_partial",
+          "definition": "For two admissible coprime twist sequences A and B, A is weakly preferred to B if A avoids accidental small values of sin^2(π q_N m/N) for at least the same fixed finite set of positive integers m as B and has at least the same 0-form stability protection against fixed multiples of p_N/N approaching integers; the paper uses this qualitative ordering to motivate the Fibonacci sequence, not to solve a numerical optimization problem.",
+          "objective_symbols": [
+            "sin^2(π q_N m/N)",
+            "dist(m p_N/N,ℤ)",
+            "dist(m q_N/N,ℤ)"
+          ],
+          "lex_order": null,
+          "embedding_to_total_utility": null
+        },
+        "robustness_scope": {
+          "applies": true,
+          "ambient_space": "Large-N sequences of coprime twists for SU(N) Yang-Mills theory on ℝ^2×T^2 with n34=p_N, together with the two-dimensional 1-form center diagnostic from Wilson-loop string tensions and the compact-direction 0-form center diagnostic from non-planar fluctuations and action-versus-entropy estimates.",
+          "type_tag": "environment_family",
+          "metric_or_divergence": null,
+          "radius_or_budget": null,
+          "indexing_set": "{(N_j,p_j,q_j)_{j≥1}: N_j∈ℤ, N_j≥2, N_j→∞, p_j∈ℤ, gcd(N_j,p_j)=1, q_j∈{1,...,N_j−1}, p_j q_j≡1 mod N_j}",
+          "claimed_subfamily": {
+            "definition": "The claimed subfamily consists of sequences for which every fixed multiple of q_j and every fixed multiple of p_j has residue O(N_j) modulo N_j. The explicitly tested member is N_j=F_{j+2}, p_j=F_j, q_j=(−1)^jF_j mod F_{j+2}, for which |q_j|/N_j→1/(1+φ) and T_R→σ sin^2(πφ|R|) for fixed |R|.",
+            "source_span": {
+              "section": "Introduction and summary; Sections 3.1 and 3.2",
+              "paragraph_or_line": "summary paragraph after Figure 1; equations (3.3)–(3.14)",
+              "verbatim": "It turns out that Wilson loops with p-box representations are deconfined in the large-N limit, and it suggests that any O(1) multiples of p should not become O(1) in mod N in order not to spontaneously break the 1-form symmetry as N → ∞."
+            }
+          },
+          "hinted_superfamily": {
+            "definition": "Other continued-fraction sequences with |q_j|/N_j approaching an irrational number can also keep fixed-N-ality string tensions nonzero; the Fibonacci sequence is highlighted because its continued-fraction coefficients avoid large entries and therefore reduce accidental small string tensions among low fixed multiples.",
+            "source_span": {
+              "section": "Section 3.2.2 and Appendix B",
+              "paragraph_or_line": "discussion after equation (3.14) and continued-fraction appendix",
+              "verbatim": "For any irrational number ξ, we can construct the sequence of (N, p, q) with pq = 1 mod N so that |q|/N converges to the irrational number in a systematic way"
+            }
+          },
+          "refinement_relation": "set_inclusion",
+          "criterion": "A sequence passes the 1-form test when every fixed nonzero N-ality |R| has liminf_N sin^2(π q_N |R|/N)>0. A sequence passes the corresponding 0-form test when the phases exp[(2π i q_N/N)ℓ⃗×n⃗] remain oscillatory for fixed nonzero color momenta and when fixed multiples of p_N/N do not approach integers at O(1/N) resolution. The Fibonacci sequence passes because |q_N|/N→1/(1+φ) and φ is irrational, while the residues of fixed multiples of p_N and q_N remain O(N).",
+          "channel_populated_by": [
+            "stated",
+            "operational",
+            "implicit"
+          ]
+        }
+      }
+    ],
+    "inter_goal_relation": "instrumental",
+    "methodological_claim": {
+      "applies": true,
+      "target_object": "The methodological claim is that the non-minimal-twist center vortex on ℝ^2×T^2 in the asymmetric regime L3≫N L4 can be obtained by starting from SU(N) Yang-Mills theory on ℝ^3×S^1 with center-symmetric holonomy ϕ⃗_c=(2π/N)ρ⃗, rewriting the Abelian low-energy fields as z⃗=i{σ⃗+(θ/(2π)+4π i/g^2)(ϕ⃗−ϕ⃗_c)}, compactifying x3 with z⃗(x,x3)=P_W^(−p)z⃗(x,x3+L3), inserting a fundamental monopole source of magnetic charge α⃗_n, and using α⃗_n=w⃗_n^(q)−P_W^p w⃗_n^(q) with w⃗_n^(q)=ν⃗_n+ν⃗_{n+p}+⋯+ν⃗_{n+(q−1)p}; this turns monopole flux into a localized tube around the x3 circle whose Wilson-loop phase is exp(2π i q/N), topological charge is 1/N, and action is 8π^2/(N g^2).",
+      "evidence_channels": {
+        "source_span": {
+          "section": "Abstract; Introduction and summary; Section 2.2.2",
+          "paragraph_or_line": "abstract construction sentence; introduction paragraph beginning with the new method; equations (2.29)–(2.36)",
+          "verbatim": "we construct the self-dual center vortex for non-minimal ’t Hooft twists from the Kraan-van Baal-Lee-Lu-Yi (KvBLLY) monopoles by using the 3d Abelianized description of SU(N) gauge fields on ℝ3×S1 with nontrivial holonomy backgrounds"
+        },
+        "formalisation": "For N≥2, gcd(N,p)=1, and q p≡1 mod N, impose z⃗(x,x3)=P_W^(−p)z⃗(x,x3+L3) on z⃗=i{σ⃗+(θ/(2π)+4π i/g^2)(ϕ⃗−(2π/N)ρ⃗)}; insert a monopole source α⃗_n; decompose α⃗_n=w⃗_n^(q)−P_W^p w⃗_n^(q), w⃗_n^(q)=ν⃗_n+ν⃗_{n+p}+⋯+ν⃗_{n+(q−1)p}; the emitted and absorbed fluxes differ by the p-fold cyclic Weyl twist and produce a localized center-vortex tube with Wilson-loop phase exp(2π i q/N), Q_top=1/N, and S_YM=8π^2/(N g^2)."
+      }
+    },
+    "evidence_channels": {
+      "stated_goal": {
+        "source_span": {
+          "section": "Abstract; Introduction and summary",
+          "paragraph_or_line": "abstract contribution paragraph; introduction paragraphs summarizing Sections 2 and 3; Figure 1 caption",
+          "verbatim": "We consider the semiclassical description of confinement for 4d SU(N) Yang-Mills theory on small ℝ2 × T2 with non-minimal ’t Hooft twist p with gcd(N, p) = 1. ... The confinement vacua for NLΛ ≪ 1 can be described by the dilute gas approximation of center vortices, and we give the semiclassical formula for the θ dependence and confining string tensions. We apply this result to understand the suitable choice of the twist p for center stabilization at large N."
+        },
+        "formalisation": "The stated goal is an instrumental chain: first establish V_{N,p,q}^{asym} with Wilson-loop phase exp(2π i q/N), Q_top=1/N, and S_YM=8π^2/(N g^2); then use vortices of this type to derive Z_eff,θ=Σ_{k=0}^{N−1}exp[−V E_k(θ)], E_k(θ)=−2K exp(−8π^2/(N g^2))cos((θ−2πk)/N), T_R(θ)=2K exp(−8π^2/(N g^2))[cos(θ/N)−cos((θ+2πq|R|)/N)], and the B_4d anomaly-response phases; finally use T_R∝sin^2(πq|R|/N) and 0-form stability diagnostics to identify coprime large-N twist sequences, with N=F_{n+2}, p=F_n as the tested sequence."
+      },
+      "operational_goal": {
+        "source_span": {
+          "section": "Sections 2.1–2.4 and 3.1–3.2",
+          "paragraph_or_line": "equations (2.1)–(2.15), (2.29)–(2.36), (2.37)–(2.51), and (3.2)–(3.14)",
+          "verbatim": "To develop the semiclassical framework, the important task is to identify the center-vortex configuration with the minimal classical action. We construct such a center vortex ... and we calculate the vacuum structure and string tensions using the dilute gas approximation of center vortices."
+        },
+        "formalisation": "The operational artefacts are: the twisted center-symmetric vacuum P3=S^(−p), P4=C^(−1) and mass spectrum m^2=(2π/N)^2[(Nk3+ℓ3)^2/L3^2+(Nk4+ℓ4)^2/L4^2]; the vortex construction satisfying α⃗_n=w⃗_n^(q)−P_W^p w⃗_n^(q), W(C)↦exp(2π i q/N)W(C), Q_top=1/N, and S_YM=8π^2/(N g^2); the dilute-gas sum over n−nbar∈Nℤ giving E_k(θ); the Wilson-loop computation giving T_R(θ)=E_0(θ+2πq|R|)−E_0(θ); the B_4d response Z_{θ+2π}[B_4d]=exp[−(2π i/N)∫(1/2)B_4d∪B_4d]Z_θ[B_4d]; and the large-N stability criterion that fixed multiples of q_N and p_N remain O(N) modulo N."
+      },
+      "implicit_goal": {
+        "inference_basis": [
+          "Harvested stated aim spans: abstract construction sentence, abstract confinement-formula sentence, abstract large-N/Fibonacci sentence, introduction question about the non-minimal center vortex, Section 2 opening task statement, Section 3 large-N stability target, and Figure 1 caption about judicious twists.",
+          "Harvested method artefacts: twisted classical vacuum and mass gap; Abelianized vortex construction; dilute-gas partition function; Wilson-loop string-tension computation; background-field anomaly response; non-planar/tachyonic 0-form diagnostic; 1-form large-N string diagnostic; Fibonacci limit computation.",
+          "Harvested evaluation-like artefacts: formula-level checks of θ periodicity, first-order branch transitions, N-ality dependence of string tension, p=O(1) deconfinement examples, |R|=p near-deconfinement, and Fibonacci non-vanishing string-tension limit.",
+          "Anomaly matching is merged into the effective-theory goal because its outcome variable is the same branch partition function Z_θ[B_4d], not an independent constructed object."
+        ],
+        "fit_score": 0.945,
+        "fit_components": {
+          "TextAlign": 1.0,
+          "MethodAlign": 1.0,
+          "EvalAlign": 0.875,
+          "ClaimAlign": 1.0,
+          "Complexity": 0.357
+        },
+        "formalisation": "Using harvested artefact counts, TextAlign=7/7 because all seven aim spans map to one of G1–G3; MethodAlign=8/8 because all eight formal method components serve G1, G2, or G3; EvalAlign=7/8 because seven of eight formula-level checks directly test the extracted success predicates while the broad decompactification/adiabatic-continuity framing is only partially operationalized; ClaimAlign=6/6 because the main conclusion variables V_{N,p,q}^{asym}, Z_eff,θ, T_R, Z_θ[B_4d], and {(N,p,q)} lie in the extracted outcome spaces; Complexity=5/14 because three robustness scopes and two additional canonical goals are populated among fourteen optional structural-commitment slots. The recorded fit is 0.20·1.0+0.30·1.0+0.30·0.875+0.20·1.0−0.05·0.357=0.94465, rounded to 0.945."
+      },
+      "excluded_aims": [
+        {
+          "verbatim": "We cannot help but imagine that there must be a deeper structure inside 4d instanton than meets the eye, which encourages us to examine it further in future studies.",
+          "source_span": {
+            "section": "Introduction and summary",
+            "paragraph_or_line": "paragraph after the asymmetric-limit construction discussion",
+            "verbatim": "there must be a deeper structure inside 4d instanton than meets the eye"
+          },
+          "reason": "out_of_scope_other"
+        },
+        {
+          "verbatim": "Adiabatic continuity between the weakly-coupled and strongly-coupled confinement states for N≫1 is realized with a suitable choice of p as shown in figure 1.",
+          "source_span": {
+            "section": "Introduction and summary; Figure 1 caption",
+            "paragraph_or_line": "paragraph summarizing large-N stabilization and figure caption",
+            "verbatim": "Adiabatic continuity between the weakly-coupled and strongly-coupled confinement states for N ≫ 1 is realized with a suitable choice of p as shown in figure 1."
+          },
+          "reason": "motivational"
+        }
+      ]
+    },
+    "consistency_relation": "framing_divergence",
+    "consistency_relation_derivation": "The stated and operational channels agree on the three formal targets: non-minimal vortex construction, dilute-gas confinement/anomaly formulae, and large-N twist-sequence stabilization. However, the introduction and Figure 1 frame the result as adiabatic continuity to strongly coupled ℝ^4 confinement, while the operational content establishes weak-coupling semiclassical formulae plus 0-form and 1-form center-stability criteria, not a full nonperturbative proof of decompactification without phase transition. Therefore the extraction records the operationally established goals and classifies the stronger adiabatic-continuity wording as a framing divergence rather than as an additional success predicate."
+  }
+}

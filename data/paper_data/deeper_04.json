@@ -1,0 +1,179 @@
+{
+  "paper_title": "Exact Solution of Chandrasekhar's H Function For Isotropic Case (Anlı, 2026, arXiv)",
+  "deeper_reasoning_1": "\\section*{Claim}\nLet \\(0<\\mu\\le 1\\), \\(0\\le \\omega\\le 1\\), \\(s:=\\sqrt{1-\\omega}\\),\n\\[\na:=\\frac{3+s}{2},\\qquad b:=\\frac{1+s}{2},\\qquad c:=1+s,\n\\qquad z:=-\\frac{1}{\\mu}.\n\\]\nFor a real exponent \\(r\\), define\n\\[\nG_r(\\mu,\\omega):=\\mu^r(1+\\mu)F(z),\n\\]\nwhere \\(F\\) satisfies\n\\[\nz(1-z)F_{zz}+\\{c-(a+b+1)z\\}F_z-abF=0.\n\\]\nThen the transformed equation\n\\[\nG_{r,\\mu\\mu}+\\frac{\\omega}{4\\mu(1+\\mu)}G_r=0\n\\]\nis obtained from this hypergeometric branch exactly when\n\\[\nr=-\\frac{1+s}{2}.\n\\]\nConsequently the ODE-compatible auxiliary function is\n\\[\nG(\\mu,\\omega)=\\mu^{-\\frac{1+s}{2}}(1+\\mu)F\\left(-\\frac{1}{\\mu}\\right),\n\\]\nwhich is the exponent convention used by the core reasoning. The alternative exponent \\((s-1)/2\\), which appears in the goal extraction, is a controlled upstream mismatch rather than an additional valid branch for the same parameters.\n\n\\section*{Premises}\n\\[\n\\begin{aligned}\n\\text{(P1)}\\quad &0<\\mu\\le 1,\n\\quad 0\\le \\omega\\le 1,\n\\quad s:=\\sqrt{1-\\omega},\n\\quad \\omega=1-s^2.\\\\\n\\text{(P2)}\\quad &a:=\\frac{3+s}{2},\n\\quad b:=\\frac{1+s}{2},\n\\quad c:=1+s,\n\\quad z:=-\\frac{1}{\\mu}.\\\\\n\\text{(P3)}\\quad &z(1-z)F_{zz}+\\{c-(a+b+1)z\\}F_z-abF=0.\\\\\n\\text{(P4)}\\quad &R_r(\\mu):=\\mu^r(1+\\mu),\n\\quad G_r(\\mu,\\omega):=R_r(\\mu)F(z).\\\\\n\\text{(P5)}\\quad &z_\\mu=\\mu^{-2},\n\\quad z_{\\mu\\mu}=-2\\mu^{-3}.\\\\\n\\text{(P6)}\\quad &F\\text{ and }F_z\\text{ are not constrained by an identity forcing }\n\\{\\mu F-(\\mu+1)F_z\\}\\equiv 0.\n\\end{aligned}\n\\]\n\n\\section*{Derivation}\nSolve the hypergeometric equation for \\(F_{zz}\\):\n\\begin{align}\nF_{zz}\n&=\\frac{abF-\\{c-(a+b+1)z\\}F_z}{z(1-z)}. &&\\text{rearrange (P3)}\n\\end{align}\nBy the product and chain rules,\n\\begin{align}\nG_{r,\\mu\\mu}\n&=R_{r,\\mu\\mu}F+2R_{r,\\mu}F_z z_\\mu\n+R_r\\left(F_{zz}z_\\mu^2+F_z z_{\\mu\\mu}\\right). &&\\text{differentiate twice}\n\\end{align}\nSubstituting (P1)--(P5) into this expression and collecting the \\(F\\) and \\(F_z\\) terms gives\n\\begin{align}\n&G_{r,\\mu\\mu}+\\frac{\\omega}{4\\mu(1+\\mu)}G_r\\\\\n&=\\frac{R_r(2r+s+1)}{4\\mu^3(1+\\mu)}\n\\Bigl(\\{2r\\mu^2+(1-s)\\mu^2+2r\\mu-(s+3)\\mu\\}F\n+4(\\mu+1)F_z\\Bigr). &&\\text{direct simplification}\n\\end{align}\nThus the residual vanishes for the full branch without imposing an extra relation between \\(F\\) and \\(F_z\\) when\n\\begin{align}\n2r+s+1&=0, &&\\text{set the exponent factor to zero}\\\\\nr&=-\\frac{1+s}{2}. &&\\text{solve}\n\\end{align}\nWith this exponent,\n\\begin{align}\nG_{\\mu\\mu}+\\frac{\\omega}{4\\mu(1+\\mu)}G&=0. &&\\text{substitute }r=-\\frac{1+s}{2}\n\\end{align}\nNow test the goal-extraction exponent \\(r=(s-1)/2\\). Substitution into the residual gives\n\\begin{align}\nG_{r,\\mu\\mu}+\\frac{\\omega}{4\\mu(1+\\mu)}G_r\n&=-\\frac{2sR_r}{\\mu^3(1+\\mu)}\\{\\mu F-(\\mu+1)F_z\\}. &&\\text{substitute }r=\\frac{s-1}{2}\n\\end{align}\nFor \\(0<s\\le 1\\), this is not identically zero by (P6). Therefore the displayed hypergeometric parameters select the core exponent, not the alternative exponent. At \\(s=0\\), the two exponents coincide, so no conflict remains at conservative scattering.\n\n\\section*{Final Result}\n\\[\n\\boxed{\nG(\\mu,\\omega)=\\mu^{-\\frac{1+\\sqrt{1-\\omega}}{2}}(1+\\mu)F\\left(-\\frac{1}{\\mu}\\right)\n\\quad\\Longrightarrow\\quad\nG_{\\mu\\mu}+\\frac{\\omega}{4\\mu(1+\\mu)}G=0\n}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_2": "\\section*{Claim}\nLet \\(0<\\mu\\le 1\\), \\(0<\\omega\\le 1\\), and suppose\n\\[\nG_{\\mu\\mu}+\\frac{\\omega}{4\\mu(1+\\mu)}G=0,\n\\qquad\nG\\ne 0,\n\\qquad\nD:=G-2\\mu G_\\mu\\ne 0.\n\\]\nDefine\n\\[\nH:=\\frac{G}{D},\n\\qquad\nZ_0:=\\frac{2}{\\omega\\mu}\\left(1-\\frac{1}{H}\\right).\n\\]\nThen the exact-solution formula closes the paper's instrumental chain:\n\\[\nZ_0=\\frac{4G_\\mu}{\\omega G},\n\\qquad\nZ_{0,\\mu}+\\frac{\\omega}{4}Z_0^2=-\\frac{1}{\\mu(1+\\mu)},\n\\]\n\\[\nH_\\mu-\\left(\\frac{1}{2\\mu}-\\frac{\\omega}{2(1+\\mu)}\\right)H^2=-\\frac{1}{2\\mu},\n\\]\nand, whenever \\(Z_0\\) is the integral transform\n\\[\nZ_0(\\mu,\\omega)=\\int_0^1\\frac{H(t,\\omega)}{\\mu+t}\\,dt,\n\\]\nthe same \\(H\\) satisfies the original Chandrasekhar integral equation\n\\[\nH(\\mu,\\omega)=1+\\frac{\\omega\\mu}{2}H(\\mu,\\omega)\n\\int_0^1\\frac{H(t,\\omega)}{\\mu+t}\\,dt.\n\\]\n\n\\section*{Premises}\n\\[\n\\begin{aligned}\n\\text{(P1)}\\quad &0<\\mu\\le 1,\n\\quad 0<\\omega\\le 1.\\\\\n\\text{(P2)}\\quad &G_{\\mu\\mu}=-\\frac{\\omega}{4\\mu(1+\\mu)}G.\\\\\n\\text{(P3)}\\quad &D:=G-2\\mu G_\\mu,\n\\quad G\\ne 0,\n\\quad D\\ne 0,\n\\quad H:=G/D.\\\\\n\\text{(P4)}\\quad &Z_0:=\\frac{2}{\\omega\\mu}\\left(1-\\frac{1}{H}\\right).\\\\\n\\text{(P5)}\\quad &D_\\mu=-G_\\mu-2\\mu G_{\\mu\\mu}.\\\\\n\\text{(P6)}\\quad &Z_0(\\mu,\\omega)=\\displaystyle\\int_0^1\\frac{H(t,\\omega)}{\\mu+t}\\,dt\n\\text{ when recovering the integral form.}\n\\end{aligned}\n\\]\n\n\\section*{Derivation}\nFirst recover \\(Z_0\\) from the exact \\(H\\)-formula:\n\\begin{align}\n1-\\frac{1}{H}\n&=1-\\frac{D}{G} &&\\text{by (P3)}\\\\\n&=1-\\frac{G-2\\mu G_\\mu}{G} &&\\text{expand }D\\\\\n&=\\frac{2\\mu G_\\mu}{G}. &&\\text{simplify}\n\\end{align}\nHence\n\\begin{align}\nZ_0\n&=\\frac{2}{\\omega\\mu}\\frac{2\\mu G_\\mu}{G} &&\\text{by (P4)}\\\\\n&=\\frac{4G_\\mu}{\\omega G}. &&\\text{cancel }\\mu\n\\end{align}\nDifferentiate this expression and add the quadratic term:\n\\begin{align}\nZ_{0,\\mu}\n&=\\frac{4}{\\omega}\\left(\\frac{G_{\\mu\\mu}}{G}-\\frac{G_\\mu^2}{G^2}\\right), &&\\text{quotient rule}\\\\\n\\frac{\\omega}{4}Z_0^2\n&=\\frac{4}{\\omega}\\frac{G_\\mu^2}{G^2}. &&\\text{substitute }Z_0\n\\end{align}\nTherefore\n\\begin{align}\nZ_{0,\\mu}+\\frac{\\omega}{4}Z_0^2\n&=\\frac{4}{\\omega}\\frac{G_{\\mu\\mu}}{G} &&\\text{cancel quadratic terms}\\\\\n&=-\\frac{1}{\\mu(1+\\mu)}. &&\\text{by (P2)}\n\\end{align}\nNow verify the \\(H\\)-differential equation. From \\(H=G/D\\),\n\\begin{align}\nH_\\mu\n&=\\frac{G_\\mu D-GD_\\mu}{D^2} &&\\text{quotient rule}\\\\\n&=\\frac{G_\\mu(G-2\\mu G_\\mu)-G(-G_\\mu-2\\mu G_{\\mu\\mu})}{D^2} &&\\text{by (P3) and (P5)}\\\\\n&=\\frac{2GG_\\mu-2\\mu G_\\mu^2-\\dfrac{\\omega G^2}{2(1+\\mu)}}{D^2}. &&\\text{by (P2)}\n\\end{align}\nSince \\(H^2=G^2/D^2\\),\n\\begin{align}\n&H_\\mu-\\left(\\frac{1}{2\\mu}-\\frac{\\omega}{2(1+\\mu)}\\right)H^2\\\\\n&=\\frac{2GG_\\mu-2\\mu G_\\mu^2-\\dfrac{\\omega G^2}{2(1+\\mu)}}{D^2}\n-\\left(\\frac{1}{2\\mu}-\\frac{\\omega}{2(1+\\mu)}\\right)\\frac{G^2}{D^2} &&\\text{substitute }H^2\\\\\n&=\\frac{2GG_\\mu-2\\mu G_\\mu^2-\\dfrac{G^2}{2\\mu}}{D^2} &&\\text{cancel }\\omega\\text{ terms}\\\\\n&=-\\frac{(G-2\\mu G_\\mu)^2}{2\\mu D^2} &&\\text{factor the numerator}\\\\\n&=-\\frac{1}{2\\mu}. &&\\text{use }D=G-2\\mu G_\\mu\n\\end{align}\nFinally, if (P6) holds, then (P4) gives\n\\begin{align}\n1-\\frac{1}{H}\n&=\\frac{\\omega\\mu}{2}Z_0 &&\\text{rearrange (P4)}\\\\\n&=\\frac{\\omega\\mu}{2}\\int_0^1\\frac{H(t,\\omega)}{\\mu+t}\\,dt. &&\\text{by (P6)}\n\\end{align}\nMultiplying by \\(H\\) yields\n\\begin{align}\nH(\\mu,\\omega)\n&=1+\\frac{\\omega\\mu}{2}H(\\mu,\\omega)\n\\int_0^1\\frac{H(t,\\omega)}{\\mu+t}\\,dt. &&\\text{recover the integral equation}\n\\end{align}\n\n\\section*{Final Result}\n\\[\n\\boxed{\nH=\\frac{G}{G-2\\mu G_\\mu}\n\\quad\\Longrightarrow\\quad\nZ_0=\\frac{4G_\\mu}{\\omega G},\n\\quad\nZ_{0,\\mu}+\\frac{\\omega}{4}Z_0^2=-\\frac{1}{\\mu(1+\\mu)},\n\\quad\nH_\\mu-\\left(\\frac{1}{2\\mu}-\\frac{\\omega}{2(1+\\mu)}\\right)H^2=-\\frac{1}{2\\mu}\n}\n\\]\nTogether with \\(Z_0=\\int_0^1H(t,\\omega)/(\\mu+t)\\,dt\\), this is algebraically equivalent to the original integral equation.\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_3": "\\section*{Claim}\nThe boundary faces required by the goal are consistent with the exact construction:\n\\[\nH(\\mu,0)=1\\quad (0<\\mu\\le 1),\n\\qquad\nH(0,\\omega)=1\\quad (0\\le \\omega\\le 1).\n\\]\nThe first identity follows from the \\(\\omega=0\\) hypergeometric branch; the second follows from the integral equation under the standard boundedness condition used for the endpoint passage.\n\n\\section*{Premises}\n\\[\n\\begin{aligned}\n\\text{(P1)}\\quad &0<\\mu\\le 1.\\\\\n\\text{(P2)}\\quad &\\omega=0,\n\\quad s=1,\n\\quad a=2,\n\\quad b=1,\n\\quad c=2,\n\\quad z=-1/\\mu.\\\\\n\\text{(P3)}\\quad &F(z)=\\frac{1}{1-z}.\\\\\n\\text{(P4)}\\quad &G(\\mu,0):=\\mu^{-1}(1+\\mu)F(-1/\\mu),\n\\quad H(\\mu,0):=\\frac{G(\\mu,0)}{G(\\mu,0)-2\\mu G_\\mu(\\mu,0)}.\\\\\n\\text{(P5)}\\quad &0\\le \\omega\\le 1,\n\\quad H(\\mu,\\omega)=1+\\frac{\\omega\\mu}{2}H(\\mu,\\omega)\n\\displaystyle\\int_0^1\\frac{H(t,\\omega)}{\\mu+t}\\,dt.\\\\\n\\text{(P6)}\\quad &\\text{For each fixed }\\omega\\text{ there is }M_\\omega<\\infty\n\\text{ such that }0\\le H(u,\\omega)\\le M_\\omega\\text{ for }0\\le u\\le 1.\\\\\n\\text{(P7)}\\quad &\\lim_{\\mu\\downarrow 0}\\mu\\ln\\left(\\frac{\\mu+1}{\\mu}\\right)=0.\n\\end{aligned}\n\\]\n\n\\section*{Derivation}\nFirst verify the \\(\\omega=0\\) branch. From \\(F(z)=(1-z)^{-1}\\),\n\\begin{align}\nF_z&=(1-z)^{-2}, &&\\text{differentiate}\\\\\nF_{zz}&=2(1-z)^{-3}. &&\\text{differentiate again}\n\\end{align}\nFor \\(a=2\\), \\(b=1\\), and \\(c=2\\),\n\\begin{align}\nz(1-z)F_{zz}+\\{c-(a+b+1)z\\}F_z-abF\n&=z(1-z)F_{zz}+(2-4z)F_z-2F &&\\text{substitute parameters}\\\\\n&=\\frac{2z}{(1-z)^2}+\\frac{2-4z}{(1-z)^2}-\\frac{2}{1-z} &&\\text{substitute derivatives}\\\\\n&=0. &&\\text{common denominator and simplify}\n\\end{align}\nThus (P3) is the correct branch for \\(\\omega=0\\). Evaluating at \\(z=-1/\\mu\\),\n\\begin{align}\nF(-1/\\mu)&=\\frac{1}{1+1/\\mu}=\\frac{\\mu}{1+\\mu}. &&\\text{simplify}\n\\end{align}\nTherefore\n\\begin{align}\nG(\\mu,0)&=\\mu^{-1}(1+\\mu)\\frac{\\mu}{1+\\mu}=1, &&\\text{by (P4)}\\\\\nG_\\mu(\\mu,0)&=0, &&\\text{differentiate the constant}\\\\\nH(\\mu,0)&=\\frac{1}{1-2\\mu\\cdot 0}=1. &&\\text{by (P4)}\n\\end{align}\nNow prove the \\(\\mu=0\\) endpoint from the integral equation. For \\(0<\\mu\\le 1\\), the nonconstant term in (P5) is bounded by\n\\begin{align}\n0&\\le \\frac{\\omega\\mu}{2}H(\\mu,\\omega)\n\\int_0^1\\frac{H(t,\\omega)}{\\mu+t}\\,dt &&\\text{by (P5) and (P6)}\\\\\n&\\le \\frac{\\omega\\mu}{2}M_\\omega^2\\int_0^1\\frac{dt}{\\mu+t} &&\\text{by (P6)}\\\\\n&=\\frac{\\omega M_\\omega^2}{2}\\mu\\ln\\left(\\frac{\\mu+1}{\\mu}\\right) &&\\text{integrate}\\\\\n&\\longrightarrow 0. &&\\text{by (P7)}\n\\end{align}\nTaking \\(\\mu\\downarrow 0\\) in (P5) gives\n\\begin{align}\nH(0,\\omega)&=1. &&\\text{endpoint limit}\n\\end{align}\n\n\\section*{Final Result}\n\\[\n\\boxed{\nH(\\mu,0)=1\\quad (0<\\mu\\le 1),\n\\qquad\nH(0,\\omega)=1\\quad (0\\le \\omega\\le 1)\n}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_4": "\\section*{Claim}\nThe moment recurrence is not merely an implicit convolution identity; it is a well-posed lower-triangular analytic construction. Let\n\\[\ns:=\\sqrt{1-\\omega},\n\\qquad 0\\le \\omega\\le 1.\n\\]\nIf\n\\[\n4(n+1)\\alpha_n(\\omega)=4+\n\\omega\\sum_{m=0}^{n}\\alpha_m(\\omega)\\alpha_{n-m}(\\omega),\n\\qquad n=0,1,2,\\ldots,\n\\]\nand\n\\[\n\\alpha_0(\\omega)=\n\\begin{cases}\n1, & \\omega=0,\\\\\n\\dfrac{2}{\\omega}(1-\\sqrt{1-\\omega}), & 0<\\omega\\le 1,\n\\end{cases}\n\\]\nthen, for every integer \\(n\\ge 1\\),\n\\[\n\\alpha_n(\\omega)=\n\\frac{4+\\omega\\sum_{m=1}^{n-1}\\alpha_m(\\omega)\\alpha_{n-m}(\\omega)}{4(n+\\sqrt{1-\\omega})}.\n\\]\nThe denominator is strictly positive, so \\(\\alpha_0,\\alpha_1,\\ldots\\) are uniquely determined in order.\n\n\\section*{Premises}\n\\[\n\\begin{aligned}\n\\text{(P1)}\\quad &0\\le \\omega\\le 1,\n\\quad s:=\\sqrt{1-\\omega},\n\\quad \\omega=1-s^2,\n\\quad 0\\le s\\le 1.\\\\\n\\text{(P2)}\\quad &\\alpha_0(\\omega)=\n\\begin{cases}\n1, & \\omega=0,\\\\\n\\dfrac{2}{\\omega}(1-\\sqrt{1-\\omega}), & 0<\\omega\\le 1.\n\\end{cases}\\\\\n\\text{(P3)}\\quad &4(n+1)\\alpha_n(\\omega)=4+\n\\omega\\sum_{m=0}^{n}\\alpha_m(\\omega)\\alpha_{n-m}(\\omega),\n\\qquad n=0,1,2,\\ldots.\\\\\n\\text{(P4)}\\quad &\\sum_{m=1}^{0}x_m:=0.\n\\end{aligned}\n\\]\n\n\\section*{Derivation}\nFirst rewrite \\(\\alpha_0\\) without the removable singularity at \\(\\omega=0\\). For \\(0<\\omega\\le 1\\),\n\\begin{align}\n\\alpha_0(\\omega)\n&=\\frac{2(1-s)}{1-s^2} &&\\text{by (P1) and (P2)}\\\\\n&=\\frac{2(1-s)}{(1-s)(1+s)} &&\\text{factor}\\\\\n&=\\frac{2}{1+s}. &&\\text{cancel }1-s\n\\end{align}\nAt \\(\\omega=0\\), \\(s=1\\), and the same expression gives \\(2/(1+s)=1=\\alpha_0(0)\\). Hence\n\\begin{align}\n\\alpha_0(\\omega)&=\\frac{2}{1+s},\n\\qquad 0\\le \\omega\\le 1. &&\\text{single formula}\n\\end{align}\nFix \\(n\\ge 1\\). Separate the two endpoint terms in the convolution:\n\\begin{align}\n4(n+1)\\alpha_n\n&=4+\\omega\\left(\\alpha_0\\alpha_n+\n\\sum_{m=1}^{n-1}\\alpha_m\\alpha_{n-m}+\\alpha_n\\alpha_0\\right) &&\\text{split }m=0,n\\\\\n&=4+2\\omega\\alpha_0\\alpha_n+\n\\omega\\sum_{m=1}^{n-1}\\alpha_m\\alpha_{n-m}. &&\\text{combine endpoints}\n\\end{align}\nCollect the only terms involving \\(\\alpha_n\\):\n\\begin{align}\n\\left(4(n+1)-2\\omega\\alpha_0\\right)\\alpha_n\n&=4+\\omega\\sum_{m=1}^{n-1}\\alpha_m\\alpha_{n-m}. &&\\text{move endpoint terms}\n\\end{align}\nSimplify the coefficient of \\(\\alpha_n\\):\n\\begin{align}\n4(n+1)-2\\omega\\alpha_0\n&=4(n+1)-2(1-s^2)\\frac{2}{1+s} &&\\text{substitute }\\omega\\text{ and }\\alpha_0\\\\\n&=4(n+1)-4(1-s) &&\\text{cancel }1+s\\\\\n&=4(n+s). &&\\text{simplify}\n\\end{align}\nSince \\(n\\ge 1\\) and \\(s\\ge 0\\),\n\\begin{align}\n4(n+s)&>0. &&\\text{nonzero denominator}\n\\end{align}\nThus division is valid and gives\n\\begin{align}\n\\alpha_n(\\omega)\n&=\\frac{4+\\omega\\sum_{m=1}^{n-1}\\alpha_m(\\omega)\\alpha_{n-m}(\\omega)}{4(n+s)}. &&\\text{solve for }\\alpha_n\n\\end{align}\nThe right-hand side only uses \\(\\alpha_0,\\ldots,\\alpha_{n-1}\\). Therefore induction gives a unique sequence. In particular, the empty-sum convention gives\n\\begin{align}\n\\alpha_1(\\omega)&=\\frac{4}{4(1+s)}\n=\\frac{1}{1+\\sqrt{1-\\omega}}. &&\\text{set }n=1\n\\end{align}\n\n\\section*{Final Result}\n\\[\n\\boxed{\n\\alpha_n(\\omega)=\n\\frac{4+\\omega\\sum_{m=1}^{n-1}\\alpha_m(\\omega)\\alpha_{n-m}(\\omega)}{4(n+\\sqrt{1-\\omega})},\n\\qquad n\\ge 1\n}\n\\]\nwith \\(\\alpha_0(\\omega)=2/(1+\\sqrt{1-\\omega})\\) and the empty-sum convention for \\(n=1\\).\n\\hfill$\\blacksquare$",
+  "deeper_metadata": {
+    "output_file": "deeper.json",
+    "revision_id": "deeper_04_v3_integral_endpoint_alignment",
+    "revision_intent": "Improve alignment by closing the exact-H construction back to the original integral equation, proving both boundary faces required by the goals, preserving the core-consistent G exponent, and keeping the moment recurrence constructive rather than implicit.",
+    "input_files": [
+      "deeper_reasoning_pseudo_algorithm.md",
+      "core_04.json",
+      "goals_04.json"
+    ],
+    "rubric_interpretation": {
+      "schema": "The object uses only paper_title, contiguous deeper_reasoning_k string fields, and one deeper_metadata object.",
+      "latex_constraint": "Each deeper_reasoning_k is a standalone LaTeX fragment intended to compile with article, amsmath, and amssymb only.",
+      "value_standard": "High-value deeper reasoning should supply missing mathematical bridges: special-function-to-ODE verification, exact-H-to-differential-form closure, algebraic recovery of the original integral equation, endpoint compatibility, and lower-triangular moment construction."
+    },
+    "goal_trace": {
+      "g1_exact_isotropic_H_solution": [
+        "deeper_reasoning_1",
+        "deeper_reasoning_2",
+        "deeper_reasoning_3"
+      ],
+      "g2_differential_form_of_integral_equation": [
+        "deeper_reasoning_1",
+        "deeper_reasoning_2"
+      ],
+      "g3_recursive_analytic_moment_formulae": [
+        "deeper_reasoning_4"
+      ],
+      "methodological_claim": [
+        "deeper_reasoning_1",
+        "deeper_reasoning_2"
+      ]
+    },
+    "entry_metadata": {
+      "deeper_reasoning_1": {
+        "title": "Exponent-selected hypergeometric verification for the auxiliary G equation",
+        "target_goal_component": "g1_exact_isotropic_H_solution; g2_differential_form_of_integral_equation; methodological_claim",
+        "declared_source_set": [
+          "core_reasoning_3",
+          "core_reasoning_4",
+          "goals.g1_exact_isotropic_H_solution",
+          "goals.methodological_claim"
+        ],
+        "major_advancement_modes": [
+          "missing-link proof",
+          "parameter audit",
+          "change-of-variables verification"
+        ],
+        "goal_alignment": "Verifies the hypergeometric auxiliary function against the linear G equation and explicitly controls the exponent mismatch between the core file and the goal extraction.",
+        "scientific_payoff": "Turns the exact-solution formula from an asserted special-function expression into a checked solution of the derived linear ODE.",
+        "nontrivial_advance_over_sources": "The core states the G formula and the G ODE separately; this entry proves compatibility and identifies the ODE-compatible exponent rather than assuming it.",
+        "formal_sharpness": "A general exponent r is carried through the transformation, producing an explicit residual whose vanishing selects the exponent.",
+        "low_value_rejection_audit": "Rejected a generic statement that hypergeometric functions solve hypergeometric equations; the entry performs the actual transformation and exponent audit.",
+        "selection_score": 0.99,
+        "controlled_external_lemmas": [
+          "hypergeometric differential equation",
+          "product rule",
+          "chain rule"
+        ],
+        "known_residual_risks_and_mitigation": "The goal file contains a conflicting exponent. The entry mitigates this by proving the core exponent is required for the stated hypergeometric parameters and marking the other exponent as an upstream mismatch."
+      },
+      "deeper_reasoning_2": {
+        "title": "Exact-H closure to Z0, the differential equations, and the original integral equation",
+        "target_goal_component": "g1_exact_isotropic_H_solution; g2_differential_form_of_integral_equation; methodological_claim",
+        "declared_source_set": [
+          "core_reasoning_1",
+          "core_reasoning_3",
+          "core_reasoning_4",
+          "goals.g1_exact_isotropic_H_solution",
+          "goals.g2_differential_form_of_integral_equation"
+        ],
+        "major_advancement_modes": [
+          "bridge proof",
+          "equivalence closure",
+          "integral-equation recovery"
+        ],
+        "goal_alignment": "Connects H=G/(G-2muG_mu) to Z0, the Riccati Z0 equation, the first-order H equation, and the original integral equation when Z0 is the stated integral transform.",
+        "scientific_payoff": "Closes the derivational loop from the solved linear equation back to the nonlinear equation that defines the target H function.",
+        "nontrivial_advance_over_sources": "The core proves pieces of the chain separately; this entry verifies that the exact H formula transports all required identities consistently.",
+        "formal_sharpness": "All cancellations are shown explicitly in terms of G, G_mu, G_mumu, and D=G-2muG_mu.",
+        "low_value_rejection_audit": "Rejected a proof that only re-derived the H differential equation; the entry also recovers the integral equation through Z0.",
+        "selection_score": 0.99,
+        "controlled_external_lemmas": [
+          "quotient rule",
+          "algebraic equivalence of Z0 definition and integral equation"
+        ],
+        "known_residual_risks_and_mitigation": "The recovery of the integral equation depends on the Z0 integral-transform identity, which is explicitly declared as a premise rather than smuggled into the proof."
+      },
+      "deeper_reasoning_3": {
+        "title": "Boundary-face verification for H(mu,0) and H(0,omega)",
+        "target_goal_component": "g1_exact_isotropic_H_solution",
+        "declared_source_set": [
+          "core_reasoning_5",
+          "goals.g1_exact_isotropic_H_solution"
+        ],
+        "major_advancement_modes": [
+          "boundary verification",
+          "endpoint compatibility",
+          "branch check"
+        ],
+        "goal_alignment": "Proves both boundary values named in the goal extraction: H(mu,0)=1 and H(0,omega)=1.",
+        "scientific_payoff": "Prevents the exact formula from being aligned only on the open domain while missing boundary conditions required by the target object.",
+        "nontrivial_advance_over_sources": "Combines the omega=0 hypergeometric branch check with the mu-downarrow-zero endpoint argument, making boundary coverage explicit in one audit-facing derivation.",
+        "formal_sharpness": "The omega=0 branch is checked in the hypergeometric equation before evaluating G, and the H(0,omega) endpoint is bounded by a vanishing logarithmic term.",
+        "low_value_rejection_audit": "Rejected merely citing the boundary values from the goal file; both endpoint identities are derived.",
+        "selection_score": 0.97,
+        "controlled_external_lemmas": [
+          "elementary derivative of (1-z)^{-1}",
+          "logarithmic endpoint limit"
+        ],
+        "known_residual_risks_and_mitigation": "The H(0,omega) endpoint proof uses boundedness, matching the condition already isolated in the core reasoning."
+      },
+      "deeper_reasoning_4": {
+        "title": "Lower-triangular well-posedness of the moment recurrence",
+        "target_goal_component": "g3_recursive_analytic_moment_formulae",
+        "declared_source_set": [
+          "core_reasoning_2",
+          "goals.g3_recursive_analytic_moment_formulae"
+        ],
+        "major_advancement_modes": [
+          "implicit-to-constructive conversion",
+          "denominator audit",
+          "base-case continuity"
+        ],
+        "goal_alignment": "Transforms the convolution recurrence into the solved recurrence stated in the goals and proves that the denominator is positive over the full domain.",
+        "scientific_payoff": "Shows that all moments are recursively determined rather than merely constrained by an equation involving alpha_n on both sides.",
+        "nontrivial_advance_over_sources": "The core derives the convolution identity; this entry proves constructive uniqueness and removes the apparent singularity in alpha_0 at omega=0.",
+        "formal_sharpness": "Endpoint terms in the convolution are isolated, the coefficient is simplified to 4(n+sqrt(1-omega)), and strict positivity is proved.",
+        "low_value_rejection_audit": "Rejected listing alpha_1 and alpha_2 only; the proof establishes the full all-n mechanism.",
+        "selection_score": 0.98,
+        "controlled_external_lemmas": [
+          "finite convolution splitting",
+          "induction from a positive denominator"
+        ],
+        "known_residual_risks_and_mitigation": "The recurrence is formal in the same sense as the core moment derivation; the entry does not claim independent convergence beyond the source assumptions."
+      }
+    },
+    "rejected_low_value_candidates": [
+      {
+        "candidate": "Restate the Riccati derivation for Z0 from the core file.",
+        "reason_rejected": "Too duplicative; replaced by a G-to-Z0-to-H-to-integral-equation closure proof."
+      },
+      {
+        "candidate": "Add a long numerical-table comparison against Chandrasekhar values.",
+        "reason_rejected": "The goals classify numerical comparison as evaluation evidence, not a canonical deeper mathematical target."
+      },
+      {
+        "candidate": "Accept both G exponents as equivalent without proof.",
+        "reason_rejected": "Direct residual calculation shows the goal-extraction exponent is not ODE-compatible for the same hypergeometric parameters except where it coincides at s=0."
+      }
+    ],
+    "global_alignment_audit": {
+      "rubric_schema": "pass: exactly paper_title, deeper_reasoning_1 through deeper_reasoning_4, and deeper_metadata are present.",
+      "rubric_latex": "pass: all reasoning entries were generated as LaTeX fragments using only standard article, amsmath, and amssymb constructs.",
+      "core_alignment": "high: entries deepen core_reasoning_1 through core_reasoning_5 without replacing their premises or notation.",
+      "goal_alignment": "high: exact H, differential form, original integral-equation recovery, boundary conditions, and moment recurrence are all covered.",
+      "value_alignment": "high: every entry resolves a missing bridge, boundary condition, or constructive well-posedness issue rather than merely paraphrasing the source extractions."
+    },
+    "known_residual_risks_and_mitigation": [
+      {
+        "risk": "core_04.json and goals_04.json disagree on the exponent in G.",
+        "mitigation": "deeper_reasoning_1 explicitly computes the residual for a general exponent and follows the ODE-compatible core exponent while documenting the conflict."
+      },
+      {
+        "risk": "A differential equation plus algebraic substitution alone does not prove the integral-transform identity for Z0.",
+        "mitigation": "deeper_reasoning_2 states the integral-transform identity as the necessary premise for recovering the original integral equation."
+      },
+      {
+        "risk": "Endpoint claims require limiting assumptions not contained in open-domain algebra.",
+        "mitigation": "deeper_reasoning_3 isolates boundedness and the logarithmic endpoint limit as explicit premises."
+      }
+    ]
+  }
+}

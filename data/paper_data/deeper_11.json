@@ -1,0 +1,186 @@
+{
+  "paper_title": "The metamorphosis of semi-classical mechanisms of confinement: from monopoles on R^3 x S^1 to center-vortices on R^2 x T^2 (Guvendik, 2024, JHEP)",
+  "deeper_reasoning_1": "\\noindent\\textbf{Claim.} The monopole and vortex quantum-mechanical limits have the same infrared content precisely because, after subtracting the regime-dependent zero-point energy, both are the same cyclic tunnelling Hamiltonian. Let $X\\in\\{M,V\\}$ denote the monopole and vortex regimes. If\n\\[\nH_X=E_XI_X-\\kappa e^{-i\\theta/N}T_X-\\kappa e^{i\\theta/N}T_X^\\dagger,\n\\qquad \\kappa:=K e^{-S_I/N}>0,\n\\]\nacts on $N$ cyclic vacua, then the electric-flux branches are\n\\[\n\\varepsilon_{X,k}(\\theta):=N(E_{X,k}(\\theta)-E_X)\n=-2NK e^{-S_I/N}\\cos\\left(\\frac{\\theta+2\\pi k}{N}\\right),\n\\qquad k=0,\\ldots,N-1.\n\\]\nConsequently the magnetic-flux basis $\\{|\\nu_i\\rangle\\}$ and the holonomy basis $\\{|m\\rangle\\}$ are two labels for the same deformed one-dimensional $Z_N$ topological theory, up to an additive energy constant.\n\n\\noindent\\textbf{Premises.}\n\\[\n\\begin{aligned}\n\\mathrm{(P1)}&\\quad N\\geq2,\n\\quad \\omega:=e^{2\\pi i/N},\n\\quad \\omega^N=1,\n\\quad S_I=8\\pi^2/g^2.\\\\\n\\mathrm{(P2)}&\\quad X\\in\\{M,V\\},\n\\quad \\{|r\\rangle_X\\}_{r=0}^{N-1}\\text{ is an orthonormal cyclic basis,}\n\\quad |N\\rangle_X:=|0\\rangle_X.\\\\\n\\mathrm{(P3)}&\\quad T_X:=\\sum_{r=0}^{N-1}|r\\rangle_X\\langle r+1|_X.\\\\\n\\mathrm{(P4)}&\\quad H_X=E_XI_X-\\kappa e^{-i\\theta/N}T_X-\\kappa e^{i\\theta/N}T_X^\\dagger,\n\\quad \\kappa:=K e^{-S_I/N}.\\\\\n\\mathrm{(P5)}&\\quad |e_k\\rangle_X:=N^{-1/2}\\sum_{r=0}^{N-1}\\omega^{-kr}|r\\rangle_X,\n\\quad k=0,\\ldots,N-1.\\\\\n\\mathrm{(P6)}&\\quad \\text{The monopole endpoint uses }|r\\rangle_M=|\\nu_{r+1}\\rangle,\n\\text{ and the vortex endpoint uses }|r\\rangle_V=|m=r\\rangle.\\\\\n\\mathrm{(P7)}&\\quad e^{ix}+e^{-ix}=2\\cos x.\n\\end{aligned}\n\\]\n\n\\noindent\\textbf{Derivation.}\nFor any basis vector,\n\\begin{align}\nT_X|j\\rangle_X\n&=\\sum_{r=0}^{N-1}|r\\rangle_X\\langle r+1|j\\rangle_X && \\text{by (P3)},\\\\\n&=|j-1\\rangle_X && \\text{cyclic indexing}.\n\\end{align}\nTherefore\n\\begin{align}\nT_X|e_k\\rangle_X\n&=N^{-1/2}\\sum_{j=0}^{N-1}\\omega^{-kj}T_X|j\\rangle_X && \\text{by (P5)},\\\\\n&=N^{-1/2}\\sum_{j=0}^{N-1}\\omega^{-kj}|j-1\\rangle_X && \\text{previous line},\\\\\n&=N^{-1/2}\\sum_{\\ell=0}^{N-1}\\omega^{-k(\\ell+1)}|\\ell\\rangle_X && \\text{set }\\ell=j-1,\\\\\n&=\\omega^{-k}|e_k\\rangle_X. && \\text{factor out }\\omega^{-k}\n\\end{align}\nSince $T_X^\\dagger|e_k\\rangle_X=\\omega^k|e_k\\rangle_X$, the Hamiltonian satisfies\n\\begin{align}\nH_X|e_k\\rangle_X\n&=\\left(E_X-\\kappa e^{-i\\theta/N}\\omega^{-k}-\\kappa e^{i\\theta/N}\\omega^k\\right)|e_k\\rangle_X && \\text{by (P4)},\\\\\n&=\\left(E_X-\\kappa e^{-i(\\theta+2\\pi k)/N}-\\kappa e^{i(\\theta+2\\pi k)/N}\\right)|e_k\\rangle_X && \\text{by (P1)},\\\\\n&=\\left(E_X-2K e^{-S_I/N}\\cos\\left(\\frac{\\theta+2\\pi k}{N}\\right)\\right)|e_k\\rangle_X && \\text{by (P7)}.\n\\end{align}\nThus\n\\begin{align}\n\\varepsilon_{X,k}(\\theta)\n&=N(E_{X,k}(\\theta)-E_X) && \\text{definition},\\\\\n&=-2NK e^{-S_I/N}\\cos\\left(\\frac{\\theta+2\\pi k}{N}\\right). && \\text{substitute the eigenvalue}\n\\end{align}\nFinally, define $U|r\\rangle_M:=|r\\rangle_V$. Then $UT_MU^\\dagger=T_V$, hence\n\\begin{align}\nU(H_M-E_MI_M)U^\\dagger&=H_V-E_VI_V && \\text{same }\\kappa,\\theta,N\\text{ in (P4)}.\n\\end{align}\nThis proves equality of the two theta-dependent branch spectra and leaves only the additive constants $E_M$ and $E_V$.\n\n\\noindent\\textbf{Final Result.}\n\\[\n\\boxed{\\varepsilon_{M,k}(\\theta)=\\varepsilon_{V,k}(\\theta)=-2NK e^{-S_I/N}\\cos\\left(\\frac{\\theta+2\\pi k}{N}\\right),\n\\qquad k=0,\\ldots,N-1.}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_2": "\\noindent\\textbf{Claim.} The two $n_{12}=1$ semiclassical descriptions are selected in opposite size hierarchies, but their coexistence as finite-volume quantum-mechanical endpoints does not imply a distinct confining phase transition. For $L_1=L_2=L_T$,\n\\[\n\\frac{\\Delta E^{\\rm cl}_{\\rm non\\text{-}flat}}{\\Delta E^{1\\text{-}{\\rm loop}}_{\\rm flat}}\n\\propto \\frac{L_3^4}{N\\lambda L_T^4}.\n\\]\nThus the non-flat monopole background is preferred when $L_T^4\\gg L_3^4/(N\\lambda)$, while the flat vortex background is preferred when $L_T^4\\ll L_3^4/(N\\lambda)$. Since the interpolation is a finite-dimensional quantum mechanics, a continuous path may reorder levels between these endpoints while the common branch function from the cyclic normal form remains the same after relabelling.\n\n\\noindent\\textbf{Premises.}\n\\[\n\\begin{aligned}\n\\mathrm{(P1)}&\\quad N\\geq2,\n\\quad L_3,L_T,\\lambda>0,\n\\quad L_1=L_2=L_T.\\\\\n\\mathrm{(P2)}&\\quad R(L_T):=\\frac{\\Delta E^{\\rm cl}_{\\rm non\\text{-}flat}}{\\Delta E^{1\\text{-}{\\rm loop}}_{\\rm flat}}\n=c\\frac{L_3^4}{N\\lambda L_T^4}\\quad \\text{for some constant }c>0.\\\\\n\\mathrm{(P3)}&\\quad R(L_T)\\ll1\\text{ selects the non-flat realization, and }R(L_T)\\gg1\\text{ selects the flat realization.}\\\\\n\\mathrm{(P4)}&\\quad \\mathcal H\\cong\\mathbb C^N\\text{ is the retained quantum-mechanical low-energy space in the crossover region.}\\\\\n\\mathrm{(P5)}&\\quad H(t)\\text{ is a finite Hermitian }N\\times N\\text{ matrix depending continuously on }t\\in[0,1].\\\\\n\\mathrm{(P6)}&\\quad \\text{A thermodynamic phase transition requires a nonanalyticity in a thermodynamic potential.}\\\\\n\\mathrm{(P7)}&\\quad \\text{The endpoint spectra share the theta-dependent function proved in the cyclic normal form.}\n\\end{aligned}\n\\]\n\n\\noindent\\textbf{Derivation.}\nBy (P2),\n\\begin{align}\nR(L_T)\n&=c\\frac{L_3^4}{N\\lambda L_T^4}. && \\text{definition of the comparison ratio}\n\\end{align}\nIf $L_T^4\\gg L_3^4/(N\\lambda)$, then\n\\begin{align}\n\\frac{L_3^4}{N\\lambda L_T^4}&\\ll1,\\\\\nR(L_T)&\\ll1,\\\\\n\\Delta E^{\\rm cl}_{\\rm non\\text{-}flat}&\\ll \\Delta E^{1\\text{-}{\\rm loop}}_{\\rm flat},\\\\\n\\text{so the non-flat realization is selected} && \\text{by (P3)}.\n\\end{align}\nIf $L_T^4\\ll L_3^4/(N\\lambda)$, then\n\\begin{align}\n\\frac{L_3^4}{N\\lambda L_T^4}&\\gg1,\\\\\nR(L_T)&\\gg1,\\\\\n\\Delta E^{1\\text{-}{\\rm loop}}_{\\rm flat}&\\ll \\Delta E^{\\rm cl}_{\\rm non\\text{-}flat},\\\\\n\\text{so the flat realization is selected} && \\text{by (P3)}.\n\\end{align}\nFor the interpolation, fix inverse temperature $\\beta>0$ and define\n\\begin{align}\nZ_\\beta(t)&:=\\operatorname{tr}_{\\mathcal H}\\left(e^{-\\beta H(t)}\\right). && \\text{finite-volume partition function}\n\\end{align}\nBecause the matrix exponential and trace are continuous functions of the matrix entries,\n\\begin{align}\nH(t)\\text{ continuous }&\\Longrightarrow Z_\\beta(t)\\text{ continuous and positive}. && \\text{by (P4)--(P5)}\n\\end{align}\nIf the entries of $H(t)$ are analytic, the same finite matrix expression is analytic in $t$. Hence any level crossing or reordering along the path is a finite-volume spectral rearrangement, not by itself a thermodynamic singularity. Combining this with (P7), the two endpoint descriptions may exchange which semiclassical variables are economical while retaining the same theta-dependent electric-flux branch function.\n\n\\noindent\\textbf{Final Result.}\n\\[\n\\boxed{L_T^4\\gg \\frac{L_3^4}{N\\lambda}:\\text{ non-flat monopole description},\n\\qquad\nL_T^4\\ll \\frac{L_3^4}{N\\lambda}:\\text{ flat vortex description},\n\\qquad\n\\text{finite-volume interpolation permits crossover or level reordering.}}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_3": "\\noindent\\textbf{Claim.} In the $n_{23}=1$ two-stage compactification, the twisted dual-photon boundary condition produces a classical mass gap, locks the infrared field to the $N$ Weyl-vector vacua, and turns each monopole operator into the center-vortex deformation of the two-dimensional $Z_N$ topological theory. In the regime $\\ell_D\\gg L_2\\gg L_3$,\n\\[\nS_{\\rm IR}=\\frac{iN}{2\\pi}\\int \\phi\\,da-2\\zeta_v\\int d^2x\\cos\\left(\\phi+\\frac{\\theta}{N}\\right),\n\\qquad \\zeta_v=NL_2\\zeta_m,\n\\]\nwith\n\\[\n\\varepsilon_k(\\theta)=-2\\zeta_v\\cos\\left(\\frac{2\\pi k+\\theta}{N}\\right),\n\\qquad k=0,\\ldots,N-1.\n\\]\n\n\\noindent\\textbf{Premises.}\n\\[\n\\begin{aligned}\n\\mathrm{(P1)}&\\quad N\\geq2,\n\\quad p\\in\\{1,\\ldots,N-1\\},\n\\quad k_2\\in\\mathbb Z,\n\\quad \\ell_D\\gg L_2\\gg L_3.\\\\\n\\mathrm{(P2)}&\\quad \\widetilde\\sigma_p(x_2+L_2)=e^{2\\pi ip/N}\\widetilde\\sigma_p(x_2).\\\\\n\\mathrm{(P3)}&\\quad -\\partial_2^2 e^{iqx_2}=q^2e^{iqx_2},\\text{ and }q^2\\text{ is the two-dimensional mass squared.}\\\\\n\\mathrm{(P4)}&\\quad \\min_{k\\in\\mathbb Z}|k+p/N|=1/N\\text{ for the lightest twisted sector}.\\\\\n\\mathrm{(P5)}&\\quad \\sigma_k^*=\\frac{2\\pi k}{N}\\rho,\n\\quad e^{i\\alpha_a\\cdot\\sigma_k^*}=e^{2\\pi ik/N}\\text{ for }a=1,\\ldots,N.\\\\\n\\mathrm{(P6)}&\\quad \\mathcal M_a(\\sigma):=\\zeta_m e^{i\\alpha_a\\cdot\\sigma+i\\theta/N}\\text{ is a monopole insertion before the final reduction.}\\\\\n\\mathrm{(P7)}&\\quad \\sigma=\\rho\\phi\\text{ in the deep infrared, and the }a\\text{-sum gives }\\zeta_v:=NL_2\\zeta_m.\\\\\n\\mathrm{(P8)}&\\quad \\int Da\\,\\exp\\left(-\\frac{iN}{2\\pi}\\int\\phi\\,da\\right)\\text{ imposes }e^{iN\\phi}=1.\n\\end{aligned}\n\\]\n\n\\noindent\\textbf{Derivation.}\nLet one twisted mode have $x_2$ dependence $e^{iqx_2}$. Then\n\\begin{align}\ne^{iq(x_2+L_2)}&=e^{2\\pi ip/N}e^{iqx_2} && \\text{by (P2)},\\\\\ne^{iqL_2}&=e^{2\\pi ip/N} && \\text{cancel }e^{iqx_2},\\\\\nqL_2&=2\\pi\\left(k_2+\\frac{p}{N}\\right) && \\text{equality of phases modulo }2\\pi,\\\\\nq&=\\frac{2\\pi}{L_2}\\left(k_2+\\frac{p}{N}\\right). && \\text{divide by }L_2\n\\end{align}\nTherefore\n\\begin{align}\nM^2_{p,k_2}&=q^2 && \\text{by (P3)},\\\\\n&=\\left(\\frac{2\\pi}{L_2}\\right)^2\\left(k_2+\\frac{p}{N}\\right)^2,\\\\\nM_{\\rm min}&=\\frac{2\\pi}{NL_2} && \\text{by (P4)}.\n\\end{align}\nThus nonzero twisted dual-photon fluctuations are massive at the scale $2\\pi/(NL_2)$, so the long-distance field is locked to the discrete vacua in (P5). Evaluate a monopole insertion on such a vacuum:\n\\begin{align}\nL_2\\mathcal M_a(\\sigma_k^*)\n&=L_2\\zeta_m e^{i\\alpha_a\\cdot\\sigma_k^*+i\\theta/N} && \\text{by (P6)},\\\\\n&=L_2\\zeta_m e^{i(2\\pi k+\\theta)/N} && \\text{by (P5)}.\n\\end{align}\nThis is independent of the root label $a$ except for the common multiplicity of $N$ insertions. Hence the summed deformation is\n\\begin{align}\n\\sum_{a=1}^N L_2\\mathcal M_a(\\sigma_k^*)+\\text{c.c.}\n&=2NL_2\\zeta_m\\cos\\left(\\frac{2\\pi k+\\theta}{N}\\right) && \\text{add complex conjugates},\\\\\n&=2\\zeta_v\\cos\\left(\\frac{2\\pi k+\\theta}{N}\\right) && \\text{by (P7)}.\n\\end{align}\nReplacing the discrete label by $\\sigma=\\rho\\phi$ gives the infrared deformation\n\\begin{align}\nS_{\\rm IR}&=\\frac{iN}{2\\pi}\\int \\phi\\,da-2\\zeta_v\\int d^2x\\cos\\left(\\phi+\\frac{\\theta}{N}\\right). && \\text{by (P7)}\n\\end{align}\nFinally, (P8) imposes $e^{iN\\phi}=1$, so\n\\begin{align}\n\\phi&=\\frac{2\\pi k}{N}\\pmod{2\\pi},\\quad k=0,\\ldots,N-1,\\\\\n\\varepsilon_k(\\theta)&=-2\\zeta_v\\cos\\left(\\frac{2\\pi k+\\theta}{N}\\right). && \\text{read from the area density}\n\\end{align}\n\n\\noindent\\textbf{Final Result.}\n\\[\n\\boxed{M_{\\rm min}=\\frac{2\\pi}{NL_2},\n\\quad L_2\\zeta_m e^{i\\alpha_a\\cdot\\sigma_k^*+i\\theta/N}=L_2\\zeta_m e^{i(2\\pi k+\\theta)/N},\n\\quad S_{\\rm IR}=\\frac{iN}{2\\pi}\\int\\phi\\,da-2\\zeta_v\\int d^2x\\cos\\left(\\phi+\\frac{\\theta}{N}\\right).}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_4": "\\noindent\\textbf{Claim.} The infrared object produced by the $n_{23}=1$ reduction has the two defining operational diagnostics of a center vortex: a short-ranged interaction and a fundamental Wilson-loop phase depending only on whether the fractionalized flux pierces the loop. More precisely,\n\\[\nr_v=\\frac{NL_2}{2\\pi},\n\\qquad\nW(C)=\\exp\\left(-\\frac{2\\pi i}{N}\\Theta_D(x)\\right),\n\\qquad C=\\partial D.\n\\]\nTogether with the deformed $Z_N$ branch densities, the charge-$q$ loop obeys\n\\[\n\\langle W_q(C)\\rangle\\sim \\exp[-(\\varepsilon_q(\\theta)-\\varepsilon_0(\\theta))A_D].\n\\]\n\n\\noindent\\textbf{Premises.}\n\\[\n\\begin{aligned}\n\\mathrm{(P1)}&\\quad \\omega:=\\frac{2\\pi}{NL_2},\n\\quad A_{ij}:=L_3\\left(\\frac{2\\pi}{g}\\right)^2\\alpha_i\\cdot\\alpha_j.\\\\\n\\mathrm{(P2)}&\\quad V_{ij}(x)=\\frac{A_{ij}}{L_2}\\frac{1}{2\\pi}K_0(\\omega |x|).\\\\\n\\mathrm{(P3)}&\\quad K_0(y)\\sim \\left(\\frac{\\pi}{2y}\\right)^{1/2}e^{-y}\\quad (y\\to\\infty).\\\\\n\\mathrm{(P4)}&\\quad W(C)=\\frac{1}{N}\\sum_{j=1}^{N}\\exp\\left(i\\int_D\\nu_j\\cdot f\\right).\\\\\n\\mathrm{(P5)}&\\quad \\nu_i\\cdot\\nu_j=\\delta_{ij}-\\frac{1}{N}.\\\\\n\\mathrm{(P6)}&\\quad f=2\\pi\\nu_i\\Theta_D(x),\\text{ where }\\Theta_D(x)=1\\text{ if }x\\in D\\text{ and }0\\text{ otherwise.}\\\\\n\\mathrm{(P7)}&\\quad \\varepsilon_k(\\theta)=-2\\zeta_v\\cos\\left(\\frac{2\\pi k+\\theta}{N}\\right).\\\\\n\\mathrm{(P8)}&\\quad \\text{A charge-}q\\text{ loop places branch }q\\text{ inside }D\\text{ and the vacuum branch outside }D.\n\\end{aligned}\n\\]\n\n\\noindent\\textbf{Derivation.}\nFor $\\omega |x|\\to\\infty$,\n\\begin{align}\nV_{ij}(x)\n&=\\frac{A_{ij}}{L_2}\\frac{1}{2\\pi}K_0(\\omega |x|) && \\text{by (P2)},\\\\\n&\\sim \\frac{A_{ij}}{L_2}\\frac{1}{2\\pi}\\left(\\frac{\\pi}{2\\omega |x|}\\right)^{1/2}e^{-\\omega |x|} && \\text{by (P3)},\\\\\n&=\\frac{A_{ij}}{L_2}\\frac{1}{4\\pi}\\left(\\frac{NL_2}{|x|}\\right)^{1/2}e^{-2\\pi |x|/(NL_2)} && \\text{use (P1)}.\n\\end{align}\nThe exponential decay length is therefore\n\\begin{align}\nr_v&=\\omega^{-1}=\\frac{NL_2}{2\\pi}. && \\text{by (P1)}\n\\end{align}\nFor the Wilson loop,\n\\begin{align}\n\\int_D\\nu_j\\cdot f\n&=2\\pi\\left(\\delta_{ij}-\\frac{1}{N}\\right)\\Theta_D(x) && \\text{by (P5)--(P6)},\\\\\nW(C)&=\\frac{1}{N}\\sum_{j=1}^{N}\\exp\\left(2\\pi i\\left(\\delta_{ij}-\\frac{1}{N}\\right)\\Theta_D(x)\\right) && \\text{by (P4)}.\n\\end{align}\nIf $\\Theta_D(x)=0$, every summand is $1$, so $W(C)=1$. If $\\Theta_D(x)=1$, then\n\\begin{align}\nW(C)\n&=\\frac{1}{N}\\left(e^{2\\pi i(1-1/N)}+(N-1)e^{-2\\pi i/N}\\right),\\\\\n&=\\frac{1}{N}\\left(e^{-2\\pi i/N}+(N-1)e^{-2\\pi i/N}\\right) && \\text{since }e^{2\\pi i}=1,\\\\\n&=e^{-2\\pi i/N}.\n\\end{align}\nBoth cases are summarized as\n\\begin{align}\nW(C)&=\\exp\\left(-\\frac{2\\pi i}{N}\\Theta_D(x)\\right). && \\text{combine the two values}\n\\end{align}\nFor a charge-$q$ loop, (P8) gives\n\\begin{align}\nZ_q(C;\\theta)&\\sim e^{-\\varepsilon_q(\\theta)A_D}e^{-\\varepsilon_0(\\theta)(A_M-A_D)},\\\\\nZ_0(\\theta)&\\sim e^{-\\varepsilon_0(\\theta)A_M},\\\\\n\\langle W_q(C)\\rangle&=\\frac{Z_q(C;\\theta)}{Z_0(\\theta)}\n\\sim e^{-(\\varepsilon_q(\\theta)-\\varepsilon_0(\\theta))A_D}. && \\text{cancel outside-vacuum area}\n\\end{align}\n\n\\noindent\\textbf{Final Result.}\n\\[\n\\boxed{V_{ij}(x)\\sim \\frac{A_{ij}}{L_2}\\frac{1}{4\\pi}\\left(\\frac{NL_2}{|x|}\\right)^{1/2}e^{-2\\pi |x|/(NL_2)},\n\\quad r_v=\\frac{NL_2}{2\\pi},\n\\quad W(C)=e^{-2\\pi i\\Theta_D(x)/N},\n\\quad \\langle W_q(C)\\rangle\\sim e^{-(\\varepsilon_q-\\varepsilon_0)A_D}.}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_5": "\\noindent\\textbf{Claim.} The preceding bridge results jointly satisfy the paper-level target: the two quantum-mechanical hierarchies realize the same deformed $Z_N$ infrared theory, and the two-dimensional monopole EFT reduces to a center-vortex $Z_N$ TQFT with fractional Wilson-loop response. Define\n\\[\no_{\\rm QM}:=(H_M,H_V,B_M,B_V,E_M,E_V,R),\n\\qquad\no_{\\rm 2d}:=(S_{\\rm 2d},S_{\\rm IR},M_{\\rm to V},V_{ij},W).\n\\]\nThen, within the stated weak-coupling compactified regimes,\n\\[\no:=(o_{\\rm QM},o_{\\rm 2d})\\in \\Sigma_{\\rm QM}\\times\\Sigma_{\\rm 2d},\n\\]\nwhere $\\Sigma_{\\rm QM}$ is the success set for quantum-mechanical monopole-vortex continuity and $\\Sigma_{\\rm 2d}$ is the success set for monopole-to-vortex EFT reduction and flux fractionalization.\n\n\\noindent\\textbf{Premises.}\n\\[\n\\begin{aligned}\n\\mathrm{(P1)}&\\quad \\Sigma_{\\rm QM}\\text{ requires cyclic }N\\text{-vacuum Hamiltonians in both hierarchies,}\\\n&\\quad \\text{nearest-neighbour fractional tunnelling }K e^{-S_I/N}e^{-i\\theta/N},\n\\text{ Fourier electric-flux states,}\\\n&\\quad \\text{the common branch function }-2NK e^{-S_I/N}\\cos((\\theta+2\\pi k)/N),\n\\text{ and finite-volume crossover rather than a required phase transition.}\\\\\n\\mathrm{(P2)}&\\quad \\Sigma_{\\rm 2d}\\text{ requires twisted-mode locking to }\\sigma_k^*=2\\pi k\\rho/N,\\\n&\\quad S_{\\rm IR}=\\frac{iN}{2\\pi}\\int\\phi\\,da-2\\zeta_v\\int d^2x\\cos(\\phi+\\theta/N),\n\\text{ monopole-to-vortex insertion phases,}\\\n&\\quad \\text{short-ranged }V_{ij}(x)\\text{ with range }NL_2/(2\\pi),\n\\text{ and }W(C)=e^{-2\\pi i\\Theta_D(x)/N}.\\\\\n\\mathrm{(P3)}&\\quad \\text{The cyclic Hamiltonian bridge proves all spectral and basis clauses in (P1).}\\\\\n\\mathrm{(P4)}&\\quad \\text{The energy-selection and finite-volume argument proves the crossover clause in (P1).}\\\\\n\\mathrm{(P5)}&\\quad \\text{The twisted reduction proves the locking, }S_{\\rm IR},\\text{ and monopole-to-vortex clauses in (P2).}\\\\\n\\mathrm{(P6)}&\\quad \\text{The vortex-diagnostic argument proves the short-range interaction, Wilson phase, and area-law clauses in (P2).}\\\\\n\\mathrm{(P7)}&\\quad \\text{The robustness domain is restricted to }\\min(L_3,L_T)\\ll\\Lambda^{-1}\\text{ for }n_{12}=1\\\n&\\quad \\text{and to }\\ell_D\\gg L_2\\gg L_3\\text{ after }\\Lambda NL_3\\ll1\\text{ for }n_{23}=1.\n\\end{aligned}\n\\]\n\n\\noindent\\textbf{Derivation.}\nFrom (P3) and (P4), every defining clause of $\\Sigma_{\\rm QM}$ in (P1) is satisfied:\n\\begin{align}\n(P3)\\wedge(P4)&\\Longrightarrow o_{\\rm QM}\\in\\Sigma_{\\rm QM}. && \\text{conjunction of the two QM bridge results}\n\\end{align}\nFrom (P5) and (P6), every defining clause of $\\Sigma_{\\rm 2d}$ in (P2) is satisfied:\n\\begin{align}\n(P5)\\wedge(P6)&\\Longrightarrow o_{\\rm 2d}\\in\\Sigma_{\\rm 2d}. && \\text{conjunction of the two two-dimensional bridge results}\n\\end{align}\nBy the definition of a Cartesian product of success sets,\n\\begin{align}\no_{\\rm QM}\\in\\Sigma_{\\rm QM}\\text{ and }o_{\\rm 2d}\\in\\Sigma_{\\rm 2d}\n&\\Longrightarrow (o_{\\rm QM},o_{\\rm 2d})\\in\\Sigma_{\\rm QM}\\times\\Sigma_{\\rm 2d}. && \\text{product membership}\n\\end{align}\nThe restriction in (P7) prevents overclaiming: the result is a theorem about the compactified weak-coupling families where the semiclassical constructions and scale separations are controlled, not a derivation for arbitrary strongly coupled four-dimensional Yang-Mills.\n\n\\noindent\\textbf{Final Result.}\n\\[\n\\boxed{o=(o_{\\rm QM},o_{\\rm 2d})\\in\\Sigma_{\\rm QM}\\times\\Sigma_{\\rm 2d}\\quad\\text{within the controlled compactified weak-coupling regimes.}}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_metadata": {
+    "output_file": "deeper.json",
+    "revision_id": "deeper_alignment_revision_2026-05-07_v3",
+    "revision_intent": "Improve alignment and value by adding a joint success-set assembly proof, tightening the G1 crossover argument, preserving direct G2 operator and diagnostic derivations, and validating schema plus LaTeX constraints.",
+    "input_files": {
+      "rubric": "deeper_reasoning_pseudo_algorithm.md",
+      "core_reasoning": "core_11.json",
+      "goals": "goals_11.json"
+    },
+    "rubric_interpretation": {
+      "top_level_schema": "Exactly paper_title, contiguous deeper_reasoning_k string fields, and one deeper_metadata object.",
+      "latex_constraint": "Each deeper_reasoning_k is a standalone LaTeX proof string using only article, amsmath, and amssymb.",
+      "metadata_constraint": "All non-proof audit information is confined to deeper_metadata; proof content is not duplicated except by short summaries and labels.",
+      "value_constraint": "Each entry must synthesize source derivations into a goal-level bridge rather than restating isolated equations."
+    },
+    "goal_trace": {
+      "G1_QM_MONOPOLE_VORTEX_CONTINUITY": [
+        "deeper_reasoning_1",
+        "deeper_reasoning_2",
+        "deeper_reasoning_5"
+      ],
+      "G2_MONOPOLE_TO_VORTEX_EFT_AND_FLUX_FRACTIONALIZATION": [
+        "deeper_reasoning_3",
+        "deeper_reasoning_4",
+        "deeper_reasoning_5"
+      ],
+      "joint_conjunction": [
+        "deeper_reasoning_5"
+      ]
+    },
+    "entry_metadata": {
+      "deeper_reasoning_1": {
+        "title": "Cyclic Hamiltonian normal form for the shared one-dimensional infrared theory",
+        "target_goal_component": "G1_QM_MONOPOLE_VORTEX_CONTINUITY",
+        "declared_source_set": [
+          "core_reasoning_2",
+          "core_reasoning_4",
+          "goals.G1"
+        ],
+        "major_advancement_modes": [
+          "normal-form abstraction",
+          "unitary relabelling",
+          "branch-spectrum unification"
+        ],
+        "goal_alignment": "Directly proves the shared N-vacuum cyclic Hamiltonian and theta-dependent branch spectrum required by G1.",
+        "scientific_payoff": "Converts separate monopole and vortex Hamiltonian calculations into a single quotient-equivalence statement.",
+        "nontrivial_advance_over_sources": "Adds an explicit unitary identification between the magnetic-flux and holonomy bases.",
+        "formal_sharpness": "Specifies the cyclic basis, shift operator, tunnelling phase, Fourier eigenbasis, branch normalization, and additive-energy quotient.",
+        "low_value_rejection_audit": "Avoids a one-sided repetition of the monopole branch formula.",
+        "selection_score": 0.99,
+        "controlled_external_lemmas": [
+          "Discrete Fourier diagonalization of a finite cyclic shift"
+        ],
+        "known_residual_risks_and_mitigation": "Equality of the prefactor K is treated as the goal-level common semiclassical amplitude, not independently computed."
+      },
+      "deeper_reasoning_2": {
+        "title": "Energy hierarchy and finite-volume crossover compatibility",
+        "target_goal_component": "G1_QM_MONOPOLE_VORTEX_CONTINUITY",
+        "declared_source_set": [
+          "core_reasoning_1",
+          "goals.G1"
+        ],
+        "major_advancement_modes": [
+          "hierarchy selection",
+          "finite-volume analyticity",
+          "scope control"
+        ],
+        "goal_alignment": "Shows why the two semiclassical regimes occupy opposite size limits while remaining compatible with a finite-volume crossover.",
+        "scientific_payoff": "Connects the energy comparison to the paper's claim that no separate confining phase transition is required in the compactified setup.",
+        "nontrivial_advance_over_sources": "Adds a finite-dimensional partition-function argument rather than only restating the energy ratio.",
+        "formal_sharpness": "States the positivity and finite-matrix assumptions under which crossover language is justified.",
+        "low_value_rejection_audit": "Avoids overclaiming adiabatic continuity for uncontrolled strongly coupled R4 Yang-Mills.",
+        "selection_score": 0.96,
+        "controlled_external_lemmas": [
+          "Continuity and analyticity of finite matrix exponentials"
+        ],
+        "known_residual_risks_and_mitigation": "A genuine thermodynamic-limit statement is not asserted; the result is restricted to finite R x T3 quantum mechanics."
+      },
+      "deeper_reasoning_3": {
+        "title": "Twisted dual-photon locking and monopole-to-vortex operator reduction",
+        "target_goal_component": "G2_MONOPOLE_TO_VORTEX_EFT_AND_FLUX_FRACTIONALIZATION",
+        "declared_source_set": [
+          "core_reasoning_2",
+          "core_reasoning_5",
+          "core_reasoning_6",
+          "goals.G2"
+        ],
+        "major_advancement_modes": [
+          "mode-spectrum derivation",
+          "operator transmutation",
+          "TQFT localization"
+        ],
+        "goal_alignment": "Derives the G2 chain from twisted modes to locked vacua, vortex fugacity, S_IR, and branch densities.",
+        "scientific_payoff": "Explains why the monopole gas becomes a two-dimensional vortex deformation instead of a Coulomb gas.",
+        "nontrivial_advance_over_sources": "Combines the mode gap, root phases, monopole insertion, and TQFT branch derivation into one operational bridge.",
+        "formal_sharpness": "Tracks L2 factors, the N-fold root multiplicity, the fugacity relation, and the theta phase.",
+        "low_value_rejection_audit": "Avoids treating the 2D TQFT as an assumed endpoint without deriving the operator map.",
+        "selection_score": 0.99,
+        "controlled_external_lemmas": [
+          "Fourier quantization under twisted boundary conditions",
+          "BF constraint e^{iN phi}=1"
+        ],
+        "known_residual_risks_and_mitigation": "The derivation is explicitly limited to ell_D >> L2 >> L3 and does not claim validity outside the scale-separated vortex regime."
+      },
+      "deeper_reasoning_4": {
+        "title": "Center-vortex diagnostics from screening and Wilson-loop fractionalization",
+        "target_goal_component": "G2_MONOPOLE_TO_VORTEX_EFT_AND_FLUX_FRACTIONALIZATION",
+        "declared_source_set": [
+          "core_reasoning_5",
+          "core_reasoning_7",
+          "core_reasoning_8",
+          "goals.G2"
+        ],
+        "major_advancement_modes": [
+          "asymptotic interaction analysis",
+          "Wilson-loop phase computation",
+          "area-law synthesis"
+        ],
+        "goal_alignment": "Proves the short-range interaction scale, center-vortex Wilson phase, and charge-loop area law required by G2.",
+        "scientific_payoff": "Provides the operational evidence that the fractionalized monopole flux is detected as a center vortex.",
+        "nontrivial_advance_over_sources": "Unifies three separate diagnostics into one criterion for vortex identification.",
+        "formal_sharpness": "Explicitly computes both cases of the indicator function and the cancellation leading to the area law.",
+        "low_value_rejection_audit": "Avoids relying on qualitative vortex language without Wilson-loop verification.",
+        "selection_score": 0.98,
+        "controlled_external_lemmas": [
+          "Large-argument asymptotic of K0",
+          "Fundamental-weight inner-product identity"
+        ],
+        "known_residual_risks_and_mitigation": "The K0 asymptotic is a large-distance statement; the entry states the omega |x| to infinity regime."
+      },
+      "deeper_reasoning_5": {
+        "title": "Joint success-set assembly for the two paper goals",
+        "target_goal_component": "joint_conjunction_of_G1_and_G2",
+        "declared_source_set": [
+          "goals.paper_goal.inter_goal_relation",
+          "deeper_reasoning_1",
+          "deeper_reasoning_2",
+          "deeper_reasoning_3",
+          "deeper_reasoning_4"
+        ],
+        "major_advancement_modes": [
+          "success-predicate closure",
+          "scope-limited theorem assembly",
+          "global alignment audit embedded as proof"
+        ],
+        "goal_alignment": "Explicitly proves that the individual bridge derivations jointly populate the G1 and G2 success sets.",
+        "scientific_payoff": "Closes the reasoning chain from local derivations to the paper-level claim of monopole-vortex continuity and EFT transmutation.",
+        "nontrivial_advance_over_sources": "Makes the joint-conjunction goal operational instead of leaving it implicit in metadata.",
+        "formal_sharpness": "Defines the output tuples and success-set membership relation, then derives product membership by conjunction.",
+        "low_value_rejection_audit": "Avoids adding another isolated formula; this entry exists only to certify global goal satisfaction.",
+        "selection_score": 0.97,
+        "controlled_external_lemmas": [
+          "Cartesian-product membership by conjunction"
+        ],
+        "known_residual_risks_and_mitigation": "The assembly theorem inherits the restricted semiclassical domains from G1 and G2 and explicitly states that limitation."
+      }
+    },
+    "rejected_low_value_candidates": [
+      "A standalone repetition of the monopole critical-point derivation without connecting to vortex operators.",
+      "A standalone repetition of the tight-binding diagonalization for only one basis.",
+      "An unconstrained claim about R4 confinement beyond the compactified weak-coupling regimes.",
+      "A fifth proof containing only metadata-style commentary rather than formal success-set closure."
+    ],
+    "global_alignment_audit": {
+      "schema": "Top-level keys are paper_title, deeper_reasoning_1 through deeper_reasoning_5, and deeper_metadata only.",
+      "contiguity": "Reasoning fields are contiguous and begin at 1.",
+      "reasoning_value": "Entries 1-4 prove the two operational bridges; entry 5 proves joint success-set membership.",
+      "core_coverage": "Uses core reasoning on non-flat/flat energy comparison, monopole branches, cyclic Hamiltonian diagonalization, twisted spectra, TQFT branches, screened interactions, and Wilson-loop phases.",
+      "goal_coverage": "Covers G1, G2, and their joint-conjunction relation while preserving the goals' weak-coupling scope limitations.",
+      "latex_validation": "Validated by compiling every deeper_reasoning_k string with article, amsmath, and amssymb only.",
+      "escaping_validation": "No literal tab, carriage-return, form-feed, backspace, or accidental JSON escape corruption occurs in the reasoning strings."
+    },
+    "known_residual_risks_and_mitigation": [
+      "The common fluctuation prefactor K is inherited from the paper-level goal and is not independently evaluated.",
+      "Finite-volume crossover statements are not promoted to thermodynamic-limit phase-transition theorems.",
+      "The two-dimensional vortex derivations remain restricted to ell_D >> L2 >> L3 and weak-coupling abelianization."
+    ]
+  }
+}

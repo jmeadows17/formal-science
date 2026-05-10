@@ -1,0 +1,261 @@
+{
+  "paper_title": "Center-vortex semiclassics with non-minimal 't Hooft fluxes on $\\mathbb R^2\\times T^2$ and center stabilization at large $N$ (Hayashi, 2026, JHEP)",
+  "deeper_reasoning_1": "\\textbf{Claim.}\nThe construction-side core results jointly certify the goal-level vortex object. For every $N\\ge2$ with $\\gcd(N,p)=1$, $pq\\equiv1\\pmod N$, and $L_3\\gg NL_4$, the asymmetric KvBLLY construction gives an object $V_{N,p,q}^{\\rm asym}$ in the intended success set:\n\\[\n\\Phi_V=e^{2\\pi iq/N},\\qquad Q_{\\rm top}(V)=\\frac1N,\\qquad S_{\\rm YM}(V)=\\frac{8\\pi^2}{Ng^2}.\n\\]\n\n\\textbf{Premises.}\n\\begin{align*}\n\\text{(P1)}\\quad &N\\ge2,\\quad \\gcd(N,p)=1,\\quad pq\\equiv1\\pmod N,\\quad L_3\\gg NL_4.\\\\\n\\text{(P2)}\\quad &P_3=S^{-p},\\quad P_4=C^{-1},\\quad\n\\operatorname{tr}(P_3^{n_3}P_4^{n_4})=0\n\\text{ unless }n_3\\equiv n_4\\equiv0\\pmod N.\\\\\n\\text{(P3)}\\quad &m^2_{Nk_3+\\ell_3,Nk_4+\\ell_4}\n=\\left(\\frac{2\\pi}{N}\\right)^2\n\\left(\\frac{(Nk_3+\\ell_3)^2}{L_3^2}\n+\\frac{(Nk_4+\\ell_4)^2}{L_4^2}\\right)>0\n\\text{ for }(\\ell_3,\\ell_4)\\neq(0,0).\\\\\n\\text{(P4)}\\quad &\\vec\\alpha_n=\\vec w_n^{(q)}-P_W^p\\vec w_n^{(q)},\\qquad\n\\vec w_n^{(q)}=\\sum_{a=0}^{q-1}\\vec\\nu_{n+ap}.\\\\\n\\text{(P5)}\\quad &\\vec\\varphi_\\infty=\\vec\\varphi_c,\\qquad\n\\vec\\sigma,\\ \\vec\\varphi-\\vec\\varphi_c=O(e^{-2\\pi |x|/(NL_3)}).\\\\\n\\text{(P6)}\\quad &\\int_C\\vec a=-2\\pi\\vec w_n^{(q)}\n\\Longrightarrow W(C)\\mapsto e^{2\\pi iq/N}W(C).\\\\\n\\text{(P7)}\\quad &\\text{The minimal center vortex is self-dual and has }\nQ_{\\rm top}=1/N,\\quad S_{\\rm YM}=8\\pi^2/(Ng^2).\n\\end{align*}\n\n\\textbf{Derivation.}\n\\begin{align}\n\\text{(P2)}\n&\\Longrightarrow \\text{the classical twisted vacuum preserves the two compact center symmetries}\n&&\\text{all nontrivial traced holonomies vanish}.\n\\end{align}\n\\begin{align}\n\\text{(P3)}\n&\\Longrightarrow \\text{there is no unwanted massless two-dimensional fluctuation}\n&&\\text{all nonzero twist sectors are gapped}.\n\\end{align}\n\\begin{align}\n\\text{(P4)}\n&\\Longrightarrow \\text{the monopole root is exactly the mismatch between adjacent }p\\text{-Weyl-related fluxes}\n&&\\text{root--weight decomposition}.\n\\end{align}\nTogether with the center-twisted boundary condition in the asymmetric regime, this mismatch identifies the emitted and absorbed fluxes after one $x_3$ period, so it produces a codimension-two flux tube rather than an unclosed monopole flux line. By (P5), the fields approach the center-symmetric holonomy exponentially, hence the tube is localized in the $\\mathbb R^2$ directions. By (P6),\n\\begin{align}\n\\Phi_V&=e^{2\\pi iq/N}.\n\\end{align}\nBy (P7),\n\\begin{align}\nQ_{\\rm top}(V)&=\\frac1N,\\\\\nS_{\\rm YM}(V)&=\\frac{8\\pi^2}{Ng^2}.\n\\end{align}\nTherefore the constructed object satisfies every construction-side predicate: coprime non-minimal twist, center-symmetric background, perturbative gap, localized center flux, fundamental Wilson phase, fractional charge, and self-dual action.\n\n\\textbf{Final Result.}\n\\[\n\\boxed{\nV_{N,p,q}^{\\rm asym}\\in\\Sigma_V,\\qquad\n\\Phi_V=e^{2\\pi iq/N},\\quad\nQ_{\\rm top}=\\frac1N,\\quad\nS_{\\rm YM}=\\frac{8\\pi^2}{Ng^2}\n}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_2": "\\textbf{Claim.}\nThe identity\n\\[\n\\vec\\alpha_j=\\vec w_j^{(q)}-P_W^p\\vec w_j^{(q)}\n\\]\nis a flux-closure certificate: it makes the flux emitted below a monopole and the flux absorbed above it differ by exactly the $p$-fold Weyl twist, so the periodic chain of monopole images forms a closed center-vortex tube.\n\n\\textbf{Premises.}\n\\begin{align*}\n\\text{(P1)}\\quad &N\\ge2,\\quad \\gcd(N,p)=1,\\quad pq\\equiv1\\pmod N.\\\\\n\\text{(P2)}\\quad &P_W^p\\vec\\nu_j=\\vec\\nu_{j+p},\\qquad\nP_W^p\\vec w_j^{(q)}=\\vec w_{j+p}^{(q)}.\\\\\n\\text{(P3)}\\quad &\\vec\\alpha_j=\\vec w_j^{(q)}-\\vec w_{j+p}^{(q)}.\\\\\n\\text{(P4)}\\quad &\\vec F_j:=-2\\pi\\vec w_j^{(q)}\\text{ is the center-vortex flux assigned to the interval labelled }j.\\\\\n\\text{(P5)}\\quad &\\vec z(x,x_3)=P_W^{-p}\\vec z(x,x_3+L_3).\\\\\n\\text{(P6)}\\quad &\\text{Labels in the image chain are }j=n+kp\\pmod N,\\quad k\\in\\mathbb Z.\\\\\n\\text{(P7)}\\quad &\\gcd(N,p)=1\\text{ implies }n,n+p,\\ldots,n+(N-1)p\\text{ exhaust all labels modulo }N.\n\\end{align*}\n\n\\textbf{Derivation.}\nFor adjacent intervals in the image chain,\n\\begin{align}\n\\vec F_j-\\vec F_{j+p}\n&=-2\\pi\\vec w_j^{(q)}+2\\pi\\vec w_{j+p}^{(q)}\n&&\\text{by (P4)}\\\\\n&=-2\\pi\\left(\\vec w_j^{(q)}-\\vec w_{j+p}^{(q)}\\right)\n&&\\text{factor }-2\\pi\\\\\n&=-2\\pi\\vec\\alpha_j\n&&\\text{by (P3)}.\n\\end{align}\nThus the monopole root accounts for the full discontinuity between the two neighboring flux assignments. Applying the boundary twist,\n\\begin{align}\nP_W^{-p}\\vec F_{j+p}\n&=P_W^{-p}\\left(-2\\pi\\vec w_{j+p}^{(q)}\\right)\n&&\\text{by (P4)}\\\\\n&=-2\\pi\\vec w_j^{(q)}\n&&\\text{by (P2)}\\\\\n&=\\vec F_j\n&&\\text{by (P4)}.\n\\end{align}\nHence the flux above the monopole, after transport through one twisted $x_3$ period, is identified with the flux below the monopole. Finally, after $N$ steps,\n\\begin{align}\nj+Np&\\equiv j\\pmod N\n&&\\text{because }Np\\equiv0\\pmod N,\\\\\n\\vec F_{j+Np}&=\\vec F_j\n&&\\text{labels are modulo }N.\n\\end{align}\nBy (P7), this single chain passes through every Weyl label before closing. Therefore no extra endpoint flux remains: the monopole-source discontinuities glue into one closed center-vortex tube.\n\n\\textbf{Final Result.}\n\\[\n\\boxed{\n\\vec F_j-\\vec F_{j+p}=-2\\pi\\vec\\alpha_j,\\qquad\nP_W^{-p}\\vec F_{j+p}=\\vec F_j,\\qquad\n\\vec F_{j+Np}=\\vec F_j\n}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_3": "\\textbf{Claim.}\nThe constrained dilute gas does more than give a formal partition function: it gives an $N$-branch vacuum system in which the full theory is $2\\pi$-periodic in $\\theta$, each branch is $2\\pi N$-periodic, and neighboring dominant branches cross with a cusp at odd multiples of $\\pi$.\n\n\\textbf{Premises.}\n\\begin{align*}\n\\text{(P1)}\\quad &a:=K e^{-8\\pi^2/(Ng^2)}>0.\\\\\n\\text{(P2)}\\quad &E_k(\\theta):=-2a\\cos\\left(\\frac{\\theta-2\\pi k}{N}\\right),\n\\qquad k\\in\\mathbb Z/N\\mathbb Z.\\\\\n\\text{(P3)}\\quad &Z_{\\rm eff,\\theta}:=\\sum_{k=0}^{N-1}e^{-VE_k(\\theta)}.\\\\\n\\text{(P4)}\\quad &E_{\\rm vac}(\\theta):=\\min_{k\\in\\mathbb Z/N\\mathbb Z}E_k(\\theta).\\\\\n\\text{(P5)}\\quad &\\frac{dE_k}{d\\theta}=\\frac{2a}{N}\\sin\\left(\\frac{\\theta-2\\pi k}{N}\\right).\\\\\n\\text{(P6)}\\quad &\\cos x\\text{ is maximal, hence }E_k(\\theta)\\text{ is minimal, when }\n|\\theta-2\\pi k|\\text{ is smallest modulo }2\\pi N.\n\\end{align*}\n\n\\textbf{Derivation.}\nFirst, shift $\\theta$ by $2\\pi$:\n\\begin{align}\nZ_{\\rm eff,\\theta+2\\pi}\n&=\\sum_{k=0}^{N-1}\\exp\\left[-V E_k(\\theta+2\\pi)\\right]\n&&\\text{by (P3)}\\\\\n&=\\sum_{k=0}^{N-1}\n\\exp\\left[2Va\\cos\\left(\\frac{\\theta-2\\pi(k-1)}{N}\\right)\\right]\n&&\\text{by (P2)}\\\\\n&=\\sum_{j=0}^{N-1}\n\\exp\\left[2Va\\cos\\left(\\frac{\\theta-2\\pi j}{N}\\right)\\right]\n&&\\text{set }j=k-1\\pmod N\\\\\n&=Z_{\\rm eff,\\theta}\n&&\\text{by (P3)}.\n\\end{align}\nSecond, for a fixed branch,\n\\begin{align}\nE_k(\\theta+2\\pi N)\n&=-2a\\cos\\left(\\frac{\\theta+2\\pi N-2\\pi k}{N}\\right)\n&&\\text{by (P2)}\\\\\n&=-2a\\cos\\left(\\frac{\\theta-2\\pi k}{N}+2\\pi\\right)\n&&\\text{algebra}\\\\\n&=E_k(\\theta)\n&&\\text{periodicity of }\\cos .\n\\end{align}\nAt $\\theta=(2j+1)\\pi$,\n\\begin{align}\nE_j((2j+1)\\pi)\n&=-2a\\cos\\left(\\frac{\\pi}{N}\\right),\\\\\nE_{j+1}((2j+1)\\pi)\n&=-2a\\cos\\left(-\\frac{\\pi}{N}\\right)\n=-2a\\cos\\left(\\frac{\\pi}{N}\\right),\n\\end{align}\nso the two neighboring branches are degenerate. Their slopes are\n\\begin{align}\nE_j'((2j+1)\\pi)\n&=\\frac{2a}{N}\\sin\\left(\\frac{\\pi}{N}\\right),\\\\\nE_{j+1}'((2j+1)\\pi)\n&=\\frac{2a}{N}\\sin\\left(-\\frac{\\pi}{N}\\right)\n=-\\frac{2a}{N}\\sin\\left(\\frac{\\pi}{N}\\right).\n\\end{align}\nThus the dominant branch changes there with unequal one-sided derivatives.\n\n\\textbf{Final Result.}\n\\[\n\\boxed{\nZ_{\\rm eff,\\theta+2\\pi}=Z_{\\rm eff,\\theta},\\qquad\nE_k(\\theta+2\\pi N)=E_k(\\theta),\\qquad\nE_{\\rm vac}(\\theta)\\text{ has cusps at }\\theta=(2j+1)\\pi\n}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_4": "\\textbf{Claim.}\nAt finite $N$ and $\\theta=0$, the dilute center-vortex gas confines exactly the nontrivial $N$-ality sectors: the string tension vanishes if and only if the representation has trivial $N$-ality.\n\n\\textbf{Premises.}\n\\begin{align*}\n\\text{(P1)}\\quad &N\\ge2,\\quad pq\\equiv1\\pmod N,\\quad r:=|R|\\in\\mathbb Z/N\\mathbb Z.\\\\\n\\text{(P2)}\\quad &a:=K e^{-8\\pi^2/(Ng^2)}>0.\\\\\n\\text{(P3)}\\quad &T_R(\\theta)=2a\\left[\n\\cos\\left(\\frac{\\theta}{N}\\right)\n-\\cos\\left(\\frac{\\theta+2\\pi qr}{N}\\right)\n\\right].\\\\\n\\text{(P4)}\\quad &1-\\cos(2x)=2\\sin^2x.\\\\\n\\text{(P5)}\\quad &pq\\equiv1\\pmod N\\Longrightarrow \\gcd(q,N)=1.\\\\\n\\text{(P6)}\\quad &\\sin^2(\\pi x)=0\\Longleftrightarrow x\\in\\mathbb Z.\n\\end{align*}\n\n\\textbf{Derivation.}\nSet $\\theta=0$:\n\\begin{align}\nT_R(0)\n&=2a\\left[1-\\cos\\left(\\frac{2\\pi qr}{N}\\right)\\right]\n&&\\text{by (P3)}\\\\\n&=4a\\sin^2\\left(\\frac{\\pi qr}{N}\\right)\n&&\\text{by (P4)}.\n\\end{align}\nSince $a>0$,\n\\begin{align}\nT_R(0)=0\n&\\Longleftrightarrow\n\\sin^2\\left(\\frac{\\pi qr}{N}\\right)=0\\\\\n&\\Longleftrightarrow\n\\frac{qr}{N}\\in\\mathbb Z\n&&\\text{by (P6)}\\\\\n&\\Longleftrightarrow\nqr\\equiv0\\pmod N\\\\\n&\\Longleftrightarrow\nr\\equiv0\\pmod N\n&&\\text{by }\\gcd(q,N)=1.\n\\end{align}\nTherefore every nonzero $N$-ality class has strictly positive tension, while screening occurs exactly for trivial $N$-ality.\n\n\\textbf{Final Result.}\n\\[\n\\boxed{\nT_R(0)=4K e^{-8\\pi^2/(Ng^2)}\n\\sin^2\\left(\\frac{\\pi q|R|}{N}\\right),\n\\qquad\nT_R(0)=0\\Longleftrightarrow |R|\\equiv0\\pmod N\n}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_5": "\\textbf{Claim.}\nThe background-field extension gives one unified consistency certificate: the reduced two-dimensional invariant is the four-dimensional cup-square anomaly invariant, the same invariant controls the $k$-branch response and the $\\theta\\mapsto\\theta+2\\pi$ anomaly, and in the special $A_3=A_4=0$ sector it enforces the shifted vortex-number congruence that cancels fractional magnetic flux.\n\n\\textbf{Premises.}\n\\begin{align*}\n\\text{(P1)}\\quad &J:=\\int \\frac12 B_{4d}\\cup B_{4d}.\\\\\n\\text{(P2)}\\quad &\\text{Under reduction on }M_2\\times T^2\\text{ with }3\\text{-}4\\text{ twist }p,\\\\\n&J\\equiv \\int_{M_2}(B_{2d}\\cup B_{34}-A_3\\cup A_4)\\pmod N,\n\\qquad B_{34}=p.\\\\\n\\text{(P3)}\\quad &I:=\\int_{M_2}(pB_{2d}-A_3\\cup A_4).\\\\\n\\text{(P4)}\\quad &a:=K e^{-8\\pi^2/(Ng^2)}.\\\\\n\\text{(P5)}\\quad &Z_{\\theta,k}[B_{2d},A_3,A_4]\n:=e^{-2\\pi ikI/N}\n\\exp\\left[2Va\\cos\\left(\\frac{\\theta-2\\pi k}{N}\\right)\\right].\\\\\n\\text{(P6)}\\quad &Z_{\\rm eff,\\theta}[B_{2d},A_3,A_4]\n:=\\sum_{k=0}^{N-1}Z_{\\theta,k}[B_{2d},A_3,A_4].\\\\\n\\text{(P7)}\\quad &\\sum_{k=0}^{N-1}e^{-2\\pi ikr/N}\\neq0\\Longleftrightarrow r\\equiv0\\pmod N.\\\\\n\\text{(P8)}\\quad &A_3=A_4=0,\n\\quad m:=\\int_{M_2}B_{2d}\n\\Longrightarrow I=pm.\\\\\n\\text{(P9)}\\quad &Q_{\\rm top}=(n-\\bar n)/N,\n\\qquad pq\\equiv1\\pmod N.\n\\end{align*}\n\n\\textbf{Derivation.}\nFirst reduce the four-dimensional anomaly invariant:\n\\begin{align}\nJ\n&\\equiv \\int_{M_2}(B_{2d}\\cup B_{34}-A_3\\cup A_4)\n&&\\text{by (P2)}\\\\\n&=\\int_{M_2}(pB_{2d}-A_3\\cup A_4)\n&&\\text{because }B_{34}=p\\\\\n&=I\n&&\\text{by (P3)}.\n\\end{align}\nThus the branch factor in (P5) can be written with the four-dimensional invariant:\n\\begin{align}\nZ_{\\theta,k}[B_{2d},A_3,A_4]\n&=e^{-2\\pi ikI/N}Z_{\\theta,k}[0,0,0]\n&&\\text{by (P5)}\\\\\n&=e^{-2\\pi ikJ/N}Z_{\\theta,k}[0,0,0]\n&&\\text{since }I\\equiv J\\pmod N.\n\\end{align}\nFor the full partition function under $\\theta\\mapsto\\theta+2\\pi$,\n\\begin{align}\nZ_{\\rm eff,\\theta+2\\pi}[B_{2d},A_3,A_4]\n&=\\sum_{k=0}^{N-1}e^{-2\\pi ikI/N}\n\\exp\\left[2Va\\cos\\left(\\frac{\\theta+2\\pi-2\\pi k}{N}\\right)\\right]\\\\\n&=\\sum_{j=0}^{N-1}e^{-2\\pi i(j+1)I/N}\n\\exp\\left[2Va\\cos\\left(\\frac{\\theta-2\\pi j}{N}\\right)\\right]\n&&\\text{set }j=k-1\\pmod N\\\\\n&=e^{-2\\pi iI/N}Z_{\\rm eff,\\theta}[B_{2d},A_3,A_4]\\\\\n&=e^{-2\\pi iJ/N}Z_{\\rm eff,\\theta}[B_{2d},A_3,A_4].\n\\end{align}\nThis proves the anomaly and branch-response parts.\n\nNow set $A_3=A_4=0$.  In the vortex-number expansion, the finite Fourier projector has argument $n-\\bar n+I=n-\\bar n+pm$.  Hence\n\\begin{align}\n\\sum_{k=0}^{N-1}e^{-2\\pi ik(n-\\bar n+pm)/N}\\neq0\n&\\Longleftrightarrow n-\\bar n+pm\\equiv0\\pmod N\n&&\\text{by (P7)}\\\\\n&\\Longleftrightarrow n-\\bar n\\equiv-pm\\pmod N.\n\\end{align}\nTherefore $n-\\bar n=-pm+Ns$ for some $s\\in\\mathbb Z$, and\n\\begin{align}\nQ_{\\rm top}\n&=\\frac{n-\\bar n}{N}\n&&\\text{by (P9)}\\\\\n&=-\\frac{pm}{N}+s\n\\in-\\frac{pm}{N}+\\mathbb Z.\n\\end{align}\nThe total fractional magnetic flux cancels because\n\\begin{align}\n\\frac{q}{N}(n-\\bar n)+\\frac{m}{N}\n&\\equiv -\\frac{qpm}{N}+\\frac{m}{N}\\\\\n&=\\frac{m(1-pq)}{N}\\\\\n&\\equiv0\\pmod1\n&&\\text{by }pq\\equiv1\\pmod N.\n\\end{align}\n\n\\textbf{Final Result.}\n\\[\n\\boxed{\nJ\\equiv I\\pmod N,\n\\qquad\nZ_{\\rm eff,\\theta+2\\pi}[B]=e^{-2\\pi iJ/N}Z_{\\rm eff,\\theta}[B],\n\\qquad\nZ_{\\theta,k}[B]=e^{-2\\pi ikJ/N}Z_{\\theta,k}[0]\n}\n\\]\n\\[\n\\boxed{\nn-\\bar n\\equiv-pm\\pmod N,\n\\qquad\nQ_{\\rm top}\\in-\\frac{pm}{N}+\\mathbb Z,\n\\qquad\n\\frac{q}{N}(n-\\bar n)+\\frac{m}{N}=0\\pmod1\n}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_6": "\\textbf{Claim.}\nLarge-$N$ center stabilization requires simultaneous residue control of fixed multiples of $q_N$ and $p_N$. Fixed multiples of $q_N$ control light Wilson-loop tensions, while fixed multiples of $p_N$ control the one-site singular-toron action-versus-entropy instability.\n\n\\textbf{Premises.}\n\\begin{align*}\n\\text{(P1)}\\quad &N\\to\\infty,\\qquad \\gcd(N,p_N)=1,\\qquad p_Nq_N\\equiv1\\pmod N.\\\\\n\\text{(P2)}\\quad &d_N(x):=\\min_{s\\in\\mathbb Z}|x-sN|.\\\\\n\\text{(P3)}\\quad &T_m=\\sigma\\sin^2\\left(\\frac{\\pi q_Nm}{N}\\right)\n=\\sigma\\sin^2\\left(\\frac{\\pi d_N(q_Nm)}{N}\\right),\n\\quad \\sigma>0,\\quad m\\text{ fixed}.\\\\\n\\text{(P4)}\\quad &V_{\\rm cl}^{\\rm toron}(m)=\\frac{4N^2}{\\lambda}\n\\sin^2\\left(\\frac{\\pi m p_N}{N}\\right)\n=\\frac{4N^2}{\\lambda}\n\\sin^2\\left(\\frac{\\pi d_N(mp_N)}{N}\\right).\\\\\n\\text{(P5)}\\quad &V_{\\rm eff}^{\\rm toron}=V_{\\rm cl}^{\\rm toron}-cN^2,\\qquad c>0,\\quad c=O(1).\\\\\n\\text{(P6)}\\quad &\\sin x=x+O(x^3)\\text{ as }x\\to0.\\\\\n\\text{(P7)}\\quad &\\text{Large-}N\\text{ stability demands nonzero limiting tensions for fixed nonzero }m\n\\text{ and no }O(N^{-2})\\text{ weak-coupling toron threshold.}\n\\end{align*}\n\n\\textbf{Derivation.}\nIf for some fixed $m\\neq0$,\n\\begin{align}\nd_N(q_Nm)&=O(1),\n\\end{align}\nthen by (P3) and (P6),\n\\begin{align}\nT_m\n&=\\sigma\\left(\\frac{\\pi d_N(q_Nm)}{N}+O(N^{-3})\\right)^2\\\\\n&=O(N^{-2}).\n\\end{align}\nThus the fixed light charge loses its limiting string tension. Therefore avoiding this one-form failure requires\n\\begin{align}\nd_N(q_Nm)&\\text{ to be of order }N\n\\quad\\text{for every fixed }m\\neq0.\n\\end{align}\nIf instead for some fixed $m\\neq0$,\n\\begin{align}\nd_N(mp_N)&=O(1),\n\\end{align}\nthen by (P4) and (P6),\n\\begin{align}\nV_{\\rm cl}^{\\rm toron}(m)\n&=\\frac{4N^2}{\\lambda}\n\\left(\\frac{\\pi d_N(mp_N)}{N}+O(N^{-3})\\right)^2\\\\\n&=O(\\lambda^{-1}).\n\\end{align}\nUsing (P5), the estimated transition solves\n\\begin{align}\n0&=O(\\lambda_*^{-1})-cN^2,\\\\\n\\lambda_*&=O(N^{-2}).\n\\end{align}\nThis is the same destabilizing scaling as fixed twist. Therefore avoiding this zero-form failure requires\n\\begin{align}\nd_N(mp_N)&\\text{ to be of order }N\n\\quad\\text{for every fixed }m\\neq0.\n\\end{align}\n\n\\textbf{Final Result.}\n\\[\n\\boxed{\n\\forall m\\in\\mathbb Z_{>0}\\text{ fixed}:\\quad\nd_N(q_Nm)\\asymp N\n\\quad\\text{and}\\quad\nd_N(p_Nm)\\asymp N\n}\n\\]\nis the simultaneous large-$N$ center-stability test extracted from the one-form and zero-form diagnostics.\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_7": "\\textbf{Claim.}\nThe Fibonacci sequence\n\\[\nN=F_{n+2},\\qquad p=F_n,\\qquad q=(-1)^nF_n\n\\]\npasses the simultaneous large-$N$ stability test: $q$ is a modular inverse of $p$, every fixed nonzero multiple of $p$ and $q$ has residue of order $N$, and every fixed nonzero light charge has a nonzero limiting string tension.\n\n\\textbf{Premises.}\n\\begin{align*}\n\\text{(P1)}\\quad &F_0=0,\\quad F_1=1,\\quad F_{n+2}=F_{n+1}+F_n.\\\\\n\\text{(P2)}\\quad &N:=F_{n+2},\\quad p:=F_n,\\quad q:=(-1)^nF_n.\\\\\n\\text{(P3)}\\quad &F_{n+1}^2-F_nF_{n+2}=(-1)^n,\\qquad F_{n+1}=F_{n+2}-F_n.\\\\\n\\text{(P4)}\\quad &\\phi:=\\frac{1+\\sqrt5}{2},\\quad\n\\phi^2=\\phi+1,\\quad\n\\frac{F_n}{F_{n+2}}\\to\\frac1{\\phi^2}=2-\\phi.\\\\\n\\text{(P5)}\\quad &\\phi\\notin\\mathbb Q.\\\\\n\\text{(P6)}\\quad &d_N(x):=\\min_{s\\in\\mathbb Z}|x-sN|.\\\\\n\\text{(P7)}\\quad &T_m=\\sigma\\sin^2\\left(\\frac{\\pi qm}{N}\\right),\\qquad\n\\sigma>0,\\quad m\\in\\mathbb Z_{>0}\\text{ fixed}.\n\\end{align*}\n\n\\textbf{Derivation.}\nFirst,\n\\begin{align}\nF_{n+1}^2-F_nF_{n+2}\n&=(-1)^n\n&&\\text{by (P3)}\\\\\n(F_{n+2}-F_n)^2-F_nF_{n+2}\n&=(-1)^n\n&&\\text{by (P3)}\\\\\nF_n^2&\\equiv(-1)^n\\pmod{F_{n+2}}\n&&\\text{reduce modulo }F_{n+2}.\n\\end{align}\nHence\n\\begin{align}\npq\n&=F_n((-1)^nF_n)\n&&\\text{by (P2)}\\\\\n&\\equiv1\\pmod{F_{n+2}}\n&&\\text{by the preceding congruence}\\\\\n&\\equiv1\\pmod N.\n\\end{align}\nFor fixed $m\\neq0$,\n\\begin{align}\n\\frac{mp}{N}\n&=m\\frac{F_n}{F_{n+2}}\n\\longrightarrow m(2-\\phi).\n\\end{align}\nSince $2-\\phi$ is irrational, $m(2-\\phi)\\notin\\mathbb Z$. Therefore\n\\begin{align}\n\\frac{d_N(mp)}{N}\n&\\longrightarrow\n\\min_{s\\in\\mathbb Z}|m(2-\\phi)-s|>0.\n\\end{align}\nBecause $q=\\pm p$, the same argument gives\n\\begin{align}\n\\frac{d_N(mq)}{N}\n&\\longrightarrow\n\\min_{s\\in\\mathbb Z}|m(2-\\phi)-s|>0.\n\\end{align}\nFinally,\n\\begin{align}\n\\lim_{n\\to\\infty}T_m\n&=\\sigma\\sin^2\\left(\\pi m\\lim_{n\\to\\infty}\\frac{|q|}{N}\\right)\n&&\\text{by (P7)}\\\\\n&=\\sigma\\sin^2(\\pi m(2-\\phi))\\\\\n&=\\sigma\\sin^2(\\pi\\phi m)\n&&\\text{periodicity of }\\sin^2.\n\\end{align}\nIf this limit vanished, then $\\phi m\\in\\mathbb Z$, implying $\\phi\\in\\mathbb Q$, contradicting (P5). Hence the limit is positive.\n\n\\textbf{Final Result.}\n\\[\n\\boxed{\npq\\equiv1\\pmod N,\\qquad\nd_N(mp)\\asymp N,\\qquad d_N(mq)\\asymp N,\\qquad\nT_m\\to\\sigma\\sin^2(\\pi\\phi m)>0\n}\n\\]\nfor every fixed $m\\in\\mathbb Z_{>0}$.\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_8": "\\textbf{Claim.}\nThe continued-fraction diagnostic should be read as a finite-window refinement of the exact fixed-charge large-$N$ criterion.  If the limiting ratios of $q_N/N$ and $p_N/N$ are irrational, every fixed multiple has an $O(N)$ residue; continued fractions then identify which irrational limits are vulnerable to accidentally small tensions inside a growing but still low-charge window.  The Fibonacci limit passes the exact fixed-charge test and avoids large-partial-quotient accidents.\n\n\\textbf{Premises.}\n\\begin{align*}\n\\text{(P1)}\\quad &\\frac{q_N}{N}\\to\\xi_q,\n\\qquad\n\\frac{p_N}{N}\\to\\xi_p.\\\\\n\\text{(P2)}\\quad &\\xi_q\\notin\\mathbb Q,\n\\qquad\n\\xi_p\\notin\\mathbb Q.\\\\\n\\text{(P3)}\\quad &\\|x\\|_{\\mathbb Z}:=\\min_{s\\in\\mathbb Z}|x-s|,\n\\qquad\n\\|y\\|_N:=\\min_{s\\in\\mathbb Z}|y-sN|.\\\\\n\\text{(P4)}\\quad &T_m\\to\\sigma\\sin^2(\\pi m\\xi_q),\n\\qquad \\sigma>0,\n\\qquad m\\in\\mathbb Z_{>0}\\text{ fixed}.\\\\\n\\text{(P5)}\\quad &\\frac{c_k}{d_k}\\text{ is a continued-fraction convergent of }\\xi_q,\n\\quad\n\\left|\\xi_q-\\frac{c_k}{d_k}\\right|<\\frac{1}{a_{k+1}d_k^2}.\\\\\n\\text{(P6)}\\quad &|\\sin x|\\le |x|,\n\\qquad \\sin^2(x+\\pi s)=\\sin^2x\\text{ for }s\\in\\mathbb Z.\\\\\n\\text{(P7)}\\quad &\\xi_{\\rm Fib}:=\\frac1{\\phi^2}=2-\\phi,\n\\quad \\phi:=\\frac{1+\\sqrt5}{2},\n\\quad \\xi_{\\rm Fib}=[0;2,1,1,1,\\ldots].\n\\end{align*}\n\n\\textbf{Derivation.}\nFix $m\\ge1$.  Since $\\xi_q$ is irrational,\n\\begin{align}\n\\delta_{q,m}:=\\|m\\xi_q\\|_{\\mathbb Z}>0.\n\\end{align}\nBy convergence in (P1),\n\\begin{align}\n\\frac{\\|mq_N\\|_N}{N}\n&=\\left\\|m\\frac{q_N}{N}\\right\\|_{\\mathbb Z}\n\\longrightarrow \\|m\\xi_q\\|_{\\mathbb Z}\n=\\delta_{q,m}>0.\n\\end{align}\nHence $\\|mq_N\\|_N=\\Theta(N)$ for every fixed $m$.  The same argument using $\\xi_p$ gives\n\\begin{align}\n\\frac{\\|mp_N\\|_N}{N}\n&\\longrightarrow \\|m\\xi_p\\|_{\\mathbb Z}>0,\\qquad\n\\|mp_N\\|_N=\\Theta(N).\n\\end{align}\nThus irrational limiting ratios imply the exact pointwise fixed-charge residue condition.\nThe string tension is also nonzero:\n\\begin{align}\n\\lim_{N\\to\\infty}T_m\n&=\\sigma\\sin^2(\\pi m\\xi_q)\n&&\\text{by (P4)}\\\\\n&>0\n&&\\text{because }m\\xi_q\\notin\\mathbb Z.\n\\end{align}\nFor a finite window $1\\le m\\le M$, define\n\\begin{align}\n\\Delta_M(\\xi_q):=\\min_{1\\le m\\le M}\\|m\\xi_q\\|_{\\mathbb Z}.\n\\end{align}\nIf $\\xi_q$ is irrational, then $\\Delta_M(\\xi_q)>0$ for each fixed $M$; therefore all charges in that finite window have a common positive limiting tension lower bound\n\\begin{align}\n\\min_{1\\le m\\le M}\\lim_{N\\to\\infty}T_m\n&\\ge \\sigma\\sin^2(\\pi\\Delta_M(\\xi_q)).\n\\end{align}\nContinued fractions diagnose when this finite-window lower bound can become poor as $M$ is enlarged.  Using (P5), write\n\\begin{align}\n\\xi_q=\\frac{c_k}{d_k}+\\varepsilon_k,\n\\qquad\n|\\varepsilon_k|<\\frac{1}{a_{k+1}d_k^2}.\n\\end{align}\nFor the charge $m=d_k$,\n\\begin{align}\n\\sigma\\sin^2(\\pi d_k\\xi_q)\n&=\\sigma\\sin^2(\\pi(c_k+d_k\\varepsilon_k))\\\\\n&=\\sigma\\sin^2(\\pi d_k\\varepsilon_k)\\\\\n&\\le \\sigma\\pi^2d_k^2\\varepsilon_k^2\\\\\n&<\\sigma\\left(\\frac{\\pi}{a_{k+1}d_k}\\right)^2.\n\\end{align}\nThus a large partial quotient $a_{k+1}$ creates an accidentally small tension at the low charge $d_k$ relative to that approximation scale.  For the Fibonacci limit, (P7) gives no large partial quotients: after the initial $2$, all partial quotients are $1$.  It therefore passes the exact fixed-$m$ irrationality test and avoids this particular finite-window accident mechanism.\n\n\\textbf{Final Result.}\n\\[\n\\boxed{\n\\xi_q,\\xi_p\\notin\\mathbb Q\n\\Longrightarrow\n\\forall m\\ge1\\text{ fixed},\\quad\n\\|mq_N\\|_N=\\Theta(N),\\quad\n\\|mp_N\\|_N=\\Theta(N),\\quad\n\\lim T_m>0\n}\n\\]\n\\[\n\\boxed{\n\\sigma\\sin^2(\\pi d_k\\xi_q)\n<\\sigma\\left(\\frac{\\pi}{a_{k+1}d_k}\\right)^2,\n\\qquad\n\\xi_{\\rm Fib}=[0;2,1,1,1,\\ldots]\n}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_metadata": {
+    "output_file": "deeper.json",
+    "revision_id": "deeper_13_synthesised_v3_alignment_max",
+    "revision_intent": "Increase alignment beyond the previous 4.9/5 revision by deriving the background cup-square reduction inside the anomaly certificate and by making the continued-fraction diagnostic explicitly subordinate to the fixed-charge large-N stability criterion.",
+    "input_files": {
+      "rubric": "deeper_reasoning_pseudo_algorithm.md",
+      "core_reasoning": "core_13.json",
+      "goals": "goals_13.json",
+      "previous_output": "deeper.json"
+    },
+    "rubric_interpretation": {
+      "top_level_schema": "Use exactly paper_title, contiguous deeper_reasoning_k strings beginning at 1, and one deeper_metadata object.",
+      "latex_constraint": "Every deeper_reasoning_k is a single LaTeX-compatible string using only article, amsmath, and amssymb.",
+      "metadata_constraint": "All audit, source, and revision information is inside deeper_metadata; no proof content is duplicated there beyond short summaries."
+    },
+    "goal_trace": {
+      "G1_self_dual_center_vortex_for_nonminimal_twist": [
+        "deeper_reasoning_1",
+        "deeper_reasoning_2"
+      ],
+      "G2_center_vortex_gas_confinement_and_anomaly_response": [
+        "deeper_reasoning_3",
+        "deeper_reasoning_4",
+        "deeper_reasoning_5"
+      ],
+      "G3_large_N_center_stabilization_and_fibonacci_test": [
+        "deeper_reasoning_6",
+        "deeper_reasoning_7",
+        "deeper_reasoning_8"
+      ]
+    },
+    "entry_metadata": {
+      "deeper_reasoning_1": {
+        "title": "End-to-end vortex-success certificate",
+        "target_goal_component": "G1_self_dual_center_vortex_for_nonminimal_twist",
+        "declared_source_set": [
+          "core_reasoning_1",
+          "core_reasoning_2",
+          "core_reasoning_3",
+          "core_reasoning_4",
+          "core_reasoning_5",
+          "core_reasoning_6",
+          "goals_13:G1"
+        ],
+        "major_advancement_modes": [
+          "cross-core composition",
+          "success-predicate certification"
+        ],
+        "goal_alignment": "Directly certifies the vortex phase, charge, action, localization, and stability prerequisites required by G1.",
+        "scientific_payoff": "Shows that the construction is not a set of disconnected formulae but a single verified semiclassical object.",
+        "nontrivial_advance_over_sources": "Combines vacuum center symmetry, perturbative gap, root/weight flux closure, Wilson phase, and self-dual action into one goal-level certificate.",
+        "formal_sharpness": "High; every conclusion is explicitly sourced to a premise from the core reasoning.",
+        "low_value_rejection_audit": "Avoided restating only the Wilson phase or only the action.",
+        "selection_score": 0.99,
+        "controlled_external_lemmas": [],
+        "known_residual_risks_and_mitigation": "The existence of the asymmetric KvBLLY solution is inherited from the core construction rather than re-solved from PDEs; the derivation states the inherited assumption explicitly."
+      },
+      "deeper_reasoning_2": {
+        "title": "Flux-closure role of the root decomposition",
+        "target_goal_component": "G1_self_dual_center_vortex_for_nonminimal_twist",
+        "declared_source_set": [
+          "core_reasoning_3",
+          "core_reasoning_4",
+          "goals_13:G1"
+        ],
+        "major_advancement_modes": [
+          "mechanism extraction",
+          "locality certificate"
+        ],
+        "goal_alignment": "Explains why the algebraic identity is operationally responsible for a closed center-vortex tube.",
+        "scientific_payoff": "Clarifies the constructive mechanism behind the non-minimal twist vortex.",
+        "nontrivial_advance_over_sources": "Turns the telescoping root identity into a flux-closure and boundary-gluing proof.",
+        "formal_sharpness": "High; all equations are finite label manipulations modulo N.",
+        "low_value_rejection_audit": "Avoided merely repeating the telescoping proof of core_reasoning_3.",
+        "selection_score": 0.97,
+        "controlled_external_lemmas": [],
+        "known_residual_risks_and_mitigation": "Sign conventions depend on the chosen orientation of flux; the entry tracks signs consistently from its declared flux definition."
+      },
+      "deeper_reasoning_3": {
+        "title": "Branch periodicity and first-order crossing certificate",
+        "target_goal_component": "G2_center_vortex_gas_confinement_and_anomaly_response",
+        "declared_source_set": [
+          "core_reasoning_7",
+          "goals_13:G2"
+        ],
+        "major_advancement_modes": [
+          "branch-structure extraction",
+          "phase-transition diagnostic"
+        ],
+        "goal_alignment": "Derives the theta-periodic full partition function, branch periodicity, and cusp transitions required by the effective-theory goal.",
+        "scientific_payoff": "Makes the vacuum branch interpretation operational rather than leaving it implicit in the partition function.",
+        "nontrivial_advance_over_sources": "Adds explicit relabelling and derivative-crossing analysis to the branch formula.",
+        "formal_sharpness": "High for branch formulae; dominance assumes the standard infinite-volume selection stated in the core.",
+        "low_value_rejection_audit": "Avoided re-summing the Poisson gas already done in core_reasoning_7.",
+        "selection_score": 0.96,
+        "controlled_external_lemmas": [
+          "Basic periodicity and monotonicity properties of cosine."
+        ],
+        "known_residual_risks_and_mitigation": "The crossing statement is local to neighboring dominant branches; it is stated in that scope."
+      },
+      "deeper_reasoning_4": {
+        "title": "Finite-N confinement by nontrivial N-ality",
+        "target_goal_component": "G2_center_vortex_gas_confinement_and_anomaly_response",
+        "declared_source_set": [
+          "core_reasoning_8",
+          "goals_13:G2"
+        ],
+        "major_advancement_modes": [
+          "criterion sharpening",
+          "N-ality iff statement"
+        ],
+        "goal_alignment": "Converts the string-tension formula into the exact finite-N confinement predicate.",
+        "scientific_payoff": "Identifies precisely which sectors are confined by the dilute vortex gas.",
+        "nontrivial_advance_over_sources": "Proves the iff condition using coprimality of q and N.",
+        "formal_sharpness": "High; purely algebraic after the tension formula.",
+        "low_value_rejection_audit": "Avoided restating the area law without extracting the zero-tension criterion.",
+        "selection_score": 0.95,
+        "controlled_external_lemmas": [
+          "Zeros of sine."
+        ],
+        "known_residual_risks_and_mitigation": "Restricted to theta=0 and finite N as declared."
+      },
+      "deeper_reasoning_5": {
+        "title": "Unified anomaly, branch-response, and flux-quantization certificate with reduced cup-square derivation",
+        "target_goal_component": "G2_center_vortex_gas_confinement_and_anomaly_response",
+        "declared_source_set": [
+          "core_reasoning_9",
+          "core_reasoning_10",
+          "goals_13:G2"
+        ],
+        "major_advancement_modes": [
+          "anomaly matching",
+          "background-field consistency",
+          "quantization synthesis",
+          "dimensional-reduction bridge"
+        ],
+        "goal_alignment": "Directly covers the B4d anomaly response, k-branch phase, shifted topological charge, and magnetic-flux cancellation required by G2.",
+        "scientific_payoff": "Shows that theta monodromy, branch labels, and vortex-number quantization are one background-coupled consistency structure rather than separate checks.",
+        "nontrivial_advance_over_sources": "Derives J congruent I from the reduced cup-square expression before using it in the theta-shift and branch-response proof, then appends the vortex-number congruence.",
+        "formal_sharpness": "Very high: the only convention-sensitive input is the explicitly stated reduced cup-product formula.",
+        "low_value_rejection_audit": "Avoided a theta-shift-only anomaly proof by retaining the stronger quantization and flux-cancellation consequences.",
+        "selection_score": 1.0,
+        "controlled_external_lemmas": [
+          "Reduced cup-square identity for B4d on M2 x T2 with 3-4 twist p.",
+          "Finite Fourier projector over Z_N."
+        ],
+        "known_residual_risks_and_mitigation": "Cochain cup-product signs are convention-sensitive; the sign convention is isolated in P2 and matched to the target anomaly formula."
+      },
+      "deeper_reasoning_6": {
+        "title": "Simultaneous p and q large-N center-stability criterion",
+        "target_goal_component": "G3_large_N_center_stabilization_and_fibonacci_test",
+        "declared_source_set": [
+          "core_reasoning_11",
+          "core_reasoning_12",
+          "goals_13:G3"
+        ],
+        "major_advancement_modes": [
+          "diagnostic unification",
+          "failure-mode proof"
+        ],
+        "goal_alignment": "Derives the goal's requirement that fixed multiples of both q_N and p_N remain order N modulo N.",
+        "scientific_payoff": "Connects one-form string-tension loss and zero-form toron instability into one number-theoretic design rule.",
+        "nontrivial_advance_over_sources": "Generalizes the fixed-p toron failure mode to fixed multiples and pairs it with the Wilson-loop residue test.",
+        "formal_sharpness": "Medium-high; the scaling derivation is explicit but uses the one-site toron estimate as a semiclassical diagnostic.",
+        "low_value_rejection_audit": "Avoided treating q_N stability alone as sufficient.",
+        "selection_score": 0.98,
+        "controlled_external_lemmas": [
+          "Small-angle sine expansion."
+        ],
+        "known_residual_risks_and_mitigation": "The zero-form part is an estimate, not a rigorous nonperturbative theorem; the entry labels it as a diagnostic."
+      },
+      "deeper_reasoning_7": {
+        "title": "Fibonacci sequence passes the simultaneous residue test",
+        "target_goal_component": "G3_large_N_center_stabilization_and_fibonacci_test",
+        "declared_source_set": [
+          "core_reasoning_13",
+          "goals_13:G3"
+        ],
+        "major_advancement_modes": [
+          "constructive test sequence",
+          "irrational-limit proof"
+        ],
+        "goal_alignment": "Verifies the explicit Fibonacci sequence required by G3.",
+        "scientific_payoff": "Demonstrates a concrete large-N twist sequence with nonvanishing fixed-charge tensions.",
+        "nontrivial_advance_over_sources": "Adds explicit order-N residue verification for both p and q, not just nonzero tension.",
+        "formal_sharpness": "High; the proof is number-theoretic with a declared irrational limit.",
+        "low_value_rejection_audit": "Avoided only proving pq congruent 1 mod N.",
+        "selection_score": 0.99,
+        "controlled_external_lemmas": [
+          "Cassini identity for Fibonacci numbers.",
+          "Irrationality of the golden ratio."
+        ],
+        "known_residual_risks_and_mitigation": "Residue constants depend on the fixed m; the claim is intentionally fixed-m, matching the goal."
+      },
+      "deeper_reasoning_8": {
+        "title": "Fixed-charge irrational-limit criterion plus continued-fraction finite-window filter",
+        "target_goal_component": "G3_large_N_center_stabilization_and_fibonacci_test",
+        "declared_source_set": [
+          "core_reasoning_11",
+          "core_reasoning_13",
+          "core_reasoning_14",
+          "goals_13:G3"
+        ],
+        "major_advancement_modes": [
+          "criterion sharpening",
+          "candidate-sequence evaluation",
+          "failure-mode refinement"
+        ],
+        "goal_alignment": "Makes the continued-fraction analysis explicitly serve the G3 fixed-m residue criterion for both p_N and q_N, while retaining the Fibonacci finite-window advantage.",
+        "scientific_payoff": "Separates the exact pointwise large-N stability requirement from the practical finite-window problem of accidental small low-charge tensions.",
+        "nontrivial_advance_over_sources": "Combines irrational-limit residue control, finite-window lower bounds, and continued-fraction suppression bounds into one hierarchy of diagnostics.",
+        "formal_sharpness": "High: fixed-m conclusions are proved from irrational limits; continued-fraction conclusions are stated as finite-window diagnostics, not as full optimality claims.",
+        "low_value_rejection_audit": "Avoided treating a growing convergent denominator d_k as if it were the same as the strict fixed-m success predicate.",
+        "selection_score": 1.0,
+        "controlled_external_lemmas": [
+          "Continued-fraction convergent error bound.",
+          "Sine upper bound."
+        ],
+        "known_residual_risks_and_mitigation": "The finite-window diagnostic is qualitative for choosing sequences and is not claimed to solve a global optimization problem over all charges growing with N."
+      }
+    },
+    "rejected_low_value_candidates": [
+      {
+        "candidate": "Repeat the twisted-mode mass-spectrum derivation as a deeper entry.",
+        "reason": "Already fully covered by core_reasoning_1 and only indirectly goal-level; retained as a premise in deeper_reasoning_1."
+      },
+      {
+        "candidate": "Repeat the dilute-gas Poisson summation step.",
+        "reason": "Already fully covered by core_reasoning_7; deeper_reasoning_3 instead extracts branch periodicity and first-order crossings."
+      },
+      {
+        "candidate": "State that irrational q_N/N is sufficient for stability.",
+        "reason": "Too weak; deeper_reasoning_8 captures the stronger continued-fraction accidental-suppression diagnostic."
+      }
+    ],
+    "global_alignment_audit": {
+      "schema_compliance": "Top-level keys are exactly paper_title, deeper_reasoning_1 through deeper_reasoning_8, and deeper_metadata.",
+      "core_coverage": "Uses all major core clusters: vacuum and perturbative gap, root/weight vortex construction, Wilson-loop phase/charge/action, dilute gas branches, Wilson-loop string tensions, background anomaly and flux quantization, fixed-p toron instability, Fibonacci and continued-fraction large-N diagnostics.",
+      "goal_coverage": "G1 is certified by construction and flux-closure entries; G2 is split into branch structure, N-ality confinement, and anomaly/quantization response; G3 is split into simultaneous p/q failure modes, Fibonacci verification, and fixed-charge plus finite-window irrational-limit diagnostics.",
+      "nonduplication": "Entries synthesize core results into success-predicate certificates or diagnostic hierarchies rather than copying individual core derivations.",
+      "scope_control": "The asymmetric vortex construction remains restricted to L3 >> N L4; large-N claims are pointwise for fixed charges unless explicitly labelled as finite-window diagnostics.",
+      "latest_revision_gain": "The previous residual risks were addressed by deriving J congruent I from the reduced cup-square expression and by making the continued-fraction entry explicitly subordinate to the fixed-m stability predicate."
+    },
+    "known_residual_risks_and_mitigation": [
+      "Latex compilation depends only on article, amsmath, and amssymb; all generated entries were checked with this minimal preamble.",
+      "The anomaly bridge depends on cochain sign conventions; the reduced cup-square identity is stated explicitly and used consistently with the target response.",
+      "The large-N Fibonacci and irrational-limit conclusions are pointwise in fixed charges; charges growing with N are discussed only through the finite-window continued-fraction diagnostic.",
+      "The file does not claim the conjectural generic-L3,L4 vortex extension or full nonperturbative adiabatic continuity to R^4."
+    ]
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "paper_goal": {
+    "canonical_goal": [
+      {
+        "goal_id": "G1_partition_function_reduction",
+        "outcome_variable": "o_1=(N,\\Lambda,L_3,L_4,V,\\theta,g,\\zeta_m,\\zeta_v,\\vec{\\sigma},Z_{3D}^{\\mathrm{tw},0},Z_{2D}^{\\mathrm{vtx}})\\in\\mathcal{O}_{P,1}, where \\mathcal{O}_{P,1} is the set of tuples with N\\in\\mathbb{Z}_{\\ge2}, \\Lambda>0, 0<L_4<L_3, V>0, \\theta\\in\\mathbb{R}, g>0, \\zeta_m>0, \\zeta_v>0, an (N-1)-component compact scalar \\vec{\\sigma}, an approximated shift-twisted monopole-gas partition function Z_{3D}^{\\mathrm{tw},0}, and a center-vortex gas partition function Z_{2D}^{\\mathrm{vtx}}.",
+        "goal_form": "target_proposition",
+        "target_object": "Prove the target proposition that, for SU(N) Yang-Mills theory with N\\in\\mathbb{Z}_{\\ge2}, x_4\\sim x_4+L_4, N L_4\\Lambda\\ll1, x_3\\sim x_3+L_3, L_4\\ll L_3, and L_3\\Lambda\\ll1, the approximation obtained by restricting the shift-twisted dual-photon monopole-gas path integral to \\vec{\\sigma}=\\vec{\\sigma}^{\\,*}_k=(2\\pi k/N)\\vec{\\rho}, k\\in\\mathbb{Z}_N, gives Z_{3D}^{\\mathrm{tw},0}=\\sum_{k\\in\\mathbb{Z}_N}\\exp[2NVL_3\\zeta_m\\cos((\\theta+2\\pi k)/N)], and this expression equals the R^2\\times T^2 center-vortex gas Z_{2D}^{\\mathrm{vtx}}=\\sum_{k\\in\\mathbb{Z}_N}\\exp[2V\\zeta_v\\cos((\\theta+2\\pi k)/N)] after, and only after within these displayed formulae, the fugacity identification \\zeta_v=NL_3\\zeta_m.",
+        "feasibility_constraints": [
+          "N\\in\\mathbb{Z}_{\\ge2}; \\omega=\\exp(2\\pi i/N); C=\\mathrm{diag}(1,\\omega,\\ldots,\\omega^{N-1}); S is the N\\times N matrix with entries S_{ij}=\\delta_{i+1,j} and indices modulo N, so S C S^{-1}=\\omega C.",
+          "The coordinate x_4 obeys x_4\\sim x_4+L_4 and N L_4\\Lambda\\ll1; the Wilson loop P_4 is constrained by the added potential \\sum_{m=1}^{N-1}J_m|\\mathrm{tr}(P_4^m)|^2 with every J_m>0; a gauge representative of the selected vacuum is P_4 proportional to C; the resulting low-energy gauge group is U(1)^{N-1}.",
+          "The simple roots of su(N) are \\vec{\\alpha}_a=\\vec e_a-\\vec e_{a+1} for a=1,\\ldots,N-1 in the subspace of \\mathbb{R}^N with coordinate sum zero; the affine root is \\vec{\\alpha}_N=-\\sum_{a=1}^{N-1}\\vec{\\alpha}_a; the fundamental weights \\vec{\\mu}_a satisfy \\vec{\\mu}_a\\cdot\\vec{\\alpha}_b=\\delta_{ab}; \\vec{\\rho}=\\sum_{a=1}^{N-1}\\vec{\\mu}_a.",
+          "The dual photon \\vec{\\sigma} is an (N-1)-component compact scalar with \\vec{\\sigma}\\sim\\vec{\\sigma}+2\\pi\\vec{\\mu}_a for a=1,\\ldots,N-1, and its Abelian field strength is \\vec f=(g^2/(4\\pi iL_4))*d\\vec{\\sigma}.",
+          "The retained R^3\\times S^1 monopole-gas Lagrangian is \\mathcal{L}_{3D}=(g^2/(16\\pi^2L_4))|d\\vec{\\sigma}|^2-\\sum_{n=1}^{N}2\\zeta_m\\cos(\\vec{\\alpha}_n\\cdot\\vec{\\sigma}+\\theta/N); equivalently, each monopole insertion of species n contributes \\zeta_m\\exp(i\\vec{\\alpha}_n\\cdot\\vec{\\sigma}+i\\theta/N) and each antimonopole insertion contributes its complex conjugate.",
+          "The coordinate x_3 obeys x_3\\sim x_3+L_3 with L_4\\ll L_3 and L_3\\Lambda\\ll1; the imposed boundary condition is \\vec{\\sigma}(x,x_3+L_3)=S^{-1}\\vec{\\sigma}(x,x_3), and it maps \\exp(i\\vec{\\alpha}_n\\cdot\\vec{\\sigma}+i\\theta/N) to \\exp(i\\vec{\\alpha}_{n+1}\\cdot\\vec{\\sigma}+i\\theta/N) with n modulo N.",
+          "The constant configurations satisfying the shift-twisted reduction are \\vec{\\sigma}^{\\,*}_k=(2\\pi k/N)\\vec{\\rho} for k\\in\\mathbb{Z}_N; for every n=1,\\ldots,N, including the affine root, \\vec{\\alpha}_n\\cdot\\vec{\\rho}=1 modulo N, hence \\exp(i\\vec{\\alpha}_n\\cdot\\vec{\\sigma}^{\\,*}_k+i\\theta/N)=\\exp(i(\\theta+2\\pi k)/N).",
+          "The two-dimensional center-vortex gas is defined by vortex and antivortex occupation numbers r,\\bar r\\in\\mathbb{Z}_{\\ge0}, insertion weights V\\zeta_v\\exp(i\\theta/N) and V\\zeta_v\\exp(-i\\theta/N), and the integer-topological-charge constraint r-\\bar r\\in N\\mathbb{Z}; summing r,\\bar r with this constraint gives Z_{2D}^{\\mathrm{vtx}}=\\sum_{k\\in\\mathbb{Z}_N}\\exp[2V\\zeta_v\\cos((\\theta+2\\pi k)/N)].",
+          "All equalities between Z_{3D}^{\\mathrm{tw},0} and Z_{2D}^{\\mathrm{vtx}} are claims about the displayed reduced partition functions: Z_{3D}^{\\mathrm{tw},0} is obtained after replacing the full \\vec{\\sigma} path integral by the finite sum over \\vec{\\sigma}^{\\,*}_k, while Z_{2D}^{\\mathrm{vtx}} is obtained by the constrained vortex-antivortex occupation-number sum."
+        ],
+        "success_set": {
+          "kind": "predicate",
+          "definition": "\\Sigma_{P,1}=\\{o_1\\in\\mathcal{O}_{P,1}: N\\in\\mathbb{Z}_{\\ge2}, N L_4\\Lambda\\ll1, L_4\\ll L_3, L_3\\Lambda\\ll1, Z_{3D}^{\\mathrm{tw},0}=\\sum_{k\\in\\mathbb{Z}_N}\\exp[2NVL_3\\zeta_m\\cos((\\theta+2\\pi k)/N)], Z_{2D}^{\\mathrm{vtx}}=\\sum_{k\\in\\mathbb{Z}_N}\\exp[2V\\zeta_v\\cos((\\theta+2\\pi k)/N)], \\zeta_v=NL_3\\zeta_m, and therefore the two displayed reduced partition functions are identical term by term in k\\}.",
+          "threshold": {
+            "applies": false,
+            "value": null,
+            "comparator": "eq",
+            "metric_symbol": null,
+            "metric_definition": null,
+            "source_span": null
+          }
+        },
+        "preference_ordering": {
+          "kind": "none",
+          "definition": null,
+          "objective_symbols": [],
+          "lex_order": null,
+          "embedding_to_total_utility": null
+        },
+        "robustness_scope": {
+          "applies": true,
+          "ambient_space": "Environment tuples (N,L_3,L_4,\\Lambda,\\theta,\\zeta_m,\\zeta_v) for compactified SU(N) Yang-Mills theory with N\\in\\mathbb{Z}_{\\ge2}, x_4\\sim x_4+L_4, x_3\\sim x_3+L_3, a center-stabilized P_4 proportional to C, and a shift-twisted dual photon obeying \\vec{\\sigma}(x,x_3+L_3)=S^{-1}\\vec{\\sigma}(x,x_3).",
+          "type_tag": "environment_family",
+          "metric_or_divergence": null,
+          "radius_or_budget": null,
+          "indexing_set": "\\{(N,L_3,L_4,\\Lambda,\\theta): N\\in\\mathbb{Z}_{\\ge2}, \\Lambda>0, \\theta\\in\\mathbb{R}, N L_4\\Lambda\\ll1, L_4\\ll L_3, L_3\\Lambda\\ll1\\}",
+          "claimed_subfamily": {
+            "definition": "The claimed subfamily consists exactly of the indexed tuples for which \\mathcal{L}_{3D}=(g^2/(16\\pi^2L_4))|d\\vec{\\sigma}|^2-\\sum_{n=1}^{N}2\\zeta_m\\cos(\\vec{\\alpha}_n\\cdot\\vec{\\sigma}+\\theta/N), \\vec{\\sigma}(x,x_3+L_3)=S^{-1}\\vec{\\sigma}(x,x_3), \\vec{\\sigma}^{\\,*}_k=(2\\pi k/N)\\vec{\\rho}, and Z_{2D}^{\\mathrm{vtx}}=\\sum_{k\\in\\mathbb{Z}_N}\\exp[2V\\zeta_v\\cos((\\theta+2\\pi k)/N)] are the operative reduced descriptions; the claim is not made for parameter tuples outside these displayed hypotheses.",
+            "source_span": {
+              "section": "Derivation of the center-vortex gas from the monopole gas",
+              "paragraph_or_line": "paragraph containing equations (12) through (15)",
+              "verbatim": "This reproduces the center-vortex gas formula (7) by setting zeta_v = N L_3 zeta_m."
+            }
+          },
+          "hinted_superfamily": {
+            "definition": "A broader family only suggested as outlook consists of compactified or uncompactified SU(N) confinement descriptions in which monopoles and center vortices both appear as magnetic excitations; the equality Z_{3D}^{\\mathrm{tw},0}=Z_{2D}^{\\mathrm{vtx}} is not asserted for any member lacking the displayed Lagrangian, twist, constant configurations, and fugacity map \\zeta_v=NL_3\\zeta_m.",
+            "source_span": {
+              "section": "Conclusion and outlook",
+              "paragraph_or_line": "opening conclusion paragraph",
+              "verbatim": "established a concrete connection between monopoles and center vortices within the analytically controllable semiclassical regime"
+            }
+          },
+          "refinement_relation": "set_inclusion",
+          "criterion": "For every tuple in the claimed subfamily and every k\\in\\mathbb{Z}_N, substituting \\vec{\\sigma}=\\vec{\\sigma}^{\\,*}_k into \\exp(i\\vec{\\alpha}_n\\cdot\\vec{\\sigma}+i\\theta/N) gives \\exp(i(\\theta+2\\pi k)/N) for all n=1,\\ldots,N; summing the N monopole species and their conjugates over volume VL_3 gives the exponent 2NVL_3\\zeta_m\\cos((\\theta+2\\pi k)/N); replacing \\zeta_v by NL_3\\zeta_m in the vortex exponent 2V\\zeta_v\\cos((\\theta+2\\pi k)/N) gives the same exponent for each k.",
+          "channel_populated_by": [
+            "stated",
+            "operational",
+            "implicit"
+          ]
+        }
+      },
+      {
+        "goal_id": "G2_monopole_vortex_identification",
+        "outcome_variable": "o_2=(N,n,x_*,L_3,L_4,g,\\vec{\\sigma},\\vec{\\Phi},W(C))\\in\\mathcal{O}_{P,2}, where \\mathcal{O}_{P,2} is the set of tuples with N\\in\\mathbb{Z}_{\\ge2}, n\\in\\{1,\\ldots,N\\} modulo N, 0\\le x_*<L_3, L_3>0, L_4>0, g>0, an (N-1)-component dual-photon field \\vec{\\sigma} on \\mathbb{R}^2\\times S^1, a fixed-x_3 magnetic flux \\vec{\\Phi}(x_3), and an SU(N) fundamental Wilson loop W(C) for a closed curve C\\subset\\mathbb{R}^2.",
+        "goal_form": "target_proposition",
+        "target_object": "Prove the target proposition that a single monopole source of charge \\vec{\\alpha}_n at (x,x_3)=(0,x_*) in the shift-twisted \\mathbb{R}^2\\times S^1 dual-photon theory has all three displayed center-vortex criteria: \\vec{\\sigma}=O(\\exp[-2\\pi |x|/(NL_3)]) as |x|\\to\\infty, so the magnetic field is localized within transverse scale NL_3/(2\\pi); \\vec{\\Phi}(x_3)=2\\pi\\vec{\\nu}_n for x_*<x_3<L_3 and \\vec{\\Phi}(x_3)=2\\pi\\vec{\\nu}_{n+1} for 0\\le x_3<x_*; and W(C)=\\exp(-2\\pi i/N) if the vortex flux pierces a surface bounded by C and W(C)=1 if no such flux pierces that surface.",
+        "feasibility_constraints": [
+          "N\\in\\mathbb{Z}_{\\ge2}; n\\in\\{1,\\ldots,N\\} with labels modulo N; x_*\\in[0,L_3); \\vec{\\nu}_1=\\vec{\\mu}_1, \\vec{\\nu}_2=\\vec{\\mu}_1-\\vec{\\alpha}_1, ..., \\vec{\\nu}_N=\\vec{\\mu}_1-\\vec{\\alpha}_1-\\cdots-\\vec{\\alpha}_{N-1}; \\vec{\\alpha}_n=\\vec{\\nu}_n-\\vec{\\nu}_{n+1}; \\vec{\\nu}_n\\cdot\\vec{\\nu}_m=\\delta_{nm}-1/N.",
+          "The coordinate x_3 obeys x_3\\sim x_3+L_3; the dual photon obeys \\vec{\\sigma}(x,x_3+L_3)=S^{-1}\\vec{\\sigma}(x,x_3); under this condition a source with charge \\vec{\\alpha}_n at x_3=x_* has covering-space image charges \\vec{\\alpha}_{n-k} at x_3=x_*+kL_3 for every k\\in\\mathbb{Z}.",
+          "The source equation for the monopole configuration is \\nabla^2[(g^2/(4\\pi iL_4))\\vec{\\sigma}]=2\\pi\\sum_{k\\in\\mathbb{Z}}\\vec{\\alpha}_{n-k}\\delta(x)\\delta(x_3-x_*-kL_3), and the boundary condition at spatial infinity is \\vec{\\sigma}(x,x_3)\\to0 as |x|\\to\\infty.",
+          "Writing x_{3,l}=x_3-x_*-lL_3, a displayed solution is (g^2/(4\\pi iL_4))\\vec{\\sigma}=-(1/2)\\sum_{l=0}^{N-1}\\vec{\\nu}_{n-l}\\sum_{k\\in\\mathbb{Z}}[1/\\sqrt{|x|^2+(x_{3,l}-NkL_3)^2}-1/\\sqrt{|x|^2+(x_{3,l}-L_3-NkL_3)^2}].",
+          "The magnetic flux through the \\mathbb{R}^2 plane at fixed x_3 is \\vec{\\Phi}(x_3)=\\int_{\\mathbb{R}^2}d^2x\\,(g^2/(4\\pi iL_4))\\partial_{x_3}\\vec{\\sigma}(x,x_3).",
+          "The SU(N) fundamental Wilson loop on C\\subset\\mathbb{R}^2 is W(C)=(1/N)\\sum_{l=1}^{N}\\exp[i\\vec{\\nu}_l\\cdot\\int_C\\vec a], with \\int_C\\vec a=\\int_{\\Sigma}d\\vec a=\\int_{\\Sigma}(g^2/(4\\pi iL_4))*d\\vec{\\sigma} for any surface \\Sigma with \\partial\\Sigma=C."
+        ],
+        "success_set": {
+          "kind": "predicate",
+          "definition": "\\Sigma_{P,2}=\\{o_2\\in\\mathcal{O}_{P,2}: \\vec{\\sigma} solves \\nabla^2[(g^2/(4\\pi iL_4))\\vec{\\sigma}]=2\\pi\\sum_{k\\in\\mathbb{Z}}\\vec{\\alpha}_{n-k}\\delta(x)\\delta(x_3-x_*-kL_3), \\vec{\\sigma}(x,x_3)\\to0 as |x|\\to\\infty, \\vec{\\sigma}=O(\\exp[-2\\pi |x|/(NL_3)]), \\vec{\\Phi}(x_3)=2\\pi\\vec{\\nu}_n for x_*<x_3<L_3, \\vec{\\Phi}(x_3)=2\\pi\\vec{\\nu}_{n+1} for 0\\le x_3<x_*, W(C)=\\exp(-2\\pi i/N) when \\int_{\\Sigma}(g^2/(4\\pi iL_4))*d\\vec{\\sigma}=2\\pi\\vec{\\nu}_j for some j and W(C)=1 when \\int_{\\Sigma}(g^2/(4\\pi iL_4))*d\\vec{\\sigma}=0\\}.",
+          "threshold": {
+            "applies": false,
+            "value": null,
+            "comparator": "eq",
+            "metric_symbol": null,
+            "metric_definition": null,
+            "source_span": null
+          }
+        },
+        "preference_ordering": {
+          "kind": "none",
+          "definition": null,
+          "objective_symbols": [],
+          "lex_order": null,
+          "embedding_to_total_utility": null
+        },
+        "robustness_scope": {
+          "applies": true,
+          "ambient_space": "All single fundamental-monopole insertions in the displayed shift-twisted dual-photon theory on \\mathbb{R}^2\\times S^1, indexed by N, n, and x_* with N\\in\\mathbb{Z}_{\\ge2}, n\\in\\{1,\\ldots,N\\} modulo N, and 0\\le x_*<L_3.",
+          "type_tag": "environment_family",
+          "metric_or_divergence": null,
+          "radius_or_budget": null,
+          "indexing_set": "\\{(N,n,x_*): N\\in\\mathbb{Z}_{\\ge2}, n\\in\\{1,\\ldots,N\\}/N\\mathbb{Z}, 0\\le x_*<L_3\\}",
+          "claimed_subfamily": {
+            "definition": "The claimed subfamily consists exactly of source equations \\nabla^2[(g^2/(4\\pi iL_4))\\vec{\\sigma}]=2\\pi\\sum_{k\\in\\mathbb{Z}}\\vec{\\alpha}_{n-k}\\delta(x)\\delta(x_3-x_*-kL_3) under \\vec{\\sigma}(x,x_3+L_3)=S^{-1}\\vec{\\sigma}(x,x_3), with flux evaluated by \\vec{\\Phi}(x_3)=\\int_{\\mathbb{R}^2}d^2x\\,(g^2/(4\\pi iL_4))\\partial_{x_3}\\vec{\\sigma} and Wilson response evaluated by W(C)=(1/N)\\sum_{l=1}^{N}\\exp[i\\vec{\\nu}_l\\cdot\\int_C\\vec a].",
+            "source_span": {
+              "section": "Monopoles become the center vortex",
+              "paragraph_or_line": "paragraphs containing equations (17) through (24) and Fig. 1",
+              "verbatim": "This is exactly the characterization of the center vortex."
+            }
+          },
+          "hinted_superfamily": {
+            "definition": "A broader family only suggested as outlook consists of four-dimensional center-vortex networks in which monopoles may act as kinks, endpoints, or junctions of vortex worldsheets; the flux formulae, Wilson-loop phase, and exponential localization displayed in \\Sigma_{P,2} are not asserted for that broader family by this extraction.",
+            "source_span": {
+              "section": "Conclusion and outlook",
+              "paragraph_or_line": "paragraph discussing the proof-of-concept scenario",
+              "verbatim": "monopole serves as the kink or end point of the center-vortex network"
+            }
+          },
+          "refinement_relation": "set_inclusion",
+          "criterion": "For every (N,n,x_*) in the claimed subfamily, the displayed solution of the source equation has large-|x| behavior O(\\exp[-2\\pi |x|/(NL_3)]); inserting that solution into \\vec{\\Phi}(x_3)=\\int_{\\mathbb{R}^2}d^2x\\,(g^2/(4\\pi iL_4))\\partial_{x_3}\\vec{\\sigma} gives \\vec{\\Phi}(x_3)=2\\pi\\vec{\\nu}_n for x_*<x_3<L_3 and \\vec{\\Phi}(x_3)=2\\pi\\vec{\\nu}_{n+1} for 0\\le x_3<x_*; using \\vec{\\nu}_n\\cdot\\vec{\\nu}_m=\\delta_{nm}-1/N in W(C) gives \\exp(-2\\pi i/N) when the flux pierces \\Sigma and 1 otherwise.",
+          "channel_populated_by": [
+            "operational",
+            "implicit"
+          ]
+        }
+      }
+    ],
+    "inter_goal_relation": "joint_conjunction",
+    "methodological_claim": {
+      "applies": false,
+      "target_object": null,
+      "evidence_channels": null
+    },
+    "evidence_channels": {
+      "stated_goal": {
+        "source_span": {
+          "section": "Abstract",
+          "paragraph_or_line": "final sentence",
+          "verbatim": "We unify these two semiclassical descriptions by showing the explicit relation between the monopole and center vortex."
+        },
+        "formalisation": "Stated goal formalisation: establish the conjunction of two target propositions for SU(N) Yang-Mills theory with N\\in\\mathbb{Z}_{\\ge2}. The first proposition is Z_{3D}^{\\mathrm{tw},0}=\\sum_{k\\in\\mathbb{Z}_N}\\exp[2NVL_3\\zeta_m\\cos((\\theta+2\\pi k)/N)] and Z_{2D}^{\\mathrm{vtx}}=\\sum_{k\\in\\mathbb{Z}_N}\\exp[2V\\zeta_v\\cos((\\theta+2\\pi k)/N)] with equality after \\zeta_v=NL_3\\zeta_m. The second proposition is that a charge-\\vec{\\alpha}_n monopole in the shift-twisted \\mathbb{R}^2\\times S^1 dual-photon theory has \\vec{\\sigma}=O(\\exp[-2\\pi |x|/(NL_3)]), \\vec{\\Phi}(x_3)=2\\pi\\vec{\\nu}_n for x_*<x_3<L_3, \\vec{\\Phi}(x_3)=2\\pi\\vec{\\nu}_{n+1} for 0\\le x_3<x_*, and W(C)=\\exp(-2\\pi i/N) exactly when its flux pierces a surface bounded by C."
+      },
+      "operational_goal": {
+        "source_span": {
+          "section": "Derivation of the center-vortex gas from the monopole gas; Monopoles become the center vortex",
+          "paragraph_or_line": "equations (12)-(15), equations (17)-(24), and Fig. 1 caption",
+          "verbatim": "This reproduces the center-vortex gas formula (7) by setting zeta_v = N L_3 zeta_m."
+        },
+        "formalisation": "Operational goal formalisation: impose \\vec{\\sigma}(x,x_3+L_3)=S^{-1}\\vec{\\sigma}(x,x_3) on \\mathcal{L}_{3D}=(g^2/(16\\pi^2L_4))|d\\vec{\\sigma}|^2-\\sum_{n=1}^{N}2\\zeta_m\\cos(\\vec{\\alpha}_n\\cdot\\vec{\\sigma}+\\theta/N), substitute \\vec{\\sigma}^{\\,*}_k=(2\\pi k/N)\\vec{\\rho}, use \\vec{\\alpha}_n\\cdot\\vec{\\rho}=1 modulo N to map every \\exp(i\\vec{\\alpha}_n\\cdot\\vec{\\sigma}+i\\theta/N) to \\exp(i(\\theta+2\\pi k)/N), sum k\\in\\mathbb{Z}_N to obtain Z_{3D}^{\\mathrm{tw},0}=\\sum_{k\\in\\mathbb{Z}_N}\\exp[2NVL_3\\zeta_m\\cos((\\theta+2\\pi k)/N)], and set \\zeta_v=NL_3\\zeta_m to match Z_{2D}^{\\mathrm{vtx}}. For a source \\vec{\\alpha}_n at x_3=x_*, solve \\nabla^2[(g^2/(4\\pi iL_4))\\vec{\\sigma}]=2\\pi\\sum_{k\\in\\mathbb{Z}}\\vec{\\alpha}_{n-k}\\delta(x)\\delta(x_3-x_*-kL_3), then compute \\vec{\\sigma}=O(\\exp[-2\\pi |x|/(NL_3)]), \\vec{\\Phi}(x_3)=2\\pi\\vec{\\nu}_n for x_*<x_3<L_3, \\vec{\\Phi}(x_3)=2\\pi\\vec{\\nu}_{n+1} for 0\\le x_3<x_*, and W(C)=\\exp(-2\\pi i/N) when the flux lies inside C and W(C)=1 otherwise."
+      },
+      "implicit_goal": {
+        "inference_basis": [
+          "The abstract's formal aim is the explicit relation between monopoles and center vortices, not a numerical optimization objective.",
+          "The derivation section establishes the partition-function relation by equations (12)-(15), including the displayed fugacity map \\zeta_v=NL_3\\zeta_m.",
+          "The microscopic section establishes the object-identification relation by equations (17)-(24), namely the source equation, localized solution, piecewise flux, and center-element Wilson-loop phase.",
+          "No independent metric table, ablation table, benchmark score, or stopping criterion is reported; analytic equalities and checks are counted under MethodAlign and ClaimAlign, not EvalAlign."
+        ],
+        "fit_score": 0.689,
+        "fit_components": {
+          "TextAlign": 1.0,
+          "MethodAlign": 1.0,
+          "EvalAlign": 0.0,
+          "ClaimAlign": 1.0,
+          "Complexity": 0.222
+        },
+        "formalisation": "Implicit goal formalisation: the best-fitting goal is the joint target proposition that, under N\\in\\mathbb{Z}_{\\ge2}, N L_4\\Lambda\\ll1, L_4\\ll L_3, and L_3\\Lambda\\ll1, the shift-twisted monopole-gas reduction gives Z_{3D}^{\\mathrm{tw},0}=\\sum_{k\\in\\mathbb{Z}_N}\\exp[2NVL_3\\zeta_m\\cos((\\theta+2\\pi k)/N)], this equals Z_{2D}^{\\mathrm{vtx}}=\\sum_{k\\in\\mathbb{Z}_N}\\exp[2V\\zeta_v\\cos((\\theta+2\\pi k)/N)] when \\zeta_v=NL_3\\zeta_m, and every single source \\vec{\\alpha}_n in the same shift-twisted dual-photon theory satisfies \\vec{\\sigma}=O(\\exp[-2\\pi |x|/(NL_3)]), \\vec{\\Phi}(x_3)=2\\pi\\vec{\\nu}_n or 2\\pi\\vec{\\nu}_{n+1} on the two sides of x_*, and W(C)=\\exp(-2\\pi i/N) exactly when the flux pierces a surface bounded by C."
+      },
+      "excluded_aims": [
+        {
+          "verbatim": "Understanding color confinement",
+          "source_span": {
+            "section": "Introduction",
+            "paragraph_or_line": "opening sentence",
+            "verbatim": "Understanding color confinement still lies in front of us"
+          },
+          "reason": "motivational"
+        },
+        {
+          "verbatim": "derive the area law for the Wilson loops",
+          "source_span": {
+            "section": "Confinement on R^2 × T^2 and vortex",
+            "paragraph_or_line": "review paragraph ending the section",
+            "verbatim": "One can also derive the area law for the Wilson loops"
+          },
+          "reason": "topical"
+        },
+        {
+          "verbatim": "the monopole serves as the kink or end point of the center-vortex network",
+          "source_span": {
+            "section": "Conclusion and outlook",
+            "paragraph_or_line": "opening conclusion paragraph",
+            "verbatim": "monopole serves as the kink or end point of the center-vortex network"
+          },
+          "reason": "application_gesture"
+        },
+        {
+          "verbatim": "construct an analytic solution of the center vortex in the R^2 × T^2 setup",
+          "source_span": {
+            "section": "Conclusion and outlook",
+            "paragraph_or_line": "future-work paragraph beginning 'Second'",
+            "verbatim": "construct an analytic solution of the center vortex in the R2 × T2 setup"
+          },
+          "reason": "out_of_scope_other"
+        }
+      ]
+    },
+    "consistency_relation": "aligned",
+    "consistency_relation_derivation": "The stated channel asks for an explicit monopole--center-vortex relation. The operational channel supplies exactly two relations: the reduced partition-function equality Z_{3D}^{\\mathrm{tw},0}=Z_{2D}^{\\mathrm{vtx}} after \\zeta_v=NL_3\\zeta_m, and the flux/Wilson-loop criterion showing that a charge-\\vec{\\alpha}_n monopole in the shift-twisted theory behaves as a center vortex. Motivational confinement language, area-law review statements, proof-of-concept language for broader vortex networks, and future analytic-solution aims are listed under excluded_aims or hinted_superfamily, so no material stated aim absent from the operational artefacts is treated as formally achieved."
+  }
+}

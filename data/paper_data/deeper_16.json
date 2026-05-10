@@ -1,0 +1,209 @@
+{
+  "paper_title": "Bootstrapping SU(3) lattice Yang-Mills theory (Guo, 2025, JHEP)",
+  "deeper_reasoning_1": "\\section*{Claim}\nFix $N\\in\\{2,3\\}$, $d\\in\\{2,3,4\\}$, $\\lambda>0$, and a finite truncation $T$ retaining the plaquette coordinate $x_P$. Let $F_{N,d,T,\\lambda}$ be the real feasible set obtained by imposing exactly the retained normalization, positivity constraints, Schwinger--Dyson equalities, and the applicable $SU(2)$ or $SU(3)$ trace reductions. If the exact Yang--Mills retained moment assignment belongs to this set, then\n\\[\nL_{N,d,T}(\\lambda):=\\inf_{X\\in F_{N,d,T,\\lambda}}x_P(X),\\qquad\nU_{N,d,T}(\\lambda):=\\sup_{X\\in F_{N,d,T,\\lambda}}x_P(X)\n\\]\ncertify the exact plaquette value $p_{N,d}(\\lambda)=\\langle w(P)\\rangle$:\n\\[\nL_{N,d,T}(\\lambda)\\leq p_{N,d}(\\lambda)\\leq U_{N,d,T}(\\lambda).\n\\]\n\n\\section*{Premises}\n\\[\n\\begin{array}{ll}\n\\text{(P1)} & X^\\ast_{N,d,T,\\lambda}\\text{ is the restriction of the exact Yang--Mills moment functional to the coordinates retained by }T.\\\\[0.4em]\n\\text{(P2)} & x_P(X^\\ast_{N,d,T,\\lambda})=p_{N,d}(\\lambda).\\\\[0.4em]\n\\text{(P3)} & \\text{Hermitian positivity gives }A^H_{ab}=\\langle\\operatorname{tr}(P_a^\\dagger P_b)\\rangle\\succeq0\\text{ for retained common-endpoint paths.}\\\\[0.4em]\n\\text{(P4)} & \\text{Ordinary reflection positivity gives }A^R_{ab}=\\langle\\operatorname{tr}(\\Theta[P_a]P_b)\\rangle\\succeq0\\text{ for retained mirror path sets.}\\\\[0.4em]\n\\text{(P5)} & \\text{Every retained link variation supplies an exact Schwinger--Dyson equality for }X^\\ast_{N,d,T,\\lambda}.\\\\[0.4em]\n\\text{(P6)} & \\text{The }SU(2)\\text{ and }SU(3)\\text{ trace reductions are exact identities whenever their variables are retained.}\\\\[0.4em]\n\\text{(P7)} & X^\\ast_{N,d,T,\\lambda}\\in F_{N,d,T,\\lambda}\\text{ follows from (P3)--(P6).}\n\\end{array}\n\\]\n\n\\section*{Derivation}\nBecause $X^\\ast_{N,d,T,\\lambda}\\in F_{N,d,T,\\lambda}$,\n\\begin{align}\nL_{N,d,T}(\\lambda)\n&=\\inf_{X\\in F_{N,d,T,\\lambda}}x_P(X)\\\\\n&\\leq x_P(X^\\ast_{N,d,T,\\lambda}) && \\text{infimum over a set containing }X^\\ast_{N,d,T,\\lambda}\\\\\n&=p_{N,d}(\\lambda) && \\text{by (P2)}.\n\\end{align}\nSimilarly,\n\\begin{align}\nU_{N,d,T}(\\lambda)\n&=\\sup_{X\\in F_{N,d,T,\\lambda}}x_P(X)\\\\\n&\\geq x_P(X^\\ast_{N,d,T,\\lambda}) && \\text{supremum over a set containing }X^\\ast_{N,d,T,\\lambda}\\\\\n&=p_{N,d}(\\lambda) && \\text{by (P2)}.\n\\end{align}\nCombining the two inequalities gives the claimed certificate.\n\n\\section*{Final Result}\n\\[\n\\boxed{L_{N,d,T}(\\lambda)\\leq p_{N,d}(\\lambda)\\leq U_{N,d,T}(\\lambda)}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_2": "\\section*{Claim}\nValidity-preserving constraint augmentation is the correct abstraction for high-value bootstrap refinements. Let $F$ and $F^+$ be feasible sets for the same plaquette coordinate $x_P$, with\n\\[\nF^+\\subseteq F,\n\\qquad X^\\ast\\in F^+,\n\\qquad x_P(X^\\ast)=p.\n\\]\nDefine\n\\[\nL:=\\inf_{X\\in F}x_P(X),\\quad U:=\\sup_{X\\in F}x_P(X),\n\\qquad\nL^+:=\\inf_{X\\in F^+}x_P(X),\\quad U^+:=\\sup_{X\\in F^+}x_P(X).\n\\]\nThen\n\\[\nL\\leq L^+\\leq p\\leq U^+\\leq U.\n\\]\nThus any additional exact positivity matrix, exact loop equation, exact trace identity, or closed path-family restriction that only removes spurious assignments cannot hurt validity and can only tighten the certified interval.\n\n\\section*{Premises}\n\\[\n\\begin{array}{ll}\n\\text{(P1)} & F^+\\subseteq F.\\\\[0.4em]\n\\text{(P2)} & X^\\ast\\in F^+\\text{ and }x_P(X^\\ast)=p.\\\\[0.4em]\n\\text{(P3)} & L,L^+,U,U^+\\text{ are the infima and suprema displayed in the claim.}\\\\[0.4em]\n\\text{(P4)} & \\text{The plaquette-bound goal prefers validity first and then smaller interval width.}\n\\end{array}\n\\]\n\n\\section*{Derivation}\nSince $F^+\\subseteq F$, every lower bound over $F$ is no larger than the lower bound over the smaller set:\n\\begin{align}\nL=\\inf_{X\\in F}x_P(X)\\leq \\inf_{X\\in F^+}x_P(X)=L^+.\n\\end{align}\nSince $X^\\ast\\in F^+$,\n\\begin{align}\nL^+=\\inf_{X\\in F^+}x_P(X)\\leq x_P(X^\\ast)=p.\n\\end{align}\nThe same inclusion reverses the supremum inequality:\n\\begin{align}\nU^+=\\sup_{X\\in F^+}x_P(X)\\leq \\sup_{X\\in F}x_P(X)=U.\n\\end{align}\nAgain using $X^\\ast\\in F^+$,\n\\begin{align}\np=x_P(X^\\ast)\\leq \\sup_{X\\in F^+}x_P(X)=U^+.\n\\end{align}\nThe four inequalities yield the chain. Moreover,\n\\begin{align}\nU^+-L^+\\leq U-L,\n\\end{align}\nso, after validity is preserved, the augmented feasible set is weakly preferred by the width component of the plaquette-bound objective.\n\n\\section*{Final Result}\n\\[\n\\boxed{F^+\\subseteq F\\text{ and }X^\\ast\\in F^+\\Longrightarrow L\\leq L^+\\leq p\\leq U^+\\leq U}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_3": "\\section*{Claim}\nIn $d=2$, twist-reflection positivity is an exact validity-preserving augmentation of the plaquette bootstrap, but the same exact conclusion must not be exported to $d\\geq3$ from the two-dimensional proof alone. For\n\\[\nR_t(x,y)=(-x,-y),\n\\qquad \\Theta_t[P]=R_t[P]^\\dagger,\n\\qquad\nA^t_{ab}=\\left\\langle\\operatorname{tr}\\bigl(\\Theta_t[P_a]P_b\\bigr)\\right\\rangle,\n\\]\nthe exact two-dimensional moment assignment satisfies $A^t\\succeq0$. Therefore, adding retained constraints $A^t\\succeq0$ in $d=2$ gives the nested bounds of the augmentation theorem.\n\n\\section*{Premises}\n\\[\n\\begin{array}{ll}\n\\text{(P1)} & P_1,\\ldots,P_M\\text{ are retained paths in the positive half-plane with endpoints at the origin.}\\\\[0.4em]\n\\text{(P2)} & \\text{In }d=2\\text{ one may gauge-fix the separating line so that }U_{0+}=U_{0-}=1.\\\\[0.4em]\n\\text{(P3)} & F:=\\sum_{a=1}^M c_aP_a\\text{ with }c_a\\in\\mathbb{R}.\\\\[0.4em]\n\\text{(P4)} & \\displaystyle \\int DU\\,e^{-S}\\operatorname{tr}\\bigl(\\Theta_t[F]F\\bigr)=\\operatorname{tr}(Q^\\dagger Q)\\text{ for the corresponding half-plane integral }Q.\\\\[0.6em]\n\\text{(P5)} & \\operatorname{tr}(Q^\\dagger Q)\\geq0.\\\\[0.4em]\n\\text{(P6)} & \\text{For }d\\geq3\\text{ the twist-reflection factorization is not an exact retained premise.}\n\\end{array}\n\\]\n\n\\section*{Derivation}\nNormalize (P4) by the positive partition function $Z$ and use (P5):\n\\begin{align}\n\\left\\langle\\operatorname{tr}\\bigl(\\Theta_t[F]F\\bigr)\\right\\rangle\\geq0.\n\\end{align}\nBy real linearity of $F$ and antilinearity of $\\Theta_t$ with real coefficients,\n\\begin{align}\n\\Theta_t[F]F\n&=\\left(\\sum_{a=1}^M c_a\\Theta_t[P_a]\\right)\\left(\\sum_{b=1}^M c_bP_b\\right)\\\\\n&=\\sum_{a,b=1}^M c_ac_b\\Theta_t[P_a]P_b.\n\\end{align}\nTaking trace and expectation gives\n\\begin{align}\n\\left\\langle\\operatorname{tr}\\bigl(\\Theta_t[F]F\\bigr)\\right\\rangle\n&=\\sum_{a,b=1}^M c_ac_b\\left\\langle\\operatorname{tr}\\bigl(\\Theta_t[P_a]P_b\\bigr)\\right\\rangle\\\\\n&=\\sum_{a,b=1}^M c_ac_bA^t_{ab}.\n\\end{align}\nHence $c^TA^tc\\geq0$ for every $c\\in\\mathbb{R}^M$, so $A^t\\succeq0$. If $F_T^t$ is obtained from a two-dimensional feasible set $F_T$ by adding retained twist-reflection matrices, then the exact assignment remains feasible and $F_T^t\\subseteq F_T$. Applying the augmentation theorem gives\n\\[\nL_T\\leq L_T^t\\leq p\\leq U_T^t\\leq U_T.\n\\]\nBy (P6), this proof supplies no exact $d\\geq3$ twist-reflection PSD constraint.\n\n\\section*{Final Result}\n\\[\n\\boxed{d=2:\\ A^t\\succeq0\\text{ is an exact tightening};\\qquad d\\geq3:\\ \\text{not certified by this proof}.}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_4": "\\section*{Claim}\nFor $SU(2)$, the retained single-trace loop bootstrap is closed without independent double-trace coordinates. Consequently the $N=2$ component of the plaquette certificate can be formulated as a finite affine semidefinite problem over single-trace Wilson-loop moments alone, provided the truncation retains the single traces generated by the reduction.\n\n\\section*{Premises}\n\\[\n\\begin{array}{ll}\n\\text{(P1)} & \\displaystyle 2w(A)w(B)=w(AB)+w(A\\bar B)\\quad\\text{for }SU(2)\\text{ loops based at the same point}.\\\\[0.6em]\n\\text{(P2)} & \\text{The finite-}N\\text{ normalized single-trace loop equation contains double-trace products only through overlap terms and action-loop products.}\\\\[0.4em]\n\\text{(P3)} & \\text{For }SU(2)\\text{ the opposite plaquette orientations have equal normalized trace in the action-loop product term.}\\\\[0.4em]\n\\text{(P4)} & \\mathcal{V}_T^{(2)}\\text{ retains every single-trace loop produced from the chosen loop equations after applying (P1).}\n\\end{array}\n\\]\n\n\\section*{Derivation}\nEach overlap double trace in the finite-$N$ equation has the form $\\langle w(A)w(B)\\rangle$. By (P1),\n\\begin{align}\n\\langle w(A)w(B)\\rangle\n&=\\frac{1}{2}\\langle w(AB)+w(A\\bar B)\\rangle\\\\\n&=\\frac{1}{2}\\langle w(AB)\\rangle+\\frac{1}{2}\\langle w(A\\bar B)\\rangle.\n\\end{align}\nThus every overlap contribution is an affine expression in single-trace expectations. By (P3), the action-loop product difference cancels in the $SU(2)$ reduction, so it introduces no independent double-trace coordinate. Therefore every retained $SU(2)$ single-trace Schwinger--Dyson equality can be written as\n\\begin{align}\n\\alpha_0+\\sum_{C\\in\\mathcal{V}_T^{(2)}}\\alpha_C\\langle w(C)\\rangle=0\n\\end{align}\nfor coefficients $\\alpha_0,\\alpha_C$ determined by the varied loop, $\\lambda$, and the overlap counts. Since (P1) is an exact trace identity, substituting it does not exclude the exact Yang--Mills assignment. Hence the resulting $SU(2)$ feasible set remains validity-preserving for the plaquette certificate.\n\n\\section*{Final Result}\n\\[\n\\boxed{SU(2):\\ \\text{no independent double-trace coordinates are needed after the exact trace reduction}.}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_5": "\\section*{Claim}\nFor $SU(3)$, retaining double traces and eliminating triple traces is sufficient to close both retained single-trace and retained double-trace link-variation equations as finite affine constraints. Let\n\\[\n\\mathcal{V}_T^{(3)}=\\{m_C=\\langle w(C)\\rangle\\}\\cup\\{m_{A,B}=\\langle w_x(A)w_y(B)\\rangle\\}\n\\]\ncontain all single- and double-trace coordinates generated after reduction. Then no independent coordinate of the form $\\langle w(A)w(B)w(C)\\rangle$ is needed.\n\n\\section*{Premises}\n\\[\n\\begin{array}{ll}\n\\text{(P1)} & \\text{The }SU(3)\\text{ single-trace Schwinger--Dyson equation contains single-trace and double-trace expectations.}\\\\[0.4em]\n\\text{(P2)} & \\text{The }SU(3)\\text{ double-trace Schwinger--Dyson equation contains single-trace, double-trace, and triple-trace expectations.}\\\\[0.4em]\n\\text{(P3)} & \\displaystyle \\begin{aligned}[t]\nw(X)w(Y)w(Z)={}&-\\frac{1}{9}\\bigl(w(XYZ)+w(ZYX)\\bigr)\\\\\n&+\\frac{1}{3}\\bigl(w(X)w(YZ)+w(Y)w(ZX)+w(Z)w(XY)\\bigr)\\\\\n&+\\frac{1}{3}w(X^\\dagger Y)w(X^\\dagger Z)-\\frac{1}{9}w(X^\\dagger YX^\\dagger Z)\n\\end{aligned}\\\\[1.0em]\n\\text{(P4)} & \\mathcal{V}_T^{(3)}\\text{ contains every single- and double-trace coordinate appearing on the right-hand side of (P3) after each retained variation.}\n\\end{array}\n\\]\n\n\\section*{Derivation}\nBy (P1), each retained single-trace equation is already an affine equality in coordinates of $\\mathcal{V}_T^{(3)}$:\n\\begin{align}\n\\sum_C a_Cm_C+\\sum_{A,B}b_{A,B}m_{A,B}=0.\n\\end{align}\nFor a retained double-trace variation, (P2) allows terms with three trace factors. Apply (P3) to each such product. The first and last terms on the right-hand side of (P3) are single traces, hence they are coordinates $m_C$ by (P4). The three middle products and the term $w(X^\\dagger Y)w(X^\\dagger Z)$ are double traces, hence they are coordinates $m_{A,B}$ by (P4). Therefore every triple-trace expectation is replaced by a linear combination of retained single- and double-trace coordinates. After replacing all such terms, the double-trace equation has the affine form\n\\begin{align}\n\\sum_C \\gamma_Cm_C+\\sum_{A,B}\\delta_{A,B}m_{A,B}=0.\n\\end{align}\nBecause (P3) is an exact $SU(3)$ identity, the replacement preserves the exact moment assignment and introduces no uncontrolled approximation.\n\n\\section*{Final Result}\n\\[\n\\boxed{SU(3):\\ \\text{single traces plus double traces form a closed affine bootstrap after triple-trace reduction}.}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_6": "\\section*{Claim}\nA dimension-reduced path family is certificate-preserving exactly when it is closed under the operations used to generate retained constraints. In particular, the two-dimensional ladder construction is valid for vertical-edge Schwinger--Dyson variations because sewing retained paths and inserting adjacent plaquettes keep all generated loops inside the ladder family. The same closure criterion is the formal test for any plane-type path family in $d\\in\\{3,4\\}$.\n\n\\section*{Premises}\n\\[\n\\begin{array}{ll}\n\\text{(P1)} & S:=\\mathbb{Z}\\times\\{0,1\\}.\\\\[0.4em]\n\\text{(P2)} & \\mathcal{P}_{\\mathrm{lad}}:=\\{P:V(P)\\subseteq S\\},\\qquad \\mathcal{L}_{\\mathrm{lad}}:=\\{C:C\\text{ is closed and }V(C)\\subseteq S\\}.\\\\[0.6em]\n\\text{(P3)} & P,Q\\in\\mathcal{P}_{\\mathrm{lad}}\\text{ with common endpoints imply }P^\\dagger Q\\in\\mathcal{L}_{\\mathrm{lad}}.\\\\[0.4em]\n\\text{(P4)} & C\\in\\mathcal{L}_{\\mathrm{lad}}\\text{ and a vertical-edge variation imply every inserted adjacent plaquette loop remains in }\\mathcal{L}_{\\mathrm{lad}}.\\\\[0.4em]\n\\text{(P5)} & \\text{A reduced feasible set includes only equations and positivity matrices whose generated variables stay in the selected family.}\n\\end{array}\n\\]\n\n\\section*{Derivation}\nHermitian positivity sews two retained paths with common endpoints. By (P3), this produces a loop in $\\mathcal{L}_{\\mathrm{lad}}$, so every matrix entry required by the ladder positivity constraint is represented by a retained ladder-loop coordinate. A retained Schwinger--Dyson equation inserts plaquettes adjacent to the varied edge. By (P4), vertical-edge variations of ladder loops generate only loops in $\\mathcal{L}_{\\mathrm{lad}}$, so the equation does not force an unretained off-ladder coordinate.\n\nThus the ladder feasible set is not obtained by falsely setting off-family generated moments to zero. It is obtained by selecting only those exact constraints whose generated moments remain in the finite retained coordinate system. Therefore the exact Yang--Mills moment assignment restricted to the ladder coordinates satisfies every retained constraint. By certificate soundness, minimizing and maximizing $x_P$ over this reduced feasible set still gives rigorous plaquette bounds.\n\nFor a plane-type family in $d\\in\\{3,4\\}$, the same proof applies only after the analogue of (P3)--(P4) is verified for the chosen coordinate subplane and the chosen variations. Without that closure check, the reduced family is a heuristic size reduction rather than a certified truncation rule.\n\n\\section*{Final Result}\n\\[\n\\boxed{\\text{path reduction is validity-preserving only through closure under sewing and retained Schwinger--Dyson generation}.}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_metadata": {
+    "output_file": "deeper.json",
+    "revision_id": "deeper_v3_alignment_high_value",
+    "revision_intent": "Maximize alignment with the JSON schema and with the paper goals by replacing weaker or merely descriptive material with proof-level consequences: certificate soundness, exact augmentation monotonicity, dimension-scoped twist reflection, SU(2) closure, SU(3) affine closure, and path-family closure.",
+    "input_files": [
+      "deeper_reasoning_pseudo_algorithm.md",
+      "core_16.json",
+      "goals_16.json"
+    ],
+    "rubric_interpretation": {
+      "schema": "Exactly one JSON object with paper_title, contiguous deeper_reasoning_k strings, and exactly one deeper_metadata object.",
+      "latex": "Each deeper_reasoning_k is a standalone LaTeX fragment using only article-compatible amsmath and amssymb constructs.",
+      "value_standard": "Prefer derivations that compose multiple core lemmas into goal-critical consequences, avoid restating individual source proofs, and state scope limitations explicitly."
+    },
+    "goal_trace": {
+      "G1_certified_plaquette_bounds": [
+        "deeper_reasoning_1",
+        "deeper_reasoning_2",
+        "deeper_reasoning_4",
+        "deeper_reasoning_5",
+        "deeper_reasoning_6"
+      ],
+      "G2_exact_2D_twist_reflection_positivity": [
+        "deeper_reasoning_3"
+      ],
+      "G3_SU3_multitrace_loop_equation_closure": [
+        "deeper_reasoning_5"
+      ],
+      "methodological_path_selection": [
+        "deeper_reasoning_6"
+      ]
+    },
+    "entry_metadata": {
+      "deeper_reasoning_1": {
+        "title": "Finite certificate soundness",
+        "target_goal_component": "G1_certified_plaquette_bounds",
+        "declared_source_set": [
+          "core_reasoning_1",
+          "core_reasoning_2",
+          "core_reasoning_4",
+          "core_reasoning_6",
+          "core_reasoning_7",
+          "core_reasoning_8",
+          "core_reasoning_10",
+          "goals_16:G1"
+        ],
+        "major_advancement_modes": [
+          "composition",
+          "soundness theorem",
+          "optimization-object formalization"
+        ],
+        "goal_alignment": "Directly proves the interval-validity predicate required for certified plaquette bounds.",
+        "scientific_payoff": "Connects exact positivity and loop-equation identities to rigorous lower and upper bounds on the plaquette.",
+        "nontrivial_advance_over_sources": "Turns separate core constraints into feasible-set containment and infimum/supremum soundness.",
+        "formal_sharpness": "The exact-assignment feasibility assumption is explicit and is traced to retained exact constraints.",
+        "low_value_rejection_audit": "Avoids numerical performance claims and avoids merely repeating any single PSD lemma.",
+        "selection_score": 5.0,
+        "controlled_external_lemmas": [
+          "basic order properties of infimum and supremum"
+        ],
+        "known_residual_risks_and_mitigation": "Validity requires the truncation to retain all variables required by its stated constraints; this is encoded in the definition of the feasible set."
+      },
+      "deeper_reasoning_2": {
+        "title": "Validity-preserving augmentation monotonicity",
+        "target_goal_component": "G1_certified_plaquette_bounds",
+        "declared_source_set": [
+          "goals_16:G1 preference ordering",
+          "deeper_reasoning_1"
+        ],
+        "major_advancement_modes": [
+          "generalization",
+          "interval monotonicity",
+          "preference-order bridge"
+        ],
+        "goal_alignment": "Explains why exact added constraints are high value: they preserve validity and weakly reduce width.",
+        "scientific_payoff": "Provides the reusable theorem behind adding twist reflection, more loop equations, or larger closed truncations.",
+        "nontrivial_advance_over_sources": "Abstracts the optimization effect of exact constraints rather than restating their derivation.",
+        "formal_sharpness": "Requires both subset inclusion and exact-assignment feasibility.",
+        "low_value_rejection_audit": "Rejects unverified heuristic constraints that may exclude the exact moment assignment.",
+        "selection_score": 4.95,
+        "controlled_external_lemmas": [
+          "elementary monotonicity of infimum and supremum under set inclusion"
+        ],
+        "known_residual_risks_and_mitigation": "The theorem does not claim strict tightening; it correctly states weak tightening."
+      },
+      "deeper_reasoning_3": {
+        "title": "Exact two-dimensional twist-reflection tightening",
+        "target_goal_component": "G2_exact_2D_twist_reflection_positivity",
+        "declared_source_set": [
+          "core_reasoning_3",
+          "goals_16:G2",
+          "deeper_reasoning_2"
+        ],
+        "major_advancement_modes": [
+          "dimension-scoped proof",
+          "validity-preserving strengthening",
+          "bound consequence"
+        ],
+        "goal_alignment": "Directly proves the exact d=2 twist-reflection PSD condition and the resulting interval nesting.",
+        "scientific_payoff": "Shows precisely when the additional twist-reflection matrix is a rigorous bootstrap constraint.",
+        "nontrivial_advance_over_sources": "Combines the PSD proof with the optimization monotonicity theorem and explicit d>=3 scope control.",
+        "formal_sharpness": "Separates exact d=2 validity from non-certified higher-dimensional use.",
+        "low_value_rejection_audit": "Avoids overclaiming approximate higher-dimensional twist reflection as exact.",
+        "selection_score": 5.0,
+        "controlled_external_lemmas": [
+          "normalization by a positive partition function"
+        ],
+        "known_residual_risks_and_mitigation": "The result applies only to path sets meeting the d=2 endpoint and half-plane conditions."
+      },
+      "deeper_reasoning_4": {
+        "title": "SU(2) single-trace closure",
+        "target_goal_component": "G1_certified_plaquette_bounds",
+        "declared_source_set": [
+          "core_reasoning_6",
+          "goals_16:G1"
+        ],
+        "major_advancement_modes": [
+          "closure theorem",
+          "variable reduction",
+          "affine-system formulation"
+        ],
+        "goal_alignment": "Covers the N=2 part of the certified-bound goal by proving that independent double traces are unnecessary.",
+        "scientific_payoff": "Explains why the SU(2) bootstrap can be smaller than the SU(3) bootstrap without losing exactness.",
+        "nontrivial_advance_over_sources": "Converts the SU(2) loop-equation reduction into a finite variable-closure statement.",
+        "formal_sharpness": "Requires retention of all generated single-trace loops after applying the identity.",
+        "low_value_rejection_audit": "Avoids treating SU(2) as a special numerical case only; states the exact algebraic reason for closure.",
+        "selection_score": 4.9,
+        "controlled_external_lemmas": [
+          "linearity of expectation"
+        ],
+        "known_residual_risks_and_mitigation": "The entry does not claim SU(2) bounds are tighter, only that closure needs fewer coordinate types."
+      },
+      "deeper_reasoning_5": {
+        "title": "SU(3) single/double-trace affine closure",
+        "target_goal_component": "G3_SU3_multitrace_loop_equation_closure",
+        "declared_source_set": [
+          "core_reasoning_7",
+          "core_reasoning_8",
+          "core_reasoning_10",
+          "goals_16:G3"
+        ],
+        "major_advancement_modes": [
+          "multi-trace closure",
+          "trace-identity elimination",
+          "SDP-ready affine formulation"
+        ],
+        "goal_alignment": "Directly proves that the SU(3) retained loop equations can be represented without independent triple traces.",
+        "scientific_payoff": "Identifies the exact variable class needed for finite-rank SU(3) beyond the single-trace sector.",
+        "nontrivial_advance_over_sources": "Composes single-trace equations, double-trace equations, and triple-trace reduction into one closure result.",
+        "formal_sharpness": "Conditional on retaining every post-reduction single- and double-trace coordinate generated by the selected equations.",
+        "low_value_rejection_audit": "Avoids false large-N factorization; double traces remain independent as required for finite SU(3).",
+        "selection_score": 5.0,
+        "controlled_external_lemmas": [
+          "substitution of exact algebraic identities into linear constraints"
+        ],
+        "known_residual_risks_and_mitigation": "Closure is not automatic for arbitrary truncations; the retention condition is explicitly stated."
+      },
+      "deeper_reasoning_6": {
+        "title": "Path-family closure as the criterion for reduced truncations",
+        "target_goal_component": "methodological_path_selection and G1_certified_plaquette_bounds",
+        "declared_source_set": [
+          "core_reasoning_11",
+          "goals_16 methodological path-selection claim",
+          "deeper_reasoning_1"
+        ],
+        "major_advancement_modes": [
+          "methodological criterion",
+          "closure audit",
+          "validity-preserving size reduction"
+        ],
+        "goal_alignment": "Connects ladder/plane path selection to certified bounds by requiring closure under generated constraints.",
+        "scientific_payoff": "Prevents reduced path systems from silently becoming heuristic by distinguishing closed retained constraints from missing generated variables.",
+        "nontrivial_advance_over_sources": "Elevates the ladder lemma into a general validity test for dimensional path reduction.",
+        "formal_sharpness": "Proves the ladder case and states the exact closure condition required before applying the same reasoning to plane families.",
+        "low_value_rejection_audit": "Rejects path reduction justified only by computational convenience.",
+        "selection_score": 4.95,
+        "controlled_external_lemmas": [
+          "set closure under the explicitly retained generation operations"
+        ],
+        "known_residual_risks_and_mitigation": "Plane-type claims are conditional on verifying the same sewing and insertion closure in the selected subplane."
+      }
+    },
+    "rejected_low_value_candidates": [
+      "A standalone restatement of Hermitian positivity, because it is already core_reasoning_1 and does not deepen the goal argument.",
+      "A standalone large-N factorization derivation, because the paper goal is finite SU(2)/SU(3) certification and SU(3) double traces must remain independent.",
+      "A numerical benchmark or strong-coupling comparison entry, because it is useful context but less central than exact certificate soundness and closure."
+    ],
+    "global_alignment_audit": {
+      "top_level_schema": "paper_title plus contiguous deeper_reasoning_1 through deeper_reasoning_6 plus exactly one deeper_metadata object; no other top-level keys.",
+      "reasoning_value": "Every reasoning entry proves a goal-critical consequence rather than copying a source proof verbatim.",
+      "core_coverage": "Uses positivity, reflection positivity, twist reflection, normalized loop equations, SU(2) reduction, SU(3) single/double-trace equations, triple-trace reduction, and ladder closure.",
+      "goal_coverage": "Covers certified plaquette intervals, exact d=2 twist-reflection positivity, SU(3) multi-trace closure, and dimensional path-selection methodology.",
+      "scope_control": "Explicitly avoids claiming exact twist-reflection positivity in d>=3 and avoids replacing finite-SU(3) double traces by large-N factorization."
+    },
+    "known_residual_risks_and_mitigation": {
+      "finite_truncation_closure": "Some statements require the chosen truncation to retain all variables generated by its selected constraints; each affected entry states this condition.",
+      "strict_tightening": "The monotonicity proof guarantees weak interval tightening, not strict improvement.",
+      "plane_family_generalization": "The plane-family statement is a closure criterion, not an unconditional proof for every possible plane restriction."
+    }
+  }
+}

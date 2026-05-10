@@ -29,6 +29,11 @@ _CODEX_EMPTY_ERROR_HINT = (
     "This usually indicates a local Codex/ChatGPT CLI rate limit, authentication problem, "
     "or another CLI-side failure before a final message was written."
 )
+_SANDBOX_RUNTIME_ERROR_MARKERS = (
+    "bwrap",
+    "bubblewrap",
+    "sandbox launcher",
+)
 
 
 def _format_cli_error(prefix: str, returncode: int, *parts: str | None) -> str:
@@ -164,7 +169,7 @@ class GPTSession:
         parts.append(message.strip())
         return "\n\n".join(parts)
 
-    def _build_cmd(self, output_path: str) -> list[str]:
+    def _build_cmd(self, output_path: str, *, sandbox_mode: str | None = "workspace-write") -> list[str]:
         if isinstance(self.session_id, str) and self.session_id.strip():
             cmd = [
                 CODEX_BIN,
@@ -180,19 +185,19 @@ class GPTSession:
                 CODEX_BIN,
                 "exec",
                 "--skip-git-repo-check",
-                "--sandbox",
-                "workspace-write",
                 "--color",
                 "never",
                 "--json",
                 "--output-last-message",
                 output_path,
             ]
+            if sandbox_mode:
+                cmd.extend(["--sandbox", sandbox_mode])
         if self.model:
             cmd.extend(["--model", self.model])
         if self.reasoning_effort:
             cmd.extend(["-c", f'model_reasoning_effort="{self.reasoning_effort}"'])
-        if not isinstance(self.session_id, str):
+        if not isinstance(self.session_id, str) and sandbox_mode == "workspace-write":
             for writable_tool_dir in self.tools:
                 if writable_tool_dir:
                     cmd.extend(["--add-dir", str(writable_tool_dir)])
@@ -202,6 +207,10 @@ class GPTSession:
         else:
             cmd.append("-")
         return cmd
+
+    def _is_sandbox_runtime_failure(self, *parts: str | None) -> bool:
+        combined = "\n".join((part or "") for part in parts).lower()
+        return any(marker in combined for marker in _SANDBOX_RUNTIME_ERROR_MARKERS)
 
     def _read_output(self, output_path: str) -> str:
         path = Path(output_path)
@@ -257,6 +266,27 @@ class GPTSession:
                 timeout=timeout,
             )
             raw_stdout_lines, usage = self._apply_exec_events(result.stdout)
+
+            if (
+                result.returncode != 0
+                and not isinstance(self.session_id, str)
+                and self._is_sandbox_runtime_failure(
+                    result.stderr,
+                    result.stdout,
+                    self._read_output(output_path),
+                )
+            ):
+                print(
+                    "[gpt_cli] workspace-write sandbox unavailable; retrying without sandbox restrictions",
+                    file=sys.stderr,
+                    flush=True,
+                )
+                cmd = self._build_cmd(output_path, sandbox_mode="danger-full-access")
+                result = subprocess.run(
+                    cmd, input=prompt, capture_output=True, text=True, cwd=self.cwd,
+                    timeout=timeout,
+                )
+                raw_stdout_lines, usage = self._apply_exec_events(result.stdout)
 
             if result.returncode != 0:
                 error_events, _ = _parse_jsonl(result.stdout)

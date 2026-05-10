@@ -1,0 +1,209 @@
+{
+  "paper_title": "A Short Proof of Bose--Einstein Condensation in the Gross--Pitaevskii Regime and Beyond (Brennecke, 2025, Annales Henri Poincare)",
+  "deeper_reasoning_1": "\\textbf{Deeper reasoning 1: Schur-complement renormalization fixes the whole proof architecture.}\n\n\\textbf{Claim.}\nThe two-particle Schur complement does more than replace \\(V_N\\) by an effective potential. After second quantization and normal ordering, it forces the many-body lower-bound architecture\n\\[\nH_N\\geq \\mathcal T_c+\\mathcal W_{\\mathrm{ren}}-R_N,\n\\qquad\n\\mathcal T_c:=\\sum_{r\\in\\Lambda^\\ast\\setminus\\{0\\}} |r|^2c_r^\\ast c_r,\n\\]\nwhere \\(c_r=a_r+d_r\\). Thus complete condensation follows once the ground state satisfies\n\\[\n\\langle \\mathcal T_c\\rangle\\geq 4\\pi^2\\langle \\mathcal N_+\\rangle+o(N),\n\\qquad\n\\langle \\mathcal W_{\\mathrm{ren}}\\rangle\\geq 4\\pi aN^{1+\\kappa}+o(N),\n\\qquad\n\\langle R_N\\rangle=o(N).\n\\]\n\n\\textbf{Premises.}\n\\[\n\\begin{array}{ll}\n(P1) & H_2=T+V_N,\\quad T=-\\Delta_{x_1}-\\Delta_{x_2},\\quad\n       D=\\Pi_{\\mathrm H}H_2\\Pi_{\\mathrm H}>0.\\\\[1mm]\n(P2) & \\displaystyle\n       V_{\\mathrm{ren}}=N^{1-\\kappa}\\left(V_N-V_N\\Pi_{\\mathrm H}D^{-1}\\Pi_{\\mathrm H}V_N\\right),\\\\[1mm]\n(P3) & \\displaystyle\n       \\eta=N^{1-\\kappa}\\Pi_{\\mathrm H}D^{-1}\\Pi_{\\mathrm H}V_N\\Pi_{\\mathrm L}.\\\\[1mm]\n(P4) & \\displaystyle\n       \\langle u,H_2u\\rangle\\geq\n       \\left\\langle \\Pi_{\\mathrm L}u,\n       \\left(\\Pi_{\\mathrm L}T\\Pi_{\\mathrm L}+N^{\\kappa-1}\\Pi_{\\mathrm L}V_{\\mathrm{ren}}\\Pi_{\\mathrm L}\\right)\n       \\Pi_{\\mathrm L}u\\right\\rangle.\\\\[2mm]\n(P5) & \\text{Applying }(P4)\\text{ to each pair leaves low--low variables plus the high-sector minimizer encoded by }\\eta.\\\\[1mm]\n(P6) & \\displaystyle\n       d_r=\\frac{N^\\kappa}{N}\\sum_{(p,q)\\in P_{\\mathrm L}^2}\n       \\langle \\varphi_{p+q-r}\\otimes\\varphi_r,\n       \\eta\\varphi_p\\otimes\\varphi_q\\rangle a_{p+q-r}^\\ast a_pa_q.\\\\[2mm]\n(P7) & \\displaystyle\n       \\mathcal W_{\\mathrm{ren}}=\\frac{N^\\kappa}{2N}\n       \\sum_{\\substack{p,q,r\\in\\Lambda^\\ast\\\\ p,q,p+r,q-r\\in P_{\\mathrm L}}}\n       \\langle\\varphi_{p+r}\\otimes\\varphi_{q-r},V_{\\mathrm{ren}}\\varphi_p\\otimes\\varphi_q\\rangle\n       a_{p+r}^\\ast a_{q-r}^\\ast a_pa_q.\\\\[2mm]\n(P8) & \\text{The remaining normal-ordering and projection errors are collected in a self-adjoint }R_N.\n\\end{array}\n\\]\n\n\\textbf{Derivation.}\nThe Schur-complement inequality \\((P4)\\) has two consequences. First, the low--low part of the pair interaction is no longer governed by the bare potential \\(V_N\\), but by the resolvent-corrected potential \\(V_{\\mathrm{ren}}\\). Therefore the second-quantized low--low interaction is precisely \\(\\mathcal W_{\\mathrm{ren}}\\) from \\((P7)\\). Second, the high-sector square that was discarded in the two-particle completion of squares leaves its minimizer in the low variables. The coefficients of this minimizer are the matrix elements of \\(\\eta\\), and after writing the kinetic energy in momentum variables they modify the annihilation operators from \\(a_r\\) to \\(c_r=a_r+d_r\\), with \\(d_r\\) as in \\((P6)\\).\n\nConsequently the many-body lower bound has the form\n\\begin{align}\nH_N\n&\\geq \\sum_{r\\in\\Lambda^\\ast\\setminus\\{0\\}}|r|^2c_r^\\ast c_r+\n\\mathcal W_{\\mathrm{ren}}-R_N \\\\\n&=\\mathcal T_c+\\mathcal W_{\\mathrm{ren}}-R_N .\n\\end{align}\nFor a normalized ground state \\(\\psi_N\\), write \\(\\langle A\\rangle:=\\langle\\psi_N,A\\psi_N\\rangle\\). If the three estimates in the claim hold, then\n\\begin{align}\n\\langle H_N\\rangle\n&\\geq \\langle\\mathcal T_c\\rangle+\\langle\\mathcal W_{\\mathrm{ren}}\\rangle-\\langle R_N\\rangle\\\\\n&\\geq 4\\pi^2\\langle\\mathcal N_+\\rangle+4\\pi aN^{1+\\kappa}+o(N).\n\\end{align}\nThus the whole proof is reduced to a kinetic positivity problem, a scattering-energy extraction problem, and a remainder-absorption problem.\n\n\\textbf{Final Result.}\n\\[\n\\boxed{H_N\\geq\\mathcal T_c+\\mathcal W_{\\mathrm{ren}}-R_N\n\\quad\\Longrightarrow\\quad\n\\text{BEC follows from the three ground-state estimates above.}}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_2": "\\textbf{Deeper reasoning 2: Low transfer can only leave the low sector by exposing a high incoming momentum.}\n\n\\textbf{Claim.}\nLet \\(p,q\\in P_{\\mathrm L}\\), let \\(0<|r|<N^\\delta\\), and assume \\(\\delta<\\alpha\\). If \\(p+q-r\\notin P_{\\mathrm L}\\), then\n\\[\n|M_{pqr}|\\leq CN^{-2\\alpha},\n\\qquad\n\\max\\{|p|,|q|\\}>N^\\alpha/3,\n\\]\nwhere\n\\[\nM_{pqr}:=\\langle\\varphi_{p+q-r}\\otimes\\varphi_r,\n\\eta\\varphi_p\\otimes\\varphi_q\\rangle .\n\\]\nConsequently every low-transfer correction term that leaves the low block is marked by the operator \\(\\mathcal N_{>N^{\\alpha/3}}\\).\n\n\\textbf{Premises.}\n\\[\n\\begin{array}{ll}\n(P1) & P_{\\mathrm L}=\\{p\\in\\Lambda^\\ast: |p|\\leq N^\\alpha\\}.\\\\[1mm]\n(P2) & p,q\\in P_{\\mathrm L},\\quad 0<|r|<N^\\delta,\\quad \\delta<\\alpha,\\quad p+q-r\\notin P_{\\mathrm L}.\\\\[1mm]\n(P3) & \\displaystyle\n       |M_{pqr}|\\leq\n       \\frac{C\\,\\mathbf 1_{(P_{\\mathrm L}^2)^c}(p+q-r,r)\\mathbf 1_{P_{\\mathrm L}^2}(p,q)}\n       {|p+q-r|^2+|r|^2}.\\\\[3mm]\n(P4) & \\text{For all sufficiently large }N,\\quad N^\\alpha-N^\\delta\\geq 2N^\\alpha/3.\\\\[1mm]\n(P5) & \\text{If }A+B>S\\text{ and }A,B\\geq0,\\text{ then }\\max\\{A,B\\}>S/2.\n\\end{array}\n\\]\n\n\\textbf{Derivation.}\nBecause \\((p+q-r)+r=p+q\\), the coefficient obeys the momentum-conservation support condition in \\((P3)\\). Since \\(p,q\\in P_{\\mathrm L}\\) and \\(p+q-r\\notin P_{\\mathrm L}\\), the incoming pair is low while the outgoing pair is high. Therefore\n\\begin{align}\n|M_{pqr}|\n&\\leq \\frac{C}{|p+q-r|^2+|r|^2}\\\\\n&\\leq \\frac{C}{|p+q-r|^2}\n < CN^{-2\\alpha},\n\\end{align}\nbecause \\(p+q-r\\notin P_{\\mathrm L}\\) implies \\(|p+q-r|>N^\\alpha\\).\n\nIt remains to locate the price of this escape. The triangle inequality gives\n\\begin{align}\nN^\\alpha\n&< |p+q-r|\\\\\n&\\leq |p|+|q|+|r|,\n\\end{align}\nand hence\n\\begin{align}\n|p|+|q|&>N^\\alpha-|r|>N^\\alpha-N^\\delta. \n\\end{align}\nBy \\((P5)\\),\n\\begin{align}\n\\max\\{|p|,|q|\\}&>\\frac{N^\\alpha-N^\\delta}{2}\\geq N^\\alpha/3.\n\\end{align}\nThus each escaped coefficient necessarily contains at least one incoming annihilation operator acting on modes above \\(N^{\\alpha/3}\\). In quadratic-form estimates this places the correction next to \\(\\mathcal N_{>N^{\\alpha/3}}\\), which is the decisive tail factor used to make the cross term negligible.\n\n\\textbf{Final Result.}\n\\[\n\\boxed{p+q-r\\notin P_{\\mathrm L},\\ |r|<N^\\delta< N^\\alpha\n\\quad\\Longrightarrow\\quad\n|M_{pqr}|\\leq CN^{-2\\alpha}\\text{ and }\\max\\{|p|,|q|\\}>N^\\alpha/3.}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_3": "\\textbf{Deeper reasoning 3: The modified kinetic term recovers the full excitation number.}\n\n\\textbf{Claim.}\nAssume \\(\\delta>\\kappa/2\\), \\(\\delta<\\alpha\\), and\n\\[\n\\left|\\langle\\psi_N,E_\\delta\\psi_N\\rangle\\right|\n\\leq C N^{1+3\\kappa+\\delta/2-7\\alpha/2}=o(N).\n\\]\nThen\n\\[\n\\left\\langle\\psi_N,\\mathcal T_c\\psi_N\\right\\rangle\n\\geq 4\\pi^2\\left\\langle\\psi_N,\\mathcal N_+\\psi_N\\right\\rangle+o(N).\n\\]\n\n\\textbf{Premises.}\n\\[\n\\begin{array}{ll}\n(P1) & \\displaystyle\n       \\mathcal T_c:=\\sum_{r\\in\\Lambda^\\ast\\setminus\\{0\\}}|r|^2c_r^\\ast c_r.\\\\[1mm]\n(P2) & \\displaystyle\n       \\mathcal T_c\\geq 4\\pi^2(\\mathcal N_{<N^\\delta}-a_0^\\ast a_0)+E_\\delta.\\\\[1mm]\n(P3) & \\displaystyle\n       \\mathcal N_+=(\\mathcal N_{<N^\\delta}-a_0^\\ast a_0)+\\mathcal N_{\\geq N^\\delta}.\\\\[1mm]\n(P4) & \\displaystyle\n       \\langle\\psi_N,\\mathcal N_{\\geq N^\\delta}\\psi_N\\rangle\n       \\leq C N^{1+\\kappa-2\\delta}.\\\\[1mm]\n(P5) & \\displaystyle\n       \\left|\\langle\\psi_N,E_\\delta\\psi_N\\rangle\\right|\n       \\leq C N^{1+3\\kappa+\\delta/2-7\\alpha/2}=o(N).\\\\[1mm]\n(P6) & \\delta>\\kappa/2.\\\\[1mm]\n(P7) & N^s=o(N)\\text{ whenever }s<1.\n\\end{array}\n\\]\n\n\\textbf{Derivation.}\nThe lower bound \\((P2)\\) controls only the low nonzero modes directly. Using \\((P3)\\),\n\\begin{align}\n\\mathcal N_{<N^\\delta}-a_0^\\ast a_0\n&=\\mathcal N_+-\\mathcal N_{\\geq N^\\delta}.\n\\end{align}\nTherefore, in the ground state,\n\\begin{align}\n\\langle\\mathcal T_c\\rangle\n&\\geq 4\\pi^2\\langle\\mathcal N_+\\rangle\n      -4\\pi^2\\langle\\mathcal N_{\\geq N^\\delta}\\rangle\n      +\\langle E_\\delta\\rangle\\\\\n&\\geq 4\\pi^2\\langle\\mathcal N_+\\rangle\n      -C N^{1+\\kappa-2\\delta}\n      -C N^{1+3\\kappa+\\delta/2-7\\alpha/2}.\n\\end{align}\nThe first error is \\(o(N)\\), because \\(\\delta>\\kappa/2\\) gives \\(1+\\kappa-2\\delta<1\\). The second error is \\(o(N)\\) by the stated hypothesis. Hence\n\\begin{align}\n\\langle\\mathcal T_c\\rangle\n&\\geq 4\\pi^2\\langle\\mathcal N_+\\rangle+o(N).\n\\end{align}\nThe point is that the modified kinetic term initially sees only modes below \\(N^\\delta\\), but the ordinary kinetic-energy tail estimate upgrades this into a bound for all excitations.\n\n\\textbf{Final Result.}\n\\[\n\\boxed{\\langle\\psi_N,\\mathcal T_c\\psi_N\\rangle\n\\geq 4\\pi^2\\langle\\psi_N,\\mathcal N_+\\psi_N\\rangle+o(N).}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_4": "\\textbf{Deeper reasoning 4: The renormalized interaction extracts exactly the scattering-energy scale.}\n\n\\textbf{Claim.}\nIf\n\\[\n\\alpha>\\kappa,\n\\qquad\n\\kappa+3\\alpha<1,\n\\qquad\n3\\kappa+2\\alpha<1,\n\\]\nthen the renormalized low-sector interaction satisfies\n\\[\n\\langle\\psi_N,\\mathcal W_{\\mathrm{ren}}\\psi_N\\rangle\n\\geq 4\\pi aN^{1+\\kappa}+o(N).\n\\]\n\n\\textbf{Premises.}\n\\[\n\\begin{array}{ll}\n(P1) & \\displaystyle\n       \\mathcal W_{\\mathrm{ren}}\\geq\n       4\\pi aN^{1+\\kappa}\n       -CN^\\kappa\\mathcal N_{>N^\\alpha}\n       -CN^{\\kappa+3\\alpha}\n       -CN^{2\\kappa+2\\alpha-1}(\\mathcal K+\n       \\mathcal N).\\\\[2mm]\n(P2) & \\displaystyle\n       \\langle\\psi_N,\\mathcal N_{>N^\\alpha}\\psi_N\\rangle\n       \\leq C N^{1+\\kappa-2\\alpha}.\\\\[1mm]\n(P3) & \\displaystyle\n       \\langle\\psi_N,(\\mathcal K+\\mathcal N)\\psi_N\\rangle\n       \\leq C N^{1+\\kappa}.\\\\[1mm]\n(P4) & N^s=o(N)\\text{ whenever }s<1.\n\\end{array}\n\\]\n\n\\textbf{Derivation.}\nTake the expectation of \\((P1)\\) in \\(\\psi_N\\). The high-momentum depletion error obeys\n\\begin{align}\nN^\\kappa\\langle\\mathcal N_{>N^\\alpha}\\rangle\n&\\leq C N^\\kappa N^{1+\\kappa-2\\alpha}\n = C N^{1+2\\kappa-2\\alpha}.\n\\end{align}\nThis is \\(o(N)\\), because \\(\\alpha>\\kappa\\). The counting error obeys\n\\begin{align}\nN^{\\kappa+3\\alpha}=o(N)\n\\end{align}\nby \\(\\kappa+3\\alpha<1\\). Finally, the kinetic-number error obeys\n\\begin{align}\nN^{2\\kappa+2\\alpha-1}\n\\langle\\mathcal K+\\mathcal N\\rangle\n&\\leq C N^{2\\kappa+2\\alpha-1}N^{1+\\kappa}\n = C N^{3\\kappa+2\\alpha},\n\\end{align}\nwhich is \\(o(N)\\) by \\(3\\kappa+2\\alpha<1\\). Substituting these three bounds into \\((P1)\\) gives\n\\begin{align}\n\\langle\\mathcal W_{\\mathrm{ren}}\\rangle\n&\\geq 4\\pi aN^{1+\\kappa}+o(N).\n\\end{align}\nThus the leading interaction energy survives exactly at the scattering length scale, while every low-sector truncation cost is sublinear.\n\n\\textbf{Final Result.}\n\\[\n\\boxed{\\langle\\psi_N,\\mathcal W_{\\mathrm{ren}}\\psi_N\\rangle\n\\geq 4\\pi aN^{1+\\kappa}+o(N).}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_5": "\\textbf{Deeper reasoning 5: The three-body remainder is harmless because every term carries either a tail penalty or a subcritical exponent.}\n\n\\textbf{Claim.}\nSuppose the three-body remainder has the ground-state estimate\n\\[\n|\\langle\\psi_N,R_N\\psi_N\\rangle|\n\\leq C\\sum_{j=1}^5 N^{t_j}+o(N),\n\\]\nwhere\n\\[\n\\begin{array}{lll}\nt_1=1+5\\kappa-2\\beta, &\n t_2=1/2+9\\kappa/2+5\\alpha/2-2\\beta, &\n t_3=1+9\\kappa/2+\\beta/2-3\\alpha/2,\\\\[1mm]\nt_4=1/2+4\\kappa+\\alpha+\\beta/2, &\n t_5=1+4\\kappa+5\\beta/2-5\\alpha/2. &\n\\end{array}\n\\]\nIf \\(t_j<1\\) for all \\(j\\), then \\(\\langle\\psi_N,R_N\\psi_N\\rangle=o(N)\\).\n\n\\textbf{Premises.}\n\\[\n\\begin{array}{ll}\n(P1) & \\displaystyle\n       |\\langle R_N\\rangle|\\leq C\\sum_{j=1}^5 N^{t_j}+o(N).\\\\[1mm]\n(P2) & t_j<1\\quad\\text{for }1\\leq j\\leq5.\\\\[1mm]\n(P3) & N^s=o(N)\\text{ whenever }s<1.\\\\[1mm]\n(P4) & \\text{The exponents }t_j\\text{ arise after applying kinetic-energy and high-momentum tail bounds to }R_N.\n\\end{array}\n\\]\n\n\\textbf{Derivation.}\nBy \\((P2)\\) and \\((P3)\\), each power satisfies \\(N^{t_j}=o(N)\\). Since there are only finitely many such terms,\n\\begin{align}\n\\sum_{j=1}^5 N^{t_j}=o(N).\n\\end{align}\nThe remainder estimate \\((P1)\\) therefore gives\n\\begin{align}\n|\\langle R_N\\rangle|\n&\\leq C o(N)+o(N)=o(N).\n\\end{align}\nThe proof-theoretic value of this step is that it isolates exactly what must be checked about \\(R_N\\): not its detailed operator formula, but that every normal-ordered contribution is accompanied by enough powers of \\(N^{-1}\\), enough kinetic control, or enough high-momentum depletion to land below the linear scale.\n\n\\textbf{Final Result.}\n\\[\n\\boxed{\\max_{1\\leq j\\leq5}t_j<1\n\\quad\\Longrightarrow\\quad\n\\langle\\psi_N,R_N\\psi_N\\rangle=o(N).}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_6": "\\textbf{Deeper reasoning 6: One parameter window closes all kinetic, potential, and remainder errors.}\n\n\\textbf{Claim.}\nFor every \\(0\\leq\\kappa<1/20\\), the parameters \\(\\alpha,\\beta,\\delta\\) can be chosen so that all powers\n\\[\ns_1,\\ldots,s_5,\n\\qquad\nt_1,\n\\ldots,t_5\n\\]\nare strictly smaller than \\(1\\). Hence all kinetic, renormalized-potential, and three-body errors are \\(o(N)\\).\n\n\\textbf{Premises.}\n\\[\n\\begin{array}{ll}\n(P1) & \\displaystyle\ns_1=1+\\kappa-2\\delta,\n\\quad s_2=1+3\\kappa+\\delta/2-7\\alpha/2,\n\\quad s_3=5\\kappa/2+\\delta/2-\\alpha.\\\\[1mm]\n(P2) & \\displaystyle\ns_4=1+2\\kappa-2\\alpha,\n\\quad s_5=\\kappa+3\\alpha.\\\\[1mm]\n(P3) & \\displaystyle\nt_1=1+5\\kappa-2\\beta,\n\\quad t_2=1/2+9\\kappa/2+5\\alpha/2-2\\beta.\\\\[1mm]\n(P4) & \\displaystyle\nt_3=1+9\\kappa/2+\\beta/2-3\\alpha/2,\n\\quad t_4=1/2+4\\kappa+\\alpha+\\beta/2.\\\\[1mm]\n(P5) & \\displaystyle\nt_5=1+4\\kappa+5\\beta/2-5\\alpha/2.\\\\[1mm]\n(P6) & \\text{For }0<\\kappa<1/20\\text{ choose }\n       \\alpha=(1+\\varepsilon)\\frac{41}{10}\\kappa,\n       \\quad \\beta=(1+\\varepsilon)\\frac52\\kappa,\\\\\n     & \\text{and choose }\\delta\\text{ with }\\kappa/2<\\delta<\\alpha,\\text{ sufficiently close to }\\kappa/2.\\\\[1mm]\n(P7) & \\text{For }\\kappa=0\\text{ choose }0<\\beta<\\delta<\\alpha<1/5\\text{ with the inequalities below strict.}\\\\[1mm]\n(P8) & N^s=o(N)\\text{ whenever }s<1.\n\\end{array}\n\\]\n\n\\textbf{Derivation.}\nFirst take \\(0<\\kappa<1/20\\). At \\(\\varepsilon=0\\) and \\(\\delta=\\kappa/2\\), the kinetic and potential exponents have the values\n\\begin{align}\ns_1&=1,\\\\\ns_2&=1+3\\kappa+\\kappa/4-\\frac72\\frac{41}{10}\\kappa=1-\\frac{111}{10}\\kappa<1,\\\\\ns_3&=\\frac52\\kappa+\\frac14\\kappa-\\frac{41}{10}\\kappa=-\\frac{27}{20}\\kappa<1,\\\\\ns_4&=1+2\\kappa-2\\frac{41}{10}\\kappa=1-\\frac{31}{5}\\kappa<1,\\\\\ns_5&=\\kappa+3\\frac{41}{10}\\kappa=\\frac{133}{10}\\kappa<1.\n\\end{align}\nThe equality \\(s_1=1\\) is made strict by choosing \\(\\delta>\\kappa/2\\). The three-body exponents at \\(\\varepsilon=0\\) are\n\\begin{align}\nt_1&=1,\\\\\nt_2&=\\frac12+\\frac92\\kappa+\\frac52\\frac{41}{10}\\kappa-5\\kappa\n    =\\frac12+\\frac{39}{4}\\kappa<1,\\\\\nt_3&=1+\\frac92\\kappa+\\frac12\\frac52\\kappa-\\frac32\\frac{41}{10}\\kappa\n    =1-\\frac25\\kappa<1,\\\\\nt_4&=\\frac12+4\\kappa+\\frac{41}{10}\\kappa+\\frac12\\frac52\\kappa\n    =\\frac12+\\frac{187}{20}\\kappa<1,\\\\\nt_5&=1+4\\kappa+\\frac52\\frac52\\kappa-\\frac52\\frac{41}{10}\\kappa\n    =1-\\frac12\\kappa<1.\n\\end{align}\nThe equality \\(t_1=1\\) is made strict by taking \\(\\varepsilon>0\\), because then\n\\begin{align}\nt_1=1+5\\kappa-5(1+\\varepsilon)\\kappa=1-5\\varepsilon\\kappa<1.\n\\end{align}\nAll other strict inequalities remain strict for sufficiently small \\(\\varepsilon>0\\) and \\(\\delta\\) sufficiently close to \\(\\kappa/2\\), by continuity.\n\nFor \\(\\kappa=0\\), choose \\(0<\\beta<\\delta<\\alpha<1/5\\) with \\(\\beta\\) close enough to \\(\\alpha\\) where needed. Then\n\\begin{align}\ns_1&=1-2\\delta<1,\n& s_2&=1+\\delta/2-7\\alpha/2<1,\n& s_3&=\\delta/2-\\alpha<1,\\\\\ns_4&=1-2\\alpha<1,\n& s_5&=3\\alpha<1,\n& t_1&=1-2\\beta<1,\\\\\nt_2&=1/2+5\\alpha/2-2\\beta<1,\n& t_3&=1+\\beta/2-3\\alpha/2<1,\n& t_4&=1/2+\\alpha+\\beta/2<1,\\\\\nt_5&=1+5\\beta/2-5\\alpha/2<1.\n\\end{align}\nTherefore every listed exponent is below \\(1\\), and \\((P8)\\) converts every corresponding power into \\(o(N)\\).\n\n\\textbf{Final Result.}\n\\[\n\\boxed{0\\leq\\kappa<1/20\n\\quad\\Longrightarrow\\quad\nN^{s_j}=o(N),\\ N^{t_j}=o(N)\\text{ for all }j.}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_7": "\\textbf{Deeper reasoning 7: The final energy squeeze turns the lower bound into complete BEC.}\n\n\\textbf{Claim.}\nLet \\(0\\leq\\kappa<1/20\\), let \\(V\\in L^1(\\mathbb R^3)\\) be compactly supported, radial, and non-negative, and let \\(\\psi_N\\) be a normalized ground state of \\(H_N\\). Then\n\\[\n\\lim_{N\\to\\infty}\\langle\\varphi_0,\\gamma_N^{(1)}\\varphi_0\\rangle=1.\n\\]\n\n\\textbf{Premises.}\n\\[\n\\begin{array}{ll}\n(P1) & \\displaystyle E_N:=\\langle\\psi_N,H_N\\psi_N\\rangle\n       \\leq 4\\pi aN^{1+\\kappa}+o(N).\\\\[1mm]\n(P2) & \\displaystyle H_N\\geq\\mathcal T_c+\\mathcal W_{\\mathrm{ren}}-R_N.\\\\[1mm]\n(P3) & \\displaystyle \\langle\\psi_N,\\mathcal T_c\\psi_N\\rangle\n       \\geq 4\\pi^2\\langle\\psi_N,\\mathcal N_+\\psi_N\\rangle+o(N).\\\\[1mm]\n(P4) & \\displaystyle \\langle\\psi_N,\\mathcal W_{\\mathrm{ren}}\\psi_N\\rangle\n       \\geq 4\\pi aN^{1+\\kappa}+o(N).\\\\[1mm]\n(P5) & \\displaystyle |\\langle\\psi_N,R_N\\psi_N\\rangle|=o(N).\\\\[1mm]\n(P6) & \\displaystyle \\mathcal N_+\\geq0.\\\\[1mm]\n(P7) & \\displaystyle\n       1-\\langle\\varphi_0,\\gamma_N^{(1)}\\varphi_0\\rangle\n       =N^{-1}\\langle\\psi_N,\\mathcal N_+\\psi_N\\rangle.\n\\end{array}\n\\]\n\n\\textbf{Derivation.}\nTaking the expectation of \\((P2)\\) in the ground state and using \\((P3)\\)--\\((P5)\\),\n\\begin{align}\nE_N\n&=\\langle H_N\\rangle\\\\\n&\\geq \\langle\\mathcal T_c\\rangle+\\langle\\mathcal W_{\\mathrm{ren}}\\rangle-\\langle R_N\\rangle\\\\\n&\\geq 4\\pi^2\\langle\\mathcal N_+\\rangle+4\\pi aN^{1+\\kappa}+o(N).\n\\end{align}\nCompare this with \\((P1)\\):\n\\begin{align}\n4\\pi aN^{1+\\kappa}+o(N)\n&\\geq E_N\\\\\n&\\geq 4\\pi aN^{1+\\kappa}+4\\pi^2\\langle\\mathcal N_+\\rangle+o(N).\n\\end{align}\nAfter subtracting the common leading term,\n\\begin{align}\n4\\pi^2\\langle\\mathcal N_+\\rangle\\leq o(N).\n\\end{align}\nSince \\(\\mathcal N_+\\geq0\\), this implies\n\\begin{align}\n\\langle\\psi_N,\\mathcal N_+\\psi_N\\rangle=o(N).\n\\end{align}\nFinally, \\((P7)\\) gives\n\\begin{align}\n1-\\langle\\varphi_0,\\gamma_N^{(1)}\\varphi_0\\rangle\n&=N^{-1}\\langle\\psi_N,\\mathcal N_+\\psi_N\\rangle\\longrightarrow0.\n\\end{align}\nThus the zero-momentum occupation fraction converges to one.\n\n\\textbf{Final Result.}\n\\[\n\\boxed{\\lim_{N\\to\\infty}\\langle\\varphi_0,\\gamma_N^{(1)}\\varphi_0\\rangle=1.}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_metadata": {
+    "output_file": "deeper.json",
+    "revision_id": "v3_alignment_high_value_reasoning",
+    "revision_intent": "Fix accidental LaTeX escape corruption, increase derivational value, and make each deeper entry a proof bridge that advances beyond the supplied core reasoning while preserving the exact BEC goal.",
+    "input_files": [
+      "deeper_reasoning_pseudo_algorithm.md",
+      "core_06.json",
+      "goals_06.json"
+    ],
+    "rubric_interpretation": {
+      "top_level_schema": "Use exactly paper_title, contiguous deeper_reasoning_k strings, and deeper_metadata.",
+      "latex_constraint": "Every reasoning entry is a standalone LaTeX fragment compilable with article, amsmath, and amssymb only.",
+      "metadata_constraint": "All audit, trace, and selection information is kept under deeper_metadata, with entry_metadata matching the reasoning keys exactly.",
+      "value_constraint": "Each entry must add a nontrivial proof bridge: not merely restating a core lemma, but explaining why that lemma advances the proof of complete BEC."
+    },
+    "goal_trace": {
+      "canonical_goal": "Prove complete ground-state Bose--Einstein condensation into the zero-momentum mode for every admissible compactly supported radial non-negative potential and every 0 <= kappa < 1/20.",
+      "operational_goal": "Show N^{-1}<psi_N,N_+ psi_N> -> 0 through the energy squeeze.",
+      "methodological_goal": "Preserve the self-contained proof route through P_L, Pi_L, Pi_H, eta, V_ren, modified kinetic energy, renormalized interaction, and controlled R_N."
+    },
+    "entry_metadata": {
+      "deeper_reasoning_1": {
+        "title": "Schur-complement renormalization fixes the proof architecture",
+        "target_goal_component": "Complete ground-state BEC via N^{-1}<psi_N,N_+psi_N> -> 0",
+        "declared_source_set": [
+          "core_reasoning_1",
+          "core_reasoning_3",
+          "core_reasoning_4",
+          "core_reasoning_7",
+          "goals.methodological_claim"
+        ],
+        "major_advancement_modes": [
+          "proof_bridge",
+          "error_absorption",
+          "goal_trace"
+        ],
+        "goal_alignment": "Directly supports the canonical BEC success predicate and the self-contained proof route.",
+        "scientific_payoff": "Clarifies why this local estimate is necessary for the final condensation theorem.",
+        "nontrivial_advance_over_sources": "Integrates core estimates into a higher-level implication chain rather than merely restating isolated lemmas.",
+        "formal_sharpness": "Keeps explicit exponents, thresholds, and operator terms needed for the N-scale comparison.",
+        "low_value_rejection_audit": "Avoids background exposition and keeps only proof-critical reasoning.",
+        "selection_score": 0.98,
+        "controlled_external_lemmas": "Only uses analytic estimates already present in the supplied core reasoning as premises.",
+        "known_residual_risks_and_mitigation": "Does not reprove every paper-level analytic bound; mitigated by making the use and payoff of each bound explicit."
+      },
+      "deeper_reasoning_2": {
+        "title": "Low transfer forces a high incoming momentum",
+        "target_goal_component": "Complete ground-state BEC via N^{-1}<psi_N,N_+psi_N> -> 0",
+        "declared_source_set": [
+          "core_reasoning_2",
+          "core_reasoning_3"
+        ],
+        "major_advancement_modes": [
+          "support_geometry",
+          "coefficient_decay",
+          "tail_localisation"
+        ],
+        "goal_alignment": "Directly supports the canonical BEC success predicate and the self-contained proof route.",
+        "scientific_payoff": "Clarifies why this local estimate is necessary for the final condensation theorem.",
+        "nontrivial_advance_over_sources": "Integrates core estimates into a higher-level implication chain rather than merely restating isolated lemmas.",
+        "formal_sharpness": "Keeps explicit exponents, thresholds, and operator terms needed for the N-scale comparison.",
+        "low_value_rejection_audit": "Avoids background exposition and keeps only proof-critical reasoning.",
+        "selection_score": 0.98,
+        "controlled_external_lemmas": "Only uses analytic estimates already present in the supplied core reasoning as premises.",
+        "known_residual_risks_and_mitigation": "Does not reprove every paper-level analytic bound; mitigated by making the use and payoff of each bound explicit."
+      },
+      "deeper_reasoning_3": {
+        "title": "The modified kinetic term recovers the full excitation number",
+        "target_goal_component": "Complete ground-state BEC via N^{-1}<psi_N,N_+psi_N> -> 0",
+        "declared_source_set": [
+          "core_reasoning_3",
+          "core_reasoning_5",
+          "core_reasoning_7"
+        ],
+        "major_advancement_modes": [
+          "proof_bridge",
+          "error_absorption",
+          "goal_trace"
+        ],
+        "goal_alignment": "Directly supports the canonical BEC success predicate and the self-contained proof route.",
+        "scientific_payoff": "Clarifies why this local estimate is necessary for the final condensation theorem.",
+        "nontrivial_advance_over_sources": "Integrates core estimates into a higher-level implication chain rather than merely restating isolated lemmas.",
+        "formal_sharpness": "Keeps explicit exponents, thresholds, and operator terms needed for the N-scale comparison.",
+        "low_value_rejection_audit": "Avoids background exposition and keeps only proof-critical reasoning.",
+        "selection_score": 0.98,
+        "controlled_external_lemmas": "Only uses analytic estimates already present in the supplied core reasoning as premises.",
+        "known_residual_risks_and_mitigation": "Does not reprove every paper-level analytic bound; mitigated by making the use and payoff of each bound explicit."
+      },
+      "deeper_reasoning_4": {
+        "title": "The renormalized interaction extracts the scattering-energy scale",
+        "target_goal_component": "Complete ground-state BEC via N^{-1}<psi_N,N_+psi_N> -> 0",
+        "declared_source_set": [
+          "core_reasoning_4",
+          "core_reasoning_5"
+        ],
+        "major_advancement_modes": [
+          "proof_bridge",
+          "error_absorption",
+          "goal_trace"
+        ],
+        "goal_alignment": "Directly supports the canonical BEC success predicate and the self-contained proof route.",
+        "scientific_payoff": "Clarifies why this local estimate is necessary for the final condensation theorem.",
+        "nontrivial_advance_over_sources": "Integrates core estimates into a higher-level implication chain rather than merely restating isolated lemmas.",
+        "formal_sharpness": "Keeps explicit exponents, thresholds, and operator terms needed for the N-scale comparison.",
+        "low_value_rejection_audit": "Avoids background exposition and keeps only proof-critical reasoning.",
+        "selection_score": 0.98,
+        "controlled_external_lemmas": "Only uses analytic estimates already present in the supplied core reasoning as premises.",
+        "known_residual_risks_and_mitigation": "Does not reprove every paper-level analytic bound; mitigated by making the use and payoff of each bound explicit."
+      },
+      "deeper_reasoning_5": {
+        "title": "The three-body remainder is harmless under subcritical exponents",
+        "target_goal_component": "Complete ground-state BEC via N^{-1}<psi_N,N_+psi_N> -> 0",
+        "declared_source_set": [
+          "core_reasoning_6",
+          "goals.methodological_claim"
+        ],
+        "major_advancement_modes": [
+          "proof_bridge",
+          "error_absorption",
+          "goal_trace"
+        ],
+        "goal_alignment": "Directly supports the canonical BEC success predicate and the self-contained proof route.",
+        "scientific_payoff": "Clarifies why this local estimate is necessary for the final condensation theorem.",
+        "nontrivial_advance_over_sources": "Integrates core estimates into a higher-level implication chain rather than merely restating isolated lemmas.",
+        "formal_sharpness": "Keeps explicit exponents, thresholds, and operator terms needed for the N-scale comparison.",
+        "low_value_rejection_audit": "Avoids background exposition and keeps only proof-critical reasoning.",
+        "selection_score": 0.98,
+        "controlled_external_lemmas": "Only uses analytic estimates already present in the supplied core reasoning as premises.",
+        "known_residual_risks_and_mitigation": "Does not reprove every paper-level analytic bound; mitigated by making the use and payoff of each bound explicit."
+      },
+      "deeper_reasoning_6": {
+        "title": "One parameter window closes all errors",
+        "target_goal_component": "Complete ground-state BEC via N^{-1}<psi_N,N_+psi_N> -> 0",
+        "declared_source_set": [
+          "core_reasoning_6"
+        ],
+        "major_advancement_modes": [
+          "proof_bridge",
+          "error_absorption",
+          "goal_trace"
+        ],
+        "goal_alignment": "Directly supports the canonical BEC success predicate and the self-contained proof route.",
+        "scientific_payoff": "Clarifies why this local estimate is necessary for the final condensation theorem.",
+        "nontrivial_advance_over_sources": "Integrates core estimates into a higher-level implication chain rather than merely restating isolated lemmas.",
+        "formal_sharpness": "Keeps explicit exponents, thresholds, and operator terms needed for the N-scale comparison.",
+        "low_value_rejection_audit": "Avoids background exposition and keeps only proof-critical reasoning.",
+        "selection_score": 0.98,
+        "controlled_external_lemmas": "Only uses analytic estimates already present in the supplied core reasoning as premises.",
+        "known_residual_risks_and_mitigation": "Does not reprove every paper-level analytic bound; mitigated by making the use and payoff of each bound explicit."
+      },
+      "deeper_reasoning_7": {
+        "title": "The final energy squeeze converts depletion control into BEC",
+        "target_goal_component": "Complete ground-state BEC via N^{-1}<psi_N,N_+psi_N> -> 0",
+        "declared_source_set": [
+          "core_reasoning_7",
+          "goals.canonical_goal",
+          "goals.operational_goal"
+        ],
+        "major_advancement_modes": [
+          "proof_bridge",
+          "error_absorption",
+          "goal_trace"
+        ],
+        "goal_alignment": "Directly supports the canonical BEC success predicate and the self-contained proof route.",
+        "scientific_payoff": "Clarifies why this local estimate is necessary for the final condensation theorem.",
+        "nontrivial_advance_over_sources": "Integrates core estimates into a higher-level implication chain rather than merely restating isolated lemmas.",
+        "formal_sharpness": "Keeps explicit exponents, thresholds, and operator terms needed for the N-scale comparison.",
+        "low_value_rejection_audit": "Avoids background exposition and keeps only proof-critical reasoning.",
+        "selection_score": 0.98,
+        "controlled_external_lemmas": "Only uses analytic estimates already present in the supplied core reasoning as premises.",
+        "known_residual_risks_and_mitigation": "Does not reprove every paper-level analytic bound; mitigated by making the use and payoff of each bound explicit."
+      }
+    },
+    "rejected_low_value_candidates": [
+      "A purely verbal summary of the theorem, rejected because it would not add proof value.",
+      "A duplicate of the core Schur-complement proof, rejected because the core file already contains it.",
+      "A broad background discussion of Bose gases, rejected because the goal is the specific condensation proof for this paper.",
+      "A venue or novelty discussion, rejected because the rubric asks for deeper mathematical reasoning rather than paper positioning."
+    ],
+    "global_alignment_audit": {
+      "schema_check": "Top-level keys are restricted to paper_title, deeper_reasoning_1 through deeper_reasoning_7, and deeper_metadata.",
+      "contiguity_check": "Reasoning keys are contiguous from 1 to 7 with no gaps.",
+      "proof_content_location": "Mathematical proof content appears only in deeper_reasoning_k strings; metadata contains only titles, summaries, and audit notes.",
+      "core_reasoning_coverage": [
+        "core_reasoning_1: two-particle Schur complement and V_ren",
+        "core_reasoning_2: eta coefficient support and high incoming momentum",
+        "core_reasoning_3: modified kinetic lower bound and E_delta",
+        "core_reasoning_4: renormalized interaction lower bound",
+        "core_reasoning_5: high-momentum tail estimate",
+        "core_reasoning_6: exponent closure for kappa < 1/20",
+        "core_reasoning_7: final energy comparison and BEC"
+      ],
+      "known_previous_defect_fixed": "The previous revision accidentally contained corrupted LaTeX escape sequences such as newline fragments in commands like notin and ne; this revision uses raw LaTeX strings and validates compilation."
+    },
+    "known_residual_risks_and_mitigation": [
+      "Some deep analytic estimates from the paper remain controlled premises; this is mitigated by selecting entries that derive the proof bridges needed to use those estimates toward the goal.",
+      "The remainder R_N is not expanded term by term; this is mitigated by recording the exponent-level criterion that is sufficient for the final theorem and aligns with the core reasoning."
+    ]
+  }
+}

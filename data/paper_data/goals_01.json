@@ -1,0 +1,294 @@
+{
+  "paper_goal": {
+    "canonical_goal": [
+      {
+        "goal_id": "G1_exact_arbitrary_q_thermodynamic_solution",
+        "outcome_variable": "o_1 = (q, J_1, J_2, beta, T_ov, T_lad, U_{q^2}, T_2, lambda, f) ∈ O_P",
+        "goal_form": "target_proposition",
+        "target_object": "An exact analytic thermodynamic solution of the one-dimensional J_1-J_2 q-state Potts chain for every integer q >= 2: given real J_1,J_2 and beta > 0, determine the positive number lambda that fixes lim_{N→∞}(1/(2N)) ln Z_{2N} = ln(lambda), where Z_{2N}=Tr exp(-beta H), and f = -beta^{-1} ln(lambda) for H = -J_1 sum_{i=1}^{2N} delta(sigma_i,sigma_{i+1}) - J_2 sum_{i=1}^{2N} delta(sigma_i,sigma_{i+2}), sigma_i ∈ {1,...,q}, sigma_{2N+1}=sigma_1, sigma_{2N+2}=sigma_2. With x = exp(beta J_2), y = exp(beta J_1/2), u = x y^2, v = x + q - 2, and w = sqrt(q-1)y, the target closed form is lambda = (u+v)/2 + sqrt(((u-v)/2)^2 + w^2).",
+        "feasibility_constraints": [
+          "q is an integer with q >= 2; N is a positive integer; beta > 0; J_1 and J_2 are real numbers; each spin variable sigma_i belongs to {1,...,q}; delta(a,b)=1 if a=b and delta(a,b)=0 if a!=b.",
+          "The finite chain contains 2N spins with periodic boundary conditions sigma_{2N+1}=sigma_1 and sigma_{2N+2}=sigma_2; the finite-chain partition function is Z_{2N}=Tr exp(-beta H).",
+          "The overlapping-pairs transfer matrix T_ov is indexed by ordered pairs (a,b),(a_prime,b_prime) ∈ {1,...,q}^2 and has entries T_ov((a,b),(a_prime,b_prime)) = 1_{b=a_prime} exp((beta J_1/2)(delta(a,b)+delta(a_prime,b_prime)) + beta J_2 delta(a,b_prime)); because the factor 1_{b=a_prime} can be zero, dominance of T_ov is interpreted through lim_{N→∞}(1/(2N))ln Tr(T_ov^{2N}).",
+          "The zigzag-ladder transfer matrix T_lad is indexed by ordered pairs (a,b),(a_prime,b_prime) ∈ {1,...,q}^2 and has entries T_lad((a,b),(a_prime,b_prime)) = exp((beta J_1/2)(delta(a,b)+delta(a_prime,b_prime)) + beta J_1 delta(b,a_prime) + beta J_2(delta(a,a_prime)+delta(b,b_prime))); every entry of T_lad is strictly positive and T_lad = T_ov^2, so its unique strictly positive dominant eigenvalue fixes the squared growth factor lambda^2 of T_ov^{2N}.",
+          "For any finite real square matrix A with all entries A_{ij}>0, there is exactly one eigenvalue rho(A)>0 whose modulus is strictly larger than every other eigenvalue modulus, and its eigenspace contains a vector with all components strictly positive; if every permutation of the q spin labels commutes with A, this positive eigenvector is unchanged by every such permutation and therefore lies in the span of orbit-sum vectors over the equality classes s=s_prime and s!=s_prime.",
+          "The thermodynamic free energy per spin is defined by f = -beta^{-1} lim_{N→∞}(1/(2N)) ln Z_{2N}; the exact-solution claim is feasible only when this limit equals -beta^{-1} ln(lambda) with lambda given by the closed form in the target object."
+        ],
+        "success_set": {
+          "kind": "predicate",
+          "definition": "Sigma_{P,1} = { o_1 : q ∈ Z, q >= 2, beta > 0, J_1,J_2 ∈ R, delta(a,b)=1 if a=b and delta(a,b)=0 if a!=b, x = exp(beta J_2), y = exp(beta J_1/2), u = x y^2, v = x + q - 2, w = sqrt(q-1)y, T_ov((a,b),(a_prime,b_prime)) = 1_{b=a_prime} exp((beta J_1/2)(delta(a,b)+delta(a_prime,b_prime)) + beta J_2 delta(a,b_prime)) for (a,b),(a_prime,b_prime) ∈ {1,...,q}^2, T_lad((a,b),(a_prime,b_prime)) = exp((beta J_1/2)(delta(a,b)+delta(a_prime,b_prime)) + beta J_1 delta(b,a_prime) + beta J_2(delta(a,a_prime)+delta(b,b_prime))), |psi_1> = q^{-1/2} sum_{s=1}^{q}|s,s>, |psi_2> = (q^2-q)^{-1/2} sum_{s=1}^{q} sum_{s_prime=1}^{q}(1-delta(s,s_prime))|s,s_prime>, U_{q^2}=[|psi_1>,|psi_2>], U_{q^2}^T T_ov U_{q^2} = [[x y^2, sqrt(q-1)y],[sqrt(q-1)y, x+q-2]], U_{q^2}^T T_lad U_{q^2} = (U_{q^2}^T T_ov U_{q^2})^2, lambda = (u+v)/2 + sqrt(((u-v)/2)^2 + w^2), H = -J_1 sum_{i=1}^{2N}delta(sigma_i,sigma_{i+1}) - J_2 sum_{i=1}^{2N}delta(sigma_i,sigma_{i+2}), sigma_i ∈ {1,...,q}, sigma_{2N+1}=sigma_1, sigma_{2N+2}=sigma_2, Z_{2N}=Tr exp(-beta H), lim_{N→∞}(1/(2N)) ln Z_{2N} = ln(lambda), and f = -beta^{-1} ln(lambda) }",
+          "threshold": {
+            "applies": false,
+            "value": null,
+            "comparator": "eq",
+            "metric_symbol": null,
+            "metric_definition": null,
+            "source_span": null
+          }
+        },
+        "preference_ordering": {
+          "kind": "none",
+          "definition": null,
+          "objective_symbols": [],
+          "lex_order": null,
+          "embedding_to_total_utility": null
+        },
+        "robustness_scope": {
+          "applies": true,
+          "ambient_space": "All one-dimensional J_1-J_2 q-state Potts chains with q ∈ Z, q >= 2, beta > 0, J_1 ∈ R, J_2 ∈ R, spin variables sigma_i ∈ {1,...,q}, Hamiltonian H = -J_1 sum_{i=1}^{2N}delta(sigma_i,sigma_{i+1}) - J_2 sum_{i=1}^{2N}delta(sigma_i,sigma_{i+2}), and periodic boundary conditions sigma_{2N+1}=sigma_1 and sigma_{2N+2}=sigma_2.",
+          "type_tag": "environment_family",
+          "metric_or_divergence": null,
+          "radius_or_budget": null,
+          "indexing_set": "{ (q,J_1,J_2,beta) : q ∈ Z, q >= 2, J_1 ∈ R, J_2 ∈ R, beta > 0 }",
+          "claimed_subfamily": {
+            "definition": "The claimed subfamily is the full indexing set { (q,J_1,J_2,beta) : q ∈ Z, q >= 2, J_1 ∈ R, J_2 ∈ R, beta > 0 }; for each member, x = exp(beta J_2), y = exp(beta J_1/2), u = x y^2, v = x+q-2, w=sqrt(q-1)y, and lambda=(u+v)/2+sqrt(((u-v)/2)^2+w^2) is asserted to satisfy lim_{N→∞}(1/(2N))ln Tr(T_ov^{2N})=ln(lambda) and f=-beta^{-1}ln(lambda).",
+            "source_span": {
+              "section": "Abstract; Section II Model and Solution; Supplemental Material II; Summary",
+              "paragraph_or_line": "Abstract first paragraph; Section II equations (1)-(5); Supplemental Material II; Summary first paragraph",
+              "verbatim": "solved exactly for arbitrary q; largest eigenvalue lives in a 2 × 2 maximally symmetric subspace"
+            }
+          },
+          "hinted_superfamily": {
+            "definition": null,
+            "source_span": null
+          },
+          "refinement_relation": "set_inclusion",
+          "criterion": "For every (q,J_1,J_2,beta) in { (q,J_1,J_2,beta) : q ∈ Z, q >= 2, J_1 ∈ R, J_2 ∈ R, beta > 0 }, define x=exp(beta J_2), y=exp(beta J_1/2), |psi_1>=q^{-1/2}sum_{s=1}^{q}|s,s>, |psi_2>=(q^2-q)^{-1/2}sum_{s=1}^{q}sum_{s_prime=1}^{q}(1-delta(s,s_prime))|s,s_prime>, U_{q^2}=[|psi_1>,|psi_2>], T_ov((a,b),(a_prime,b_prime))=1_{b=a_prime}exp((beta J_1/2)(delta(a,b)+delta(a_prime,b_prime))+beta J_2 delta(a,b_prime)), and T_lad((a,b),(a_prime,b_prime))=exp((beta J_1/2)(delta(a,b)+delta(a_prime,b_prime))+beta J_1 delta(b,a_prime)+beta J_2(delta(a,a_prime)+delta(b,b_prime))). The criterion is satisfied exactly when U_{q^2}^T T_ov U_{q^2}=[[xy^2,sqrt(q-1)y],[sqrt(q-1)y,x+q-2]], U_{q^2}^T T_lad U_{q^2}=(U_{q^2}^T T_ov U_{q^2})^2, and lim_{N→∞}(1/(2N))ln Tr(T_ov^{2N})=ln(lambda) for lambda=(u+v)/2+sqrt(((u-v)/2)^2+w^2), u=xy^2, v=x+q-2, w=sqrt(q-1)y.",
+          "channel_populated_by": [
+            "stated",
+            "operational",
+            "implicit"
+          ]
+        }
+      },
+      {
+        "goal_id": "G2_exact_mapping_to_field_Potts_model",
+        "outcome_variable": "o_2 = (q, J_1, J_2, beta, H, H_eff, T_q, V_q, T_2, lambda, f) ∈ O_P",
+        "goal_form": "target_proposition",
+        "target_object": "An exact mapping at the level of the dominant transfer block, dominant eigenvalue, and thermodynamic free energy from the one-dimensional J_1-J_2 q-state Potts chain H = -J_1 sum_{i=1}^{2N}delta(sigma_i,sigma_{i+1}) - J_2 sum_{i=1}^{2N}delta(sigma_i,sigma_{i+2}) to the simpler one-dimensional q-state field Potts chain H_eff = -J_2 sum_{i=1}^{2N}delta(sigma_i,sigma_{i+1}) - J_1 sum_{i=1}^{2N}delta(sigma_i,1), for every q ∈ Z with q >= 2, beta > 0, and J_1,J_2 ∈ R.",
+        "feasibility_constraints": [
+          "The source model is H = -J_1 sum_{i=1}^{2N}delta(sigma_i,sigma_{i+1}) - J_2 sum_{i=1}^{2N}delta(sigma_i,sigma_{i+2}) with sigma_i ∈ {1,...,q}, q ∈ Z, q >= 2, beta > 0, J_1,J_2 ∈ R, sigma_{2N+1}=sigma_1, and sigma_{2N+2}=sigma_2.",
+          "The target model is H_eff = -J_2 sum_{i=1}^{2N}delta(sigma_i,sigma_{i+1}) - J_1 sum_{i=1}^{2N}delta(sigma_i,1) with the same q, beta, J_1, J_2, spin alphabet, and periodic one-dimensional chain length.",
+          "The q x q transfer matrix for H_eff is T_q(a,b)=exp(beta J_2 delta(a,b)+(beta J_1/2)(delta(a,1)+delta(b,1))) for a,b ∈ {1,...,q}; with x=exp(beta J_2) and y=exp(beta J_1/2), this is T_q(a,b)=x^{delta(a,b)}y^{delta(a,1)+delta(b,1)} and every entry is strictly positive.",
+          "The two q x 1 vectors |phi_1>=sum_{s=1}^{q}delta(s,1)|s> and |phi_2>=(q-1)^{-1/2}sum_{s=1}^{q}(1-delta(s,1))|s> are well-defined for q >= 2 and span the two orbit-sum directions formed by the singleton state 1 and the q-1 states not equal to 1."
+        ],
+        "success_set": {
+          "kind": "predicate",
+          "definition": "Sigma_{P,2} = { o_2 : q ∈ Z, q >= 2, beta > 0, J_1,J_2 ∈ R, delta(a,b)=1 if a=b and delta(a,b)=0 if a!=b, x=exp(beta J_2), y=exp(beta J_1/2), T_q(a,b)=exp(beta J_2 delta(a,b)+(beta J_1/2)(delta(a,1)+delta(b,1))) for a,b ∈ {1,...,q}, |phi_1>=sum_{s=1}^{q}delta(s,1)|s>, |phi_2>=(q-1)^{-1/2}sum_{s=1}^{q}(1-delta(s,1))|s>, V_q=[|phi_1>,|phi_2>], V_q^T T_q V_q=[[xy^2,sqrt(q-1)y],[sqrt(q-1)y,x+q-2]], T_ov((a,b),(a_prime,b_prime)) = 1_{b=a_prime}exp((beta J_1/2)(delta(a,b)+delta(a_prime,b_prime))+beta J_2 delta(a,b_prime)) for (a,b),(a_prime,b_prime) ∈ {1,...,q}^2, |psi_1>=q^{-1/2}sum_{s=1}^{q}|s,s>, |psi_2>=(q^2-q)^{-1/2}sum_{s=1}^{q}sum_{s_prime=1}^{q}(1-delta(s,s_prime))|s,s_prime>, U_{q^2}=[|psi_1>,|psi_2>], U_{q^2}^T T_ov U_{q^2}=V_q^T T_q V_q, lambda=(u+v)/2+sqrt(((u-v)/2)^2+w^2) with u=xy^2, v=x+q-2, w=sqrt(q-1)y, H=-J_1 sum_{i=1}^{2N}delta(sigma_i,sigma_{i+1})-J_2 sum_{i=1}^{2N}delta(sigma_i,sigma_{i+2}), H_eff=-J_2 sum_{i=1}^{2N}delta(sigma_i,sigma_{i+1})-J_1 sum_{i=1}^{2N}delta(sigma_i,1), and both H and H_eff satisfy f=-beta^{-1}ln(lambda) in the thermodynamic limit lim_{N→∞}(1/(2N))ln Z_{2N}=ln(lambda) }",
+          "threshold": {
+            "applies": false,
+            "value": null,
+            "comparator": "eq",
+            "metric_symbol": null,
+            "metric_definition": null,
+            "source_span": null
+          }
+        },
+        "preference_ordering": {
+          "kind": "none",
+          "definition": null,
+          "objective_symbols": [],
+          "lex_order": null,
+          "embedding_to_total_utility": null
+        },
+        "robustness_scope": {
+          "applies": true,
+          "ambient_space": "All pairs consisting of a source chain H = -J_1 sum_{i=1}^{2N}delta(sigma_i,sigma_{i+1}) - J_2 sum_{i=1}^{2N}delta(sigma_i,sigma_{i+2}) and a target chain H_eff = -J_2 sum_{i=1}^{2N}delta(sigma_i,sigma_{i+1}) - J_1 sum_{i=1}^{2N}delta(sigma_i,1), with q ∈ Z, q >= 2, J_1,J_2 ∈ R, beta > 0, and sigma_i ∈ {1,...,q}.",
+          "type_tag": "environment_family",
+          "metric_or_divergence": null,
+          "radius_or_budget": null,
+          "indexing_set": "{ (q,J_1,J_2,beta) : q ∈ Z, q >= 2, J_1 ∈ R, J_2 ∈ R, beta > 0 }",
+          "claimed_subfamily": {
+            "definition": "The claimed mapping subfamily is the full parameter family { (q,J_1,J_2,beta) : q ∈ Z, q >= 2, J_1 ∈ R, J_2 ∈ R, beta > 0 }; for each member, the target model's projected transfer block V_q^T T_q V_q and the source model's projected transfer block U_{q^2}^T T_ov U_{q^2} both equal [[exp(beta J_2)exp(beta J_1), sqrt(q-1)exp(beta J_1/2)], [sqrt(q-1)exp(beta J_1/2), exp(beta J_2)+q-2]], so both models share lambda and f.",
+            "source_span": {
+              "section": "Abstract; Section III Mapping; Supplemental Material III.B; Summary",
+              "paragraph_or_line": "Abstract first paragraph; Section III equations (6)-(7); Supplemental Material III.B; Summary first paragraph",
+              "verbatim": "mapped onto a simpler effective 1D q-state Potts model"
+            }
+          },
+          "hinted_superfamily": {
+            "definition": "A broader relevant-subspace-matching programme would seek pairs of Hamiltonians H_A,H_B for which explicitly constructed orbit-sum bases U_A,U_B yield identical dominant projected transfer matrices U_A^T T_A U_A = U_B^T T_B U_B, thereby implying equal thermodynamic free-energy densities; the paper gestures to this programme but formally establishes only the Potts-to-field-Potts family indexed by q,J_1,J_2,beta.",
+            "source_span": {
+              "section": "Introduction final paragraph; Supplemental Material III",
+              "paragraph_or_line": "Discussion of relevant-subspace matching and effective Hamiltonians",
+              "verbatim": "relevant-subspace-matching as a broadly applicable theoretical approach"
+            }
+          },
+          "refinement_relation": "declared_embedding",
+          "criterion": "For every (q,J_1,J_2,beta) in { (q,J_1,J_2,beta) : q ∈ Z, q >= 2, J_1 ∈ R, J_2 ∈ R, beta > 0 }, define x=exp(beta J_2), y=exp(beta J_1/2), T_q(a,b)=exp(beta J_2 delta(a,b)+(beta J_1/2)(delta(a,1)+delta(b,1))), |phi_1>=sum_{s=1}^{q}delta(s,1)|s>, |phi_2>=(q-1)^{-1/2}sum_{s=1}^{q}(1-delta(s,1))|s>, and V_q=[|phi_1>,|phi_2>]. The mapping criterion is satisfied exactly when V_q^T T_q V_q=[[xy^2,sqrt(q-1)y],[sqrt(q-1)y,x+q-2]] and the source model's projection onto |psi_1>=q^{-1/2}sum_{s=1}^{q}|s,s> and |psi_2>=(q^2-q)^{-1/2}sum_{s=1}^{q}sum_{s_prime=1}^{q}(1-delta(s,s_prime))|s,s_prime> yields the same 2 x 2 block.",
+          "channel_populated_by": [
+            "stated",
+            "operational",
+            "implicit"
+          ]
+        }
+      },
+      {
+        "goal_id": "G3_zero_temperature_phase_structure_and_residual_entropy_mechanism",
+        "outcome_variable": "o_3 = (q, J_1, E_0, C_1, C_2, S_0, phase_label, Delta_0, Delta_2) ∈ O_P",
+        "goal_form": "target_proposition",
+        "target_object": "An exact zero-temperature characterization of the frustrated one-dimensional J_1-J_2 q-state Potts chain after setting J_2=-1, together with the residual-entropy comparison used to explain the finite-temperature dome-like entropy morphology: determine, for q=2 and for every integer q>=3, the J_1 intervals, critical points, nearest-neighbor correlation C_1=<delta(sigma_i,sigma_{i+1})>, next-nearest-neighbor correlation C_2=<delta(sigma_i,sigma_{i+2})>, ground-state energy per spin E_0=-J_1 C_1 + C_2, residual entropy per spin S_0 in the beta→∞ limit, and for q>=3 the entropy gaps Delta_0(q)=ln(q-1)-ln(q-2) and Delta_2(q)=ln((1+sqrt(4q-3))/2)-(1/2)ln(q-1), whose limits Delta_0(q)→0 and Delta_2(q)→0 as q→∞ encode the large-q disappearance of the critical-point entropy excess.",
+        "feasibility_constraints": [
+          "The phase-characterization outcome is restricted to the frustrated normalization J_2=-1, so -J_2=1 is the energy unit and J_1 is dimensionless in that unit; q is an integer with q>=2; beta>0; zero temperature is the asymptotic substitution beta→∞ applied to lambda=(u+v)/2+sqrt(((u-v)/2)^2+w^2).",
+          "With J_2=-1, x=exp(-beta), y=exp(beta J_1/2), u=xy^2=exp(beta(J_1-1)), v=x+q-2=exp(-beta)+q-2, and w=sqrt(q-1)y=sqrt(q-1)exp(beta J_1/2); the beta→∞ branch is obtained by comparing the exponential rates J_1-1, 0, and J_1/2 for u, v, and w when q>=3, with q=2 handled separately because v=exp(-beta).",
+          "The correlations are defined by C_1 = -∂f/∂J_1 and C_2 = -∂f/∂J_2 before substituting J_2=-1; the ground-state energy per spin after substituting J_2=-1 is E_0 = -J_1 C_1 + C_2.",
+          "The residual entropy per spin is S_0 = lim_{beta→∞} S(beta), where S(beta) = -∂f/∂T_abs and beta=1/(k_B T_abs); if a phase has A allowed continuations per spin, then S_0=ln(A), and if a phase has A allowed continuations per two spins, then S_0=(1/2)ln(A).",
+          "For the residual-entropy mechanism when q>=3, define Delta_0(q)=S_0(J_1=0)-S_0(J_1<0)=ln(q-1)-ln(q-2) and Delta_2(q)=S_0(J_1=2)-S_0(0<J_1<2)=ln((1+sqrt(4q-3))/2)-(1/2)ln(q-1); the large-q statement is the pair of limits lim_{q→∞}Delta_0(q)=0 and lim_{q→∞}Delta_2(q)=0."
+        ],
+        "success_set": {
+          "kind": "predicate",
+          "definition": "Sigma_{P,3} = { o_3 : J_2=-1 and the following statements hold. For q=2: if J_1<-2 then phase_label='antiferromagnetic', C_1=0, C_2=1, E_0=1, S_0=0; if -2<J_1<2 then phase_label='dimerized', C_1=1/2, C_2=0, E_0=-J_1/2, S_0=0; if J_1>2 then phase_label='ferromagnetic', C_1=1, C_2=1, E_0=-J_1+1, S_0=0; at J_1=-2 and J_1=2, S_0=ln((1+sqrt(5))/2). For every integer q>=3: if J_1<0 then phase_label='paramagnet with sigma_i different from sigma_{i-1} and sigma_{i-2}', C_1=0, C_2=0, E_0=0, S_0=ln(q-2); at J_1=0, S_0=ln(q-1); if 0<J_1<2 then phase_label='randomly dimerized state with neighboring equal pairs and consecutive pairs different', C_1=1/2, C_2=0, E_0=-J_1/2, S_0=(1/2)ln(q-1); at J_1=2, S_0=ln((1+sqrt(4q-3))/2); if J_1>2 then phase_label='ferromagnetic mixture of q uniform states', C_1=1, C_2=1, E_0=-J_1+1, S_0=0. For every integer q>=3, Delta_0(q)=ln(q-1)-ln(q-2)>0 and Delta_2(q)=ln((1+sqrt(4q-3))/2)-(1/2)ln(q-1)>0; moreover lim_{q→∞}Delta_0(q)=0 and lim_{q→∞}Delta_2(q)=0. The finite-temperature dome statement is encoded only as this residual-entropy mechanism: finite q has positive critical-point entropy excess over the adjacent lower-entropy branch, while the large-q limits remove that excess. }",
+          "threshold": {
+            "applies": false,
+            "value": null,
+            "comparator": "eq",
+            "metric_symbol": null,
+            "metric_definition": null,
+            "source_span": null
+          }
+        },
+        "preference_ordering": {
+          "kind": "none",
+          "definition": null,
+          "objective_symbols": [],
+          "lex_order": null,
+          "embedding_to_total_utility": null
+        },
+        "robustness_scope": {
+          "applies": true,
+          "ambient_space": "The frustrated zero-temperature family { (q,J_1) : q ∈ Z, q >= 2, J_1 ∈ R, J_2=-1, beta→∞ } for exact phase labels, correlations, energies, and residual entropies, together with the q-indexed residual-entropy-gap family { q ∈ Z : q>=3 } for Delta_0(q)=ln(q-1)-ln(q-2) and Delta_2(q)=ln((1+sqrt(4q-3))/2)-(1/2)ln(q-1).",
+          "type_tag": "environment_family",
+          "metric_or_divergence": null,
+          "radius_or_budget": null,
+          "indexing_set": "{ (q,J_1) : q ∈ Z, q >= 2, J_1 ∈ R, J_2=-1, beta→∞ } ∪ { q ∈ Z : q >= 3 }",
+          "claimed_subfamily": {
+            "definition": "The exact claimed subfamily is all q ∈ Z with q>=2 and all real J_1 at J_2=-1 in the beta→∞ limit for the listed phases, critical points, C_1, C_2, E_0, and S_0. The residual-entropy mechanism subfamily is all q ∈ Z with q>=3 for the entropy-gap functions Delta_0(q)=ln(q-1)-ln(q-2) and Delta_2(q)=ln((1+sqrt(4q-3))/2)-(1/2)ln(q-1).",
+            "source_span": {
+              "section": "Section IV Results and Discussion; Figures 2-4; Summary; Appendix B",
+              "paragraph_or_line": "Ground-state phase-behavior paragraphs; Fig. 2 caption; Fig. 3 caption; Fig. 4 caption; Summary first paragraph",
+              "verbatim": "three phases separated by two critical points for all q values; emerging and vanishing of a dome-shaped randomly dimerized phase"
+            }
+          },
+          "hinted_superfamily": {
+            "definition": null,
+            "source_span": null
+          },
+          "refinement_relation": "set_inclusion",
+          "criterion": "For q=2 and for every q>=3, substitute J_2=-1 into lambda=(u+v)/2+sqrt(((u-v)/2)^2+w^2) with u=exp(beta(J_1-1)), v=exp(-beta)+q-2, and w=sqrt(q-1)exp(beta J_1/2); apply beta→∞ by comparing exponential rates. The criterion is satisfied exactly when the following data are obtained: for q=2, J_1<-2 gives C_1=0,C_2=1,E_0=1,S_0=0, -2<J_1<2 gives C_1=1/2,C_2=0,E_0=-J_1/2,S_0=0, J_1>2 gives C_1=1,C_2=1,E_0=-J_1+1,S_0=0, and J_1=±2 gives S_0=ln((1+sqrt(5))/2); for q>=3, J_1<0 gives C_1=0,C_2=0,E_0=0,S_0=ln(q-2), J_1=0 gives S_0=ln(q-1), 0<J_1<2 gives C_1=1/2,C_2=0,E_0=-J_1/2,S_0=(1/2)ln(q-1), J_1=2 gives S_0=ln((1+sqrt(4q-3))/2), and J_1>2 gives C_1=1,C_2=1,E_0=-J_1+1,S_0=0. The entropy-mechanism criterion is satisfied exactly when Delta_0(q)=ln(q-1)-ln(q-2)>0, Delta_2(q)=ln((1+sqrt(4q-3))/2)-(1/2)ln(q-1)>0, lim_{q→∞}Delta_0(q)=0, and lim_{q→∞}Delta_2(q)=0 for integer q>=3.",
+          "channel_populated_by": [
+            "stated",
+            "operational",
+            "implicit"
+          ]
+        }
+      }
+    ],
+    "inter_goal_relation": "joint_conjunction",
+    "methodological_claim": {
+      "applies": true,
+      "target_object": "A methodological proposition that the arbitrary-q exact solution was reached through AI bootstrapping rather than by a purely unaided derivation: an AI reasoning model generated and corrected a q=3 transfer-matrix derivation under human prompting, the q=3 derivation exposed a 2 x 2 symmetric block, and the author generalized that block to every q>=2 by explicitly constructing the two orbit-sum vectors |psi_1>=q^{-1/2}sum_{s=1}^{q}|s,s> and |psi_2>=(q^2-q)^{-1/2}sum_{s=1}^{q}sum_{s_prime=1}^{q}(1-delta(s,s_prime))|s,s_prime> and verifying that the projected transfer block yields the closed-form lambda.",
+      "evidence_channels": {
+        "source_span": {
+          "section": "Abstract; Introduction; Supplemental Material I; Summary",
+          "paragraph_or_line": "AI-bootstrapping statements in abstract, introduction, supplement, and summary",
+          "verbatim": "based on using OpenAI's reasoning model ... to exactly solve the q = 3 case"
+        },
+        "formalisation": "There exists an intermediate derivation d_3 for q=3 in which a 9 x 9 transfer matrix is transformed to a 2 x 2 block [[xy^2,sqrt(2)y],[sqrt(2)y,x+1]]; d_3 functions as a hypothesis generator for the arbitrary-q block [[xy^2,sqrt(q-1)y],[sqrt(q-1)y,x+q-2]]. The methodological claim is not that the AI system independently proves the arbitrary-q theorem; the final mathematical end-state remains the exact eigenvalue proposition, the exact field-Potts mapping proposition, and the ground-state phase-characterisation proposition."
+      }
+    },
+    "evidence_channels": {
+      "stated_goal": {
+        "source_span": {
+          "section": "Abstract; Introduction; Summary",
+          "paragraph_or_line": "Abstract first paragraph; Introduction paragraphs motivating arbitrary q and mapping; Summary first paragraph",
+          "verbatim": "solved exactly for arbitrary q; map the Potts model onto a simpler effective model; ground states feature three phases"
+        },
+        "formalisation": "The stated formal goal is the joint conjunction of three propositions. Proposition 1: for every q ∈ Z with q>=2, beta>0, and J_1,J_2 ∈ R, the one-dimensional J_1-J_2 q-state Potts chain has lambda=(u+v)/2+sqrt(((u-v)/2)^2+w^2), where u=exp(beta J_2)exp(beta J_1), v=exp(beta J_2)+q-2, w=sqrt(q-1)exp(beta J_1/2), and f=-beta^{-1}ln(lambda). Proposition 2: the same 2 x 2 block [[exp(beta J_2)exp(beta J_1),sqrt(q-1)exp(beta J_1/2)],[sqrt(q-1)exp(beta J_1/2),exp(beta J_2)+q-2]] is obtained from H_eff=-J_2 sum_i delta(sigma_i,sigma_{i+1})-J_1 sum_i delta(sigma_i,1), so the source and target models share lambda and f. Proposition 3: after setting J_2=-1 and applying beta→∞, the q=2 chain has phases separated at J_1=-2 and J_1=2, while every q>=3 chain has phases separated at J_1=0 and J_1=2; the corresponding residual entropies are S_0=ln((1+sqrt(5))/2) at the q=2 critical points, S_0=ln(q-1) at J_1=0 for q>=3, S_0=ln((1+sqrt(4q-3))/2) at J_1=2 for q>=3, S_0=ln(q-2) in the q>=3,J_1<0 phase, S_0=(1/2)ln(q-1) in the q>=3,0<J_1<2 phase, and S_0=0 in the noncritical q=2 phases and in the q>=3,J_1>2 phase; for q>=3, the entropy gaps Delta_0(q)=ln(q-1)-ln(q-2) and Delta_2(q)=ln((1+sqrt(4q-3))/2)-(1/2)ln(q-1) are positive for finite q and both vanish as q→∞."
+      },
+      "operational_goal": {
+        "source_span": {
+          "section": "Section II Model and Solution; Section III Mapping; Section IV Results and Discussion; Appendix B",
+          "paragraph_or_line": "Equations (1)-(8); Figures 2-4 and their captions; Appendix B phase-transition statement",
+          "verbatim": "H, f, T_2, lambda, H_eff, residual entropy formulae, and phase diagrams are specified"
+        },
+        "formalisation": "The operational goal is achieved by three symbolic checks. Check 1: define T_ov((a,b),(a_prime,b_prime))=1_{b=a_prime}exp((beta J_1/2)(delta(a,b)+delta(a_prime,b_prime))+beta J_2 delta(a,b_prime)), T_lad((a,b),(a_prime,b_prime))=exp((beta J_1/2)(delta(a,b)+delta(a_prime,b_prime))+beta J_1 delta(b,a_prime)+beta J_2(delta(a,a_prime)+delta(b,b_prime))), |psi_1>=q^{-1/2}sum_{s=1}^{q}|s,s>, |psi_2>=(q^2-q)^{-1/2}sum_{s=1}^{q}sum_{s_prime=1}^{q}(1-delta(s,s_prime))|s,s_prime>, U_{q^2}=[|psi_1>,|psi_2>], compute U_{q^2}^T T_ov U_{q^2}=[[xy^2,sqrt(q-1)y],[sqrt(q-1)y,x+q-2]], and set lambda to the larger eigenvalue of this 2 x 2 matrix, lambda=(u+v)/2+sqrt(((u-v)/2)^2+w^2). Check 2: define T_q(a,b)=exp(beta J_2 delta(a,b)+(beta J_1/2)(delta(a,1)+delta(b,1))) and V_q=[sum_{s=1}^{q}delta(s,1)|s>, (q-1)^{-1/2}sum_{s=1}^{q}(1-delta(s,1))|s>], and verify V_q^T T_q V_q=[[xy^2,sqrt(q-1)y],[sqrt(q-1)y,x+q-2]]. Check 3: substitute J_2=-1 into lambda, apply beta→∞ by comparing u=exp(beta(J_1-1)), v=exp(-beta)+q-2, and w=sqrt(q-1)exp(beta J_1/2), and recover the phase labels, C_1, C_2, E_0, and S_0 defined by the following cases: q=2 has critical points J_1=-2 and J_1=2 with S_0=ln((1+sqrt(5))/2), antiferromagnetic C_1=0,C_2=1 for J_1<-2, dimerized C_1=1/2,C_2=0 for -2<J_1<2, and ferromagnetic C_1=1,C_2=1 for J_1>2; q>=3 has critical points J_1=0 with S_0=ln(q-1) and J_1=2 with S_0=ln((1+sqrt(4q-3))/2), paramagnetic C_1=0,C_2=0 for J_1<0, randomly dimerized C_1=1/2,C_2=0 for 0<J_1<2, and ferromagnetic C_1=1,C_2=1 for J_1>2. Check 4: for integer q>=3, compute Delta_0(q)=ln(q-1)-ln(q-2) and Delta_2(q)=ln((1+sqrt(4q-3))/2)-(1/2)ln(q-1), verify both are positive for finite q, and verify lim_{q→∞}Delta_0(q)=lim_{q→∞}Delta_2(q)=0."
+      },
+      "implicit_goal": {
+        "inference_basis": [
+          "Harvested stated aim spans counted for TextAlign: 6 of 8 align with the exact-solution, exact-mapping, phase-characterisation, or AI-bootstrapping claims; the non-aligning spans are broad application and field-building gestures rather than formal end-states.",
+          "Method artefacts counted for MethodAlign: 5 of 5 align with the extracted mathematical propositions: Hamiltonian/partition-function definition, transfer-matrix reduction, positive dominant-subspace argument, field-Potts mapping, and beta→∞ phase/residual-entropy derivation.",
+          "Evaluation and result artefacts counted for EvalAlign: 4 of 4 align with the extracted mathematical propositions: brute-force eigenvalue verification up to q^2=1024, entropy phase diagrams derived from f=-beta^{-1}ln(lambda), residual-entropy q-dependence, and correlation phase diagrams derived from C_1=-∂f/∂J_1 and C_2=-∂f/∂J_2.",
+          "Conclusion/theorem-like claims counted for ClaimAlign: 5 of 5 align with the extracted mathematical propositions: exact arbitrary-q solution, 2 x 2 dominant subspace, exact mapping, three ground-state phases with two critical points, and residual-entropy-gap mechanism for dome emergence at small q and disappearance as q becomes large.",
+          "Complexity count basis: robustness_scope.applies=true contributes one structural commitment, and two additional canonical goals beyond the first contribute two more; no threshold fields, lex_order, or total-utility embedding are populated, so Complexity is recorded as 3/17=0.176."
+        ],
+        "fit_score": 0.941,
+        "fit_components": {
+          "TextAlign": 0.75,
+          "MethodAlign": 1.0,
+          "EvalAlign": 1.0,
+          "ClaimAlign": 1.0,
+          "Complexity": 0.176
+        },
+        "formalisation": "The best-fitting implicit canonical goal is the joint conjunction of these three self-contained propositions: (1) for every q>=2 and real J_1,J_2 at beta>0, H=-J_1 sum_i delta(sigma_i,sigma_{i+1})-J_2 sum_i delta(sigma_i,sigma_{i+2}) has thermodynamic free energy f=-beta^{-1}ln(lambda), lambda=(u+v)/2+sqrt(((u-v)/2)^2+w^2), u=exp(beta J_2)exp(beta J_1), v=exp(beta J_2)+q-2, w=sqrt(q-1)exp(beta J_1/2); (2) for the same parameters, H_eff=-J_2 sum_i delta(sigma_i,sigma_{i+1})-J_1 sum_i delta(sigma_i,1) yields the same dominant 2 x 2 transfer block and hence the same lambda and f; (3) for J_2=-1 and beta→∞, q=2 has critical points J_1=-2 and J_1=2, q>=3 has critical points J_1=0 and J_1=2, and the phase correlations, energies, and residual entropies are those obtained by differentiating f and taking the beta→∞ asymptotic branches stated in the phase-characterisation success predicate; additionally, for integer q>=3, Delta_0(q)=ln(q-1)-ln(q-2)>0 and Delta_2(q)=ln((1+sqrt(4q-3))/2)-(1/2)ln(q-1)>0 with both gaps tending to 0 as q→∞."
+      },
+      "excluded_aims": [
+        {
+          "verbatim": "provide insights to phenomena such as atomic or electronic order stacking in layered materials",
+          "source_span": {
+            "section": "Abstract",
+            "paragraph_or_line": "Abstract first paragraph",
+            "verbatim": "insights to phenomena such as atomic or electronic order stacking"
+          },
+          "reason": "application_gesture"
+        },
+        {
+          "verbatim": "time series with multiple choices at every time step such as table tennis training drill designs",
+          "source_span": {
+            "section": "Introduction",
+            "paragraph_or_line": "Application examples paragraph",
+            "verbatim": "a time series with multiple choices at every time step"
+          },
+          "reason": "application_gesture"
+        },
+        {
+          "verbatim": "anticipated to fuel both research in 1D frustrated magnets ... and the fast moving topic area of AI in science",
+          "source_span": {
+            "section": "Abstract",
+            "paragraph_or_line": "Abstract final sentence",
+            "verbatim": "anticipated to fuel both research ... and ... AI in science"
+          },
+          "reason": "motivational"
+        },
+        {
+          "verbatim": "Finding novel phases and phase transitions is a central challenge in various research fields",
+          "source_span": {
+            "section": "Introduction",
+            "paragraph_or_line": "Introduction first paragraph",
+            "verbatim": "Finding novel phases and phase transitions is a central challenge"
+          },
+          "reason": "topical"
+        },
+        {
+          "verbatim": "demonstrating relevant-subspace-matching as a broadly applicable theoretical approach to tackling complex problems",
+          "source_span": {
+            "section": "Introduction",
+            "paragraph_or_line": "Introduction final paragraph before Fig. 1",
+            "verbatim": "relevant-subspace-matching as a broadly applicable theoretical approach"
+          },
+          "reason": "out_of_scope_other"
+        },
+        {
+          "verbatim": "AI embodies a new paradigm of data- and value-driven discovery",
+          "source_span": {
+            "section": "Summary",
+            "paragraph_or_line": "Summary final paragraph",
+            "verbatim": "a new paradigm of data- and value-driven discovery"
+          },
+          "reason": "motivational"
+        }
+      ]
+    },
+    "consistency_relation": "framing_divergence",
+    "consistency_relation_derivation": "The operational artefacts instantiate the mathematical targets: a closed-form lambda and f for the source chain, equality of the source and field-Potts projected transfer blocks, and zero-temperature phase/residual-entropy characterization derived from f=-beta^{-1}ln(lambda). The residual-entropy-gap comparison Delta_0(q)=ln(q-1)-ln(q-2) and Delta_2(q)=ln((1+sqrt(4q-3))/2)-(1/2)ln(q-1) captures the paper's finite-temperature dome explanation without overclaiming exact finite-temperature phase-boundary formulae. The stated channel also includes AI-bootstrapping, material-application, table-tennis/time-series, and broad field-building claims. AI bootstrapping is represented as a methodological_claim, while the application and field-building phrases are recorded in excluded_aims; therefore the mathematical channels align with each other but diverge from the rhetorical framing, so consistency_relation is framing_divergence rather than aligned."
+  }
+}

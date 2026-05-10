@@ -1,0 +1,179 @@
+{
+  "paper_title": "Entanglement Spectrum Resolved by Loop Symmetries (Yagi, 2025, arXiv)",
+  "deeper_reasoning_1": "\\section*{Claim}\nLet\n\\[\n\\mathcal{W}:=\\bigoplus_{\\varphi\\in\\operatorname{Im}}\\bigoplus_{j=1}^{b}\n\\mathbb{C}^{m_X(\\varphi)\\times m_Y(\\varphi)},\n\\qquad\nb:=|G|^{|V_\\partial|-|A|},\n\\]\nwhere\n\\[\nm_X(\\varphi):=|r_X^{-1}(\\varphi)||G|^{|V_X|},\n\\qquad\nm_Y(\\varphi):=|r_Y^{-1}(\\varphi)||G|^{|V_Y|}.\n\\]\nFor every nonzero loop-symmetric coefficient matrix $W\\in\\mathcal{W}$, with\n$\\rho_X:=WW^{\\dagger}/\\operatorname{Tr}(WW^{\\dagger})$,\n\\[\n\\operatorname{rank}\\rho_X\\le R_*,\n\\qquad\nS(\\rho_X)\\le \\ln R_*,\n\\qquad\nR_*:=b\\sum_{\\varphi\\in\\operatorname{Im}}\\min\\{m_X(\\varphi),m_Y(\\varphi)\\}.\n\\]\nConversely, if $R_*>0$, there exists $W_*\\in\\mathcal{W}$ for which\n\\[\n\\operatorname{rank}\\rho_X=R_*,\n\\qquad\nS(\\rho_X)=\\ln R_*.\n\\]\nThus the loop-symmetric block theorem determines the exact maximal Schmidt rank and the exact maximal entropy allowed by the block support.\n\n\\section*{Premises}\n\\begin{align*}\n(P1)\\;&\\mathcal{W}=\\bigoplus_{\\varphi\\in\\operatorname{Im}}\\bigoplus_{j=1}^{b}\n\\mathbb{C}^{m_X(\\varphi)\\times m_Y(\\varphi)}.\\\\\n(P2)\\;&\\operatorname{rank}(A\\oplus B)=\\operatorname{rank}A+\\operatorname{rank}B.\\\\\n(P3)\\;&\\operatorname{rank}B\\le\\min\\{p,q\\}\\text{ for every }B\\in\\mathbb{C}^{p\\times q}.\\\\\n(P4)\\;&\\operatorname{rank}(WW^{\\dagger})=\\operatorname{rank}W.\\\\\n(P5)\\;&S(\\rho)\\le\\ln\\operatorname{rank}\\rho\\text{ for every finite-dimensional density matrix }\\rho.\\\\\n(P6)\\;&\\text{For every }p,q\\ge 1\\text{ there is }B\\in\\mathbb{C}^{p\\times q}\\text{ with }\\min\\{p,q\\}\n\\text{ singular values all equal to }1.\\\\\n(P7)\\;&\\text{If a density matrix has }R\\text{ nonzero eigenvalues all equal to }1/R,\\text{ then its entropy is }\\ln R.\n\\end{align*}\n\n\\section*{Derivation}\nWrite the block of $W$ labelled by $(\\varphi,j)$ as\n$W_{\\varphi,j}\\in\\mathbb{C}^{m_X(\\varphi)\\times m_Y(\\varphi)}$. Then\n\\begin{align*}\n\\operatorname{rank}W\n&=\\sum_{\\varphi\\in\\operatorname{Im}}\\sum_{j=1}^{b}\\operatorname{rank}W_{\\varphi,j} &&\\text{by (P1),(P2)}\\\\\n&\\le \\sum_{\\varphi\\in\\operatorname{Im}}\\sum_{j=1}^{b}\\min\\{m_X(\\varphi),m_Y(\\varphi)\\} &&\\text{by (P3)}\\\\\n&=b\\sum_{\\varphi\\in\\operatorname{Im}}\\min\\{m_X(\\varphi),m_Y(\\varphi)\\}\\\\\n&=R_*.\n\\end{align*}\nUsing (P4),\n\\begin{align*}\n\\operatorname{rank}\\rho_X\n&=\\operatorname{rank}(WW^{\\dagger})\\\\\n&=\\operatorname{rank}W\\\\\n&\\le R_*.\n\\end{align*}\nTherefore\n\\begin{align*}\nS(\\rho_X)&\\le\\ln\\operatorname{rank}\\rho_X &&\\text{by (P5)}\\\\\n&\\le\\ln R_*.\n\\end{align*}\nFor attainability, choose each block $W_{\\varphi,j}^{*}$ to have exactly\n$\\min\\{m_X(\\varphi),m_Y(\\varphi)\\}$ singular values equal to $1$ and all remaining singular values equal to $0$, which is possible by (P6). The direct sum $W_*$ then has exactly $R_*$ singular values, all equal to $1$. Hence $W_*W_*^{\\dagger}$ has exactly $R_*$ nonzero eigenvalues, all equal to $1$, and after normalization $\\rho_X$ has exactly $R_*$ nonzero eigenvalues, all equal to $1/R_*$. By (P7), $S(\\rho_X)=\\ln R_*$.\n\n\\section*{Final Result}\n\\[\n\\boxed{\\max_{0\\ne W\\in\\mathcal{W}}\\operatorname{rank}\\rho_X=R_*,\n\\qquad\n\\max_{0\\ne W\\in\\mathcal{W}}S(\\rho_X)=\\ln R_*}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_2": "\\section*{Claim}\nFor a gauge-invariant loop-symmetric state, suppose the coefficient matrix has positive-spectrum data\n\\[\nW_{\\mathrm{gi}}=\\left[\n\\bigoplus_{[\\varphi]\\in\\operatorname{Im}/G^{|A|}}\\mathbf{1}_{|[\\varphi]|}\\otimes\n\\left(\\bigoplus_{\\alpha\\in\\operatorname{Rep}(G_\\varphi)}\n\\Psi_{\\varphi,\\alpha}\\otimes\\mathbf{1}_{d_\\alpha}\\right)\\right]\n\\otimes\\mathbf{1}_{q},\n\\qquad\nq:=|G|^{|V_\\partial|-|A|},\n\\]\nwhere $\\Psi_{\\varphi,\\alpha}\\in\\mathbb{C}^{x_\\alpha\\times y_\\alpha}$. Let\n$\\mu_{\\varphi,\\alpha,i}>0$ be the positive eigenvalues of\n$\\Psi_{\\varphi,\\alpha}\\Psi_{\\varphi,\\alpha}^{\\dagger}$ and put\n\\[\nD_{\\varphi,\\alpha}:=|[\\varphi]|d_\\alpha,\n\\qquad\nN:=\\sum_{[\\varphi]}\\sum_{\\alpha\\in\\operatorname{Rep}(G_\\varphi)}\nD_{\\varphi,\\alpha}\\sum_i\\mu_{\\varphi,\\alpha,i}.\n\\]\nThen the positive eigenvalues of\n$\\rho_X:=W_{\\mathrm{gi}}W_{\\mathrm{gi}}^{\\dagger}/\\operatorname{Tr}(W_{\\mathrm{gi}}W_{\\mathrm{gi}}^{\\dagger})$ are precisely\n\\[\n\\lambda_{\\varphi,\\alpha,i}=\\frac{\\mu_{\\varphi,\\alpha,i}}{Nq},\n\\]\neach with multiplicity $qD_{\\varphi,\\alpha}$. Consequently,\n\\[\n\\operatorname{rank}\\rho_X=q\\sum_{[\\varphi]}\\sum_{\\alpha\\in\\operatorname{Rep}(G_\\varphi)}\nD_{\\varphi,\\alpha}\\operatorname{rank}\\Psi_{\\varphi,\\alpha}.\n\\]\n\n\\section*{Premises}\n\\begin{align*}\n(P1)\\;&W_{\\mathrm{gi}}=\\left[\\bigoplus_{[\\varphi]}\\mathbf{1}_{|[\\varphi]|}\\otimes\n\\left(\\bigoplus_{\\alpha}\\Psi_{\\varphi,\\alpha}\\otimes\\mathbf{1}_{d_\\alpha}\\right)\\right]\\otimes\\mathbf{1}_{q}.\\\\\n(P2)\\;&(A\\oplus B)(A\\oplus B)^{\\dagger}=AA^{\\dagger}\\oplus BB^{\\dagger}.\\\\\n(P3)\\;&(A\\otimes B)(A\\otimes B)^{\\dagger}=AA^{\\dagger}\\otimes BB^{\\dagger}.\\\\\n(P4)\\;&\\mathbf{1}_m\\mathbf{1}_m^{\\dagger}=\\mathbf{1}_m.\\\\\n(P5)\\;&\\text{The positive eigenvalues of }H\\otimes\\mathbf{1}_m\\text{ are those of }H,\n\\text{ each repeated }m\\text{ times}.\\\\\n(P6)\\;&\\operatorname{rank}(H\\otimes\\mathbf{1}_m)=m\\operatorname{rank}H.\n\\end{align*}\n\n\\section*{Derivation}\nBy (P1)--(P4),\n\\begin{align*}\nW_{\\mathrm{gi}}W_{\\mathrm{gi}}^{\\dagger}\n&=\\left[\n\\bigoplus_{[\\varphi]}\\mathbf{1}_{|[\\varphi]|}\\otimes\n\\left(\\bigoplus_{\\alpha}\\Psi_{\\varphi,\\alpha}\\Psi_{\\varphi,\\alpha}^{\\dagger}\n\\otimes\\mathbf{1}_{d_\\alpha}\\right)\\right]\\otimes\\mathbf{1}_{q}.\n\\end{align*}\nTherefore, by (P5), each positive eigenvalue $\\mu_{\\varphi,\\alpha,i}$ of\n$\\Psi_{\\varphi,\\alpha}\\Psi_{\\varphi,\\alpha}^{\\dagger}$ appears with multiplicity\n\\begin{align*}\n|[\\varphi]|d_\\alpha q&=qD_{\\varphi,\\alpha}.\n\\end{align*}\nThe trace is thus\n\\begin{align*}\n\\operatorname{Tr}(W_{\\mathrm{gi}}W_{\\mathrm{gi}}^{\\dagger})\n&=q\\sum_{[\\varphi]}\\sum_{\\alpha}D_{\\varphi,\\alpha}\\sum_i\\mu_{\\varphi,\\alpha,i}\\\\\n&=qN.\n\\end{align*}\nNormalizing by this trace sends every positive eigenvalue $\\mu_{\\varphi,\\alpha,i}$ to\n$\\mu_{\\varphi,\\alpha,i}/(qN)$ while preserving its multiplicity. Finally, using (P6),\n\\begin{align*}\n\\operatorname{rank}\\rho_X\n&=q\\sum_{[\\varphi]}\\sum_{\\alpha}D_{\\varphi,\\alpha}\n\\operatorname{rank}(\\Psi_{\\varphi,\\alpha}\\Psi_{\\varphi,\\alpha}^{\\dagger})\\\\\n&=q\\sum_{[\\varphi]}\\sum_{\\alpha}D_{\\varphi,\\alpha}\n\\operatorname{rank}\\Psi_{\\varphi,\\alpha}.\n\\end{align*}\n\n\\section*{Final Result}\n\\[\n\\boxed{\\operatorname{Spec}_{+}(\\rho_X)=\n\\left\\{\\frac{\\mu_{\\varphi,\\alpha,i}}{Nq}\\text{ with multiplicity }q|[\\varphi]|d_\\alpha\\right\\},\n\\qquad\n\\operatorname{rank}\\rho_X=q\\sum_{[\\varphi],\\alpha}|[\\varphi]|d_\\alpha\\operatorname{rank}\\Psi_{\\varphi,\\alpha}}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_3": "\\section*{Claim}\nIn the setting of the preceding spectrum formula, define\n\\[\nD_{\\varphi,\\alpha}:=|[\\varphi]|d_\\alpha,\n\\qquad\np_{\\varphi,\\alpha,i}:=\\frac{D_{\\varphi,\\alpha}\\mu_{\\varphi,\\alpha,i}}{N},\n\\qquad\nH(p):=-\\sum_{[\\varphi]}\\sum_{\\alpha\\in\\operatorname{Rep}(G_\\varphi)}\\sum_i\np_{\\varphi,\\alpha,i}\\ln p_{\\varphi,\\alpha,i}.\n\\]\nThen\n\\[\nS(\\rho_X)=\\ln q+H(p)+\n\\sum_{[\\varphi]}\\sum_{\\alpha\\in\\operatorname{Rep}(G_\\varphi)}\\sum_i\np_{\\varphi,\\alpha,i}\\ln D_{\\varphi,\\alpha},\n\\]\nand, with $\\Gamma:=|V_\\partial|\\ln|G|-S(\\rho_X)$,\n\\[\n\\Gamma=|A|\\ln|G|-H(p)-\n\\sum_{[\\varphi]}\\sum_{\\alpha\\in\\operatorname{Rep}(G_\\varphi)}\\sum_i\np_{\\varphi,\\alpha,i}\\ln D_{\\varphi,\\alpha}.\n\\]\nFor a rank-one minimally entangled state supported only on one pair $([\\varphi],\\alpha)$,\n\\[\n\\Gamma=|A|\\ln|G|-\\ln(|[\\varphi]|d_\\alpha).\n\\]\n\n\\section*{Premises}\n\\begin{align*}\n(P1)\\;&\\lambda_{\\varphi,\\alpha,i}=\\mu_{\\varphi,\\alpha,i}/(Nq)\n\\text{ has multiplicity }qD_{\\varphi,\\alpha}.\\\\\n(P2)\\;&N=\\sum_{[\\varphi]}\\sum_\\alpha D_{\\varphi,\\alpha}\\sum_i\\mu_{\\varphi,\\alpha,i}.\\\\\n(P3)\\;&p_{\\varphi,\\alpha,i}=D_{\\varphi,\\alpha}\\mu_{\\varphi,\\alpha,i}/N.\\\\\n(P4)\\;&S(\\rho_X)=-\\sum_\\lambda m_\\lambda\\lambda\\ln\\lambda.\\\\\n(P5)\\;&q=|G|^{|V_\\partial|-|A|}.\\\\\n(P6)\\;&\\Gamma=|V_\\partial|\\ln|G|-S(\\rho_X).\n\\end{align*}\n\n\\section*{Derivation}\nFirst,\n\\begin{align*}\n\\sum_{[\\varphi]}\\sum_\\alpha\\sum_i p_{\\varphi,\\alpha,i}\n&=\\frac{1}{N}\\sum_{[\\varphi]}\\sum_\\alpha D_{\\varphi,\\alpha}\\sum_i\\mu_{\\varphi,\\alpha,i} &&\\text{by (P3)}\\\\\n&=1 &&\\text{by (P2).}\n\\end{align*}\nUsing (P1) and (P4),\n\\begin{align*}\nS(\\rho_X)\n&=-\\sum_{[\\varphi]}\\sum_\\alpha\\sum_i qD_{\\varphi,\\alpha}\n\\frac{\\mu_{\\varphi,\\alpha,i}}{Nq}\n\\ln\\left(\\frac{\\mu_{\\varphi,\\alpha,i}}{Nq}\\right)\\\\\n&=-\\sum_{[\\varphi]}\\sum_\\alpha\\sum_i\n\\frac{D_{\\varphi,\\alpha}\\mu_{\\varphi,\\alpha,i}}{N}\n\\ln\\left(\\frac{\\mu_{\\varphi,\\alpha,i}}{Nq}\\right)\\\\\n&=-\\sum_{[\\varphi]}\\sum_\\alpha\\sum_i\np_{\\varphi,\\alpha,i}\n\\ln\\left(\\frac{p_{\\varphi,\\alpha,i}}{D_{\\varphi,\\alpha}q}\\right) &&\\text{by (P3)}\\\\\n&=-\\sum_{[\\varphi]}\\sum_\\alpha\\sum_i p_{\\varphi,\\alpha,i}\\ln p_{\\varphi,\\alpha,i}\n+\\sum_{[\\varphi]}\\sum_\\alpha\\sum_i p_{\\varphi,\\alpha,i}\\ln D_{\\varphi,\\alpha}\n+\\ln q\\\\\n&=\\ln q+H(p)+\\sum_{[\\varphi]}\\sum_\\alpha\\sum_i p_{\\varphi,\\alpha,i}\\ln D_{\\varphi,\\alpha}.\n\\end{align*}\nSince $q=|G|^{|V_\\partial|-|A|}$,\n\\begin{align*}\n\\Gamma\n&=|V_\\partial|\\ln|G|-S(\\rho_X) &&\\text{by (P6)}\\\\\n&=|V_\\partial|\\ln|G|-(|V_\\partial|-|A|)\\ln|G|-H(p)\n-\\sum_{[\\varphi]}\\sum_\\alpha\\sum_i p_{\\varphi,\\alpha,i}\\ln D_{\\varphi,\\alpha} &&\\text{by (P5)}\\\\\n&=|A|\\ln|G|-H(p)-\\sum_{[\\varphi]}\\sum_\\alpha\\sum_i p_{\\varphi,\\alpha,i}\\ln D_{\\varphi,\\alpha}.\n\\end{align*}\nIf only one pair $([\\varphi],\\alpha)$ and one singular-value label $i$ is present, then $p_{\\varphi,\\alpha,i}=1$ and $H(p)=0$, so\n\\begin{align*}\n\\Gamma&=|A|\\ln|G|-\\ln D_{\\varphi,\\alpha}\\\\\n&=|A|\\ln|G|-\\ln(|[\\varphi]|d_\\alpha).\n\\end{align*}\n\n\\section*{Final Result}\n\\[\n\\boxed{S(\\rho_X)=\\ln q+H(p)+\\mathbb{E}_{p}[\\ln D_{\\varphi,\\alpha}],\n\\qquad\n\\Gamma=|A|\\ln|G|-H(p)-\\mathbb{E}_{p}[\\ln D_{\\varphi,\\alpha}]}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_4": "\\section*{Claim}\nFor the two-dimensional Kitaev quantum double with an orientable subsystem\n$X=\\Sigma_{\\gamma_X,n}$, let the boundary anyon label be\n\\[\n\\alpha_\\varphi=(\\alpha_1,\\ldots,\\alpha_n),\n\\qquad\n\\alpha_j\\in\\operatorname{Rep}(C_{c_j}),\n\\qquad\n\\varphi=(c_1,\\ldots,c_n).\n\\]\nDefine\n\\[\nS_{(g,\\beta),(c,\\alpha)}:=\\frac{1}{|C_g||C_c|}\n\\sum_{h\\in G:\\ h^{-1}gh\\in C_c}\\chi_\\beta(hch^{-1})\\chi_\\alpha(h^{-1}gh).\n\\]\nIf\n\\[\nx^X_{\\alpha_\\varphi}:=\\sum_{[g]}\\sum_{\\beta\\in\\operatorname{Rep}(C_g)}\nS_{(g,\\beta),(1,1)}^{2-2\\gamma_X-n}\n\\prod_{j=1}^{n}S_{(g,\\beta),(c_j,\\alpha_j)},\n\\]\nand $y^Y_{\\alpha_\\varphi}$ is defined by the same formula for an orientable\n$Y=\\Sigma_{\\gamma_Y,n}$, then the gauge-invariant entanglement block labelled by\n$([\\varphi],\\alpha_\\varphi)$ has small matrix\n\\[\n\\Psi_{\\varphi,\\alpha_\\varphi}\\in\n\\mathbb{C}^{x^X_{\\alpha_\\varphi}\\times y^Y_{\\alpha_\\varphi}}.\n\\]\nTherefore its number of independent entanglement singular values is at most\n\\[\n\\min\\{x^X_{\\alpha_\\varphi},y^Y_{\\alpha_\\varphi}\\},\n\\]\nwith equality for a full-rank small matrix, and every positive reduced-density-matrix level in this sector has degeneracy\n\\[\n|G|^{|V_\\partial|-n}|[\\varphi]|\\prod_{j=1}^{n}d_{\\alpha_j}.\n\\]\nThus the orientable full entanglement-spectrum multiplicities are exactly the finite-group quantum-double sector-counting sums built from the $S$ matrix.\n\n\\section*{Premises}\n\\begin{align*}\n(P1)\\;&\\text{In the two-dimensional orientable quantum-double specialization, the multiplicity of }\n\\alpha_\\varphi\\text{ on }X\\text{ is }x^X_{\\alpha_\\varphi}\\text{ as defined above}.\\\\\n(P2)\\;&\\text{The corresponding multiplicity on orientable }Y\\text{ is }y^Y_{\\alpha_\\varphi}\\text{ with }\\gamma_X\\text{ replaced by }\\gamma_Y.\\\\\n(P3)\\;&\\text{The gauge-invariant topological block for }([\\varphi],\\alpha_\\varphi)\n\\text{ is }\\mathbb{C}^{x^X_{\\alpha_\\varphi}\\times y^Y_{\\alpha_\\varphi}}\\otimes\\mathbf{1}_{d_{\\alpha_\\varphi}}.\\\\\n(P4)\\;&d_{\\alpha_\\varphi}=\\prod_{j=1}^{n}d_{\\alpha_j}.\\\\\n(P5)\\;&\\text{The orbit and geometric degeneracies multiply each positive level by }|[\\varphi]|\\text{ and }|G|^{|V_\\partial|-n}.\\\\\n(P6)\\;&\\text{A matrix in }\\mathbb{C}^{x\\times y}\\text{ has at most }\\min\\{x,y\\}\\text{ nonzero singular values, and this bound is attained by a full-rank matrix.}\n\\end{align*}\n\n\\section*{Derivation}\nBy (P1), the row multiplicity in the block labelled by $\\alpha_\\varphi$ is exactly\n\\begin{align*}\nx^X_{\\alpha_\\varphi}\n&=\\sum_{[g]}\\sum_{\\beta\\in\\operatorname{Rep}(C_g)}\nS_{(g,\\beta),(1,1)}^{2-2\\gamma_X-n}\n\\prod_{j=1}^{n}S_{(g,\\beta),(c_j,\\alpha_j)}.\n\\end{align*}\nBy (P2), the column multiplicity is the analogous number $y^Y_{\\alpha_\\varphi}$. Hence (P3) gives\n\\begin{align*}\n\\Psi_{\\varphi,\\alpha_\\varphi}&\\in\n\\mathbb{C}^{x^X_{\\alpha_\\varphi}\\times y^Y_{\\alpha_\\varphi}}.\n\\end{align*}\nThe number of independent positive singular values carried by this small matrix is therefore\n\\begin{align*}\n\\operatorname{rank}\\Psi_{\\varphi,\\alpha_\\varphi}\n&\\le\\min\\{x^X_{\\alpha_\\varphi},y^Y_{\\alpha_\\varphi}\\} &&\\text{by (P6),}\n\\end{align*}\nand equality is possible when the small matrix has full rank. Finally, each positive singular-value level is copied by the geometric degeneracy, the orbit degeneracy, and the irrep dimension. By (P4),(P5), this total degeneracy is\n\\begin{align*}\n|G|^{|V_\\partial|-n}|[\\varphi]|d_{\\alpha_\\varphi}\n&=|G|^{|V_\\partial|-n}|[\\varphi]|\\prod_{j=1}^{n}d_{\\alpha_j}.\n\\end{align*}\nThus the same $S$-matrix sums that count quantum-double boundary Hilbert-space multiplicities are precisely the integers controlling the entanglement-spectrum block sizes.\n\n\\section*{Final Result}\n\\[\n\\boxed{\\Psi_{\\varphi,\\alpha_\\varphi}\\in\n\\mathbb{C}^{x^X_{\\alpha_\\varphi}\\times y^Y_{\\alpha_\\varphi}},\n\\qquad\n\\#\\operatorname{levels}_{[\\varphi],\\alpha_\\varphi}\\le\n\\min\\{x^X_{\\alpha_\\varphi},y^Y_{\\alpha_\\varphi}\\},\n\\qquad\n\\operatorname{degeneracy}=|G|^{|V_\\partial|-n}|[\\varphi]|\\prod_{j=1}^{n}d_{\\alpha_j}}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_5": "\\section*{Claim}\nFor the two-dimensional Kitaev quantum double with a non-orientable subsystem\n$X=N_{k_X,n}$, $k_X\\ge 1$, let\n\\[\n\\varphi=(c_1,\\ldots,c_n),\n\\qquad\n\\alpha_\\varphi=(\\alpha_1,\\ldots,\\alpha_n),\n\\qquad\n\\alpha_j\\in\\operatorname{Rep}(C_{c_j}).\n\\]\nFor $\\beta\\in\\operatorname{Rep}(C_g)$ define the Frobenius-Schur indicator\n\\[\n\\iota_\\beta:=\\frac{1}{|C_g|}\\sum_{t\\in C_g}\\chi_\\beta(t^2).\n\\]\nIf\n\\[\nx^X_{\\alpha_\\varphi}:=\\sum_{[g]}\\sum_{\\beta\\in\\operatorname{Rep}(C_g)}\n\\iota_\\beta^{k_X}S_{(g,\\beta),(1,1)}^{2-k_X-n}\n\\prod_{j=1}^{n}S_{(g,\\beta),(c_j,\\alpha_j)},\n\\]\nand $y^Y_{\\alpha_\\varphi}$ is defined by the same non-orientable formula for\n$Y=N_{k_Y,n}$, then the block labelled by $([\\varphi],\\alpha_\\varphi)$ has small matrix\n\\[\n\\Psi_{\\varphi,\\alpha_\\varphi}\\in\n\\mathbb{C}^{x^X_{\\alpha_\\varphi}\\times y^Y_{\\alpha_\\varphi}}.\n\\]\nConsequently,\n\\[\n\\#\\operatorname{levels}_{[\\varphi],\\alpha_\\varphi}\\le\n\\min\\{x^X_{\\alpha_\\varphi},y^Y_{\\alpha_\\varphi}\\},\n\\qquad\n\\operatorname{degeneracy}=|G|^{|V_\\partial|-n}|[\\varphi]|\\prod_{j=1}^{n}d_{\\alpha_j}.\n\\]\nThus the non-orientable entanglement-spectrum multiplicities are exactly the finite-group quantum-double sector counts with crosscaps inserted through Frobenius-Schur indicators.\n\n\\section*{Premises}\n\\begin{align*}\n(P1)\\;&G\\text{ is finite, }C_g:=\\{a\\in G:ag=ga\\},\\text{ and }[g]\\text{ ranges over conjugacy classes}.\\\\\n(P2)\\;&S_{(g,\\beta),(c,\\alpha)}:=\\frac{1}{|C_g||C_c|}\n\\sum_{h\\in G:\\ h^{-1}gh\\in C_c}\\chi_\\beta(hch^{-1})\\chi_\\alpha(h^{-1}gh).\\\\\n(P3)\\;&\\iota_\\beta:=|C_g|^{-1}\\sum_{t\\in C_g}\\chi_\\beta(t^2).\\\\\n(P4)\\;&\\text{For }X=N_{k_X,n},\\text{ the quantum-double boundary multiplicity is the stated }\n\\iota_\\beta^{k_X}S\\text{-matrix sum }x^X_{\\alpha_\\varphi}.\\\\\n(P5)\\;&\\text{For }Y=N_{k_Y,n},\\text{ the column multiplicity }y^Y_{\\alpha_\\varphi}\\text{ is obtained by replacing }k_X\\text{ with }k_Y.\\\\\n(P6)\\;&\\text{The gauge-invariant block for }([\\varphi],\\alpha_\\varphi)\\text{ is }\n\\mathbb{C}^{x^X_{\\alpha_\\varphi}\\times y^Y_{\\alpha_\\varphi}}\\otimes\\mathbf{1}_{d_{\\alpha_\\varphi}}.\\\\\n(P7)\\;&d_{\\alpha_\\varphi}=\\prod_{j=1}^{n}d_{\\alpha_j}.\\\\\n(P8)\\;&\\text{Every positive level is copied by geometric degeneracy }|G|^{|V_\\partial|-n}\n\\text{ and orbit degeneracy }|[\\varphi]|.\\\\\n(P9)\\;&\\operatorname{rank}\\Psi\\le\\min\\{x,y\\}\\text{ for }\\Psi\\in\\mathbb{C}^{x\\times y}.\n\\end{align*}\n\n\\section*{Derivation}\nBy (P4), a non-orientable subsystem contributes\n\\begin{align*}\nx^X_{\\alpha_\\varphi}\n&=\\sum_{[g]}\\sum_{\\beta\\in\\operatorname{Rep}(C_g)}\n\\iota_\\beta^{k_X}S_{(g,\\beta),(1,1)}^{2-k_X-n}\n\\prod_{j=1}^{n}S_{(g,\\beta),(c_j,\\alpha_j)}.\n\\end{align*}\nThe factor $\\iota_\\beta^{k_X}$ is exactly the crosscap contribution, because each crosscap inserts one Frobenius-Schur indicator by (P3),(P4). By (P5), the other side contributes $y^Y_{\\alpha_\\varphi}$ with $k_X$ replaced by $k_Y$. Substituting these multiplicities into the general gauge-invariant block formula (P6) gives\n\\begin{align*}\n\\Psi_{\\varphi,\\alpha_\\varphi}&\\in\n\\mathbb{C}^{x^X_{\\alpha_\\varphi}\\times y^Y_{\\alpha_\\varphi}}.\n\\end{align*}\nTherefore the number of independent positive singular values in this sector is\n\\begin{align*}\n\\operatorname{rank}\\Psi_{\\varphi,\\alpha_\\varphi}\n&\\le\\min\\{x^X_{\\alpha_\\varphi},y^Y_{\\alpha_\\varphi}\\} &&\\text{by (P9).}\n\\end{align*}\nBy (P7),(P8), each positive level has degeneracy\n\\begin{align*}\n|G|^{|V_\\partial|-n}|[\\varphi]|d_{\\alpha_\\varphi}\n&=|G|^{|V_\\partial|-n}|[\\varphi]|\\prod_{j=1}^{n}d_{\\alpha_j}.\n\\end{align*}\nThus non-orientable Li-Haldane counting is not an additional assumption: it is obtained by replacing the orientable multiplicity with the Frobenius-Schur-weighted quantum-double multiplicity and then applying the same orbit, irrep, and geometric degeneracy accounting.\n\n\\section*{Final Result}\n\\[\n\\boxed{x^X_{\\alpha_\\varphi}=\\sum_{[g]}\\sum_{\\beta\\in\\operatorname{Rep}(C_g)}\n\\iota_\\beta^{k_X}S_{(g,\\beta),(1,1)}^{2-k_X-n}\n\\prod_{j=1}^{n}S_{(g,\\beta),(c_j,\\alpha_j)},\n\\quad\n\\Psi_{\\varphi,\\alpha_\\varphi}\\in\\mathbb{C}^{x^X_{\\alpha_\\varphi}\\times y^Y_{\\alpha_\\varphi}},\n\\quad\n\\operatorname{degeneracy}=|G|^{|V_\\partial|-n}|[\\varphi]|\\prod_{j=1}^{n}d_{\\alpha_j}}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_metadata": {
+    "output_file": "deeper.json",
+    "revision_id": "deeper_07_alignment_revision_3",
+    "revision_intent": "Strengthen alignment after review by converting downstream consequences into sharp capacity/equality statements, fixing notation, and making the quantum-double Li-Haldane orientable and non-orientable entries directly self-contained.",
+    "input_files": [
+      "deeper_reasoning_pseudo_algorithm.md",
+      "core_07.json",
+      "goals_07.json"
+    ],
+    "rubric_interpretation": {
+      "top_level_contract": "Exactly paper_title, contiguous deeper_reasoning_k strings, and one deeper_metadata object.",
+      "latex_contract": "Every deeper_reasoning_k is standalone LaTeX using only article, amsmath, and amssymb.",
+      "value_contract": "Entries must advance beyond core proofs while staying traceable to the canonical goals."
+    },
+    "goal_trace": {
+      "G1_loop_symmetric_entanglement_block_structure": [
+        "deeper_reasoning_1"
+      ],
+      "G2_gauge_invariant_topological_gauge_theory_entanglement": [
+        "deeper_reasoning_2",
+        "deeper_reasoning_3"
+      ],
+      "G3_kitaev_quantum_double_li_haldane_correspondence": [
+        "deeper_reasoning_4",
+        "deeper_reasoning_5"
+      ]
+    },
+    "entry_metadata": {
+      "deeper_reasoning_1": {
+        "title": "Sharp Schmidt-rank and entropy capacity of loop-symmetric block support",
+        "target_goal_component": "G1_loop_symmetric_entanglement_block_structure",
+        "declared_source_set": [
+          "core_reasoning_3",
+          "goals_07.G1"
+        ],
+        "major_advancement_modes": [
+          "sharp extremal consequence",
+          "attainability construction",
+          "block-to-entanglement-capacity theorem"
+        ],
+        "goal_alignment": "Uses the exact loop-symmetric block decomposition to determine not just a bound but the exact maximal Schmidt rank and entropy compatible with the support theorem.",
+        "scientific_payoff": "Turns the structural theorem into a measurable entanglement-capacity statement for loop-symmetric states before gauge invariance is imposed.",
+        "nontrivial_advance_over_sources": "Adds the converse construction that saturates the rank and entropy ceiling, avoiding a merely downstream inequality.",
+        "formal_sharpness": "All maxima are stated explicitly and proven with finite-dimensional singular-value constructions.",
+        "low_value_rejection_audit": "Rejects a restatement of the block decomposition; keeps only the sharp spectral capacity consequence.",
+        "selection_score": 0.97,
+        "controlled_external_lemmas": [
+          "rank additivity for direct sums",
+          "entropy maximized by the uniform distribution on fixed support",
+          "existence of full-rank rectangular matrices"
+        ],
+        "known_residual_risks_and_mitigation": "The construction optimizes over the vector space allowed by the theorem, not over a Hamiltonian ground-state manifold; this scope is stated through max over W in W."
+      },
+      "deeper_reasoning_2": {
+        "title": "Exact positive spectrum of gauge-invariant loop-symmetric blocks",
+        "target_goal_component": "G2_gauge_invariant_topological_gauge_theory_entanglement",
+        "declared_source_set": [
+          "core_reasoning_8",
+          "core_reasoning_13",
+          "goals_07.G2"
+        ],
+        "major_advancement_modes": [
+          "spectrum extraction",
+          "normalization accounting",
+          "geometric degeneracy accounting"
+        ],
+        "goal_alignment": "Connects the orbit/stabilizer/intertwiner block form directly to the normalized nonzero spectrum of rho_X.",
+        "scientific_payoff": "Separates state-dependent singular values from symmetry-forced orbit, irrep, and boundary-geometric degeneracies.",
+        "nontrivial_advance_over_sources": "Moves from a vector-space decomposition to an exact positive-eigenvalue multiset including q and N.",
+        "formal_sharpness": "Every multiplicity and normalization factor is explicit.",
+        "low_value_rejection_audit": "Avoids re-proving Schur's lemma and instead extracts the physically visible spectrum.",
+        "selection_score": 0.97,
+        "controlled_external_lemmas": [
+          "Kronecker-product spectrum",
+          "direct-sum spectrum",
+          "Gram matrix normalization"
+        ],
+        "known_residual_risks_and_mitigation": "Zero eigenvalues are excluded by using positive-spectrum notation."
+      },
+      "deeper_reasoning_3": {
+        "title": "Entropy decomposition into edge, classical-sector, and forced-degeneracy terms",
+        "target_goal_component": "G2_gauge_invariant_topological_gauge_theory_entanglement",
+        "declared_source_set": [
+          "core_reasoning_13",
+          "goals_07.G2"
+        ],
+        "major_advancement_modes": [
+          "entropy reparameterisation",
+          "probabilistic interpretation",
+          "rank-one recovery"
+        ],
+        "goal_alignment": "Rewrites the general entropy formula into a probability distribution over sector-singular-value labels and recovers the minimally entangled formula.",
+        "scientific_payoff": "Clarifies which part of the entropy is boundary-local, which is classical mixing, and which is forced by orbit-irrep degeneracy.",
+        "nontrivial_advance_over_sources": "Introduces normalized p variables to expose the entropy mechanism without changing the paper's formula.",
+        "formal_sharpness": "Notation is fully LaTeX-consistent and the rank-one special case follows as a displayed corollary.",
+        "low_value_rejection_audit": "Avoids another isolated rank-one case by proving the general decomposition first.",
+        "selection_score": 0.96,
+        "controlled_external_lemmas": [
+          "spectral entropy formula",
+          "probability normalization"
+        ],
+        "known_residual_risks_and_mitigation": "Only positive singular values are included, so logarithms are well-defined."
+      },
+      "deeper_reasoning_4": {
+        "title": "Orientable quantum-double Li-Haldane multiplicity dictionary",
+        "target_goal_component": "G3_kitaev_quantum_double_li_haldane_correspondence",
+        "declared_source_set": [
+          "goals_07.G3",
+          "core_reasoning_8",
+          "core_reasoning_13"
+        ],
+        "major_advancement_modes": [
+          "direct G3 coverage",
+          "S-matrix multiplicity substitution",
+          "entanglement-level degeneracy extraction"
+        ],
+        "goal_alignment": "Directly states the orientable finite-group quantum-double S-matrix formula and proves how it becomes the entanglement-spectrum block size.",
+        "scientific_payoff": "Makes the Li-Haldane correspondence operational at the level of small-matrix dimensions, level counts, and degeneracies.",
+        "nontrivial_advance_over_sources": "Does not merely quote x_alpha; it connects x/y multiplicities to possible singular-value levels and symmetry degeneracies.",
+        "formal_sharpness": "The centralizer, S-matrix, product irrep dimension, and level degeneracy are all explicit.",
+        "low_value_rejection_audit": "Avoids broad discussion of Li-Haldane and keeps the exact finite-group D(G) counting statement.",
+        "selection_score": 0.97,
+        "controlled_external_lemmas": [
+          "rank bound for rectangular matrices",
+          "multiplicativity of product-representation dimensions"
+        ],
+        "known_residual_risks_and_mitigation": "Full equality of level count requires full-rank small matrices; the entry distinguishes exact block multiplicity from state-dependent rank."
+      },
+      "deeper_reasoning_5": {
+        "title": "Non-orientable quantum-double Frobenius-Schur multiplicity dictionary",
+        "target_goal_component": "G3_kitaev_quantum_double_li_haldane_correspondence",
+        "declared_source_set": [
+          "goals_07.G3",
+          "core_reasoning_6",
+          "core_reasoning_8"
+        ],
+        "major_advancement_modes": [
+          "direct non-orientable G3 coverage",
+          "Frobenius-Schur crosscap accounting",
+          "Li-Haldane multiplicity-to-level transfer"
+        ],
+        "goal_alignment": "Covers the non-orientable branch of G3 by making the iota_beta crosscap factor part of the exact entanglement multiplicity statement.",
+        "scientific_payoff": "Shows that the same full-spectrum correspondence survives non-orientable topology after replacing orientable S-matrix powers by Frobenius-Schur-weighted sums.",
+        "nontrivial_advance_over_sources": "Transfers the non-orientable quantum-double count into the gauge-invariant entanglement-spectrum degeneracy formula.",
+        "formal_sharpness": "All crosscap, boundary, orbit, and product-irrep factors are explicit.",
+        "low_value_rejection_audit": "Avoids duplicating the orientable proof by isolating exactly what changes under non-orientability.",
+        "selection_score": 0.97,
+        "controlled_external_lemmas": [
+          "rank bound for rectangular matrices",
+          "Frobenius-Schur indicator crosscap insertion",
+          "product irrep dimension"
+        ],
+        "known_residual_risks_and_mitigation": "As in the orientable case, the number of nonzero levels depends on the state-dependent rank of the small matrix; the exact universal object is the block multiplicity."
+      }
+    },
+    "rejected_low_value_candidates": [
+      "A duplicate proof of the loop-operator fusion rule, because it is already a core reasoning item.",
+      "A purely motivational Li-Haldane paragraph without formulas, because G3 requires exact S-matrix and Frobenius-Schur multiplicities.",
+      "A bound-only G1 entry without attainability, because exact maximal capacity gives higher-value reasoning."
+    ],
+    "global_alignment_audit": {
+      "rubric_compliance": "The file is a single UTF-8 JSON object with contiguous deeper_reasoning_1 through deeper_reasoning_5 and exactly one deeper_metadata field.",
+      "core_alignment": "The entries use the core block decomposition, gauge-invariant orbit/stabilizer decomposition, entropy formula, and non-orientable character-count ingredients as sources for deeper consequences.",
+      "goal_alignment": "The entry set covers G1 once, G2 twice, and G3 twice, with the previous weak G3 coverage replaced by direct orientable and non-orientable D(G) multiplicity derivations.",
+      "latex_validation": "Each reasoning entry was compiled using article, amsmath, and amssymb only."
+    },
+    "known_residual_risks_and_mitigation": [
+      "The quantum-double S-matrix and Frobenius-Schur multiplicity formulas are treated as controlled premises from the paper-goal/core source rather than re-derived from modular tensor category axioms; this is appropriate because the task is deeper alignment to the uploaded extraction, not a full independent proof of D(G) modular data.",
+      "The number of actual nonzero entanglement levels is state-dependent through the rank of each small matrix; the entries distinguish universal block multiplicities from full-rank saturation."
+    ]
+  }
+}

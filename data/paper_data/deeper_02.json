@@ -1,165 +1,224 @@
 {
-  "paper_title": "Limits on the evolutionary rates of biological traits (García-Pintos, 2024, Scientific Reports)",
-  "deeper_reasoning_1": "\\section*{Claim}\nThe general Price rate limit is not only an upper bound but a sharp projection theorem. At any fixed differentiability time, define\n\\[\nR_A:=\\frac{d\\langle A\\rangle}{dt}-\\langle \\dot A\\rangle .\n\\]\nIf \\(\\sigma_A\\sigma_r>0\\), then\n\\[\nR_A=\\sigma_A\\sigma_r\\rho_{A,r},\\qquad -1\\leq \\rho_{A,r}\\leq 1,\n\\]\nwhere \\(\\rho_{A,r}\\) is the weighted correlation between the centered trait and centered growth rate. Since \\(\\sigma_r^2=I_F\\),\n\\[\n|R_A|\\leq \\sigma_A\\sqrt{I_F}.\n\\]\nFor fixed \\(\\sigma_A=s>0\\), the largest possible value of \\(|R_A|\\) over all trait coordinates with that standard deviation is exactly \\(s\\sigma_r=s\\sqrt{I_F}\\). Equality holds exactly when the centered trait is proportional to the centered growth-rate vector on the support of \\(p\\). If \\(\\sigma_A\\sigma_r=0\\), then \\(R_A=0\\).\n\n\\section*{Premises}\n\\begin{align*}\n(P1)\\quad &\\mathcal J\\text{ is finite},\\quad p_j>0,\\quad \\sum_{j\\in\\mathcal J}p_j=1.\\\\\n(P2)\\quad &\\langle X\\rangle:=\\sum_{j\\in\\mathcal J}p_jx_j,\\quad\n\\sigma_X^2:=\\sum_{j\\in\\mathcal J}p_j(x_j-\\langle X\\rangle)^2.\\\\\n(P3)\\quad &R_A=\\operatorname{cov}(A,r)=\\sum_{j\\in\\mathcal J}p_j(a_j-\\langle A\\rangle)(r_j-\\langle r\\rangle).\\\\\n(P4)\\quad &I_F=\\sigma_r^2.\\\\\n(P5)\\quad &\\left|\\sum_{j\\in\\mathcal J}p_ju_jv_j\\right|^2\n\\leq \\left(\\sum_{j\\in\\mathcal J}p_ju_j^2\\right)\\left(\\sum_{j\\in\\mathcal J}p_jv_j^2\\right),\n\\end{align*}\nwith equality in \\((P5)\\) exactly when the vectors \\((u_j)\\) and \\((v_j)\\) are linearly dependent on the support of \\(p\\).\n\n\\section*{Derivation}\nAssume first that \\(\\sigma_A\\sigma_r>0\\). Define\n\\begin{align*}\n\\rho_{A,r}\n&:=\\frac{\\sum_{j\\in\\mathcal J}p_j(a_j-\\langle A\\rangle)(r_j-\\langle r\\rangle)}{\\sigma_A\\sigma_r}.\n\\end{align*}\nThen\n\\begin{align*}\nR_A\n&=\\sum_{j\\in\\mathcal J}p_j(a_j-\\langle A\\rangle)(r_j-\\langle r\\rangle) &&\\text{by }(P3)\\\\\n&=\\sigma_A\\sigma_r\\rho_{A,r}. &&\\text{by the definition of }\\rho_{A,r}\n\\end{align*}\nMoreover,\n\\begin{align*}\n|\\rho_{A,r}|^2\n&=\\frac{\\left|\\sum_{j\\in\\mathcal J}p_j(a_j-\\langle A\\rangle)(r_j-\\langle r\\rangle)\\right|^2}{\\sigma_A^2\\sigma_r^2}\\\\\n&\\leq \\frac{\\left(\\sum_{j\\in\\mathcal J}p_j(a_j-\\langle A\\rangle)^2\\right)\n\\left(\\sum_{j\\in\\mathcal J}p_j(r_j-\\langle r\\rangle)^2\\right)}{\\sigma_A^2\\sigma_r^2} &&\\text{by }(P5)\\\\\n&=1. &&\\text{by }(P2)\n\\end{align*}\nThus \\(-1\\leq \\rho_{A,r}\\leq 1\\), and\n\\begin{align*}\n|R_A|\n&\\leq \\sigma_A\\sigma_r &&\\text{because }|\\rho_{A,r}|\\leq 1\\\\\n&=\\sigma_A\\sqrt{I_F}. &&\\text{by }(P4)\n\\end{align*}\nFor sharpness, fix \\(s>0\\) and set\n\\[\na_j:=c+s\\frac{r_j-\\langle r\\rangle}{\\sigma_r}\n\\]\nwith arbitrary constant \\(c\\). Then \\(\\langle A\\rangle=c\\), \\(\\sigma_A=s\\), and\n\\begin{align*}\nR_A\n&=\\sum_{j\\in\\mathcal J}p_j\\left(s\\frac{r_j-\\langle r\\rangle}{\\sigma_r}\\right)(r_j-\\langle r\\rangle)\\\\\n&=s\\sigma_r.\n\\end{align*}\nChanging the sign of the centered term gives \\(R_A=-s\\sigma_r\\), so the supremum of \\(|R_A|\\) is exactly \\(s\\sigma_r\\). Equality in the bound is exactly the equality case of weighted Cauchy--Schwarz, namely\n\\[\na_j-\\langle A\\rangle=\\lambda(r_j-\\langle r\\rangle)\n\\]\nfor some real \\(\\lambda\\) on the support of \\(p\\). If \\(\\sigma_A=0\\) or \\(\\sigma_r=0\\), the covariance in \\((P3)\\) is zero by the same Cauchy--Schwarz inequality.\n\n\\section*{Final Result}\n\\[\n\\boxed{\\displaystyle R_A=\\sigma_A\\sigma_r\\rho_{A,r},\\qquad |R_A|\\leq \\sigma_A\\sqrt{I_F},\\qquad\n\\sup_{\\sigma_A=s}|R_A|=s\\sqrt{I_F}}\n\\]\n\\hfill$\\blacksquare$",
-  "deeper_reasoning_2": "\\section*{Claim}\nFor mutation-free replicator dynamics, centered fitness is the unique steepest direction for changing trait averages. Suppose\n\\[\n\\dot p_j=p_j(f_j-\\langle f\\rangle),\\qquad \\sigma_f>0.\n\\]\nFor every trait \\(A\\), the population-frequency contribution to the trait-average rate is\n\\[\nR_A:=\\frac{d\\langle A\\rangle}{dt}-\\langle \\dot A\\rangle=\\operatorname{cov}(A,f).\n\\]\nAmong all traits with fixed standard deviation \\(\\sigma_A=s\\), the maximum possible value of \\(|R_A|\\) is exactly \\(s\\sigma_f\\), attained exactly when the centered trait is proportional to centered fitness. In particular, taking \\(A=f\\) gives\n\\[\n\\frac{d\\langle f\\rangle}{dt}-\\langle \\dot f\\rangle=\\sigma_f^2,\n\\]\nso Fisher's variance identity is the unnormalised steepest-direction case.\n\n\\section*{Premises}\n\\begin{align*}\n(P1)\\quad &\\mathcal J\\text{ is finite},\\quad p_j>0,\n\\quad \\sum_{j\\in\\mathcal J}p_j=1.\\\\\n(P2)\\quad &\\dot p_j=p_j(f_j-\\langle f\\rangle).\\\\\n(P3)\\quad &R_A=\\frac{d\\langle A\\rangle}{dt}-\\langle \\dot A\\rangle=\\operatorname{cov}(A,f).\\\\\n(P4)\\quad &\\operatorname{cov}(A,f)=\\sum_{j\\in\\mathcal J}p_j(a_j-\\langle A\\rangle)(f_j-\\langle f\\rangle).\\\\\n(P5)\\quad &\\sigma_X^2=\\sum_{j\\in\\mathcal J}p_j(x_j-\\langle X\\rangle)^2.\\\\\n(P6)\\quad &\\left|\\sum_{j\\in\\mathcal J}p_ju_jv_j\\right|^2\n\\leq \\left(\\sum_{j\\in\\mathcal J}p_ju_j^2\\right)\\left(\\sum_{j\\in\\mathcal J}p_jv_j^2\\right),\n\\end{align*}\nwith equality exactly when \\((u_j)\\) and \\((v_j)\\) are linearly dependent on the support of \\(p\\).\n\n\\section*{Derivation}\nFor any trait \\(A\\),\n\\begin{align*}\n|R_A|^2\n&=|\\operatorname{cov}(A,f)|^2 &&\\text{by }(P3)\\\\\n&=\\left|\\sum_{j\\in\\mathcal J}p_j(a_j-\\langle A\\rangle)(f_j-\\langle f\\rangle)\\right|^2 &&\\text{by }(P4)\\\\\n&\\leq \\left(\\sum_{j\\in\\mathcal J}p_j(a_j-\\langle A\\rangle)^2\\right)\n\\left(\\sum_{j\\in\\mathcal J}p_j(f_j-\\langle f\\rangle)^2\\right) &&\\text{by }(P6)\\\\\n&=\\sigma_A^2\\sigma_f^2. &&\\text{by }(P5)\n\\end{align*}\nHence \\(|R_A|\\leq \\sigma_A\\sigma_f\\). If \\(\\sigma_A=s\\), then \\(|R_A|\\leq s\\sigma_f\\). To show this is sharp, choose\n\\[\na_j:=c+s\\frac{f_j-\\langle f\\rangle}{\\sigma_f}\n\\]\nwith arbitrary constant \\(c\\). Then \\(\\langle A\\rangle=c\\), \\(\\sigma_A=s\\), and\n\\begin{align*}\nR_A\n&=\\sum_{j\\in\\mathcal J}p_j\\left(s\\frac{f_j-\\langle f\\rangle}{\\sigma_f}\\right)(f_j-\\langle f\\rangle)\\\\\n&=s\\sigma_f.\n\\end{align*}\nChanging the sign of the centered term gives \\(R_A=-s\\sigma_f\\), so\n\\[\n\\sup_{\\sigma_A=s}|R_A|=s\\sigma_f.\n\\]\nThe equality condition in \\((P6)\\) gives the exact attaining traits:\n\\[\na_j-\\langle A\\rangle=\\lambda(f_j-\\langle f\\rangle)\n\\]\nfor some real \\(\\lambda\\) on the support of \\(p\\). Finally, set \\(A=f\\). Then \\(a_j=f_j\\), so\n\\begin{align*}\n\\frac{d\\langle f\\rangle}{dt}-\\langle \\dot f\\rangle\n&=\\operatorname{cov}(f,f) &&\\text{by }(P3)\\\\\n&=\\sigma_f^2. &&\\text{by }(P5)\n\\end{align*}\n\n\\section*{Final Result}\n\\[\n\\boxed{\\displaystyle \\sup_{\\sigma_A=s}\\left|\\frac{d\\langle A\\rangle}{dt}-\\langle \\dot A\\rangle\\right|=s\\sigma_f,\n\\qquad\n\\frac{d\\langle f\\rangle}{dt}-\\langle \\dot f\\rangle=\\sigma_f^2}\n\\]\n\\hfill$\\blacksquare$",
-  "deeper_reasoning_3": "\\section*{Claim}\nThe deterministic replicator-mutator rate limit contains a sharper conditional-variance structure. Let\n\\[\n\\dot p_j=\\sum_{k\\in\\mathcal J}p_kQ_{kj}f_k-p_j\\langle f\\rangle,\n\\qquad\n\\mu_j:=\\sum_{k\\in\\mathcal J}p_kQ_{kj},\n\\qquad\nb_k:=\\sum_{j\\in\\mathcal J}Q_{kj}a_j.\n\\]\nDefine the corrected residual\n\\[\nR_A:=\\frac{d\\langle A\\rangle}{dt}-\\langle \\dot A\\rangle-\n\\langle f\\rangle(\\langle A\\rangle_\\mu-\\langle A\\rangle).\n\\]\nThen\n\\[\nR_A=\\operatorname{cov}_p(f,b),\n\\qquad |R_A|\\leq \\sigma_f\\sigma_b\\leq \\sigma_f\\sigma_{A,\\mu},\n\\]\nwhere\n\\[\n\\sigma_b^2:=\\sum_{k\\in\\mathcal J}p_k(b_k-\\langle A\\rangle_\\mu)^2.\n\\]\nMoreover,\n\\[\n\\sigma_{A,\\mu}^2=\\sigma_b^2+\\eta_A,\n\\qquad\n\\eta_A:=\\sum_{k\\in\\mathcal J}p_k\\sum_{j\\in\\mathcal J}Q_{kj}(a_j-b_k)^2\\geq 0.\n\\]\nThus the paper's \\(\\sigma_{A,\\mu}\\sigma_f\\) bound is conservative exactly by the within-parent mutation variance \\(\\eta_A\\); the selection-sensitive part depends only on the variance across parent types of the post-mutation conditional trait mean \\(b_k\\).\n\n\\section*{Premises}\n\\begin{align*}\n(P1)\\quad &\\mathcal J\\text{ is finite},\\quad p_k>0,\n\\quad \\sum_{k\\in\\mathcal J}p_k=1.\\\\\n(P2)\\quad &Q_{kj}\\geq0,\n\\quad \\sum_{j\\in\\mathcal J}Q_{kj}=1\\text{ for every }k.\\\\\n(P3)\\quad &\\mu_j:=\\sum_{k\\in\\mathcal J}p_kQ_{kj},\n\\quad b_k:=\\sum_{j\\in\\mathcal J}Q_{kj}a_j.\\\\\n(P4)\\quad &\\langle A\\rangle_\\mu:=\\sum_{j\\in\\mathcal J}\\mu_ja_j,\n\\quad \\langle f\\rangle:=\\sum_{k\\in\\mathcal J}p_kf_k.\\\\\n(P5)\\quad &\\sigma_{A,\\mu}^2:=\\sum_{j\\in\\mathcal J}\\mu_j(a_j-\\langle A\\rangle_\\mu)^2,\n\\quad \\sigma_f^2:=\\sum_{k\\in\\mathcal J}p_k(f_k-\\langle f\\rangle)^2.\\\\\n(P6)\\quad &R_A=\\sum_{k\\in\\mathcal J}p_k(f_k-\\langle f\\rangle)(b_k-\\langle A\\rangle_\\mu).\\\\\n(P7)\\quad &\\left|\\sum_{k\\in\\mathcal J}p_ku_kv_k\\right|^2\n\\leq \\left(\\sum_{k\\in\\mathcal J}p_ku_k^2\\right)\\left(\\sum_{k\\in\\mathcal J}p_kv_k^2\\right).\n\\end{align*}\n\n\\section*{Derivation}\nFirst,\n\\begin{align*}\n\\sum_{k\\in\\mathcal J}p_kb_k\n&=\\sum_{k\\in\\mathcal J}p_k\\sum_{j\\in\\mathcal J}Q_{kj}a_j &&\\text{by }(P3)\\\\\n&=\\sum_{j\\in\\mathcal J}\\left(\\sum_{k\\in\\mathcal J}p_kQ_{kj}\\right)a_j &&\\text{finite sums}\\\\\n&=\\sum_{j\\in\\mathcal J}\\mu_ja_j &&\\text{by }(P3)\\\\\n&=\\langle A\\rangle_\\mu. &&\\text{by }(P4)\n\\end{align*}\nTherefore \\((P6)\\) can be written as\n\\begin{align*}\nR_A\n&=\\sum_{k\\in\\mathcal J}p_k(f_k-\\langle f\\rangle)(b_k-\\langle A\\rangle_\\mu)\\\\\n&=\\sum_{k\\in\\mathcal J}p_kf_kb_k-\n\\left(\\sum_{k\\in\\mathcal J}p_kf_k\\right)\n\\left(\\sum_{k\\in\\mathcal J}p_kb_k\\right)\\\\\n&=\\operatorname{cov}_p(f,b).\n\\end{align*}\nApplying weighted Cauchy--Schwarz,\n\\begin{align*}\n|R_A|^2\n&\\leq \\left(\\sum_{k\\in\\mathcal J}p_k(f_k-\\langle f\\rangle)^2\\right)\n\\left(\\sum_{k\\in\\mathcal J}p_k(b_k-\\langle A\\rangle_\\mu)^2\\right) &&\\text{by }(P7)\\\\\n&=\\sigma_f^2\\sigma_b^2, &&\\text{by definitions}\n\\end{align*}\nso \\(|R_A|\\leq\\sigma_f\\sigma_b\\). It remains to compare \\(\\sigma_b\\) with \\(\\sigma_{A,\\mu}\\). Since \\(a_j-\\langle A\\rangle_\\mu=(a_j-b_k)+(b_k-\\langle A\\rangle_\\mu)\\),\n\\begin{align*}\n\\sigma_{A,\\mu}^2\n&=\\sum_{j\\in\\mathcal J}\\mu_j(a_j-\\langle A\\rangle_\\mu)^2 &&\\text{by }(P5)\\\\\n&=\\sum_{k,j\\in\\mathcal J}p_kQ_{kj}(a_j-\\langle A\\rangle_\\mu)^2 &&\\text{by }(P3)\\\\\n&=\\sum_{k,j\\in\\mathcal J}p_kQ_{kj}\\left((a_j-b_k)+(b_k-\\langle A\\rangle_\\mu)\\right)^2\\\\\n&=\\sum_{k,j\\in\\mathcal J}p_kQ_{kj}(a_j-b_k)^2\n+\\sum_{k,j\\in\\mathcal J}p_kQ_{kj}(b_k-\\langle A\\rangle_\\mu)^2\\\\\n&\\quad +2\\sum_{k\\in\\mathcal J}p_k(b_k-\\langle A\\rangle_\\mu)\n\\sum_{j\\in\\mathcal J}Q_{kj}(a_j-b_k).\n\\end{align*}\nFor each \\(k\\),\n\\begin{align*}\n\\sum_{j\\in\\mathcal J}Q_{kj}(a_j-b_k)\n&=\\sum_{j\\in\\mathcal J}Q_{kj}a_j-b_k\\sum_{j\\in\\mathcal J}Q_{kj}\\\\\n&=b_k-b_k=0. &&\\text{by }(P2)\\text{ and }(P3)\n\\end{align*}\nAlso,\n\\begin{align*}\n\\sum_{k,j\\in\\mathcal J}p_kQ_{kj}(b_k-\\langle A\\rangle_\\mu)^2\n&=\\sum_{k\\in\\mathcal J}p_k(b_k-\\langle A\\rangle_\\mu)^2\\sum_{j\\in\\mathcal J}Q_{kj}\\\\\n&=\\sigma_b^2. &&\\text{by }(P2)\n\\end{align*}\nThus\n\\[\n\\sigma_{A,\\mu}^2=\\sigma_b^2+\\eta_A,\n\\]\nwhere \\(\\eta_A\\geq0\\) by definition as a sum of nonnegative terms. Hence \\(\\sigma_b\\leq\\sigma_{A,\\mu}\\), and\n\\[\n|R_A|\\leq \\sigma_f\\sigma_b\\leq \\sigma_f\\sigma_{A,\\mu}.\n\\]\n\n\\section*{Final Result}\n\\[\n\\boxed{\\displaystyle R_A=\\operatorname{cov}_p(f,b),\\qquad\n|R_A|\\leq\\sigma_f\\sigma_b,\\qquad\n\\sigma_{A,\\mu}^2=\\sigma_b^2+\\eta_A\\geq\\sigma_b^2}\n\\]\n\\hfill$\\blacksquare$",
-  "deeper_reasoning_4": "\\section*{Claim}\nThe stochastic total-rate inequality yields a force-budget inversion theorem and a precise version of the paper's regime demarcation. Define\n\\begin{align*}\nT_A&:=\\overline{\\left|\\int_0^\\tau(d\\langle A\\rangle-\\langle dA\\rangle)\\right|},\\\\\nS_A&:=\\int_0^\\tau\\sigma_{A,\\mu}\\sigma_f\\,dt,\\\\\nM_A&:=\\int_0^\\tau\\langle f\\rangle|\\langle A\\rangle_\\mu-\\langle A\\rangle|\\,dt,\\\\\nD_A&:=\\left(\\|\\gamma\\|_\\infty^2\\int_0^\\tau\\overline{\\sigma_A^2}\\,dt\\right)^{1/2}.\n\\end{align*}\nThen every stochastic replicator-mutator trajectory satisfying the paper's assumptions obeys\n\\[\nT_A\\leq S_A+M_A+D_A.\n\\]\nConsequently, any observed or certified value of \\(T_A\\) imposes the necessary lower bounds\n\\begin{align*}\nS_A&\\geq \\max\\{T_A-M_A-D_A,0\\},\\\\\nM_A&\\geq \\max\\{T_A-S_A-D_A,0\\},\\\\\nD_A&\\geq \\max\\{T_A-S_A-M_A,0\\}.\n\\end{align*}\nIf \\(V_A:=\\int_0^\\tau\\overline{\\sigma_A^2}\\,dt>0\\), the last inequality is equivalently\n\\[\n\\|\\gamma\\|_\\infty\\geq \\frac{\\max\\{T_A-S_A-M_A,0\\}}{\\sqrt{V_A}}.\n\\]\nThus the paper's three sources are not merely additive upper-bound terms: they form an exclusion certificate. A claimed trait-change magnitude exceeding the sum of any two terms forces the remaining source to be at least the residual gap. Normalised budget shares\n\\[\n\\theta_{\\mathrm{sel}}:=\\frac{S_A}{S_A+M_A+D_A},\\quad\n\\theta_{\\mathrm{mut}}:=\\frac{M_A}{S_A+M_A+D_A},\\quad\n\\theta_{\\mathrm{drift}}:=\\frac{D_A}{S_A+M_A+D_A}\n\\]\ntherefore provide a quantitative version of the paper's selection-, mutation-, and drift-dominated regimes whenever \\(S_A+M_A+D_A>0\\).\n\n\\section*{Premises}\n\\begin{align*}\n(P1)\\quad &T_A,S_A,M_A,D_A\\geq0.\\\\\n(P2)\\quad &T_A\\leq S_A+M_A+D_A.\\\\\n(P3)\\quad &D_A=\\|\\gamma\\|_\\infty\\sqrt{V_A},\\quad V_A:=\\int_0^\\tau\\overline{\\sigma_A^2}\\,dt.\\\\\n(P4)\\quad &\\text{For nonnegative }x,y,z,\\quad x\\leq y+z\\Longrightarrow x-z\\leq y.\\\\\n(P5)\\quad &\\text{For nonnegative }y,\\quad y\\geq q\\Longleftrightarrow y\\geq\\max\\{q,0\\}\\text{ whenever }q\\leq y.\\\\\n(P6)\\quad &\\text{For a sequence indexed by }m,\\quad S_A\\gg\\{M_A,D_A\\}\\text{ means }M_A/S_A\\to0\\text{ and }D_A/S_A\\to0.\n\\end{align*}\n\n\\section*{Derivation}\nStarting from the stochastic total bound,\n\\begin{align*}\nT_A&\\leq S_A+M_A+D_A &&\\text{by }(P2).\n\\end{align*}\nSubtracting the two non-selected budgets gives\n\\begin{align*}\nT_A-M_A-D_A&\\leq S_A,\\\\\nT_A-S_A-D_A&\\leq M_A,\\\\\nT_A-S_A-M_A&\\leq D_A. &&\\text{by algebra and }(P4)\n\\end{align*}\nSince each budget is nonnegative by \\((P1)\\), these imply\n\\begin{align*}\nS_A&\\geq\\max\\{T_A-M_A-D_A,0\\},\\\\\nM_A&\\geq\\max\\{T_A-S_A-D_A,0\\},\\\\\nD_A&\\geq\\max\\{T_A-S_A-M_A,0\\}. &&\\text{by }(P5)\n\\end{align*}\nIf \\(V_A>0\\), then using \\((P3)\\),\n\\begin{align*}\n\\|\\gamma\\|_\\infty\\sqrt{V_A}\n&=D_A\\\\\n&\\geq\\max\\{T_A-S_A-M_A,0\\},\n\\end{align*}\nso division by \\(\\sqrt{V_A}\\) yields\n\\begin{align*}\n\\|\\gamma\\|_\\infty\n&\\geq \\frac{\\max\\{T_A-S_A-M_A,0\\}}{\\sqrt{V_A}}.\n\\end{align*}\nFinally assume \\(S_A+M_A+D_A>0\\). The definitions of the shares give\n\\begin{align*}\n\\theta_{\\mathrm{sel}}+\\theta_{\\mathrm{mut}}+\\theta_{\\mathrm{drift}}&=1,\\\\\n\\theta_{\\mathrm{sel}}&=\\frac{1}{1+M_A/S_A+D_A/S_A}\\quad\\text{when }S_A>0.\n\\end{align*}\nHence, along any sequence with \\(S_A\\gg\\{M_A,D_A\\}\\),\n\\begin{align*}\n\\theta_{\\mathrm{sel}}&\\to1,\n\\end{align*}\nwhile the same argument with the labels permuted gives \\(\\theta_{\\mathrm{mut}}\\to1\\) for mutation-dominated sequences and \\(\\theta_{\\mathrm{drift}}\\to1\\) for drift-dominated sequences.\n\n\\section*{Final Result}\n\\[\n\\boxed{\\displaystyle\nT_A\\leq S_A+M_A+D_A,\n\\quad\nS_A\\geq\\max\\{T_A-M_A-D_A,0\\},\n\\quad\nM_A\\geq\\max\\{T_A-S_A-D_A,0\\},\n\\quad\nD_A\\geq\\max\\{T_A-S_A-M_A,0\\}}\n\\]\n\\[\n\\boxed{\\displaystyle\nV_A>0\\Longrightarrow\n\\|\\gamma\\|_\\infty\\geq\\frac{\\max\\{T_A-S_A-M_A,0\\}}{\\sqrt{V_A}}}\n\\]\n\\hfill$\\blacksquare$",
+  "paper_title": "Exact solution for the collective non-Markovian decay of two fully excited quantum emitters (Lanuza, 2024, arXiv)",
+  "deeper_reasoning_1": "\\section*{Claim}\nThe solved transformed amplitudes are an exact solution certificate for the original two-excitation initial-value problem.  More precisely, if the parity functions \\(C_\\sigma(\\omega,z)\\) satisfy the secular equation, if \\(C(\\omega,z)\\) is reconstructed from the parity identity, and if \\(\\widetilde A,\\widetilde B_{p,q},\\widetilde B_{q,q},\\widetilde C_{m,q}\\) are then reconstructed by the transformed Schrodinger equations, then the inverse Wick-rotated Laplace transform gives the unique trajectory generated by the Hamiltonian from \\(\\widehat a_1^\\dagger\\widehat a_2^\\dagger\\vert0\\rangle\\).\n\n\\section*{Premises}\n\\begin{align*}\n\\text{(P1)}\\quad & [\\widehat N,\\widehat H]=0,\\qquad\n\\widehat N\\vert\\psi(0)\\rangle=2\\vert\\psi(0)\\rangle,\\\\\n\\text{(P2)}\\quad & \\mathcal H_2=\\operatorname{span}\\{\\widehat a_1^\\dagger\\widehat a_2^\\dagger\\vert0\\rangle,\n\\widehat b_j^\\dagger\\widehat b_{j'}^\\dagger\\vert0\\rangle,\n(1/\\sqrt2)\\widehat b_j^\\dagger\\widehat b_j^\\dagger\\vert0\\rangle,\n\\widehat a_m^\\dagger\\widehat b_j^\\dagger\\vert0\\rangle\\},\\\\\n\\text{(P3)}\\quad & \\vert\\psi(t)\\rangle=A(t)\\widehat a_1^\\dagger\\widehat a_2^\\dagger\\vert0\\rangle\n+\\sum_{j<j'}B_{j,j'}(t)\\widehat b_j^\\dagger\\widehat b_{j'}^\\dagger\\vert0\\rangle\n+\\sum_j B_{j,j}(t)(1/\\sqrt2)\\widehat b_j^\\dagger\\widehat b_j^\\dagger\\vert0\\rangle\n+\\sum_{m,j}C_{m,j}(t)\\widehat a_m^\\dagger\\widehat b_j^\\dagger\\vert0\\rangle,\\\\\n\\text{(P4)}\\quad & C_\\sigma(\\omega,z)=\\frac{1}{2}\\left(C(\\omega,z)+\\sigma z^{-1}C(\\omega,z^{-1})\\right),\\qquad\nC_\\sigma(\\omega,z^{-1})=\\sigma zC_\\sigma(\\omega,z),\\\\\n\\text{(P5)}\\quad & C_\\sigma(\\omega,z)\\text{ satisfies the parity-resolved secular equation with }\n\\delta\\omega=\\omega+\\frac{z+z^{-1}}{2}\\text{ and }\\widetilde a_\\sigma(\\delta\\omega),\\\\\n\\text{(P6)}\\quad & \\widetilde A,\\widetilde B_{p,q},\\widetilde B_{q,q},\\widetilde C_{m,q}\n\\text{ are reconstructed from }C_\\sigma\\text{ by the transformed equations},\\\\\n\\text{(P7)}\\quad & \\widetilde X(\\omega):=(\\widetilde A,\\widetilde B,\\widetilde C)(\\omega)\n\\text{ satisfies }(\\omega-\\widehat H_2/\\hbar)\\widetilde X(\\omega)=X_0,\\\\\n\\text{(P8)}\\quad & X(t)=-\\frac{1}{2\\pi i}\\int_{-\\infty+i0^+}^{+\\infty+i0^+}\\widetilde X(\\omega)e^{-i\\omega t}\\,d\\omega,\\\\\n\\text{(P9)}\\quad & \\text{On the chosen transform class, the inverse transform is injective and differentiating under the contour is valid.}\n\\end{align*}\n\n\\section*{Derivation}\nBy (P1), the exact evolution never leaves \\(\\mathcal H_2\\).  Therefore the coefficient vector \\(X(t)\\) in (P3) is a complete coordinate description of the state.  Taking the Wick-rotated Laplace transform of the coefficient equations induced by \\(\\widehat H\\) gives a linear resolvent equation of the form\n\\[\n(\\omega-\\widehat H_2/\\hbar)\\widetilde X(\\omega)=X_0 .\n\\]\nBy (P5) and (P6), the constructed amplitudes satisfy exactly this transformed equation, so (P7) holds for the constructed vector.\n\nNow apply the inverse transform (P8).  Using (P9),\n\\begin{align*}\ni\\frac{d}{dt}X(t)\n&=-\\frac{i}{2\\pi i}\\int_{-\\infty+i0^+}^{+\\infty+i0^+}(-i\\omega)\\widetilde X(\\omega)e^{-i\\omega t}\\,d\\omega\\\\\n&=-\\frac{1}{2\\pi i}\\int_{-\\infty+i0^+}^{+\\infty+i0^+}\\omega\\widetilde X(\\omega)e^{-i\\omega t}\\,d\\omega .\n\\end{align*}\nFrom (P7),\n\\[\n\\omega\\widetilde X(\\omega)=\\widehat H_2\\widetilde X(\\omega)/\\hbar+X_0 .\n\\]\nFor \\(t>0\\), the inverse transform of the constant source \\(X_0\\) gives no bulk contribution, while it fixes the jump at \\(t=0\\).  Hence\n\\begin{align*}\ni\\frac{d}{dt}X(t)\n&=\\frac{\\widehat H_2}{\\hbar}\\left(-\\frac{1}{2\\pi i}\\int_{-\\infty+i0^+}^{+\\infty+i0^+}\\widetilde X(\\omega)e^{-i\\omega t}\\,d\\omega\\right)\\\\\n&=\\frac{\\widehat H_2}{\\hbar}X(t).\n\\end{align*}\nThe source vector \\(X_0\\) is the coordinate vector of \\(\\widehat a_1^\\dagger\\widehat a_2^\\dagger\\vert0\\rangle\\), so the same transform equation also gives\n\\[\nX(0)=X_0 .\n\\]\nTherefore the inverse-transformed coefficients solve the original Schrodinger initial-value problem in \\(\\mathcal H_2\\).  By uniqueness of the linear Hamiltonian evolution, the reconstructed state is the exact trajectory.\n\n\\section*{Final Result}\n\\[\n\\boxed{\nC_\\sigma\\text{ solving the secular equation}\n\\Longrightarrow\n(\\widetilde A,\\widetilde B,\\widetilde C)\\text{ solve the transformed Schrodinger equations}\n\\Longrightarrow\n\\vert\\psi(t)\\rangle\\text{ is the exact two-excitation trajectory.}}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_2": "\\section*{Claim}\nThe paper's analytic construction is high-value because the two nontrivial continuations in \\(z\\), namely inversion \\(z\\mapsto z^{-1}\\) and substitution \\(z\\mapsto\\zeta(\\omega,z)\\), generate a closed branch orbit.  This closure turns the infinite contour-coupled problem for \\(C_\\sigma(\\omega,z)\\) into a finite jump-and-remainder problem.\n\n\\section*{Premises}\n\\begin{align*}\n\\text{(P1)}\\quad & \\delta\\omega(\\omega,z):=\\omega+\\frac{z+z^{-1}}{2},\\\\\n\\text{(P2)}\\quad & \\zeta^{\\pm1}(\\omega,z)=-\\delta\\omega(\\omega,z)\n\\pm\\sqrt{\\delta\\omega(\\omega,z)+1}\\sqrt{\\delta\\omega(\\omega,z)-1},\\\\\n\\text{(P3)}\\quad & \\zeta(\\omega,z^{-1})=\\zeta(\\omega,z),\\\\\n\\text{(P4)}\\quad & u=\\zeta^{\\pm1}(\\omega,z)\\Longrightarrow\n1+2\\delta\\omega(\\omega,u)x+x^2=(x-z)(x-z^{-1}),\\\\\n\\text{(P5)}\\quad & C_\\sigma(\\omega,z^{-1})=\\sigma zC_\\sigma(\\omega,z),\\qquad \\sigma\\in\\{-1,+1\\},\\\\\n\\text{(P6)}\\quad & \\delta^2C_\\sigma(z)=\\delta C_\\sigma(z)-\\sigma z^{-1}\\delta C_\\sigma(z^{-1}),\\\\\n\\text{(P7)}\\quad & C_\\sigma(z)=\\frac{1}{2}\\delta^2C_\\sigma(z)\\left(\\Phi(z)+\\frac{1}{2}\\right)\n-\\frac{1}{2}\\delta C_\\sigma(z)+\\frac{1}{2}r_\\sigma(z),\\\\\n\\text{(P8)}\\quad & r_\\sigma(z)\\text{ is meromorphic with only the finite pole set introduced by the reconstructed residue equations.}\n\\end{align*}\n\n\\section*{Derivation}\nLet\n\\[\nI(z):=z^{-1},\\qquad Z(z):=\\zeta(\\omega,z).\n\\]\nBy (P3),\n\\[\nZI(z)=\\zeta(\\omega,z^{-1})=\\zeta(\\omega,z)=Z(z).\n\\]\nBy (P4), if \\(u=Z(z)\\), then the next mobile-pole equation has roots \\(z\\) and \\(z^{-1}\\).  Hence\n\\[\nZ(Z(z))\\in\\{z,z^{-1}\\}=\\{z,I(z)\\}.\n\\]\nSince \\(I(I(z))=z\\), the orbit generated by \\(I\\) and \\(Z\\) from a generic point is contained in\n\\[\n\\mathcal O(z)=\\{z,z^{-1},\\zeta(\\omega,z),\\zeta(\\omega,z)^{-1}\\}.\n\\]\nThus repeated substitution does not generate an infinite tree of new branch locations.\n\nThe same closure controls the jumps of \\(C_\\sigma\\).  The first crossing contributes \\(\\delta C_\\sigma(z)\\).  The inverted crossing is not independent because (P5) gives\n\\[\n\\delta C_\\sigma(z^{-1})\\mapsto \\sigma z^{-1}\\delta C_\\sigma(z^{-1})\n\\]\nwhen pulled back to the \\(z\\)-sheet.  Therefore the net two-cut jump is exactly\n\\[\n\\delta^2C_\\sigma(z)=\\delta C_\\sigma(z)-\\sigma z^{-1}\\delta C_\\sigma(z^{-1})\n\\]\nby (P6).  Substituting this jump into (P7) isolates all non-meromorphic sheet dependence in the known factor\n\\[\n\\delta^2C_\\sigma(z)\\left(\\Phi(z)+\\frac{1}{2}\\right)\n\\]\nand leaves \\(r_\\sigma(z)\\).  By (P8), \\(r_\\sigma\\) is determined by finitely many residues and cancellation conditions rather than by a new continuum of unknown boundary data.\n\n\\section*{Final Result}\n\\[\n\\boxed{\n\\mathcal O(z)\\subseteq\\{z,z^{-1},\\zeta(\\omega,z),\\zeta(\\omega,z)^{-1}\\}\n\\quad\\text{and}\\quad\nC_\\sigma=\\frac{1}{2}\\delta^2C_\\sigma\\left(\\Phi+\\frac{1}{2}\\right)-\\frac{1}{2}\\delta C_\\sigma+\\frac{1}{2}r_\\sigma .\n}\n\\]\nThus the branch geometry is finite, and the secular equation becomes an exact finite analytic reconstruction problem.\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_3": "\\section*{Claim}\nThe closed amplitude\n\\[\n\\widetilde A(\\omega)=\\frac{S_1(\\omega)^2-S_0(\\omega)^2}{2gS_0(\\omega)}\n\\]\nis not merely a compact formula: it is a spectral classifier.  Its denominator detects two-excitation bound-state poles, while the endpoint structure of the one-free and two-free continua gives the branch-point set controlling continuum decay.\n\n\\section*{Premises}\n\\begin{align*}\n\\text{(P1)}\\quad & S_0(\\omega):=\\sum_{\\sigma,i}\\alpha_\\sigma(\\omega,z_{\\sigma i}),\\qquad\nS_1(\\omega):=\\sum_{\\sigma,i}\\sigma\\alpha_\\sigma(\\omega,z_{\\sigma i}),\\\\\n\\text{(P2)}\\quad & \\widetilde A(\\omega)=\\frac{S_1(\\omega)^2-S_0(\\omega)^2}{2gS_0(\\omega)},\\qquad g>0,\\\\\n\\text{(P3)}\\quad & S_0(\\omega_b)=0,\\qquad S_0'(\\omega_b)\\ne0,\\qquad S_1(\\omega_b)\\ne0,\\qquad \\omega_b\\in\\mathbb R,\\\\\n\\text{(P4)}\\quad & S_0(\\omega)=S_0'(\\omega_b)(\\omega-\\omega_b)+O((\\omega-\\omega_b)^2),\\\\\n\\text{(P5)}\\quad & S_1(\\omega)^2-S_0(\\omega)^2=S_1(\\omega_b)^2+O(\\omega-\\omega_b),\\\\\n\\text{(P6)}\\quad & \\epsilon_{\\sigma i}\\text{ is a one-excitation bound-state energy and }\\varepsilon\\in[-1,1]\\text{ is one free-waveguide energy},\\\\\n\\text{(P7)}\\quad & \\varepsilon_1,\\varepsilon_2\\in[-1,1]\\text{ are two free-waveguide energies},\\\\\n\\text{(P8)}\\quad & \\text{A real physical-sheet pole gives a bound state; a continuum endpoint gives a branch-point candidate.}\n\\end{align*}\n\n\\section*{Derivation}\nFirst consider a zero of \\(S_0\\).  By (P2), (P4), and (P5),\n\\begin{align*}\n\\widetilde A(\\omega)\n&=\\frac{S_1(\\omega_b)^2+O(\\omega-\\omega_b)}\n{2gS_0'(\\omega_b)(\\omega-\\omega_b)+O((\\omega-\\omega_b)^2)}\\\\\n&=\\frac{S_1(\\omega_b)^2}{2gS_0'(\\omega_b)}\\frac{1}{\\omega-\\omega_b}+O(1).\n\\end{align*}\nThus an uncancelled simple zero of \\(S_0\\) is a simple pole of \\(\\widetilde A\\).  Since \\(\\omega_b\\) is real and on the physical sheet, (P8) identifies it as a two-excitation bound-state frequency.\n\nNow consider continuum thresholds.  The bound-plus-free energy has the form\n\\[\nE_{\\rm bf}=\\epsilon_{\\sigma i}+\\varepsilon .\n\\]\nUsing (P6),\n\\[\n-1\\le\\varepsilon\\le1\n\\Longrightarrow\n\\epsilon_{\\sigma i}-1\\le E_{\\rm bf}\\le \\epsilon_{\\sigma i}+1.\n\\]\nHence\n\\[\nE_{\\rm bf}\\in[\\epsilon_{\\sigma i}-1,\\epsilon_{\\sigma i}+1],\n\\]\nso \\(\\epsilon_{\\sigma i}\\pm1\\) are endpoints.  Similarly,\n\\[\nE_{\\rm ff}=\\varepsilon_1+\\varepsilon_2,\\qquad\n\\varepsilon_1,\\varepsilon_2\\in[-1,1],\n\\]\nimplies\n\\[\nE_{\\rm ff}\\in[-2,2],\n\\]\nso \\(\\pm2\\) are the two-free continuum endpoints.  By (P8), the candidate branch points of \\(\\widetilde A\\) are therefore\n\\[\n\\omega=\\pm2,\\qquad \\omega=\\epsilon_{\\sigma i}\\pm1 .\n\\]\n\n\\section*{Final Result}\n\\[\n\\boxed{\nS_0(\\omega_b)=0\\text{ simply and uncancelled}\n\\Longrightarrow\n\\widetilde A(\\omega)\\sim\n\\frac{S_1(\\omega_b)^2}{2gS_0'(\\omega_b)}\\frac{1}{\\omega-\\omega_b},\n}\n\\]\nand\n\\[\n\\boxed{\nE_{\\rm ff}\\in[-2,2],\\qquad\nE_{\\rm bf}\\in[\\epsilon_{\\sigma i}-1,\\epsilon_{\\sigma i}+1],\n\\qquad\n\\omega\\in\\{\\pm2,\\epsilon_{\\sigma i}\\pm1\\}\\text{ are continuum branch-point candidates.}\n}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_4": "\\section*{Claim}\nThe singularity classification of \\(\\widetilde A(\\omega)\\) directly produces the paper's decay taxonomy.  Simple poles give persistent or exponential oscillatory terms, algebraic branch points give power-law tails, bound-plus-free thresholds give mixed algebraic-exponential tails, and the critical logarithmic edge \\(A_{\\pm2}(t)\\sim e^{\\mp2it}/(t\\log^2t)\\) is asymptotically slower than a generic \\(t^{-3/2}\\) edge.\n\n\\section*{Premises}\n\\begin{align*}\n\\text{(P1)}\\quad & A(t)=-\\frac{1}{2\\pi i}\\int_{\\mathcal B}\\widetilde A(\\omega)e^{-i\\omega t}\\,d\\omega,\\\\\n\\text{(P2)}\\quad & \\widetilde A(\\omega)=\\frac{R}{\\omega-\\omega_p}+O(1)\\text{ near a simple pole }\\omega_p,\\\\\n\\text{(P3)}\\quad & \\widetilde A(\\omega)=K(\\omega-\\omega_c)^\\beta+O((\\omega-\\omega_c)^{\\beta+1})\n\\text{ across a branch cut, with }\\beta>-1,\\\\\n\\text{(P4)}\\quad & \\int_0^\\infty x^\\beta e^{-ixt}\\,dx=\\Gamma(\\beta+1)e^{-i\\pi(\\beta+1)/2}t^{-\\beta-1}\\quad(t>0),\\\\\n\\text{(P5)}\\quad & \\omega_p\\in\\mathbb R\\text{ gives a bound-state oscillation, while }\\operatorname{Im}\\omega_p<0\\text{ gives a decaying exponential},\\\\\n\\text{(P6)}\\quad & A_{\\pm2}(t)\\sim c_\\pm e^{\\mp2it}(t\\log^2t)^{-1},\\qquad c_\\pm\\ne0,\\\\\n\\text{(P7)}\\quad & \\lim_{t\\to\\infty}t^a/(\\log t)^b=+\\infty\\text{ for }a>0,b>0.\n\\end{align*}\n\n\\section*{Derivation}\nFor a simple pole, deforming the inverse contour across \\(\\omega_p\\) gives the residue contribution\n\\[\nA_p(t)=-R e^{-i\\omega_p t}\n\\]\nup to the orientation convention in (P1).  If \\(\\omega_p\\in\\mathbb R\\), this term has constant magnitude and is a bound-state contribution.  If \\(\\operatorname{Im}\\omega_p<0\\), then\n\\[\n|e^{-i\\omega_p t}|=e^{\\operatorname{Im}\\omega_p t},\n\\]\nwhich decays exponentially.\n\nFor a branch point, write \\(\\omega=\\omega_c+x\\) along the local cut.  The leading discontinuity has the form \\(Kx^\\beta\\), so (P1), (P3), and (P4) give\n\\[\nA_c(t)\\sim\n\\widetilde K e^{-i\\omega_c t}t^{-\\beta-1}\n\\]\nfor a constant \\(\\widetilde K\\).  If \\(\\omega_c\\in\\mathbb R\\), this is an algebraic oscillatory tail.  If \\(\\omega_c=\\epsilon_{\\sigma i}\\pm1\\) arises from a bound-plus-free threshold and the one-excitation bound component carries a nonzero imaginary continuation contribution, the same calculation gives a product of an exponential oscillation with an algebraic prefactor; this is the mixed algebraic-exponential case.\n\nFinally, in the critical logarithmic case (P6),\n\\begin{align*}\n|A_{\\pm2}(t)|\n&\\sim |c_\\pm|\\frac{1}{t\\log^2t},\\\\\n\\frac{|A_{\\pm2}(t)|}{t^{-3/2}}\n&\\sim |c_\\pm|\\frac{t^{1/2}}{\\log^2t}\n\\longrightarrow+\\infty\n\\end{align*}\nby (P7).  Therefore the logarithmic edge is slower than a generic \\(t^{-3/2}\\) edge and must be kept as a distinct decay component.\n\n\\section*{Final Result}\n\\[\n\\boxed{\n\\begin{gathered}\n\\text{real pole}\\Rightarrow\\text{bound-state oscillation},\\qquad\n\\text{non-real continued pole}\\Rightarrow\\text{collective exponential decay},\\\\\n\\text{branch point}\\Rightarrow e^{-i\\omega_c t}t^{-\\beta-1}\\text{ algebraic or mixed decay},\\qquad\nA_{\\pm2}(t)\\sim \\frac{e^{\\mp2it}}{t\\log^2t}\\text{ is slower than }t^{-3/2}.\n\\end{gathered}}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_5": "\\section*{Claim}\nThe criterion\n\\[\nM:=\\sup_{t\\ge0}P_{\\rm one}(t)>\\frac{1}{2},\\qquad\nP_{\\rm one}(t)=\\sum_{j\\in\\mathbb Z}\\left(|C_{1,j}(t)|^2+|C_{2,j}(t)|^2\\right),\n\\]\nis a sufficient, not necessary, witness that the exact trajectory lies beyond both the independent-excitation null model and the Markovian two-emitter cascade null model.\n\n\\section*{Premises}\n\\begin{align*}\n\\text{(P1)}\\quad & P_{\\rm one}(t):=\\sum_{j\\in\\mathbb Z}\\left(|C_{1,j}(t)|^2+|C_{2,j}(t)|^2\\right),\\qquad\nM:=\\sup_{t\\ge0}P_{\\rm one}(t),\\\\\n\\text{(P2)}\\quad & \\text{Under independent excitations, }P_{\\rm ind}=p(1-p)+(1-p)p\\text{ for some }p\\in[0,1],\\\\\n\\text{(P3)}\\quad & (2p-1)^2\\ge0,\\\\\n\\text{(P4)}\\quad & \\text{In the Markovian cascade, }P_M(t,\\Delta)=\n\\frac{1-\\Delta}{1+\\Delta}e^{-(1-\\Delta)\\Gamma t}\n+\\frac{1+\\Delta}{1-\\Delta}e^{-(1+\\Delta)\\Gamma t}\n-2\\frac{1+\\Delta^2}{1-\\Delta^2}e^{-2\\Gamma t},\\\\\n\\text{(P5)}\\quad & \\sup_{t\\ge0,\\ |\\Delta|<1}P_M(t,\\Delta)=\\frac{1}{2},\\text{ attained at }\\Delta=0,\\ \\Gamma t=\\log2,\\\\\n\\text{(P6)}\\quad & \\text{If an exact trajectory exceeds the maximal value allowed by a null model, it violates that null model.}\n\\end{align*}\n\n\\section*{Derivation}\nFor the independent null model,\n\\begin{align*}\nP_{\\rm ind}\n&=p(1-p)+(1-p)p\\\\\n&=2p(1-p)\\\\\n&=2p-2p^2 .\n\\end{align*}\nFrom (P3),\n\\[\n(2p-1)^2\\ge0\n\\Longrightarrow\n4p^2-4p+1\\ge0\n\\Longrightarrow\n2p-2p^2\\le\\frac{1}{2}.\n\\]\nTherefore\n\\[\nP_{\\rm ind}\\le\\frac{1}{2}.\n\\]\n\nFor the Markovian null model, (P5) gives\n\\[\nP_M(t,\\Delta)\\le\\frac{1}{2}\n\\quad\\text{for all }t\\ge0\\text{ and }|\\Delta|<1,\n\\]\nwith the maximal case occurring at \\(\\Delta=0\\) and \\(\\Gamma t=\\log2\\).  Indeed, substituting \\(\\Delta=0\\) into (P4) gives\n\\[\nP_M(t,0)=2e^{-\\Gamma t}-2e^{-2\\Gamma t}.\n\\]\nLet \\(u=e^{-\\Gamma t}\\).  Then \\(u\\in(0,1]\\) and\n\\[\nP_M(t,0)=2u-2u^2\\le\\frac{1}{2},\n\\]\nwith equality iff \\(u=1/2\\), equivalently \\(\\Gamma t=\\log2\\).\n\nNow suppose \\(M>1/2\\).  Then there exists a time \\(t_*\\ge0\\) such that\n\\[\nP_{\\rm one}(t_*)>\\frac{1}{2}.\n\\]\nThis strict inequality is larger than every independent value \\(P_{\\rm ind}\\) and every Markovian cascade value \\(P_M(t,\\Delta)\\).  By (P6), the exact trajectory violates both null models.  The conclusion is only sufficient: if \\(M\\le1/2\\), the test is silent rather than proving Markovian or independent behavior.\n\n\\section*{Final Result}\n\\[\n\\boxed{\nM>\\frac{1}{2}\n\\Longrightarrow\n\\text{the exact two-excitation trajectory violates both the independent-excitation and Markovian cascade null models.}\n}\n\\]\n\\[\n\\boxed{\nM\\le\\frac{1}{2}\\text{ gives no converse conclusion.}\n}\n\\]\n\\hfill$\\blacksquare$",
   "deeper_metadata": {
     "output_file": "deeper.json",
-    "revision_id": "deeper_alignment_v3",
-    "revision_intent": "Improve alignment by keeping all deeper proofs inside the paper's four stated rate-limit goals while strengthening scientific value through sharpness, variational optimality, variance decomposition, and stochastic force-budget inversion.",
+    "revision_id": "deeper_02_v2_alignment_high_value",
+    "revision_intent": "Improve alignment by replacing broad certificate-style arguments with higher-value derivations that explicitly chain core reasoning into exact-solution certification, finite analytic reconstruction, spectral classification, inverse-transform asymptotics, and the sufficient 0.5 witness.",
     "input_files": [
       "deeper_reasoning_pseudo_algorithm.md",
       "core_02.json",
       "goals_02.json"
     ],
     "rubric_interpretation": {
-      "top_level_schema": "Exactly paper_title, contiguous deeper_reasoning_k string fields, and one deeper_metadata object.",
-      "latex_constraint": "Each reasoning entry must compile under article with amsmath and amssymb only.",
-      "deeper_value_constraint": "Entries should be proof-like extensions of the core reasoning, not paraphrases of the source paper or metadata audits."
+      "format_constraints": "Single UTF-8 JSON object with exactly paper_title, contiguous deeper_reasoning_k strings, and one deeper_metadata object. All reasoning entries are LaTeX strings compatible with article, amsmath, and amssymb only.",
+      "content_constraints": "Each deeper_reasoning_k must be a self-contained derivation that advances beyond isolated core algebra and toward the extracted paper goals. Metadata may audit alignment but must not duplicate proof content."
     },
     "goal_trace": {
-      "deeper_reasoning_1": "G0_general_price_covariance_rate_limit",
-      "deeper_reasoning_2": "G1_replicator_natural_selection_rate_limit",
-      "deeper_reasoning_3": "G2_replicator_mutator_rate_limit",
-      "deeper_reasoning_4": "G3_stochastic_genetic_drift_rate_limit_and_regime_decomposition"
-    },
-    "entry_metadata": {
-      "deeper_reasoning_1": {
-        "title": "Sharp Price covariance bound, equality cases, and Fisher-information rate budget",
-        "target_goal_component": "G0_general_price_covariance_rate_limit",
-        "declared_source_set": [
-          "core_reasoning_1",
-          "core_reasoning_2",
-          "G0_general_price_covariance_rate_limit"
-        ],
-        "major_advancement_modes": [
-          "sharpness/equality characterization",
-          "fixed-variance variational optimum",
-          "information-budget reformulation"
-        ],
-        "goal_alignment": "Preserves the finite-population Price identity and covariance rate-limit target while adding the exact extremal structure of the Cauchy-Schwarz step.",
-        "scientific_payoff": "Identifies which trait coordinates can actually attain the maximum rate and interprets Fisher information as the available population-frequency speed budget.",
-        "nontrivial_advance_over_sources": "Converts the generic inequality into an attainable supremum theorem over fixed-variance traits.",
-        "formal_sharpness": "Sharp; equality holds iff centered trait and centered growth-rate coordinates are proportional on the support.",
-        "low_value_rejection_audit": "Avoids merely restating the Price equation by proving attainability and degeneracy cases.",
-        "selection_score": 0.98,
-        "controlled_external_lemmas": [
-          "weighted Cauchy-Schwarz inequality and equality condition"
-        ],
-        "known_residual_risks_and_mitigation": "Requires positive support for division and equality statements; the proof explicitly handles zero-variance degeneracies."
-      },
-      "deeper_reasoning_2": {
-        "title": "Variational steepest-direction theorem for natural selection",
-        "target_goal_component": "G1_replicator_natural_selection_rate_limit",
-        "declared_source_set": [
-          "core_reasoning_3",
-          "core_reasoning_4",
-          "G1_replicator_natural_selection_rate_limit"
-        ],
-        "major_advancement_modes": [
-          "variational optimality",
-          "equality characterization",
-          "unification with Fisher variance identity"
-        ],
-        "goal_alignment": "Uses exactly the mutation-free replicator residual specified in G1 and adds a maximisation theorem over possible trait coordinates.",
-        "scientific_payoff": "Shows that fitness is not just a special substitution but the extremal direction of fastest mean-trait change.",
-        "nontrivial_advance_over_sources": "Derives a supremum over all fixed-variance traits and identifies the equality class.",
-        "formal_sharpness": "Sharp for every fixed trait standard deviation when sigma_f is nonzero.",
-        "low_value_rejection_audit": "Does not duplicate the natural-selection bound; it explains why the fitness special case is the extremal case.",
-        "selection_score": 0.97,
-        "controlled_external_lemmas": [
-          "weighted Cauchy-Schwarz inequality and equality condition"
-        ],
-        "known_residual_risks_and_mitigation": "Assumes nonzero fitness variance for the normalised maximiser; the zero-variance case collapses to zero residual."
-      },
-      "deeper_reasoning_3": {
-        "title": "Conditional-variance sharpening of the replicator-mutator bound",
-        "target_goal_component": "G2_replicator_mutator_rate_limit",
-        "declared_source_set": [
-          "core_reasoning_5",
-          "core_reasoning_6",
-          "core_reasoning_7",
-          "G2_replicator_mutator_rate_limit"
-        ],
-        "major_advancement_modes": [
-          "variance decomposition",
-          "sharper intermediate bound",
-          "mechanistic interpretation of mutation averaging"
-        ],
-        "goal_alignment": "Retains the G2 corrected residual and mutation-driven distribution, but proves a tighter intermediate sigma_b bound before recovering the paper's sigma_A,mu bound.",
-        "scientific_payoff": "Separates variation in conditional post-mutation means, which can couple to fitness, from within-parent mutation variance, which only loosens the published bound.",
-        "nontrivial_advance_over_sources": "Adds a law-of-total-variance decomposition hidden inside the Jensen step of the core proof.",
-        "formal_sharpness": "Sharper than the paper-level bound whenever within-parent mutation variance is positive.",
-        "low_value_rejection_audit": "Avoids merely reproducing the replicator-mutator inequality by exposing the exact variance lost in the final relaxation.",
-        "selection_score": 0.98,
-        "controlled_external_lemmas": [
-          "finite law of total variance",
-          "weighted Cauchy-Schwarz inequality"
-        ],
-        "known_residual_risks_and_mitigation": "Introduces b_k as an auxiliary conditional mean, but all quantities are algebraically determined by p, Q, and a from G2."
-      },
-      "deeper_reasoning_4": {
-        "title": "Stochastic force-budget inversion and quantitative dominance shares",
-        "target_goal_component": "G3_stochastic_genetic_drift_rate_limit_and_regime_decomposition",
-        "declared_source_set": [
-          "core_reasoning_8",
-          "core_reasoning_9",
-          "G3_stochastic_genetic_drift_rate_limit_and_regime_decomposition"
-        ],
-        "major_advancement_modes": [
-          "inverse certificate",
-          "dominance-regime quantification",
-          "paper-faithful integrated budget algebra"
-        ],
-        "goal_alignment": "Uses the exact G3 total integrated bound and regime-decomposition terms rather than adding a new stochastic model or a new drift term.",
-        "scientific_payoff": "Turns the three additive upper-bound terms into necessary lower-bound certificates for selection, mutation, and drift contributions.",
-        "nontrivial_advance_over_sources": "Derives residual-gap lower bounds and normalised dominance shares from the paper's total inequality.",
-        "formal_sharpness": "Sharp as an algebraic consequence of the additive bound; no extra stochastic assumption is introduced beyond G3.",
-        "low_value_rejection_audit": "Replaces the previous more external effective-noise refinement with a proof that stays closer to the paper's stated stochastic regime objective.",
-        "selection_score": 0.99,
-        "controlled_external_lemmas": [
-          "elementary algebra for nonnegative budgets",
-          "asymptotic ratio manipulation"
-        ],
-        "known_residual_risks_and_mitigation": "The inverse lower bounds are necessary certificates rather than sufficient causal identification; metadata states this as force-budget inversion, not empirical attribution."
-      }
-    },
-    "rejected_low_value_candidates": [
-      {
-        "candidate": "Restate the four paper inequalities as deeper reasoning entries.",
-        "reason_rejected": "Would satisfy topical alignment but fail the deeper-value requirement because it duplicates core_reasoning."
-      },
-      {
-        "candidate": "Introduce a new effective stochastic drift budget as the primary G3 entry.",
-        "reason_rejected": "Mathematically useful but less directly aligned with the paper's stated G3 regime-decomposition endpoint."
-      },
-      {
-        "candidate": "Use biological interpretation examples from the discussion section.",
-        "reason_rejected": "The goals extraction excludes application gestures; deeper entries should remain formal derivations."
-      }
-    ],
-    "global_alignment_audit": {
-      "schema_status": "pass",
-      "contiguous_reasoning_keys": [
+      "G1_exact_two_excitation_decay_solution": [
         "deeper_reasoning_1",
         "deeper_reasoning_2",
         "deeper_reasoning_3",
         "deeper_reasoning_4"
       ],
-      "reasoning_value_types": "all strings",
-      "metadata_scope": "all non-proof information is under deeper_metadata",
-      "goal_coverage": "one deeper derivation is mapped to each of G0, G1, G2, and G3",
-      "core_reasoning_dependency": "each entry extends specified core proofs without contradicting their assumptions",
-      "paper_alignment": "focuses on rate-limit identities, corrected mutation residuals, stochastic integrated bounds, and dominance regimes; excludes empirical or speculative applications"
+      "G2_sufficient_threshold_witness_for_collective_non_markovian_decay": [
+        "deeper_reasoning_5"
+      ],
+      "methodological_claim": [
+        "deeper_reasoning_2",
+        "deeper_reasoning_3",
+        "deeper_reasoning_4"
+      ]
     },
-    "known_residual_risks_and_mitigation": {
-      "risk_1": "Some entries are stronger consequences of the paper's algebra rather than statements explicitly printed in the paper.",
-      "mitigation_1": "Each strengthening is declared as a deeper consequence and mapped to the exact source goal/core derivation.",
-      "risk_2": "High-value refinements can drift into external theorem territory.",
-      "mitigation_2": "The G3 entry was revised to use only the published additive budget terms and elementary nonnegative-budget algebra.",
-      "risk_3": "LaTeX portability can fail if unsupported packages or custom macros are introduced.",
-      "mitigation_3": "All entries were compiled using only article, amsmath, and amssymb."
-    }
+    "entry_metadata": {
+      "deeper_reasoning_1": {
+        "title": "Exact transformed-to-time-domain solution certificate",
+        "target_goal_component": "G1_exact_two_excitation_decay_solution",
+        "declared_source_set": [
+          "core_reasoning_1",
+          "core_reasoning_3",
+          "core_reasoning_4",
+          "core_reasoning_5",
+          "core_reasoning_8",
+          "goals_02 canonical G1"
+        ],
+        "major_advancement_modes": [
+          "cross-core chaining",
+          "solution certification",
+          "inverse-transform verification"
+        ],
+        "goal_alignment": "Directly proves that the reconstructed transformed amplitudes certify the original Hamiltonian initial-value problem in the conserved two-excitation sector.",
+        "scientific_payoff": "Turns the paper's transformed analytic machinery into an exact-dynamics correctness argument.",
+        "nontrivial_advance_over_sources": "Combines excitation conservation, the parity secular solution, amplitude reconstruction, the resolvent equation, and inverse transform uniqueness.",
+        "formal_sharpness": "Explicitly states the transform injectivity and differentiability assumptions rather than hiding them.",
+        "low_value_rejection_audit": "Avoids merely re-deriving the number-conservation commutator or restating one transformed equation.",
+        "selection_score": 0.96,
+        "controlled_external_lemmas": [
+          "Laplace-transform injectivity and valid contour differentiation for the solved amplitude class"
+        ],
+        "known_residual_risks_and_mitigation": "Analytic existence hypotheses are isolated as premises; the entry does not overclaim a full functional-analytic proof."
+      },
+      "deeper_reasoning_2": {
+        "title": "Finite branch-orbit and jump-remainder reduction",
+        "target_goal_component": "G1_exact_two_excitation_decay_solution and methodological_claim",
+        "declared_source_set": [
+          "core_reasoning_4",
+          "core_reasoning_5",
+          "core_reasoning_6",
+          "core_reasoning_7",
+          "goals_02 methodological_claim"
+        ],
+        "major_advancement_modes": [
+          "analytic-structure synthesis",
+          "monodromy control",
+          "finite reduction"
+        ],
+        "goal_alignment": "Explains why the double-complex-plane transformations make the exact solution tractable rather than being formal substitutions.",
+        "scientific_payoff": "Identifies the finite branch geometry that controls the two-excitation non-Markovian problem.",
+        "nontrivial_advance_over_sources": "Chains zeta closure, inversion parity, double jumps, and rational remainder into a single structural argument.",
+        "formal_sharpness": "Derives orbit closure and the dependence of the two-cut jump on parity.",
+        "low_value_rejection_audit": "Avoids a purely definitional rewrite of delta C and delta squared C.",
+        "selection_score": 0.98,
+        "controlled_external_lemmas": [
+          "Meromorphic remainder is fixed by residue/cancellation equations in the paper's reconstruction"
+        ],
+        "known_residual_risks_and_mitigation": "The exact list of residues is not duplicated; the proof focuses on why the problem is finite after the paper's transformations."
+      },
+      "deeper_reasoning_3": {
+        "title": "A-tilde as spectral classifier",
+        "target_goal_component": "G1_exact_two_excitation_decay_solution",
+        "declared_source_set": [
+          "core_reasoning_8",
+          "core_reasoning_9",
+          "core_reasoning_10",
+          "goals_02 G1 success set"
+        ],
+        "major_advancement_modes": [
+          "local singularity derivation",
+          "spectrum extraction",
+          "continuum endpoint classification"
+        ],
+        "goal_alignment": "Shows how the closed expression for A-tilde yields bound-state poles and continuum branch-point candidates.",
+        "scientific_payoff": "Connects the exact transformed amplitude to observable spectral structure.",
+        "nontrivial_advance_over_sources": "Combines the S0/S1 formula, local zero expansion, and interval arithmetic for continua.",
+        "formal_sharpness": "Derives the local pole coefficient and the continuum endpoint set explicitly.",
+        "low_value_rejection_audit": "Avoids merely listing spectral components without a derivation.",
+        "selection_score": 0.97,
+        "controlled_external_lemmas": [
+          "Physical-sheet real poles correspond to normalisable bound states"
+        ],
+        "known_residual_risks_and_mitigation": "Normalisability is treated as the standard spectral interpretation of a physical-sheet pole."
+      },
+      "deeper_reasoning_4": {
+        "title": "Singularity-to-decay taxonomy and logarithmic-edge dominance",
+        "target_goal_component": "G1_exact_two_excitation_decay_solution",
+        "declared_source_set": [
+          "core_reasoning_9",
+          "core_reasoning_10",
+          "core_reasoning_13",
+          "goals_02 G1 success set"
+        ],
+        "major_advancement_modes": [
+          "inverse-transform asymptotics",
+          "decay taxonomy",
+          "critical logarithmic correction"
+        ],
+        "goal_alignment": "Supplies the previously weakest link: why poles and branch points in A-tilde determine bound, exponential, algebraic, mixed, and logarithmically corrected decay components.",
+        "scientific_payoff": "Converts the analytic singularity data into the time-domain decay classification required by the goal.",
+        "nontrivial_advance_over_sources": "Adds explicit contour/residue and branch-asymptotic reasoning beyond the core local classifications.",
+        "formal_sharpness": "Derives the t^(-beta-1) branch law and compares the logarithmic edge against t^(-3/2).",
+        "low_value_rejection_audit": "Avoids relying solely on a high-level singularity-to-decay dictionary.",
+        "selection_score": 0.98,
+        "controlled_external_lemmas": [
+          "Standard inverse-transform contour deformation and branch-cut asymptotic integral"
+        ],
+        "known_residual_risks_and_mitigation": "The entry gives the local asymptotic mechanism rather than a full global steepest-descent proof."
+      },
+      "deeper_reasoning_5": {
+        "title": "Sufficient 0.5 witness beyond independent and Markovian null models",
+        "target_goal_component": "G2_sufficient_threshold_witness_for_collective_non_markovian_decay",
+        "declared_source_set": [
+          "core_reasoning_11",
+          "core_reasoning_12",
+          "goals_02 canonical G2"
+        ],
+        "major_advancement_modes": [
+          "threshold derivation",
+          "null-model separation",
+          "sufficiency calibration"
+        ],
+        "goal_alignment": "Directly proves that M>0.5 is a sufficient diagnostic witness and explicitly blocks the invalid converse.",
+        "scientific_payoff": "Connects the exact trajectory amplitudes C_{m,j}(t) to an experimentally interpretable collective non-Markovian criterion.",
+        "nontrivial_advance_over_sources": "Integrates the independent bound, Markovian formula, equality case, and sufficiency logic into one diagnostic proof.",
+        "formal_sharpness": "States the Markovian global comparison as a controlled premise and re-derives the equality case at Delta=0.",
+        "low_value_rejection_audit": "Avoids presenting P_one>0.5 as a definition or necessary condition.",
+        "selection_score": 0.95,
+        "controlled_external_lemmas": [
+          "Global Markovian cascade bound sup_{t>=0, |Delta|<1} P_M(t,Delta)=1/2"
+        ],
+        "known_residual_risks_and_mitigation": "The global Markovian maximum is still a controlled calculus lemma, but the file now explicitly derives the independent bound and the equality case."
+      }
+    },
+    "rejected_low_value_candidates": [
+      {
+        "candidate": "Re-derive excitation-number conservation",
+        "reason": "Already handled cleanly in core_reasoning_1 and too low-level for deeper reasoning."
+      },
+      {
+        "candidate": "Restate the single-excitation amplitude a_sigma",
+        "reason": "Important input but not a high-value deeper derivation by itself."
+      },
+      {
+        "candidate": "List the decay types without inverse-transform reasoning",
+        "reason": "Would align with keywords but not with high-value mathematical reasoning."
+      }
+    ],
+    "global_alignment_audit": {
+      "top_level_key_check": "Exactly paper_title, deeper_reasoning_1 through deeper_reasoning_5, and deeper_metadata.",
+      "contiguity_check": "The deeper reasoning keys are contiguous from 1 to 5 with no gaps.",
+      "latex_check": "All reasoning entries use only article, amsmath, and amssymb-compatible LaTeX constructs.",
+      "core_coverage": {
+        "core_reasoning_1": "Used in exact solution-sector certification.",
+        "core_reasoning_3": "Used in transformed amplitude reconstruction.",
+        "core_reasoning_4": "Used in parity reconstruction and inversion identity.",
+        "core_reasoning_5": "Used in the secular-equation solution path.",
+        "core_reasoning_6": "Used in finite zeta-orbit closure.",
+        "core_reasoning_7": "Used in double-jump decomposition.",
+        "core_reasoning_8": "Used in the A-tilde closed formula.",
+        "core_reasoning_9": "Used in simple bound-state pole derivation.",
+        "core_reasoning_10": "Used in continuum endpoint classification.",
+        "core_reasoning_11": "Used in Markovian cascade comparison.",
+        "core_reasoning_12": "Used in independent-excitation threshold derivation.",
+        "core_reasoning_13": "Used in logarithmic late-time correction."
+      },
+      "goal_coverage": {
+        "G1": "Covered by exact solution certificate, analytic reconstruction, spectral classifier, and inverse-transform decay taxonomy.",
+        "G2": "Covered by sufficient witness theorem with independent and Markovian null comparisons."
+      },
+      "alignment_improvement_over_previous_version": [
+        "Separates spectral classification from time-domain asymptotic classification.",
+        "Adds explicit inverse-transform branch asymptotics instead of relying only on a singularity dictionary.",
+        "Strengthens finite analytic-method justification via orbit closure and jump-remainder reduction.",
+        "Makes the diagnostic proof explicitly sufficient-only."
+      ]
+    },
+    "known_residual_risks_and_mitigation": [
+      {
+        "risk": "The global Markovian maximum over Delta is not fully derived from scratch.",
+        "mitigation": "It is isolated as a controlled calculus lemma while the equality case and independent bound are derived explicitly."
+      },
+      {
+        "risk": "The inverse-transform asymptotics use standard contour-deformation assumptions.",
+        "mitigation": "The assumptions are made explicit and the local algebraic/logarithmic consequences are derived."
+      },
+      {
+        "risk": "The finite residue reconstruction is summarized rather than reproducing every residue equation.",
+        "mitigation": "The deeper reasoning focuses on the branch-orbit closure and finite-reduction mechanism, which is the higher-value mathematical step."
+      }
+    ]
   }
 }

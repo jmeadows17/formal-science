@@ -1,0 +1,216 @@
+{
+    "paper_goal": {
+        "canonical_goal": [
+            {
+                "goal_id": "G1_iPEPS_crossed_bond_corner_term",
+                "outcome_variable": "o_legs \u2208 O_P, where o_legs is a proposition about the orientation-and-origin averaged number n_legs_bar(\u03b8,r,a) of square-lattice iPEPS virtual bonds crossed by the boundary of a circular-sector subsystem A_{r,\u03b8}",
+                "goal_form": "target_proposition",
+                "target_object": "Establish that, for a translationally invariant square-lattice iPEPS with uniform virtual bond dimension \u03c7 and a circular-sector bipartition A_{r,\u03b8} in two spatial dimensions, the averaged crossed-virtual-bond count n_legs_bar(\u03b8,r,a) has a subleading \u03b8-dependent component whose fitted angular dependence is (\u03c0 \u2212 \u03b8) cot \u03b8, with a fitted coefficient \u03b2_legs that shows no systematic dependence on the boundary length |\u2202A_{r,\u03b8}| \u223c r in the paper's sampled continuum-refinement regime, so that the virtual-boundary Schmidt-rank bound N_A \u2264 \u03c7^{n_legs_bar(\u03b8,r,a)} reproduces the angular dependence of the gapped-continuum corner term b_A(\u03b8) = \u2212K(1 + (\u03c0 \u2212 \u03b8) cot \u03b8), after absorbing \u03b8-independent terms into the fitted intercept, for some \u03b8-independent constant K.",
+                "feasibility_constraints": [
+                    "C1(o_legs): The tensor-network state is represented by one repeated square-lattice iPEPS tensor with one physical index of dimension d and four virtual indices of identical dimension \u03c7 > 1; the same \u03c7 is assigned to every nearest-neighbour virtual bond in the lattice.",
+                    "C2(o_legs): The continuum subsystem before discretisation is A_{r,\u03b8} = { \u03c1(cos \u03b1, sin \u03b1) : 0 \u2264 \u03c1 \u2264 r and 0 \u2264 \u03b1 \u2264 \u03b8 }, where r > 0 and \u03b8 \u2208 (0,\u03c0); its boundary contains two radial segments meeting at an apex with opening angle \u03b8 and one circular arc.",
+                    "C3(o_legs): A discretised instance is specified by a square lattice aZ^2 with spacing a > 0, a rotation angle \u03c6 \u2208 [0,2\u03c0) of A_{r,\u03b8} relative to the lattice, and an apex translation u \u2208 [0,a) \u00d7 [0,a).",
+                    "C4(o_legs): n_legs(\u03b8,r,a,\u03c6,u) is the exact count of nearest-neighbour virtual iPEPS bonds whose lattice edges are intersected by \u2202A_{r,\u03b8} after applying \u03c6 and u.",
+                    "C5(o_legs): n_legs_bar(\u03b8,r,a) = (1/(2\u03c0a^2)) \u222b_{0}^{2\u03c0} \u222b_{[0,a)\u00d7[0,a)} n_legs(\u03b8,r,a,\u03c6,u) du d\u03c6; this uniform average over \u03c6 and u is part of the target proposition.",
+                    "C6(o_legs): For each discretised instance, the Schmidt rank N_A across A_{r,\u03b8} and its complement is bounded by the merged virtual-boundary dimension \u03c7^{n_legs(\u03b8,r,a,\u03c6,u)}; therefore log N_A \u2264 n_legs(\u03b8,r,a,\u03c6,u) log \u03c7 and, at the averaged-count level used for the paper's geometric comparison, log N_A is bounded by n_legs_bar(\u03b8,r,a) log \u03c7.",
+                    "C7(o_legs): The continuum-refinement comparison used by the paper is r/a \u2192 \u221e; equivalently, at fixed physical length scale, the lattice spacing a is refined while the number of lattice spacings across the radius increases without bound."
+                ],
+                "success_set": {
+                    "kind": "predicate",
+                    "definition": "\u03a3_P,legs = { o_legs : for each evaluated pair (r,a), define (\u03b1_legs(r,a), \u03b2_legs(r,a)) = argmin_{\u03b1,\u03b2 \u2208 R} \u222b_{0}^{\u03c0} [n_legs_bar(\u03b8,r,a) \u2212 \u03b1 \u2212 \u03b2(\u03c0 \u2212 \u03b8) cot \u03b8]^2 d\u03b8 over the \u03b8-domain used for the count comparison; the accepted outcome is that \u03b2_legs(r,a) has no systematic dependence on r under the paper's continuum-refinement comparison r/a increasing, the \u03b8 \u2192 0 contribution comes from virtual bonds near the apex skipped by the two radial boundary segments with count scale proportional to a/sin \u03b8 and hence proportional to 1/\u03b8 as \u03b8 \u2192 0, and the near-\u03b8 \u2192 \u03c0 local skipped-bond calculation yields p_skip(\u03b8) = (1/4)(1 \u2212 (\u03c0 \u2212 \u03b8) cot \u03b8), so the fitted angular component has the same \u03b8-dependence as the gapped-continuum expression after \u03b8-independent constants are absorbed into \u03b1_legs(r,a) }",
+                    "threshold": {
+                        "applies": false,
+                        "value": null,
+                        "comparator": "eq",
+                        "metric_symbol": null,
+                        "metric_definition": null,
+                        "source_span": null
+                    }
+                },
+                "preference_ordering": {
+                    "kind": "none",
+                    "definition": null,
+                    "objective_symbols": [],
+                    "lex_order": null,
+                    "embedding_to_total_utility": null
+                },
+                "robustness_scope": {
+                    "applies": true,
+                    "ambient_space": "Square-lattice iPEPS discretisations of the circular-sector bipartition A_{r,\u03b8}, indexed by \u03b8, r, a, \u03c6, and u.",
+                    "type_tag": "environment_family",
+                    "metric_or_divergence": null,
+                    "radius_or_budget": null,
+                    "indexing_set": "{ (\u03b8,r,a,\u03c6,u) : \u03b8 \u2208 (0,\u03c0), r > 0, a > 0, \u03c6 \u2208 [0,2\u03c0), u \u2208 [0,a) \u00d7 [0,a), with r/a \u2192 \u221e used only for the continuum-refinement comparison }",
+                    "claimed_subfamily": {
+                        "definition": "The claimed subfamily consists only of square-lattice iPEPS discretisations with uniform \u03c7 and with n_legs_bar(\u03b8,r,a) defined by exact counting followed by uniform averaging over all \u03c6 \u2208 [0,2\u03c0) and all apex positions u \u2208 [0,a) \u00d7 [0,a). The paper claims the continuum-like angular dependence for this averaged construction and explicitly does not claim that a single fixed lattice orientation has the same property.",
+                        "source_span": {
+                            "section": "Abstract; Section III; Figure 5 caption",
+                            "paragraph_or_line": "Abstract sentence on orientation and origin averaging; Section III paragraphs defining n_legs, \u03c6, unit-cell averaging, and f(\u03b8); Figure 5 caption",
+                            "verbatim": "Crucially, we find that this correspondence only emerges when averaging over all possible lattice orientations and origin positions. The results are then fitted, based on Eq. (7), to f(\u03b8) = \u03b1 + \u03b2(\u03c0 \u2212 \u03b8) cot \u03b8."
+                        }
+                    },
+                    "hinted_superfamily": {
+                        "definition": null,
+                        "source_span": null
+                    },
+                    "refinement_relation": "none",
+                    "criterion": "For each \u03b8 and r/a in the claimed subfamily, compute n_legs_bar(\u03b8,r,a) by exact lattice-edge crossing counts and uniform averaging over \u03c6 and u; fit the resulting \u03b8-dependence by minimising \u222b_{0}^{\u03c0} [n_legs_bar(\u03b8,r,a) \u2212 \u03b1 \u2212 \u03b2(\u03c0 \u2212 \u03b8) cot \u03b8]^2 d\u03b8 over \u03b1,\u03b2 \u2208 R; the robustness claim is satisfied only to the extent that \u03b2_legs(r,a) has no systematic dependence on r under increasing r/a and that the analytic \u03b8 \u2192 0 and \u03b8 \u2192 \u03c0 limiting arguments yield the same leading angular dependence.",
+                    "channel_populated_by": [
+                        "stated",
+                        "operational",
+                        "implicit"
+                    ]
+                }
+            },
+            {
+                "goal_id": "G2_gauge_lattice_corner_count_term",
+                "outcome_variable": "o_corners \u2208 O_P, where o_corners is a proposition about the orientation-and-origin averaged number n_corners_bar(\u03b8,r,a) of square-lattice corner contributions picked up by the boundary of the circular-sector subsystem A_{r,\u03b8}",
+                "goal_form": "target_proposition",
+                "target_object": "Establish that, for lattice entanglement settings in which the entanglement contains an additive contribution proportional to the number n_corners of lattice corners crossed or picked up by the bipartition boundary, the averaged lattice-corner count n_corners_bar(\u03b8,r,a) has the same fitted subleading \u03b8-dependent angular form (\u03c0 \u2212 \u03b8) cot \u03b8 and the same absence of systematic boundary-length dependence in its fitted coefficient \u03b2_corners as the crossed-bond count n_legs_bar(\u03b8,r,a).",
+                "feasibility_constraints": [
+                    "C1(o_corners): The lattice is the square lattice aZ^2 with spacing a > 0, and A_{r,\u03b8} is the same circular-sector subsystem { \u03c1(cos \u03b1, sin \u03b1) : 0 \u2264 \u03c1 \u2264 r and 0 \u2264 \u03b1 \u2264 \u03b8 } with \u03b8 \u2208 (0,\u03c0).",
+                    "C2(o_corners): n_corners(\u03b8,r,a,\u03c6,u) is the exact count of local square-lattice corner features on the bipartition boundary after rotating A_{r,\u03b8} by \u03c6 \u2208 [0,2\u03c0) and translating its apex by u \u2208 [0,a) \u00d7 [0,a).",
+                    "C3(o_corners): n_corners_bar(\u03b8,r,a) = (1/(2\u03c0a^2)) \u222b_{0}^{2\u03c0} \u222b_{[0,a)\u00d7[0,a)} n_corners(\u03b8,r,a,\u03c6,u) du d\u03c6; the same orientation-and-origin averaging used for n_legs is required.",
+                    "C4(o_corners): The entanglement setting contains an additive boundary-local term \u03b3 n_corners(\u03b8,r,a,\u03c6,u), where \u03b3 is independent of \u03b8; therefore a \u03b8-dependent term in n_corners induces a \u03b8-dependent term in that additive entanglement contribution.",
+                    "C5(o_corners): The continuum-refinement comparison is r/a \u2192 \u221e, and the relevant area-independence statement concerns the fitted angular coefficient \u03b2_corners rather than the \u03b8-independent term \u03b1_corners."
+                ],
+                "success_set": {
+                    "kind": "predicate",
+                    "definition": "\u03a3_P,corners = { o_corners : for each evaluated pair (r,a), define (\u03b1_corners(r,a), \u03b2_corners(r,a)) = argmin_{\u03b1,\u03b2 \u2208 R} \u222b_{0}^{\u03c0} [n_corners_bar(\u03b8,r,a) \u2212 \u03b1 \u2212 \u03b2(\u03c0 \u2212 \u03b8) cot \u03b8]^2 d\u03b8 over the \u03b8-domain used for the count comparison; the accepted outcome is that \u03b2_corners(r,a) has no systematic dependence on r under the paper's continuum-refinement comparison r/a increasing, and the near-\u03b8 \u2192 \u03c0 lattice-corner calculation yields p_corner(\u03b8) = log(cos(\u03c0 \u2212 \u03b8)) \u2212 2p_skip(\u03b8), p_skip(\u03b8) = (1/4)(1 \u2212 (\u03c0 \u2212 \u03b8) cot \u03b8), and therefore p_corner(\u03b8) = \u22122p_skip(\u03b8) + O((\u03c0 \u2212 \u03b8)^2), so the leading \u03b8-dependent part has the same (\u03c0 \u2212 \u03b8) cot \u03b8 angular dependence as the crossed-bond count }",
+                    "threshold": {
+                        "applies": false,
+                        "value": null,
+                        "comparator": "eq",
+                        "metric_symbol": null,
+                        "metric_definition": null,
+                        "source_span": null
+                    }
+                },
+                "preference_ordering": {
+                    "kind": "none",
+                    "definition": null,
+                    "objective_symbols": [],
+                    "lex_order": null,
+                    "embedding_to_total_utility": null
+                },
+                "robustness_scope": {
+                    "applies": true,
+                    "ambient_space": "Square-lattice bipartition geometries for entanglement settings with a \u03b8-independent coefficient multiplying n_corners.",
+                    "type_tag": "environment_family",
+                    "metric_or_divergence": null,
+                    "radius_or_budget": null,
+                    "indexing_set": "{ (\u03b8,r,a,\u03c6,u,\u03b3) : \u03b8 \u2208 (0,\u03c0), r > 0, a > 0, \u03c6 \u2208 [0,2\u03c0), u \u2208 [0,a) \u00d7 [0,a), \u03b3 \u2208 R is independent of \u03b8, and r/a \u2192 \u221e is used only for the continuum-refinement comparison }",
+                    "claimed_subfamily": {
+                        "definition": "The claimed subfamily consists only of square-lattice entanglement settings whose boundary contribution includes \u03b3 n_corners with \u03b3 independent of \u03b8, where n_corners_bar is obtained by exact counting and uniform averaging over all \u03c6 \u2208 [0,2\u03c0) and all apex positions u \u2208 [0,a) \u00d7 [0,a).",
+                        "source_span": {
+                            "section": "Abstract; Section III; Appendix",
+                            "paragraph_or_line": "Abstract sentence on gauge-invariant systems; Section III paragraph introducing n_corners; Appendix derivation of p_corner",
+                            "verbatim": "We extend our analysis to gauge-invariant systems, where lattice corners crossed by the bipartition boundary contribute an additional corner-dependent term. We therefore also consider separably the number of lattice corners crossed by the bipartition's boundary, n_corners."
+                        }
+                    },
+                    "hinted_superfamily": {
+                        "definition": null,
+                        "source_span": null
+                    },
+                    "refinement_relation": "none",
+                    "criterion": "For each member of the claimed subfamily, compute n_corners_bar(\u03b8,r,a) by exact counting and uniform averaging over \u03c6 and u; fit the resulting \u03b8-dependence by minimising \u222b_{0}^{\u03c0} [n_corners_bar(\u03b8,r,a) \u2212 \u03b1 \u2212 \u03b2(\u03c0 \u2212 \u03b8) cot \u03b8]^2 d\u03b8 over \u03b1,\u03b2 \u2208 R; the robustness claim is satisfied only to the extent that \u03b2_corners(r,a) has no systematic dependence on r under increasing r/a and that the near-\u03b8 \u2192 \u03c0 expression p_corner(\u03b8) = log(cos(\u03c0 \u2212 \u03b8)) \u2212 2p_skip(\u03b8) with p_skip(\u03b8) = (1/4)(1 \u2212 (\u03c0 \u2212 \u03b8) cot \u03b8) yields the same leading angular dependence.",
+                    "channel_populated_by": [
+                        "stated",
+                        "operational",
+                        "implicit"
+                    ]
+                }
+            }
+        ],
+        "inter_goal_relation": "joint_conjunction",
+        "methodological_claim": {
+            "applies": true,
+            "target_object": "The paper claims that G1 and G2 are established by a geometric counting procedure: define the crossed-bond count n_legs and lattice-corner count n_corners for a square-lattice discretisation of A_{r,\u03b8}, average those counts over lattice orientation \u03c6 and apex position u, compare the averaged \u03b8-dependence to \u03b1 + \u03b2(\u03c0 \u2212 \u03b8) cot \u03b8 by fitting \u03b1 and \u03b2, and analytically compute the near-\u03b8 \u2192 \u03c0 probabilities p_skip and p_corner for the local configurations nearest the apex.",
+            "evidence_channels": {
+                "source_span": {
+                    "section": "Abstract; Section III; Appendix",
+                    "paragraph_or_line": "Abstract method sentence; Section III counting-and-fitting paragraphs; Appendix opening derivation",
+                    "verbatim": "Using a rigorous counting argument, we show that the bond dimension of an iPEPS representation exhibits a corner-dependent term that matches the predicted term in gapped continuous systems. The results are then fitted, based on Eq. (7), to f(\u03b8) = \u03b1 + \u03b2(\u03c0 \u2212 \u03b8) cot \u03b8. In this Appendix, we obtain explicitly the dependence of n_legs, n_corners on \u03b8 for \u03b8 \u2192 \u03c0."
+                },
+                "formalisation": "The methodology claim is not an additional end-state goal. It is the claim that the evidence for G1 and G2 is generated by exact geometric counts of boundary crossings and lattice-corner events, uniform averaging over \u03c6 \u2208 [0,2\u03c0) and u \u2208 [0,a) \u00d7 [0,a), least-squares comparison to \u03b1 + \u03b2(\u03c0 \u2212 \u03b8) cot \u03b8, and local analytic probability calculations near \u03b8 \u2192 \u03c0."
+            }
+        },
+        "evidence_channels": {
+            "stated_goal": {
+                "source_span": {
+                    "section": "Abstract",
+                    "paragraph_or_line": "Abstract result sentences",
+                    "verbatim": "Using a rigorous counting argument, we show that the bond dimension of an iPEPS representation exhibits a corner-dependent term that matches the predicted term in gapped continuous systems. Crucially, we find that this correspondence only emerges when averaging over all possible lattice orientations and origin positions. We extend our analysis to gauge-invariant systems, where lattice corners crossed by the bipartition boundary contribute an additional corner-dependent term."
+                },
+                "formalisation": "The stated goal is the joint proposition G1 \u2227 G2: G1 asserts that n_legs_bar(\u03b8,r,a), the orientation-and-origin averaged iPEPS crossed-bond count, has a fitted subleading term with angular dependence (\u03c0 \u2212 \u03b8) cot \u03b8 and no systematic dependence of \u03b2_legs on r in the continuum-refinement comparison r/a \u2192 \u221e; G2 asserts the analogous fitted-count statement for n_corners_bar(\u03b8,r,a) in entanglement settings where \u03b3 n_corners is an additive boundary-local contribution with \u03b3 independent of \u03b8."
+            },
+            "operational_goal": {
+                "source_span": {
+                    "section": "Section III; Figure 5; Appendix",
+                    "paragraph_or_line": "Definitions of n_legs, n_corners, \u03c6-averaging, unit-cell averaging, Eq. (10), Figure 5 fitting discussion, and Appendix equations A.11-A.15",
+                    "verbatim": "The results are then fitted, based on Eq. (7), to f(\u03b8) = \u03b1 + \u03b2(\u03c0 \u2212 \u03b8) cot \u03b8. The coefficients \u03b2_legs, \u03b2_corners are constant as a function of the area, up to a relative variation of \u223c 10\u22122, which may account for finite-size effects or numerical errors. p_skip(\u03b8) = 1/4(1 \u2212 (\u03c0 \u2212 \u03b8) cot \u03b8). p_corner(\u03b8) = log cos(\u03c0\u2212\u03b8) \u2212 2p_skip(\u03b8)."
+                },
+                "formalisation": "The operational goal is to compute exact discrete counts n_legs(\u03b8,r,a,\u03c6,u) and n_corners(\u03b8,r,a,\u03c6,u), average them over \u03c6 \u2208 [0,2\u03c0) and u \u2208 [0,a) \u00d7 [0,a), fit n_legs_bar and n_corners_bar to \u03b1 + \u03b2(\u03c0 \u2212 \u03b8) cot \u03b8 by choosing \u03b1 and \u03b2 that minimise squared fitting error over the evaluated \u03b8-domain, and verify by both numerical fitting and \u03b8 \u2192 0, \u03b8 \u2192 \u03c0 analytic limits that the angular coefficient \u03b2 is not systematically controlled by |\u2202A_{r,\u03b8}|."
+            },
+            "implicit_goal": {
+                "inference_basis": [
+                    "The paper repeatedly frames the end-state as reproducing the gapped-continuum corner angular dependence from square-lattice iPEPS geometry rather than computing the exact von Neumann entropy of a specific microscopic Hamiltonian.",
+                    "Section II supplies the bridge from tensor-network geometry to entanglement by bounding the Schmidt rank through the merged virtual-boundary bond dimension.",
+                    "Section III operationalises the claim through the variables n_legs, n_corners, \u03b8, r, \u03c6, and the unit-cell apex position, then fits the averaged counts to \u03b1 + \u03b2(\u03c0 \u2212 \u03b8) cot \u03b8.",
+                    "The Appendix supplies the analytic near-\u03b8 \u2192 \u03c0 expressions for p_skip and p_corner, while Figure 5 supplies numerical evidence for weak r-dependence of the fitted \u03b2 coefficients.",
+                    "Critical-system logarithmic dependence on |\u2202A| is discussed as not captured by this counting argument, so it is excluded from the claimed goal rather than included in the robustness scope.",
+                    "The implicit-fit complexity value 0.1875 is computed as 3 populated structural-commitment slots divided by 16 optional structural slots: robustness_scope.applies=true in G1, robustness_scope.applies=true in G2, and one additional canonical_goal block beyond the first; threshold fields, lex_order, and embedding_to_total_utility are unpopulated."
+                ],
+                "fit_score": 0.956,
+                "fit_components": {
+                    "TextAlign": 0.875,
+                    "MethodAlign": 1.0,
+                    "EvalAlign": 1.0,
+                    "ClaimAlign": 0.95,
+                    "Complexity": 0.1875
+                },
+                "formalisation": "The best implicit goal is the joint target proposition that the paper explains the angular part of the gapped-continuum entanglement corner law using averaged square-lattice tensor-network geometry: the crossed-bond count n_legs_bar and the lattice-corner count n_corners_bar each exhibit a fitted subleading term proportional to (\u03c0 \u2212 \u03b8) cot \u03b8, while their fitted angular coefficients do not show systematic dependence on boundary length in the continuum-refinement comparison r/a \u2192 \u221e."
+            },
+            "excluded_aims": [
+                {
+                    "verbatim": "These findings offer new insights into the relationship between entanglement in continuous and discrete quantum systems.",
+                    "source_span": {
+                        "section": "Abstract",
+                        "paragraph_or_line": "Final abstract sentence",
+                        "verbatim": "These findings offer new insights into the relationship between entanglement in continuous and discrete quantum systems."
+                    },
+                    "reason": "motivational"
+                },
+                {
+                    "verbatim": "This necessity suggests that certain features inherent to continuous systems may be wrongfully represented when a fixed lattice orientation is used.",
+                    "source_span": {
+                        "section": "Section III",
+                        "paragraph_or_line": "Paragraph after the Figure 5 discussion",
+                        "verbatim": "This necessity suggests that certain features inherent to continuous systems may be wrongfully represented when a fixed lattice orientation is used."
+                    },
+                    "reason": "application_gesture"
+                },
+                {
+                    "verbatim": "A possible option for obtaining a geometric log dependence on the area could be to use a different TN structure, e.g., MERA. Another option is a discretized system that lives on a fractal rather than a lattice.",
+                    "source_span": {
+                        "section": "Section III",
+                        "paragraph_or_line": "Critical-systems discussion",
+                        "verbatim": "A possible option for obtaining a geometric log dependence on the area could be to use a different TN structure, e.g., MERA. Another option is a discretized system that lives on a fractal rather than a lattice."
+                    },
+                    "reason": "out_of_scope_other"
+                },
+                {
+                    "verbatim": "It would be interesting to explore whether other entanglement properties, across different spatial dimensions, can similarly be linked to geometric features.",
+                    "source_span": {
+                        "section": "Conclusions and future outlook",
+                        "paragraph_or_line": "Final forward-looking paragraph",
+                        "verbatim": "It would be interesting to explore whether other entanglement properties, across different spatial dimensions, can similarly be linked to geometric features."
+                    },
+                    "reason": "out_of_scope_other"
+                }
+            ]
+        },
+        "consistency_relation": "aligned",
+        "consistency_relation_derivation": "The stated, operational, and implicit channels agree on the same formal end-state: averaged square-lattice iPEPS geometry produces a fitted subleading, boundary-length-independent corner term with angular dependence (\u03c0 \u2212 \u03b8) cot \u03b8, and the same type of claim is extended to the lattice-corner contribution relevant when entanglement contains an additive term proportional to n_corners. The operational artefacts directly instantiate the stated goal through exact counts, uniform averaging over \u03c6 and apex position u, fits to \u03b1 + \u03b2(\u03c0 \u2212 \u03b8) cot \u03b8, checks of \u03b2_legs and \u03b2_corners as functions of r, and appendix calculations of p_skip and p_corner. Motivational, application-level, and future-work statements are recorded under excluded_aims rather than treated as canonical goals."
+    }
+}

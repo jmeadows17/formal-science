@@ -1,0 +1,248 @@
+{
+  "paper_title": "Direct and indirect loop equations in lattice Yang-Mills theory (Liu, 2026, JHEP)",
+  "deeper_reasoning_1": "\\textbf{Claim.}\nFor every finite canonical target set \\(S_0\\), if the returned direct rows \\(E_{\\mathrm{dir}}(S_0)\\) are a row-independent basis of the operational generator set consisting of retained plaquette-cut Schwinger-Dyson rows and retained SU(2) trace-collision rows, then\n\\[\n\\operatorname{span}_{\\mathbb{Q}(\\lambda)}E_{\\mathrm{dir}}(S_0)\n=\nR_{\\mathrm{dir}}(D,S_0).\n\\]\nThus the direct construction is complete exactly relative to the finite target set and the paper's retention rule.\n\n\\textbf{Premises.}\n\\[\n\\begin{array}{ll}\n(P1) & S_0\\text{ is a finite set of canonical SU(2) Wilson-loop classes.}\\\\\n(P2) & \\mathcal{E}_{\\mathrm{pc}}(S_0)=\\mathcal{E}_{\\mathrm{dir}}^{\\mathrm{SD}}(S_0).\\\\\n(P3) & \\mathcal{E}_{\\mathrm{tc}}(S_0)=\\mathcal{E}_{\\mathrm{dir}}^{\\mathrm{Tr}}(S_0).\\\\\n(P4) & R_{\\mathrm{dir}}(D,S_0):=\n\\operatorname{span}_{\\mathbb{Q}(\\lambda)}\n\\left(\\mathcal{E}_{\\mathrm{dir}}^{\\mathrm{SD}}(S_0)\\cup\n\\mathcal{E}_{\\mathrm{dir}}^{\\mathrm{Tr}}(S_0)\\right).\\\\\n(P5) & \\mathcal{G}_{\\mathrm{dir}}(S_0):=\n\\mathcal{E}_{\\mathrm{pc}}(S_0)\\cup\\mathcal{E}_{\\mathrm{tc}}(S_0).\\\\\n(P6) & E_{\\mathrm{dir}}(S_0)\\text{ is row-independent and }\n\\operatorname{span}_{\\mathbb{Q}(\\lambda)}E_{\\mathrm{dir}}(S_0)\n=\n\\operatorname{span}_{\\mathbb{Q}(\\lambda)}\\mathcal{G}_{\\mathrm{dir}}(S_0).\n\\end{array}\n\\]\n\n\\textbf{Derivation.}\nThe operational direct generator span is\n\\begin{align}\n\\operatorname{span}_{\\mathbb{Q}(\\lambda)}\\mathcal{G}_{\\mathrm{dir}}(S_0)\n&=\n\\operatorname{span}_{\\mathbb{Q}(\\lambda)}\n\\left(\\mathcal{E}_{\\mathrm{pc}}(S_0)\\cup\\mathcal{E}_{\\mathrm{tc}}(S_0)\\right)\n&&\\text{by (P5)}\\\\\n&=\n\\operatorname{span}_{\\mathbb{Q}(\\lambda)}\n\\left(\\mathcal{E}_{\\mathrm{dir}}^{\\mathrm{SD}}(S_0)\\cup\n\\mathcal{E}_{\\mathrm{dir}}^{\\mathrm{Tr}}(S_0)\\right)\n&&\\text{by (P2), (P3)}\\\\\n&=\nR_{\\mathrm{dir}}(D,S_0)\n&&\\text{by (P4)}.\n\\end{align}\nSince \\(E_{\\mathrm{dir}}(S_0)\\) has the same span as this operational generator set,\n\\begin{align}\n\\operatorname{span}_{\\mathbb{Q}(\\lambda)}E_{\\mathrm{dir}}(S_0)\n&=\n\\operatorname{span}_{\\mathbb{Q}(\\lambda)}\\mathcal{G}_{\\mathrm{dir}}(S_0)\n&&\\text{by (P6)}\\\\\n&=\nR_{\\mathrm{dir}}(D,S_0)\n&&\\text{by the previous chain}.\n\\end{align}\nBecause \\(E_{\\mathrm{dir}}(S_0)\\) is row-independent by (P6), it is a basis of \\(R_{\\mathrm{dir}}(D,S_0)\\).\n\n\\textbf{Final Result.}\n\\[\n\\boxed{\nE_{\\mathrm{dir}}(S_0)\\text{ is a complete independent basis of }R_{\\mathrm{dir}}(D,S_0)\n}\n\\]\n\\hfill\\(\\blacksquare\\)",
+  "deeper_reasoning_2": "\\textbf{Claim.}\nLet \\(S_0\\subset S_1\\) be finite canonical loop sets. Write a row-spanning direct matrix in \\(S_1\\) as\n\\[\nA_x\\mathbf{x}+A_y\\mathbf{y}=0,\n\\]\nwhere \\(\\mathbf{x}\\) indexes \\(S_0\\) and \\(\\mathbf{y}\\) indexes \\(S_1\\setminus S_0\\). Then the projected target-space row space is exactly\n\\[\nP(D,S_0,S_1)=\n\\left\\{u^TA_x:\\ u^TA_y=0\\right\\},\n\\]\nand the indirect quotient has dimension\n\\[\n\\dim I(D,S_0,S_1)\n=\n\\dim P(D,S_0,S_1)-\\dim R_{\\mathrm{dir}}(D,S_0)\n\\]\nwhenever \\(R_{\\mathrm{dir}}(D,S_0)\\subseteq P(D,S_0,S_1)\\).\n\n\\textbf{Premises.}\n\\[\n\\begin{array}{ll}\n(P1) & A_x\\mathbf{x}+A_y\\mathbf{y}=0\\text{ has rows spanning }R_{\\mathrm{dir}}(D,S_1).\\\\\n(P2) & K:=\\{u:\\ u^TA_y=0\\}.\\\\\n(P3) & P(D,S_0,S_1):=\\{u^TA_x:\\ u\\in K\\}.\\\\\n(P4) & R_{\\mathrm{dir}}(D,S_0)\\subseteq P(D,S_0,S_1).\\\\\n(P5) & I(D,S_0,S_1):=P(D,S_0,S_1)/R_{\\mathrm{dir}}(D,S_0).\\\\\n(P6) & \\dim(V/U)=\\dim V-\\dim U\\text{ if }U\\subseteq V\\text{ are finite-dimensional.}\n\\end{array}\n\\]\n\n\\textbf{Derivation.}\nFor any row-combination vector \\(u\\),\n\\begin{align}\nu^T(A_x\\mathbf{x}+A_y\\mathbf{y})\n&=u^TA_x\\mathbf{x}+u^TA_y\\mathbf{y}.\n\\end{align}\nIf \\(u\\in K\\), then \\(u^TA_y=0\\), so this row combination contains no auxiliary coordinate:\n\\begin{align}\nu^T(A_x\\mathbf{x}+A_y\\mathbf{y})\n&=u^TA_x\\mathbf{x}.\n\\end{align}\nHence every \\(u\\in K\\) gives a target-only row \\(u^TA_x\\mathbf{x}=0\\). Conversely, a row combination that is target-only has zero coefficient on every auxiliary coordinate, hence satisfies \\(u^TA_y=0\\), so its target coefficient row lies in \\(\\{u^TA_x:\\ u^TA_y=0\\}\\). Therefore\n\\[\nP(D,S_0,S_1)=\\{u^TA_x:\\ u^TA_y=0\\}.\n\\]\nUsing the quotient definition,\n\\begin{align}\n\\dim I(D,S_0,S_1)\n&=\\dim\\left(P(D,S_0,S_1)/R_{\\mathrm{dir}}(D,S_0)\\right)\n&&\\text{by (P5)}\\\\\n&=\\dim P(D,S_0,S_1)-\\dim R_{\\mathrm{dir}}(D,S_0)\n&&\\text{by (P4), (P6)}.\n\\end{align}\n\n\\textbf{Final Result.}\n\\[\n\\boxed{\nP(D,S_0,S_1)=\\{u^TA_x:\\ u^TA_y=0\\},\n\\qquad\n\\dim I=\\dim P-\\dim R_{\\mathrm{dir}}(D,S_0)\n}\n\\]\n\\hfill\\(\\blacksquare\\)",
+  "deeper_reasoning_3": "\\textbf{Claim.}\nFor the two-dimensional target set \\(S^{[12]}\\), the reported projected ranks from \\(S^{[14]}\\), \\(S^{[16]}\\), and \\(S^{[18]}\\) form a finite-chain saturation certificate:\n\\[\nP_{14}=P_{16}=P_{18},\\qquad\n\\dim I(2,S^{[12]},S^{[18]})=2,\\qquad\nd_{\\mathrm{projected}}=66.\n\\]\nThe certificate is deliberately finite: it proves saturation along the tested nested chain, not over every possible larger auxiliary superset.\n\n\\textbf{Premises.}\n\\[\n\\begin{array}{ll}\n(P1) & S^{[12]}\\subset S^{[14]}\\subset S^{[16]}\\subset S^{[18]}.\\\\\n(P2) & P_k:=P(2,S^{[12]},S^{[k]})\\text{ for }k\\in\\{14,16,18\\}.\\\\\n(P3) & P_{14}\\subseteq P_{16}\\subseteq P_{18}.\\\\\n(P4) & \\dim P_{14}=\\dim P_{16}=\\dim P_{18}=53.\\\\\n(P5) & \\dim R_{\\mathrm{dir}}(2,S^{[12]})=51.\\\\\n(P6) & |S^{[12]}|=119.\\\\\n(P7) & R_{\\mathrm{dir}}(2,S^{[12]})\\subseteq P_{18}.\\\\\n(P8) & \\text{If }U\\subseteq V\\text{ and }\\dim U=\\dim V,\\text{ then }U=V.\n\\end{array}\n\\]\n\n\\textbf{Derivation.}\nThe nested auxiliary spaces give nested projected row spaces by (P3). Equal dimensions then force equality:\n\\begin{align}\nP_{14}\\subseteq P_{16}\n\\quad\\text{and}\\quad\n\\dim P_{14}=\\dim P_{16}\n&\\Longrightarrow P_{14}=P_{16}\n&&\\text{by (P4), (P8)},\\\\\nP_{16}\\subseteq P_{18}\n\\quad\\text{and}\\quad\n\\dim P_{16}=\\dim P_{18}\n&\\Longrightarrow P_{16}=P_{18}\n&&\\text{by (P4), (P8)}.\n\\end{align}\nThus\n\\[\nP_{14}=P_{16}=P_{18}.\n\\]\nThe indirect quotient dimension at the largest tested auxiliary space is\n\\begin{align}\n\\dim I(2,S^{[12]},S^{[18]})\n&=\\dim P_{18}-\\dim R_{\\mathrm{dir}}(2,S^{[12]})\n&&\\text{by quotient dimension and (P7)}\\\\\n&=53-51\n&&\\text{by (P4), (P5)}\\\\\n&=2.\n\\end{align}\nThe remaining target-space dimension after projected constraints is\n\\begin{align}\nd_{\\mathrm{projected}}\n&=|S^{[12]}|-\\dim P_{18}\\\\\n&=119-53\n&&\\text{by (P4), (P6)}\\\\\n&=66.\n\\end{align}\nSince only \\(S^{[14]}\\), \\(S^{[16]}\\), and \\(S^{[18]}\\) appear in the equality proof, the conclusion is a finite-chain saturation certificate rather than an unrestricted asymptotic theorem.\n\n\\textbf{Final Result.}\n\\[\n\\boxed{\nP_{14}=P_{16}=P_{18},\\qquad\n\\dim I=2,\\qquad\nd_{\\mathrm{projected}}=66\n}\n\\]\n\\hfill\\(\\blacksquare\\)",
+  "deeper_reasoning_4": "\\textbf{Claim.}\nAssume the two-dimensional loop-count and equation-ratio ansatz\n\\[\nN_{\\mathrm{loop}}^{(2\\mathrm{D})}(L)\\simeq A_{2\\mathrm{D}}L^{-2}3^L,\n\\qquad\n\\frac{N_{\\mathrm{eqn}}^{(2\\mathrm{D})}(L)}{N_{\\mathrm{loop}}^{(2\\mathrm{D})}(L)}\n\\simeq 1-\\frac{c}{L^{\\delta}},\n\\]\nwith \\(A_{2\\mathrm{D}}>0\\), \\(c>0\\), and \\(\\delta>0\\). Then the direct-equation residual dimension\n\\[\nd_{\\mathrm{dir}}(L):=N_{\\mathrm{loop}}^{(2\\mathrm{D})}(L)-N_{\\mathrm{eqn}}^{(2\\mathrm{D})}(L)\n\\]\nhas the asymptotic form\n\\[\nd_{\\mathrm{dir}}(L)\\simeq A_{2\\mathrm{D}}c\\,L^{-(2+\\delta)}3^L.\n\\]\nThus the constrained fraction tends to one, but the absolute residual still grows with exponential base \\(3\\).\n\n\\textbf{Premises.}\n\\[\n\\begin{array}{ll}\n(P1) & N_{\\mathrm{loop}}^{(2\\mathrm{D})}(L)\\simeq A_{2\\mathrm{D}}L^{-2}3^L.\\\\\n(P2) & R(L):=N_{\\mathrm{eqn}}^{(2\\mathrm{D})}(L)/N_{\\mathrm{loop}}^{(2\\mathrm{D})}(L).\\\\\n(P3) & R(L)\\simeq 1-c/L^{\\delta}.\\\\\n(P4) & d_{\\mathrm{dir}}(L):=N_{\\mathrm{loop}}^{(2\\mathrm{D})}(L)-N_{\\mathrm{eqn}}^{(2\\mathrm{D})}(L).\\\\\n(P5) & A_{2\\mathrm{D}}>0,\\quad c>0,\\quad \\delta>0.\n\\end{array}\n\\]\n\n\\textbf{Derivation.}\nUsing \\(N_{\\mathrm{eqn}}^{(2\\mathrm{D})}(L)=R(L)N_{\\mathrm{loop}}^{(2\\mathrm{D})}(L)\\),\n\\begin{align}\nd_{\\mathrm{dir}}(L)\n&=N_{\\mathrm{loop}}^{(2\\mathrm{D})}(L)-N_{\\mathrm{eqn}}^{(2\\mathrm{D})}(L)\n&&\\text{by (P4)}\\\\\n&=N_{\\mathrm{loop}}^{(2\\mathrm{D})}(L)\\left(1-R(L)\\right)\\\\\n&\\simeq\n\\left(A_{2\\mathrm{D}}L^{-2}3^L\\right)\n\\left(1-\\left(1-\\frac{c}{L^{\\delta}}\\right)\\right)\n&&\\text{by (P1), (P3)}\\\\\n&=\nA_{2\\mathrm{D}}c\\,L^{-(2+\\delta)}3^L.\n\\end{align}\nDividing by the loop count gives\n\\[\n\\frac{d_{\\mathrm{dir}}(L)}{N_{\\mathrm{loop}}^{(2\\mathrm{D})}(L)}\n\\simeq \\frac{c}{L^\\delta},\n\\]\nwhich tends to \\(0\\) because \\(\\delta>0\\). The absolute residual retains the factor \\(3^L\\), so the direct equations can asymptotically cover almost all variables without making the independent remainder polynomially small.\n\n\\textbf{Final Result.}\n\\[\n\\boxed{\nd_{\\mathrm{dir}}(L)\\simeq A_{2\\mathrm{D}}c\\,L^{-(2+\\delta)}3^L,\n\\qquad\n\\frac{d_{\\mathrm{dir}}(L)}{N_{\\mathrm{loop}}^{(2\\mathrm{D})}(L)}\n\\simeq \\frac{c}{L^\\delta}\n}\n\\]\n\\hfill\\(\\blacksquare\\)",
+  "deeper_reasoning_5": "\\textbf{Claim.}\nLet \\(S_0\\subset S_f\\subset S_1\\), where \\(S_f\\) is a filtered auxiliary set. If the filtered projected space embeds into the full projected space and the two projected spaces have the same rank, then filtering preserves all projected target-space equations:\n\\[\nP(D,S_0,S_f)=P(D,S_0,S_1).\n\\]\nThis is the correct losslessness criterion for the paper's vertex-support filter: equality must be checked after projection to \\(S_0\\), not merely at the level of raw auxiliary candidates.\n\n\\textbf{Premises.}\n\\[\n\\begin{array}{ll}\n(P1) & S_0\\subset S_f\\subset S_1.\\\\\n(P2) & P_f:=P(D,S_0,S_f).\\\\\n(P3) & P_1:=P(D,S_0,S_1).\\\\\n(P4) & P_f\\subseteq P_1.\\\\\n(P5) & \\dim P_f=\\dim P_1.\\\\\n(P6) & \\text{If }U\\subseteq V\\text{ and }\\dim U=\\dim V,\\text{ then }U=V.\\\\\n(P7) & \\text{Case I projected ranks are }2586\\text{ and }2586.\\\\\n(P8) & \\text{Case II projected ranks are }347\\text{ and }347.\\\\\n(P9) & \\text{Case I candidate counts are }121223\\text{ before filtering and }79884\\text{ after filtering.}\\\\\n(P10) & \\text{Case II candidate counts are }225570\\text{ before filtering and }38322\\text{ after filtering.}\n\\end{array}\n\\]\n\n\\textbf{Derivation.}\nBy the subspace and equal-rank criterion,\n\\begin{align}\nP_f\\subseteq P_1\n\\quad\\text{and}\\quad\n\\dim P_f=\\dim P_1\n&\\Longrightarrow P_f=P_1\n&&\\text{by (P4), (P5), (P6)}.\n\\end{align}\nTherefore the filtered auxiliary set is lossless exactly for the projected target-space equations under these premises:\n\\[\nP(D,S_0,S_f)=P(D,S_0,S_1).\n\\]\nFor the two reported filter tests, the projected-rank retention fractions are\n\\begin{align}\n\\rho_{\\mathrm{ret}}^{\\mathrm{I}}\n&=\\frac{2586}{2586}=1\n&&\\text{by (P7)},\\\\\n\\rho_{\\mathrm{ret}}^{\\mathrm{II}}\n&=\\frac{347}{347}=1\n&&\\text{by (P8)}.\n\\end{align}\nThe auxiliary candidate-set reduction fractions are\n\\begin{align}\n\\rho_{\\mathrm{red}}^{\\mathrm{I}}\n&=1-\\frac{79884}{121223}\\simeq0.341\n&&\\text{by (P9)},\\\\\n\\rho_{\\mathrm{red}}^{\\mathrm{II}}\n&=1-\\frac{38322}{225570}\\simeq0.830\n&&\\text{by (P10)}.\n\\end{align}\nThus the reported filter is empirically lossless for the projected ranks in the tested cases while substantially reducing the auxiliary search space.\n\n\\textbf{Final Result.}\n\\[\n\\boxed{\nP_f\\subseteq P_1\\text{ and }\\dim P_f=\\dim P_1\n\\Longrightarrow\nP(D,S_0,S_f)=P(D,S_0,S_1)\n}\n\\]\n\\[\n\\boxed{\n\\rho_{\\mathrm{ret}}^{\\mathrm{I}}=\\rho_{\\mathrm{ret}}^{\\mathrm{II}}=1,\\qquad\n\\rho_{\\mathrm{red}}^{\\mathrm{I}}\\simeq0.341,\\qquad\n\\rho_{\\mathrm{red}}^{\\mathrm{II}}\\simeq0.830\n}\n\\]\n\\hfill\\(\\blacksquare\\)",
+  "deeper_reasoning_6": "\\textbf{Claim.}\nSuppose \\(E_{\\mathrm{dir}}\\) is a basis of \\(R_{\\mathrm{dir}}(D,S_0)\\) and \\(E_{\\mathrm{ind}}\\) is a representative basis of\n\\[\nP(D,S_0,S_1)/R_{\\mathrm{dir}}(D,S_0).\n\\]\nThen \\(E_{\\mathrm{dir}}\\cup E_{\\mathrm{ind}}\\) is an independent basis of the combined projected constraint space \\(P(D,S_0,S_1)\\). Hence the number of dynamically free target variables after direct and indirect constraints is\n\\[\n|S_0|-\\dim R_{\\mathrm{dir}}(D,S_0)-|E_{\\mathrm{ind}}|.\n\\]\n\n\\textbf{Premises.}\n\\[\n\\begin{array}{ll}\n(P1) & E_{\\mathrm{dir}}\\text{ is a basis of }R:=R_{\\mathrm{dir}}(D,S_0).\\\\\n(P2) & P:=P(D,S_0,S_1).\\\\\n(P3) & R\\subseteq P.\\\\\n(P4) & E_{\\mathrm{ind}}=\\{v_1,\\ldots,v_q\\}\\subset P.\\\\\n(P5) & \\{v_1+R,\\ldots,v_q+R\\}\\text{ is a basis of }P/R.\\\\\n(P6) & S_0\\text{ is finite, so the target coordinate space has dimension }|S_0|.\n\\end{array}\n\\]\n\n\\textbf{Derivation.}\nTo prove spanning, let \\(p\\in P\\). Since the quotient classes of \\(E_{\\mathrm{ind}}\\) span \\(P/R\\), there are coefficients \\(\\alpha_1,\\ldots,\\alpha_q\\in\\mathbb{Q}(\\lambda)\\) such that\n\\[\np+R=\\sum_{i=1}^{q}\\alpha_i(v_i+R).\n\\]\nHence\n\\[\np-\\sum_{i=1}^{q}\\alpha_i v_i\\in R.\n\\]\nBecause \\(E_{\\mathrm{dir}}\\) spans \\(R\\), the difference is a linear combination of rows in \\(E_{\\mathrm{dir}}\\). Thus \\(p\\) is a linear combination of \\(E_{\\mathrm{dir}}\\cup E_{\\mathrm{ind}}\\), so the union spans \\(P\\).\n\nTo prove independence, suppose\n\\[\n\\sum_{e\\in E_{\\mathrm{dir}}}\\beta_e e+\\sum_{i=1}^{q}\\alpha_i v_i=0.\n\\]\nPassing to the quotient by \\(R\\), the first sum vanishes and gives\n\\[\n\\sum_{i=1}^{q}\\alpha_i(v_i+R)=0+R.\n\\]\nThe quotient classes in (P5) are independent, so \\(\\alpha_i=0\\) for all \\(i\\). The remaining equation is\n\\[\n\\sum_{e\\in E_{\\mathrm{dir}}}\\beta_e e=0,\n\\]\nand \\(E_{\\mathrm{dir}}\\) is independent by (P1), so every \\(\\beta_e=0\\). Therefore \\(E_{\\mathrm{dir}}\\cup E_{\\mathrm{ind}}\\) is independent.\n\nConsequently,\n\\begin{align}\n\\dim P\n&=\\dim R+|E_{\\mathrm{ind}}|,\\\\\nd_{\\mathrm{free}}\n&=|S_0|-\\dim P\\\\\n&=|S_0|-\\dim R_{\\mathrm{dir}}(D,S_0)-|E_{\\mathrm{ind}}|.\n\\end{align}\n\n\\textbf{Final Result.}\n\\[\n\\boxed{\nE_{\\mathrm{dir}}\\cup E_{\\mathrm{ind}}\\text{ is an independent basis of }P(D,S_0,S_1)\n}\n\\]\n\\[\n\\boxed{\nd_{\\mathrm{free}}=|S_0|-\\dim R_{\\mathrm{dir}}(D,S_0)-|E_{\\mathrm{ind}}|\n}\n\\]\n\\hfill\\(\\blacksquare\\)",
+  "deeper_reasoning_7": "\\textbf{Claim.}\nRaw plaquette-cut generation counts are not basis counts. In the two paper examples,\n\\[\n4\\mapsto 3,\\qquad 10\\mapsto 6,\n\\]\nso row-rank reduction is mathematically necessary before claiming an independent direct equation basis.\n\n\\textbf{Premises.}\n\\[\n\\begin{array}{ll}\n(P1) & W_1:=W[C_1,a,b,-a,-b,a,C_2]\\text{ has }2\\text{ cuts and }2\\text{ raw insertions per cut.}\\\\\n(P2) & W_1\\text{ has }1\\text{ equivalence among the raw candidates.}\\\\\n(P3) & W_2:=W[C_1,a,b,-a,-b,a,b,-a,-b,C_2]\\text{ has }5\\text{ cuts and }2\\text{ raw insertions per cut.}\\\\\n(P4) & W_2\\text{ has }4\\text{ equivalences among the raw candidates.}\\\\\n(P5) & n_{\\mathrm{raw}}:=2n_{\\mathrm{cut}}.\\\\\n(P6) & n_{\\mathrm{ind}}:=n_{\\mathrm{raw}}-n_{\\mathrm{eq}}.\\\\\n(P7) & \\text{A basis count must count independent rows, not merely generated rows.}\n\\end{array}\n\\]\n\n\\textbf{Derivation.}\nFor the first word,\n\\begin{align}\nn_{\\mathrm{raw}}(W_1)\n&=2\\cdot 2\n&&\\text{by (P1), (P5)}\\\\\n&=4,\\\\\nn_{\\mathrm{ind}}(W_1)\n&=n_{\\mathrm{raw}}(W_1)-1\n&&\\text{by (P2), (P6)}\\\\\n&=3.\n\\end{align}\nThus \\(W_1\\) has raw-to-independent loss\n\\[\n4-3=1.\n\\]\nFor the second word,\n\\begin{align}\nn_{\\mathrm{raw}}(W_2)\n&=2\\cdot 5\n&&\\text{by (P3), (P5)}\\\\\n&=10,\\\\\nn_{\\mathrm{ind}}(W_2)\n&=n_{\\mathrm{raw}}(W_2)-4\n&&\\text{by (P4), (P6)}\\\\\n&=6.\n\\end{align}\nThus \\(W_2\\) has raw-to-independent loss\n\\[\n10-6=4.\n\\]\nTherefore a construction that only enumerates raw plaquette cuts overcounts the independent direct constraints in both examples. By (P7), the direct target \\(E_{\\mathrm{dir}}\\) must be certified by linear independence or row rank after trace and canonical equivalences have been applied.\n\n\\textbf{Final Result.}\n\\[\n\\boxed{\nW_1:\\ 4\\text{ raw candidates}\\mapsto 3\\text{ independent candidates},\n\\qquad\nW_2:\\ 10\\text{ raw candidates}\\mapsto 6\\text{ independent candidates}\n}\n\\]\n\\[\n\\boxed{\n\\text{row-rank reduction is required before raw generator counts can define }E_{\\mathrm{dir}}\n}\n\\]\n\\hfill\\(\\blacksquare\\)",
+  "deeper_metadata": {
+    "output_file": "deeper.json",
+    "revision_id": "deeper_17_v2",
+    "revision_intent": "Improve alignment by tightening conditional premises, especially the filtering proof, and by adding a high-value rank-audit derivation showing why generated equation counts must be row-reduced before they can support the direct-basis goal.",
+    "input_files": {
+      "rubric": "deeper_reasoning_pseudo_algorithm.md",
+      "core_reasoning": "core_17.json",
+      "goals": "goals_17.json"
+    },
+    "rubric_interpretation": {
+      "top_level_schema": "The output uses only paper_title, contiguous deeper_reasoning_k strings, and deeper_metadata.",
+      "latex_constraint": "Each deeper_reasoning_k is a single standalone LaTeX proof string intended to compile with article, amsmath, and amssymb only.",
+      "metadata_constraint": "Audit and alignment information is stored only under deeper_metadata and does not duplicate proof content beyond titles, short summaries, or theorem labels.",
+      "contiguity_check": "The reasoning keys are deeper_reasoning_1 through deeper_reasoning_7 with no skipped index."
+    },
+    "goal_trace": {
+      "G1_direct_equation_space": [
+        "deeper_reasoning_1",
+        "deeper_reasoning_7"
+      ],
+      "G2_indirect_projected_constraint_space": [
+        "deeper_reasoning_2",
+        "deeper_reasoning_3",
+        "deeper_reasoning_5",
+        "deeper_reasoning_6"
+      ],
+      "G3_enumeration_and_growth_characterisation": [
+        "deeper_reasoning_4",
+        "deeper_reasoning_7"
+      ],
+      "joint_conjunction": [
+        "deeper_reasoning_6"
+      ]
+    },
+    "entry_metadata": {
+      "deeper_reasoning_1": {
+        "title": "Direct row-space completeness from retained SD and trace generators",
+        "target_goal_component": "G1_direct_equation_space",
+        "declared_source_set": [
+          "core_reasoning_1",
+          "core_reasoning_2",
+          "core_reasoning_3",
+          "core_reasoning_4",
+          "goals_17.G1"
+        ],
+        "major_advancement_modes": [
+          "composition",
+          "basis certificate",
+          "operational-to-target equivalence"
+        ],
+        "goal_alignment": "Shows that the operational direct construction spans exactly the formal direct row space.",
+        "scientific_payoff": "Turns separate SD and trace derivations into an end-to-end correctness certificate for the direct equation basis.",
+        "nontrivial_advance_over_sources": "Combines generator completeness with row reduction to establish the target basis property.",
+        "formal_sharpness": "Finite target set; retained-row construction only; no claim beyond the paper's SU(2) setting.",
+        "low_value_rejection_audit": "Avoids merely restating the Schwinger-Dyson product rule or the SU(2) trace identity.",
+        "selection_score": 5.0,
+        "controlled_external_lemmas": [
+          "A row-independent spanning set is a basis.",
+          "Substitution of equal generator sets preserves linear span."
+        ],
+        "known_residual_risks_and_mitigation": "Completeness is conditional on the paper's plaquette-cut and trace-collision generator equivalences; the proof states these as premises."
+      },
+      "deeper_reasoning_2": {
+        "title": "Exact algebraic characterization of projected indirect rows",
+        "target_goal_component": "G2_indirect_projected_constraint_space",
+        "declared_source_set": [
+          "core_reasoning_9",
+          "goals_17.G2"
+        ],
+        "major_advancement_modes": [
+          "formalization",
+          "quotient-space dimension",
+          "elimination criterion"
+        ],
+        "goal_alignment": "Matches the goal definition of projected rows and indirect quotient constraints.",
+        "scientific_payoff": "Clarifies why auxiliary-variable elimination is exactly a left-nullspace condition.",
+        "nontrivial_advance_over_sources": "Moves from a toy elimination identity to the finite row-space quotient used by the paper.",
+        "formal_sharpness": "Requires finite-dimensional row spaces and the inclusion of direct target rows in the projected space.",
+        "low_value_rejection_audit": "Avoids another scalar toy example and proves the general projection form.",
+        "selection_score": 5.0,
+        "controlled_external_lemmas": [
+          "Dimension formula for finite-dimensional quotient spaces."
+        ],
+        "known_residual_risks_and_mitigation": "The inclusion R_dir(D,S_0) subset P(D,S_0,S_1) is stated explicitly rather than hidden."
+      },
+      "deeper_reasoning_3": {
+        "title": "Finite-chain saturation certificate for S[12]",
+        "target_goal_component": "G2_indirect_projected_constraint_space",
+        "declared_source_set": [
+          "core_reasoning_10",
+          "goals_17.G2"
+        ],
+        "major_advancement_modes": [
+          "finite saturation",
+          "rank equality",
+          "scope control"
+        ],
+        "goal_alignment": "Connects the projected-rank table to the quotient dimension and remaining target dimension.",
+        "scientific_payoff": "Explains exactly what the reported equal ranks certify and what they do not certify.",
+        "nontrivial_advance_over_sources": "Transforms numerical rank equality into a finite-chain subspace equality proof.",
+        "formal_sharpness": "Only concerns S[14], S[16], and S[18]; no universal auxiliary-space claim.",
+        "low_value_rejection_audit": "Avoids overclaiming saturation beyond reported finite enlargements.",
+        "selection_score": 5.0,
+        "controlled_external_lemmas": [
+          "Nested finite-dimensional subspaces with equal dimension are equal."
+        ],
+        "known_residual_risks_and_mitigation": "Monotonic projected-space inclusion is assumed for the nested retained construction and recorded as a premise."
+      },
+      "deeper_reasoning_4": {
+        "title": "Residual free-dimension growth from the 2D equation-ratio ansatz",
+        "target_goal_component": "G3_enumeration_and_growth_characterisation",
+        "declared_source_set": [
+          "core_reasoning_6",
+          "core_reasoning_8",
+          "goals_17.G3"
+        ],
+        "major_advancement_modes": [
+          "asymptotic consequence",
+          "basis-size interpretation",
+          "growth-rate audit"
+        ],
+        "goal_alignment": "Connects the paper's loop and equation-count ansatz to the remaining direct-basis size.",
+        "scientific_payoff": "Shows that a vanishing residual fraction can still leave exponentially many free variables.",
+        "nontrivial_advance_over_sources": "Derives the residual dimension rather than only restating N_eqn.",
+        "formal_sharpness": "Conditional on the asymptotic ansatz and parameter signs.",
+        "low_value_rejection_audit": "Avoids treating fitted asymptotics as exact finite-L identities.",
+        "selection_score": 4.9,
+        "controlled_external_lemmas": [
+          "Algebraic manipulation of asymptotic expressions under stated positivity assumptions."
+        ],
+        "known_residual_risks_and_mitigation": "The proof is an implication from the ansatz, not a proof of the ansatz itself."
+      },
+      "deeper_reasoning_5": {
+        "title": "Projected-rank criterion for lossless vertex-support filtering",
+        "target_goal_component": "G2_indirect_projected_constraint_space",
+        "declared_source_set": [
+          "core_reasoning_12",
+          "goals_17.methodological_claim"
+        ],
+        "major_advancement_modes": [
+          "filter audit",
+          "rank preservation",
+          "overclaim control"
+        ],
+        "goal_alignment": "Aligns the filter claim with the projected indirect-row goal rather than raw auxiliary generation.",
+        "scientific_payoff": "Shows why the reported filter is valuable: it preserves projected rank while reducing candidate space.",
+        "nontrivial_advance_over_sources": "Replaces a stronger direct-row-space premise with the correct projected-space inclusion plus equal projected rank criterion.",
+        "formal_sharpness": "Applies only to tested cases or any future case satisfying the same projected-space rank criterion.",
+        "low_value_rejection_audit": "Avoids claiming universal filter safety from candidate-count reduction alone.",
+        "selection_score": 5.0,
+        "controlled_external_lemmas": [
+          "Nested finite-dimensional subspaces with equal dimension are equal."
+        ],
+        "known_residual_risks_and_mitigation": "The inclusion P_f subset P_1 is stated as a premise; equal numeric ranks alone would not prove equality without inclusion."
+      },
+      "deeper_reasoning_6": {
+        "title": "Combining direct and indirect bases without double counting",
+        "target_goal_component": "joint_conjunction",
+        "declared_source_set": [
+          "core_reasoning_9",
+          "core_reasoning_10",
+          "goals_17.G1",
+          "goals_17.G2"
+        ],
+        "major_advancement_modes": [
+          "basis lifting",
+          "quotient-space synthesis",
+          "free-dimension accounting"
+        ],
+        "goal_alignment": "Combines the direct basis and indirect quotient basis into the final target-space constraint basis.",
+        "scientific_payoff": "Provides the algebraic bridge from equation construction to dynamically free Wilson-loop variables.",
+        "nontrivial_advance_over_sources": "Proves no double counting of indirect rows already generated directly.",
+        "formal_sharpness": "Requires E_ind to be a representative basis of the quotient P/R_dir.",
+        "low_value_rejection_audit": "Avoids adding direct and projected ranks without quotienting.",
+        "selection_score": 5.0,
+        "controlled_external_lemmas": [
+          "A quotient basis plus a basis of the subspace lifts to a basis of the full space."
+        ],
+        "known_residual_risks_and_mitigation": "The proof assumes representatives are chosen in P and quotient classes are independent."
+      },
+      "deeper_reasoning_7": {
+        "title": "Raw generator counts are not direct basis counts",
+        "target_goal_component": "G1_direct_equation_space and G3_enumeration_and_growth_characterisation",
+        "declared_source_set": [
+          "core_reasoning_5",
+          "goals_17.G1",
+          "goals_17.G3"
+        ],
+        "major_advancement_modes": [
+          "rank audit",
+          "count interpretation",
+          "basis-validation guardrail"
+        ],
+        "goal_alignment": "Explains why the paper's direct equation output must be row-reduced and rank-counted rather than raw-counted.",
+        "scientific_payoff": "Prevents a common misinterpretation of plaquette-cut enumeration as already producing independent constraints.",
+        "nontrivial_advance_over_sources": "Turns the two local examples into a general audit rule for direct-basis construction.",
+        "formal_sharpness": "The numerical examples certify overcounting in the displayed cases; the final rule is stated as a basis-counting requirement.",
+        "low_value_rejection_audit": "Avoids merely repeating the 3 and 6 counts by deriving the raw-to-independent losses and their implication for basis construction.",
+        "selection_score": 4.9,
+        "controlled_external_lemmas": [
+          "Independent basis counts must count independent rows rather than generated candidates."
+        ],
+        "known_residual_risks_and_mitigation": "The examples do not quantify over all possible words; they justify the necessity of rank reduction as an audit requirement."
+      }
+    },
+    "rejected_low_value_candidates": [
+      {
+        "candidate": "Restate the Schwinger-Dyson product-rule derivation",
+        "reason": "Already covered by core_reasoning_1; low additional depth."
+      },
+      {
+        "candidate": "Restate the SU(2) trace identity alone",
+        "reason": "Already covered by core_reasoning_2; retained only where it supports direct generator completeness."
+      },
+      {
+        "candidate": "Claim universal safety of the vertex-support filter",
+        "reason": "Too strong; the revised output proves losslessness only under projected-space inclusion and equal projected rank, matching the reported finite evidence."
+      },
+      {
+        "candidate": "Treat finite auxiliary saturation as asymptotic saturation",
+        "reason": "Too strong; the revised output explicitly confines saturation to the tested nested chain."
+      }
+    ],
+    "global_alignment_audit": {
+      "schema": "Pass: exactly one JSON object with allowed top-level key classes, contiguous reasoning fields, and one metadata field.",
+      "core_reasoning_alignment": "The entries synthesize core SD generation, SU(2) trace reduction, plaquette-cut completeness, left-nullspace projection, finite projected-rank saturation, asymptotic residual growth, filter-retention arithmetic, and raw-versus-independent equation counts.",
+      "goal_alignment": "The set jointly targets the direct row space, the projected indirect quotient, finite enumeration/growth characterization, and the final dynamically free target-basis dimension.",
+      "overclaim_control": "The file avoids claiming unrestricted filter safety, asymptotic exactness, or saturation beyond the reported finite auxiliary chain.",
+      "high_value_reasoning": "The revision emphasizes proof obligations that are useful for auditing the paper: generator-to-basis correctness, leakage-free projection, quotient dimension, finite saturation, residual basis growth, lossless filtering under equal projected rank, and the necessity of row reduction."
+    },
+    "known_residual_risks_and_mitigation": {
+      "trace_generator_completeness": "deeper_reasoning_1 treats trace-collision completeness as a premise aligned with the goal definition rather than deriving it from first principles.",
+      "projection_inclusion": "deeper_reasoning_2 and deeper_reasoning_6 require R_dir(D,S_0) to be included in P(D,S_0,S_1); this is natural for nested retained constructions but is stated explicitly.",
+      "finite_saturation": "deeper_reasoning_3 is only a finite-chain certificate for S[14], S[16], and S[18].",
+      "asymptotic_ansatz": "deeper_reasoning_4 derives consequences of the stated ansatz; it does not prove the ansatz.",
+      "filter_losslessness": "deeper_reasoning_5 proves equality from projected-space inclusion plus equal projected rank; it does not claim all future filters are lossless."
+    }
+  }
+}

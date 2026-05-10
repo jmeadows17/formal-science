@@ -1,0 +1,245 @@
+{
+  "paper_title": "Bootstrap for finite N lattice Yang-Mills theory (Kazakov, 2025, JHEP)",
+  "deeper_reasoning_1": "\\section*{Claim}\nLet $G\\in\\{U(N),SU(N)\\}$ with finite $N\\ge2$. Define the retained trace bound\n\\[\nb_G:=\\begin{cases}\nN,&G=U(N),\\\\\nN-1,&G=SU(N).\n\\end{cases}\n\\]\nIf every unreduced loop variation of a retained Wilson-loop monomial produces terms with at most $b_G+1$ normalized trace factors, and if the finite-$N$ trace identities define a linear reduction map\n\\[\nR_{G,N}:\\mathcal T_{b_G+1}\\longrightarrow \\mathcal T_{b_G},\n\\]\nthen the trace-reduced loop-equation system closes on the retained variables in $\\mathcal T_{b_G}$.\n\\section*{Premises}\n\\[\n\\begin{aligned}\n\\text{(P1)}&\\quad \\mathcal T_m:=\\operatorname{span}\\{\\text{Wilson-loop monomials with at most }m\\text{ trace factors}\\}.\\\\\n\\text{(P2)}&\\quad E_{\\rm var}:\\mathcal T_{b_G}\\to\\mathcal T_{b_G+1}\\text{ is the unreduced Schwinger--Dyson or Makeenko--Migdal variation}.\\\\\n\\text{(P3)}&\\quad R_{G,N}:\\mathcal T_{b_G+1}\\to\\mathcal T_{b_G}\\text{ is linear and equals the identity on }\\mathcal T_{b_G}.\\\\\n\\text{(P4)}&\\quad \\text{The exact finite-}N\\text{ trace identities are valid under the same Haar integral}.\\\\\n\\text{(P5)}&\\quad E_{\\rm loop}:=R_{G,N}\\circ E_{\\rm var}.\n\\end{aligned}\n\\]\n\\section*{Derivation}\nTake any retained monomial $X\\in\\mathcal T_{b_G}$. By (P2),\n\\[\nE_{\\rm var}(X)\\in\\mathcal T_{b_G+1}.\n\\]\nApplying the finite-$N$ reduction gives\n\\begin{align}\nE_{\\rm loop}(X)\n&=(R_{G,N}\\circ E_{\\rm var})(X) &&\\text{by (P5)}\\\\\n&=R_{G,N}(E_{\\rm var}(X)) &&\\text{definition of composition}\\\\\n&\\in R_{G,N}(\\mathcal T_{b_G+1}) &&\\text{because }E_{\\rm var}(X)\\in\\mathcal T_{b_G+1}\\\\\n&\\subseteq \\mathcal T_{b_G} &&\\text{by (P3)}.\n\\end{align}\nThus every generated equation can be expressed using only variables with at most $b_G$ trace factors. Since (P4) states that the reduction identities are exact inside the same integral, this substitution changes the representation of the equation but not its projected Wilson-loop solution set.\n\\section*{Final Result}\n\\[\n\\boxed{E_{\\rm loop}(\\mathcal T_{b_G})\\subseteq\\mathcal T_{b_G},\\qquad b_{U(N)}=N,\n\\qquad b_{SU(N)}=N-1.}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_2": "\\section*{Claim}\nFor $SU(2)$ lattice Yang--Mills theory, the link-variation equation is a homogeneous linear equation in single-trace Wilson-loop variables alone. In particular, for a varied link $l_\\nu\\in C$,\n\\[\n\\frac1\\lambda\\sum_{\\mu\\ne\\pm\\nu}\\left[W(\\sigma^l_{\\nu\\mu}\\circ C_{l_\\nu})-W(\\sigma^l_{\\mu\\nu}\\circ C_{l_\\nu})\\right]\n+\\frac12\\sum_{l'_{\\nu'}\\sim l_\\nu\\in C}(-1)^{(1+\\nu\\cdot\\nu')/2}\\left(W(C^{(1)}_{x,\\nu}\\circ C^{(2)}_{y,\\nu'})+\\frac12W(C)\\right)=0\n\\]\ncontains no retained product of two Wilson-loop variables.\n\\section*{Premises}\n\\[\n\\begin{aligned}\n\\text{(P1)}&\\quad W(C):=\\left\\langle \\operatorname{Tr}\\prod_{l\\in C}U_l\\right\\rangle,\\qquad \\operatorname{Tr}=\\frac12\\operatorname{tr}.\\\\\n\\text{(P2)}&\\quad \\operatorname{tr}U\\operatorname{tr}V=\\operatorname{tr}(UV)+\\operatorname{tr}(UV^\\dagger)\\quad\\text{for all }U,V\\in SU(2).\\\\\n\\text{(P3)}&\\quad \\text{Before trace reduction, a self-intersection term has the form }W(A,B).\\\\\n\\text{(P4)}&\\quad \\text{The contour identity corresponding to (P2) gives }W(A,B)=\\frac12W(A\\circ B)+\\frac12W(A\\circ\\overline B).\\\\\n\\text{(P5)}&\\quad \\sigma^l_{\\nu\\mu}\\circ C_{l_\\nu},\\ \\sigma^l_{\\mu\\nu}\\circ C_{l_\\nu},\\ C^{(1)}_{x,\\nu}\\circ C^{(2)}_{y,\\nu'},\\ C\\text{ are single contours}.\n\\end{aligned}\n\\]\n\\section*{Derivation}\nThe plaquette-force part of the link variation is already a linear sum of single-contour terms,\n\\begin{align}\nP_{C,l_\\nu}\n&=\\frac1\\lambda\\sum_{\\mu\\ne\\pm\\nu}\\left[W(\\sigma^l_{\\nu\\mu}\\circ C_{l_\\nu})-W(\\sigma^l_{\\mu\\nu}\\circ C_{l_\\nu})\\right] &&\\text{by the link variation}.\n\\end{align}\nThe self-intersection part initially contains double-loop expectations. For each generated pair $(A,B)$, (P4) gives\n\\begin{align}\nW(A,B)&=\\frac12W(A\\circ B)+\\frac12W(A\\circ\\overline B),\n\\end{align}\nwhich is a sum of single-contour variables by (P5). Collecting the orientation sign $\\eta_{\\nu\\nu'}=(-1)^{(1+\\nu\\cdot\\nu')/2}$ yields\n\\begin{align}\nS_{C,l_\\nu}\n&=\\frac12\\sum_{l'_{\\nu'}\\sim l_\\nu\\in C}\\eta_{\\nu\\nu'}\\left(W(C^{(1)}_{x,\\nu}\\circ C^{(2)}_{y,\\nu'})+\\frac12W(C)\\right).\n\\end{align}\nTherefore the full equation $P_{C,l_\\nu}+S_{C,l_\\nu}=0$ is a sum $\\sum_j a_jW(\\Gamma_j)=0$ over single contours $\\Gamma_j$.\n\\section*{Final Result}\n\\[\n\\boxed{\\text{For }SU(2),\\text{ the lattice loop equations close linearly on }\\{W(C)\\}\\text{ alone}.}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_3": "\\section*{Claim}\nFor the $SU(3)$ one-matrix subsector, the double-trace loop equation closes after substituting the finite-$N$ triple-trace reduction: every generated term is expressible using only single- and double-trace variables\n\\[\n\\operatorname{Tr}U^a,\n\\qquad\n\\operatorname{Tr}U^a\\operatorname{Tr}U^b.\n\\]\n\\section*{Premises}\n\\[\n\\begin{aligned}\n\\text{(P1)}&\\quad U\\in SU(3),\\qquad \\operatorname{Tr}A=\\frac13\\operatorname{tr}A.\\\\\n\\text{(P2)}&\\quad \\text{The double-trace loop equation contains generated terms of the form }\\operatorname{Tr}U^i\\operatorname{Tr}U^j\\operatorname{Tr}U^k.\\\\\n\\text{(P3)}&\\quad \\operatorname{Tr}U^i\\operatorname{Tr}U^j\\operatorname{Tr}U^k\n=-\\frac{2}{9}\\operatorname{Tr}U^{i+j+k}+\\frac13\\operatorname{Tr}U^i\\operatorname{Tr}U^{j+k}+\\frac13\\operatorname{Tr}U^{i+j}\\operatorname{Tr}U^k\\\\\n&\\quad\\quad\\quad\\quad\\quad +\\frac13\\operatorname{Tr}U^{i+k}\\operatorname{Tr}U^j+\\frac13\\operatorname{Tr}U^{j-i}\\operatorname{Tr}U^{k-i}-\\frac19\\operatorname{Tr}U^{j+k-2i}.\\\\\n\\text{(P4)}&\\quad \\mathcal V_{SU(3)}:=\\operatorname{span}\\{\\operatorname{Tr}U^a,\\operatorname{Tr}U^a\\operatorname{Tr}U^b:a,b\\in\\mathbb Z\\}.\\\\\n\\text{(P5)}&\\quad \\text{The remaining non-triple terms in the same loop equation are already in }\\mathcal V_{SU(3)}.\n\\end{aligned}\n\\]\n\\section*{Derivation}\nConsider any generated triple-trace monomial\n\\begin{align}\nY_{i,j,k}&:=\\operatorname{Tr}U^i\\operatorname{Tr}U^j\\operatorname{Tr}U^k.\n\\end{align}\nBy (P3), $Y_{i,j,k}$ is equal to a finite linear combination of the six terms\n\\begin{align}\n&\\operatorname{Tr}U^{i+j+k},\\quad\n\\operatorname{Tr}U^i\\operatorname{Tr}U^{j+k},\\quad\n\\operatorname{Tr}U^{i+j}\\operatorname{Tr}U^k,\\\\\n&\\operatorname{Tr}U^{i+k}\\operatorname{Tr}U^j,\n\\quad \\operatorname{Tr}U^{j-i}\\operatorname{Tr}U^{k-i},\n\\quad \\operatorname{Tr}U^{j+k-2i}.\n\\end{align}\nEach listed term is either a single normalized trace or a product of two normalized traces. Hence each listed term belongs to $\\mathcal V_{SU(3)}$ by (P4). Therefore\n\\begin{align}\nY_{i,j,k}\\in\\mathcal V_{SU(3)}.\n\\end{align}\nBy (P2), these are precisely the potentially non-retained generated terms, and by (P5) all other terms are already retained. Substituting (P3) into the loop equation therefore produces an equation entirely in $\\mathcal V_{SU(3)}$.\n\\section*{Final Result}\n\\[\n\\boxed{SU(3)\\text{ one-matrix loop equations close on single- and double-trace variables after triple-trace reduction}.}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_4": "\\section*{Claim}\nLet the $SU(2)$ hierarchy-truncated plaquette feasible set be\n\\[\n\\mathcal F_{\\Lambda,d,\\lambda}:=\\{w\\in\\mathbb R^q: A_{\\Lambda,d,\\lambda}w=b_{\\Lambda,d,\\lambda}\\text{ and }M_{r,\\Lambda,d,\\lambda}(w)\\succeq0\\text{ for all retained }r\\},\n\\]\nwhere the retained loop length satisfies $L_{\\max}=8\\Lambda$. If the exact projected Wilson-loop vector $w^*$ lies in $\\mathcal F_{\\Lambda,d,\\lambda}$ and $u_P(w)=c_P^Tw$, then the endpoints\n\\[\nL_{\\Lambda,d,\\lambda}(u_P):=\\min_{w\\in\\mathcal F_{\\Lambda,d,\\lambda}}c_P^Tw,\n\\qquad\nU_{\\Lambda,d,\\lambda}(u_P):=\\max_{w\\in\\mathcal F_{\\Lambda,d,\\lambda}}c_P^Tw\n\\]\ncertify the plaquette interval.\n\\section*{Premises}\n\\[\n\\begin{aligned}\n\\text{(P1)}&\\quad d\\in\\{2,3,4\\},\\quad \\Lambda\\in\\mathbb Z_{\\ge0},\\quad \\lambda>0,\\quad L_{\\max}=8\\Lambda.\\\\\n\\text{(P2)}&\\quad A_{\\Lambda,d,\\lambda}w=b_{\\Lambda,d,\\lambda}\\text{ is the retained linear }SU(2)\\text{ loop-equation system}.\\\\\n\\text{(P3)}&\\quad M_{r,\\Lambda,d,\\lambda}(w)=M_{r,0}+\\sum_j w_jM_{r,j}\\succeq0\\text{ are retained Hermitian or reflection positivity blocks}.\\\\\n\\text{(P4)}&\\quad w^*\\in\\mathcal F_{\\Lambda,d,\\lambda}.\\\\\n\\text{(P5)}&\\quad u_P(w^*)=c_P^Tw^*\\text{ is the exact projected plaquette average}.\\\\\n\\text{(P6)}&\\quad L_{\\Lambda,d,\\lambda}(u_P)\\text{ and }U_{\\Lambda,d,\\lambda}(u_P)\\text{ are computed over the same feasible set}.\n\\end{aligned}\n\\]\n\\section*{Derivation}\nSince $w^*\\in\\mathcal F_{\\Lambda,d,\\lambda}$ by (P4), the definition of a minimum gives\n\\begin{align}\nL_{\\Lambda,d,\\lambda}(u_P)\n&=\\min_{w\\in\\mathcal F_{\\Lambda,d,\\lambda}}c_P^Tw\\\\\n&\\le c_P^Tw^*.\n\\end{align}\nSimilarly, the definition of a maximum gives\n\\begin{align}\nc_P^Tw^*&\\le \\max_{w\\in\\mathcal F_{\\Lambda,d,\\lambda}}c_P^Tw\n=U_{\\Lambda,d,\\lambda}(u_P).\n\\end{align}\nUsing (P5), these inequalities become\n\\begin{align}\nL_{\\Lambda,d,\\lambda}(u_P)&\\le u_P(w^*)\\le U_{\\Lambda,d,\\lambda}(u_P).\n\\end{align}\nBecause both endpoints use the same feasible set by (P6), the interval is a certified consequence of feasibility, not a comparison between different relaxations. The role of $L_{\\max}=8\\Lambda$ in (P1) is to specify exactly which loop variables and positivity blocks are included in that same finite relaxation.\n\\section*{Final Result}\n\\[\n\\boxed{u_P(w^*)\\in\\left[L_{\\Lambda,d,\\lambda}(u_P),U_{\\Lambda,d,\\lambda}(u_P)\\right]\\quad\\text{for each retained }(\\Lambda,d,\\lambda).}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_5": "\\section*{Claim}\nThe plaquette bootstrap is a semidefinite program whose validity is logically prior to interval tightness. More constraints can only improve the interval after projection, provided the stronger hierarchy projects into the weaker feasible set.\n\\section*{Premises}\n\\[\n\\begin{aligned}\n\\text{(P1)}&\\quad \\mathcal F_{\\Lambda}:=\\{w:A_{\\Lambda}w=b_{\\Lambda},\\ M_{r,\\Lambda}(w)\\succeq0\\text{ for all retained }r\\}.\\\\\n\\text{(P2)}&\\quad A_{\\Lambda}w=b_{\\Lambda}\\text{ is affine and each }M_{r,\\Lambda}(w)\\text{ is affine in }w.\\\\\n\\text{(P3)}&\\quad u_P(w)=c_P^Tw\\text{ is linear}.\\\\\n\\text{(P4)}&\\quad \\Pi_{\\Lambda+1\\to\\Lambda}\\mathcal F_{\\Lambda+1}\\subseteq\\mathcal F_{\\Lambda}\\text{ for the common retained coordinates}.\\\\\n\\text{(P5)}&\\quad L_{\\Lambda}:=\\min_{w\\in\\mathcal F_{\\Lambda}}u_P(w),\\qquad U_{\\Lambda}:=\\max_{w\\in\\mathcal F_{\\Lambda}}u_P(w).\\\\\n\\text{(P6)}&\\quad \\text{Validity means the exact projected vector is feasible; tightness means }U_{\\Lambda}-L_{\\Lambda}\\text{ is small}.\n\\end{aligned}\n\\]\n\\section*{Derivation}\nFirst, $\\mathcal F_{\\Lambda}$ is convex. If $w^{(1)},w^{(2)}\\in\\mathcal F_{\\Lambda}$ and $t\\in[0,1]$, then\n\\begin{align}\nA_{\\Lambda}(tw^{(1)}+(1-t)w^{(2)})\n&=tA_{\\Lambda}w^{(1)}+(1-t)A_{\\Lambda}w^{(2)}\\\\\n&=b_{\\Lambda},\n\\end{align}\nand affine positive-semidefinite blocks obey\n\\begin{align}\nM_{r,\\Lambda}(tw^{(1)}+(1-t)w^{(2)})\n&=tM_{r,\\Lambda}(w^{(1)})+(1-t)M_{r,\\Lambda}(w^{(2)})\\succeq0.\n\\end{align}\nThus optimizing the linear objective (P3) over $\\mathcal F_{\\Lambda}$ is an SDP.\n\nSecond, assume the projection nesting (P4). For any $z\\in\\mathcal F_{\\Lambda+1}$, its projected common-coordinate vector lies in $\\mathcal F_{\\Lambda}$. Therefore the feasible set for the stronger projected problem is a subset of the weaker one, so\n\\begin{align}\nL_{\\Lambda}&\\le L_{\\Lambda+1},\\\\\nU_{\\Lambda+1}&\\le U_{\\Lambda}.\n\\end{align}\nHence the width cannot increase after adding valid constraints:\n\\begin{align}\nU_{\\Lambda+1}-L_{\\Lambda+1}\\le U_{\\Lambda}-L_{\\Lambda}.\n\\end{align}\nThis tightening statement is conditional on (P4), while certification itself depends on exact feasibility as in (P6).\n\\section*{Final Result}\n\\[\n\\boxed{\\text{Valid SDP constraints give certified intervals; nested valid strengthenings can only tighten them.}}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_6": "\\section*{Claim}\nThe Creutz-ratio output from retained rectangular Wilson loops is a finite-rectangle estimator. For $T,L\\ge2$ and\n\\[\nR_{T,L}:=\\frac{W(T,L)W(T-1,L-1)}{W(T-1,L)W(T,L-1)}>0,\n\\]\nthe quantity\n\\[\na^2\\sigma_{T,L,\\lambda}:=-\\log R_{T,L}\n\\]\nis exactly computable from the four retained rectangle variables, but it is a certified infinite-area string tension only under an additional residual-control assumption.\n\\section*{Premises}\n\\[\n\\begin{aligned}\n\\text{(P1)}&\\quad W(T,L),\\ W(T-1,L-1),\\ W(T-1,L),\\ W(T,L-1)\\text{ are retained or computable in one feasible-set solution}.\\\\\n\\text{(P2)}&\\quad R_{T,L}>0.\\\\\n\\text{(P3)}&\\quad W(T,L)=\\exp\\{-a^2\\sigma TL+r(T,L)\\}.\\\\\n\\text{(P4)}&\\quad \\chi(T,L):=-\\log R_{T,L}.\\\\\n\\text{(P5)}&\\quad \\Delta r:=r(T,L)+r(T-1,L-1)-r(T-1,L)-r(T,L-1).\\\\\n\\text{(P6)}&\\quad \\text{The implemented small-loop extraction uses }T=3,L=2.\n\\end{aligned}\n\\]\n\\section*{Derivation}\nBy (P2), the logarithm is well-defined. Taking logarithms using (P3),\n\\begin{align}\n\\log R_{T,L}\n&=\\log W(T,L)+\\log W(T-1,L-1)-\\log W(T-1,L)-\\log W(T,L-1)\\\\\n&=(-a^2\\sigma TL+r(T,L))+(-a^2\\sigma (T-1)(L-1)+r(T-1,L-1))\\\\\n&\\quad-(-a^2\\sigma (T-1)L+r(T-1,L))-(-a^2\\sigma T(L-1)+r(T,L-1))\\\\\n&=-a^2\\sigma+\\Delta r,\n\\end{align}\nbecause\n\\begin{align}\n-TL-(T-1)(L-1)+(T-1)L+T(L-1)=-1.\n\\end{align}\nTherefore\n\\begin{align}\n\\chi(T,L)&=a^2\\sigma-\\Delta r.\n\\end{align}\nFor the implemented small rectangle,\n\\begin{align}\na^2\\sigma_{3,2,\\lambda}\n&=-\\log\\frac{W(3,2)W(2,1)}{W(2,2)W(3,1)}.\n\\end{align}\nThus the computation is internally well-defined from retained Wilson loops, while interpreting it as the physical string tension requires controlling or neglecting $\\Delta r$.\n\\section*{Final Result}\n\\[\n\\boxed{a^2\\sigma_{T,L,\\lambda}=\\chi(T,L)=a^2\\sigma-\\Delta r,\\quad\\text{so finite rectangles give qualitative estimates unless }\\Delta r\\text{ is controlled}.}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_7": "\\section*{Claim}\nThe paper's outputs form an instrumental chain with three distinct certification levels:\n\\[\n\\text{finite-}N\\text{ trace closure}\\Longrightarrow \\text{convex }SU(2)\\text{ feasible set}\\Longrightarrow \\text{certified plaquette intervals}\\Longrightarrow \\text{finite-loop Creutz estimates}.\n\\]\nOnly the first three arrows are certification-preserving without extra physical assumptions.\n\\section*{Premises}\n\\[\n\\begin{aligned}\n\\text{(P1)}&\\quad \\text{Trace identities reduce generated }U(N)\\text{ and }SU(N)\\text{ loop equations to retained trace variables}.\\\\\n\\text{(P2)}&\\quad \\text{For }SU(2),\\text{ the retained variables are single-trace Wilson-loop expectations }W(C).\\\\\n\\text{(P3)}&\\quad \\text{Loop equations are linear and positivity constraints are positive semidefinite affine matrix constraints}.\\\\\n\\text{(P4)}&\\quad \\text{Plaquette bounds are obtained by minimizing and maximizing }u_P\\text{ over the same feasible set}.\\\\\n\\text{(P5)}&\\quad \\text{Creutz estimates are computed from finite rectangular Wilson-loop values}.\\\\\n\\text{(P6)}&\\quad \\text{A finite-rectangle Creutz value equals the physical string tension only after residual or large-loop control}.\n\\end{aligned}\n\\]\n\\section*{Derivation}\nBy (P1), the algebraic trace-reduction step supplies a closed finite list of retained Wilson-loop variables for the chosen finite-$N$ system. By (P2), the $SU(2)$ specialization removes all generated double-trace variables, so the retained numerical hierarchy can be formulated using single-trace variables alone. Combining (P2) with (P3) gives a convex feasible set of the form\n\\begin{align}\n\\mathcal F&=\\{w:Aw=b,\\ M_r(w)\\succeq0\\text{ for all }r\\}.\n\\end{align}\nBy (P4), if the exact projected vector is feasible, then the plaquette value lies between the minimum and maximum of $u_P$ over $\\mathcal F$. Hence plaquette intervals are certified consequences of the finite relaxation.\n\nBy contrast, (P5) gives a number extracted from retained rectangles, but (P6) states that the step from this finite rectangle to the physical string tension requires an additional assumption about residual terms or a large-loop limit. Therefore it must be reported as a qualitative finite-loop estimate rather than as a certified infinite-area bound.\n\\section*{Final Result}\n\\[\n\\boxed{\\text{Closure and plaquette intervals are certified within the SDP relaxation; string tension is a finite-loop estimate unless residual control is added.}}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_metadata": {
+    "output_file": "deeper.json",
+    "revision_id": "alignment_improvement_v3",
+    "revision_intent": "Repair the remaining LaTeX compile defect in deeper_reasoning_1 while preserving the seven-entry high-value structure and tightening the closure proof against the rubric, core reasoning, and extracted goals.",
+    "input_files": [
+      "deeper_reasoning_pseudo_algorithm.md",
+      "core_15.json",
+      "goals_15.json"
+    ],
+    "rubric_interpretation": {
+      "top_level_shape": "Exactly paper_title, contiguous deeper_reasoning_k strings, and one deeper_metadata object.",
+      "reasoning_value": "Each reasoning entry is a compilable LaTeX proof-like string that advances beyond direct extraction while remaining controlled by the uploaded core and goals.",
+      "metadata_policy": "All audit, traceability, and risk notes are kept under deeper_metadata without duplicating proof bodies."
+    },
+    "goal_trace": {
+      "G1_finite_N_trace_reduced_loop_closure": [
+        "deeper_reasoning_1",
+        "deeper_reasoning_2",
+        "deeper_reasoning_3",
+        "deeper_reasoning_7"
+      ],
+      "G2_su2_plaquette_interval_bounds": [
+        "deeper_reasoning_4",
+        "deeper_reasoning_5",
+        "deeper_reasoning_7"
+      ],
+      "G3_su2_finite_loop_string_tension_estimates": [
+        "deeper_reasoning_6",
+        "deeper_reasoning_7"
+      ]
+    },
+    "entry_metadata": {
+      "deeper_reasoning_1": {
+        "title": "Trace-count absorbing closure theorem",
+        "target_goal_component": "G1_finite_N_trace_reduced_loop_closure",
+        "declared_source_set": [
+          "core_reasoning_1",
+          "core_reasoning_3",
+          "core_reasoning_4",
+          "goals.G1"
+        ],
+        "major_advancement_modes": [
+          "composition",
+          "closure abstraction",
+          "trace-bound sharpening"
+        ],
+        "goal_alignment": "Directly formalizes why finite-N trace identities absorb the extra trace generated by loop variation.",
+        "scientific_payoff": "Explains the mechanism behind closure for U(N) and SU(N) with the correct retained trace counts.",
+        "nontrivial_advance_over_sources": "Combines raw trace identities and loop-generation premises into an operator-level closure statement.",
+        "formal_sharpness": "Now fully compilable under article, amsmath, and amssymb; conditional only on the explicit one-extra-trace generation premise and exact finite-N reduction identities.",
+        "low_value_rejection_audit": "Avoids merely restating the epsilon-tensor identity by proving its role in loop closure.",
+        "selection_score": 0.98,
+        "controlled_external_lemmas": [
+          "Linearity of span maps",
+          "Exact substitution preserves projected solution sets"
+        ],
+        "known_residual_risks_and_mitigation": "Does not enumerate every possible contour; mitigated by stating the precise generation premise and proving closure at the trace-space operator level."
+      },
+      "deeper_reasoning_2": {
+        "title": "Concrete SU(2) single-trace lattice closure",
+        "target_goal_component": "G1_finite_N_trace_reduced_loop_closure",
+        "declared_source_set": [
+          "core_reasoning_2",
+          "core_reasoning_10",
+          "goals.G1",
+          "goals.G2"
+        ],
+        "major_advancement_modes": [
+          "concretization",
+          "linearity audit",
+          "contour-level closure"
+        ],
+        "goal_alignment": "Anchors general closure in the displayed SU(2) lattice equation required by the goal success set.",
+        "scientific_payoff": "Shows why the numerical SU(2) hierarchy can use single-trace Wilson-loop variables only.",
+        "nontrivial_advance_over_sources": "Connects the SU(2) trace identity to the exact orientation-signed lattice equation.",
+        "formal_sharpness": "Uses only the retained contour-level identity and the displayed loop equation.",
+        "low_value_rejection_audit": "Avoids a generic statement that SU(2) closes; includes the concrete equation and no-product check.",
+        "selection_score": 0.99,
+        "controlled_external_lemmas": [
+          "Contour concatenation is a single contour",
+          "Collecting like Wilson loops preserves linearity"
+        ],
+        "known_residual_risks_and_mitigation": "The contour notation is abstract; mitigated by using the exact symbols from the extracted goal."
+      },
+      "deeper_reasoning_3": {
+        "title": "SU(3) one-matrix single/double-trace closure",
+        "target_goal_component": "G1_finite_N_trace_reduced_loop_closure",
+        "declared_source_set": [
+          "core_reasoning_3",
+          "core_reasoning_4",
+          "goals.G1"
+        ],
+        "major_advancement_modes": [
+          "subsector closure",
+          "trace-class classification"
+        ],
+        "goal_alignment": "Covers the SU(3) example retained by the paper goal, where triple traces reduce to single and double traces.",
+        "scientific_payoff": "Prevents the deeper output from being only SU(2)-centric and demonstrates finite-N closure beyond the simplest case.",
+        "nontrivial_advance_over_sources": "Turns a normalized identity into a closure proof for the generated loop-equation terms.",
+        "formal_sharpness": "Limited to the one-matrix SU(3) subsector and explicitly says so.",
+        "low_value_rejection_audit": "Rejected a broad SU(3) lattice claim not explicitly established by the supplied core reasoning.",
+        "selection_score": 0.95,
+        "controlled_external_lemmas": [
+          "Products of powers of one matrix remain powers of that matrix"
+        ],
+        "known_residual_risks_and_mitigation": "Not a full SU(3) lattice proof; mitigated by labeling it as the one-matrix subsector."
+      },
+      "deeper_reasoning_4": {
+        "title": "Certified plaquette interval from one finite SDP feasible set",
+        "target_goal_component": "G2_su2_plaquette_interval_bounds",
+        "declared_source_set": [
+          "core_reasoning_7",
+          "core_reasoning_8",
+          "core_reasoning_9",
+          "core_reasoning_10",
+          "goals.G2"
+        ],
+        "major_advancement_modes": [
+          "soundness proof",
+          "hierarchy concretization",
+          "endpoint certification"
+        ],
+        "goal_alignment": "Matches the goal definition of L and U as min/max over F_{Lambda,d,lambda}, including d in {2,3,4} and L_max=8 Lambda.",
+        "scientific_payoff": "Makes clear why a plotted band is certified when the exact projected vector is feasible.",
+        "nontrivial_advance_over_sources": "Composes loop equations, PSD constraints, and objective optimization into the interval-validity statement.",
+        "formal_sharpness": "States the exact-vector feasibility condition instead of hiding it.",
+        "low_value_rejection_audit": "Avoids claiming numerical tightness or Monte Carlo accuracy as proof.",
+        "selection_score": 0.99,
+        "controlled_external_lemmas": [
+          "Minimum is less than or equal to feasible objective values",
+          "Maximum is greater than or equal to feasible objective values"
+        ],
+        "known_residual_risks_and_mitigation": "Assumes exact projection is feasible in the relaxation; this is the standard bootstrap soundness premise and is explicit."
+      },
+      "deeper_reasoning_5": {
+        "title": "Validity-before-tightness SDP hierarchy logic",
+        "target_goal_component": "G2_su2_plaquette_interval_bounds",
+        "declared_source_set": [
+          "core_reasoning_9",
+          "goals.G2"
+        ],
+        "major_advancement_modes": [
+          "preference-ordering alignment",
+          "convexity proof",
+          "conditional monotonicity"
+        ],
+        "goal_alignment": "Reflects the lexicographic goal: valid intervals first, narrower intervals second.",
+        "scientific_payoff": "Clarifies when increasing hierarchy level can be interpreted as tightening rather than merely changing the program.",
+        "nontrivial_advance_over_sources": "Adds the projection-nesting condition needed for a rigorous width monotonicity statement.",
+        "formal_sharpness": "Tightening is explicitly conditional on projected feasible-set nesting.",
+        "low_value_rejection_audit": "Avoids overclaiming automatic monotonicity without a projection premise.",
+        "selection_score": 0.96,
+        "controlled_external_lemmas": [
+          "Convexity of affine slices of the PSD cone",
+          "Optimization over subsets narrows min/max ranges"
+        ],
+        "known_residual_risks_and_mitigation": "Nesting may require implementation-specific projection checks; stated as a premise."
+      },
+      "deeper_reasoning_6": {
+        "title": "Finite-rectangle Creutz estimator and residual boundary",
+        "target_goal_component": "G3_su2_finite_loop_string_tension_estimates",
+        "declared_source_set": [
+          "core_reasoning_11",
+          "goals.G3"
+        ],
+        "major_advancement_modes": [
+          "claim-boundary enforcement",
+          "finite-loop specialization",
+          "residual decomposition"
+        ],
+        "goal_alignment": "Matches the goal that string-tension outputs are finite-rectangle qualitative estimates, with T=3,L=2 explicitly included.",
+        "scientific_payoff": "Prevents conflating a retained-loop Creutz calculation with a certified infinite-area string tension.",
+        "nontrivial_advance_over_sources": "Turns the core Creutz algebra into an explicit certification-boundary statement.",
+        "formal_sharpness": "Requires positivity of the ratio and common-source retained rectangle values.",
+        "low_value_rejection_audit": "Rejects a stronger but unsupported claim of rigorous physical string-tension bounds.",
+        "selection_score": 0.99,
+        "controlled_external_lemmas": [
+          "Logarithm rules for positive arguments",
+          "Finite difference of the area term"
+        ],
+        "known_residual_risks_and_mitigation": "Does not bound the residual; explicitly states that residual control is additional."
+      },
+      "deeper_reasoning_7": {
+        "title": "Instrumental chain and certification-strength separation",
+        "target_goal_component": "G1+G2+G3 inter-goal relation",
+        "declared_source_set": [
+          "core_reasoning_1--11",
+          "goals.inter_goal_relation",
+          "goals.methodological_claim"
+        ],
+        "major_advancement_modes": [
+          "synthesis",
+          "overclaim prevention",
+          "goal-level audit"
+        ],
+        "goal_alignment": "Connects the three extracted goals while preserving their different evidential status.",
+        "scientific_payoff": "Gives a high-level reasoning map of how the paper's formal and numerical claims fit together.",
+        "nontrivial_advance_over_sources": "Separates certification-preserving steps from the qualitative Creutz interpretation.",
+        "formal_sharpness": "Uses an implication chain and explicitly marks the non-certified final interpretive step.",
+        "low_value_rejection_audit": "Avoids merging plaquette bounds and string-tension estimates into one numerical success criterion.",
+        "selection_score": 0.98,
+        "controlled_external_lemmas": [
+          "Feasibility-based certification",
+          "Finite-estimator versus asymptotic-quantity distinction"
+        ],
+        "known_residual_risks_and_mitigation": "Synthetic rather than source-local; mitigated by tying each arrow to earlier deeper entries."
+      }
+    },
+    "rejected_low_value_candidates": [
+      {
+        "candidate": "Restate the raw epsilon-tensor trace identity as another proof.",
+        "reason_rejected": "Already covered in core_reasoning_1; lower value than proving its closure role."
+      },
+      {
+        "candidate": "Claim that the Creutz ratio proves the physical string tension.",
+        "reason_rejected": "Contradicts the goals, which identify the result as a qualitative finite-loop estimate."
+      },
+      {
+        "candidate": "Treat plaquette bands as accuracy claims rather than certified feasible-set intervals.",
+        "reason_rejected": "Would weaken alignment with the lexicographic validity-before-tightness goal."
+      },
+      {
+        "candidate": "Add broad future claims about quarks, baryons, or matrix quantum mechanics.",
+        "reason_rejected": "Those are hinted superfamilies, not achieved outputs in the extracted goals."
+      }
+    ],
+    "global_alignment_audit": {
+      "schema_alignment": "Top-level keys are contiguous and restricted to the allowed set; every deeper_reasoning_k is a string; every reasoning entry has a matching entry_metadata record.",
+      "core_alignment": "Each entry explicitly composes supplied core proofs rather than inventing unsupported physics.",
+      "goal_alignment": "All three canonical goals are covered, with more weight on G1 and G2 because they carry the formal closure and certified-bound burden.",
+      "value_added": "The revision adds concrete SU(2) lattice equation alignment, SU(3) one-matrix closure, hierarchy-level L_max=8 Lambda, SDP validity/tightness separation, and a clear Creutz-residual boundary.",
+      "overclaim_control": "The file distinguishes exact trace-reduced closure, certified plaquette intervals, conditional hierarchy tightening, and qualitative string-tension estimates."
+    },
+    "known_residual_risks_and_mitigation": "The revised file removes the previous LaTeX compile failure. Remaining risks are substantive rather than structural: several claims are intentionally conditional on exact projected feasibility or finite-rectangle residual control, matching the extracted goals and avoiding overclaiming."
+  }
+}

@@ -1,0 +1,221 @@
+{
+  "paper_goal": {
+    "canonical_goal": [
+      {
+        "goal_id": "G1_QM_MONOPOLE_VORTEX_CONTINUITY",
+        "outcome_variable": "o_QM = (H_mono, H_vort, B_mono, B_vort, E_mono, E_vort, R), where H_mono and H_vort are one-dimensional low-energy Hamiltonians or actions obtained from SU(N) Yang-Mills theory on R × (T^2)_{12} × (S^1)_3 with n_{12}=1 in the two hierarchies L_3 << L_{T^2} and L_{T^2} << L_3; B_mono and B_vort are their perturbative-vacuum bases; E_mono and E_vort are their electric-flux energy spectra; and R is a statement of whether the two descriptions are connected without a phase transition.",
+        "goal_form": "target_proposition",
+        "target_object": "A target proposition that the monopole semiclassical regime and the center-vortex semiclassical regime of SU(N) Yang-Mills theory on R × (T^2)_{12} × (S^1)_3 with one unit n_{12}=1 of Z_N 't Hooft flux have a common quantum-mechanical infrared description: when L_3 << L_{T^2}, the low-energy states are magnetic-flux vacua |ν_i⟩ connected by monopole-instanton tunneling; when L_{T^2} << L_3, the low-energy states are holonomy vacua |m⟩ connected by center-vortex or fractional-instanton tunneling; in both cases the deep-infrared theory is a one-dimensional deformed Z_N topological theory with N perturbative vacua, fractional tunneling amplitude K exp[-8π^2/(g^2 N)] exp[-iθ/N], where K is the positive semiclassical fluctuation prefactor multiplying a single monopole-instanton or fractional-instanton tunneling event, electric-flux eigenstates obtained by a discrete Fourier transform over the N vacua, and branch energies E_0 + ε_k(θ) or ẼE_0 + ε_k(θ) with ε_k(θ) = -2 N K exp[-8π^2/(g^2 N)] cos((θ+2πk)/N) up to the regime-dependent zero-point energy.",
+        "feasibility_constraints": [
+          "N is an integer with N >= 2; the gauge theory is four-dimensional SU(N) Yang-Mills with gauge field a, field strength F(a)=da+i a∧a, topological angle θ, instanton action S_I=8π^2/g^2, and Z_N one-form center symmetry.",
+          "The spacetime is M_4 = R × (S^1)_1 × (S^1)_2 × (S^1)_3 with L_1=L_2=L_{T^2}; a unit 't Hooft flux n_{12}=1 is imposed through (T^2)_{12} by transition functions obeying g_1(L_2)^† g_2(0)^† = g_2(L_1)^† g_1(0)^† exp(i 2π/N).",
+          "The weak-coupling semiclassical domain is min(L_3,L_{T^2}) << Λ^{-1}, where Λ is the Yang-Mills strong scale; the interpolation is studied in finite spatial volume R × T^3 so a crossover may reorder quantum-mechanical states without requiring a thermodynamic phase transition.",
+          "In the monopole hierarchy L_3 << L_{T^2}, the center-symmetric holonomy P_3 = ω^{α/2} diag(1,ω,...,ω^{N-1}), with ω=exp(i2π/N), abelianizes SU(N) to U(1)^{N-1}; the non-flat background has F_{12}^{(i)} = (2π/(L_1 L_2)) H^{(i)}, H^{(i)} = diag(0,...,1,...,0) - (1/N)1_N, and the perturbative vacua are |ν_i⟩ with Q_mag = ν_i-ν_{i+1}=α_i.",
+          "In the vortex hierarchy L_{T^2} << L_3, the flat background has F_{12}=0 and noncommuting torus holonomies P_1=S, P_2=C; the remaining holonomy satisfies [P_3,C]=[P_3,S]=0 and det P_3=1, hence P_3=exp(2π i m/N)1_N for m=0,...,N-1, giving perturbative vacua |m⟩.",
+          "The comparison is made after retaining only the quantum-mechanical zero modes: on the monopole side the effective Hamiltonian on {|ν_i⟩}_{i=1}^N is H = Σ_i E_0 |ν_i⟩⟨ν_i| - Σ_i K exp[-S_I/N - iθ/N] |ν_i⟩⟨ν_{i+1}| + h.c.; on the vortex side the effective Hamiltonian on {|m⟩}_{m=0}^{N-1} is H = Σ_m ẼE_0 |m⟩⟨m| - Σ_m K exp[-S_I/N - iθ/N] |m⟩⟨m+1| + h.c.",
+          "The electric-flux basis in either hierarchy is the discrete Fourier basis |ẽ_q⟩ = N^{-1/2} Σ_r exp(i2π q r/N) |r⟩, where |r⟩ denotes |ν_i⟩ on the monopole side or |m⟩ on the vortex side after relabelling r modulo N.",
+          "K denotes the positive semiclassical fluctuation prefactor in the leading one-event tunneling amplitude; the extraction treats equality of the two branch spectra up to this common prefactor and up to an additive zero-point energy, not as an independent closed-form evaluation of K."
+        ],
+        "success_set": {
+          "kind": "predicate",
+          "definition": "Σ_QM = { o_QM : H_mono and H_vort each act on N perturbative vacua arranged cyclically modulo N; the only leading nonperturbative off-diagonal matrix elements are nearest-neighbour tunneling terms with amplitude K exp[-8π^2/(g^2 N)] exp[-iθ/N] plus the Hermitian conjugate; diagonalization by the N-point discrete Fourier transform gives the same θ-dependent branch function ε_k(θ) = -2 N K exp[-8π^2/(g^2 N)] cos((θ+2πk)/N) for k=0,...,N-1, with only the additive zero-point energy differing between the non-flat monopole background and the flat vortex background; and R states that varying L_{T^2}/L_3 in finite R × T^3 changes the Polyakov-loop and F_{12} descriptions by a crossover or vacuum reordering rather than by a distinct confining phase transition }",
+          "threshold": {
+            "applies": false,
+            "value": null,
+            "comparator": null,
+            "metric_symbol": null,
+            "metric_definition": null,
+            "source_span": null
+          }
+        },
+        "preference_ordering": {
+          "kind": "none",
+          "definition": null,
+          "objective_symbols": [],
+          "lex_order": null,
+          "embedding_to_total_utility": null
+        },
+        "robustness_scope": {
+          "applies": true,
+          "ambient_space": "All compactified SU(N) Yang-Mills systems M_4 = R × (S^1)_1 × (S^1)_2 × (S^1)_3 with N >= 2, L_1=L_2=L_{T^2}, one unit n_{12}=1 of Z_N 't Hooft flux through (S^1)_1 × (S^1)_2, topological angle θ, and weak-coupling condition min(L_3,L_{T^2}) << Λ^{-1}.",
+          "type_tag": "environment_family",
+          "metric_or_divergence": null,
+          "radius_or_budget": null,
+          "indexing_set": "I_QM = { (N,L_3,L_{T^2},θ) : N ∈ Z, N >= 2, θ ∈ R/(2πZ), min(L_3,L_{T^2}) << Λ^{-1}, and either L_3 << L_{T^2} or L_{T^2} << L_3, with the finite-volume crossover considered as L_{T^2}/L_3 is varied between the two hierarchies }.",
+          "claimed_subfamily": {
+            "definition": "The claimed subfamily consists of the two semiclassical hierarchies within I_QM: (A) L_3 << L_{T^2}, with nontrivial P_3, F_{12}^{(i)}=(2π/(L_1L_2))H^{(i)}, magnetic-flux vacua |ν_i⟩, and monopole-instanton tunneling; and (B) L_{T^2} << L_3, with flat F_{12}=0, P_3=exp(2πim/N)1_N, holonomy vacua |m⟩, and center-vortex or fractional-instanton tunneling. The common asserted endpoint is the same one-dimensional deformed Z_N topological theory up to relabelling of the perturbative-vacuum basis and an additive zero-point energy.",
+            "source_span": {
+              "section": "Abstract; Figure 1; Sections 2.3 and 3.3",
+              "paragraph_or_line": "Abstract final third; Figure 1 caption; Section 3.3 comparison tables",
+              "verbatim": "We consider the theory on R × T^2 × S^1 and extrapolate both the monopole and vortex regimes to a quantum mechanical domain, where a cross-over takes place. Both sides of the cross-over are described by a deformed Z_N TQFT."
+            }
+          },
+          "hinted_superfamily": {
+            "definition": "A broader hinted family is SU(N) Yang-Mills on non-thermal compactifications adiabatically connected to R^4, where confinement, mass-gap generation, and fractional θ dependence are compared across semiclassical descriptions. The extraction does not encode the full R^4 theory as a proven success condition for this goal, because the operational derivation is carried out in the compactified weak-coupling family I_QM.",
+            "source_span": {
+              "section": "Overview",
+              "paragraph_or_line": "Paragraph after equation (1.2)",
+              "verbatim": "In the present work we demonstrate that both mechanisms are realized in different semi-classical regimes of the Yang-Mills theory which are adiabatically connected to R^4."
+            }
+          },
+          "refinement_relation": "set_inclusion",
+          "criterion": "For every parameter choice in the claimed subfamily, construct the relevant N perturbative vacua, write the leading tunneling Hamiltonian with amplitude K exp[-8π^2/(g^2 N)] exp[-iθ/N], diagonalize by the N-point discrete Fourier transform, and verify that the θ-dependent spectrum has the same branch function ε_k(θ) = -2 N K exp[-8π^2/(g^2 N)] cos((θ+2πk)/N) in both hierarchies while the order parameters differ as tr(P_3 F_{12}) on the monopole side and tr(P_3) on the vortex side. The robustness claim holds only for the compactified weak-coupling family just stated, not for arbitrary strongly coupled four-dimensional Yang-Mills without this semiclassical control.",
+          "channel_populated_by": [
+            "stated",
+            "operational",
+            "implicit"
+          ]
+        }
+      },
+      {
+        "goal_id": "G2_MONOPOLE_TO_VORTEX_EFT_AND_FLUX_FRACTIONALIZATION",
+        "outcome_variable": "o_2d = (S_{2d}[σ], S_{IR}[φ,a], M_to_V, V_{ij}(x), W(C)), where S_{2d}[σ] is a two-dimensional effective action written in dual-photon variables, S_{IR}[φ,a] is its infrared Z_N topological-field-theory deformation, M_to_V is the mapping of monopole operators to center-vortex operators, V_{ij}(x) is the large-distance interaction between magnetic objects on R^2, and W(C) is the fundamental Wilson-loop response to the fractionalized flux.",
+        "goal_form": "target_proposition",
+        "target_object": "A target proposition that in SU(N) Yang-Mills theory on R^2 × (S^1)_2 × (S^1)_3 with unit 't Hooft flux n_{23}=1, fixed small L_3, and variable L_2 satisfying L_3 << L_2, the three-dimensional monopole effective field theory based on U(1)^{N-1} dual photons flows for L_2 << ℓ_D to a two-dimensional deformed Z_N topological theory of center-vortices; in this flow the monopole operator exp[-S_I/N] exp[i α_a·σ + iθ/N] evaluated on the N discrete vacua σ_k^*=(2πk/N)ρ becomes the two-dimensional center-vortex operator L_2 exp[-S_I/N] exp[i(2πk+θ)/N], monopole interactions become exponentially short-ranged with range N L_2/(2π), and a large fundamental Wilson loop detects the fractionalized monopole flux as W(C)=exp[-i2π/N] when the vortex lies inside C and W(C)=1 when it lies outside C.",
+        "feasibility_constraints": [
+          "N is an integer with N >= 2; the theory is four-dimensional SU(N) Yang-Mills with field strength F(a)=da+i a∧a, instanton action S_I=8π^2/g^2, and topological angle θ on M_4=R^2×(S^1)_2×(S^1)_3.",
+          "The compactification has one unit n_{23}=1 of Z_N 't Hooft flux through (S^1)_2×(S^1)_3 and uses noncommuting Polyakov loops so that the scale L_3 first abelianizes SU(N) to U(1)^{N-1}, while the scale L_2 subsequently reduces U(1)^{N-1} to Z_N when L_3 << L_2.",
+          "The three-dimensional monopole effective action before the second reduction is S_{3d}=∫_{R^3} (g^2/(8π^2 L_3)) |dσ|^2 - 2ζ_m Σ_{a=1}^N cos(α_a·σ+θ/N), where σ is an (N-1)-component dual photon valued modulo 2π times the weight lattice, α_a are the simple and affine roots, and ζ_m is the monopole fugacity.",
+          "The Debye length ℓ_D is the inverse of the smallest nonperturbative dual-photon mass generated by the monopole gas; at θ=0 the masses are m_p=Λ(Λ N L_3)^{5/6} sin(πp/N) for p=1,...,N-1 and ℓ_D=1/m_{p=1}.",
+          "The two-dimensional vortex regime is ℓ_D >> L_2 >> L_3. In this regime the 't Hooft twisted boundary condition gives the dual photons a classical mass scale ω=2π/(N L_2), leaving N discrete vacua σ_k^*=(2πk/N)ρ for k=0,...,N-1, where ρ is the Weyl vector and the relevant root phases obey exp[i α_a·(2πkρ/N)] = exp[i2πk/N] for every monopole operator label a=1,...,N.",
+          "The two-dimensional dual-photon action in the vortex regime is S_{2d}=L_2∫_{R^2} (g^2/(8π^2 L_3)) ( |dσ|^2 + ω^2 min_k |σ-(2πk/N)ρ|^2 ) - 2ζ_m Σ_{a=1}^N cos(α_a·σ+θ/N).",
+          "In the deep-infrared reduction, σ is restricted to the Weyl-vector line σ=ρφ, the vortex fugacity is ζ_v=ζ_m L_2 N, and the resulting deformed Z_N topological action is S_{IR}= i(N/(2π))∫ φ da - 2ζ_v∫ d^2x cos(φ+θ/N).",
+          "For large separations |x| >> N L_2/(2π) on R^2, the interaction between monopole insertions with root labels i,j is V_{ij}(x)=A_{ij} L_2^{-1} (2π)^{-1} K_0(ω|x|) ≈ A_{ij} L_2^{-1} (4π)^{-1} (N L_2/|x|)^{1/2} exp[-2π|x|/(N L_2)], where A_{ij}=L_3(2π/g)^2 α_i·α_j and K_0 is the modified Bessel function.",
+          "The Wilson-loop diagnostic is evaluated in the abelianized fundamental representation as W(C)=N^{-1}Σ_{j=1}^N exp(i∫_D ν_j·f), with C=∂D, f=da, and weights ν_j satisfying ν_i·ν_j=δ_{ij}-1/N."
+        ],
+        "success_set": {
+          "kind": "predicate",
+          "definition": "Σ_2d = { o_2d : S_{2d}[σ] has the explicit mass term ω^2 min_k |σ-(2πk/N)ρ|^2 with ω=2π/(N L_2), localizes in the infrared to N vacua σ_k^*=(2πk/N)ρ, and reduces along σ=ρφ to S_{IR}=i(N/(2π))∫φ da - 2ζ_v∫d^2x cos(φ+θ/N) with ζ_v=ζ_m L_2 N; M_to_V maps each monopole factor exp[-S_I/N] exp[iα_a·σ+iθ/N] to L_2 exp[-S_I/N] exp[i(2πk+θ)/N] on σ=σ_k^*, so the monopole insertion becomes a center-vortex insertion; V_{ij}(x) decays as exp[-2π|x|/(N L_2)] at large |x| and therefore describes a short-range vortex gas rather than a two-dimensional logarithmic Coulomb gas; and W(C)=exp[-i2π Θ_D(x)/N], where Θ_D(x)=1 if the vortex position x lies in D and Θ_D(x)=0 otherwise, so a large two-dimensional Wilson loop detects the fractionalized monopole flux as a center-vortex }",
+          "threshold": {
+            "applies": false,
+            "value": null,
+            "comparator": null,
+            "metric_symbol": null,
+            "metric_definition": null,
+            "source_span": null
+          }
+        },
+        "preference_ordering": {
+          "kind": "none",
+          "definition": null,
+          "objective_symbols": [],
+          "lex_order": null,
+          "embedding_to_total_utility": null
+        },
+        "robustness_scope": {
+          "applies": true,
+          "ambient_space": "All compactified SU(N) Yang-Mills systems on R^2 × (S^1)_2 × (S^1)_3 with N >= 2, one unit n_{23}=1 of Z_N 't Hooft flux through (S^1)_2×(S^1)_3, fixed small L_3 satisfying Λ N L_3 << 1 for semiclassical abelianization, and L_2 varied while remaining larger than L_3.",
+          "type_tag": "environment_family",
+          "metric_or_divergence": null,
+          "radius_or_budget": null,
+          "indexing_set": "I_2d = { (N,L_2,L_3,θ) : N ∈ Z, N >= 2, θ ∈ R/(2πZ), Λ N L_3 << 1, and either L_2 >> ℓ_D >> L_3 for the three-dimensional monopole EFT or ℓ_D >> L_2 >> L_3 for the two-dimensional vortex EFT, where ℓ_D^{-1}=Λ(ΛNL_3)^{5/6} sin(π/N) at θ=0 }.",
+          "claimed_subfamily": {
+            "definition": "The claimed subfamily is the pair of scale-separated regimes in I_2d: L_2 >> ℓ_D >> L_3, where the local dynamics is the three-dimensional U(1)^{N-1} monopole Coulomb-gas EFT with dual photons σ; and ℓ_D >> L_2 >> L_3, where the twisted boundary condition gives the dual photons a classical mass 2π/(N L_2), the field localizes to σ_k^*=(2πk/N)ρ, and the infrared theory is a two-dimensional deformed Z_N topological theory of center-vortices. The paper's continuity claim is restricted to this weak-coupling, scale-separated compactified setting.",
+            "source_span": {
+              "section": "Sections 4.1 and 4.2",
+              "paragraph_or_line": "Equations (4.9)-(4.15) and (4.20)-(4.21)",
+              "verbatim": "The main new result in this section is a derivation of the 2d EFT (4.11) in terms of dual photon field."
+            }
+          },
+          "hinted_superfamily": {
+            "definition": "A broader hinted family is the physical interpretation that monopole-induced confinement and center-vortex-induced confinement are not mutually exclusive mechanisms but different semiclassical realizations of confinement in compactified Yang-Mills theories related to fractional instanton structure. This extraction does not treat all QCD-like or R^4 confinement mechanisms as part of the formal success set.",
+            "source_span": {
+              "section": "Overview and Outlook",
+              "paragraph_or_line": "Overview after equation (1.2); Outlook first paragraph",
+              "verbatim": "These results are remarkable, because they provide a unified perspective of monopole-induced confinement on R^3 × S^1 and center-vortex-induced confinement on R^2 × T^2, and their relation to 4d instantons."
+            }
+          },
+          "refinement_relation": "set_inclusion",
+          "criterion": "For every parameter choice in the claimed subfamily, begin with the three-dimensional dual-photon monopole action, impose the n_{23}=1 twisted boundary condition so that dual-photon modes have momenta (2π/L_2)(k_2+p_2/N), retain the long-distance two-dimensional fields when ℓ_D >> L_2 >> L_3, verify the explicit action S_{2d}[σ] with mass scale ω=2π/(N L_2), show its infrared localization to σ_k^*=(2πk/N)ρ, rewrite the localized theory as S_{IR}=i(N/(2π))∫φ da - 2ζ_v∫d^2x cos(φ+θ/N), and verify by W(C)=N^{-1}Σ_j exp(i∫_Dν_j·f) that fractionalized flux f=2πν_i on one side of the monopole position and f=2πν_{i+1} on the other gives W(C)=exp[-i2π/N] when the vortex position lies inside D and W(C)=1 when it lies outside D.",
+          "channel_populated_by": [
+            "stated",
+            "operational",
+            "implicit"
+          ]
+        }
+      }
+    ],
+    "inter_goal_relation": "joint_conjunction",
+    "methodological_claim": {
+      "applies": false,
+      "target_object": null,
+      "evidence_channels": null
+    },
+    "evidence_channels": {
+      "stated_goal": {
+        "source_span": {
+          "section": "Abstract and Overview",
+          "paragraph_or_line": "Abstract final third; Overview paragraphs after equation (1.2)",
+          "verbatim": "The goal of the present work is to make the connection between these two regimes more precise. For this purpose we will consider two compactifications that interpolate between the monopole and the vortex scenario."
+        },
+        "formalisation": "Let o=(o_QM,o_2d). The stated target proposition is φ_stated(o): o_QM establishes that SU(N) Yang-Mills theory on R × (T^2)_{12} × (S^1)_3 with n_{12}=1 has monopole and center-vortex semiclassical hierarchies whose quantum-mechanical infrared limits are both deformed Z_N topological theories with fractional-instanton tunneling and the same θ-dependent branch structure; and o_2d establishes that SU(N) Yang-Mills theory on R^2×(S^1)_2×(S^1)_3 with n_{23}=1 has a scale-separated route in which the U(1)^{N-1} monopole dual-photon EFT becomes a two-dimensional deformed Z_N vortex EFT, with monopole flux fractionalizing so that a large Wilson loop has phase exp[-i2π/N] exactly when the vortex lies inside the loop."
+      },
+      "operational_goal": {
+        "source_span": {
+          "section": "Sections 2.3, 3.3, 4.1, and 4.2",
+          "paragraph_or_line": "Quantum-mechanical Hamiltonians and comparison tables; equations (4.11)-(4.15) and (4.20)-(4.21)",
+          "verbatim": "Monopole EFT in 3d ⇒ TQFT + deformation in 1d and 2d. The two regimes meet at a quantum mechanical domain, where a cross-over and dramatic rearrangement of states occur."
+        },
+        "formalisation": "The operational target is to construct two calculational bridges. Bridge 1: in the n_{12}=1 compactification, derive the monopole-side Hamiltonian H=Σ_i E_0|ν_i⟩⟨ν_i|-Σ_i K exp[-S_I/N-iθ/N]|ν_i⟩⟨ν_{i+1}|+h.c. and the vortex-side Hamiltonian H=Σ_m ẼE_0|m⟩⟨m|-Σ_m K exp[-S_I/N-iθ/N]|m⟩⟨m+1|+h.c.; diagonalize both by the N-point discrete Fourier transform and obtain the same ε_k(θ)=-2NK exp[-S_I/N]cos((θ+2πk)/N). Bridge 2: in the n_{23}=1 compactification, derive S_{2d}=L_2∫(g^2/(8π^2L_3))(|dσ|^2+ω^2min_k|σ-(2πk/N)ρ|^2)-2ζ_mΣ_a cos(α_a·σ+θ/N), reduce it to S_{IR}=i(N/(2π))∫φda-2ζ_v∫d^2x cos(φ+θ/N), and verify W(C)=exp[-i2πΘ_D(x)/N] for the fractionalized monopole flux seen on R^2."
+      },
+      "implicit_goal": {
+        "inference_basis": [
+          "The abstract names the two semiclassical regimes, the common phenomena to be demonstrated in them, the extrapolation to a quantum-mechanical crossover, and the derivation of a vortex EFT from a monopole EFT.",
+          "The Overview explicitly states the goal of making the connection between the R^3×S^1 monopole scenario and the R^2×T^2 center-vortex scenario precise, then separates the interpolation/crossover claim from the flux-fractionalization/EFT-derivation claim.",
+          "Section 3.3 operationalizes the first claim by comparing the two quantum-mechanical hierarchies in tables and by identifying both deep-infrared limits as deformed Z_N topological theories with fractional-instanton operators.",
+          "Section 4.1 operationalizes the second claim by deriving the two-dimensional dual-photon action, its localization to N vacua, and its infrared deformed Z_N topological action.",
+          "Section 4.2 operationalizes the physical transmutation claim by computing the short-range interaction scale and the Wilson-loop phase that identifies the fractionalized monopole flux as a center-vortex."
+        ],
+        "fit_score": 0.92,
+        "fit_components": {
+          "TextAlign": 0.95,
+          "MethodAlign": 1.0,
+          "EvalAlign": 0.85,
+          "ClaimAlign": 0.95,
+          "Complexity": 0.3
+        },
+        "formalisation": "Among candidate goals, the highest-fit implicit goal is the joint conjunction G1 ∧ G2. TextAlign=0.95 because the abstract, overview, figure caption, and outlook consistently point to connecting monopole and center-vortex confinement mechanisms through compactified semiclassical regimes, while some broader R^4 and QCD language is motivational rather than fully operational. MethodAlign=1.00 because the paper's principal constructions are the n_{12}=1 quantum-mechanical reduction and the n_{23}=1 two-stage dual-photon reduction. EvalAlign=0.85 because the analytic comparison tables, spectra, effective actions, interaction formula, and Wilson-loop diagnostic directly test the two propositions, but the paper does not contain a numerical benchmark or scalar optimization metric. ClaimAlign=0.95 because the stated conclusions assert the common deformed-Z_N endpoint and the monopole-to-vortex flux-fractionalization endpoint, while the broadest R^4 framing is treated as a hinted superfamily rather than part of the formal success set. Complexity=0.30 because the extraction uses one additional canonical goal and two explicit environment-family robustness scopes, with no threshold objective, lexicographic ordering, or total-utility embedding. The resulting score is 0.20·0.95 + 0.30·1.00 + 0.30·0.85 + 0.20·0.95 − 0.05·0.30 = 0.92."
+      },
+      "excluded_aims": [
+        {
+          "verbatim": "Keywords: Confinement",
+          "source_span": {
+            "section": "Keywords",
+            "paragraph_or_line": "Keyword list",
+            "verbatim": "Keywords: Confinement, Nonperturbative Effects, Solitons Monopoles and Instantons"
+          },
+          "reason": "topical"
+        },
+        {
+          "verbatim": "Keywords: Nonperturbative Effects",
+          "source_span": {
+            "section": "Keywords",
+            "paragraph_or_line": "Keyword list",
+            "verbatim": "Keywords: Confinement, Nonperturbative Effects, Solitons Monopoles and Instantons"
+          },
+          "reason": "topical"
+        },
+        {
+          "verbatim": "Historically, the monopole and center vortex pictures of confinement in QCD were viewed as distinct alternatives for the confinement mechanism on R^4.",
+          "source_span": {
+            "section": "Overview",
+            "paragraph_or_line": "Motivating paragraph after the stated goal",
+            "verbatim": "Historically, the monopole and center vortex pictures of confinement in QCD were viewed as distinct alternatives for the confinement mechanism on R^4."
+          },
+          "reason": "motivational"
+        },
+        {
+          "verbatim": "In d > 2 dimensions, most of the arguments in favor of the center-vortex mechanism are based on numerical studies.",
+          "source_span": {
+            "section": "Footnote in Overview",
+            "paragraph_or_line": "Footnote 1",
+            "verbatim": "In d > 2 dimensions, most of the arguments in favor of the center-vortex mechanism are based on numerical studies."
+          },
+          "reason": "out_of_scope_other"
+        }
+      ]
+    },
+    "consistency_relation": "framing_divergence",
+    "consistency_relation_derivation": "The operational channel is aligned with the paper's formal compactified-regime goals: G1 establishes the common one-dimensional deformed Z_N topological endpoint for the n_{12}=1 interpolation, and G2 establishes the n_{23}=1 dual-photon route from monopole EFT to two-dimensional center-vortex EFT with flux fractionalization. The stated channel, however, also contains broader framing about QCD, confinement mechanisms on R^4, and a unified perspective on four-dimensional instantons. Those broader statements motivate the work and define a hinted superfamily, but they are not reproduced as fully established operational artefacts in the same way as the compactified weak-coupling derivations. Therefore the correct consistency label is framing_divergence rather than aligned."
+  }
+}

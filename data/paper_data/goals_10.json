@@ -1,0 +1,354 @@
+{
+    "paper_goal": {
+        "canonical_goal": [
+            {
+                "goal_id": "G1_define_weak_compacton_solution_concepts",
+                "outcome_variable": "o_1 = (W_K, W_KP) \u2208 O_P, where W_K is a weak compacton predicate for the K(m,n) equation and W_KP is a weak line compacton predicate for the KP(m,n) equation",
+                "goal_form": "target_proposition",
+                "target_object": "A rigorous weak-solution definition for compactly supported traveling waves of the one-dimensional equation u_t + a(u^m)_x + b(u^n)_{xxx} = 0 and compactly supported line traveling waves of the two-dimensional equation (u_t + a(u^m)_x + b(u^n)_{xxx})_x + \u03c3u_{yy} = 0, where m,n>0, m\u22601, a,b\u2208\u211d\\{0}, and \u03c3\u2208{-1,1}.",
+                "feasibility_constraints": [
+                    "For the one-dimensional K(m,n) equation, the traveling-wave coordinate is \u03be=x-ct, the profile parameter is g=c, the compacton profile satisfies U\u2208C^0_c(\u211d)\u2229L^max(m,n)_loc(\u211d), and every profile test function \u03c6:\u211d\u2192\u211d is smooth with compact support.",
+                    "For the two-dimensional KP(m,n) equation, the line-wave coordinate is \u03be=x+\u03bcy-\u03bdt, the profile parameter is g=\u03bd-\u03c3\u03bc^2, the compacton profile satisfies U\u2208C^0_c(\u211d)\u2229L^max(m,n)_loc(\u211d), and every profile test function \u03c6:\u211d\u2192\u211d is smooth with compact support.",
+                    "The K(m,n) weak compacton predicate W_K(U) is \u222b_\u211d((-gU+aU^m)\u03c6' + bU^n\u03c6''')d\u03be = 0 for every smooth compactly supported \u03c6.",
+                    "The KP(m,n) weak line compacton predicate W_KP(U) is \u222b_\u211d((-gU+aU^m)\u03c6'' + bU^n\u03c6'''')d\u03be = 0 for every smooth compactly supported \u03c6."
+                ],
+                "success_set": {
+                    "kind": "predicate",
+                    "definition": "\u03a3_1 = { (W_K,W_KP) : for every U\u2208C^0_c(\u211d)\u2229L^max(m,n)_loc(\u211d), W_K(U) holds exactly when u(t,x)=U(x-ct) satisfies \u222c_\u211d\u00d7\u211d(u\u03c8_t+au^m\u03c8_x+bu^n\u03c8_xxx)dt dx=0 for every smooth compactly supported \u03c8(t,x), and W_KP(U) holds exactly when u(t,x,y)=U(x+\u03bcy-\u03bdt) satisfies \u222d_\u211d\u00d7\u211d^2(u\u03c8_tx+\u03c3u\u03c8_yy+au^m\u03c8_xx+bu^n\u03c8_xxxx)dt dxdy=0 for every smooth compactly supported \u03c8(t,x,y) }",
+                    "threshold": {
+                        "applies": false,
+                        "value": null,
+                        "comparator": "eq",
+                        "metric_symbol": null,
+                        "metric_definition": null,
+                        "source_span": null
+                    }
+                },
+                "preference_ordering": {
+                    "kind": "none",
+                    "definition": null,
+                    "objective_symbols": [],
+                    "lex_order": null,
+                    "embedding_to_total_utility": null
+                },
+                "robustness_scope": {
+                    "applies": false,
+                    "ambient_space": null,
+                    "type_tag": "other",
+                    "metric_or_divergence": null,
+                    "radius_or_budget": null,
+                    "indexing_set": null,
+                    "claimed_subfamily": {
+                        "definition": null,
+                        "source_span": null
+                    },
+                    "hinted_superfamily": {
+                        "definition": null,
+                        "source_span": null
+                    },
+                    "refinement_relation": "none",
+                    "criterion": null,
+                    "channel_populated_by": []
+                }
+            },
+            {
+                "goal_id": "G2_characterise_weak_vs_strong_cutoff_conditions",
+                "outcome_variable": "o_2 = (C_K, C_KP, S_K, S_KP) \u2208 O_P, where C_K and C_KP are weak cutoff feasibility predicates and S_K and S_KP are strong cutoff feasibility predicates",
+                "goal_form": "target_proposition",
+                "target_object": "A necessary-and-sufficient endpoint-exponent criterion for when a cutoff traveling-wave profile U_c(\u03be)=U(\u03be)H(L-|\u03be|), with H(s)=1 for s>0 and H(s)=0 for s<0, is a weak compacton of the K(m,n) equation or a weak line compacton of the KP(m,n) equation, together with the corresponding endpoint-exponent criterion for when the same cutoff profile is a classical strong compacton solution.",
+                "feasibility_constraints": [
+                    "The support interval is [-L,L] with L>0, and the endpoint behavior is U(\u03be)\u223cU_0(L-|\u03be|)^p as \u03be approaches \u00b1L, where U_0\u2208\u211d\\{0} and p\u2208\u211d\\{0}.",
+                    "For K(m,n), m,n>0, m\u22601, a,b\u2208\u211d\\{0}, g=c, U is C^3 on [-L,L], and U satisfies (-gU+aU^m+b(U^n)'')'=0 for -L<\u03be<L.",
+                    "For KP(m,n), m,n>0, m\u22601, a,b\u2208\u211d\\{0}, \u03c3\u2208{-1,1}, g=\u03bd-\u03c3\u03bc^2, U is C^4 on [-L,L], and U satisfies (-gU+aU^m+b(U^n)'')''=0 for -L<\u03be<L.",
+                    "Define A_1=bU^n, A_2=b(U^n)', A_3=-gU+aU^m+b(U^n)'', and A_4=(-gU+aU^m)'+b(U^n)'''. The K(m,n) weak cutoff predicate is A_1(\u00b1L)=A_2(\u00b1L)=A_3(\u00b1L)=0. The KP(m,n) weak cutoff predicate is A_1(\u00b1L)=A_2(\u00b1L)=A_3(\u00b1L)=A_4(\u00b1L)=0."
+                ],
+                "success_set": {
+                    "kind": "predicate",
+                    "definition": "\u03a3_2 = { (C_K,C_KP,S_K,S_KP) : C_K holds if and only if p>2/n; C_KP holds if and only if at least one of the following six alternatives holds: (1) p>max(1/m,3/n) and g=0; (2) p>max(1/m,3/n), m<1, and g\u22600; (3) p>max(1,3/n), m>1, and g\u22600; (4) 1\u2265p=2/(n-1), 2m+1>n\u22653, g\u22600, and U_0=(g(n-1)^2/(2bn(n+1)))^((n-1)/((n-2)(n+1))); (5) p=2/(n-m), n\u22653m, g=0, and U_0=(-a(n-m)^2/(2bn(n+m)))^(1/(n-m)); (6) p=2/(n-m), m+2>n\u22653m, g\u22600, and U_0=(-a(n-m)^2/(2bn(n+m)))^(1/(n-m)); S_K holds if and only if p>3; and S_KP holds if and only if p>4 }",
+                    "threshold": {
+                        "applies": false,
+                        "value": null,
+                        "comparator": "eq",
+                        "metric_symbol": null,
+                        "metric_definition": null,
+                        "source_span": null
+                    }
+                },
+                "preference_ordering": {
+                    "kind": "qualitative_partial",
+                    "definition": "For two endpoint criteria q_1 and q_2 over the same equation family, q_1 \u2ab0_P q_2 if every endpoint exponent p admitted by q_2 is admitted by q_1. The weak criterion is strictly less restrictive than the strong criterion when there exists p such that C_K holds and S_K fails, or C_KP holds and S_KP fails.",
+                    "objective_symbols": [
+                        "C_K",
+                        "C_KP",
+                        "S_K",
+                        "S_KP"
+                    ],
+                    "lex_order": null,
+                    "embedding_to_total_utility": null
+                },
+                "robustness_scope": {
+                    "applies": false,
+                    "ambient_space": null,
+                    "type_tag": "other",
+                    "metric_or_divergence": null,
+                    "radius_or_budget": null,
+                    "indexing_set": null,
+                    "claimed_subfamily": {
+                        "definition": null,
+                        "source_span": null
+                    },
+                    "hinted_superfamily": {
+                        "definition": null,
+                        "source_span": null
+                    },
+                    "refinement_relation": "none",
+                    "criterion": null,
+                    "channel_populated_by": []
+                }
+            },
+            {
+                "goal_id": "G3_construct_explicit_and_numerical_weak_compactons",
+                "outcome_variable": "o_3 = (F_exp,F_num) \u2208 O_P, where F_exp is a finite catalogue of explicit cutoff compacton profile families and F_num is a family of numerically generated cutoff compacton profiles",
+                "goal_form": "constrained_satisfiability",
+                "target_object": "A nonempty catalogue of compactly supported weak compacton profiles U_c(\u03be)=U(\u03be)H(L-|\u03be|) for the K(m,n) and KP(m,n) equations, including algebraic, cosine, Jacobi-cn, Jacobi-sn, rational Jacobi-cn, antisymmetric, and numerical profiles, such that each catalogue entry satisfies the relevant traveling-wave ordinary differential equation on -L<\u03be<L and the relevant weak endpoint conditions at \u03be=\u00b1L.",
+                "feasibility_constraints": [
+                    "Every explicit profile in F_exp has the cutoff form U_c(\u03be)=U(\u03be)H(L-|\u03be|), where H(s)=1 for s>0 and H(s)=0 for s<0, L>0, and U(\u03be)\u223cU_0(L-|\u03be|)^p as \u03be approaches \u00b1L.",
+                    "The allowed explicit profile templates are \u03b1(1-\u03b2\u03be^2)^p, \u03b1cos(\u03b2\u03be)^p, \u03b1sin(\u03b2\u03be)^p, \u03b1cn(\u03b2\u03be,k)^p, \u03b1cn(\u03b2(\u03be+L/2),k)^p, \u03b1sn(\u03b2\u03be,k)^p, \u03b1sn(\u03b2(\u03be+L),k)^p, and \u03b1((cn(\u03b2\u03be,k)+\u03ba)/(cn(\u03b2\u03be,k)+\u03b3))^q with \u03ba,\u03b3\u2208\u211d\\{0}.",
+                    "For every explicit profile template, the parameters \u03b1,\u03b2,k,\u03ba,\u03b3,q,L,g,m,n,a,b are feasible only when substituting U into (-gU+aU^m+b(U^n)'')'=0 makes the coefficient of every linearly independent \u03be-dependent expression equal to zero.",
+                    "For a K(m,n) explicit weak compacton, the endpoint exponent and parameters must satisfy A_1(\u00b1L)=A_2(\u00b1L)=A_3(\u00b1L)=0, where A_1=bU^n, A_2=b(U^n)', and A_3=-gU+aU^m+b(U^n)''.",
+                    "For a KP(m,n) explicit weak line compacton, the endpoint exponent and parameters must satisfy A_1(\u00b1L)=A_2(\u00b1L)=A_3(\u00b1L)=A_4(\u00b1L)=0, where A_4=(-gU+aU^m)'+b(U^n)'''.",
+                    "A numerical profile in F_num is feasible only when V(\u03be)=U(\u03be)^n solves V''=2(C+(1+1/n)BV^(1/n)-(1+m/n)AV^(m/n)) on [-L,L], with A=2na/((m+n)b), B=2ng/((n+1)b), and the endpoint conditions V(\u00b1L)=V'(\u00b1L)=V''(\u00b1L)=0 for the K(m,n) weak compacton case or the corresponding A_1,A_2,A_3,A_4 boundary-vanishing conditions for the KP(m,n) weak line compacton case."
+                ],
+                "success_set": {
+                    "kind": "predicate",
+                    "definition": "\u03a3_3 = { (F_exp,F_num) : F_exp contains feasible weak compacton entries from the algebraic template \u03b1(1-\u03b2\u03be^2)^p, cosine template \u03b1cos(\u03b2\u03be)^p, Jacobi-cn templates \u03b1cn(\u03b2\u03be,k)^p and \u03b1cn(\u03b2(\u03be+L/2),k)^p, Jacobi-sn templates \u03b1sn(\u03b2\u03be,k)^p and \u03b1sn(\u03b2(\u03be+L),k)^p, rational Jacobi-cn template \u03b1((cn(\u03b2\u03be,k)+\u03ba)/(cn(\u03b2\u03be,k)+\u03b3))^q, and antisymmetric sine/Jacobi variants when p is an odd integer or odd rational power; F_exp includes weak-only cases in which the weak endpoint predicate holds and the strong predicate p>3 for K(m,n) or p>4 for KP(m,n) fails; F_num contains at least one profile generated by the V-equation whose transformed cutoff U_c=V^(1/n)H(L-|\u03be|) satisfies the same weak integral identity as the corresponding K(m,n) or KP(m,n) compacton }",
+                    "threshold": {
+                        "applies": false,
+                        "value": null,
+                        "comparator": "eq",
+                        "metric_symbol": null,
+                        "metric_definition": null,
+                        "source_span": null
+                    }
+                },
+                "preference_ordering": {
+                    "kind": "qualitative_partial",
+                    "definition": "For two compacton catalogues F_1 and F_2, F_1 \u2ab0_P F_2 if every profile-template type represented in F_2 is represented in F_1 and every weak-only profile-template type represented in F_2 is represented in F_1. A weak-only profile-template type is a template for which the weak endpoint predicate holds for at least one admissible parameter choice and the corresponding strong endpoint predicate fails for that same parameter choice.",
+                    "objective_symbols": [
+                        "F_exp",
+                        "F_num"
+                    ],
+                    "lex_order": null,
+                    "embedding_to_total_utility": null
+                },
+                "robustness_scope": {
+                    "applies": false,
+                    "ambient_space": null,
+                    "type_tag": "other",
+                    "metric_or_divergence": null,
+                    "radius_or_budget": null,
+                    "indexing_set": null,
+                    "claimed_subfamily": {
+                        "definition": null,
+                        "source_span": null
+                    },
+                    "hinted_superfamily": {
+                        "definition": null,
+                        "source_span": null
+                    },
+                    "refinement_relation": "none",
+                    "criterion": null,
+                    "channel_populated_by": []
+                }
+            },
+            {
+                "goal_id": "G4_transfer_K_compacton_profiles_to_KP_line_compactons",
+                "outcome_variable": "o_4 = T_K_to_KP \u2208 O_P, where T_K_to_KP is a transfer predicate from one-dimensional K(m,n) compacton profiles to two-dimensional KP(m,n) line compacton profiles",
+                "goal_form": "target_proposition",
+                "target_object": "A conditional transfer theorem stating that a compactly supported scalar profile U satisfying the one-dimensional K(m,n) traveling-wave profile equation with parameter g also satisfies the two-dimensional KP(m,n) line-wave profile equation after choosing line-wave parameters \u03bc and \u03bd so that \u03bd-\u03c3\u03bc^2=g; for cutoff weak solutions, the transfer is valid only when the KP endpoint condition A_4(\u00b1L)=0 also holds in addition to A_1(\u00b1L)=A_2(\u00b1L)=A_3(\u00b1L)=0.",
+                "feasibility_constraints": [
+                    "The source profile U is compactly supported on [-L,L] and satisfies (-gU+aU^m+b(U^n)'')'=0 for -L<\u03be<L, with m,n>0, m\u22601, and a,b\u2208\u211d\\{0}.",
+                    "The KP line-wave coordinate is \u03be=x+\u03bcy-\u03bdt, with \u03bc,\u03bd\u2208\u211d and \u03c3\u2208{-1,1}.",
+                    "The KP line-wave parameter is matched to the K(m,n) profile parameter by \u03bd-\u03c3\u03bc^2=g.",
+                    "For weak cutoff transfer, U_c(\u03be)=U(\u03be)H(L-|\u03be|) must satisfy A_1(\u00b1L)=A_2(\u00b1L)=A_3(\u00b1L)=A_4(\u00b1L)=0, where A_1=bU^n, A_2=b(U^n)', A_3=-gU+aU^m+b(U^n)'', and A_4=(-gU+aU^m)'+b(U^n)'''."
+                ],
+                "success_set": {
+                    "kind": "predicate",
+                    "definition": "\u03a3_4 = { T_K_to_KP : for every compactly supported U satisfying (-gU+aU^m+b(U^n)'')'=0 for -L<\u03be<L and for every \u03bc\u2208\u211d and \u03c3\u2208{-1,1}, setting \u03bd=g+\u03c3\u03bc^2 makes U satisfy (-gU+aU^m+b(U^n)'')''=0 for -L<\u03be<L as a KP(m,n) line-wave profile; if U_c=UH(L-|\u03be|) also satisfies A_1(\u00b1L)=A_2(\u00b1L)=A_3(\u00b1L)=A_4(\u00b1L)=0, then u(t,x,y)=U_c(x+\u03bcy-\u03bdt) satisfies \u222b_\u211d((-gU_c+aU_c^m)\u03c6''+bU_c^n\u03c6'''')d\u03be=0 for every smooth compactly supported \u03c6 }",
+                    "threshold": {
+                        "applies": false,
+                        "value": null,
+                        "comparator": "eq",
+                        "metric_symbol": null,
+                        "metric_definition": null,
+                        "source_span": null
+                    }
+                },
+                "preference_ordering": {
+                    "kind": "none",
+                    "definition": null,
+                    "objective_symbols": [],
+                    "lex_order": null,
+                    "embedding_to_total_utility": null
+                },
+                "robustness_scope": {
+                    "applies": true,
+                    "ambient_space": "\u0394_4 = { (U,m,n,a,b,g,\u03bc,\u03bd,\u03c3,L) : U is compactly supported on [-L,L], m,n>0, m\u22601, a,b\u2208\u211d\\{0}, \u03bc,\u03bd,g\u2208\u211d, \u03c3\u2208{-1,1}, L>0, and \u03bd-\u03c3\u03bc^2=g }",
+                    "type_tag": "algorithmic_transform",
+                    "metric_or_divergence": null,
+                    "radius_or_budget": null,
+                    "indexing_set": "I_4 = \u0394_4",
+                    "claimed_subfamily": {
+                        "definition": "D_4 = { (U,m,n,a,b,g,\u03bc,\u03bd,\u03c3,L)\u2208\u0394_4 : U satisfies (-gU+aU^m+b(U^n)'')'=0 for -L<\u03be<L, and, for weak cutoff transfer, U_c=UH(L-|\u03be|) satisfies A_1(\u00b1L)=A_2(\u00b1L)=A_3(\u00b1L)=A_4(\u00b1L)=0 }.",
+                        "source_span": {
+                            "section": "Introduction and Section 2",
+                            "paragraph_or_line": "Main-results paragraph and traveling-wave ODE comparison",
+                            "verbatim": "all K(m,n) compactons have two-dimensional counterparts given by KP(m,n) line compactons; every solution of the third-order ODE satisfies the fourth-order ODE"
+                        }
+                    },
+                    "hinted_superfamily": {
+                        "definition": null,
+                        "source_span": null
+                    },
+                    "refinement_relation": "declared_embedding",
+                    "criterion": "For every element of D_4, the transform replaces the one-dimensional coordinate \u03be=x-ct by the line-wave coordinate \u03be=x+\u03bcy-\u03bdt and enforces \u03bd-\u03c3\u03bc^2=g; differentiating (-gU+aU^m+b(U^n)'')'=0 once gives (-gU+aU^m+b(U^n)'')''=0, which is the KP(m,n) line-profile equation with the matched value of g.",
+                    "channel_populated_by": [
+                        "stated",
+                        "operational"
+                    ]
+                }
+            },
+            {
+                "goal_id": "G5_establish_hidden_variational_principle_for_traveling_profiles",
+                "outcome_variable": "o_5 = (V,S) \u2208 O_P, where V is the transformed traveling-wave profile variable and S is an action functional",
+                "goal_form": "target_proposition",
+                "target_object": "A hidden variational principle for traveling-wave profiles of the K(m,n) and KP(m,n) equations after the profile transformation U=V^(1/n), even though the original partial differential equations for u are not asserted to possess a variational principle when n\u22601.",
+                "feasibility_constraints": [
+                    "The transformed profile variable V is related to the original traveling-wave profile U by U=V^(1/n).",
+                    "The profile parameter g equals c for the K(m,n) traveling wave \u03be=x-ct and equals \u03bd-\u03c3\u03bc^2 for the KP(m,n) line traveling wave \u03be=x+\u03bcy-\u03bdt.",
+                    "The constants are A=2na/((m+n)b) and B=2ng/((n+1)b), where m,n>0 and a,b\u2208\u211d\\{0}.",
+                    "The transformed profile V is differentiable enough that V'', V^(m/n), V^(1/n), V^(1+m/n), V^(1+1/n), and V' are defined on the profile domain, and the variations used to compute \u03b4S[V]/\u03b4V are smooth and compactly supported."
+                ],
+                "success_set": {
+                    "kind": "predicate",
+                    "definition": "\u03a3_5 = { (V,S) : S[V]=\u222b_\u211d(V'^2+A V^(1+m/n)-B V^(1+1/n))d\u03be-C\u222b_\u211dVd\u03be with A=2na/((m+n)b), B=2ng/((n+1)b), and C\u2208\u211d, and the Euler equation \u03b4S[V]/\u03b4V=0 is equivalent to V''+(a/b)V^(m/n)-(g/b)V^(1/n)=C/2 }",
+                    "threshold": {
+                        "applies": false,
+                        "value": null,
+                        "comparator": "eq",
+                        "metric_symbol": null,
+                        "metric_definition": null,
+                        "source_span": null
+                    }
+                },
+                "preference_ordering": {
+                    "kind": "none",
+                    "definition": null,
+                    "objective_symbols": [],
+                    "lex_order": null,
+                    "embedding_to_total_utility": null
+                },
+                "robustness_scope": {
+                    "applies": false,
+                    "ambient_space": null,
+                    "type_tag": "other",
+                    "metric_or_divergence": null,
+                    "radius_or_budget": null,
+                    "indexing_set": null,
+                    "claimed_subfamily": {
+                        "definition": null,
+                        "source_span": null
+                    },
+                    "hinted_superfamily": {
+                        "definition": null,
+                        "source_span": null
+                    },
+                    "refinement_relation": "none",
+                    "criterion": null,
+                    "channel_populated_by": []
+                }
+            }
+        ],
+        "inter_goal_relation": "joint_conjunction",
+        "methodological_claim": {
+            "applies": false,
+            "target_object": null,
+            "evidence_channels": null
+        },
+        "evidence_channels": {
+            "stated_goal": {
+                "source_span": {
+                    "section": "Abstract and Introduction",
+                    "paragraph_or_line": "Abstract; Introduction main-results paragraph",
+                    "verbatim": "A weak formulation is devised for the K(m,n) equation; explicit weak compacton solutions are derived; similar results are obtained for KP(m,n); the main results consist of finding a rigorous notion of weak compactons, additional explicit compactons, less restrictive weak existence conditions, K-to-KP line compacton counterparts, and a variational principle for traveling waves."
+                },
+                "formalisation": "The stated goal is the joint conjunction of five mathematical targets: define weak compactons for u_t+a(u^m)_x+b(u^n)_{xxx}=0 and weak line compactons for (u_t+a(u^m)_x+b(u^n)_{xxx})_x+\u03c3u_{yy}=0; characterize when U_c(\u03be)=U(\u03be)H(L-|\u03be|) with U(\u03be)\u223cU_0(L-|\u03be|)^p satisfies weak endpoint predicates and when it satisfies strong endpoint predicates; construct explicit and numerical cutoff profiles from algebraic, trigonometric, elliptic, rational elliptic, antisymmetric, and oscillator-based templates; prove that a K(m,n) traveling profile satisfying (-gU+aU^m+b(U^n)'')'=0 becomes a KP(m,n) line profile after choosing \u03bd-\u03c3\u03bc^2=g, with weak cutoff transfer requiring A_4(\u00b1L)=0; and derive \u03b4S[V]/\u03b4V=0 for S[V]=\u222b_\u211d(V'^2+A V^(1+m/n)-B V^(1+1/n))d\u03be-C\u222b_\u211dVd\u03be under U=V^(1/n), A=2na/((m+n)b), and B=2ng/((n+1)b)."
+            },
+            "operational_goal": {
+                "source_span": {
+                    "section": "Sections 2, 3, and 4",
+                    "paragraph_or_line": "Equations (5)-(14), weak formulations (18)-(23), cutoff conditions (25)-(28), Theorem 1, Proposition 4, Section 4 solution catalogue",
+                    "verbatim": "The operational development defines traveling-wave ODEs, profile-level weak integral equations, cutoff boundary quantities A_1 through A_4, endpoint exponent conditions for weak solutions, p>3 and p>4 conditions for strong solutions, explicit compacton profiles, and numerical weak compactons."
+                },
+                "formalisation": "The operational goal is to prove equivalence between PDE-level weak identities and profile-level weak identities; reduce cutoff feasibility for U_c=UH(L-|\u03be|) to A_1(\u00b1L)=A_2(\u00b1L)=A_3(\u00b1L)=0 for K(m,n) and A_1(\u00b1L)=A_2(\u00b1L)=A_3(\u00b1L)=A_4(\u00b1L)=0 for KP(m,n); derive the endpoint-exponent alternatives C_K, C_KP, S_K, and S_KP stated in \u03a3_2; compare weak and strong parameter regions for the explicit catalogue; construct weak-only examples where the weak predicate holds and the strong predicate fails; generate numerical profiles through V''=2(C+(1+1/n)BV^(1/n)-(1+m/n)AV^(m/n)); and derive the action S[V] whose Euler equation is V''+(a/b)V^(m/n)-(g/b)V^(1/n)=C/2."
+            },
+            "implicit_goal": {
+                "inference_basis": [
+                    "TextAlign count: six harvested stated aim spans are represented by G1-G5: abstract weak formulation, abstract explicit weak compactons, abstract weak-only versus strong distinction, abstract KP analogue, introduction four-item main-result list, and introduction variational-principle sentence.",
+                    "MethodAlign count: eight formal method artefacts are represented by G1-G5: traveling-wave ODEs (5) and (7), transformation U=V^(1/n), weak integral identities (18)-(23), cutoff form U_c=UH(L-|\u03be|), boundary quantities A_1-A_4, endpoint exponent analysis, explicit coefficient-matching construction, and numerical V-equation construction.",
+                    "EvalAlign count: four construction/classification artefacts are represented by G2-G3: Table 1 weak-versus-strong conditions, Figures 1-4 parameter regions, explicit catalogue entries (41)-(54), and weak-only examples in Section 4.2.",
+                    "ClaimAlign count: five theorem/conclusion artefacts are represented by G1-G5: Propositions 1 and 2, Proposition 3, Theorem 1, Proposition 4, and the hidden variational-principle derivation."
+                ],
+                "fit_score": 0.9875,
+                "fit_components": {
+                    "TextAlign": 1.0,
+                    "MethodAlign": 1.0,
+                    "EvalAlign": 1.0,
+                    "ClaimAlign": 1.0,
+                    "Complexity": 0.25
+                },
+                "formalisation": "The selected implicit goal g_P is the joint-conjunction five-tuple whose outcome space O_P contains W_K, W_KP, C_K, C_KP, S_K, S_KP, F_exp, F_num, T_K_to_KP, V, and S. The predictive fit is Fit(g_P;P)=0.20\u00b71.0+0.30\u00b71.0+0.30\u00b71.0+0.20\u00b71.0\u22120.05\u00b70.25=0.9875. Complexity is 0.25 because five structural commitments are populated: one true robustness scope in G4 and four canonical-goal blocks beyond the first; no threshold fields have non-default values, no lex_order is populated, and no embedding_to_total_utility is populated. Using a denominator of twenty optional structural slots gives Complexity=5/20=0.25."
+            },
+            "excluded_aims": [
+                {
+                    "verbatim": "Physical and mathematical features of such solutions have been extensively studied for a large number of dispersive nonlinear wave equations.",
+                    "source_span": {
+                        "section": "Introduction",
+                        "paragraph_or_line": "Opening background paragraph",
+                        "verbatim": "Physical and mathematical features of such solutions have been extensively studied for a large number of dispersive nonlinear wave equations."
+                    },
+                    "reason": "topical"
+                },
+                {
+                    "verbatim": "Another kind of traveling wave, which has attracted much interest, is compactons that describe waves with compact spatial support.",
+                    "source_span": {
+                        "section": "Introduction",
+                        "paragraph_or_line": "Background paragraph on compactons",
+                        "verbatim": "Another kind of traveling wave, which has attracted much interest, is compactons that describe waves with compact spatial support."
+                    },
+                    "reason": "motivational"
+                },
+                {
+                    "verbatim": "The preceding steps have been carried out in Maple and yield the following weak compacton solutions, which have a symmetric profile.",
+                    "source_span": {
+                        "section": "Section 4.1",
+                        "paragraph_or_line": "Opening paragraph of solution profiles",
+                        "verbatim": "The preceding steps have been carried out in Maple and yield the following weak compacton solutions, which have a symmetric profile."
+                    },
+                    "reason": "out_of_scope_other"
+                },
+                {
+                    "verbatim": "They may be helpful in understanding the question of well-posedness for these equations.",
+                    "source_span": {
+                        "section": "Concluding remarks",
+                        "paragraph_or_line": "Final paragraph",
+                        "verbatim": "They may be helpful in understanding the question of well-posedness for these equations."
+                    },
+                    "reason": "application_gesture"
+                }
+            ]
+        },
+        "consistency_relation": "aligned",
+        "consistency_relation_derivation": "The stated, operational, and implicit channels all identify the same end-state structure: weak compacton definitions for K(m,n) and KP(m,n), endpoint weak-versus-strong cutoff criteria, explicit and numerical compacton witnesses, conditional transfer from K(m,n) profiles to KP(m,n) line profiles, and a transformed variational principle. Background interest in compactons, the use of Maple to carry out algebra, and possible relevance to well-posedness are excluded rather than encoded as paper goals, so no material stated goal is absent from the operational artefacts."
+    }
+}

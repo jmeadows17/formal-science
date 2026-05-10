@@ -1,0 +1,176 @@
+{
+  "paper_title": "Measurement-induced entanglement and complexity in random constant-depth 2D quantum circuits (McGinley, 2025, arXiv)",
+  "deeper_reasoning_1": "\\textbf{Claim.} The replica-free entanglement-of-assistance pipeline gives the finite-size theorem\n\\[\nF_{\\mathrm{SAW}}:=-\\log Z_{\\mathrm{SAW}}\\ge 2\n\\quad\\Longrightarrow\\quad\nE(A:C):=\\sum_{s_B}p_{s_B}S(\\rho^A_{s_B})\n\\ge 2F_{\\mathrm{SAW}}-2\\log(eF_{\\mathrm{SAW}}).\n\\]\nHere\n\\[\nZ_{\\mathrm{SAW}}=\\sum_{W\\in \\operatorname{SAW}(\\Lambda^*,A,C)}\\exp[-S_W^{(2)}/2].\n\\]\n\n\\textbf{Premises.}\n\\[\n\\begin{array}{ll}\n(P1) & E(A:C)=S(A\\mid M_B)_\\rho.\\\\\n(P2) & E(A:C)\\ge (1-\\epsilon/2)\\log d'-h_2(\\epsilon/2).\\\\\n(P3) & \\epsilon=\\left\\|\\sum_{I\\subseteq B}\n(\\Theta_A\\otimes \\Theta_I\\otimes \\widehat D_{B\\setminus I}\\otimes \\operatorname{Tr}_C)[\\Psi^{ABC}]\n\\right\\|_1.\\\\\n(P4) & \\text{For each separating wall }W,\\quad\n\\|X(I_W)\\|_1\\le \\exp\\{(\\log d'-S_W^{(2)})/2\\}.\\\\\n(P5) & \\text{After grouping configurations by their nonempty set of separating walls,}\\\\\n     & \\epsilon\\le \\sqrt{d'}\\,Z_{\\mathrm{SAW}}f(Z_{\\mathrm{SAW}}),\\qquad f(x):=(e^x-1)/x.\\\\\n(P6) & F_{\\mathrm{SAW}}=-\\log Z_{\\mathrm{SAW}}\\ge 2.\\\\\n(P7) & \\lceil a\\rceil\\le 2a\\text{ for }a\\ge 1,\\quad e^y-1\\le ye^y\\text{ for }y\\ge 0.\\\\\n(P8) & h_2\\text{ is increasing on }[0,1/2]\\text{ and }h_2(y)\\le 2y\\log(1/y)\\text{ for }0<y\\le 1/2.\n\\end{array}\n\\]\n\n\\textbf{Derivation.}\nPremises (P3)--(P5) are the point at which the local measurement problem is converted into a self-avoiding-walk partition function: the subset expansion labels Ising configurations, (P4) gives the cost of forcing a particular separating wall, and the inclusion-exclusion grouping of one or more walls gives the exponential series in (P5).\n\nSet $F:=F_{\\mathrm{SAW}}$ and choose\n\\[\nd'=\\left\\lceil F^{-2}e^{2F}\\right\\rceil .\n\\]\nSince $F\\ge 2$, the number $F^{-2}e^{2F}$ is at least $1$.  Therefore\n\\begin{align}\n\\sqrt{d'}\n&\\le \\sqrt{2F^{-2}e^{2F}} && \\text{by (P7)}\\\\\n&=\\sqrt 2\\,F^{-1}e^F. && \\text{algebra}\n\\end{align}\nBecause $Z_{\\mathrm{SAW}}=e^{-F}$, premise (P5) gives\n\\begin{align}\n\\epsilon\n&\\le \\sqrt{d'}\\,e^{-F}f(e^{-F})\\\\\n&=\\sqrt{d'}\\,(e^{e^{-F}}-1) && \\text{definition of }f\\\\\n&\\le \\sqrt 2\\,F^{-1}e^F\\,e^{-F}e^{e^{-F}} && \\text{by (P7)}\\\\\n&=\\sqrt 2\\,F^{-1}e^{e^{-F}}\\\\\n&\\le 2F^{-1}, && \\text{since }F\\ge 2.\n\\end{align}\nHence\n\\[\n0\\le \\epsilon/2\\le 1/F\\le 1/2.\n\\]\nUsing (P8),\n\\begin{align}\nh_2(\\epsilon/2)\n&\\le h_2(1/F)\\\\\n&\\le 2F^{-1}\\log F.\n\\end{align}\nAlso, from the definition of $d'$,\n\\begin{align}\n\\log d'\n&\\ge \\log(F^{-2}e^{2F})\\\\\n&=2F-2\\log F.\n\\end{align}\nSubstitution into the one-shot distillation lower bound gives\n\\begin{align}\nE(A:C)\n&\\ge (1-\\epsilon/2)\\log d'-h_2(\\epsilon/2) && \\text{by (P2)}\\\\\n&\\ge (1-F^{-1})(2F-2\\log F)-2F^{-1}\\log F\\\\\n&=2F-2\\log F-2\\\\\n&=2F-2\\log(eF).\n\\end{align}\nFinally, by (P1), this lower bound is exactly a lower bound on the average post-measurement entanglement entropy.\n\n\\textbf{Final Result.}\n\\[\n\\boxed{\nF_{\\mathrm{SAW}}\\ge 2\n\\quad\\Longrightarrow\\quad\n\\sum_{s_B}p_{s_B}S(\\rho^A_{s_B})\n\\ge 2F_{\\mathrm{SAW}}-2\\log(eF_{\\mathrm{SAW}}).\n}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_2": "\\textbf{Claim.} The finite-size theorem becomes an extensive measurement-induced-entanglement phase for exactly the three architecture families specified in the paper: holographic tensor-network circuits with $S_e^{(2)}>2\\log\\mu_{\\Lambda^*}$, depth-$2$ four-local plaquette circuits with $q\\ge 88$, and depth-$4$ two-local brickwork circuits with $q\\ge 134$.\n\n\\textbf{Premises.}\n\\[\n\\begin{array}{ll}\n(P1) & E(A:C)\\ge 2F-2\\log(eF)\\text{ whenever }F\\ge 2.\\\\\n(P2) & \\text{Every separating wall has length }\\ell\\ge L_x.\\\\\n(P3) & \\text{The number of separating walks of length }\\ell\\text{ is at most }L_y\\mu^\\ell.\\\\\n(P4) & L_y\\le L_x^a\\text{ for some fixed }a>0.\\\\\n(P5) & \\text{If }Z\\le C L_y e^{-mL_x}\\text{ for constants }C>0,m>0,\\text{ then }F=-\\log Z.\\\\\n(P6) & \\text{Holographic family: }H(W)=S_e^{(2)}|W|/2,\\quad \\mu=\\mu_{\\Lambda^*}.\\\\\n(P7) & \\text{Plaquette family: the }8\\times 4\\text{ cell enumeration defines a decreasing factor }g_P(q),\\\\\n     & \\text{built from }c_1(q)^2=q(q+1)/(q^4+1)\\text{ and }c_2(q)^2=2q^2/(q^4+1),\\\\\n     & \\text{and }q\\ge 88\\text{ implies }\\mu_{\\mathrm{hex}}g_P(q)\\le e^{-\\eta_P}\\text{ for some }\\eta_P>0.\\\\\n(P8) & \\text{Brickwork family: the }8\\times 4\\text{ cell enumeration defines a decreasing factor }g_B(q),\\\\\n     & \\text{built from }c'_1(q)^2=q(q^4+6q^2+1)/(q^2+1)^3,\\ c'_2(q)=2q/(q^2+1),\\\\\n     & \\text{and split-pair factors bounded by }\\sqrt 3/q,\\\\\n     & \\text{with }q\\ge 134\\text{ implying }\\mu_{\\mathrm{hex}}g_B(q)\\le e^{-\\eta_B}\\text{ for some }\\eta_B>0.\n\\end{array}\n\\]\n\n\\textbf{Derivation.}\nFirst prove the common asymptotic extraction.  Suppose\n\\[\nZ\\le C L_y e^{-mL_x}\n\\]\nfor fixed $C>0$ and $m>0$.  Then\n\\begin{align}\nF\n&=-\\log Z && \\text{by (P5)}\\\\\n&\\ge mL_x-\\log L_y-\\log C\\\\\n&\\ge mL_x-a\\log L_x-\\log C && \\text{by (P4)}.\n\\end{align}\nThus $F\\ge 2$ for all sufficiently large $L_x$, and (P1) gives\n\\begin{align}\nE(A:C)\n&\\ge 2F-2\\log(eF)\\\\\n&\\ge 2mL_x-2a\\log L_x-2\\log C-2\\log(eF).\n\\end{align}\nThe last three terms are $o(L_x)$ in the polynomial-width regime.  Therefore, for every $0<\\kappa<2m$, there is $L_0$ such that\n\\[\nL_x\\ge L_0\\quad\\Longrightarrow\\quad E(A:C)\\ge \\kappa L_x.\n\\]\n\nFor the holographic family, set\n\\[\n\\beta:=S_e^{(2)}/2.\n\\]\nChoose any $\\eta$ satisfying $0<\\eta<\\beta-\\log\\mu_{\\Lambda^*}$.  The connective-constant counting bound gives, for all sufficiently large lengths,\n\\[\n\\#\\{W:|W|=\\ell\\}\\le L_y\\exp[(\\log\\mu_{\\Lambda^*}+\\eta)\\ell].\n\\]\nUsing $H(W)=\\beta |W|$,\n\\begin{align}\nZ_{\\mathrm{SAW}}\n&=\\sum_W e^{-\\beta |W|}\\\\\n&\\le L_y\\sum_{\\ell=L_x}^{\\infty}\\exp[-(\\beta-\\log\\mu_{\\Lambda^*}-\\eta)\\ell]\\\\\n&=\\frac{L_y e^{-m_HL_x}}{1-e^{-m_H}},\n\\end{align}\nwhere\n\\[\nm_H:=\\beta-\\log\\mu_{\\Lambda^*}-\\eta>0.\n\\]\nThe common extraction gives every\n\\[\n0<\\kappa<2m_H=S_e^{(2)}-2\\log\\mu_{\\Lambda^*}-2\\eta.\n\\]\nSince $\\eta$ can be arbitrarily small, every $\\kappa<S_e^{(2)}-2\\log\\mu_{\\Lambda^*}$ is obtained.\n\nFor the depth-$2$ plaquette family, the finite cell enumeration in (P7) replaces $e^{-H(W)}$ by the cell weight $g_P(q)^{|W|}$.  Hence\n\\begin{align}\nZ_P\n&\\le \\sum_{\\ell=L_x}^{\\infty}L_y\\mu_{\\mathrm{hex}}^\\ell g_P(q)^\\ell && \\text{by (P2), (P3), (P7)}\\\\\n&\\le L_y\\sum_{\\ell=L_x}^{\\infty}e^{-\\eta_P\\ell}\\\\\n&=\\frac{L_y e^{-\\eta_P L_x}}{1-e^{-\\eta_P}}.\n\\end{align}\nThus the common extraction applies with $m=\\eta_P$ and gives\n\\[\n\\mathbb E_U E(A:C)\\ge \\kappa_P L_x\n\\]\nfor some $\\kappa_P>0$ and all sufficiently large $L_x$.\n\nFor the depth-$4$ brickwork family, the compilation into blocked plaquette-like cells and the enumeration in (P8) give the analogous bound\n\\begin{align}\nZ_B\n&\\le \\sum_{\\ell=L_x}^{\\infty}L_y\\mu_{\\mathrm{hex}}^\\ell g_B(q)^\\ell\\\\\n&\\le L_y\\sum_{\\ell=L_x}^{\\infty}e^{-\\eta_B\\ell}\\\\\n&=\\frac{L_y e^{-\\eta_B L_x}}{1-e^{-\\eta_B}}.\n\\end{align}\nThe common extraction applies with $m=\\eta_B$ and gives\n\\[\n\\mathbb E_U E(A:C)\\ge \\kappa_B L_x\n\\]\nfor some $\\kappa_B>0$ and all sufficiently large $L_x$.\n\n\\textbf{Final Result.}\n\\[\n\\boxed{\nS_e^{(2)}>2\\log\\mu_{\\Lambda^*}\n\\Longrightarrow\n\\mathbb E_U E(A:C)\\ge \\kappa L_x\n\\text{ for every }0<\\kappa<S_e^{(2)}-2\\log\\mu_{\\Lambda^*}.\n}\n\\]\n\\[\n\\boxed{\nq\\ge 88\\Longrightarrow \\mathbb E_U E(A:C)\\ge \\kappa_P L_x,\\qquad\nq\\ge 134\\Longrightarrow \\mathbb E_U E(A:C)\\ge \\kappa_B L_x.\n}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_3": "\\textbf{Claim.} In the square-lattice holographic and random-tensor-network regimes specified by the paper, the ordered self-avoiding-walk phase forces column-wise MPS boundary algorithms to abort with probability at least $1-\\exp[-\\Omega(\\sqrt N)]$.\n\n\\textbf{Premises.}\n\\[\n\\begin{array}{ll}\n(P1) & \\xi:=\\min(t,L_x/2)\\text{ is the distance scale crossed by the relevant separating wall.}\\\\\n(P2) & \\mathbb E_U[\\epsilon_\\xi]\\le \\sqrt{d'}e^{-m\\xi}\\text{ for some constant }m>0.\\\\\n(P3) & \\Pr_{s_B,U}\\!\\left(S(\\rho^A_{s_B})<\\log d'-2\\log 2\\right)\n        \\le \\frac12\\mathbb E_U[\\epsilon_\\xi]\\log d'.\\\\\n(P4) & d'=e^{\\alpha\\xi}\\text{ with }0<\\alpha<2m.\\\\\n(P5) & \\text{For a square }L_x\\times L_x\\text{ system, }N=L_x^2\\text{ and one may take }\\xi=L_x/2.\\\\\n(P6) & \\text{An exact MPS with bond dimension }D\\text{ has half-chain entropy at most }\\log D.\\\\\n(P7) & \\text{The bounded-error boundary-state approximation criterion used by }\\mathsf{SEBD}\\text{ and }\\mathsf{bMPS}\\\\\n     & \\text{requires }D=\\exp[\\Omega(\\xi)]\\text{ on the high-entropy states produced here.}\\\\\n(P8) & \\text{A polynomial cap has }D\\le N^b\\text{ for some fixed }b,\\text{ hence }\\log D=O(\\log N).\\\\\n(P9) & \\text{The algorithm aborts whenever no boundary MPS within the cap satisfies its error criterion.}\\\\\n(P10)& S_e^{(2)}>2.8\\text{ bits puts the square-lattice holographic }\\mathsf{SEBD}\\text{ instance in the ordered regime.}\\\\\n(P11)& \\text{For maximally entangled bonds, }S_e^{(2)}=\\log_2\\chi;\\ \\chi\\ge 7\\text{ implies }\\log_2\\chi>2.8.\n\\end{array}\n\\]\n\n\\textbf{Derivation.}\nBy (P2) and (P4),\n\\begin{align}\n\\mathbb E_U[\\epsilon_\\xi]\n&\\le \\sqrt{d'}e^{-m\\xi}\\\\\n&=e^{\\alpha\\xi/2}e^{-m\\xi}\\\\\n&=e^{-(m-\\alpha/2)\\xi}.\n\\end{align}\nLet\n\\[\nc:=m-\\alpha/2>0.\n\\]\nThen (P3) gives\n\\begin{align}\n\\Pr_{s_B,U}\\!\\left(S(\\rho^A_{s_B})<\\log d'-2\\log 2\\right)\n&\\le \\frac12 e^{-c\\xi}\\alpha\\xi\\\\\n&=\\exp[-\\Omega(\\xi)].\n\\end{align}\nTherefore, with probability at least $1-\\exp[-\\Omega(\\xi)]$,\n\\begin{align}\nS(\\rho^A_{s_B})\n&\\ge \\log d'-2\\log 2\\\\\n&=\\alpha\\xi-2\\log 2\\\\\n&=\\Omega(\\xi).\n\\end{align}\nUsing the square geometry (P5),\n\\[\n\\xi=L_x/2=\\sqrt N/2,\n\\]\nso\n\\[\n\\Pr\\!\\left(S(\\rho^A_{s_B})=\\Omega(\\sqrt N)\\right)\n\\ge 1-\\exp[-\\Omega(\\sqrt N)].\n\\]\n\nNow compare this entropy requirement with a polynomial MPS cap.  If $D\\le N^b$, then\n\\begin{align}\n\\log D&\\le b\\log N=O(\\log N) && \\text{by (P8)}.\n\\end{align}\nFor exact representation, (P6) contradicts the high-entropy event for all sufficiently large $N$, since\n\\[\n\\Omega(\\sqrt N)>O(\\log N).\n\\]\nFor the bounded-error algorithms in the paper, (P7) strengthens the same obstruction: on the high-entropy event the required bond dimension is\n\\[\nD=\\exp[\\Omega(\\xi)]=\\exp[\\Omega(\\sqrt N)],\n\\]\nwhich exceeds every polynomial cap.  Therefore the abort rule (P9) implies\n\\[\n\\Pr(\\text{abort})\\ge 1-\\exp[-\\Omega(\\sqrt N)].\n\\]\nPremise (P10) identifies the square-lattice holographic circuit regime for \\(\\mathsf{SEBD}\\), and (P11) transfers the same entropy threshold to the random tensor-network contraction setting with maximally entangled bond dimension \\(\\chi\\ge 7\\).\n\n\\textbf{Final Result.}\n\\[\n\\boxed{\nS_e^{(2)}>2.8\\text{ bits}\n\\Longrightarrow\n\\Pr[\\mathsf{SEBD}\\text{ aborts}]\\ge 1-\\exp[-\\Omega(\\sqrt N)].\n}\n\\]\n\\[\n\\boxed{\n\\chi\\ge 7\n\\Longrightarrow\n\\Pr[\\mathsf{bMPS}\\text{ aborts}]\\ge 1-\\exp[-\\Omega(\\sqrt N)].\n}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_4": "\\textbf{Claim.} For the square-lattice holographic Clifford circuit with local qudit dimension $q=2^m$ and integer $m\\ge 6$, there is a constant $\\delta>0$ such that every all-to-all probabilistic classical sampler satisfying\n\\[\n\\mathbb E_U\\operatorname{TV}(Q_U,P_U)\\le \\delta\n\\]\nhas depth $\\Omega(\\log N)$.\n\n\\textbf{Premises.}\n\\[\n\\begin{array}{ll}\n(P1) & \\text{If an ensemble has long-ranged tripartite measurement-induced entanglement with constant probability,}\\\\\n     & \\text{then any constant-average-TV classical sampler for it has depth }\\Omega(\\log N).\\\\\n(P2) & \\text{Long-ranged tripartite MIE follows if three well-separated site marginals are non-pure}\\\\\n     & \\text{stabilizer marginals with constant probability before the final local Clifford projection.}\\\\\n(P3) & \\text{Random output qubits }h,i,j\\text{ occupy distinct well-separated sites }H,I,J\\text{ with probability }p_{\\mathrm{geo}}>0.\\\\\n(P4) & \\text{For a stabilizer marginal }\\rho_X,\\ S(\\rho_X)=0\\text{ iff }\\rho_X\\text{ is pure; otherwise }S(\\rho_X)\\ge \\log 2.\\\\\n(P5) & \\Pr(\\rho_X\\text{ is pure})\\le \\mathbb E[\\epsilon_X].\\\\\n(P6) & \\mathbb E[\\epsilon_X]\\le \\sqrt 2\\,Z_{\\mathrm{loop}}f(Z_{\\mathrm{loop}}),\\quad f(z)=(e^z-1)/z.\\\\\n(P7) & \\beta=(m/2)\\log 2,\\quad \\nu=\\exp(\\log\\mu_{\\mathrm{sq}}-\\beta).\\\\\n(P8) & m\\ge 6\\text{ implies }\\beta\\ge \\log(3\\mu_{\\mathrm{sq}})\\text{ and hence }\\nu\\le 1/3.\\\\\n(P9) & \\nu\\le 1/3\\text{ implies }Z_{\\mathrm{loop}}\\le z_0\\text{ for a constant }z_0\\\\\n     & \\text{with }\\sqrt 2\\,z_0f(z_0)<1/3.\\\\\n(P10)& \\Pr(A_1\\cup A_2\\cup A_3)\\le \\Pr(A_1)+\\Pr(A_2)+\\Pr(A_3).\n\\end{array}\n\\]\n\n\\textbf{Derivation.}\nFor a fixed site $X\\in\\{H,I,J\\}$, premises (P5)--(P9) imply\n\\begin{align}\n\\Pr(\\rho_X\\text{ is pure})\n&\\le \\mathbb E[\\epsilon_X]\\\\\n&\\le \\sqrt 2\\,Z_{\\mathrm{loop}}f(Z_{\\mathrm{loop}})\\\\\n&\\le \\sqrt 2\\,z_0f(z_0)\\\\\n&<1/3.\n\\end{align}\nChoose $c_3$ such that\n\\[\n\\sqrt 2\\,z_0f(z_0)\\le c_3<1/3.\n\\]\nThen\n\\begin{align}\n\\Pr\\!\\left(\\bigcup_{X\\in\\{H,I,J\\}}\\{\\rho_X\\text{ is pure}\\}\\right)\n&\\le \\sum_{X\\in\\{H,I,J\\}}\\Pr(\\rho_X\\text{ is pure}) && \\text{by (P10)}\\\\\n&\\le 3c_3\\\\\n&<1.\n\\end{align}\nThus, conditioned on the well-separated-site event, all three site marginals are non-pure with probability at least $1-3c_3>0$.  By the stabilizer dichotomy (P4),\n\\[\nS(\\rho_X)\\ge \\log 2\\qquad\\text{for all }X\\in\\{H,I,J\\}\n\\]\non that event.  Combining with the geometric probability (P3) gives\n\\[\np_0:=p_{\\mathrm{geo}}(1-3c_3)>0\n\\]\nfor three well-separated non-pure stabilizer marginals.\n\nBy (P2), the final local Clifford projection converts this constant-probability event into the long-ranged tripartite MIE condition with some probability $p_1>0$ independent of $N$.  Therefore the ensemble satisfies the hypothesis of the sampler lower-bound theorem (P1).  Consequently there exists a constant $\\delta>0$ such that every probabilistic all-to-all classical circuit family with\n\\[\n\\mathbb E_U\\operatorname{TV}(Q_U,P_U)\\le \\delta\n\\]\nmust obey\n\\[\n\\operatorname{depth}(C_N)=\\Omega(\\log N).\n\\]\n\n\\textbf{Final Result.}\n\\[\n\\boxed{\nm\\ge 6,\\ q=2^m,\\ \\mathbb E_U\\operatorname{TV}(Q_U,P_U)\\le \\delta\n\\Longrightarrow\n\\operatorname{depth}(C_N)=\\Omega(\\log N).\n}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_metadata": {
+    "output_file": "deeper.json",
+    "revision_id": "deeper_05_v2",
+    "revision_intent": "Improve alignment by separating the general finite SAW theorem from the architecture-specific extensive-phase proof, and by making the downstream MPS-failure and Clifford-depth arguments more explicit.",
+    "input_files": [
+      "deeper_reasoning_pseudo_algorithm.md",
+      "core_05.json",
+      "goals_05.json"
+    ],
+    "rubric_interpretation": {
+      "format_constraints": "The output is exactly one JSON object with paper_title, contiguous deeper_reasoning_k string fields, and one deeper_metadata object; proof strings are LaTeX-compatible with article, amsmath, and amssymb only.",
+      "value_constraints": "The selected derivations must be theorem-level chains that combine multiple core_reasoning entries into the paper's canonical goal endpoints rather than restating isolated lemmas.",
+      "controlled_lemma_policy": "Paper-specific finite enumerations and external complexity-theoretic implications are included as controlled premises only where re-deriving them would require reproducing appendices outside the extracted core."
+    },
+    "goal_trace": {
+      "G1_average_MIE_lower_bound_and_extensive_phase": [
+        "deeper_reasoning_1",
+        "deeper_reasoning_2"
+      ],
+      "G2_boundary_MPS_algorithm_failure": [
+        "deeper_reasoning_3"
+      ],
+      "G3_sublogarithmic_classical_depth_lower_bound": [
+        "deeper_reasoning_4"
+      ]
+    },
+    "entry_metadata": {
+      "deeper_reasoning_1": {
+        "title": "Finite SAW free-energy theorem for average post-measurement entanglement",
+        "target_goal_component": "G1_average_MIE_lower_bound_and_extensive_phase",
+        "declared_source_set": [
+          "core_reasoning_1",
+          "core_reasoning_2",
+          "core_reasoning_4",
+          "core_reasoning_5",
+          "core_reasoning_6",
+          "core_reasoning_7",
+          "goals_05.G1"
+        ],
+        "major_advancement_modes": [
+          "multi-lemma chaining",
+          "rank optimisation",
+          "replica-free error-to-entropy conversion"
+        ],
+        "goal_alignment": "Directly proves the G1 finite theorem endpoint E(A:C) >= 2F_SAW - 2log(eF_SAW) whenever F_SAW >= 2.",
+        "scientific_payoff": "Shows why a 2D measurement problem reduces to a positive free-energy condition for separating self-avoiding walks.",
+        "nontrivial_advance_over_sources": "Combines conditional entropy, one-shot distillation, multiparty splitting, wall norm bounds, and rank optimization into a single proof certificate.",
+        "formal_sharpness": "Keeps the F_SAW >= 2 threshold, the ceiling choice for d', the epsilon <= 2/F estimate, and the final logarithmic correction explicit.",
+        "low_value_rejection_audit": "Rejects standalone derivations of only E(A:C)=S(A|M_B) or only the wall norm bound because they do not reach a goal-level endpoint.",
+        "selection_score": 0.99,
+        "controlled_external_lemmas": [
+          "grouping of nonempty separating-wall collections into the exponential-series factor f(Z_SAW)"
+        ],
+        "known_residual_risks_and_mitigation": "The inclusion-exclusion grouping is stated as a controlled premise but its algebraic consequence is fully propagated through the proof."
+      },
+      "deeper_reasoning_2": {
+        "title": "Architecture-specific extensive MIE phase from positive SAW mass",
+        "target_goal_component": "G1_average_MIE_lower_bound_and_extensive_phase",
+        "declared_source_set": [
+          "core_reasoning_8",
+          "core_reasoning_9",
+          "core_reasoning_10",
+          "goals_05.G1"
+        ],
+        "major_advancement_modes": [
+          "ensemble instantiation",
+          "threshold unpacking",
+          "connective-constant counting",
+          "asymptotic extraction"
+        ],
+        "goal_alignment": "Proves the three G1 extensive-instantiation endpoints: holographic, depth-2 plaquette q>=88, and depth-4 brickwork q>=134.",
+        "scientific_payoff": "Identifies the physical ordered phase as strict positivity of a self-avoiding-walk mass after inserting the correct local architecture weights.",
+        "nontrivial_advance_over_sources": "Separates the universal asymptotic extraction from the architecture-specific mass certificates and includes the local enumeration factors used to set q thresholds.",
+        "formal_sharpness": "Tracks kappa below S_e^(2)-2log mu for holographic circuits and positive constants eta_P, eta_B for the q-threshold circuit families.",
+        "low_value_rejection_audit": "Avoids treating q>=88 and q>=134 as unexplained labels by recording the cell-factor mechanism and local Schatten-2 ingredients.",
+        "selection_score": 0.985,
+        "controlled_external_lemmas": [
+          "Appendix-E finite enumeration proving mu_hex g_P(q) <= exp(-eta_P) for q>=88",
+          "Appendix-E finite enumeration proving mu_hex g_B(q) <= exp(-eta_B) for q>=134"
+        ],
+        "known_residual_risks_and_mitigation": "The finite enumeration itself is not reproduced term by term; the proof includes the operational definition of the factors and uses only their threshold-certified consequences."
+      },
+      "deeper_reasoning_3": {
+        "title": "High-probability boundary entropy obstruction to polynomial-bond MPS algorithms",
+        "target_goal_component": "G2_boundary_MPS_algorithm_failure",
+        "declared_source_set": [
+          "core_reasoning_3",
+          "core_reasoning_11",
+          "goals_05.G2"
+        ],
+        "major_advancement_modes": [
+          "average-to-high-probability conversion",
+          "entropy-to-bond-dimension conversion",
+          "algorithmic abort translation"
+        ],
+        "goal_alignment": "Derives the SEBD and bMPS abort probabilities required by G2, including the S_e^(2)>2.8 and chi>=7 regimes.",
+        "scientific_payoff": "Shows that the same ordered MIE regime that proves macroscopic entanglement also rules out efficient one-dimensional boundary compression.",
+        "nontrivial_advance_over_sources": "Turns a distillation-error tail estimate into a high-probability lower bound on required MPS bond dimension, then into algorithm failure.",
+        "formal_sharpness": "Tracks xi, alpha, m, L_x=sqrt(N), exp[-Omega(sqrt(N))], S_e^(2)>2.8 bits, and chi>=7.",
+        "low_value_rejection_audit": "Rejects generic claims that MPS struggle with entanglement; the proof uses the exact scaling mismatch Omega(sqrt(N)) versus O(log N).",
+        "selection_score": 0.98,
+        "controlled_external_lemmas": [
+          "bounded-error approximation of the boundary states considered requires D=exp[Omega(xi)]"
+        ],
+        "known_residual_risks_and_mitigation": "The exact MPS entropy obstruction is derived explicitly; the bounded-error strengthening is declared as a controlled paper-specific lemma."
+      },
+      "deeper_reasoning_4": {
+        "title": "Tripartite stabilizer MIE forces logarithmic classical sampler depth",
+        "target_goal_component": "G3_sublogarithmic_classical_depth_lower_bound",
+        "declared_source_set": [
+          "core_reasoning_12",
+          "goals_05.G3"
+        ],
+        "major_advancement_modes": [
+          "threshold verification",
+          "union-bound probability amplification",
+          "stabilizer entropy dichotomy",
+          "complexity-theoretic transfer"
+        ],
+        "goal_alignment": "Proves the G3 endpoint that average-TV classical samplers for the q=2^m, m>=6 Clifford ensemble require depth Omega(log N).",
+        "scientific_payoff": "Connects the geometric loop partition bound to a computational lower bound through tripartite measurement-induced stabilizer entanglement.",
+        "nontrivial_advance_over_sources": "Makes the m>=6 threshold, loop partition control, non-pure marginal event, and final sampler-depth implication part of one explicit chain.",
+        "formal_sharpness": "Tracks beta=(m/2)log2, nu<=1/3, the constant c_3<1/3, average total variation, and the Omega(log N) conclusion.",
+        "low_value_rejection_audit": "Rejects a superficial statement that Clifford circuits are hard; the proof identifies the exact tripartite-MIE condition used by the paper.",
+        "selection_score": 0.975,
+        "controlled_external_lemmas": [
+          "Appendix-F loop partition bound for Z_loop",
+          "the theorem converting long-ranged tripartite MIE into an Omega(log N) all-to-all classical sampler depth lower bound"
+        ],
+        "known_residual_risks_and_mitigation": "The external sampler-depth theorem is not re-proved; the proof explicitly verifies the ensemble-side hypothesis needed to invoke it."
+      }
+    },
+    "rejected_low_value_candidates": [
+      {
+        "candidate": "A standalone derivation of the classical-quantum conditional entropy identity",
+        "reason": "Already appears as core_reasoning_1 and does not by itself reach a goal endpoint."
+      },
+      {
+        "candidate": "A standalone derivation of the fixed-wall trace-norm bound",
+        "reason": "Important but too local; it is more valuable as an internal step in deeper_reasoning_1."
+      },
+      {
+        "candidate": "A broad narrative comparison of holographic, plaquette, and brickwork circuits",
+        "reason": "Would be explanatory rather than derivational and would not satisfy the proof-certificate goal."
+      }
+    ],
+    "global_alignment_audit": {
+      "top_level_schema": "Conforms: paper_title, deeper_reasoning_1 through deeper_reasoning_4, and deeper_metadata only.",
+      "contiguity": "Conforms: no skipped deeper_reasoning index.",
+      "reasoning_value": "High: each proof reaches a canonical goal endpoint or an explicit sub-endpoint needed for G1.",
+      "source_coverage": "Covers core_reasoning_1 through core_reasoning_12 through four aggregated proof chains.",
+      "goal_coverage": "Covers G1 with two complementary entries and G2/G3 with one entry each.",
+      "latex_portability": "Designed for article plus amsmath and amssymb only."
+    },
+    "known_residual_risks_and_mitigation": [
+      {
+        "risk": "The Appendix-E finite enumerations are not reproduced term by term.",
+        "mitigation": "The file records the operational local factors and only uses the threshold consequences required by the goals."
+      },
+      {
+        "risk": "The tripartite-MIE-to-depth theorem remains an external implication.",
+        "mitigation": "The Clifford derivation verifies the ensemble-side hypothesis and declares the transfer theorem as a controlled lemma."
+      },
+      {
+        "risk": "Bounded-error MPS approximation requires a paper-specific strengthening beyond exact entropy rank.",
+        "mitigation": "The exact entropy-rank contradiction is derived, and the bounded-error extension is explicitly marked as controlled."
+      }
+    ]
+  }
+}

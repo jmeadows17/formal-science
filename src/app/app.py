@@ -2490,20 +2490,17 @@ def _switch_workspace_view(target: str):
     return (
         gr.update(visible=(target == "qa")),
         gr.update(visible=(target == "lean")),
-        gr.update(visible=(target == "postprocessing")),
     )
 
 
 def create_workbench_demo(initial_view: str = "qa"):
     import lean_app as lean_module
-    import postprocessing_app as post_module
 
-    combined_css = "\n".join([CSS, lean_module.CSS, post_module.CSS])
+    combined_css = "\n".join([CSS, lean_module.CSS])
     with gr.Blocks(title="Formal Science Workbench", css=combined_css, theme=gr.themes.Soft()) as demo:
         with gr.Row(elem_classes=["review-row"]):
             qa_nav_btn = gr.Button("QA Dataset Builder", variant="primary", min_width=180)
             lean_nav_btn = gr.Button("Lean Code Generator", variant="secondary", min_width=180)
-            post_nav_btn = gr.Button("Postprocessing", variant="secondary", min_width=180)
 
         with gr.Column(visible=(initial_view == "qa")) as qa_view:
             render_qa_builder_ui()
@@ -2511,15 +2508,8 @@ def create_workbench_demo(initial_view: str = "qa"):
         with gr.Column(visible=(initial_view == "lean")) as lean_view:
             lean_module.render_lean_builder_ui()
 
-        with gr.Column(visible=(initial_view == "postprocessing")) as post_view:
-            post_module.render_postprocessing_ui()
-
-        qa_nav_btn.click(lambda: _switch_workspace_view("qa"), outputs=[qa_view, lean_view, post_view])
-        lean_nav_btn.click(lambda: _switch_workspace_view("lean"), outputs=[qa_view, lean_view, post_view])
-        post_nav_btn.click(
-            lambda: _switch_workspace_view("postprocessing"),
-            outputs=[qa_view, lean_view, post_view],
-        )
+        qa_nav_btn.click(lambda: _switch_workspace_view("qa"), outputs=[qa_view, lean_view])
+        lean_nav_btn.click(lambda: _switch_workspace_view("lean"), outputs=[qa_view, lean_view])
 
     return demo
 

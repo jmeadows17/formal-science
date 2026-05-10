@@ -1,0 +1,247 @@
+{
+    "paper_goal": {
+        "canonical_goal": [
+            {
+                "goal_id": "G1_physical_meaning_of_gluon_mass_gap",
+                "outcome_variable": "o_rel = (G_A, Z_A, m_gap, gamma_gap, T_c, f_pi, p_dec, Delta_IR) \u2208 O_P",
+                "goal_form": "target_proposition",
+                "target_object": "A proposition that the Landau-gauge gluon propagator G_A(p) = 1/(Z_A(p) p^2) contains a renormalisation-group-invariant gluon mass gap m_gap, defined by omega_gap = (1 + i gamma_gap) m_gap and omega_gap = argmin_{omega_s != 0}{Re omega_s : Z_A(-omega_s^2) = 0}, and that this scale has physical meaning because the SU(3) Yang-Mills confinement-deconfinement transition temperature T_c is linearly proportional to m_gap and because both T_c and the 2+1 flavour QCD pion decay constant f_pi are insensitive to infrared deformations of G_A(p) whose deformation scale remains below the decoupling scale p_dec approximately equal to p_in^-.",
+                "feasibility_constraints": [
+                    "The Euclidean gluon two-point function is evaluated in Landau gauge and has the transverse form <A_mu^a(p) A_nu^b(-p)> = G_A(p) delta_ab Pi_perp_mu_nu(p), where Pi_perp_mu_nu(p) = delta_mu_nu - p_mu p_nu/p^2 and G_A(p) = 1/(Z_A(p) p^2).",
+                    "The gluon mass gap is the real part m_gap of the first non-zero complex singularity encoded by Z_A(-omega_s^2) = 0, with omega_gap = (1 + i gamma_gap) m_gap and omega_gap = argmin_{omega_s != 0}{Re omega_s : Z_A(-omega_s^2) = 0}.",
+                    "The renormalisation-group invariance of m_gap is fixed by the chain of statements (mu d/dmu + 2 gamma_A) G_A(p) = 0, G_A(p) = 1/(Z_A(p) p^2), hence (mu d/dmu - 2 gamma_A) Z_A(p) = 0, and therefore mu d Z_A(omega_s)/dmu = 0 at every zero omega_s of Z_A; the zero condition Z_A(-omega_s^2) = 0 and Re omega_gap = m_gap are invariant under changes of the renormalisation scale mu.",
+                    "For T_c, the admissible observable is SU(3) Yang-Mills T_c computed from the background temporal gauge-field effective potential V_eff(phi_3, phi_8) = sum_{i in {A,c}} sum_n c_i V_i,mode(nu_n), with gluon multiplicity c_A = 2, ghost multiplicity c_c = -1, vacuum ghost and gluon propagators as inputs, omitted two-loop terms, and T_c defined as the temperature at which the centre-symmetric and centre-broken minima of V_eff exchange dominance.",
+                    "For f_pi, the admissible observable is the 2+1 flavour QCD pion decay constant computed from the quark propagator G_qqbar(p) = 1/(Z_q(p)(i slash(p) + M_q(p))) obtained from the Landau-gauge quark gap equation using Gamma_mu^perp(k+p,-p) = Pi_perp_mu_nu(k) gamma_nu g_s lambda_1(k+p,-p), alpha_s = g_s^2/(4 pi) = 0.54 at mu = 4.3 GeV fixed so that M_q(0) = 350 MeV, and f_pi^2 = 4 N_c integral d^4p/(2 pi)^4 [Zbar_2/Z_q(p)] [M_q(p)/(p^2 + M_q(p)^2)^2] [M_q(p) - (p^2/2) partial_{p^2} M_q(p)] with Zbar_2 = Z_q(0).",
+                    "The infrared deformation family is Delta_IR = {G_A^{sigma,nu} : sigma \u2208 {+1,-1}, nu \u2208 [0.1,0.5] GeV}, where G_A^{sigma,nu}(p) = G_A,fit(p) + sigma 3.3 GeV^{-2} exp[-(p/nu)^3]; the parameter 3.3 GeV^{-2} fixes the deformation at p = 0, the exponent 3 fixes the falloff in p/nu, and nu fixes the momentum scale below which the deformation is concentrated."
+                ],
+                "success_set": {
+                    "kind": "predicate",
+                    "definition": "Sigma_P = { o_rel : m_gap is fixed by omega_gap = (1 + i gamma_gap) m_gap and omega_gap = argmin_{omega_s != 0}{Re omega_s : Z_A(-omega_s^2) = 0}; in Yang-Mills theory the fitted zero condition gives m_gap = 686 MeV and the background-field effective-potential computation gives T_c = 275 MeV, so the baseline proportionality coefficient is c_conf = T_c/m_gap = 275/686 = 0.401; under rescalings in which the dimensionless fit shape is held fixed and the single mass scale m_gap is varied, T_c = c_conf m_gap; for every deformation G_A^{sigma,nu}(p) = G_A,fit(p) + sigma 3.3 GeV^{-2} exp[-(p/nu)^3] with nu < p_in^-, the recomputed ratios T_c^{sigma,nu}/T_c and f_pi^{sigma,nu}/f_pi remain practically equal to 1, and in the 2+1 flavour case |f_pi^{sigma,nu}/f_pi - 1| < 0.01 for deformations below p_in^- = 390 MeV; for deformations with nu at or above p_in^-, the recomputed observables change visibly. }",
+                    "threshold": {
+                        "applies": false,
+                        "value": null,
+                        "comparator": null,
+                        "metric_symbol": null,
+                        "metric_definition": null,
+                        "source_span": null
+                    }
+                },
+                "preference_ordering": {
+                    "kind": "none",
+                    "definition": null,
+                    "objective_symbols": [],
+                    "lex_order": null,
+                    "embedding_to_total_utility": null
+                },
+                "robustness_scope": {
+                    "applies": true,
+                    "ambient_space": "Euclidean scalar gluon propagator functions G_A : [0,infinity) -> R transformed by G_A(p) -> G_A^{sigma,nu}(p) = G_A,fit(p) + sigma 3.3 GeV^{-2} exp[-(p/nu)^3], with sigma \u2208 {+1,-1} and nu \u2208 [0.1,0.5] GeV.",
+                    "type_tag": "algorithmic_transform",
+                    "metric_or_divergence": null,
+                    "radius_or_budget": null,
+                    "indexing_set": "{(sigma, nu) : sigma \u2208 {+1,-1}, nu \u2208 [0.1,0.5] GeV}",
+                    "claimed_subfamily": {
+                        "definition": "{(sigma, nu) : sigma \u2208 {+1,-1}, 0.1 GeV <= nu < p_in^-}, where p_in^- is the lower-momentum solution of partial_p^2 Z_A^{-1}(p)=0 for the corresponding fitted gluon dressing; the operational values are p_in^- = 370 MeV for Yang-Mills theory and p_in^- = 390 MeV for 2+1 flavour QCD.",
+                        "source_span": {
+                            "section": "Sections 3.1.4, 3.2.3, Appendix A, Fig. 4",
+                            "paragraph_or_line": "infrared deformation analysis for T_c and f_pi",
+                            "verbatim": "practically unity for variations of the gluon propagator below 390 MeV"
+                        }
+                    },
+                    "hinted_superfamily": {
+                        "definition": "{(sigma, nu) : sigma \u2208 {+1,-1}, nu \u2208 [0.1,0.5] GeV}; the subset with nu >= p_in^- is included in the tested deformation family but is not invariant for the tested observables because it alters the gluon dressing at momenta that contribute appreciably to the loop integrals defining T_c and f_pi.",
+                        "source_span": {
+                            "section": "Sections 3.1.4, 3.2.3, Figs. 3 and 4",
+                            "paragraph_or_line": "deformations above the infrared inflection point",
+                            "verbatim": "For deformations above this scale, T_c starts to change"
+                        }
+                    },
+                    "refinement_relation": "set_inclusion",
+                    "criterion": "For every deformation G_A^{sigma,nu}(p) = G_A,fit(p) + sigma 3.3 GeV^{-2} exp[-(p/nu)^3] with 0.1 GeV <= nu < p_in^-, recompute SU(3) Yang-Mills T_c from the exchange of centre-symmetric and centre-broken minima of V_eff(phi_3,phi_8), recompute Z_q^{sigma,nu}(p) and M_q^{sigma,nu}(p) from the quark gap equation, and recompute f_pi^{sigma,nu} from f_pi^2 = 4 N_c integral d^4p/(2 pi)^4 [Zbar_2/Z_q(p)] [M_q(p)/(p^2 + M_q(p)^2)^2] [M_q(p) - (p^2/2) partial_{p^2} M_q(p)]; the claimed robustness criterion is T_c^{sigma,nu}/T_c = 1 within the plotted numerical resolution and |f_pi^{sigma,nu}/f_pi - 1| < 0.01 for the 2+1 flavour deformations below 390 MeV.",
+                    "channel_populated_by": [
+                        "stated",
+                        "operational",
+                        "implicit"
+                    ]
+                }
+            },
+            {
+                "goal_id": "G2_three_momentum_regime_characterisation",
+                "outcome_variable": "o_reg = (Z_A^{-1}, p_in^+, p_peak, p_in^-, p_dec, R_uv, R_sc, R_ir) \u2208 O_P",
+                "goal_form": "target_proposition",
+                "target_object": "A proposition that the Landau-gauge gluon dressing Z_A^{-1}(p) admits an operational three-region partition of Euclidean momenta: an ultraviolet proxy region R_uv = {p : p > p_in^+}, an intermediate strongly correlated proxy region R_sc = {p : p_in^- <= p <= p_in^+}, and a deep-infrared proxy region R_ir = {p : 0 <= p < p_in^-}; p_in^+ and p_in^- are the two inflection points of Z_A^{-1}(p), p_peak is the maximum of Z_A^{-1}(p), p_in^- approximates p_dec, and p_peak proxies the gluon mass-gap scale.",
+                "feasibility_constraints": [
+                    "The fitted or measured gluon dressing Z_A^{-1}(p) is twice differentiable on positive Euclidean momenta and has two positive solutions of partial_p^2 Z_A^{-1}(p)=0 and one positive maximizer of Z_A^{-1}(p).",
+                    "The ultraviolet inflection point p_in^+ is the larger positive solution of partial_p^2 Z_A^{-1}(p)=0.",
+                    "The infrared inflection point p_in^- is the smaller positive solution of partial_p^2 Z_A^{-1}(p)=0.",
+                    "The peak position p_peak is defined by Z_A^{-1}(p_peak)=max_{p>=0} Z_A^{-1}(p), equivalently partial_p Z_A(p)|_{p=p_peak}=0 when the maximum is an interior point.",
+                    "The decoupling scale p_dec is estimated from observables as the largest deformation scale below which G_A^{sigma,nu}(p) = G_A,fit(p) + sigma 3.3 GeV^{-2} exp[-(p/nu)^3] leaves T_c and f_pi unchanged within the reported numerical resolution; this operational p_dec is identified with p_in^-."
+                ],
+                "success_set": {
+                    "kind": "predicate",
+                    "definition": "Sigma_P = { o_reg : for N_f=0 Yang-Mills theory, the derivative definitions give p_in^+ = 1294 MeV, p_peak = 892 MeV, and p_in^- = 370 MeV; for N_f=2+1 flavour QCD, the same derivative definitions give p_in^+ = 1638 MeV, p_peak = 1112 MeV, and p_in^- = 391 MeV; in both cases p_in^- < p_peak < p_in^+; the operational proxy regions are R_ir = {p : 0 <= p < p_in^-}, R_sc = {p : p_in^- <= p <= p_in^+}, and R_uv = {p : p > p_in^+}; p_dec \u2248 p_in^- is supported by the deformation test in which T_c and f_pi remain invariant below p_in^- and change above p_in^-; p_peak is used as a proxy for the gluon mass-gap scale. }",
+                    "threshold": {
+                        "applies": false,
+                        "value": null,
+                        "comparator": null,
+                        "metric_symbol": null,
+                        "metric_definition": null,
+                        "source_span": null
+                    }
+                },
+                "preference_ordering": {
+                    "kind": "none",
+                    "definition": null,
+                    "objective_symbols": [],
+                    "lex_order": null,
+                    "embedding_to_total_utility": null
+                },
+                "robustness_scope": {
+                    "applies": false,
+                    "ambient_space": null,
+                    "type_tag": null,
+                    "metric_or_divergence": null,
+                    "radius_or_budget": null,
+                    "indexing_set": null,
+                    "claimed_subfamily": {
+                        "definition": null,
+                        "source_span": null
+                    },
+                    "hinted_superfamily": {
+                        "definition": null,
+                        "source_span": null
+                    },
+                    "refinement_relation": "none",
+                    "criterion": null,
+                    "channel_populated_by": []
+                }
+            },
+            {
+                "goal_id": "G3_interpretable_gluon_dressing_fit",
+                "outcome_variable": "o_fit = (Z_A,fit, m_gap, gamma_gap, z_sat, z_peak, z_gh, z_uv, c_uv, c_+, c_-) \u2208 O_P",
+                "goal_form": "constrained_satisfiability",
+                "target_object": "A parameterised end-state consisting of a decoupling-type Landau-gauge gluon inverse dressing Z_A,fit(p) whose only explicit kinematic mass scale is m_gap and whose non-mass parameters are assigned to ultraviolet, strongly correlated, deep-infrared, or interface properties of the fitted gluon dressing.",
+                "feasibility_constraints": [
+                    "The fitted inverse dressing has the form Z_A,fit(p) = Z_A,ir(x) + Z_A,uv(x), where x = p^2/m_gap^2.",
+                    "The infrared component is Z_A,ir(x) = [z_sat/x - z_peak - z_gh log(1 + 1/(c_- x))]/(1 + c_+ x)^2.",
+                    "The ultraviolet component is Z_A,uv(x) = z_uv [1 + c_uv log(1 + c_+ x)]^gamma.",
+                    "The anomalous-dimension exponent is gamma = (13 - (4/3) N_f)/(22 - (4/3) N_f).",
+                    "The fit satisfies the renormalisation condition Z_A,fit(mu^2/m_gap^2) = 1 with mu = 4.3 GeV.",
+                    "The gluon mass gap m_gap and dimensionless width gamma_gap are determined by solving Z_A,fit(-omega_s^2) = 0 with omega_s = (1 + i gamma_gap) m_gap and selecting the non-zero solution with minimal positive Re omega_s.",
+                    "The ultraviolet parameters z_uv and c_uv control the large-momentum logarithmic behaviour of Z_A,fit; z_peak fixes the peak region associated with the strongly correlated Schwinger-mechanism momentum range; z_sat and z_gh fix the p -> 0 saturation and the logarithmic ghost-loop contribution in the deep infrared; and c_+ and c_- control the interfaces among the ultraviolet, strongly correlated, and deep-infrared regions."
+                ],
+                "success_set": {
+                    "kind": "predicate",
+                    "definition": "Sigma_P = { o_fit : Z_A,fit(p)=Z_A,ir(p^2/m_gap^2)+Z_A,uv(p^2/m_gap^2) with Z_A,ir, Z_A,uv, and gamma defined in the feasibility constraints; for N_f=0, the fitted parameter tuple is m_gap=686 MeV, gamma_gap=0.585, z_sat=0.245, z_peak=0.670, z_gh=0.036, z_uv=0.853, c_uv=0.326, c_+=0.074, c_-=3.71; for N_f=2+1, the fitted parameter tuple is m_gap=818 MeV, gamma_gap=0.399, z_sat=0.279, z_peak=0.175, z_gh=0.050, z_uv=0.540, c_uv=1.47, c_+=0.162, c_-=3.70; m_gap in each tuple is obtained by solving Z_A,fit(-omega_s^2)=0 with omega_s=(1+i gamma_gap)m_gap after imposing the stated form and renormalisation condition. }",
+                    "threshold": {
+                        "applies": false,
+                        "value": null,
+                        "comparator": null,
+                        "metric_symbol": null,
+                        "metric_definition": null,
+                        "source_span": null
+                    }
+                },
+                "preference_ordering": {
+                    "kind": "none",
+                    "definition": null,
+                    "objective_symbols": [],
+                    "lex_order": null,
+                    "embedding_to_total_utility": null
+                },
+                "robustness_scope": {
+                    "applies": false,
+                    "ambient_space": null,
+                    "type_tag": null,
+                    "metric_or_divergence": null,
+                    "radius_or_budget": null,
+                    "indexing_set": null,
+                    "claimed_subfamily": {
+                        "definition": null,
+                        "source_span": null
+                    },
+                    "hinted_superfamily": {
+                        "definition": null,
+                        "source_span": null
+                    },
+                    "refinement_relation": "none",
+                    "criterion": null,
+                    "channel_populated_by": []
+                }
+            }
+        ],
+        "inter_goal_relation": "joint_conjunction",
+        "methodological_claim": {
+            "applies": false,
+            "target_object": null,
+            "evidence_channels": null
+        },
+        "evidence_channels": {
+            "stated_goal": {
+                "source_span": {
+                    "section": "Abstract and Introduction",
+                    "paragraph_or_line": "Abstract aim statements and Introduction final organisational paragraph",
+                    "verbatim": "relate this property to the physical mass gap; three distinct momentum regimes; simple fit for the gluon propagator"
+                },
+                "formalisation": "The stated goal is the joint proposition G1 \u2227 G2 \u2227 G3: define m_gap by omega_gap = (1+i gamma_gap)m_gap and omega_gap = argmin_{omega_s != 0}{Re omega_s : Z_A(-omega_s^2)=0}; show that T_c and f_pi give this scale physical meaning through T_c = (275/686) m_gap for the Yang-Mills baseline shape and through infrared deformation tests that leave T_c and f_pi unchanged below p_dec\u2248p_in^-; characterise the operational momentum partition R_ir={p:0<=p<p_in^-}, R_sc={p:p_in^-<=p<=p_in^+}, and R_uv={p:p>p_in^+}; and construct Z_A,fit(p)=Z_A,ir(p^2/m_gap^2)+Z_A,uv(p^2/m_gap^2) with non-mass parameters assigned to physical roles in those regions."
+            },
+            "operational_goal": {
+                "source_span": {
+                    "section": "Sections 2, 3.1.4, 3.2.3, 4.1, 4.2, Appendix A",
+                    "paragraph_or_line": "Eqs. (3)-(6), (20), (27), (29), (32)-(34), (46)-(49), (A1); Tables 1 and 2; Figs. 3 and 4",
+                    "verbatim": "compute the quark wave function; obtain the corresponding variations; simple global fit"
+                },
+                "formalisation": "The operational goal is implemented by locating p_in^+ and p_in^- from the two positive solutions of partial_p^2 Z_A^{-1}(p)=0 and p_peak from Z_A^{-1}(p_peak)=max_{p>=0} Z_A^{-1}(p); deforming the fitted propagator by G_A^{sigma,nu}(p)=G_A,fit(p)+sigma 3.3 GeV^{-2} exp[-(p/nu)^3] with sigma \u2208 {+1,-1} and nu \u2208 [0.1,0.5] GeV; recomputing SU(3) Yang-Mills T_c from the centre-structure of V_eff(phi_3,phi_8); recomputing f_pi from the quark gap equation and the Pagels-Stokar integral; defining m_gap through omega_gap=(1+i gamma_gap)m_gap and Z_A(-omega_gap^2)=0 with minimal non-zero Re omega_gap; and fitting Z_A,fit(p)=Z_A,ir(p^2/m_gap^2)+Z_A,uv(p^2/m_gap^2) with the two reported parameter tuples."
+            },
+            "implicit_goal": {
+                "inference_basis": [
+                    "TextAlign = 4/4 because the harvested aim spans are: relate the Landau-gauge gluon-propagator mass gap to the physical QCD mass gap using T_c and f_pi; identify ultraviolet, intermediate, and deep-infrared momentum regimes; use the combined information for a physically interpretable fit; and discuss use of the fit for confinement/chiral-symmetry-breaking dynamics.",
+                    "MethodAlign = 6/6 because the formal method components are: derivative definitions of p_in^+ and p_in^-; maximisation definition of p_peak; infrared deformation family G_A^{sigma,nu}; background-field effective-potential computation of T_c; quark-gap-equation plus Pagels-Stokar computation of f_pi; and zero-condition plus Z_A,fit construction for m_gap and the fit parameters.",
+                    "EvalAlign = 5/5 because the reported evaluation artefacts are: Table 1 for p_in^+, p_peak, p_in^-; Fig. 4a for T_c infrared insensitivity and sensitivity above p_in^-; Fig. 4b for f_pi infrared insensitivity and less-than-1% deviation below 390 MeV; Table 2 for m_gap and fit parameters; and the Yang-Mills relation T_c = c_conf m_gap with c_conf fixed by the baseline ratio 275/686.",
+                    "ClaimAlign = 4/4 because the paper's conclusions concern physical meaning of m_gap, decoupling of deep-infrared gluon dynamics from the tested observables, the three-regime interpretation of the gluon dressing, and the physically interpretable fit.",
+                    "Complexity = 3/8. The numerator counts exactly three populated structural-commitment slots: one true robustness_scope.applies entry in G1 and two additional canonical_goal blocks beyond the first, G2 and G3. The denominator is the fixed eight structural optional-slot categories used for this schema instance: robustness_scope.applies, threshold.value, threshold.comparator, threshold.metric_symbol, threshold.metric_definition, threshold.source_span, preference_ordering.lex_order, and preference_ordering.embedding_to_total_utility. No threshold field, lex_order, or embedding_to_total_utility is populated with a non-default value."
+                ],
+                "fit_score": 0.98125,
+                "fit_components": {
+                    "TextAlign": 1.0,
+                    "MethodAlign": 1.0,
+                    "EvalAlign": 1.0,
+                    "ClaimAlign": 1.0,
+                    "Complexity": 0.375
+                },
+                "formalisation": "Fit(G1 \u2227 G2 \u2227 G3; P) = 0.20*1.0 + 0.30*1.0 + 0.30*1.0 + 0.20*1.0 - 0.05*0.375 = 0.98125. The selected implicit goal is the joint conjunction: establish physical meaning for the zero-defined renormalisation-group-invariant gluon mass gap through T_c and f_pi, characterise the ultraviolet, strongly correlated, and deep-infrared momentum regimes by p_in^+, p_peak, and p_in^-, and produce an m_gap-scaled Landau-gauge gluon inverse-dressing fit with physically assigned parameters."
+            },
+            "excluded_aims": [
+                {
+                    "verbatim": "resonance spectrum and scattering events",
+                    "source_span": {
+                        "section": "Introduction",
+                        "paragraph_or_line": "general motivation for functional approaches",
+                        "verbatim": "resonance spectrum and scattering events"
+                    },
+                    "reason": "motivational"
+                },
+                {
+                    "verbatim": "phase structure and observables at finite temperature and density",
+                    "source_span": {
+                        "section": "Introduction",
+                        "paragraph_or_line": "general scope of functional approaches",
+                        "verbatim": "phase structure and observables at finite temperature and density"
+                    },
+                    "reason": "topical"
+                },
+                {
+                    "verbatim": "QCD-type theories",
+                    "source_span": {
+                        "section": "Abstract, Introduction, Sections 4.3 and 5",
+                        "paragraph_or_line": "broader application framing",
+                        "verbatim": "QCD-type theories"
+                    },
+                    "reason": "application_gesture"
+                }
+            ]
+        },
+        "consistency_relation": "framing_divergence",
+        "consistency_relation_derivation": "The stated, operational, and implicit channels agree on the achieved end-states m_gap, T_c, f_pi, p_dec, p_in^+, p_peak, p_in^-, and Z_A,fit. The relation is nevertheless framing_divergence rather than aligned because the stated framing also gestures toward broad QCD-type-theory dynamics and intertwined confinement/chiral-symmetry-breaking applications, while the operational evidence directly establishes the Yang-Mills and 2+1 flavour QCD regime scales, the specific infrared deformation family, the zero-defined m_gap construction, the Yang-Mills baseline proportionality T_c = (275/686) m_gap for fixed dimensionless fit shape, and the two fitted parameter sets."
+    }
+}

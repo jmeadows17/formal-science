@@ -1,0 +1,260 @@
+{
+  "paper_goal": {
+    "canonical_goal": [
+      {
+        "goal_id": "G1_define_FTE2_observable",
+        "outcome_variable": "o_1 = (\\tilde S^{(q)}_{|Q_{\\vec x}\\bar Q_{\\vec y}}, q, V, \\bar V, P_{\\vec x}, P_{\\vec y}, \\rho_V, \\rho_{V|Q_{\\vec x}\\bar Q_{\\vec y}}) \\in \\mathcal O_P^{(1)}",
+        "goal_form": "target_proposition",
+        "target_object": "A paper-defined flux-tube entanglement entropy observable \\tilde S^{(q)}_{|Q_{\\vec x}\\bar Q_{\\vec y}} for pure Yang-Mills theory, where V is a spatial subregion, \\bar V is its complement, a static quark Q at spatial point \\vec x and a static antiquark \\bar Q at spatial point \\vec y create a chromoelectric flux tube, q is an integer replica index with q \\ge 2, and \\tilde S^{(q)}_{|Q_{\\vec x}\\bar Q_{\\vec y}} is the excess Rényi entanglement entropy of the state with the Q\\bar Q flux tube relative to the vacuum, equivalently \\tilde S^{(q)}_{|Q_{\\vec x}\\bar Q_{\\vec y}} = S^{(q)}_{|Q_{\\vec x}\\bar Q_{\\vec y}} - S^{(q)} = -\\frac{1}{q-1}\\log\\left( \\frac{\\langle \\prod_{r=1}^{q} \\operatorname{Tr} P^{(r)}_{\\vec x}\\operatorname{Tr} P^{(r)\\dagger}_{\\vec y} \\rangle}{\\langle \\operatorname{Tr} P_{\\vec x}\\operatorname{Tr} P^{\\dagger}_{\\vec y} \\rangle^{q}} \\right), with P_{\\vec x} the temporal Wilson line closing around the Euclidean time direction at spatial point \\vec x and P^{(r)}_{\\vec x} its copy on replica r.",
+        "feasibility_constraints": [
+          "The theory is pure Euclidean Yang-Mills theory on a finite lattice with compact gauge-link variables U_{\\mu}(x) and Wilson plaquette action S_g[U]; gauge transformations act locally on the links, and traced Polyakov loops \\operatorname{Tr}P_{\\vec x} and \\operatorname{Tr}P^{\\dagger}_{\\vec y} are gauge-invariant observables.",
+          "The spatial lattice links are partitioned into a region V and its complement \\bar V; the reduced density matrix \\rho_V is obtained by tracing gauge fields in \\bar V and by joining q replicas cyclically through the V links, while the \\bar V links remain periodic within each replica.",
+          "The static quark and antiquark sources are located in \\bar V, so their color indices are traced and their insertion in the density matrix is represented by \\operatorname{Tr}P_{\\vec x}\\operatorname{Tr}P^{\\dagger}_{\\vec y}.",
+          "The denominator \\langle \\operatorname{Tr}P_{\\vec x}\\operatorname{Tr}P^{\\dagger}_{\\vec y}\\rangle^{q} is nonzero for the source separations used to define the flux-tube state, so the logarithm in \\tilde S^{(q)}_{|Q_{\\vec x}\\bar Q_{\\vec y}} is defined.",
+          "The observable is evaluated at finite lattice spacing a and may be extrapolated by holding the physical geometry fixed while taking a \\to 0, where fixed physical geometry means that distances such as the source separation L, slab width w, and slab offsets are held fixed in units of the square root of the string tension."
+        ],
+        "success_set": {
+          "kind": "predicate",
+          "definition": "\\Sigma_P^{(1)} = { o_1 \\in \\mathcal O_P^{(1)} : \\tilde S^{(q)}_{|Q_{\\vec x}\\bar Q_{\\vec y}} equals the difference S^{(q)}_{|Q_{\\vec x}\\bar Q_{\\vec y}} - S^{(q)} and also equals -\\frac{1}{q-1}\\log(\\langle \\prod_{r=1}^{q} \\operatorname{Tr}P^{(r)}_{\\vec x}\\operatorname{Tr}P^{(r)\\dagger}_{\\vec y}\\rangle / \\langle \\operatorname{Tr}P_{\\vec x}\\operatorname{Tr}P^{\\dagger}_{\\vec y}\\rangle^q); each traced Polyakov-loop factor is invariant under local gauge transformations, so the whole ratio is gauge-invariant; the vacuum Rényi entropy S^{(q)} subtracts the corresponding vacuum partitioning entropy so that the ultraviolet contribution common to S^{(q)}_{|Q_{\\vec x}\\bar Q_{\\vec y}} and S^{(q)} cancels in the excess quantity; and the observable can be computed from Polyakov-loop correlators without separately estimating the two partition-function ratios Z^{(q)}_{|Q\\bar Q}/Z^q_{|Q\\bar Q} and Z^{(q)}/Z^q. }",
+          "threshold": {
+            "applies": false,
+            "value": null,
+            "comparator": null,
+            "metric_symbol": null,
+            "metric_definition": null,
+            "source_span": null
+          }
+        },
+        "preference_ordering": {
+          "kind": "none",
+          "definition": null,
+          "objective_symbols": [],
+          "lex_order": null,
+          "embedding_to_total_utility": null
+        },
+        "robustness_scope": {
+          "applies": true,
+          "ambient_space": "Boundary-algebra implementations that differ only in the treatment of V/\\bar V boundary links, for the same lattice gauge theory, same spatial region V, same complement \\bar V, and same traced Polyakov-loop insertions \\operatorname{Tr}P_{\\vec x}\\operatorname{Tr}P^{\\dagger}_{\\vec y} with \\vec x,\\vec y \\in \\bar V.",
+          "type_tag": "algorithmic_transform",
+          "metric_or_divergence": null,
+          "radius_or_budget": null,
+          "indexing_set": "{electric-center implementation with all boundary links integrated; trivial-center implementation with a maximal tree of boundary links gauge-fixed}",
+          "claimed_subfamily": {
+            "definition": "The claimed subfamily contains exactly two boundary implementations: A_E, the electric-center implementation in which all boundary links are integrated in the replica path integral, and A_0, the trivial-center implementation in which a maximal tree of boundary links is gauge-fixed. For both A_E and A_0, the FTE2 observable is the same traced Polyakov-loop ratio R_q = \\langle \\prod_{r=1}^{q} \\operatorname{Tr}P^{(r)}_{\\vec x}\\operatorname{Tr}P^{(r)\\dagger}_{\\vec y}\\rangle / \\langle \\operatorname{Tr}P_{\\vec x}\\operatorname{Tr}P^{\\dagger}_{\\vec y}\\rangle^q, because the inserted Polyakov loops are traced, gauge-invariant, and placed away from the boundary. This subfamily does not include a magnetic-center lattice computation, since the paper states that such an implementation is not presently available in the same lattice construction.",
+            "source_span": {
+              "section": "2.2 and 3.1",
+              "paragraph_or_line": "end of section 2.2 and the definition following equations (3.8)-(3.9)",
+              "verbatim": "unaffected by gauge fixing of boundary links; ratio of Polyakov loop correlators"
+            }
+          },
+          "hinted_superfamily": {
+            "definition": "All center-algebra choices for which changing the boundary algebra modifies only local boundary bookkeeping and leaves the traced, gauge-invariant Polyakov-loop ratio R_q unchanged. The paper presents this as an expectation for FTE2 because R_q is manifestly gauge-invariant, but it does not provide a direct lattice computation for magnetic-center algebras.",
+            "source_span": {
+              "section": "Abstract, section 2.1, and section 5",
+              "paragraph_or_line": "statements about center ambiguity, gauge invariance, and centre-independence expectation",
+              "verbatim": "free of the ambiguities; it should also be center-independent"
+            }
+          },
+          "refinement_relation": "declared_embedding",
+          "criterion": "For A_E and A_0 in the claimed subfamily, define R_q(A)=\\langle \\prod_{r=1}^{q} \\operatorname{Tr}P^{(r)}_{\\vec x}\\operatorname{Tr}P^{(r)\\dagger}_{\\vec y}\\rangle_A / \\langle \\operatorname{Tr}P_{\\vec x}\\operatorname{Tr}P^{\\dagger}_{\\vec y}\\rangle_A^q. The claimed robustness condition is R_q(A_E)=R_q(A_0), which implies \\tilde S^{(q)}_{A_E}=\\tilde S^{(q)}_{A_0}=-\\frac{1}{q-1}\\log R_q for the same q,V,\\bar V,\\vec x,\\vec y. The condition is an argued boundary-gauge-fixing invariance of the FTE2 ratio, not a numerical comparison across magnetic-center and electric-center simulations.",
+          "channel_populated_by": [
+            "stated",
+            "implicit"
+          ]
+        }
+      },
+      {
+        "goal_id": "G2_characterise_SU2_2p1D_half_slab_FTE2",
+        "outcome_variable": "o_2 = {\\tilde S^{(2)}_{|Q\\bar Q}(a,L,w,x,y)}_{(a,L,w,x,y) \\in \\mathcal E} \\in \\mathcal O_P^{(2)}",
+        "goal_form": "target_proposition",
+        "target_object": "A continuum-oriented lattice characterisation of the second Rényi flux-tube entanglement entropy \\tilde S^{(2)}_{|Q\\bar Q}(a,L,w,x,y) in (2+1)-dimensional SU(2) pure Yang-Mills theory for a half-slab region V, where V is a rectangle of size (L_x/2) \\times w on a periodic spatial lattice, the static Q and \\bar Q sources sit at coordinates (0,+L/2) and (0,-L/2), x is the coordinate of the half-slab boundary relative to the flux-tube centre, y is the half-slab offset along the flux tube, x \\to -\\infty denotes complete cross-cutting of the flux tube by V, x \\sim 0 denotes partial cross-cutting, and x \\to +\\infty denotes no cross-cutting and hence the vacuum-subtracted baseline.",
+        "feasibility_constraints": [
+          "The gauge group is SU(2), the spacetime dimension is 2+1, the replica number is q=2, the static sources are represented by traced Polyakov loops, and the lattice action is S = -(\\beta/2)\\sum_{x,\\mu<\\nu} \\operatorname{ReTr} U_{x,\\mu\\nu} with \\beta = 4/(a g^2).",
+          "The environment set \\mathcal E contains the lattice spacings and geometries used for the numerical study, with source separation L, slab width w, and offsets x,y expressed either in lattice units or in physical units fixed by the string tension scale \\sqrt{\\sigma_0}.",
+          "For the continuum scaling check, L\\sqrt{\\sigma_0} and w\\sqrt{\\sigma_0} are held fixed while a\\sqrt{\\sigma_0} is varied; the fully cross-cut value is operationally obtained by averaging Polyakov-loop ratio measurements over source positions at sufficiently negative x\\sqrt{\\sigma_0} relative to the slab boundary.",
+          "For geometry dependence, \\tilde S^{(2)}_{|Q\\bar Q}(a,L,w,x,y) is measured as a function of x, L, w, and y by placing the same half-slab geometry at different offsets relative to the Q\\bar Q line and computing the same Polyakov-loop ratio defining \\tilde S^{(2)}.",
+          "Uncertainties are estimated from Monte Carlo samples of the Polyakov-loop correlators; qualitative dependence claims must be supported by comparisons that keep the relevant non-varied parameters fixed or operationally negligible."
+        ],
+        "success_set": {
+          "kind": "predicate",
+          "definition": "\\Sigma_P^{(2)} = { o_2 \\in \\mathcal O_P^{(2)} : at fixed physical source separation and slab width, \\tilde S^{(2)}_{|Q\\bar Q}(a,L,w,x,y) has a finite positive a \\to 0 extrapolated value for complete cross-cutting; as x increases from the complete-cross-cut regime to the non-cross-cut regime, \\tilde S^{(2)}_{|Q\\bar Q} decreases from its asymptotic excess-entropy value to approximately zero; the transition profile is compatible with a finite-width flux tube rather than a zero-width step function; changes in L and w produce weaker but detectable changes relative to the cross-cutting dependence; and the measured y-dependence for the studied short strings is statistically consistent with a very small or unresolved effect. }",
+          "threshold": {
+            "applies": false,
+            "value": null,
+            "comparator": null,
+            "metric_symbol": null,
+            "metric_definition": null,
+            "source_span": null
+          }
+        },
+        "preference_ordering": {
+          "kind": "none",
+          "definition": null,
+          "objective_symbols": [],
+          "lex_order": null,
+          "embedding_to_total_utility": null
+        },
+        "robustness_scope": {
+          "applies": true,
+          "ambient_space": "The family of half-slab lattice environments \\mathcal E = {(a,L,w,x,y): q=2, gauge group SU(2), spacetime dimension 2+1, V is a periodic half-slab of size (L_x/2)\\times w, Q and \\bar Q are static Polyakov-loop sources at separation L, and \\tilde S^{(2)} is computed from the same replicated Polyakov-loop ratio}.",
+          "type_tag": "environment_family",
+          "metric_or_divergence": null,
+          "radius_or_budget": null,
+          "indexing_set": "\\mathcal E = {(a,L,w,x,y): a>0, L>0, w>0, x,y \\in \\mathbb R, q=2, gauge group SU(2), dimension 2+1, and the half-slab V has size (L_x/2)\\times w on the periodic lattice used for the Monte Carlo computation}",
+          "claimed_subfamily": {
+            "definition": "The claimed subfamily consists of the simulated environments in which a\\sqrt{\\sigma_0} is varied for fixed L\\sqrt{\\sigma_0} and w\\sqrt{\\sigma_0} to test the continuum trend, x is varied to move between complete cross-cutting, partial cross-cutting, and no cross-cutting, L is varied at fixed a,w,y to test flux-tube length dependence, y is varied at fixed a,L,w to test longitudinal position dependence, and w is varied at fixed a,L with y-dependence treated as negligible within the observed uncertainties.",
+            "source_span": {
+              "section": "4.1-4.2",
+              "paragraph_or_line": "half-slab setup, continuum scaling, x-dependence, and L/y/w dependence results",
+              "verbatim": "finite positive value; flux tube is gradually cross-cut by the half-slab region V"
+            }
+          },
+          "hinted_superfamily": {
+            "definition": "Larger-N_c gauge groups, 3+1-dimensional lattices, finite-temperature ensembles, multiple-slab geometries, and flux tubes generated by more than two static sources are presented as future extensions and are not part of the paper's demonstrated subfamily.",
+            "source_span": {
+              "section": "5",
+              "paragraph_or_line": "future directions at the end of the summary",
+              "verbatim": "extend our results to Nc > 2, to (3+1)D"
+            }
+          },
+          "refinement_relation": "set_inclusion",
+          "criterion": "For each environment e=(a,L,w,x,y) in the claimed subfamily, evaluate \\tilde S^{(2)}_e from the replicated Polyakov-loop ratio. The environment-family claim is satisfied when the measured family {\\tilde S^{(2)}_e} has: a finite positive extrapolated value under a\\to0 at fixed physical L and w in the complete-cross-cut regime; an x-profile that moves from the complete-cross-cut excess value to the non-cross-cut baseline as the half-slab ceases to intersect the flux tube; a transition region compatible with a flux tube of finite transverse width; weaker but visible dependence on L and w relative to the dominant cross-cutting dependence; and no statistically resolved y-dependence for the short-string comparisons presented.",
+          "channel_populated_by": [
+            "stated",
+            "operational",
+            "implicit"
+          ]
+        }
+      },
+      {
+        "goal_id": "G3_interpret_FTE2_internal_plus_vibrational",
+        "outcome_variable": "o_3 = (\\tilde S^{(q)}_{|Q\\bar Q}, S_{internal}, S_{vibrational}, F, N_c, L, \\epsilon, V, \\bar V) \\in \\mathcal O_P^{(3)}",
+        "goal_form": "target_proposition",
+        "target_object": "A qualitative interpretation of flux-tube entanglement entropy as the sum of an internal color contribution and a vibrational string contribution, written \\tilde S^{(q)}_{|Q\\bar Q} = S_{internal} + S_{vibrational}, where S_{internal} is associated with color-electric degrees of freedom crossing the V/\\bar V boundary and S_{vibrational} is associated with transverse fluctuations of a string-like flux tube whose endpoints are fixed at the static sources.",
+        "feasibility_constraints": [
+          "For a fundamental-representation SU(N_c) flux tube, the internal color model assigns S_{internal} = \\langle F\\rangle\\log(N_c), where F is the number of intersections between the flux tube and the spatial V/\\bar V boundary, and \\langle F\\rangle is the expectation of F over flux-tube shapes.",
+          "In 1+1-dimensional Yang-Mills theory, there are no transverse flux-tube fluctuations, so F is fixed by the topology of the interval partition and the model reduces to \\tilde S^{(q)}_{|Q\\bar Q} = F\\log(N_c); for a single slab V separating two fundamental static sources in \\bar V, F=2 and hence \\tilde S^{(q)}_{|Q\\bar Q}=2\\log(N_c).",
+          "The vibrational model treats the flux tube as a thin string with fixed endpoints x(0)=x(\\pi)=0, longitudinal coordinate 0<s<\\pi, transverse displacement x(s), momentum p(s)=-i\\delta/\\delta x(s), length L, string tension M^2, and approximate Hamiltonian H = ML + (\\pi/(2M^2L))\\int_0^\\pi ds [p(s)^2 + M^4 (dx/ds)^2].",
+          "The thin string is discretised into effective longitudinal segments separated by \\epsilon, where \\epsilon represents a physical shortest effective vibrational wavelength rather than the lattice spacing a; tracing over the string degrees of freedom in \\bar V yields Gaussian reduced density matrices for computing Rényi or von Neumann vibrational entropies.",
+          "The qualitative interpretation is limited to the lattice environments actually studied; it does not require exact numerical equality between the full SU(2) lattice data and the sum of the simple internal model and the simplest thin-string vibrational model."
+        ],
+        "success_set": {
+          "kind": "predicate",
+          "definition": "\\Sigma_P^{(3)} = { o_3 \\in \\mathcal O_P^{(3)} : the fully cross-cut SU(2) lattice value lies above the internal baseline 2\\log(2), supporting a nonzero vibrational contribution; the x-dependent partially cross-cut profile can be qualitatively represented by S_{internal}=\\langle F\\rangle\\log(2) with \\langle F\\rangle varying approximately as an error-function-like crossing probability for a flux tube with Gaussian transverse deflections; the observed length dependence is compatible with the leading logarithmic length dependence of S_{vibrational}; and discrepancies such as the offset of the x profile, the unresolved y-dependence, and insufficient quantitative agreement with the full simple thin-string prediction are recorded as limitations rather than treated as successful exact decomposition. }",
+          "threshold": {
+            "applies": false,
+            "value": null,
+            "comparator": null,
+            "metric_symbol": null,
+            "metric_definition": null,
+            "source_span": null
+          }
+        },
+        "preference_ordering": {
+          "kind": "qualitative_partial",
+          "definition": "For two interpretation outcomes o_3 and o'_3, o_3 \\succeq_P o'_3 if o_3 preserves all observed qualitative signs reported for the lattice data that o'_3 preserves and additionally accounts for at least one of the following without contradicting the others: the cross-cut asymptote being dominated by the internal color term, the error-function-like partially-cross-cut x profile, the weak positive length dependence, the very small observed y-dependence, or the visible partially-cross-cut width dependence. Outcomes that improve one feature while contradicting another are incomparable.",
+          "objective_symbols": [
+            "S_{internal}",
+            "S_{vibrational}",
+            "\\langle F\\rangle",
+            "\\tilde S^{(q)}_{|Q\\bar Q}"
+          ],
+          "lex_order": null,
+          "embedding_to_total_utility": null
+        },
+        "robustness_scope": {
+          "applies": false,
+          "ambient_space": null,
+          "type_tag": "other",
+          "metric_or_divergence": null,
+          "radius_or_budget": null,
+          "indexing_set": null,
+          "claimed_subfamily": {
+            "definition": null,
+            "source_span": null
+          },
+          "hinted_superfamily": {
+            "definition": null,
+            "source_span": null
+          },
+          "refinement_relation": "none",
+          "criterion": null,
+          "channel_populated_by": []
+        }
+      }
+    ],
+    "inter_goal_relation": "joint_conjunction",
+    "methodological_claim": {
+      "applies": false,
+      "target_object": null,
+      "evidence_channels": null
+    },
+    "evidence_channels": {
+      "stated_goal": {
+        "source_span": {
+          "section": "Abstract and Introduction",
+          "paragraph_or_line": "abstract; introduction paragraphs defining FTE2 and outlining the study",
+          "verbatim": "construct a novel flux tube entanglement entropy; finite in the continuum limit"
+        },
+        "formalisation": "The stated paper goal is the joint proposition G1 \\land G2 \\land G3: define \\tilde S^{(q)}_{|Q_{\\vec x}\\bar Q_{\\vec y}} as the vacuum-subtracted flux-tube Rényi entropy \\tilde S^{(q)}_{|Q_{\\vec x}\\bar Q_{\\vec y}} = S^{(q)}_{|Q_{\\vec x}\\bar Q_{\\vec y}} - S^{(q)}, show that it is expressible as a traced Polyakov-loop ratio and is gauge-invariant, argue boundary-implementation robustness for the electric-center and trivial-center subfamily because the traced Polyakov-loop ratio is unaffected by gauge fixing boundary links, compute and characterise \\tilde S^{(2)}_{|Q\\bar Q}(a,L,w,x,y) for half-slab geometries in (2+1)-dimensional SU(2) pure Yang-Mills theory with a finite a\\to0 extrapolated value, and test whether the resulting behaviour is qualitatively described by \\tilde S^{(q)}_{|Q\\bar Q}=S_{internal}+S_{vibrational} with S_{internal}=\\langle F\\rangle\\log(N_c) and S_{vibrational} from a fixed-end thin-string transverse-fluctuation model."
+      },
+      "operational_goal": {
+        "source_span": {
+          "section": "3.1, 3.2, 4.1, and 4.2",
+          "paragraph_or_line": "Polyakov-loop ratio after equations (3.8)-(3.9), half-slab simulation setup, continuum scaling, and model-comparison results",
+          "verbatim": "FTE2 is given by correlation of Polyakov loops across replicas"
+        },
+        "formalisation": "Operationally, the paper evaluates the target by constructing q=2 replicated lattices for V and \\bar V, measuring R = \\langle\\prod_{r=1}^2\\operatorname{Tr}P^{(r)}_{\\vec x}\\operatorname{Tr}P^{(r)\\dagger}_{\\vec y}\\rangle / \\langle\\operatorname{Tr}P_{\\vec x}\\operatorname{Tr}P^\\dagger_{\\vec y}\\rangle^2, setting \\tilde S^{(2)}_{|Q\\bar Q}=-\\log R, varying a at fixed L\\sqrt{\\sigma_0} and w\\sqrt{\\sigma_0} to test continuum finiteness, varying half-slab x to move from complete cross-cutting to no cross-cutting, varying L, y, and w to study geometric dependencies, and comparing the resulting qualitative trends with S_{internal}=\\langle F\\rangle\\log(N_c) and the thin-string vibrational entropy generated by H = ML + (\\pi/(2M^2L))\\int_0^\\pi ds [p(s)^2+M^4(dx/ds)^2]. The operational channel computes the electric-center replica construction; it does not perform a separate magnetic-center lattice computation."
+      },
+      "implicit_goal": {
+        "inference_basis": [
+          "TextAlign count basis: 15 of 16 harvested aim spans from the abstract, introduction roadmap, section-opening paragraphs, and summary support the joint goal G1 ∧ G2 ∧ G3; the remaining harvested aim span is background motivation about confinement and is recorded under excluded_aims.",
+          "MethodAlign count basis: 12 of 12 formal method artefacts support the same goal, including the reduced-density-matrix construction, the replicated-lattice construction, equations defining the Polyakov-loop ratio, the half-slab geometry, the SU(2) Wilson action, the Monte Carlo estimator, the internal-color model, and the thin-string vibrational model.",
+          "EvalAlign count basis: 12 of 13 reported evaluation artefacts directly evaluate \\tilde S^{(2)}_{|Q\\bar Q} or a model component used to interpret it; one future-looking comparison is excluded because it is not performed in the paper.",
+          "ClaimAlign count basis: 18 of 19 conclusion/result claims concern construction, gauge invariance, ultraviolet finiteness, half-slab geometry dependence, or the qualified internal-plus-vibrational interpretation; one claim about future extensions is excluded.",
+          "Complexity count basis: structural-commitment numerator is 4, consisting of two populated robustness scopes and two additional canonical-goal blocks beyond the first; using the rubric implementation denominator of 8 gives Complexity=0.50."
+        ],
+        "fit_score": 0.929,
+        "fit_components": {
+          "TextAlign": 0.94,
+          "MethodAlign": 1.0,
+          "EvalAlign": 0.92,
+          "ClaimAlign": 0.95,
+          "Complexity": 0.5
+        },
+        "formalisation": "The selected implicit goal is the joint target proposition G1 \\land G2 \\land G3. The fit calculation is 0.20·0.94 + 0.30·1.00 + 0.30·0.92 + 0.20·0.95 − 0.05·0.50 = 0.929. The component values are derived from the count bases recorded in inference_basis: TextAlign=15/16≈0.94, MethodAlign=12/12=1.00, EvalAlign=12/13≈0.92, ClaimAlign=18/19≈0.95, and Complexity=4/8=0.50. This goal is preferred over a single-goal extraction because the paper separately targets definition/gauge-invariant construction, lattice half-slab characterisation, and qualitative internal-plus-vibrational interpretation; collapsing them would obscure distinct outcome variables."
+      },
+      "excluded_aims": [
+        {
+          "verbatim": "dynamics of confinement",
+          "source_span": {
+            "section": "Introduction",
+            "paragraph_or_line": "motivating discussion before FTE2 is defined",
+            "verbatim": "dynamics of confinement"
+          },
+          "reason": "motivational"
+        },
+        {
+          "verbatim": "baryon junctions",
+          "source_span": {
+            "section": "5",
+            "paragraph_or_line": "future directions",
+            "verbatim": "baryon junctions"
+          },
+          "reason": "application_gesture"
+        },
+        {
+          "verbatim": "holographic entropy",
+          "source_span": {
+            "section": "Introduction",
+            "paragraph_or_line": "background discussion",
+            "verbatim": "holographic entropy"
+          },
+          "reason": "topical"
+        }
+      ]
+    },
+    "consistency_relation": "aligned",
+    "consistency_relation_derivation": "The stated, operational, and implicit channels all target the same end-state family: a well-defined flux-tube excess Rényi entropy observable, its gauge-invariant traced Polyakov-loop-ratio computation, finite-continuum and half-slab behaviour in (2+1)-dimensional SU(2) Yang-Mills theory, and a qualified internal-plus-vibrational interpretation. The only potentially broader stated material is the expectation of center-algebra independence; the extraction avoids divergence by encoding only the electric-center/trivial-center boundary-implementation subfamily as claimed robustness and by marking magnetic-center realisations as a hinted but uncomputed superfamily. Motivational material about confinement, holography, baryon junctions, and future extensions is excluded rather than treated as part of the formal goal."
+  }
+}

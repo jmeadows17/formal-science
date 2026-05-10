@@ -1,0 +1,27 @@
+[
+  {
+    "alignment_comment": "Closely matches the source derivation: it uses the same premises, introduces $Q=1-H^{-1}$, derives the Riccati form for $Z_0$, and performs the same algebra to obtain the differential equation for $H$. Only minor compression of notation details.",
+    "likert_score": 5.0,
+    "change_summary": "None"
+  },
+  {
+    "alignment_comment": "Strongly faithful to the source reasoning. It reproduces the formal Laurent expansion, Cauchy-product coefficient comparison, the recurrence, the branch choice for $\\alpha_0$, and the computation of $\\alpha_1$ with the same logic.",
+    "likert_score": 5.0,
+    "change_summary": "None"
+  },
+  {
+    "alignment_comment": "Fully aligned with the source. It applies the same substitution $Z_0=\\frac{4}{\\omega}G_\\mu/G$, differentiates via the quotient rule, cancels the quadratic terms, and recovers the same linear second-order ODE.",
+    "likert_score": 5.0,
+    "change_summary": "None"
+  },
+  {
+    "alignment_comment": "Very close to the source: it correctly derives $H=G/(G-2\\mu G_\\mu)$ from the two formulas for $Z_0$ and restates the explicit hypergeometric form of $G$. It omits some unused source premises, but nothing substantive from the actual derivation.",
+    "likert_score": 4.9,
+    "change_summary": "None"
+  },
+  {
+    "alignment_comment": "Strong match to the source reasoning. It preserves both limiting arguments: the $\\mu\\downarrow 0$ bound yielding $H(0,\\omega)=1$, and the large-$\\mu$ limit leading to $L(\\omega)=1/\\sqrt{1-\\omega}$, including the divergence as $\\omega\\uparrow 1$.",
+    "likert_score": 5.0,
+    "change_summary": "None"
+  }
+]

@@ -1,0 +1,160 @@
+{
+  "paper_title": "Exact Solution for Two δ-Interacting Bosons on a Ring in the Presence of a δ-Barrier: Asymmetric Bethe Ansatz for Spatially Odd States (Olshanii, 2025, SciPost Physics Core submission)",
+  "deeper_reasoning_1": "\\section*{Claim}\nLet\n\\[\nH=-\\frac{\\hbar^2}{2m}\\left(\\frac{\\partial^2}{\\partial x_1^2}+\\frac{\\partial^2}{\\partial x_2^2}\\right)+g\\delta(x_1-x_2)+g_B\\delta(x_1)+g_B\\delta(x_2)\n\\]\nwith \\(m,L,\\hbar,g,g_B>0\\), and let \\(a=-\\hbar^2/(\\mu g)\\), \\(a_B=-\\hbar^2/(mg_B)\\), and \\(\\mu=m/2\\). If \\(0<k_1<k_2\\) satisfies the two Bethe equations \\(B_1(k_1,k_2)=0\\) and \\(B_2(k_1,k_2)=0\\), then the Asymmetric Bethe Ansatz construction produces an admissible physical eigenpair \\((\\Psi_{k_1,k_2},E_{k_1,k_2})\\) in the point-inversion-odd bosonic sector, with\n\\[\nE_{k_1,k_2}=\\frac{\\hbar^2}{2m}(k_1^2+k_2^2).\n\\]\n\n\\section*{Premises}\n\\[\n\\begin{aligned}\n\\text{(P1)}&\\quad \\widetilde H:=H+g\\delta(x_1+x_2).\\\\\n\\text{(P2)}&\\quad \\mathcal O(k_1,k_2)=\\{(k_1,k_2),(k_2,k_1),(-k_1,k_2),(-k_2,k_1),\\\\\n&\\qquad\\qquad\\qquad (k_1,-k_2),(k_2,-k_1),(-k_1,-k_2),(-k_2,-k_1)\\}.\\\\\n\\text{(P3)}&\\quad \\text{For every }(\\lambda_1,\\lambda_2)\\in\\mathcal O(k_1,k_2),\\\\\n&\\qquad H_0e^{i(\\lambda_1x_1+\\lambda_2x_2)}\n=\\frac{\\hbar^2}{2m}(k_1^2+k_2^2)e^{i(\\lambda_1x_1+\\lambda_2x_2)},\\\\\n&\\qquad H_0:=-\\frac{\\hbar^2}{2m}\\left(\\partial_{x_1}^2+\\partial_{x_2}^2\\right).\\\\\n\\text{(P4)}&\\quad \\text{The seed functions }\\Psi^{(1)}\\text{ on }A_1\\text{ and }\\Psi^{(5)}\\text{ on }A_5\\text{ are finite sums over }\\mathcal O(k_1,k_2).\\\\\n\\text{(P5)}&\\quad B_1(k_1,k_2)=B_2(k_1,k_2)=0\\text{ is exactly the remaining compatibility condition}\\\\\n&\\qquad\\text{for periodicity, continuity, and the delta-jump conditions of }\\widetilde H\\text{ on the seeds.}\\\\\n\\text{(P6)}&\\quad \\Psi\\text{ is reconstructed on }A_2,A_3,A_4,A_6\\text{ from }\\Psi^{(1)},\\Psi^{(5)}\\text{ by exchange symmetry}\\\\\n&\\qquad\\text{and mirror oddness }\\Psi(-x_2,-x_1)=-\\Psi(x_1,x_2).\\\\\n\\text{(P7)}&\\quad \\text{Bosonic exchange symmetry converts mirror oddness into point-inversion oddness.}\\\\\n\\text{(P8)}&\\quad \\text{A continuous mirror-odd }\\widetilde H\\text{-eigenfunction vanishes on }x_1+x_2=0,\\\\\n&\\qquad\\text{so }\\delta(x_1+x_2)\\Psi=0\\text{ distributionally.}\n\\end{aligned}\n\\]\n\n\\section*{Derivation}\nSince the seed functions are finite sums over \\(\\mathcal O(k_1,k_2)\\), premise (P3) gives, on every open sector,\n\\begin{align}\nH_0\\Psi^{(j)}\n&=\\frac{\\hbar^2}{2m}(k_1^2+k_2^2)\\Psi^{(j)}\n\\qquad (j\\in\\{1,5\\}).\n\\end{align}\nThe condition \\(B_1=B_2=0\\), together with (P5), imposes all required periodicity, continuity, and delta-jump conditions for the auxiliary Hamiltonian on the seeds. Hence the piecewise function reconstructed by (P6) is an eigenfunction of \\(\\widetilde H\\):\n\\begin{align}\n\\widetilde H\\Psi_{k_1,k_2}\n&=\\frac{\\hbar^2}{2m}(k_1^2+k_2^2)\\Psi_{k_1,k_2}.\n\\end{align}\nBy (P6), the reconstructed function is bosonic and mirror-odd. Therefore, by (P7),\n\\begin{align}\n\\Psi_{k_1,k_2}(-x_1,-x_2)&=-\\Psi_{k_1,k_2}(x_1,x_2).\n\\end{align}\nThe auxiliary contact term is removed by (P8):\n\\begin{align}\nH\\Psi_{k_1,k_2}\n&=(\\widetilde H-g\\delta(x_1+x_2))\\Psi_{k_1,k_2}\\\\\n&=\\widetilde H\\Psi_{k_1,k_2}-g\\delta(x_1+x_2)\\Psi_{k_1,k_2}\\\\\n&=\\frac{\\hbar^2}{2m}(k_1^2+k_2^2)\\Psi_{k_1,k_2}.\n\\end{align}\nThus the Bethe root gives a physical eigenfunction of \\(H\\) with the claimed energy.\n\n\\section*{Final Result}\n\\[\n\\boxed{\n0<k_1<k_2,\\ B_1(k_1,k_2)=B_2(k_1,k_2)=0\n\\Longrightarrow\nH\\Psi_{k_1,k_2}=E_{k_1,k_2}\\Psi_{k_1,k_2}\n}\n\\]\nwith \\(E_{k_1,k_2}=\\hbar^2(k_1^2+k_2^2)/(2m)\\), and \\(\\Psi_{k_1,k_2}\\) periodic, bosonic, and point-inversion odd.\n\\hfill\\(\\blacksquare\\)",
+  "deeper_reasoning_2": "\\section*{Claim}\nInside the declared real-rapidity eight-plane-wave Asymmetric Bethe Ansatz class, the two Bethe equations are necessary and sufficient for the exact point-inversion-odd spectrum. Equivalently, if\n\\[\n\\mathcal R:=\\{(k_1,k_2)\\in\\mathbb R^2:0<k_1<k_2,\\ B_1(k_1,k_2)=0,\\ B_2(k_1,k_2)=0\\},\n\\]\nthen the spectrum produced by this construction class is exactly\n\\[\n\\mathcal E_{\\mathrm{ABA}}=\n\\left\\{\\frac{\\hbar^2}{2m}(k_1^2+k_2^2):(k_1,k_2)\\in\\mathcal R\\right\\}.\n\\]\n\n\\section*{Premises}\n\\[\n\\begin{aligned}\n\\text{(P1)}&\\quad \\mathcal A\\text{ is the class of nonzero, periodic, bosonic, mirror-odd auxiliary eigenfunctions}\\\\\n&\\qquad\\text{whose sector restrictions are finite sums over }\\mathcal O(k_1,k_2)\\text{ for some }0<k_1<k_2.\\\\\n\\text{(P2)}&\\quad \\text{For every }\\Psi\\in\\mathcal A,\\text{ the boundary and jump residuals vanish if and only if}\\\\\n&\\qquad B_1(k_1,k_2)=0\\text{ and }B_2(k_1,k_2)=0.\\\\\n\\text{(P3)}&\\quad \\text{Every }(k_1,k_2)\\in\\mathcal R\\text{ yields a nonzero constructed }\\Psi_{k_1,k_2}\\in\\mathcal A.\\\\\n\\text{(P4)}&\\quad \\text{Every }\\Psi\\in\\mathcal A\\text{ is converted from an auxiliary eigenfunction into a physical}\\\\\n&\\qquad\\text{eigenfunction of }H\\text{ by the mirror-odd annihilation of }\\delta(x_1+x_2).\\\\\n\\text{(P5)}&\\quad \\text{Every plane wave in }\\mathcal O(k_1,k_2)\\text{ has kinetic eigenvalue }\n\\frac{\\hbar^2}{2m}(k_1^2+k_2^2).\n\\end{aligned}\n\\]\n\n\\section*{Derivation}\nFirst prove sufficiency. Let \\((k_1,k_2)\\in\\mathcal R\\). By definition of \\(\\mathcal R\\),\n\\begin{align}\n0<k_1<k_2,\\qquad B_1(k_1,k_2)=0,\\qquad B_2(k_1,k_2)=0.\n\\end{align}\nPremise (P3) gives a nonzero \\(\\Psi_{k_1,k_2}\\in\\mathcal A\\). Premise (P5) gives the sectorwise energy\n\\begin{align}\nE_{k_1,k_2}&=\\frac{\\hbar^2}{2m}(k_1^2+k_2^2).\n\\end{align}\nPremise (P4) then makes the same function a physical eigenfunction of \\(H\\). Therefore\n\\[\n\\left\\{\\frac{\\hbar^2}{2m}(k_1^2+k_2^2):(k_1,k_2)\\in\\mathcal R\\right\\}\n\\subseteq \\mathcal E_{\\mathrm{ABA}}.\n\\]\n\nNow prove necessity. Let \\(E\\in\\mathcal E_{\\mathrm{ABA}}\\). Then there exists a nonzero \\(\\Psi\\in\\mathcal A\\) with some ordered real rapidities \\(0<k_1<k_2\\). Since \\(\\Psi\\) is admissible, all its boundary and jump residuals vanish. By (P2),\n\\begin{align}\nB_1(k_1,k_2)&=0,\\\\\nB_2(k_1,k_2)&=0.\n\\end{align}\nThus \\((k_1,k_2)\\in\\mathcal R\\). By (P5), the corresponding energy is\n\\begin{align}\nE&=\\frac{\\hbar^2}{2m}(k_1^2+k_2^2),\n\\end{align}\nso\n\\[\n\\mathcal E_{\\mathrm{ABA}}\n\\subseteq\n\\left\\{\\frac{\\hbar^2}{2m}(k_1^2+k_2^2):(k_1,k_2)\\in\\mathcal R\\right\\}.\n\\]\nThe two inclusions give equality.\n\n\\section*{Final Result}\n\\[\n\\boxed{\n\\mathcal E_{\\mathrm{ABA}}=\n\\left\\{\\frac{\\hbar^2}{2m}(k_1^2+k_2^2):0<k_1<k_2,\\ B_1(k_1,k_2)=B_2(k_1,k_2)=0\\right\\}.\n}\n\\]\nThus, within the real-rapidity ABA class, the Bethe equations are both the construction rule and the no-spurious-root certificate.\n\\hfill\\(\\blacksquare\\)",
+  "deeper_reasoning_3": "\\section*{Claim}\nThe six-sector formula is not a decorative symmetry restatement; it is the constraint-propagation mechanism that reduces the physical odd-sector construction to two independent seed regions, \\(A_1\\) and \\(A_5\\). If the seeds satisfy the auxiliary matching conditions on the independent boundaries, the reconstructed wavefunction automatically has bosonic exchange symmetry, point-inversion oddness, and vanishing trace on \\(x_1+x_2=0\\).\n\n\\section*{Premises}\n\\[\n\\begin{aligned}\n\\text{(P1)}&\\quad A_1=\\{0<x_1<x_2\\le L/2\\},\\quad A_2=\\{0<x_2<x_1\\le L/2\\},\\\\\n\\text{(P2)}&\\quad A_3=\\{-L/2<x_1<x_2<0\\},\\quad A_4=\\{-L/2<x_2<x_1<0\\},\\\\\n\\text{(P3)}&\\quad A_5=\\{-L/2<x_1<0<x_2\\le L/2\\},\\\\\n&\\qquad A_6=\\{-L/2<x_2<0<x_1\\le L/2\\}.\\\\\n\\text{(P4)}&\\quad \\Psi=\\Psi^{(1)}\\text{ on }A_1,\\quad \\Psi=\\Psi^{(5)}\\text{ on }A_5.\\\\\n\\text{(P5)}&\\quad \\Psi(x_1,x_2)=\\Psi^{(1)}(x_2,x_1)\\text{ on }A_2.\\\\\n\\text{(P6)}&\\quad \\Psi(x_1,x_2)=-\\Psi^{(1)}(-x_2,-x_1)\\text{ on }A_3.\\\\\n\\text{(P7)}&\\quad \\Psi(x_1,x_2)=-\\Psi^{(1)}(-x_1,-x_2)\\text{ on }A_4.\\\\\n\\text{(P8)}&\\quad \\Psi(x_1,x_2)=\\Psi^{(5)}(x_2,x_1)\\text{ on }A_6.\\\\\n\\text{(P9)}&\\quad \\Psi^{(1)}\\text{ and }\\Psi^{(5)}\\text{ obey the seed boundary equalities that make adjacent traces agree.}\n\\end{aligned}\n\\]\n\n\\section*{Derivation}\nFor exchange symmetry, consider the sectors in pairs. If \\((x_1,x_2)\\in A_1\\), then \\((x_2,x_1)\\in A_2\\), so\n\\begin{align}\n\\Psi(x_2,x_1)&=\\Psi^{(1)}(x_1,x_2)=\\Psi(x_1,x_2).\n\\end{align}\nThe same argument with \\(A_5,A_6\\) gives exchange symmetry across mixed-sign sectors. For \\(A_3,A_4\\), if \\((x_1,x_2)\\in A_3\\), then \\((x_2,x_1)\\in A_4\\), and\n\\begin{align}\n\\Psi(x_2,x_1)&=-\\Psi^{(1)}(-x_2,-x_1)=\\Psi(x_1,x_2).\n\\end{align}\nThus\n\\begin{align}\n\\Psi(x_2,x_1)&=\\Psi(x_1,x_2)\n\\end{align}\non the union of the six sectors.\n\nFor mirror oddness, if \\((x_1,x_2)\\in A_1\\), then \\((-x_2,-x_1)\\in A_3\\), hence\n\\begin{align}\n\\Psi(-x_2,-x_1)&=-\\Psi^{(1)}(x_1,x_2)=-\\Psi(x_1,x_2).\n\\end{align}\nThe definitions on \\(A_2,A_3,A_4,A_5,A_6\\) give the same identity by the same sector pairing. Therefore\n\\begin{align}\n\\Psi(-x_2,-x_1)&=-\\Psi(x_1,x_2).\n\\end{align}\nCombining this with exchange symmetry gives point-inversion oddness:\n\\begin{align}\n\\Psi(-x_1,-x_2)\n&=\\Psi(-x_2,-x_1)\\\\\n&=-\\Psi(x_1,x_2).\n\\end{align}\nOn the auxiliary contact line \\(x_1+x_2=0\\), write \\(x_2=-x_1\\). Mirror oddness gives\n\\begin{align}\n\\Psi(x_1,-x_1)\n&=\\Psi(-(-x_1),-x_1)\\\\\n&=-\\Psi(x_1,-x_1),\n\\end{align}\nso, by continuity of the seed traces enforced by (P9),\n\\begin{align}\n\\Psi(x_1,-x_1)&=0.\n\\end{align}\nHence \\(\\delta(x_1+x_2)\\Psi=0\\).\n\n\\section*{Final Result}\n\\[\n\\boxed{\n\\text{two seed functions on }A_1,A_5\n\\Longrightarrow\n\\Psi(x_2,x_1)=\\Psi(x_1,x_2),\\quad\n\\Psi(-x_1,-x_2)=-\\Psi(x_1,x_2),\\quad\n\\delta(x_1+x_2)\\Psi=0.\n}\n\\]\nThus the six-sector reconstruction is the mechanism that makes the auxiliary ABA solution a physical odd-sector solution.\n\\hfill\\(\\blacksquare\\)",
+  "deeper_reasoning_4": "\\section*{Claim}\nThe large-\\(\\xi\\) expansion has the exact sign pattern required by the paper's diagnostic proposition: its \\(\\xi^{-1}\\) coefficient is negative and coincides with the derivative-delta first-order correction, while its \\(\\xi^{-2}\\) coefficient is positive; therefore the derivative-delta object cannot be treated as an ordinary nondegenerate Hermitian perturbing potential beyond first order.\n\n\\section*{Premises}\n\\[\n\\begin{aligned}\n\\text{(P1)}&\\quad \\xi>0,\\quad \\xi_B>0,\\quad \\eta_1>0,\\quad \\eta_2>0,\\quad \\eta_1\\ne\\eta_2.\\\\\n\\text{(P2)}&\\quad E_{\\mathrm{asymp}}=\\frac{\\hbar^2}{mL^2}\\left(\\epsilon(\\eta_1,\\eta_2)+\\epsilon(\\eta_2,\\eta_1)+R_3(\\xi)\\right),\\\\\n&\\qquad |R_3(\\xi)|\\le C\\xi^{-3}\\text{ for all sufficiently large }\\xi.\\\\\n\\text{(P3)}&\\quad \\epsilon(\\eta_I,\\eta_{II})\n=\\frac{\\eta_I^2}{2}+c_1(\\eta_I)\\xi^{-1}+c_2(\\eta_I,\\eta_{II})\\xi^{-2},\\\\\n\\text{(P4)}&\\quad c_1(\\eta_I)=-\\frac{2\\eta_I^2(\\eta_I^2+\\xi_B^2)}{\\eta_I^2+\\xi_B(2+\\xi_B)}.\\\\\n\\text{(P5)}&\\quad c_2(\\eta_I,\\eta_{II})\n=\\frac{2\\eta_I^2(\\eta_I^2+\\xi_B^2)N(\\eta_I,\\eta_{II})}{\\xi_B(\\eta_I^2+\\xi_B(2+\\xi_B))^3},\\\\\n\\text{(P6)}&\\quad N(\\eta_I,\\eta_{II})\n=\\eta_I^4(\\eta_{II}^2+3\\xi_B)\n+\\xi_B^2(2+\\xi_B)(3\\xi_B^2+\\eta_{II}^2(2+\\xi_B))\\\\\n&\\qquad\\qquad\\qquad\n+2\\eta_I^2\\xi_B(\\eta_{II}^2(2+\\xi_B)+\\xi_B(5+3\\xi_B)).\\\\\n\\text{(P7)}&\\quad \\text{The coefficient of }\\xi^{-1}\\text{ equals the first-order correction from}\\\\\n&\\qquad V=\\widetilde g\\,\\overleftarrow{\\partial}_{x_1-x_2}\\delta(x_1-x_2)\\overrightarrow{\\partial}_{x_1-x_2},\\quad\n\\widetilde g=-\\frac{\\hbar^4}{\\mu^2g}.\\\\\n\\text{(P8)}&\\quad \\text{For an ordinary nondegenerate Hermitian perturbation }W,\\text{ the second-order}\\\\\n&\\qquad\\text{ground-state correction is }\n\\sum_{n>0}\\frac{|\\langle n|W|0\\rangle|^2}{E_0^{(0)}-E_n^{(0)}}\\le 0.\n\\end{aligned}\n\\]\n\n\\section*{Derivation}\nFor \\(c_1\\), the numerator in (P4) is positive and the denominator is positive:\n\\begin{align}\n2\\eta_I^2(\\eta_I^2+\\xi_B^2)&>0,\\\\\n\\eta_I^2+\\xi_B(2+\\xi_B)&>0.\n\\end{align}\nTherefore\n\\begin{align}\nc_1(\\eta_I)&<0.\n\\end{align}\nThus the total \\(\\xi^{-1}\\) coefficient\n\\begin{align}\nC_1&:=c_1(\\eta_1)+c_1(\\eta_2)\n\\end{align}\nsatisfies\n\\begin{align}\nC_1&<0.\n\\end{align}\nBy (P7), this negative coefficient is exactly the first-order derivative-delta correction.\n\nFor \\(c_2\\), every summand in \\(N(\\eta_I,\\eta_{II})\\) is positive under (P1):\n\\begin{align}\n\\eta_I^4(\\eta_{II}^2+3\\xi_B)&>0,\\\\\n\\xi_B^2(2+\\xi_B)(3\\xi_B^2+\\eta_{II}^2(2+\\xi_B))&>0,\\\\\n2\\eta_I^2\\xi_B(\\eta_{II}^2(2+\\xi_B)+\\xi_B(5+3\\xi_B))&>0.\n\\end{align}\nHence\n\\begin{align}\nN(\\eta_I,\\eta_{II})&>0.\n\\end{align}\nThe numerator and denominator in (P5) are therefore positive, so\n\\begin{align}\nc_2(\\eta_I,\\eta_{II})&>0.\n\\end{align}\nConsequently\n\\begin{align}\nC_2&:=c_2(\\eta_1,\\eta_2)+c_2(\\eta_2,\\eta_1)>0.\n\\end{align}\nIf \\(V\\) were an ordinary nondegenerate Hermitian perturbing potential beyond first order, the sign rule (P8) would require the second-order correction to be nonpositive. But the exact expansion gives \\(C_2>0\\). Hence the ordinary-Hermitian interpretation contradicts the exact asymptotic coefficient.\n\n\\section*{Final Result}\n\\[\n\\boxed{\nC_1<0,\\quad C_2>0,\\quad\nC_1\\text{ agrees with the derivative-delta first-order term},\\quad\nV\\text{ is not an ordinary Hermitian perturbing potential beyond first order.}\n}\n\\]\n\\hfill\\(\\blacksquare\\)",
+  "deeper_metadata": {
+    "output_file": "deeper.json",
+    "revision_id": "deeper_03_v3",
+    "revision_intent": "Improve alignment after the prior 4.9/5.0 audit by making the construction certificate, spectrum identity, symmetry propagation, and asymptotic diagnostic more explicit while preserving strict JSON and LaTeX-compilation constraints.",
+    "input_files": [
+      "deeper_reasoning_pseudo_algorithm.md",
+      "core_03.json",
+      "goals_03.json"
+    ],
+    "rubric_interpretation": {
+      "top_level_shape": "Exactly paper_title, contiguous deeper_reasoning_1 through deeper_reasoning_4 string fields, and one deeper_metadata object.",
+      "proof_format": "Each deeper_reasoning_k value is a standalone LaTeX fragment intended to compile with only article, amsmath, and amssymb.",
+      "metadata_policy": "All audit, trace, revision, and residual-risk information is stored only inside deeper_metadata; proof content is not duplicated there."
+    },
+    "goal_trace": {
+      "G1_exact_real_rapidity_odd_sector_spectrum": [
+        "deeper_reasoning_1",
+        "deeper_reasoning_2",
+        "deeper_reasoning_3"
+      ],
+      "G2_large_repulsion_asymptotic_proposition": [
+        "deeper_reasoning_4"
+      ]
+    },
+    "entry_metadata": {
+      "deeper_reasoning_1": {
+        "title": "End-to-end Bethe-root-to-physical-eigenpair certificate",
+        "target_goal_component": "G1_exact_real_rapidity_odd_sector_spectrum",
+        "declared_source_set": [
+          "core_reasoning_1",
+          "core_reasoning_2",
+          "core_reasoning_3",
+          "core_reasoning_4",
+          "core_reasoning_5",
+          "goals_03 canonical_goal G1"
+        ],
+        "major_advancement_modes": [
+          "construction_certificate",
+          "method_to_goal_bridge",
+          "sufficiency_chain"
+        ],
+        "goal_alignment": "Shows that each ordered real Bethe root produces a periodic bosonic point-inversion-odd eigenfunction of the physical Hamiltonian with the quadratic energy.",
+        "scientific_payoff": "Connects the auxiliary nonlocal Hamiltonian trick, eight-wave kinetic degeneracy, boundary compatibility, and physical-sector projection into one exactness certificate.",
+        "nontrivial_advance_over_sources": "Chains several core lemmas into the complete G1 success predicate rather than re-proving a single local symmetry or contact-term fact.",
+        "formal_sharpness": "Restricts the conclusion to repulsive parameters, ordered real rapidities, and the explicit ABA seed construction selected by B1=B2=0.",
+        "low_value_rejection_audit": "Avoids duplicating the full explicit trigonometric seed formula, which is already represented in goals_03 and would reduce clarity.",
+        "selection_score": 0.99,
+        "controlled_external_lemmas": [
+          "Distributional annihilation of delta(u) by a continuous function with zero trace at u=0",
+          "Piecewise sector eigenfunctions satisfying the matching conditions define an eigenfunction with delta interactions"
+        ],
+        "known_residual_risks_and_mitigation": "The explicit seed substitution is summarised as a compatibility premise rather than expanded term by term; this is mitigated by making the residual role of B1 and B2 explicit."
+      },
+      "deeper_reasoning_2": {
+        "title": "Necessary-and-sufficient spectral identity inside the declared real-rapidity ABA class",
+        "target_goal_component": "G1_exact_real_rapidity_odd_sector_spectrum",
+        "declared_source_set": [
+          "core_reasoning_4",
+          "core_reasoning_5",
+          "goals_03 canonical_goal G1"
+        ],
+        "major_advancement_modes": [
+          "two_inclusion_proof",
+          "no_spurious_root_certificate",
+          "ansatz_scope_control"
+        ],
+        "goal_alignment": "Identifies the exact ABA-produced odd-sector spectral set with the quadratic image of the Bethe-root set.",
+        "scientific_payoff": "Clarifies that B1=B2=0 are complete compatibility conditions for the construction class, not merely sufficient equations generating examples.",
+        "nontrivial_advance_over_sources": "Turns the root-set definition and energy formula into a formal equality of spectral sets with explicit necessity and sufficiency directions.",
+        "formal_sharpness": "Completeness is explicitly scoped to the real-rapidity eight-plane-wave ABA class, avoiding unsupported claims about complex rapidities or the even sector.",
+        "low_value_rejection_audit": "Rejects a weaker derivation that would only restate the energy formula without proving the two set inclusions.",
+        "selection_score": 0.985,
+        "controlled_external_lemmas": [
+          "Boundary and jump residuals vanish if and only if the two reduced Bethe equations vanish"
+        ],
+        "known_residual_risks_and_mitigation": "The global spectral completeness is not claimed beyond the declared ABA class; this avoids overreach relative to the goals file."
+      },
+      "deeper_reasoning_3": {
+        "title": "Six-sector reconstruction as a constraint-propagation theorem",
+        "target_goal_component": "G1_exact_real_rapidity_odd_sector_spectrum",
+        "declared_source_set": [
+          "core_reasoning_1",
+          "core_reasoning_2",
+          "core_reasoning_3",
+          "goals_03 canonical_goal G1"
+        ],
+        "major_advancement_modes": [
+          "symmetry_propagation",
+          "constraint_reduction",
+          "auxiliary_contact_removal"
+        ],
+        "goal_alignment": "Shows why two seed regions suffice to enforce bosonic symmetry, point-inversion oddness, and removal of the auxiliary nonlocal contact term.",
+        "scientific_payoff": "Explains the structural reason the Asymmetric Bethe Ansatz can solve the physical odd sector using a reduced sector ansatz.",
+        "nontrivial_advance_over_sources": "Combines sector reconstruction, exchange symmetry, mirror oddness, and delta-line annihilation into a single mechanism-level result.",
+        "formal_sharpness": "Uses only the six sectors and seed-trace compatibility; does not assume unproved properties outside the reconstructed domain.",
+        "low_value_rejection_audit": "Rejects a purely verbal explanation of the six-sector formula and gives an explicit symmetry-chain proof instead.",
+        "selection_score": 0.975,
+        "controlled_external_lemmas": [
+          "Continuity of matched sector traces gives a well-defined trace on x1+x2=0"
+        ],
+        "known_residual_risks_and_mitigation": "Trace compatibility is taken from the seed matching system; the proof focuses on propagation rather than re-expanding seed algebra."
+      },
+      "deeper_reasoning_4": {
+        "title": "Large-repulsion sign diagnostic for the derivative-delta pseudopotential",
+        "target_goal_component": "G2_large_repulsion_asymptotic_proposition",
+        "declared_source_set": [
+          "core_reasoning_6",
+          "goals_03 canonical_goal G2"
+        ],
+        "major_advancement_modes": [
+          "asymptotic_sign_proof",
+          "perturbation_interpretation_test",
+          "instrumental_goal_bridge"
+        ],
+        "goal_alignment": "Proves the sign structure required by G2 and connects the positive xi^{-2} coefficient to the non-Hermitian-potential diagnostic.",
+        "scientific_payoff": "Turns the large-xi formula into an interpretable statement about when the derivative-delta object is and is not a legitimate perturbative model.",
+        "nontrivial_advance_over_sources": "Extends the coefficient sign result into the second-order Hermitian perturbation contradiction that gives the result its diagnostic value.",
+        "formal_sharpness": "Applies only for xi_B>0 and distinct positive eta_1, eta_2 in the large-positive-xi regime with a controlled O(xi^{-3}) remainder.",
+        "low_value_rejection_audit": "Avoids only reporting the expansion formula; proves the coefficient signs and the perturbation-theoretic consequence.",
+        "selection_score": 0.99,
+        "controlled_external_lemmas": [
+          "Nondegenerate Hermitian second-order perturbation corrections have denominators E0^(0)-En^(0)<=0 for excited states"
+        ],
+        "known_residual_risks_and_mitigation": "The first-order equality with the derivative-delta bilinear form is sourced as a premise from goals_03; the proof contributes the sign and contradiction chain."
+      }
+    },
+    "rejected_low_value_candidates": [
+      {
+        "candidate": "A proof centred on the special condition a_B=-a/2, equivalently g_B=-g",
+        "reason": "This lies outside the repulsive g>0, g_B>0 goal scope and would distract from the completed G1/G2 objectives."
+      },
+      {
+        "candidate": "A standalone re-proof of the eight rapidity orbit",
+        "reason": "Already handled by core_reasoning_4; deeper reasoning should use it as part of a higher-level exactness or spectral identity proof."
+      },
+      {
+        "candidate": "A verbatim expansion of the full explicit seed functions",
+        "reason": "Would increase bulk without improving derivational value; the goals file already operationalises the seed formula."
+      }
+    ],
+    "global_alignment_audit": {
+      "rubric_shape": "Pass: exact top-level key classes, contiguous deeper_reasoning_1 through deeper_reasoning_4, and one deeper_metadata field.",
+      "latex_compile_policy": "Pass: proof strings use only standard article, amsmath, and amssymb constructs.",
+      "core_reasoning_alignment": "Pass: entries chain core_reasoning_1 through core_reasoning_6 into goal-level sufficiency, necessity, propagation, and asymptotic-diagnostic results.",
+      "goals_alignment": "Pass: G1 is represented by construction, spectrum identity, and six-sector mechanism; G2 is represented by the large-xi sign and perturbation diagnostic.",
+      "high_value_reasoning": "Improved: the revision emphasises certificates, set equality, no-spurious-root scope, and scientific interpretation rather than isolated lemma restatement."
+    },
+    "known_residual_risks_and_mitigation": {
+      "seed_algebra_expansion": "The term-by-term verification of the explicit trigonometric seeds is still compressed into a compatibility premise to preserve readability; the proof now states exactly what role that premise plays.",
+      "ansatz_completeness_scope": "Completeness is intentionally limited to the declared real-rapidity ABA class, matching the extracted goal and avoiding claims about complex rapidities or the even sector.",
+      "asymptotic_bilinear_form": "The bilinear first-order equality is not re-derived from integrals; it is used as a sourced premise and combined with a new sign-and-contradiction derivation."
+    }
+  }
+}

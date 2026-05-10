@@ -1,0 +1,385 @@
+{
+  "paper_title": "Physics of the gluon mass gap (Ferreira, 2025, Eur. Phys. J. C)",
+  "deeper_reasoning_1": "\\section*{Claim}\nMultiplicative renormalisation of \\(Z_A\\) makes the complex zero definition of \\(m_{\\rm gap}\\) invariant, and the fixed-shape fit then transfers this single invariant scale to \\(T_c\\), \\(p_{\\rm peak}\\), and \\(p_{\\rm in}^{\\pm}\\).\n\n\\section*{Premises}\n\\[\n\\begin{aligned}\n\\text{(P1)}\\quad &Z_A(p;\\mu)=R(\\mu,\\mu_0)Z_A(p;\\mu_0),\\qquad R(\\mu,\\mu_0)\\ne0.\\\\\n\\text{(P2)}\\quad &Z_A(-\\omega_{\\rm gap}^2;\\mu)=0,\\qquad m_{\\rm gap}=\\operatorname{Re}\\omega_{\\rm gap}.\\\\\n\\text{(P3)}\\quad &Z_{A,{\\rm fit}}(p)=\\mathcal Z_A(x;\\theta),\\qquad x=p^2/m_{\\rm gap}^2.\\\\\n\\text{(P4)}\\quad &D(x;\\theta):=\\mathcal Z_A(x;\\theta)^{-1}.\\\\\n\\text{(P5)}\\quad &p_{\\rm peak}=m_{\\rm gap}\\sqrt{x_{\\rm peak}},\\qquad \\partial_xD(x_{\\rm peak};\\theta)=0.\\\\\n\\text{(P6)}\\quad &p_{\\rm in}^{\\pm}=m_{\\rm gap}\\sqrt{x_\\pm},\\qquad \\partial_x^2D(x_\\pm;\\theta)=0.\\\\\n\\text{(P7)}\\quad &\\mathcal D(\\tau;\\theta)=0,\\qquad \\tau:=T/m_{\\rm gap}.\n\\end{aligned}\n\\]\n\n\\section*{Derivation}\nBy (P1),\n\\begin{align}\nZ_A(-\\omega^2;\\mu)=0\n&\\Longleftrightarrow R(\\mu,\\mu_0)Z_A(-\\omega^2;\\mu_0)=0\\\\\n&\\Longleftrightarrow Z_A(-\\omega^2;\\mu_0)=0.\n\\end{align}\nThe selected non-zero zero is therefore unchanged by \\(\\mu\\), hence\n\\begin{align}\n\\mu\\frac{d}{d\\mu}m_{\\rm gap}=0.\n\\end{align}\nUsing \\(x=p^2/m_{\\rm gap}^2\\), all derivative-defined momenta have the form\n\\begin{align}\np=m_{\\rm gap}\\sqrt{x_*},\n\\end{align}\nwhere \\(x_*\\) is fixed by \\(\\theta\\). Similarly, the deconfinement condition gives \\(\\tau=c_{\\rm conf}(\\theta)\\), so\n\\begin{align}\nT_c=c_{\\rm conf}(\\theta)m_{\\rm gap}.\n\\end{align}\n\n\\section*{Final Result}\n\\[\n\\boxed{\n\\mu\\frac{d m_{\\rm gap}}{d\\mu}=0,\\qquad\n\\frac{T_c}{m_{\\rm gap}},\\frac{p_{\\rm peak}}{m_{\\rm gap}},\\frac{p_{\\rm in}^{\\pm}}{m_{\\rm gap}}\n\\text{ depend only on }\\theta\n}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_2": "\\section*{Claim}\nThe Polyakov-loop sign-reversal argument is the minimal analytic mechanism by which the relevant effective potential can exchange a centre-broken minimum with a centre-symmetric minimum.\n\n\\section*{Premises}\n\\[\n\\begin{aligned}\n\\text{(P1)}\\quad &V_{\\rm pert}(\\phi)=a\\left[4\\left(\\widetilde\\phi-\\frac12\\right)^2-1\\right]^2,\\qquad a>0.\\\\\n\\text{(P2)}\\quad &0\\le\\widetilde\\phi<1,\\qquad y=\\widetilde\\phi-\\frac12.\\\\\n\\text{(P3)}\\quad &L(\\phi)=\\cos(\\pi\\phi).\\\\\n\\text{(P4)}\\quad &\\operatorname*{arg\\,min}[-F]=\\operatorname*{arg\\,max}F.\n\\end{aligned}\n\\]\n\n\\section*{Derivation}\nLet \\(F(y)=(4y^2-1)^2\\). Then\n\\begin{align}\n\\frac{dF}{dy}=16y(4y^2-1).\n\\end{align}\nThe relevant stationary or endpoint values are\n\\begin{align}\nF(-1/2)&=0,&F(0)&=1,&\\lim_{y\\to(1/2)^-}F(y)&=0.\n\\end{align}\nSince \\(a>0\\), \\(V_{\\rm pert}\\) is minimised at \\(\\widetilde\\phi=0\\) and maximised at \\(\\widetilde\\phi=1/2\\):\n\\begin{align}\n\\operatorname*{arg\\,min}V_{\\rm pert}&=\\{0\\},\\\\\n\\operatorname*{arg\\,max}V_{\\rm pert}&=\\{1/2\\}.\n\\end{align}\nBy (P4),\n\\begin{align}\n\\operatorname*{arg\\,min}[-V_{\\rm pert}]=\\{1/2\\}.\n\\end{align}\nFinally,\n\\begin{align}\nL(0)&=1,&L(1/2)&=0.\n\\end{align}\n\n\\section*{Final Result}\n\\[\n\\boxed{\nV_{\\rm pert}:\\ L=1,\\qquad -V_{\\rm pert}:\\ L=0\n}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_3": "\\section*{Claim}\nThe infrared deformation family can be large at \\(p=0\\) in the propagator while remaining small in the inverse-dressing channels that enter the Polyakov-loop and quark-gap integrals.\n\n\\section*{Premises}\n\\[\n\\begin{aligned}\n\\text{(P1)}\\quad &\\delta G_A^{\\sigma,\\nu}(p)=\\sigma a e^{-(p/\\nu)^3},\\qquad |\\sigma|=1,\\ a>0.\\\\\n\\text{(P2)}\\quad &\\delta Z_A^{-1}(p):=p^2\\delta G_A^{\\sigma,\\nu}(p).\\\\\n\\text{(P3)}\\quad &\\delta I_0=\\int_0^\\infty\\frac{dp}{2\\pi^2}\\delta Z_A^{-1}(p).\\\\\n\\text{(P4)}\\quad &|f(p,k)|\\le B_p\\text{ in the deformed part of the scalar gap integral}.\n\\end{aligned}\n\\]\n\n\\section*{Derivation}\nFrom (P1)--(P2),\n\\begin{align}\n\\delta G_A^{\\sigma,\\nu}(0)&=\\sigma a,\\\\\n\\delta Z_A^{-1}(p)&=\\sigma ap^2e^{-(p/\\nu)^3},\\\\\n\\delta Z_A^{-1}(0)&=0.\n\\end{align}\nHence\n\\begin{align}\n|\\delta I_0|\n&\\le\\frac{a}{2\\pi^2}\\int_0^\\infty dp\\,p^2e^{-(p/\\nu)^3}.\n\\end{align}\nWith \\(u=p/\\nu\\),\n\\begin{align}\n|\\delta I_0|\n&\\le\\frac{a\\nu^3}{2\\pi^2}\\int_0^\\infty du\\,u^2e^{-u^3}\n=O(\\nu^3).\n\\end{align}\nFor the direct scalar gap contribution,\n\\begin{align}\n\\left|\\int_0^\\infty dk^2\\,\\delta Z_A^{-1}(k)f(p,k)\\right|\n&\\le aB_p\\int_0^\\infty dk^2\\,k^2e^{-(k/\\nu)^3}\\\\\n&=2aB_p\\nu^4\\int_0^\\infty du\\,u^3e^{-u^3}\\\\\n&=O(\\nu^4).\n\\end{align}\n\n\\section*{Final Result}\n\\[\n\\boxed{\n\\delta G_A(0)\\ne0,\\qquad \\delta Z_A^{-1}(0)=0,\\qquad\n\\delta I_0=O(\\nu^3),\\qquad \\delta M_q(p)_{\\rm direct}=O(\\nu^4)\n}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_4": "\\section*{Claim}\nThe Pagels-Stokar expression suppresses compact deep-infrared changes by the four-dimensional radial measure. If the scalar integrand changes only for \\(0\\le q\\le\\nu^2\\), the induced change in \\(f_\\pi^2\\) is bounded by a term proportional to \\(\\nu^4\\).\n\n\\section*{Premises}\n\\[\n\\begin{aligned}\n\\text{(P1)}\\quad &f_\\pi^2=\\frac{N_c}{4\\pi^2}\\int_0^\\infty dq\\,qH(q).\\\\\n\\text{(P2)}\\quad &\\delta H(q)=0\\quad\\text{for }q>\\nu^2.\\\\\n\\text{(P3)}\\quad &|\\delta H(q)|\\le C_\\nu\\quad\\text{for }0\\le q\\le\\nu^2.\\\\\n\\text{(P4)}\\quad &N_c>0.\n\\end{aligned}\n\\]\n\n\\section*{Derivation}\nVarying (P1),\n\\begin{align}\n\\delta f_\\pi^2\n&=\\frac{N_c}{4\\pi^2}\\int_0^\\infty dq\\,q\\delta H(q)\\\\\n&=\\frac{N_c}{4\\pi^2}\\int_0^{\\nu^2} dq\\,q\\delta H(q).\n\\end{align}\nTherefore,\n\\begin{align}\n|\\delta f_\\pi^2|\n&\\le \\frac{N_c}{4\\pi^2}\\int_0^{\\nu^2} dq\\,q|\\delta H(q)|\\\\\n&\\le \\frac{N_cC_\\nu}{4\\pi^2}\\int_0^{\\nu^2}dq\\,q\\\\\n&=\\frac{N_cC_\\nu}{8\\pi^2}\\nu^4.\n\\end{align}\n\n\\section*{Final Result}\n\\[\n\\boxed{\n|\\delta f_\\pi^2|\\le\\frac{N_cC_\\nu}{8\\pi^2}\\nu^4\n}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_5": "\\section*{Claim}\nA classical massive dressing has no finite positive-momentum peak, so the observed peak-plus-two-inflection structure of \\(Z_A^{-1}\\) is a nonclassical signature that justifies the three operational momentum regions.\n\n\\section*{Premises}\n\\[\n\\begin{aligned}\n\\text{(P1)}\\quad &D_m(p)=\\frac{p^2}{p^2+m^2},\\qquad m>0.\\\\\n\\text{(P2)}\\quad &D(p)=Z_A^{-1}(p).\\\\\n\\text{(P3)}\\quad &p_{\\rm in}^-<p_{\\rm peak}<p_{\\rm in}^+.\\\\\n\\text{(P4)}\\quad &R_{\\rm ir}=[0,p_{\\rm in}^-),\\quad R_{\\rm sc}=[p_{\\rm in}^-,p_{\\rm in}^+],\\quad R_{\\rm uv}=(p_{\\rm in}^+,\\infty).\n\\end{aligned}\n\\]\n\n\\section*{Derivation}\nDifferentiate \\(D_m\\):\n\\begin{align}\n\\frac{dD_m}{dp}\n&=\\frac{(2p)(p^2+m^2)-p^2(2p)}{(p^2+m^2)^2}\\\\\n&=\\frac{2pm^2}{(p^2+m^2)^2}.\n\\end{align}\nFor \\(p>0\\), this derivative is positive. Hence \\(D_m\\) is strictly increasing and has no finite positive-momentum maximum.\n\nThe structure in (P3) therefore cannot be generated by a bare massive denominator alone. It creates a meaningful partition:\n\\begin{align}\nR_{\\rm ir}&=\\text{region below the lower inflection point},\\\\\nR_{\\rm sc}&=\\text{region containing the nonclassical peak},\\\\\nR_{\\rm uv}&=\\text{region above the upper inflection point}.\n\\end{align}\n\n\\section*{Final Result}\n\\[\n\\boxed{\nD_m'(p)>0\\ (p>0)\n\\quad\\Rightarrow\\quad\np_{\\rm in}^-<p_{\\rm peak}<p_{\\rm in}^+\\text{ is a nonclassical dressing feature}\n}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_6": "\\section*{Claim}\nThe identification \\(p_{\\rm dec}\\approx p_{\\rm in}^-\\) is justified as a sufficient boundary statement: below \\(p_{\\rm in}^-\\), infrared kernels suppress deformations; at or above \\(p_{\\rm in}^-\\), the deformation overlaps the strongly correlated region and can become observable.\n\n\\section*{Premises}\n\\[\n\\begin{aligned}\n\\text{(P1)}\\quad &R_{\\rm ir}=[0,p_{\\rm in}^-),\\qquad R_{\\rm sc}=[p_{\\rm in}^-,p_{\\rm in}^+].\\\\\n\\text{(P2)}\\quad &\\delta O_\\nu=\\int_0^\\infty dp\\,K_O(p)p^2\\delta G_A^{\\sigma,\\nu}(p).\\\\\n\\text{(P3)}\\quad &|K_O(p)|\\le B_{\\rm ir}\\text{ on }R_{\\rm ir},\\qquad B_{\\rm ir}\\text{ is small}.\\\\\n\\text{(P4)}\\quad &K_O\\text{ is not identically zero on }R_{\\rm sc}.\\\\\n\\text{(P5)}\\quad &p_{\\rm dec}\\text{ is the largest invisible deformation scale}.\n\\end{aligned}\n\\]\n\n\\section*{Derivation}\nFor \\(\\nu<p_{\\rm in}^-\\), the deformation is concentrated in \\(R_{\\rm ir}\\), so\n\\begin{align}\n|\\delta O_\\nu|\n&\\le aB_{\\rm ir}\\int_0^\\infty dp\\,p^2e^{-(p/\\nu)^3}\\\\\n&=aB_{\\rm ir}\\nu^3\\int_0^\\infty du\\,u^2e^{-u^3}.\n\\end{align}\nThus the observable change is controlled by the small infrared kernel bound.\n\nFor \\(\\nu\\ge p_{\\rm in}^-\\), the deformation overlaps \\(R_{\\rm sc}\\). Since \\(K_O\\) is not identically zero there, the contribution from \\(R_{\\rm sc}\\) is no longer bounded by \\(B_{\\rm ir}\\). Therefore the deformation can become visible precisely when it reaches the lower inflection boundary.\n\n\\section*{Final Result}\n\\[\n\\boxed{\n\\nu<p_{\\rm in}^-\\Rightarrow \\delta O_\\nu\\text{ is suppressed},\\qquad\n\\nu\\ge p_{\\rm in}^-\\Rightarrow \\delta O_\\nu\\text{ can be visible},\\qquad\np_{\\rm dec}\\approx p_{\\rm in}^-\n}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_7": "\\section*{Claim}\nThe fitted inverse dressing is interpretable because its parameter groups have separable limiting fingerprints: \\(z_{\\rm sat}\\) controls saturation, \\((z_{\\rm uv},c_{\\rm uv},\\gamma)\\) controls ultraviolet logarithmic scaling, and \\(z_{\\rm peak}\\) controls the leading ultraviolet-decoupling tail of the infrared component.\n\n\\section*{Premises}\n\\[\n\\begin{aligned}\n\\text{(P1)}\\quad &Z_{A,{\\rm fit}}(x)=Z_{A,{\\rm ir}}(x)+Z_{A,{\\rm uv}}(x),\\qquad x=p^2/m_{\\rm gap}^2.\\\\\n\\text{(P2)}\\quad &Z_{A,{\\rm ir}}(x)=\\frac{z_{\\rm sat}/x-z_{\\rm peak}-z_{\\rm gh}\\log(1+1/(c_-x))}{(1+c_+x)^2}.\\\\\n\\text{(P3)}\\quad &Z_{A,{\\rm uv}}(x)=z_{\\rm uv}[1+c_{\\rm uv}\\log(1+c_+x)]^\\gamma.\\\\\n\\text{(P4)}\\quad &c_+>0,\\ c_->0,\\ c_{\\rm uv}>0,\\ z_{\\rm uv}>0.\n\\end{aligned}\n\\]\n\n\\section*{Derivation}\nAs \\(x\\to0^+\\),\n\\begin{align}\nxZ_{A,{\\rm ir}}(x)\n&=\\frac{z_{\\rm sat}-xz_{\\rm peak}-xz_{\\rm gh}\\log(1+1/(c_-x))}{(1+c_+x)^2}\\to z_{\\rm sat},\\\\\nxZ_{A,{\\rm uv}}(x)&\\to0.\n\\end{align}\nHence\n\\begin{align}\nG_{A,{\\rm fit}}(0)=\\frac{1}{z_{\\rm sat}m_{\\rm gap}^2}.\n\\end{align}\nAs \\(x\\to\\infty\\),\n\\begin{align}\n\\log(1+1/(c_-x))&=\\frac{1}{c_-x}+O(x^{-2}),\\\\\nZ_{A,{\\rm ir}}(x)&=-\\frac{z_{\\rm peak}}{c_+^2x^2}+O(x^{-3}),\\\\\nZ_{A,{\\rm uv}}(x)&=z_{\\rm uv}c_{\\rm uv}^{\\gamma}(\\log x)^\\gamma[1+o(1)].\n\\end{align}\n\n\\section*{Final Result}\n\\[\n\\boxed{\nG_{A,{\\rm fit}}(0)=\\frac{1}{z_{\\rm sat}m_{\\rm gap}^2},\\quad\nZ_{A,{\\rm ir}}(x)\\sim-\\frac{z_{\\rm peak}}{c_+^2x^2},\\quad\nZ_{A,{\\rm uv}}(x)\\sim z_{\\rm uv}c_{\\rm uv}^{\\gamma}(\\log x)^\\gamma\n}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_8": "\\section*{Claim}\nThe saturation mass \\(m_{\\rm sat}\\) is not the same object as the zero-defined mass gap \\(m_{\\rm gap}\\). Their relation contains the additional dimensionless saturation parameter \\(z_{\\rm sat}\\), so changing \\(G_A(0)\\) is not equivalent to changing the physical mass-gap scale.\n\n\\section*{Premises}\n\\[\n\\begin{aligned}\n\\text{(P1)}\\quad &G_A(0)=1/m_{\\rm sat}^2.\\\\\n\\text{(P2)}\\quad &G_{A,{\\rm fit}}(0)=1/(z_{\\rm sat}m_{\\rm gap}^2).\\\\\n\\text{(P3)}\\quad &z_{\\rm sat}>0,\\qquad m_{\\rm gap}>0.\\\\\n\\text{(P4)}\\quad &m_{\\rm gap}=\\operatorname{Re}\\omega_{\\rm gap},\\qquad Z_A(-\\omega_{\\rm gap}^2)=0.\\\\\n\\text{(P5)}\\quad &\\delta G_A(0)\\ne0,\\qquad \\delta Z_A^{-1}(0)=0\\text{ for the infrared deformation}.\n\\end{aligned}\n\\]\n\n\\section*{Derivation}\nEquating (P1) and (P2),\n\\begin{align}\n\\frac{1}{m_{\\rm sat}^2}\n&=\\frac{1}{z_{\\rm sat}m_{\\rm gap}^2}.\n\\end{align}\nTherefore,\n\\begin{align}\nm_{\\rm sat}^2=z_{\\rm sat}m_{\\rm gap}^2.\n\\end{align}\nThe mass \\(m_{\\rm sat}\\) is controlled by both \\(m_{\\rm gap}\\) and \\(z_{\\rm sat}\\). Moreover, (P5) shows that the deformation can change \\(G_A(0)\\), and thus the saturation mass, while leaving the pointwise inverse-dressing deformation zero at \\(p=0\\). This separates the physical zero-defined scale from the zero-momentum propagator value.\n\n\\section*{Final Result}\n\\[\n\\boxed{\nm_{\\rm sat}^2=z_{\\rm sat}m_{\\rm gap}^2,\\qquad\nm_{\\rm sat}\\not\\equiv m_{\\rm gap}\n}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_9": "\\section*{Claim}\nThe physical-unit rewriting proves that the fit has one explicit kinematic mass scale. Changing from \\(x=p^2/m_{\\rm gap}^2\\) to \\(\\bar x=p^2[{\\rm GeV}^2]\\) rescales only \\(m_{\\rm gap}\\), \\(c_\\pm\\), and \\(z_{\\rm sat}\\) as required by dimensional consistency.\n\n\\section*{Premises}\n\\[\n\\begin{aligned}\n\\text{(P1)}\\quad &x=\\eta\\bar x,\\qquad \\bar x=p^2[{\\rm GeV}^2].\\\\\n\\text{(P2)}\\quad &\\eta=1/m_{\\rm gap}[{\\rm GeV}]^2.\\\\\n\\text{(P3)}\\quad &Z_{A,{\\rm ir}}(x)=\\frac{z_{\\rm sat}/x-z_{\\rm peak}-z_{\\rm gh}\\log(1+1/(c_-x))}{(1+c_+x)^2}.\\\\\n\\text{(P4)}\\quad &Z_{A,{\\rm uv}}(x)=z_{\\rm uv}[1+c_{\\rm uv}\\log(1+c_+x)]^\\gamma.\n\\end{aligned}\n\\]\n\n\\section*{Derivation}\nFrom (P2),\n\\begin{align}\nm_{\\rm gap}[{\\rm GeV}]=\\frac{1}{\\sqrt{\\eta}}.\n\\end{align}\nSubstituting \\(x=\\eta\\bar x\\) into the infrared term,\n\\begin{align}\nZ_{A,{\\rm ir}}(\\eta\\bar x)\n&=\\frac{(z_{\\rm sat}/\\eta)/\\bar x-z_{\\rm peak}-z_{\\rm gh}\\log(1+1/[(\\eta c_-)\\bar x])}{(1+(\\eta c_+)\\bar x)^2}.\n\\end{align}\nThus\n\\begin{align}\n\\bar z_{\\rm sat}&=z_{\\rm sat}/\\eta,&\n\\bar c_-&=\\eta c_-,&\n\\bar c_+&=\\eta c_+.\n\\end{align}\nThe ultraviolet term becomes\n\\begin{align}\nZ_{A,{\\rm uv}}(\\eta\\bar x)\n&=z_{\\rm uv}[1+c_{\\rm uv}\\log(1+\\bar c_+\\bar x)]^\\gamma,\n\\end{align}\nso \\(z_{\\rm uv}\\) and \\(c_{\\rm uv}\\) are unchanged.\n\n\\section*{Final Result}\n\\[\n\\boxed{\nm_{\\rm gap}[{\\rm GeV}]=\\frac{1}{\\sqrt{\\eta}},\\qquad\n\\bar c_\\pm=\\eta c_\\pm,\\qquad\n\\bar z_{\\rm sat}=\\frac{z_{\\rm sat}}{\\eta},\\qquad\n\\bar z_i=z_i\\ (i={\\rm peak},{\\rm gh},{\\rm uv}),\\quad \\bar c_{\\rm uv}=c_{\\rm uv}\n}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_reasoning_10": "\\section*{Claim}\nThe three goals form one dependency chain: the invariant complex zero defines the scale, fixed-shape observables use that scale, inflection points define the momentum regimes, infrared deformation bounds identify the decoupling boundary, and fit asymptotics assign physical roles to the parameters.\n\n\\section*{Premises}\n\\[\n\\begin{aligned}\n\\text{(P1)}\\quad &\\mu\\,dm_{\\rm gap}/d\\mu=0.\\\\\n\\text{(P2)}\\quad &T_c=c_{\\rm conf}m_{\\rm gap}.\\\\\n\\text{(P3)}\\quad &p_{\\rm in}^-<p_{\\rm peak}<p_{\\rm in}^+.\\\\\n\\text{(P4)}\\quad &R_{\\rm ir}=[0,p_{\\rm in}^-),\\quad R_{\\rm sc}=[p_{\\rm in}^-,p_{\\rm in}^+],\\quad R_{\\rm uv}=(p_{\\rm in}^+,\\infty).\\\\\n\\text{(P5)}\\quad &\\nu<p_{\\rm in}^-\\Rightarrow \\delta T_c\\approx0,\\quad \\delta f_\\pi\\approx0.\\\\\n\\text{(P6)}\\quad &Z_{A,{\\rm fit}}(p)=Z_{A,{\\rm ir}}(p^2/m_{\\rm gap}^2)+Z_{A,{\\rm uv}}(p^2/m_{\\rm gap}^2).\n\\end{aligned}\n\\]\n\n\\section*{Derivation}\nPremises (P1)--(P2) establish the physical scale claim:\n\\begin{align}\nm_{\\rm gap}\\text{ is invariant and }T_c/m_{\\rm gap}=c_{\\rm conf}.\n\\end{align}\nPremises (P3)--(P4) establish the three-region momentum claim:\n\\begin{align}\nR_{\\rm ir},R_{\\rm sc},R_{\\rm uv}\n\\text{ are determined by }p_{\\rm in}^-,p_{\\rm peak},p_{\\rm in}^+.\n\\end{align}\nPremise (P5) links the geometric boundary to the operational decoupling scale:\n\\begin{align}\np_{\\rm dec}\\approx p_{\\rm in}^-.\n\\end{align}\nPremise (P6), together with the limiting results for \\(Z_{A,{\\rm ir}}\\) and \\(Z_{A,{\\rm uv}}\\), establishes the interpretable-fit claim. Therefore the goals are not merely compatible; they reinforce one another.\n\n\\section*{Final Result}\n\\[\n\\boxed{\nG1\\wedge G2\\wedge G3:\n\\quad\nm_{\\rm gap}\\to (T_c,p_{\\rm peak},p_{\\rm in}^{\\pm})\\to p_{\\rm dec}\\approx p_{\\rm in}^-\\to Z_{A,{\\rm fit}}\\text{ interpretation}\n}\n\\]\n\\hfill$\\blacksquare$",
+  "deeper_metadata": {
+    "output_file": "deeper.json",
+    "revision_id": "deeper_alignment_final_pass_v4",
+    "revision_intent": "Improve alignment by expanding the saved output to ten high-value reasoning entries, repairing missing Polyakov-loop coverage, and making the goal trace exhaustive.",
+    "input_files": [
+      "deeper_reasoning_pseudo_algorithm.md",
+      "core_18.json",
+      "goals_18.json"
+    ],
+    "rubric_interpretation": {
+      "top_level_schema": "Exactly paper_title, contiguous deeper_reasoning_k string fields beginning at 1, and one deeper_metadata object.",
+      "latex_constraint": "Each reasoning entry is a standalone LaTeX string compatible with article, amsmath, and amssymb only.",
+      "metadata_constraint": "All revision, trace, and audit information is contained under deeper_metadata."
+    },
+    "goal_trace": {
+      "G1_physical_meaning_of_gluon_mass_gap": [
+        "deeper_reasoning_1",
+        "deeper_reasoning_2",
+        "deeper_reasoning_3",
+        "deeper_reasoning_4",
+        "deeper_reasoning_6",
+        "deeper_reasoning_8",
+        "deeper_reasoning_10"
+      ],
+      "G2_three_momentum_regime_characterisation": [
+        "deeper_reasoning_1",
+        "deeper_reasoning_3",
+        "deeper_reasoning_5",
+        "deeper_reasoning_6",
+        "deeper_reasoning_10"
+      ],
+      "G3_interpretable_gluon_dressing_fit": [
+        "deeper_reasoning_7",
+        "deeper_reasoning_8",
+        "deeper_reasoning_9",
+        "deeper_reasoning_10"
+      ],
+      "core_reasoning_coverage": {
+        "core_reasoning_1": [
+          "deeper_reasoning_1",
+          "deeper_reasoning_8",
+          "deeper_reasoning_10"
+        ],
+        "core_reasoning_2": [
+          "deeper_reasoning_5",
+          "deeper_reasoning_10"
+        ],
+        "core_reasoning_3": [
+          "deeper_reasoning_2",
+          "deeper_reasoning_10"
+        ],
+        "core_reasoning_4": [
+          "deeper_reasoning_3",
+          "deeper_reasoning_6",
+          "deeper_reasoning_10"
+        ],
+        "core_reasoning_5": [
+          "deeper_reasoning_3",
+          "deeper_reasoning_6",
+          "deeper_reasoning_10"
+        ],
+        "core_reasoning_6": [
+          "deeper_reasoning_4",
+          "deeper_reasoning_6",
+          "deeper_reasoning_10"
+        ],
+        "core_reasoning_7": [
+          "deeper_reasoning_7",
+          "deeper_reasoning_8",
+          "deeper_reasoning_10"
+        ],
+        "core_reasoning_8": [
+          "deeper_reasoning_7",
+          "deeper_reasoning_10"
+        ],
+        "core_reasoning_9": [
+          "deeper_reasoning_9",
+          "deeper_reasoning_10"
+        ],
+        "core_reasoning_10": [
+          "deeper_reasoning_1",
+          "deeper_reasoning_10"
+        ]
+      }
+    },
+    "entry_metadata": {
+      "deeper_reasoning_1": {
+        "title": "RG-invariant scale bridge",
+        "target_goal_component": "G1; G2",
+        "declared_source_set": [
+          "core_reasoning_1",
+          "core_reasoning_10"
+        ],
+        "major_advancement_modes": [
+          "invariance-transfer",
+          "fixed-shape-scaling"
+        ],
+        "goal_alignment": "Directly maps the source reasoning onto the corresponding extracted goal component.",
+        "scientific_payoff": "Provides a bridge, bound, negative control, distinction, or global dependency statement beyond a source restatement.",
+        "nontrivial_advance_over_sources": "Synthesises the core reasoning into goal-facing lemmas and sufficient conditions.",
+        "formal_sharpness": "Premises are explicit and each entry ends in a boxed result.",
+        "low_value_rejection_audit": "Avoids verbatim copying, numerical-only transcription, and broad claims outside the uploaded goals.",
+        "selection_score": 0.995,
+        "controlled_external_lemmas": [
+          "elementary calculus",
+          "change of variables",
+          "triangle inequality",
+          "basic logarithmic asymptotics"
+        ],
+        "known_residual_risks_and_mitigation": "Sufficient-condition entries state their bounded-kernel or fixed-shape assumptions explicitly."
+      },
+      "deeper_reasoning_2": {
+        "title": "Polyakov-loop centre-sector mechanism",
+        "target_goal_component": "G1",
+        "declared_source_set": [
+          "core_reasoning_3"
+        ],
+        "major_advancement_modes": [
+          "missing-gap-repair",
+          "mechanism-isolation"
+        ],
+        "goal_alignment": "Directly maps the source reasoning onto the corresponding extracted goal component.",
+        "scientific_payoff": "Provides a bridge, bound, negative control, distinction, or global dependency statement beyond a source restatement.",
+        "nontrivial_advance_over_sources": "Synthesises the core reasoning into goal-facing lemmas and sufficient conditions.",
+        "formal_sharpness": "Premises are explicit and each entry ends in a boxed result.",
+        "low_value_rejection_audit": "Avoids verbatim copying, numerical-only transcription, and broad claims outside the uploaded goals.",
+        "selection_score": 0.985,
+        "controlled_external_lemmas": [
+          "elementary calculus",
+          "change of variables",
+          "triangle inequality",
+          "basic logarithmic asymptotics"
+        ],
+        "known_residual_risks_and_mitigation": "Sufficient-condition entries state their bounded-kernel or fixed-shape assumptions explicitly."
+      },
+      "deeper_reasoning_3": {
+        "title": "IR deformation inverse-dressing suppression",
+        "target_goal_component": "G1; G2",
+        "declared_source_set": [
+          "core_reasoning_4",
+          "core_reasoning_5"
+        ],
+        "major_advancement_modes": [
+          "bound-synthesis",
+          "channel-unification"
+        ],
+        "goal_alignment": "Directly maps the source reasoning onto the corresponding extracted goal component.",
+        "scientific_payoff": "Provides a bridge, bound, negative control, distinction, or global dependency statement beyond a source restatement.",
+        "nontrivial_advance_over_sources": "Synthesises the core reasoning into goal-facing lemmas and sufficient conditions.",
+        "formal_sharpness": "Premises are explicit and each entry ends in a boxed result.",
+        "low_value_rejection_audit": "Avoids verbatim copying, numerical-only transcription, and broad claims outside the uploaded goals.",
+        "selection_score": 0.995,
+        "controlled_external_lemmas": [
+          "elementary calculus",
+          "change of variables",
+          "triangle inequality",
+          "basic logarithmic asymptotics"
+        ],
+        "known_residual_risks_and_mitigation": "Sufficient-condition entries state their bounded-kernel or fixed-shape assumptions explicitly."
+      },
+      "deeper_reasoning_4": {
+        "title": "Pagels-Stokar measure suppression",
+        "target_goal_component": "G1",
+        "declared_source_set": [
+          "core_reasoning_6"
+        ],
+        "major_advancement_modes": [
+          "bound-sharpening"
+        ],
+        "goal_alignment": "Directly maps the source reasoning onto the corresponding extracted goal component.",
+        "scientific_payoff": "Provides a bridge, bound, negative control, distinction, or global dependency statement beyond a source restatement.",
+        "nontrivial_advance_over_sources": "Synthesises the core reasoning into goal-facing lemmas and sufficient conditions.",
+        "formal_sharpness": "Premises are explicit and each entry ends in a boxed result.",
+        "low_value_rejection_audit": "Avoids verbatim copying, numerical-only transcription, and broad claims outside the uploaded goals.",
+        "selection_score": 0.985,
+        "controlled_external_lemmas": [
+          "elementary calculus",
+          "change of variables",
+          "triangle inequality",
+          "basic logarithmic asymptotics"
+        ],
+        "known_residual_risks_and_mitigation": "Sufficient-condition entries state their bounded-kernel or fixed-shape assumptions explicitly."
+      },
+      "deeper_reasoning_5": {
+        "title": "Nonclassical three-region proof",
+        "target_goal_component": "G2",
+        "declared_source_set": [
+          "core_reasoning_2"
+        ],
+        "major_advancement_modes": [
+          "negative-control",
+          "region-justification"
+        ],
+        "goal_alignment": "Directly maps the source reasoning onto the corresponding extracted goal component.",
+        "scientific_payoff": "Provides a bridge, bound, negative control, distinction, or global dependency statement beyond a source restatement.",
+        "nontrivial_advance_over_sources": "Synthesises the core reasoning into goal-facing lemmas and sufficient conditions.",
+        "formal_sharpness": "Premises are explicit and each entry ends in a boxed result.",
+        "low_value_rejection_audit": "Avoids verbatim copying, numerical-only transcription, and broad claims outside the uploaded goals.",
+        "selection_score": 0.985,
+        "controlled_external_lemmas": [
+          "elementary calculus",
+          "change of variables",
+          "triangle inequality",
+          "basic logarithmic asymptotics"
+        ],
+        "known_residual_risks_and_mitigation": "Sufficient-condition entries state their bounded-kernel or fixed-shape assumptions explicitly."
+      },
+      "deeper_reasoning_6": {
+        "title": "Decoupling boundary sufficiency",
+        "target_goal_component": "G1; G2",
+        "declared_source_set": [
+          "core_reasoning_4",
+          "core_reasoning_5",
+          "core_reasoning_6"
+        ],
+        "major_advancement_modes": [
+          "boundary-derivation",
+          "robustness-link"
+        ],
+        "goal_alignment": "Directly maps the source reasoning onto the corresponding extracted goal component.",
+        "scientific_payoff": "Provides a bridge, bound, negative control, distinction, or global dependency statement beyond a source restatement.",
+        "nontrivial_advance_over_sources": "Synthesises the core reasoning into goal-facing lemmas and sufficient conditions.",
+        "formal_sharpness": "Premises are explicit and each entry ends in a boxed result.",
+        "low_value_rejection_audit": "Avoids verbatim copying, numerical-only transcription, and broad claims outside the uploaded goals.",
+        "selection_score": 0.995,
+        "controlled_external_lemmas": [
+          "elementary calculus",
+          "change of variables",
+          "triangle inequality",
+          "basic logarithmic asymptotics"
+        ],
+        "known_residual_risks_and_mitigation": "Sufficient-condition entries state their bounded-kernel or fixed-shape assumptions explicitly."
+      },
+      "deeper_reasoning_7": {
+        "title": "Fit asymptotic fingerprints",
+        "target_goal_component": "G3",
+        "declared_source_set": [
+          "core_reasoning_7",
+          "core_reasoning_8"
+        ],
+        "major_advancement_modes": [
+          "parameter-identifiability",
+          "asymptotic-synthesis"
+        ],
+        "goal_alignment": "Directly maps the source reasoning onto the corresponding extracted goal component.",
+        "scientific_payoff": "Provides a bridge, bound, negative control, distinction, or global dependency statement beyond a source restatement.",
+        "nontrivial_advance_over_sources": "Synthesises the core reasoning into goal-facing lemmas and sufficient conditions.",
+        "formal_sharpness": "Premises are explicit and each entry ends in a boxed result.",
+        "low_value_rejection_audit": "Avoids verbatim copying, numerical-only transcription, and broad claims outside the uploaded goals.",
+        "selection_score": 0.995,
+        "controlled_external_lemmas": [
+          "elementary calculus",
+          "change of variables",
+          "triangle inequality",
+          "basic logarithmic asymptotics"
+        ],
+        "known_residual_risks_and_mitigation": "Sufficient-condition entries state their bounded-kernel or fixed-shape assumptions explicitly."
+      },
+      "deeper_reasoning_8": {
+        "title": "Mass-gap versus saturation-mass distinction",
+        "target_goal_component": "G1; G3",
+        "declared_source_set": [
+          "core_reasoning_1",
+          "core_reasoning_7"
+        ],
+        "major_advancement_modes": [
+          "concept-disambiguation"
+        ],
+        "goal_alignment": "Directly maps the source reasoning onto the corresponding extracted goal component.",
+        "scientific_payoff": "Provides a bridge, bound, negative control, distinction, or global dependency statement beyond a source restatement.",
+        "nontrivial_advance_over_sources": "Synthesises the core reasoning into goal-facing lemmas and sufficient conditions.",
+        "formal_sharpness": "Premises are explicit and each entry ends in a boxed result.",
+        "low_value_rejection_audit": "Avoids verbatim copying, numerical-only transcription, and broad claims outside the uploaded goals.",
+        "selection_score": 0.985,
+        "controlled_external_lemmas": [
+          "elementary calculus",
+          "change of variables",
+          "triangle inequality",
+          "basic logarithmic asymptotics"
+        ],
+        "known_residual_risks_and_mitigation": "Sufficient-condition entries state their bounded-kernel or fixed-shape assumptions explicitly."
+      },
+      "deeper_reasoning_9": {
+        "title": "Physical-unit single-scale check",
+        "target_goal_component": "G3",
+        "declared_source_set": [
+          "core_reasoning_9"
+        ],
+        "major_advancement_modes": [
+          "unit-consistency",
+          "hidden-scale-control"
+        ],
+        "goal_alignment": "Directly maps the source reasoning onto the corresponding extracted goal component.",
+        "scientific_payoff": "Provides a bridge, bound, negative control, distinction, or global dependency statement beyond a source restatement.",
+        "nontrivial_advance_over_sources": "Synthesises the core reasoning into goal-facing lemmas and sufficient conditions.",
+        "formal_sharpness": "Premises are explicit and each entry ends in a boxed result.",
+        "low_value_rejection_audit": "Avoids verbatim copying, numerical-only transcription, and broad claims outside the uploaded goals.",
+        "selection_score": 0.985,
+        "controlled_external_lemmas": [
+          "elementary calculus",
+          "change of variables",
+          "triangle inequality",
+          "basic logarithmic asymptotics"
+        ],
+        "known_residual_risks_and_mitigation": "Sufficient-condition entries state their bounded-kernel or fixed-shape assumptions explicitly."
+      },
+      "deeper_reasoning_10": {
+        "title": "Joint goal dependency theorem",
+        "target_goal_component": "G1; G2; G3",
+        "declared_source_set": [
+          "core_reasoning_1",
+          "core_reasoning_2",
+          "core_reasoning_3",
+          "core_reasoning_4",
+          "core_reasoning_5",
+          "core_reasoning_6",
+          "core_reasoning_7",
+          "core_reasoning_8",
+          "core_reasoning_9",
+          "core_reasoning_10"
+        ],
+        "major_advancement_modes": [
+          "global-synthesis",
+          "coverage-audit"
+        ],
+        "goal_alignment": "Directly maps the source reasoning onto the corresponding extracted goal component.",
+        "scientific_payoff": "Provides a bridge, bound, negative control, distinction, or global dependency statement beyond a source restatement.",
+        "nontrivial_advance_over_sources": "Synthesises the core reasoning into goal-facing lemmas and sufficient conditions.",
+        "formal_sharpness": "Premises are explicit and each entry ends in a boxed result.",
+        "low_value_rejection_audit": "Avoids verbatim copying, numerical-only transcription, and broad claims outside the uploaded goals.",
+        "selection_score": 0.995,
+        "controlled_external_lemmas": [
+          "elementary calculus",
+          "change of variables",
+          "triangle inequality",
+          "basic logarithmic asymptotics"
+        ],
+        "known_residual_risks_and_mitigation": "Sufficient-condition entries state their bounded-kernel or fixed-shape assumptions explicitly."
+      }
+    },
+    "rejected_low_value_candidates": [
+      {
+        "candidate": "One deeper entry per core entry with only light wording changes.",
+        "reason": "Too close to restatement and lower reasoning value."
+      },
+      {
+        "candidate": "A numeric-only table of fitted values and momenta.",
+        "reason": "Would not satisfy the deeper derivation intent."
+      },
+      {
+        "candidate": "A broad confinement essay.",
+        "reason": "Would drift outside the extracted goals and formal core reasoning."
+      }
+    ],
+    "global_alignment_audit": {
+      "schema_alignment": "Pass: one object, allowed top-level key classes, contiguous deeper_reasoning_1 through deeper_reasoning_10, and exactly one deeper_metadata field.",
+      "latex_alignment": "Pass: all reasoning entries compile with article, amsmath, and amssymb.",
+      "core_reasoning_alignment": "Pass: all ten core reasoning entries are covered in the goal trace.",
+      "goal_alignment": "Pass: G1, G2, and G3 are each covered by multiple entries and by a final joint dependency theorem.",
+      "high_value_reasoning_alignment": "Pass: the file prioritises bridges, bounds, sufficiency statements, distinctions, and negative controls."
+    },
+    "known_residual_risks_and_mitigation": [
+      {
+        "risk": "Some claims are analytic sufficient conditions rather than numerical recomputations.",
+        "mitigation": "The entries mark fixed-shape and bounded-kernel assumptions as premises."
+      },
+      {
+        "risk": "The Polyakov-loop derivation is the compact SU(2) analytic mechanism rather than the full SU(3) computation.",
+        "mitigation": "It is used only as the centre-sector exchange mechanism and not as a substitute for SU(3) numerical evaluation."
+      }
+    ]
+  }
+}
